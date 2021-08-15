@@ -189,97 +189,6 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/08/15/modernJs/210722-%EB%82%B4%EC%9E%A5%ED%81%B4%EB%9E%98%EC%8A%A4-%ED%99%95%EC%9E%A5/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JayoonKoo">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="풍경보면서 일하고 싶다.">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/08/15/modernJs/210722-%EB%82%B4%EC%9E%A5%ED%81%B4%EB%9E%98%EC%8A%A4-%ED%99%95%EC%9E%A5/" class="post-title-link" itemprop="url">내장클래스-확장</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2021-08-15 19:40:25 / Modified: 19:45:50" itemprop="dateCreated datePublished" datetime="2021-08-15T19:40:25+09:00">2021-08-15</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="9-5-내장-클래스-확장하기"><a href="#9-5-내장-클래스-확장하기" class="headerlink" title="9.5 내장 클래스 확장하기"></a>9.5 내장 클래스 확장하기</h1><p>배열, 맵과 같은 내장 클래스도 확장이 가능하다. </p>
-<p>PowerArray 라는 클래스를 내장 클래스 Array 를 상속받아서 구현해 본다. </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 메서드 하나를 추가합니다(더 많이 추가하는 것도 가능).</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">PowerArray</span> <span class="keyword">extends</span> <span class="title">Array</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">isEmpty</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">this</span>.length === <span class="number">0</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> arr = <span class="keyword">new</span> PowerArray(<span class="number">1</span>, <span class="number">2</span>, <span class="number">5</span>, <span class="number">10</span>, <span class="number">50</span>);</span><br><span class="line">alert(arr.isEmpty()); <span class="comment">// false</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> filteredArr = arr.filter(<span class="function"><span class="params">item</span> =&gt;</span> item &gt;= <span class="number">10</span>);</span><br><span class="line">alert(filteredArr); <span class="comment">// 10, 50</span></span><br><span class="line">alert(filteredArr.isEmpty()); <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
-
-<p>주목할 점은 filter, map 등의 내장 메서드가 상속받은 클래스인 PowerArray를 반환한다는 점이다. </p>
-<p><code>arr.filter()</code>가 호출될때 내부에선 기본 Array 가 아닌 <code>arr.constructor</code>를 기반으로 새로운 배열이 만들어지고 여기에 필터 후 배열이 담긴다. </p>
-<p>이러한 동작 방법을 바꾸기 특수 정적 getter인 <code>[Symbol.species]</code>를 추가할 수 있다. </p>
-<p>getter에서 명시한 클래스로 내장 메서드에 반환값을 결정할 수 있다. </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">PowerArray</span> <span class="keyword">extends</span> <span class="title">Array</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">isEmpty</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">this</span>.length === <span class="number">0</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 내장 메서드는 반환 값에 명시된 클래스를 생성자로 사용합니다.</span></span><br><span class="line">  <span class="keyword">static</span> get [<span class="built_in">Symbol</span>.species]() &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">Array</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> arr = <span class="keyword">new</span> PowerArray(<span class="number">1</span>, <span class="number">2</span>, <span class="number">5</span>, <span class="number">10</span>, <span class="number">50</span>);</span><br><span class="line">alert(arr.isEmpty()); <span class="comment">// false</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// filter는 arr.constructor[Symbol.species]를 생성자로 사용해 새로운 배열을 만듭니다.</span></span><br><span class="line"><span class="keyword">let</span> filteredArr = arr.filter(<span class="function"><span class="params">item</span> =&gt;</span> item &gt;= <span class="number">10</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// filteredArr는 PowerArray가 아닌 Array의 인스턴스입니다.</span></span><br><span class="line">alert(filteredArr.isEmpty()); <span class="comment">// Error: filteredArr.isEmpty is not a function</span></span><br></pre></td></tr></table></figure>
-
-<br/>
-
-<h2 id="내장-객체와-정적-메서드-상속"><a href="#내장-객체와-정적-메서드-상속" class="headerlink" title="내장 객체와 정적 메서드 상속"></a>내장 객체와 정적 메서드 상속</h2><p>일반적으로 한 클래스가 다른 클래스를 상속 받으면 정적 메서드와 정적 프로퍼티를 상속 받는다. </p>
-<p>하지만 내장 클래스는 정적 메서드를 상속받지 못한다. </p>
-<p>예를 들어 <code>Date</code>의 경우 <code>Object</code>를 상속 받기 때문에 <code>Object.prototype</code>에 구현된 메서드를 사용할 수 있다.</p>
-<p>하지만 <code>Object</code> 자체를 차조하는 어떠한 변수도 없기 때문에 <code>Object</code>에 선언된 정적 메서드는 사용할 수 없는 것이다. </p>
-<p><code>Date</code>와 <code>Object</code>와의 관계는 다음과 같다. </p>
-<img src="/images/imgs/9-4.png" width="500">
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/08/15/modernJs/210726-instanceof/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -357,6 +266,97 @@
 <p>객채의 확인 뿐만 아니라 문자열로 받고 싶다면 <code>&#123;&#125;.toString.call</code>를 활용하면 됨.</p>
 <p><a href="js/210726-instanceof/1.js">과제1</a></p>
 <br/>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/08/15/modernJs/210722-%EB%82%B4%EC%9E%A5%ED%81%B4%EB%9E%98%EC%8A%A4-%ED%99%95%EC%9E%A5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JayoonKoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="풍경보면서 일하고 싶다.">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/08/15/modernJs/210722-%EB%82%B4%EC%9E%A5%ED%81%B4%EB%9E%98%EC%8A%A4-%ED%99%95%EC%9E%A5/" class="post-title-link" itemprop="url">내장클래스-확장</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2021-08-15 19:40:25 / Modified: 19:45:50" itemprop="dateCreated datePublished" datetime="2021-08-15T19:40:25+09:00">2021-08-15</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="9-5-내장-클래스-확장하기"><a href="#9-5-내장-클래스-확장하기" class="headerlink" title="9.5 내장 클래스 확장하기"></a>9.5 내장 클래스 확장하기</h1><p>배열, 맵과 같은 내장 클래스도 확장이 가능하다. </p>
+<p>PowerArray 라는 클래스를 내장 클래스 Array 를 상속받아서 구현해 본다. </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 메서드 하나를 추가합니다(더 많이 추가하는 것도 가능).</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">PowerArray</span> <span class="keyword">extends</span> <span class="title">Array</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">isEmpty</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">this</span>.length === <span class="number">0</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> arr = <span class="keyword">new</span> PowerArray(<span class="number">1</span>, <span class="number">2</span>, <span class="number">5</span>, <span class="number">10</span>, <span class="number">50</span>);</span><br><span class="line">alert(arr.isEmpty()); <span class="comment">// false</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> filteredArr = arr.filter(<span class="function"><span class="params">item</span> =&gt;</span> item &gt;= <span class="number">10</span>);</span><br><span class="line">alert(filteredArr); <span class="comment">// 10, 50</span></span><br><span class="line">alert(filteredArr.isEmpty()); <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
+
+<p>주목할 점은 filter, map 등의 내장 메서드가 상속받은 클래스인 PowerArray를 반환한다는 점이다. </p>
+<p><code>arr.filter()</code>가 호출될때 내부에선 기본 Array 가 아닌 <code>arr.constructor</code>를 기반으로 새로운 배열이 만들어지고 여기에 필터 후 배열이 담긴다. </p>
+<p>이러한 동작 방법을 바꾸기 특수 정적 getter인 <code>[Symbol.species]</code>를 추가할 수 있다. </p>
+<p>getter에서 명시한 클래스로 내장 메서드에 반환값을 결정할 수 있다. </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">PowerArray</span> <span class="keyword">extends</span> <span class="title">Array</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">isEmpty</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">this</span>.length === <span class="number">0</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 내장 메서드는 반환 값에 명시된 클래스를 생성자로 사용합니다.</span></span><br><span class="line">  <span class="keyword">static</span> get [<span class="built_in">Symbol</span>.species]() &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">Array</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> arr = <span class="keyword">new</span> PowerArray(<span class="number">1</span>, <span class="number">2</span>, <span class="number">5</span>, <span class="number">10</span>, <span class="number">50</span>);</span><br><span class="line">alert(arr.isEmpty()); <span class="comment">// false</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// filter는 arr.constructor[Symbol.species]를 생성자로 사용해 새로운 배열을 만듭니다.</span></span><br><span class="line"><span class="keyword">let</span> filteredArr = arr.filter(<span class="function"><span class="params">item</span> =&gt;</span> item &gt;= <span class="number">10</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// filteredArr는 PowerArray가 아닌 Array의 인스턴스입니다.</span></span><br><span class="line">alert(filteredArr.isEmpty()); <span class="comment">// Error: filteredArr.isEmpty is not a function</span></span><br></pre></td></tr></table></figure>
+
+<br/>
+
+<h2 id="내장-객체와-정적-메서드-상속"><a href="#내장-객체와-정적-메서드-상속" class="headerlink" title="내장 객체와 정적 메서드 상속"></a>내장 객체와 정적 메서드 상속</h2><p>일반적으로 한 클래스가 다른 클래스를 상속 받으면 정적 메서드와 정적 프로퍼티를 상속 받는다. </p>
+<p>하지만 내장 클래스는 정적 메서드를 상속받지 못한다. </p>
+<p>예를 들어 <code>Date</code>의 경우 <code>Object</code>를 상속 받기 때문에 <code>Object.prototype</code>에 구현된 메서드를 사용할 수 있다.</p>
+<p>하지만 <code>Object</code> 자체를 차조하는 어떠한 변수도 없기 때문에 <code>Object</code>에 선언된 정적 메서드는 사용할 수 없는 것이다. </p>
+<p><code>Date</code>와 <code>Object</code>와의 관계는 다음과 같다. </p>
+<img src="/images/imgs/9-4.png" width="500">
 
       
     </div>
