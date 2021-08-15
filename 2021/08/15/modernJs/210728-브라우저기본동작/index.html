@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css" integrity="sha256-2H3fkXt6FEmrReK448mDVGKb3WW2ZZw35gI7vqHOE4Y=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"jayoonkoo.github.io","root":"/","images":"/images","scheme":"Muse","version":"8.6.1","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="브라우저 기본 동작상당수 이벤트는 브라우저에서 기본적인 동작이 정해져 있음.   브라우저 기본 동작 막기기본 동작 막기   event.preventDefault() on&lt;event&gt; 라면 return false   123&lt;a href&#x3D;&quot;&#x2F;&quot; onclick&#x3D;&quot;return false&quot;&gt;이곳&lt;&#x2F;a&amp;g">
+<meta property="og:type" content="article">
+<meta property="og:title" content="브라우저기본동작">
+<meta property="og:url" content="https://jayoonkoo.github.io/2021/08/15/modernJs/210728-%EB%B8%8C%EB%9D%BC%EC%9A%B0%EC%A0%80%EA%B8%B0%EB%B3%B8%EB%8F%99%EC%9E%91/index.html">
+<meta property="og:site_name" content="풍경보면서 일하고 싶다.">
+<meta property="og:description" content="브라우저 기본 동작상당수 이벤트는 브라우저에서 기본적인 동작이 정해져 있음.   브라우저 기본 동작 막기기본 동작 막기   event.preventDefault() on&lt;event&gt; 라면 return false   123&lt;a href&#x3D;&quot;&#x2F;&quot; onclick&#x3D;&quot;return false&quot;&gt;이곳&lt;&#x2F;a&amp;g">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-08-15T10:40:25.000Z">
+<meta property="article:modified_time" content="2021-08-15T10:40:25.420Z">
+<meta property="article:author" content="JayoonKoo">
+<meta property="article:tag" content="modernJs">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://jayoonkoo.github.io/2021/08/15/modernJs/210728-%EB%B8%8C%EB%9D%BC%EC%9A%B0%EC%A0%80%EA%B8%B0%EB%B3%B8%EB%8F%99%EC%9E%91/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://jayoonkoo.github.io/2021/08/15/modernJs/210728-%EB%B8%8C%EB%9D%BC%EC%9A%B0%EC%A0%80%EA%B8%B0%EB%B3%B8%EB%8F%99%EC%9E%91/","path":"2021/08/15/modernJs/210728-브라우저기본동작/","title":"브라우저기본동작"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>브라우저기본동작 | 풍경보면서 일하고 싶다.</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">풍경보면서 일하고 싶다.</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">디지털 노마드를 꿈꾸는 초보 개발자의 기술 블로그</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">2</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">2</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">27</span></a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%EB%B8%8C%EB%9D%BC%EC%9A%B0%EC%A0%80-%EA%B8%B0%EB%B3%B8-%EB%8F%99%EC%9E%91"><span class="nav-number">1.</span> <span class="nav-text">브라우저 기본 동작</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%EB%B8%8C%EB%9D%BC%EC%9A%B0%EC%A0%80-%EA%B8%B0%EB%B3%B8-%EB%8F%99%EC%9E%91-%EB%A7%89%EA%B8%B0"><span class="nav-number">1.1.</span> <span class="nav-text">브라우저 기본 동작 막기</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%EB%A9%94%EB%89%B4-%EA%B5%AC%ED%98%84%ED%95%98%EA%B8%B0"><span class="nav-number">1.1.1.</span> <span class="nav-text">메뉴 구현하기</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#addEventListener%EC%9D%98-%E2%80%98passive%E2%80%99-%EC%98%B5%EC%85%98"><span class="nav-number">1.2.</span> <span class="nav-text">addEventListener의 ‘passive’ 옵션</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#event-defaultPrevented"><span class="nav-number">1.3.</span> <span class="nav-text">event.defaultPrevented</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-overview">
+            <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">JayoonKoo</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">27</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/JayoonKoo" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;JayoonKoo" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:rnwkdbs12@gmail.com" title="E-Mail → mailto:rnwkdbs12@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/JayoonKoo" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/08/15/modernJs/210728-%EB%B8%8C%EB%9D%BC%EC%9A%B0%EC%A0%80%EA%B8%B0%EB%B3%B8%EB%8F%99%EC%9E%91/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JayoonKoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="풍경보면서 일하고 싶다.">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          브라우저기본동작
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-08-15 19:40:25" itemprop="dateCreated datePublished" datetime="2021-08-15T19:40:25+09:00">2021-08-15</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="브라우저-기본-동작"><a href="#브라우저-기본-동작" class="headerlink" title="브라우저 기본 동작"></a>브라우저 기본 동작</h1><p>상당수 이벤트는 브라우저에서 기본적인 동작이 정해져 있음.</p>
+<br/>
+
+<h2 id="브라우저-기본-동작-막기"><a href="#브라우저-기본-동작-막기" class="headerlink" title="브라우저 기본 동작 막기"></a>브라우저 기본 동작 막기</h2><p>기본 동작 막기 </p>
+<ol>
+<li><code>event.preventDefault()</code></li>
+<li><code>on&lt;event&gt;</code> 라면 return false </li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href=<span class="string">&quot;/&quot;</span> onclick=<span class="string">&quot;return false&quot;</span>&gt;이곳&lt;/a&gt;</span><br><span class="line">이나</span><br><span class="line">&lt;a href=<span class="string">&quot;/&quot;</span> onclick=<span class="string">&quot;event.preventDefault()&quot;</span>&gt;이곳을&lt;/a&gt; 클릭해주세요.</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>핸들러에서 false를 반환하는 것은 예외 사항.<br>보통의 경우 return 반환 값은 무시됨. </p>
+</blockquote>
+<h3 id="메뉴-구현하기"><a href="#메뉴-구현하기" class="headerlink" title="메뉴 구현하기"></a>메뉴 구현하기</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">id</span>=<span class="string">&quot;menu&quot;</span> <span class="attr">class</span>=<span class="string">&quot;menu&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;/html&quot;</span>&gt;</span>HTML<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;/javascript&quot;</span>&gt;</span>JavaScript<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;/css&quot;</span>&gt;</span>CSS<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>button으로 만들지 않은 이유? </p>
+<p>button 으로 만들면 마우스 오른쪽 클릭으로 새창 열기 안됨.</p>
+<p>검색 엔진은 a 테그를 이용해서 인덱싱함. </p>
+<p>기본 동작 막기</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">menu.onclick = <span class="function"><span class="keyword">function</span>(<span class="params">event</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (event.target.nodeName != <span class="string">&#x27;A&#x27;</span>) <span class="keyword">return</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">let</span> href = event.target.getAttribute(<span class="string">&#x27;href&#x27;</span>);</span><br><span class="line">  alert( href ); <span class="comment">// 서버에서 데이터를 읽어오거나, UI를 새로 만든다거나 하는 등의 작업이 여기에 들어갑니다.</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="literal">false</span>; <span class="comment">// 브라우저 동작을 취소합니다(URL로 넘어가지 않음).</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>후속 이벤트<br>이벤트는 보통 순차적으로 발생함. (예를 들어서 moundown 다음에 focus가 발생함. )<br>그래서 전에 이벤트를 막았다면 후에 일어날 이벤트도 막게 됨.</p>
+</blockquote>
+<br/>
+
+<h2 id="addEventListener의-‘passive’-옵션"><a href="#addEventListener의-‘passive’-옵션" class="headerlink" title="addEventListener의 ‘passive’ 옵션"></a>addEventListener의 ‘passive’ 옵션</h2><p><code>passive: true</code> 옵션은 브라우저에게 <code>preventDefault()</code>를 호출하지 않겠다고 알려주는 것임. </p>
+<p>스크롤 할때 브라우저는 preventDefault를 호출했는지 확인하면서 호출했으면 스크롤링을 멈추는 방법을 사용한다.</p>
+<p>이때 사용자 입장에서는 스크롤할때 화면이 끊켜서 보이게됨.</p>
+<p>명시적으로 호출안할거라는 옵션을 줌으로서 이런 현상을 막을 수 있음 </p>
+<p>firefox나 crome 같은 브라우저는 기본값이 true 임.</p>
+<br/>
+
+<h2 id="event-defaultPrevented"><a href="#event-defaultPrevented" class="headerlink" title="event.defaultPrevented"></a>event.defaultPrevented</h2><p>기본 동작을 막을 경우 이 값이 true 이고, 그렇지 않은 경우 false 임. </p>
+<p>버블링과 캡처링에서 event.stopPropagation()을 사용하는 것이 않좋다는것을 알았음. </p>
+<p>이 속성을 사용해 똑같은 기능을 구현해 봄.</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>문서 레벨 컨텍스트 메뉴(event.defaultPrevented를 확인함)<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">&quot;elem&quot;</span>&gt;</span>버튼 레벨 컨텍스트 메뉴<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></span><br><span class="line"><span class="javascript">  elem.oncontextmenu = <span class="function"><span class="keyword">function</span>(<span class="params">event</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">    event.preventDefault();</span></span><br><span class="line"><span class="javascript">    alert(<span class="string">&quot;버튼 컨텍스트 메뉴&quot;</span>);</span></span><br><span class="line"><span class="javascript">  &#125;;</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">  <span class="built_in">document</span>.oncontextmenu = <span class="function"><span class="keyword">function</span>(<span class="params">event</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">    <span class="keyword">if</span> (event.defaultPrevented) <span class="keyword">return</span>;</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">    event.preventDefault();</span></span><br><span class="line"><span class="javascript">    alert(<span class="string">&quot;문서 컨텍스트 메뉴&quot;</span>);</span></span><br><span class="line"><span class="javascript">  &#125;;</span></span><br><span class="line"><span class="javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/modernJs/" rel="tag"># modernJs</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/08/15/modernJs/210728-%EC%BB%A4%EC%8A%A4%ED%85%80%20%EC%97%90%EB%9F%AC%EC%99%80%20%EC%97%90%EB%9F%AC%20%ED%99%95%EC%9E%A5/" rel="prev" title="커스텀 에러와 에러 확장">
+                  <i class="fa fa-chevron-left"></i> 커스텀 에러와 에러 확장
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/08/15/modernJs/210727-%EC%9D%B4%EB%B2%A4%ED%8A%B8%EC%9C%84%EC%9E%84/" rel="next" title="이벤트위임">
+                  이벤트위임 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">JayoonKoo</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

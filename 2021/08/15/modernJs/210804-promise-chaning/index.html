@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css" integrity="sha256-2H3fkXt6FEmrReK448mDVGKb3WW2ZZw35gI7vqHOE4Y=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"jayoonkoo.github.io","root":"/","images":"/images","scheme":"Muse","version":"8.6.1","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="프라미스 체이닝프라미스 체이닝을 이용한 비동기 처리에 대해서 알아본다.  123456789101112131415new Promise(function(resolve, reject) &amp;#123;	setTimeout(() &#x3D;&gt; resolve(1), 1000);&amp;#125;)	.then(function(result) &amp;#123;		console.log(resu">
+<meta property="og:type" content="article">
+<meta property="og:title" content="promise-chaning">
+<meta property="og:url" content="https://jayoonkoo.github.io/2021/08/15/modernJs/210804-promise-chaning/index.html">
+<meta property="og:site_name" content="풍경보면서 일하고 싶다.">
+<meta property="og:description" content="프라미스 체이닝프라미스 체이닝을 이용한 비동기 처리에 대해서 알아본다.  123456789101112131415new Promise(function(resolve, reject) &amp;#123;	setTimeout(() &#x3D;&gt; resolve(1), 1000);&amp;#125;)	.then(function(result) &amp;#123;		console.log(resu">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-08-15T10:40:25.000Z">
+<meta property="article:modified_time" content="2021-08-15T10:40:25.423Z">
+<meta property="article:author" content="JayoonKoo">
+<meta property="article:tag" content="modernJs">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://jayoonkoo.github.io/2021/08/15/modernJs/210804-promise-chaning/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://jayoonkoo.github.io/2021/08/15/modernJs/210804-promise-chaning/","path":"2021/08/15/modernJs/210804-promise-chaning/","title":"promise-chaning"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>promise-chaning | 풍경보면서 일하고 싶다.</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">풍경보면서 일하고 싶다.</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">디지털 노마드를 꿈꾸는 초보 개발자의 기술 블로그</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">2</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">2</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">27</span></a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%ED%94%84%EB%9D%BC%EB%AF%B8%EC%8A%A4-%EC%B2%B4%EC%9D%B4%EB%8B%9D"><span class="nav-number">1.</span> <span class="nav-text">프라미스 체이닝</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%ED%94%84%EB%9D%BC%EB%AF%B8%EC%8A%A4-%EB%B0%98%ED%99%98%ED%95%98%EA%B8%B0"><span class="nav-number">1.1.</span> <span class="nav-text">프라미스 반환하기</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#loadScript-%EC%98%88%EC%8B%9C-%EA%B0%9C%EC%84%A0%ED%95%98%EA%B8%B0"><span class="nav-number">1.2.</span> <span class="nav-text">loadScript 예시 개선하기</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#fetch%EC%99%80-%EC%B2%B4%EC%9D%B4%EB%8B%9D-%ED%95%A8%EA%BB%98-%EC%9D%91%EC%9A%A9%ED%95%98%EA%B8%B0"><span class="nav-number">1.3.</span> <span class="nav-text">fetch와 체이닝 함께 응용하기</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#then-f1-catch-f2-vs-then-f1-f2-%EB%8B%A4%EB%A5%BC%EA%B9%8C"><span class="nav-number">1.3.1.</span> <span class="nav-text">.then(f1).catch(f2) vs .then(f1, f2) 다를까?</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-overview">
+            <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">JayoonKoo</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">27</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/JayoonKoo" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;JayoonKoo" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:rnwkdbs12@gmail.com" title="E-Mail → mailto:rnwkdbs12@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/JayoonKoo" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/08/15/modernJs/210804-promise-chaning/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JayoonKoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="풍경보면서 일하고 싶다.">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          promise-chaning
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-08-15 19:40:25" itemprop="dateCreated datePublished" datetime="2021-08-15T19:40:25+09:00">2021-08-15</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="프라미스-체이닝"><a href="#프라미스-체이닝" class="headerlink" title="프라미스 체이닝"></a>프라미스 체이닝</h1><p>프라미스 체이닝을 이용한 비동기 처리에 대해서 알아본다. </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span>(<span class="params">resolve, reject</span>) </span>&#123;</span><br><span class="line">	<span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> resolve(<span class="number">1</span>), <span class="number">1000</span>);</span><br><span class="line">&#125;)</span><br><span class="line">	.then(<span class="function"><span class="keyword">function</span>(<span class="params">result</span>) </span>&#123;</span><br><span class="line">		<span class="built_in">console</span>.log(result); <span class="comment">// 1</span></span><br><span class="line">		<span class="keyword">return</span> result * <span class="number">2</span>;</span><br><span class="line">	&#125;)</span><br><span class="line">	.then(<span class="function"><span class="keyword">function</span>(<span class="params">result</span>) </span>&#123;</span><br><span class="line">		<span class="built_in">console</span>.log(result); <span class="comment">// 2</span></span><br><span class="line">		<span class="keyword">return</span> result * <span class="number">2</span>;</span><br><span class="line">	&#125;)</span><br><span class="line">	.then(<span class="function"><span class="keyword">function</span>(<span class="params">result</span>) </span>&#123;</span><br><span class="line">		<span class="built_in">console</span>.log(result); <span class="comment">// 4</span></span><br><span class="line">		<span class="keyword">return</span> result * <span class="number">2</span>;</span><br><span class="line">	&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>이런게 되는 이유는 <code>.then</code> 을 호출하면 프라미스가 반환되기 때문이다.<br>한편으로는 핸들러에서 반환하는 값이 프라미스의 <code>result</code>가 된다. </p>
+<p>초보자들이 흔히 하는 실수 중 하나는 프라미스 하나에 여러가지 .then 을 추가한 후 에 체이닝이라고 생각하는 것이다. </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> promise = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span>(<span class="params">resolve, reject</span>) </span>&#123;</span><br><span class="line">	<span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> resolve(<span class="number">1</span>), <span class="number">1000</span>);</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">promise.then(<span class="function"><span class="keyword">function</span>(<span class="params">result</span>) </span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(result) <span class="comment">// 1</span></span><br><span class="line">	<span class="keyword">return</span> result * <span class="number">2</span>;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">promise.then(<span class="function"><span class="keyword">function</span>(<span class="params">result</span>) </span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(result) <span class="comment">// 1</span></span><br><span class="line">	<span class="keyword">return</span> result * <span class="number">2</span>;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">promise.then(<span class="function"><span class="keyword">function</span>(<span class="params">result</span>) </span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(result) <span class="comment">// 1</span></span><br><span class="line">	<span class="keyword">return</span> result * <span class="number">2</span>;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<br/>
+
+<h2 id="프라미스-반환하기"><a href="#프라미스-반환하기" class="headerlink" title="프라미스 반환하기"></a>프라미스 반환하기</h2><p><code>.then</code>으로 등록한 핸들러에서 프라미스를 반환하는 경우도 있다.<br>이 경우에는 프라미스 처리가 완료된 이후에 다음 <code>.then</code> 이 호출된다. </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span>(<span class="params">resolve, reject</span>) </span>&#123;</span><br><span class="line">	<span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> resolve(<span class="number">1</span>), <span class="number">1000</span>);</span><br><span class="line">&#125;)</span><br><span class="line">	.then(<span class="function"><span class="keyword">function</span>(<span class="params">result</span>) </span>&#123;</span><br><span class="line">		<span class="built_in">console</span>.log(result) <span class="comment">//1</span></span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span>(<span class="params">resolve, reject</span>) =&gt; </span>&#123;</span><br><span class="line">			<span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> resolve(result * <span class="number">2</span>), <span class="number">1000</span>);</span><br><span class="line">		&#125;)</span><br><span class="line">	&#125;)</span><br><span class="line">	.then(<span class="function"><span class="keyword">function</span>(<span class="params">result</span>) </span>&#123;</span><br><span class="line">		<span class="built_in">console</span>.log(result) <span class="comment">//2</span></span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span>(<span class="params">resolve, reject</span>) =&gt; </span>&#123;</span><br><span class="line">			<span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> resolve(result * <span class="number">2</span>), <span class="number">1000</span>);</span><br><span class="line">		&#125;)</span><br><span class="line">	&#125;)</span><br><span class="line">	.then(<span class="function"><span class="keyword">function</span>(<span class="params">result</span>) </span>&#123;</span><br><span class="line">		<span class="built_in">console</span>.log(result) <span class="comment">//4</span></span><br><span class="line">	&#125;)</span><br></pre></td></tr></table></figure>
+<p>1초에 시간씩 기다린 후에 표시 된다. </p>
+<br/>
+
+<h2 id="loadScript-예시-개선하기"><a href="#loadScript-예시-개선하기" class="headerlink" title="loadScript 예시 개선하기"></a>loadScript 예시 개선하기</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">loadScript(<span class="string">&quot;/article/promise-chaining/one.js&quot;</span>)</span><br><span class="line">  .then(<span class="function"><span class="keyword">function</span>(<span class="params">script</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> loadScript(<span class="string">&quot;/article/promise-chaining/two.js&quot;</span>);</span><br><span class="line">  &#125;)</span><br><span class="line">  .then(<span class="function"><span class="keyword">function</span>(<span class="params">script</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> loadScript(<span class="string">&quot;/article/promise-chaining/three.js&quot;</span>);</span><br><span class="line">  &#125;)</span><br><span class="line">  .then(<span class="function"><span class="keyword">function</span>(<span class="params">script</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 불러온 스크립트 안에 정의된 함수를 호출해</span></span><br><span class="line">    <span class="comment">// 실제로 스크립트들이 정상적으로 로드되었는지 확인합니다.</span></span><br><span class="line">    one();</span><br><span class="line">    two();</span><br><span class="line">    three();</span><br><span class="line">  &#125;);</span><br></pre></td></tr></table></figure>
+
+<p>화살표 함수를 이용해서 줄이기</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">loadScript(<span class="string">&quot;/article/promise-chaining/one.js&quot;</span>)</span><br><span class="line">  .then(<span class="function"><span class="params">script</span> =&gt;</span> loadScript(<span class="string">&quot;/article/promise-chaining/two.js&quot;</span>))</span><br><span class="line">  .then(<span class="function"><span class="params">script</span> =&gt;</span> loadScript(<span class="string">&quot;/article/promise-chaining/three.js&quot;</span>))</span><br><span class="line">  .then(<span class="function"><span class="params">script</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// 스크립트를 정상적으로 불러왔기 때문에 스크립트 내의 함수를 호출할 수 있습니다.</span></span><br><span class="line">    one();</span><br><span class="line">    two();</span><br><span class="line">    three();</span><br><span class="line">  &#125;);</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>thenable : .then 이라는 메서드를 가진 객체는 모두 <code>thenable</code>이라고 부른다. 핸들러는 모두 <code>thenable</code>객체를 반환한다고도 할 수 있다 이점을 활용해서 Promise를 상속받지 앋고도 커스텀 객체를 사용해 프라미스 체이닝을 만들 수 도 있다. </p>
+</blockquote>
+<br/>
+
+<h2 id="fetch와-체이닝-함께-응용하기"><a href="#fetch와-체이닝-함께-응용하기" class="headerlink" title="fetch와 체이닝 함께 응용하기"></a>fetch와 체이닝 함께 응용하기</h2><p>기본 문법</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> promise = fecth(url);</span><br></pre></td></tr></table></figure>
+<p>해당 url로 요청을 보내고 응답을 기다리는 프라미스를 반화한다.<br>그런데 해당 프라미스는 응답이 완전히 완료 되기전에 이행상태가 되어버린다.<br><code>fetch.text()</code> 를 호출해서 테스트가 완전히 다운로드 되면 <code>result</code> 값으로 갖는 이행된 프라미스를 반환하게 할 수 있다. </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">fetch(<span class="string">&#x27;/example/user.json&#x27;</span>)</span><br><span class="line">	<span class="comment">// 원격 서버가 응답하면 .then 아래 코드가 실행됩니다.</span></span><br><span class="line">	.then(<span class="function"><span class="keyword">function</span>(<span class="params">response</span>) </span>&#123;</span><br><span class="line">		<span class="comment">// response.text()는 응답 텍스트 전체가 다운로드되면</span></span><br><span class="line">		<span class="comment">// 응답 텍스트를 새로운 이행 프라미스를 만들고, 이를 반환</span></span><br><span class="line">		<span class="keyword">return</span> response.text()</span><br><span class="line">	&#125;)</span><br><span class="line">	.then(<span class="function"><span class="keyword">function</span>(<span class="params">text</span>) </span>&#123;</span><br><span class="line">		<span class="comment">// 원격에서 받아온 파일의 내용</span></span><br><span class="line">		<span class="built_in">console</span>.log(text);</span><br><span class="line">	&#125;)</span><br></pre></td></tr></table></figure>
+<p>그러나 <code>reponse.json()</code>을 사용하면 json으로 파싱까지 할 수 있다. </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 위 코드와 동일한 기능을 하지만, response.json()은 원격 서버에서 불러온 내용을 JSON으로 변경해줍니다.</span></span><br><span class="line">fetch(<span class="string">&#x27;/article/promise-chaining/user.json&#x27;</span>)</span><br><span class="line">  .then(<span class="function"><span class="params">response</span> =&gt;</span> response.json())</span><br><span class="line">  .then(<span class="function"><span class="params">user</span> =&gt;</span> alert(user.name)); <span class="comment">// iliakan, got user nam</span></span><br></pre></td></tr></table></figure>
+<p>GitHub 에 요청을 보내 사용자 프로필을 불러오고 아바타를 출력해 보는 예제</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">fetch(<span class="string">&#x27;article/promise-chaining/user.json&#x27;</span>)</span><br><span class="line">	.then(<span class="function"><span class="params">response</span> =&gt;</span> reponse.json())</span><br><span class="line">	.then(<span class="function"><span class="params">user</span> =&gt;</span> fetch(<span class="string">`http://api.github.com/users/<span class="subst">$&#123;user.name&#125;</span>`</span>))</span><br><span class="line">	.then(<span class="function"><span class="params">reponse</span> =&gt;</span> reponse.json())</span><br><span class="line">	.then(<span class="function"><span class="params">githubUser</span> =&gt;</span> &#123;</span><br><span class="line">		<span class="keyword">let</span> img = documnet.createElement(<span class="string">&#x27;img&#x27;</span>);</span><br><span class="line">		img.src = githubUser.avatar_url;</span><br><span class="line">		img.className = <span class="string">&quot;promise-avatar-example&quot;</span>;</span><br><span class="line">		documnet.body.append(img);</span><br><span class="line"></span><br><span class="line">		<span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> img.remove(), <span class="number">3000</span>); <span class="comment">// (x)</span></span><br><span class="line">	&#125;)</span><br></pre></td></tr></table></figure>
+<p>x 부분에 흔히들 한흔 실수가 있다.<br>만약 아바타를 잠깐 보였다가 사라진 이후에 무언가를 하고 싶으면 어떻게 해야 할까?<br>지금으로선 방법이 없는데 체인을 사용해 프로미스를 반환하도록 하자.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">fetch(<span class="string">&#x27;/article/promise-chaining/user.json&#x27;</span>)</span><br><span class="line">  .then(<span class="function"><span class="params">response</span> =&gt;</span> response.json())</span><br><span class="line">  .then(<span class="function"><span class="params">user</span> =&gt;</span> fetch(<span class="string">`https://api.github.com/users/<span class="subst">$&#123;user.name&#125;</span>`</span>))</span><br><span class="line">  .then(<span class="function"><span class="params">response</span> =&gt;</span> response.json())</span><br><span class="line">  .then(<span class="function"><span class="params">githubUser</span> =&gt;</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span>(<span class="params">resolve, reject</span>) </span>&#123; <span class="comment">// (*)</span></span><br><span class="line">    <span class="keyword">let</span> img = <span class="built_in">document</span>.createElement(<span class="string">&#x27;img&#x27;</span>);</span><br><span class="line">    img.src = githubUser.avatar_url;</span><br><span class="line">    img.className = <span class="string">&quot;promise-avatar-example&quot;</span>;</span><br><span class="line">    <span class="built_in">document</span>.body.append(img);</span><br><span class="line"></span><br><span class="line">    <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">      img.remove();</span><br><span class="line">      resolve(githubUser); <span class="comment">// (**)</span></span><br><span class="line">    &#125;, <span class="number">3000</span>);</span><br><span class="line">  &#125;))</span><br><span class="line">  <span class="comment">// 3초 후 동작함</span></span><br><span class="line">  .then(<span class="function"><span class="params">githubUser</span> =&gt;</span> alert(<span class="string">`Finished showing <span class="subst">$&#123;githubUser.name&#125;</span>`</span>));</span><br></pre></td></tr></table></figure>
+<p>이제 사진이 사라진 후에 동작을 정의할 수 있게 됬다. </p>
+<p>결론 적으로 말하면 비동기 동작을 할때는 항상 프라미스를 반환하는 것이 좋다.<br>지금은 당장 쓰지 않더라도 나중에 확장하기 용이하기 때문이다. </p>
+<h3 id="then-f1-catch-f2-vs-then-f1-f2-다를까"><a href="#then-f1-catch-f2-vs-then-f1-f2-다를까" class="headerlink" title=".then(f1).catch(f2) vs .then(f1, f2) 다를까?"></a>.then(f1).catch(f2) vs .then(f1, f2) 다를까?</h3><p>다르다.<br><code>.then(f1).catch(f2)</code>의 경우 f1 에서 에러가 발생했다면 catch 에서 처리 할 수 있다. </p>
+<p>반면에, <code>.then(f1, f2)</code>의 경우에는 f1에서 에러가 발생하면 이어지는 체인이 없기 때문에 처리할 수 없다. </p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/modernJs/" rel="tag"># modernJs</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/08/15/modernJs/210805-promise-error/" rel="prev" title="promise-error">
+                  <i class="fa fa-chevron-left"></i> promise-error
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/08/15/modernJs/210803-promise/" rel="next" title="promise">
+                  promise <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">JayoonKoo</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>
