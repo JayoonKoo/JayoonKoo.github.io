@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css" integrity="sha256-2H3fkXt6FEmrReK448mDVGKb3WW2ZZw35gI7vqHOE4Y=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"jayoonkoo.github.io","root":"/","images":"/images","scheme":"Muse","version":"8.6.1","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="ClassesWhat a Classobject를 만드는 설계도이다. ex6 이전에는 function을 사용해서 object를 만들었다. 오브젝트는 new 키워드를 사용해서 만들 수 있고 타입스크립트를 사용하면 oop에 맞게 클래스를 작성할 수 있다. 타입스크립트에서는 class 자체도 어떤 타입이다. 1234567891011121314151617class">
+<meta property="og:type" content="article">
+<meta property="og:title" content="class">
+<meta property="og:url" content="https://jayoonkoo.github.io/2021/08/30/typeScript/210820-class/index.html">
+<meta property="og:site_name" content="풍경보면서 일하고 싶다.">
+<meta property="og:description" content="ClassesWhat a Classobject를 만드는 설계도이다. ex6 이전에는 function을 사용해서 object를 만들었다. 오브젝트는 new 키워드를 사용해서 만들 수 있고 타입스크립트를 사용하면 oop에 맞게 클래스를 작성할 수 있다. 타입스크립트에서는 class 자체도 어떤 타입이다. 1234567891011121314151617class">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-08-29T17:32:06.000Z">
+<meta property="article:modified_time" content="2021-08-29T17:32:06.797Z">
+<meta property="article:author" content="JayoonKoo">
+<meta property="article:tag" content="typeScript">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://jayoonkoo.github.io/2021/08/30/typeScript/210820-class/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://jayoonkoo.github.io/2021/08/30/typeScript/210820-class/","path":"2021/08/30/typeScript/210820-class/","title":"class"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>class | 풍경보면서 일하고 싶다.</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">풍경보면서 일하고 싶다.</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">디지털 노마드를 꿈꾸는 초보 개발자의 기술 블로그</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">3</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">3</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">34</span></a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Classes"><span class="nav-number">1.</span> <span class="nav-text">Classes</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#What-a-Class"><span class="nav-number">1.1.</span> <span class="nav-text">What a Class</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Access-Modifiers"><span class="nav-number">1.2.</span> <span class="nav-text">Access Modifiers</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#initialization-in-constructor-param"><span class="nav-number">1.3.</span> <span class="nav-text">initialization in constructor param</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Getter-amp-Setters"><span class="nav-number">1.4.</span> <span class="nav-text">Getter &amp; Setters</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#readonly-properties"><span class="nav-number">1.5.</span> <span class="nav-text">readonly properties</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Index-signatures-in-Class"><span class="nav-number">1.6.</span> <span class="nav-text">Index signatures in Class</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#static-properties-amp-method"><span class="nav-number">1.7.</span> <span class="nav-text">static properties &amp; method</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Singltons-%ED%8C%A8%ED%84%B4"><span class="nav-number">1.8.</span> <span class="nav-text">Singltons 패턴</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%ED%81%B4%EB%9E%98%EC%8A%A4%EC%9D%98-%EC%83%81%EC%86%8D"><span class="nav-number">1.9.</span> <span class="nav-text">클래스의 상속</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#abstract"><span class="nav-number">1.10.</span> <span class="nav-text">abstract</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-overview">
+            <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">JayoonKoo</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">34</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/JayoonKoo" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;JayoonKoo" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:rnwkdbs12@gmail.com" title="E-Mail → mailto:rnwkdbs12@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/JayoonKoo" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/08/30/typeScript/210820-class/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JayoonKoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="풍경보면서 일하고 싶다.">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          class
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-08-30 02:32:06" itemprop="dateCreated datePublished" datetime="2021-08-30T02:32:06+09:00">2021-08-30</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/typeScript/" itemprop="url" rel="index"><span itemprop="name">typeScript</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="Classes"><a href="#Classes" class="headerlink" title="Classes"></a>Classes</h1><h2 id="What-a-Class"><a href="#What-a-Class" class="headerlink" title="What a Class"></a>What a Class</h2><p>object를 만드는 설계도이다. ex6 이전에는 function을 사용해서 object를 만들었다. 오브젝트는 new 키워드를 사용해서 만들 수 있고 타입스크립트를 사용하면 oop에 맞게 클래스를 작성할 수 있다. 타입스크립트에서는 class 자체도 어떤 타입이다.</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="built_in">string</span> = <span class="string">&quot;Mark&quot;</span>;</span><br><span class="line">  age: <span class="built_in">number</span>;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">age?: <span class="built_in">number</span></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (age === <span class="literal">undefined</span>) &#123;</span><br><span class="line">      <span class="built_in">this</span>.age = <span class="number">20</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="built_in">this</span>.age = age;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> p1 = <span class="keyword">new</span> Person(<span class="number">39</span>);</span><br><span class="line"><span class="keyword">const</span> p2 = <span class="keyword">new</span> Person();</span><br><span class="line"><span class="built_in">console</span>.log(p1);</span><br><span class="line"><span class="built_in">console</span>.log(p2);</span><br></pre></td></tr></table></figure>
+
+<p>생성자를 통해서 인수를 받을 수 있다. TS에서는 생서자 오버라이드도 지원하지만 생성자에서 받을수도 있고 안받을 수 도 있는 경우엔 ?를 사용해서 생성자를 작성한다.<br>이때 받는 인수에 타엡에 대한 처리를 따로 해주어야 한다.</p>
+<p>생성자는 <code>async</code>를 사용할 수 없다. async 를 사용하기 위해서는 생성자 이외에 함수를 만들어서 <code>async</code> 키워드를 사용해야 한다. 이럴때 클래스에서는 멤버 변수가 할당됬는지 아닌지 알 수 없기 때문에 <code>age!: number</code> 같이 <code>!</code>를 사용한다.</p>
+<h2 id="Access-Modifiers"><a href="#Access-Modifiers" class="headerlink" title="Access Modifiers"></a>Access Modifiers</h2><p>클래스 외부에서 접근하는 것을 막기 위한 접근 제어자를 타입스크립트에서는 지원한다.</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">  <span class="keyword">public</span> name: <span class="built_in">string</span> = <span class="string">&quot;Mark&quot;</span>;</span><br><span class="line">  <span class="keyword">private</span> _age!: <span class="built_in">number</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">public</span> <span class="function"><span class="title">constructor</span>(<span class="params">age?: <span class="built_in">number</span></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (age === <span class="literal">undefined</span>) &#123;</span><br><span class="line">      <span class="built_in">this</span>._age = <span class="number">20</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="built_in">this</span>._age = age;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> p1 = <span class="keyword">new</span> Person(<span class="number">39</span>);</span><br><span class="line"><span class="keyword">const</span> p2 = <span class="keyword">new</span> Person();</span><br><span class="line"><span class="built_in">console</span>.log(p1);</span><br><span class="line"><span class="built_in">console</span>.log(p2);</span><br></pre></td></tr></table></figure>
+
+<p>Js 에서 private 변수를 표현하기 위해서 <code>_</code> 를 붙혔었는데 TS 에서 관례적으로 private 변수 앞에는 <code>_</code>를 붙힌다. ( 없어도 상관 없음. )</p>
+<h2 id="initialization-in-constructor-param"><a href="#initialization-in-constructor-param" class="headerlink" title="initialization in constructor param"></a>initialization in constructor param</h2><p>생성자 안에 접근 제어자를 넣음으로서 생성함과 동시에 할당가지 할수 있다.</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">  <span class="keyword">public</span> <span class="function"><span class="title">constructor</span>(<span class="params"><span class="keyword">public</span> name: <span class="built_in">string</span>, <span class="keyword">private</span> age: <span class="built_in">number</span></span>)</span> &#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> p1 = <span class="keyword">new</span> Person(<span class="string">&quot;koo&quot;</span>, <span class="number">39</span>);</span><br><span class="line"><span class="built_in">console</span>.log(p1);</span><br></pre></td></tr></table></figure>
+
+<p>위코드는 아래 코드와 같다.</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">  <span class="keyword">public</span> name: <span class="built_in">string</span>;</span><br><span class="line">  <span class="keyword">private</span> age: <span class="built_in">number</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">public</span> <span class="function"><span class="title">constructor</span>(<span class="params">name: <span class="built_in">string</span>, age: <span class="built_in">number</span></span>)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.name = name;</span><br><span class="line">    <span class="built_in">this</span>.age = age;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> p1 = <span class="keyword">new</span> Person(<span class="string">&quot;koo&quot;</span>, <span class="number">39</span>);</span><br><span class="line"><span class="built_in">console</span>.log(p1);</span><br></pre></td></tr></table></figure>
+
+<h2 id="Getter-amp-Setters"><a href="#Getter-amp-Setters" class="headerlink" title="Getter &amp; Setters"></a>Getter &amp; Setters</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">class Person &#123;</span><br><span class="line">  public constructor(private _name: string, public age: number) &#123;&#125;</span><br><span class="line"></span><br><span class="line">  get name() &#123;</span><br><span class="line">    return this._name + &quot;Jayoun&quot;;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  set name(n: string) &#123;</span><br><span class="line">    this._name = n;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const p1 = new Person(&quot;koo&quot;, 39);</span><br><span class="line">console.log(p1.name); // get 을하는 함수를 getter</span><br><span class="line">p1.name = &quot;Woongjae&quot;; // set 을하는 함수를 setter</span><br><span class="line">console.log(p1.name); // get 을하는 함수를 getter</span><br></pre></td></tr></table></figure>
+
+<p>getter 만 만들고 setter는 만들지 않는 방식으로 읽기만 가능한 프로퍼티를 만들 수 있다.</p>
+<h2 id="readonly-properties"><a href="#readonly-properties" class="headerlink" title="readonly properties"></a>readonly properties</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">class Person &#123;</span><br><span class="line">  public readonly name: string = &quot;Mark&quot;;</span><br><span class="line">  private readonly country: string = &quot;Korea&quot;;</span><br><span class="line"></span><br><span class="line">  public constructor(private _name: string, public age: number) &#123;</span><br><span class="line">    this.country = &quot;korea&quot;;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  hello() &#123;</span><br><span class="line">    // this.country = &#x27;China&#x27;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const p1 = new Person(&quot;koo&quot;, 39);</span><br><span class="line">console.log(p1.name); // get 을하는 함수를 getter</span><br><span class="line">// p1.name = &quot;Woongjae&quot;; // readonly 이기 대문에 할당할 수 없다.</span><br><span class="line">console.log(p1.name); // get 을하는 함수를 getter</span><br></pre></td></tr></table></figure>
+
+<p>readonly 를 사용하여 get 만 할 수 있는 프로퍼티를 만들 수 있다. 이때 할당은 처음 프로퍼티를 생성하는 부분과 생성자에서만 할 수 있다.</p>
+<h2 id="Index-signatures-in-Class"><a href="#Index-signatures-in-Class" class="headerlink" title="Index signatures in Class"></a>Index signatures in Class</h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// class =&gt; object</span></span><br><span class="line"><span class="comment">// &#123;mark: &#x27;male&#x27;, jade: &#x27;male&#125; Class A</span></span><br><span class="line"><span class="comment">// &#123;chole: &#x27;female&#x27;, alex: &#x27;male&#x27;, anna: &#x27;female&#x27;&#125; Class B</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 동적이라면?</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Students</span> </span>&#123;</span><br><span class="line">  <span class="comment">// [index: string]: string; // 어떤 문자열이 와도 쓸 수 있다.</span></span><br><span class="line">  [index: <span class="built_in">string</span>]: <span class="string">&quot;male&quot;</span> | <span class="string">&quot;female&quot;</span>; <span class="comment">// 받을 수 있는 것 정의 할 수 있음.</span></span><br><span class="line"></span><br><span class="line">  mark: <span class="string">&quot;male&quot;</span> = <span class="string">&quot;male&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> a = <span class="keyword">new</span> Students();</span><br><span class="line"></span><br><span class="line">a.mark = <span class="string">&quot;male&quot;</span>;</span><br><span class="line">a.jade = <span class="string">&quot;male&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(a);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> b = <span class="keyword">new</span> Students();</span><br><span class="line"></span><br><span class="line">b.chole = <span class="string">&quot;female&quot;</span>;</span><br><span class="line">b.alex = <span class="string">&quot;male&quot;</span>;</span><br><span class="line">b.anna = <span class="string">&quot;female&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(b);</span><br></pre></td></tr></table></figure>
+
+<p>동적으로 프로퍼티가 생기는 형식일때 사용할 수 있다. 받을 수 있는 프로퍼티를 정의해 주는 것도 가능하다.</p>
+<h2 id="static-properties-amp-method"><a href="#static-properties-amp-method" class="headerlink" title="static properties &amp; method"></a>static properties &amp; method</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">class Person &#123;</span><br><span class="line">  public static CITY = &quot;Seoul&quot;;</span><br><span class="line">  private static privateCity = &quot;bu&quot;;</span><br><span class="line">  public static hello() &#123;</span><br><span class="line">    console.log(&quot;안녕하세요.&quot;, Person.privateCity);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  public normalHello() &#123;</span><br><span class="line">    console.log(&quot;안녕&quot;, Person.CITY);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  public change() &#123;</span><br><span class="line">    Person.CITY = &quot;LA&quot;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Person.hello();</span><br><span class="line">console.log(Person.CITY);</span><br><span class="line"></span><br><span class="line">const p1 = new Person();</span><br><span class="line">// p1.hello(); // 이렇게 사용할 수 없음.</span><br><span class="line">p1.normalHello();</span><br><span class="line"></span><br><span class="line">const p2 = new Person();</span><br><span class="line">p2.normalHello();</span><br><span class="line">p1.change();</span><br><span class="line">p2.normalHello();</span><br></pre></td></tr></table></figure>
+
+<p>static 키워드를 붙히면 인스턴스를 생성하지 않아도 클래스 이름으로 접근해서 사용할 수 있다.</p>
+<h2 id="Singltons-패턴"><a href="#Singltons-패턴" class="headerlink" title="Singltons 패턴"></a>Singltons 패턴</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">class ClassName &#123;</span><br><span class="line">  private static instance: ClassName | null = null;</span><br><span class="line"></span><br><span class="line">  // 매개체로 이용해서 객체를 꺼내옴.</span><br><span class="line">  public static getInstance(): ClassName &#123;</span><br><span class="line">    // ClassName 으로 부터 만든 Object가 있으면 그걸 리턴</span><br><span class="line">    // 없으면, 만들어서 리턴</span><br><span class="line">    if (ClassName.instance === null) &#123;</span><br><span class="line">      ClassName.instance = new ClassName();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    return ClassName.instance;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  // new 를 직접 호출 할 수 없게 함.</span><br><span class="line">  // 다른 오브젝트 생성 금지</span><br><span class="line">  private constructor() &#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 만들어진 단일 오브젝트를 공유하는 개념</span><br><span class="line">const a = ClassName.getInstance();</span><br><span class="line">const b = ClassName.getInstance();</span><br><span class="line"></span><br><span class="line">console.log(a === b);</span><br></pre></td></tr></table></figure>
+
+<p>생성자 함수를 private 접근 제어자를 사용해서 밖에서 호출하지 못하도록함. <code>getInstance()</code> 같은 함수를 사용해서 인스턴스가 있다면 반환하고 인스턴스가 없다면 새롭게 생성한후 할당, 프로퍼티로 있는 인스턴스를 넘겨준다.</p>
+<p>이렇게 함으로서 클래스로쿠터 단 하나의 오브젝트만 생성해서 사용하는 패턴을 만들 수 있다.</p>
+<h2 id="클래스의-상속"><a href="#클래스의-상속" class="headerlink" title="클래스의 상속"></a>클래스의 상속</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">class Parent &#123;</span><br><span class="line">  constructor(protected _name: string, private _age: number) &#123;&#125;</span><br><span class="line"></span><br><span class="line">  public print(): void &#123;</span><br><span class="line">    console.log(`이름은 $&#123;this._name&#125; 이고 나이는 $&#123;this._age&#125; 입니다.`);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  protected printName(): void &#123;</span><br><span class="line">    // 프로텍티트 접근 제어자를 통해서 부모 클래스의 private 프로퍼티도 접근 가능.</span><br><span class="line">    console.log(this._name, this._age);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class Child extends Parent &#123;</span><br><span class="line">  // 접근 제어자도 오버라이드 됨.</span><br><span class="line">  // public _name = &quot;Mark Jr.&quot;;</span><br><span class="line"></span><br><span class="line">  public gender: string = &quot;male&quot;;</span><br><span class="line"></span><br><span class="line">  constructor(age: number) &#123;</span><br><span class="line">    super(&quot;Mark Jr.&quot;, age);</span><br><span class="line">    this.printName();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// const p = new Parent(&quot;Mark&quot;, 39);</span><br><span class="line">// p.print();</span><br><span class="line"></span><br><span class="line">// const c = new Child(&quot;son&quot;, 39);</span><br><span class="line">const c = new Child(5);</span><br><span class="line">c.print();</span><br></pre></td></tr></table></figure>
+
+<p>부모 클래스에서 <code>protected</code> 로 선언한 함수 또는 프로퍼티는 클래스 외에서 접근은 불가능하지만, 상속받은 자식 클래스에서 접근은 가능하다. 자식 클래스에서 기본 생성자가 아니라 따로 만들었다면, <code>super()</code>를 사용하여 부모 클래스이 생성자를 호출해 주어야 한다. 그렇게 해야지 부모 클래스의 값이 할당 되고 <code>this</code>키워드를 사용하여 호출, 사용할 수 있게 된다.</p>
+<h2 id="abstract"><a href="#abstract" class="headerlink" title="abstract"></a>abstract</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">// new 불가 , 상속후 완전하게 만든다음에 사용 가능.</span><br><span class="line">abstract class AbstractPerson &#123;</span><br><span class="line">  protected _name: string = &quot;Mark&quot;;</span><br><span class="line"></span><br><span class="line">  // 구현 하지 않음 // 클래스의  abstract 붙여야 함.</span><br><span class="line">  abstract setName(name: string): void;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class Person extends AbstractPerson &#123;</span><br><span class="line">  setName(name: string): void &#123;</span><br><span class="line">    this._name = name;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const p = new Person();</span><br><span class="line">p.setName(&quot;Koo&quot;);</span><br></pre></td></tr></table></figure>
+
+<p>완전하지 않은 클래스로서 외형만 만든다고 생각하면된다. 완전하지 않기 때문에 <code>new</code>로 생성할 수 없다. 추상 클래스를 상속 받는 자식 클래스에서는 <code>abstract</code>로 작성한 완전하지 않은 메서드를 완전히 구현해야 <code>new</code>로 생성할 수 있다.</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/typeScript/" rel="tag"># typeScript</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/08/30/typeScript/210824-generic/" rel="prev" title="generic">
+                  <i class="fa fa-chevron-left"></i> generic
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/08/30/typeScript/210813-type%20system/" rel="next" title="type system">
+                  type system <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">JayoonKoo</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>
