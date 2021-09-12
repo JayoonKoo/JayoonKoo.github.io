@@ -20,21 +20,21 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"jayoonkoo.github.io","root":"/","images":"/images","scheme":"Muse","version":"8.6.1","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
-<meta name="description" content="상태 기반 스케쥴링프로세스 상태   running state: 현재 CPU에서 실행 중인 상태 ready state : CPU 에서 실행 가능 상태 (실행 대기 상태) block state: 특정 이벤트 발생 대기 상태 (파일을 다 읽었다!)  프로세스 생성과 종료는 짧은 시간 동안 발생.  종료의 경우 실행하면서 갖고 있던 리소스를 해제하는 과정이라고 생">
+<meta name="description" content="상태 기반 스케쥴링프로세스 상태   running state: 현재 CPU에서 실행 중인 상태 ready state : CPU 에서 실행 가능 상태 (실행 대기 상태) block state: 특정 이벤트 발생 대기 상태 (파일을 다 읽었다!)  프로세스 생성과 종료는 짧은 시간 동안 발생. 종료의 경우 실행하면서 갖고 있던 리소스를 해제하는 과정이라고 생각">
 <meta property="og:type" content="article">
 <meta property="og:title" content="스케쥴링상태기반">
 <meta property="og:url" content="https://jayoonkoo.github.io/2021/08/06/OS/210727-%EC%8A%A4%EC%BC%80%EC%A5%B4%EB%A7%81%EC%83%81%ED%83%9C%EA%B8%B0%EB%B0%98/index.html">
 <meta property="og:site_name" content="풍경보면서 일하고 싶다.">
-<meta property="og:description" content="상태 기반 스케쥴링프로세스 상태   running state: 현재 CPU에서 실행 중인 상태 ready state : CPU 에서 실행 가능 상태 (실행 대기 상태) block state: 특정 이벤트 발생 대기 상태 (파일을 다 읽었다!)  프로세스 생성과 종료는 짧은 시간 동안 발생.  종료의 경우 실행하면서 갖고 있던 리소스를 해제하는 과정이라고 생">
+<meta property="og:description" content="상태 기반 스케쥴링프로세스 상태   running state: 현재 CPU에서 실행 중인 상태 ready state : CPU 에서 실행 가능 상태 (실행 대기 상태) block state: 특정 이벤트 발생 대기 상태 (파일을 다 읽었다!)  프로세스 생성과 종료는 짧은 시간 동안 발생. 종료의 경우 실행하면서 갖고 있던 리소스를 해제하는 과정이라고 생각">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://jayoonkoo.github.io/images/imgs/210727-스케쥴링상태기반/1.png">
 <meta property="og:image" content="https://jayoonkoo.github.io/images/imgs/210727-스케쥴링상태기반/2.png">
 <meta property="og:image" content="https://jayoonkoo.github.io/images/imgs/210727-스케쥴링상태기반/3.png">
 <meta property="og:image" content="https://jayoonkoo.github.io/images/imgs/210727-스케쥴링상태기반/4.png">
 <meta property="article:published_time" content="2021-08-06T13:28:10.000Z">
-<meta property="article:modified_time" content="2021-08-06T18:21:15.447Z">
+<meta property="article:modified_time" content="2021-09-12T14:50:45.534Z">
 <meta property="article:author" content="JayoonKoo">
-<meta property="article:tag" content="OS">
+<meta property="article:tag" content="os">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://jayoonkoo.github.io/images/imgs/210727-스케쥴링상태기반/1.png">
 
@@ -93,9 +93,9 @@
   <ul class="main-menu menu">
         <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li>
         <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
-        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">3</span></a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">4</span></a></li>
         <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">3</span></a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">34</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">46</span></a></li>
   </ul>
 </nav>
 
@@ -140,7 +140,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">34</span>
+          <span class="site-state-item-count">46</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -151,7 +151,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -232,7 +232,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-08-07 03:21:15" itemprop="dateModified" datetime="2021-08-07T03:21:15+09:00">2021-08-07</time>
+        <time title="Modified: 2021-09-12 23:50:45" itemprop="dateModified" datetime="2021-09-12T23:50:45+09:00">2021-09-12</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -261,8 +261,8 @@
 <li>ready state : CPU 에서 실행 가능 상태 (실행 대기 상태)</li>
 <li>block state: 특정 이벤트 발생 대기 상태 (파일을 다 읽었다!)</li>
 </ul>
-<p>프로세스 생성과 종료는 짧은 시간 동안 발생. </p>
-<p>종료의 경우 실행하면서 갖고 있던 리소스를 해제하는 과정이라고 생각할 수 있다. </p>
+<p>프로세스 생성과 종료는 짧은 시간 동안 발생.</p>
+<p>종료의 경우 실행하면서 갖고 있던 리소스를 해제하는 과정이라고 생각할 수 있다.</p>
 <br/>
 
 <h2 id="프로세스-상태간-관계"><a href="#프로세스-상태간-관계" class="headerlink" title="프로세스 상태간 관계"></a>프로세스 상태간 관계</h2><img src="/images/imgs/210727-스케쥴링상태기반/2.png">
@@ -280,30 +280,30 @@
 <ul>
 <li>ready state queue: 1, 2, 3</li>
 <li>runnig state queue</li>
-<li>block state queue </li>
+<li>block state queue</li>
 </ul>
 <img src="/images/imgs/210727-스케쥴링상태기반/3.png">
 
-<p>cpu가 아무것도 실행되고 있지 않은 상태를 idle 상태라고 한다. </p>
+<p>cpu가 아무것도 실행되고 있지 않은 상태를 idle 상태라고 한다.</p>
 <p>상태 별 큐를 생각하면서 어떻게 돌아갈지 생각해 보기.</p>
 <p><strong>결과</strong> [1, 2, 3, 1, 3, 2, idle, idle, 3]</p>
 <br/>
 
-<h2 id="선점형과-비선점형-스케쥴러"><a href="#선점형과-비선점형-스케쥴러" class="headerlink" title="선점형과 비선점형 스케쥴러"></a>선점형과 비선점형 스케쥴러</h2><p>선점형 스케쥴러는 프로세스가 끝나거나 block 상태가 되지 않더라도 스케쥴러가 ready 상태로 바꾸고 다른 프로세스를 실행시키는 것이 가능한 스케쥴러이다. </p>
-<p>비선점형 스케쥴러는 프로세스가 block 상태가 되거나 끝나지 않으면 다른 프로세스를 실행 시키는것이 불가능한 스케쥴러이다. </p>
-<p>시분할 시스템을 구현하려면 선점형 스케쥴러를 구현할 수 있어야 했는데, 초기에 운영체제는 선점형 스케쥴러 구현의 어려움이 있었다. </p>
-<h3 id="선점형과-비선점형의-차이"><a href="#선점형과-비선점형의-차이" class="headerlink" title="선점형과 비선점형의 차이"></a>선점형과 비선점형의 차이</h3><p>위에 예시에서 선점형과 비선점형을 나눠서 생각해봄. </p>
-<p>이번엔 시분할을 2칸으로 봄. 왜 이렇게 되는지 생각해 보자. </p>
+<h2 id="선점형과-비선점형-스케쥴러"><a href="#선점형과-비선점형-스케쥴러" class="headerlink" title="선점형과 비선점형 스케쥴러"></a>선점형과 비선점형 스케쥴러</h2><p>선점형 스케쥴러는 프로세스가 끝나거나 block 상태가 되지 않더라도 스케쥴러가 ready 상태로 바꾸고 다른 프로세스를 실행시키는 것이 가능한 스케쥴러이다.</p>
+<p>비선점형 스케쥴러는 프로세스가 block 상태가 되거나 끝나지 않으면 다른 프로세스를 실행 시키는것이 불가능한 스케쥴러이다.</p>
+<p>시분할 시스템을 구현하려면 선점형 스케쥴러를 구현할 수 있어야 했는데, 초기에 운영체제는 선점형 스케쥴러 구현의 어려움이 있었다.</p>
+<h3 id="선점형과-비선점형의-차이"><a href="#선점형과-비선점형의-차이" class="headerlink" title="선점형과 비선점형의 차이"></a>선점형과 비선점형의 차이</h3><p>위에 예시에서 선점형과 비선점형을 나눠서 생각해봄.</p>
+<p>이번엔 시분할을 2칸으로 봄. 왜 이렇게 되는지 생각해 보자.</p>
 <img src="/images/imgs/210727-스케쥴링상태기반/4.png">
 
-<p>비선점형은 시스템 응답시간이 길어짐. </p>
+<p>비선점형은 시스템 응답시간이 길어짐.</p>
 <br/>
 
 <h2 id="스케쥴러의-구분"><a href="#스케쥴러의-구분" class="headerlink" title="스케쥴러의 구분"></a>스케쥴러의 구분</h2><ul>
 <li>FIFO(FCFS), SJF, Priority-based는 어떤 프로세스를 먼저 실행시킬지에 대한 알고리즘 (비선점형에 가까움)</li>
 <li>RoundRobin 은 시분할 시스템을 위한 기본 알고리즘 (선점형 스케쥴러)</li>
 </ul>
-<p>보통 여러가지 알고리즘을 섞어서 사용하는것이 일반적임 </p>
+<p>보통 여러가지 알고리즘을 섞어서 사용하는것이 일반적임</p>
 
     </div>
 
@@ -313,7 +313,7 @@
 
     <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/OS/" rel="tag"># OS</a>
+              <a href="/tags/os/" rel="tag"># os</a>
           </div>
 
         
