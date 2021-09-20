@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css" integrity="sha256-2H3fkXt6FEmrReK448mDVGKb3WW2ZZw35gI7vqHOE4Y=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"jayoonkoo.github.io","root":"/","images":"/images","scheme":"Muse","version":"8.6.1","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="FormDataHTML에 formData를 나타내는 생성자는 다음과 같다. 1let formData &#x3D; new FormData([form]);  이렇게 생성해서 서버에서 보내는 작업을 하면 서버에서 볼 때 일반적인 양식 제출처럼 보인다. Sending a simple form1234567891011121314151617181920&lt;form id&#x3D;&amp;qu">
+<meta property="og:type" content="article">
+<meta property="og:title" content="formData">
+<meta property="og:url" content="https://jayoonkoo.github.io/2021/09/20/modernJs/210907-formData/index.html">
+<meta property="og:site_name" content="풍경보면서 일하고 싶다.">
+<meta property="og:description" content="FormDataHTML에 formData를 나타내는 생성자는 다음과 같다. 1let formData &#x3D; new FormData([form]);  이렇게 생성해서 서버에서 보내는 작업을 하면 서버에서 볼 때 일반적인 양식 제출처럼 보인다. Sending a simple form1234567891011121314151617181920&lt;form id&#x3D;&amp;qu">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-09-20T12:41:14.000Z">
+<meta property="article:modified_time" content="2021-09-20T12:45:41.566Z">
+<meta property="article:author" content="JayoonKoo">
+<meta property="article:tag" content="modernJs">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://jayoonkoo.github.io/2021/09/20/modernJs/210907-formData/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://jayoonkoo.github.io/2021/09/20/modernJs/210907-formData/","path":"2021/09/20/modernJs/210907-formData/","title":"formData"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>formData | 풍경보면서 일하고 싶다.</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">풍경보면서 일하고 싶다.</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">디지털 노마드를 꿈꾸는 초보 개발자의 기술 블로그</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">6</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">5</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">68</span></a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#FormData"><span class="nav-number">1.</span> <span class="nav-text">FormData</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Sending-a-simple-form"><span class="nav-number">1.1.</span> <span class="nav-text">Sending a simple form</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#FormData-Methods"><span class="nav-number">1.2.</span> <span class="nav-text">FormData Methods</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Sending-a-form-with-a-file"><span class="nav-number">1.3.</span> <span class="nav-text">Sending a form with a file</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Sending-a-form-with-Blob-data"><span class="nav-number">1.4.</span> <span class="nav-text">Sending a form with Blob data</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-overview">
+            <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">JayoonKoo</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">68</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/JayoonKoo" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;JayoonKoo" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:rnwkdbs12@gmail.com" title="E-Mail → mailto:rnwkdbs12@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/JayoonKoo" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/09/20/modernJs/210907-formData/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JayoonKoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="풍경보면서 일하고 싶다.">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          formData
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2021-09-20 21:41:14 / Modified: 21:45:41" itemprop="dateCreated datePublished" datetime="2021-09-20T21:41:14+09:00">2021-09-20</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="FormData"><a href="#FormData" class="headerlink" title="FormData"></a>FormData</h1><p>HTML에 formData를 나타내는 생성자는 다음과 같다.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> formData = <span class="keyword">new</span> FormData([form]);</span><br></pre></td></tr></table></figure>
+
+<p>이렇게 생성해서 서버에서 보내는 작업을 하면 서버에서 볼 때 일반적인 양식 제출처럼 보인다.</p>
+<h2 id="Sending-a-simple-form"><a href="#Sending-a-simple-form" class="headerlink" title="Sending a simple form"></a>Sending a simple form</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">id</span>=<span class="string">&quot;formElem&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;name&quot;</span> <span class="attr">value</span>=<span class="string">&quot;John&quot;</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;surname&quot;</span> <span class="attr">value</span>=<span class="string">&quot;Smith&quot;</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></span><br><span class="line"><span class="javascript">  formElem.onsubmit = <span class="keyword">async</span> (e) =&gt; &#123;</span></span><br><span class="line"><span class="javascript">    e.preventDefault();</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">    <span class="keyword">let</span> response = <span class="keyword">await</span> fetch(<span class="string">&quot;/article/formdata/post/user&quot;</span>, &#123;</span></span><br><span class="line"><span class="javascript">      <span class="attr">method</span>: <span class="string">&quot;POST&quot;</span>,</span></span><br><span class="line"><span class="javascript">      <span class="attr">body</span>: <span class="keyword">new</span> FormData(formElem),</span></span><br><span class="line"><span class="javascript">    &#125;);</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">    <span class="keyword">let</span> result = <span class="keyword">await</span> response.json();</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">    alert(result.message);</span></span><br><span class="line"><span class="javascript">  &#125;;</span></span><br><span class="line"><span class="javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>서버 코드는 여기에 없다. 서버는 위에 코드에서 보낸 request를 받아서 응답한다.</p>
+<h2 id="FormData-Methods"><a href="#FormData-Methods" class="headerlink" title="FormData Methods"></a>FormData Methods</h2><ul>
+<li><code>formData.append(name, value)</code> - form data에 name과 value를 추가</li>
+<li><code>formData.append(name, blob, fileName)</code> - <code>&lt;input type=&quot;file&quot;&gt;</code> 인 것처럼 추가, 세번째 매개변수인 <code>fileName</code>인 진짜 파일 이름을 넣어줌.</li>
+<li><code>formData.delete(name)</code> - <code>name</code>이란 이름으로 추가된 필드를 제거함</li>
+<li><code>formData.get(name)</code> - <code>name</code>이란 이름으로 추가된 필드에 <code>value</code> 값을 얻음.</li>
+<li><code>formData.had(name)</code> - <code>name</code>이란 이름으로 추가된 필드가 있다면 ,<code>true</code> 반환 아닐 경우 <code>false</code> 반환</li>
+</ul>
+<p>formData는 기술적으로 같은 name에 필드를 추가할 수 있다. 따라서 append를 사용한다. 비슷한 역할을 하는 <code>.set</code> 메서드도 있다. 이 경우 기존에 있던것을 삭제 하고 추가한다.</p>
+<ul>
+<li><code>formData.set(name, value)</code></li>
+<li><code>formData.set(name, blob, fileName)</code></li>
+</ul>
+<p>또한 <code>for..of</code> 를 사용해서 요소를 반복할 수 있다.</p>
+<h2 id="Sending-a-form-with-a-file"><a href="#Sending-a-form-with-a-file" class="headerlink" title="Sending a form with a file"></a>Sending a form with a file</h2><p>form은 <code>Content-Type: multipart/form-data</code>로 보내지고 이것은 파일도 보낼 수 있다.</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">id</span>=<span class="string">&quot;formElem&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;firstName&quot;</span> <span class="attr">value</span>=<span class="string">&quot;John&quot;</span> /&gt;</span></span><br><span class="line">  Picture: <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;file&quot;</span> <span class="attr">name</span>=<span class="string">&quot;picture&quot;</span> <span class="attr">accept</span>=<span class="string">&quot;image/*&quot;</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></span><br><span class="line"><span class="javascript">  formElem.onsubmit = <span class="keyword">async</span> (e) =&gt; &#123;</span></span><br><span class="line"><span class="javascript">    e.preventDefault();</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">    <span class="keyword">let</span> response = <span class="keyword">await</span> fetch(<span class="string">&quot;/article/formdata/post/user-avatar&quot;</span>, &#123;</span></span><br><span class="line"><span class="javascript">      <span class="attr">method</span>: <span class="string">&quot;POST&quot;</span>,</span></span><br><span class="line"><span class="javascript">      <span class="attr">body</span>: <span class="keyword">new</span> FormData(formElem),</span></span><br><span class="line"><span class="javascript">    &#125;);</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">    <span class="keyword">let</span> result = <span class="keyword">await</span> response.json();</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">    alert(result.message);</span></span><br><span class="line"><span class="javascript">  &#125;;</span></span><br><span class="line"><span class="javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Sending-a-form-with-Blob-data"><a href="#Sending-a-form-with-Blob-data" class="headerlink" title="Sending a form with Blob data"></a>Sending a form with Blob data</h2><p>동적으로 생성된 바이너리 데이타 이미지 같은 것을 <code>Blob</code>으로 보낼 수 있다. <code>fetch</code>에 <code>body</code> 파라미터로 넒길 수 있다.<br>그러나 실제로는 이미지를 별도로 보내는 것이 아니라 name 을 추가한 form 으로 보내는 것이 편리한 경우가 많다.</p>
+<p>서버도 form으로 받는게 더 어울린다.</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span> <span class="attr">style</span>=<span class="string">&quot;margin:0&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">canvas</span></span></span><br><span class="line"><span class="tag">    <span class="attr">id</span>=<span class="string">&quot;canvasElem&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">width</span>=<span class="string">&quot;100&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">height</span>=<span class="string">&quot;80&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">style</span>=<span class="string">&quot;border:1px solid&quot;</span></span></span><br><span class="line"><span class="tag">  &gt;</span><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;button&quot;</span> <span class="attr">value</span>=<span class="string">&quot;Submit&quot;</span> <span class="attr">onclick</span>=<span class="string">&quot;submit()&quot;</span> /&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></span><br><span class="line"><span class="javascript">    canvasElem.onmousemove = <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">      <span class="keyword">let</span> ctx = canvasElem.getContext(<span class="string">&quot;2d&quot;</span>);</span></span><br><span class="line"><span class="javascript">      ctx.lineTo(e.clientX, e.clientY);</span></span><br><span class="line"><span class="javascript">      ctx.stroke();</span></span><br><span class="line"><span class="javascript">    &#125;;</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">    <span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">submit</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">      <span class="keyword">let</span> imageBlob = <span class="keyword">await</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve</span>) =&gt;</span></span></span><br><span class="line"><span class="javascript">        canvasElem.toBlob(resolve, <span class="string">&quot;image/png&quot;</span>)</span></span><br><span class="line"><span class="javascript">      );</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">      <span class="keyword">let</span> formData = <span class="keyword">new</span> FormData();</span></span><br><span class="line"><span class="javascript">      formData.append(<span class="string">&quot;firstName&quot;</span>, <span class="string">&quot;John&quot;</span>);</span></span><br><span class="line"><span class="javascript">      formData.append(<span class="string">&quot;image&quot;</span>, imageBlob, <span class="string">&quot;image.png&quot;</span>);</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">      <span class="keyword">let</span> response = <span class="keyword">await</span> fetch(<span class="string">&quot;/article/formdata/post/image-form&quot;</span>, &#123;</span></span><br><span class="line"><span class="javascript">        <span class="attr">method</span>: <span class="string">&quot;POST&quot;</span>,</span></span><br><span class="line"><span class="javascript">        <span class="attr">body</span>: formData,</span></span><br><span class="line"><span class="javascript">      &#125;);</span></span><br><span class="line"><span class="javascript">      <span class="keyword">let</span> result = <span class="keyword">await</span> response.json();</span></span><br><span class="line"><span class="javascript">      alert(result.message);</span></span><br><span class="line"><span class="javascript">    &#125;</span></span><br><span class="line"><span class="javascript">  </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>이미지 blob 데이터를 어떻게 추가했는지 보자.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">formData.append(<span class="string">&quot;image&quot;</span>, imageBlob, <span class="string">&quot;image.png&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>이는 <code>&lt;input type=&quot;file&quot; name=&quot;image&quot;&gt;</code>와 같다.</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/modernJs/" rel="tag"># modernJs</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/09/20/modernJs/210908-fetch-Download-progress/" rel="prev" title="fetch-Download-progress">
+                  <i class="fa fa-chevron-left"></i> fetch-Download-progress
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/09/20/modernJs/210906-fetch/" rel="next" title="fetch">
+                  fetch <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">JayoonKoo</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

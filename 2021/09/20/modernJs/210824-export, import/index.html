@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css" integrity="sha256-2H3fkXt6FEmrReK448mDVGKb3WW2ZZw35gI7vqHOE4Y=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"jayoonkoo.github.io","root":"/","images":"/images","scheme":"Muse","version":"8.6.1","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="모듈 내보내고 가져오기선언부 앞에 export 붙이기123456789101112&#x2F;&#x2F; 배열 내보내기export let month &#x3D; [&quot;Jan&quot;, &quot;Feb&quot;, &quot;Mar&quot;];&#x2F;&#x2F; 상수 내보내기export const MODULES_BECAME_STANDARD_YEAR &#x3D; 2015;&#x2F;&#x2F; 클래스 내보내기expor">
+<meta property="og:type" content="article">
+<meta property="og:title" content="export, import">
+<meta property="og:url" content="https://jayoonkoo.github.io/2021/09/20/modernJs/210824-export,%20import/index.html">
+<meta property="og:site_name" content="풍경보면서 일하고 싶다.">
+<meta property="og:description" content="모듈 내보내고 가져오기선언부 앞에 export 붙이기123456789101112&#x2F;&#x2F; 배열 내보내기export let month &#x3D; [&quot;Jan&quot;, &quot;Feb&quot;, &quot;Mar&quot;];&#x2F;&#x2F; 상수 내보내기export const MODULES_BECAME_STANDARD_YEAR &#x3D; 2015;&#x2F;&#x2F; 클래스 내보내기expor">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-09-20T12:41:14.000Z">
+<meta property="article:modified_time" content="2021-09-20T12:45:40.983Z">
+<meta property="article:author" content="JayoonKoo">
+<meta property="article:tag" content="modernJs">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://jayoonkoo.github.io/2021/09/20/modernJs/210824-export,%20import/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://jayoonkoo.github.io/2021/09/20/modernJs/210824-export,%20import/","path":"2021/09/20/modernJs/210824-export, import/","title":"export, import"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>export, import | 풍경보면서 일하고 싶다.</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">풍경보면서 일하고 싶다.</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">디지털 노마드를 꿈꾸는 초보 개발자의 기술 블로그</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">6</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">5</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">68</span></a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%EB%AA%A8%EB%93%88-%EB%82%B4%EB%B3%B4%EB%82%B4%EA%B3%A0-%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B0"><span class="nav-number">1.</span> <span class="nav-text">모듈 내보내고 가져오기</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%EC%84%A0%EC%96%B8%EB%B6%80-%EC%95%9E%EC%97%90-export-%EB%B6%99%EC%9D%B4%EA%B8%B0"><span class="nav-number">1.1.</span> <span class="nav-text">선언부 앞에 export 붙이기</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EC%84%A0%EC%96%B8%EB%B6%80%EC%99%80-%EB%96%A8%EC%96%B4%EC%A7%84-%EA%B3%B3%EC%97%90-export-%EB%B6%99%EC%9D%B4%EA%B8%B0"><span class="nav-number">1.2.</span> <span class="nav-text">선언부와 떨어진 곳에 export 붙이기</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#import"><span class="nav-number">1.3.</span> <span class="nav-text">import *</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#import-%E2%80%98as%E2%80%99"><span class="nav-number">1.4.</span> <span class="nav-text">import ‘as’</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Export-%E2%80%98as%E2%80%99"><span class="nav-number">1.5.</span> <span class="nav-text">Export ‘as’</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#export-default"><span class="nav-number">1.6.</span> <span class="nav-text">export default</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#default-name"><span class="nav-number">1.6.1.</span> <span class="nav-text">default name</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#default-export-%EC%9D%98-%EC%9D%B4%EB%A6%84%EC%97%90-%EA%B4%80%ED%95%9C-%EA%B7%9C%EC%B9%99"><span class="nav-number">1.6.2.</span> <span class="nav-text">default export 의 이름에 관한 규칙</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EB%AA%A8%EB%93%88-%EB%8B%A4%EC%8B%9C-%EB%82%B4%EB%B3%B4%EB%82%B4%EA%B8%B0"><span class="nav-number">1.7.</span> <span class="nav-text">모듈 다시 내보내기</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#default-export-%EB%8B%A4%EC%8B%9C-%EB%82%B4%EB%B3%B4%EB%82%B4%EA%B8%B0"><span class="nav-number">1.7.1.</span> <span class="nav-text">default export 다시 내보내기</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-overview">
+            <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">JayoonKoo</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">68</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/JayoonKoo" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;JayoonKoo" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:rnwkdbs12@gmail.com" title="E-Mail → mailto:rnwkdbs12@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/JayoonKoo" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/09/20/modernJs/210824-export,%20import/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JayoonKoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="풍경보면서 일하고 싶다.">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          export, import
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2021-09-20 21:41:14 / Modified: 21:45:40" itemprop="dateCreated datePublished" datetime="2021-09-20T21:41:14+09:00">2021-09-20</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="모듈-내보내고-가져오기"><a href="#모듈-내보내고-가져오기" class="headerlink" title="모듈 내보내고 가져오기"></a>모듈 내보내고 가져오기</h1><h2 id="선언부-앞에-export-붙이기"><a href="#선언부-앞에-export-붙이기" class="headerlink" title="선언부 앞에 export 붙이기"></a>선언부 앞에 export 붙이기</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 배열 내보내기</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">let</span> month = [<span class="string">&quot;Jan&quot;</span>, <span class="string">&quot;Feb&quot;</span>, <span class="string">&quot;Mar&quot;</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">// 상수 내보내기</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> MODULES_BECAME_STANDARD_YEAR = <span class="number">2015</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 클래스 내보내기</span></span><br><span class="line"><span class="keyword">export</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">name</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.name = name;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>export class</code> 나 <code>export function</code> 뒤에는 세미콜론을 붙이지 않는다.</p>
+<h2 id="선언부와-떨어진-곳에-export-붙이기"><a href="#선언부와-떨어진-곳에-export-붙이기" class="headerlink" title="선언부와 떨어진 곳에 export 붙이기"></a>선언부와 떨어진 곳에 export 붙이기</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// say.js</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sayHi</span>(<span class="params">user</span>) </span>&#123;</span><br><span class="line">  alert(<span class="string">`Hello, <span class="subst">$&#123;user&#125;</span>!`</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sayBye</span>(<span class="params">user</span>) </span>&#123;</span><br><span class="line">  alert(<span class="string">`Bye, <span class="subst">$&#123;user&#125;</span>!`</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> &#123; sayHi, sayBye &#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="import"><a href="#import" class="headerlink" title="import *"></a>import *</h2><p>무언갈 가져오고 싶을 때</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; sayHi, sayBye &#125; <span class="keyword">from</span> <span class="string">&quot;./say.js&quot;</span>;</span><br><span class="line"></span><br><span class="line">sayHi(<span class="string">&quot;John&quot;</span>);</span><br><span class="line">sayBye(<span class="string">&quot;John&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> say <span class="keyword">from</span> <span class="string">&quot;./say.js&quot;</span>;</span><br><span class="line"></span><br><span class="line">say.sayHi(<span class="string">&quot;John&quot;</span>);</span><br><span class="line">say.sayBye(<span class="string">&quot;John&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>편하긴 하지만 구체적으로 무엇을 가져올지 명시적으로 알려주는것이 좋다.</p>
+<ol>
+<li>웹팩과 같은 모던 빌드 툴은 로딩 속도를 높이기 위해 모듈들을 한데 모으는 번들링과 최적화를 수행한다. 이 과정에서 사용하지 않는 리소스가 삭제되기도 한다.</li>
+<li>더 간결하게 적을 수 있다.</li>
+<li>어디에 어떤게 쓰이는지 명확하기 때문에 리팩토링이나 유지보수에 도움이 된다.</li>
+</ol>
+<h2 id="import-‘as’"><a href="#import-‘as’" class="headerlink" title="import ‘as’"></a>import ‘as’</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; sayHi <span class="keyword">as</span> hi, sayBye <span class="keyword">as</span> bye &#125; <span class="keyword">from</span> <span class="string">&quot;./say.js&quot;</span>;</span><br><span class="line"></span><br><span class="line">hi(<span class="string">&quot;John&quot;</span>);</span><br><span class="line">bye(<span class="string">&quot;John&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<h2 id="Export-‘as’"><a href="#Export-‘as’" class="headerlink" title="Export ‘as’"></a>Export ‘as’</h2><p>이름 바꿔서 내보낼 수 있다.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> &#123; sayHi <span class="keyword">as</span> hi, sayBye <span class="keyword">as</span> bye &#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="export-default"><a href="#export-default" class="headerlink" title="export default"></a>export default</h2><p><code>export default</code> 라는 특별한 문법을 지원한다. 이는 해당 모듈엔 개체가 하나만 있다는 사실을 명백히 나타낼 수 있다.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// user.js</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">name</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.name = name;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>보통 파일 하나엔 <code>export default</code>가 하나만 있다.</p>
+<p>이렇게 내보내면 <code>import</code> 에서 <code>&#123;&#125;</code>를 제거할 수 있다.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> User <span class="keyword">from</span> <span class="string">&quot;./user.js&quot;</span>; <span class="comment">// &#123;User&#125; 가 아니라 User 이다.</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> User(<span class="string">&quot;John&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>이름으로 가져오는 방식을 <code>named export</code>라고 한다.</p>
+<p>파일 하나에 <code>named export</code>와 <code>export default</code>를 함께 사용해도 문제가 되지는 않는다. 하지만 실무에선 파일 하나에 둘중 하나만 사용하는 것이 일반적이다.</p>
+<p>또한 <code>export default</code>의 경우에는 중괄호 없이 내보낼 것이 하나밖에 없다고 정한 것이기 때문에 이름없이 내보내는것이 가능하다. 하지만 <code>named export</code>에서는 이름을 반드시 명시해 주어야 한다.</p>
+<h3 id="default-name"><a href="#default-name" class="headerlink" title="default name"></a><code>default</code> name</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sayHi</span>(<span class="params">user</span>) </span>&#123;</span><br><span class="line">  alert(<span class="string">`Hello, <span class="subst">$&#123;user&#125;</span>`</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 함수 선언분에 export default 한 것과 똑같다.</span></span><br><span class="line"><span class="keyword">export</span> &#123; sayHi <span class="keyword">as</span> <span class="keyword">default</span> &#125;;</span><br></pre></td></tr></table></figure>
+
+<p>흔하진 않지만 default를 사용해서 동시에 가져올 수 있다.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// user.js</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">name</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.name = name;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">sayHi</span>(<span class="params">user</span>) </span>&#123;</span><br><span class="line">  alert(<span class="string">`Hello, <span class="subst">$&#123;user&#125;</span>`</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; <span class="keyword">default</span> <span class="keyword">as</span> User, sayHi &#125; <span class="keyword">from</span> <span class="string">&quot;./user.js&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 혹은</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> user <span class="keyword">from</span> <span class="string">&quot;./user.js&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> User = user.default;</span><br><span class="line"><span class="keyword">new</span> User(<span class="string">&quot;John&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="default-export-의-이름에-관한-규칙"><a href="#default-export-의-이름에-관한-규칙" class="headerlink" title="default export 의 이름에 관한 규칙"></a>default export 의 이름에 관한 규칙</h3><p>default export 는 꼭 파일내에서 내보내는 이름으로 불러오지 않아도 되기 때문에 같은 모듈이라도 사용하는 사람에 따라서 불러온 이름이 다를 수 있다. 이는 혼란을 야기할 수 있는데 이것을 방지하기 위해서 이름을 정하는 규칙이 있다.<br>보통 파일이름에 첫 글자는 대문자인 형식으로 사용한다.</p>
+<h2 id="모듈-다시-내보내기"><a href="#모듈-다시-내보내기" class="headerlink" title="모듈 다시 내보내기"></a>모듈 다시 내보내기</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> &#123; sayHi &#125; <span class="keyword">from</span> <span class="string">&quot;./say.js&quot;</span>; <span class="comment">// sayHi를 다시 내보냄</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> &#123; <span class="keyword">default</span> <span class="keyword">as</span> User &#125; <span class="keyword">from</span> <span class="string">&quot;./user.js&quot;</span>; <span class="comment">// default export 를 다시 내보내기 함.</span></span><br></pre></td></tr></table></figure>
+
+<p>가져온 객체를 즉시 다시 내보내기 할수 있다. 내보낼 기능을 패키지 전반에 분산하여 구현한 후 필요한 파일에서 가져온후 다시 내보내는 방식으로 활용할 수 있다.</p>
+<h3 id="default-export-다시-내보내기"><a href="#default-export-다시-내보내기" class="headerlink" title="default export 다시 내보내기"></a>default export 다시 내보내기</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// user.js</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span> </span>&#123;</span><br><span class="line">  <span class="comment">//...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li><code>User</code>를 <code>export User from &#39;./user.js</code> 로 다시 내보내기 할 때 문법 에러가 발생한다. <code>export &#123;default as User&#125;</code>를 사용해야 한다.</li>
+<li><code>export * from &#39;./user.js&#39;</code>를 사용했다면 <code>dafault export</code>는 무시 되고 <code>named export</code> 만 다시 내보내진다.</li>
+</ol>
+<p>동시에 하기 위해서는 다음과 같이 사용해야 한다.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> * <span class="keyword">from</span> <span class="string">&quot;./user.js&quot;</span>; <span class="comment">// named export를 다시 내보내기</span></span><br><span class="line"><span class="keyword">export</span> &#123; <span class="keyword">default</span> &#125; <span class="keyword">from</span> <span class="string">&quot;./user.js&quot;</span>; <span class="comment">// default export 다시 내보내기</span></span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/modernJs/" rel="tag"># modernJs</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/09/20/modernJs/210826-%EB%8F%99%EC%A0%81%EC%9C%BC%EB%A1%9C%20%EB%AA%A8%EB%93%88%20%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B0/" rel="prev" title="동적으로 모듈 가져오기">
+                  <i class="fa fa-chevron-left"></i> 동적으로 모듈 가져오기
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/09/20/modernJs/210820-%EB%AA%A8%EB%93%88/" rel="next" title="모듈">
+                  모듈 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">JayoonKoo</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

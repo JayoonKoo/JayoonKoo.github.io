@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css" integrity="sha256-2H3fkXt6FEmrReK448mDVGKb3WW2ZZw35gI7vqHOE4Y=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"jayoonkoo.github.io","root":"/","images":"/images","scheme":"Muse","version":"8.6.1","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="제너레이터제너레이터를 사용하면 여러 개의 값을 필요에 따라 하나씩 반환 할 수 있다. 제너레이터 함수사용법 12345function* generateSequence() &amp;#123;  yield 1;  yield 2;  return 3;&amp;#125;  제너레이터 함수는 코드가 실행되지 않고 대신에 실행을 처리하는 특별 객체, ‘제너레이터 객체’ 가 반환된다.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="제너레이터">
+<meta property="og:url" content="https://jayoonkoo.github.io/2021/09/20/modernJs/210817-%EC%A0%9C%EB%84%88%EB%A0%88%EC%9D%B4%ED%84%B0/index.html">
+<meta property="og:site_name" content="풍경보면서 일하고 싶다.">
+<meta property="og:description" content="제너레이터제너레이터를 사용하면 여러 개의 값을 필요에 따라 하나씩 반환 할 수 있다. 제너레이터 함수사용법 12345function* generateSequence() &amp;#123;  yield 1;  yield 2;  return 3;&amp;#125;  제너레이터 함수는 코드가 실행되지 않고 대신에 실행을 처리하는 특별 객체, ‘제너레이터 객체’ 가 반환된다.">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://jayoonkoo.github.io/images/210817-제너레이터/1.png">
+<meta property="article:published_time" content="2021-09-20T12:41:14.000Z">
+<meta property="article:modified_time" content="2021-09-20T12:45:40.623Z">
+<meta property="article:author" content="JayoonKoo">
+<meta property="article:tag" content="modernJs">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://jayoonkoo.github.io/images/210817-제너레이터/1.png">
+
+
+<link rel="canonical" href="https://jayoonkoo.github.io/2021/09/20/modernJs/210817-%EC%A0%9C%EB%84%88%EB%A0%88%EC%9D%B4%ED%84%B0/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://jayoonkoo.github.io/2021/09/20/modernJs/210817-%EC%A0%9C%EB%84%88%EB%A0%88%EC%9D%B4%ED%84%B0/","path":"2021/09/20/modernJs/210817-제너레이터/","title":"제너레이터"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>제너레이터 | 풍경보면서 일하고 싶다.</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">풍경보면서 일하고 싶다.</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">디지털 노마드를 꿈꾸는 초보 개발자의 기술 블로그</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">6</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">5</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">68</span></a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%EC%A0%9C%EB%84%88%EB%A0%88%EC%9D%B4%ED%84%B0"><span class="nav-number">1.</span> <span class="nav-text">제너레이터</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%EC%A0%9C%EB%84%88%EB%A0%88%EC%9D%B4%ED%84%B0-%ED%95%A8%EC%88%98"><span class="nav-number">1.1.</span> <span class="nav-text">제너레이터 함수</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EC%A0%9C%EB%84%88%EB%A0%88%EC%9D%B4%ED%84%B0%EC%99%80-%EC%9D%B4%ED%84%B0%EB%9F%AC%EB%B8%94"><span class="nav-number">1.2.</span> <span class="nav-text">제너레이터와 이터러블</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EC%9D%B4%ED%84%B0%EB%9F%AC%EB%B8%94-%EB%8C%80%EC%8B%A0-%EC%A0%9C%EB%84%88%EB%A0%88%EC%9D%B4%ED%84%B0-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0"><span class="nav-number">1.3.</span> <span class="nav-text">이터러블 대신 제너레이터 사용하기</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EC%A0%9C%EB%84%88%EB%A0%88%EC%9D%B4%ED%84%B0-%EC%BB%B4%ED%8F%AC%EC%A7%80%EC%85%98"><span class="nav-number">1.4.</span> <span class="nav-text">제너레이터 컴포지션</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#yield-%EB%A5%BC-%EC%82%AC%EC%9A%A9%ED%95%B4-%EC%A0%9C%EB%84%88%EB%A0%88%EC%9D%B4%ED%84%B0-%EC%95%88-%EB%B0%96%EC%9C%BC%EB%A1%9C-%EC%A0%95%EB%B3%B4-%EA%B5%90%ED%99%98%ED%95%98%EA%B8%B0"><span class="nav-number">1.5.</span> <span class="nav-text">yield 를 사용해 제너레이터 안, 밖으로 정보 교환하기</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#generator-throw"><span class="nav-number">1.6.</span> <span class="nav-text">generator.throw</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-overview">
+            <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">JayoonKoo</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">68</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/JayoonKoo" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;JayoonKoo" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:rnwkdbs12@gmail.com" title="E-Mail → mailto:rnwkdbs12@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/JayoonKoo" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/09/20/modernJs/210817-%EC%A0%9C%EB%84%88%EB%A0%88%EC%9D%B4%ED%84%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JayoonKoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="풍경보면서 일하고 싶다.">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          제너레이터
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2021-09-20 21:41:14 / Modified: 21:45:40" itemprop="dateCreated datePublished" datetime="2021-09-20T21:41:14+09:00">2021-09-20</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="제너레이터"><a href="#제너레이터" class="headerlink" title="제너레이터"></a>제너레이터</h1><p>제너레이터를 사용하면 여러 개의 값을 필요에 따라 하나씩 반환 할 수 있다.</p>
+<h2 id="제너레이터-함수"><a href="#제너레이터-함수" class="headerlink" title="제너레이터 함수"></a>제너레이터 함수</h2><p>사용법</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span>* <span class="title">generateSequence</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">yield</span> <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">yield</span> <span class="number">2</span>;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">3</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>제너레이터 함수는 코드가 실행되지 않고 대신에 실행을 처리하는 특별 객체, ‘제너레이터 객체’ 가 반환된다.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span>* <span class="title">generateSequence</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">yield</span> <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">yield</span> <span class="number">2</span>;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">3</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// &#x27;제너레이터 함수&#x27;는 &#x27;제너레이터 객체&#x27;를 생성합니다.</span></span><br><span class="line"><span class="keyword">let</span> generator = generateSequence();</span><br><span class="line">alert(generator); <span class="comment">// [object Generator]</span></span><br></pre></td></tr></table></figure>
+
+<p><code>next()</code>는 제너레이터의 주요 메서드이다. 이 메서드를 호출하면 <code>yield &lt;value&gt;</code>를 만날때까지 계속 실행되다가 <code>value</code>를 반환한다. <code>value</code>를 지정 안할 수 도 있는데 이 경우 <code>undefined</code>가 반환된다.</p>
+<p><code>next()</code>는 항상 다음 두가지 프로퍼티를 가진 객체를 반환한다.</p>
+<ul>
+<li><code>value</code> : 산출 값</li>
+<li><code>done</code> : 함수 코드 실행이 끝났으면 <code>true</code>, 아니라면 <code>false</code></li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span>* <span class="title">generateSequence</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">yield</span> <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">yield</span> <span class="number">2</span>;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">3</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> generator = generateSequence();</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> one = generator.next();</span><br><span class="line"></span><br><span class="line">alert(<span class="built_in">JSON</span>.stringify(one)); <span class="comment">// &#123;value: 1, done: false&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>제너레이터는 <code>yield 1</code> 부분에 멈추고 아직 제너레이터 가 끝난게 아니기 때문에 <code>done: false</code> 가 된다.</p>
+<p>같은 방법으로 2번 더 <code>.next()</code>를 호출하면 마지막에 <code>&#123; value: 3, done: true&#125;</code> 인 객체를 반환하고 제너레이터는 종료 된다. 이 다음 부터는 <code>.next()</code>를 호출하더라도 <code>&#123;done: true&#125;</code>인 객체만 반환할 뿐이다.</p>
+<h2 id="제너레이터와-이터러블"><a href="#제너레이터와-이터러블" class="headerlink" title="제너레이터와 이터러블"></a>제너레이터와 이터러블</h2><p>제너레이터는 이터르블 이다. 따라서 <code>for..of</code> 반복문을 사용해 값을 얻을 수 있다.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span>* <span class="title">generateSequence</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">yield</span> <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">yield</span> <span class="number">2</span>;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">3</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> generator = generateSequence();</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> value <span class="keyword">of</span> generator) &#123;</span><br><span class="line">  alert(value); <span class="comment">// 1, 2가 출력됨</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>그런데 주의할 점은 3은 출력되지 않는다는 것이다. 그 이유는 <code>for..of</code> 이터레이션은 <code>done:true</code>일때 마지막 <code>vlaue</code>를 무시하기 때문이다. 3을 출력되게 하고 싶다면 <code>return</code>이 아니라 <code>yield 3</code> 으로 반환해야 한다.</p>
+<p>제너레이터는 이터러블 객체이므로 제너레이터에도 전개 문법 같은 관련 기능을 사용할 수 있다.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span>* <span class="title">generateSequence</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">yield</span> <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">yield</span> <span class="number">2</span>;</span><br><span class="line">  <span class="keyword">yield</span> <span class="number">3</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> sequence = [<span class="number">0</span>, ...generateSequence()];</span><br><span class="line"></span><br><span class="line">alert(sequence); <span class="comment">// 0, 1, 2, 3</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="이터러블-대신-제너레이터-사용하기"><a href="#이터러블-대신-제너레이터-사용하기" class="headerlink" title="이터러블 대신 제너레이터 사용하기"></a>이터러블 대신 제너레이터 사용하기</h2><p>이터러블 코드 예시</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> range = &#123;</span><br><span class="line">  <span class="attr">from</span>: <span class="number">1</span>,</span><br><span class="line">  <span class="attr">to</span>: <span class="number">5</span>,</span><br><span class="line"></span><br><span class="line">  <span class="comment">// for..of 최초 호출 시, Symbol.iterator가 호출됩니다.</span></span><br><span class="line">  [<span class="built_in">Symbol</span>.iterator]() &#123;</span><br><span class="line">    <span class="comment">// Symbol.iterator는 이터레이터 객체를 반환합니다.</span></span><br><span class="line">    <span class="comment">// for..of는 반환된 이터레이터 객체만을 대상으로 동작하는데, 이때 다음 값도 정해집니다.</span></span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      <span class="attr">current</span>: <span class="built_in">this</span>.from,</span><br><span class="line">      <span class="attr">last</span>: <span class="built_in">this</span>.to,</span><br><span class="line"></span><br><span class="line">      <span class="comment">// for..of 반복문에 의해 각 이터레이션마다 next()가 호출됩니다.</span></span><br><span class="line">      <span class="function"><span class="title">next</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">        <span class="comment">// next()는 객체 형태의 값, &#123;done:.., value :...&#125;을 반환해야 합니다.</span></span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">this</span>.current &lt;= <span class="built_in">this</span>.last) &#123;</span><br><span class="line">          <span class="keyword">return</span> &#123; <span class="attr">done</span>: <span class="literal">false</span>, <span class="attr">value</span>: <span class="built_in">this</span>.current++ &#125;;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          <span class="keyword">return</span> &#123; <span class="attr">done</span>: <span class="literal">true</span> &#125;;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;,</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 객체 range를 대상으로 하는 이터레이션은 range.from과 range.to 사이의 숫자를 출력합니다.</span></span><br><span class="line">alert([...range]); <span class="comment">// 1,2,3,4,5</span></span><br></pre></td></tr></table></figure>
+
+<p><code>Symbol.iterator</code> 대신 제너레이터 함수를 사용하면, 제너레이터 함수로 반복이 가능하다.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> range = &#123;</span><br><span class="line">  <span class="attr">from</span>: <span class="number">1</span>,</span><br><span class="line">  <span class="attr">to</span>: <span class="number">5</span>,</span><br><span class="line"></span><br><span class="line">  *[<span class="built_in">Symbol</span>.iterator]() &#123;</span><br><span class="line">    <span class="comment">// [Symbol.iterator]: function*()를 짧게 줄임</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> value = <span class="built_in">this</span>.from; value &lt;= <span class="built_in">this</span>.to; value++) &#123;</span><br><span class="line">      <span class="keyword">yield</span> value;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">alert([...range]); <span class="comment">// 1, 2, 3, 4, 5</span></span><br></pre></td></tr></table></figure>
+
+<p>원래 제너레이터는 이터레이터를 어떻게 하면 쉽게 구현할지 염두에 두며 자바스크립트에 출시되었다. 제너레이터를 사용하면 이터레이터를 쓰면 복잡한 코드를 같은 기능으로 간결하게 작성할 수 있다.</p>
+<h2 id="제너레이터-컴포지션"><a href="#제너레이터-컴포지션" class="headerlink" title="제너레이터 컴포지션"></a>제너레이터 컴포지션</h2><p>제너레이터 안에 제너레이터를 임베딩(embedding, composing) 할 수 있게 해주는 제너레이터의 특별 기능이다.</p>
+<p>연속된 숫자를 생성하는 제너레이터 함수를 만들어 본다.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span>* <span class="title">generateSequence</span>(<span class="params">start, end</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = start; i &lt;= end; i++) <span class="keyword">yield</span> i;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>문자나 숫자에 적용해서 비밀번호를 생성하는 함수를 반들수 있다. 일반 함수로 구혆가ㅣ 위해서는 여러개의 함수를 만들고 그 호출 결과를 어딘가에 저장한 후 다시 그 결과들을 조합해야 원하는 기능을 구현할 수 있다.<br>하지만 특수 문법 <code>yield*</code> 를 사용하면 제너레이터를 다른 제너레이터에 끼워 넣을 수 있다.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span>* <span class="title">generateSequence</span>(<span class="params">start, end</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = start; i &lt;= end; i++) <span class="keyword">yield</span> i;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span>* <span class="title">generatePasswordCodes</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 0..9</span></span><br><span class="line">  <span class="keyword">yield</span>* generateSequence(<span class="number">48</span>, <span class="number">57</span>);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// A..Z</span></span><br><span class="line">  <span class="keyword">yield</span>* generateSequence(<span class="number">65</span>, <span class="number">90</span>);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// a..z</span></span><br><span class="line">  <span class="keyword">yield</span>* generateSequence(<span class="number">97</span>, <span class="number">122</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> str = <span class="string">&quot;&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> code <span class="keyword">of</span> generatePasswordCodes()) &#123;</span><br><span class="line">  str += <span class="built_in">String</span>.fromCharCode(code);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">alert(str); <span class="comment">// 0..9A..Za..z</span></span><br></pre></td></tr></table></figure>
+
+<p><code>yield*</code> 지시자는 실행을 다른 제너레이터에 위임한다. 제너레이터를 대상으로 반복을 수행하고, 산출 값들을 바깥으로 전달한다는 것을 의미한다.</p>
+<h2 id="yield-를-사용해-제너레이터-안-밖으로-정보-교환하기"><a href="#yield-를-사용해-제너레이터-안-밖으로-정보-교환하기" class="headerlink" title="yield 를 사용해 제너레이터 안, 밖으로 정보 교환하기"></a><code>yield</code> 를 사용해 제너레이터 안, 밖으로 정보 교환하기</h2><p>제너레이터의 <code>yield</code>는 양방향 길과 같은 역할을 한다. <code>yield</code> 는 결과를 바깥으로 전달할 뿐만 아니라 값을 제너레이터 안으로 전달하기까지 한다. 값을 안, 밖으로 전달하려면 <code>generate.next(arg)</code> 를 호출해야 한다.<br>이때 인수 <code>arg</code>는 <code>yield</code>의 결과가 된다.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span>* <span class="title">gen</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 질문을 제너레이터 밖 코드에 던지고 답을 기다립니다.</span></span><br><span class="line">  <span class="keyword">let</span> result = <span class="keyword">yield</span> <span class="string">&quot;2 + 2 = ?&quot;</span>; <span class="comment">// (*)</span></span><br><span class="line"></span><br><span class="line">  alert(result);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> generator = gen();</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> question = generator.next().value; <span class="comment">// &lt;-- yield는 value를 반환합니다.</span></span><br><span class="line"></span><br><span class="line">generator.next(<span class="number">4</span>); <span class="comment">// --&gt; 결과를 제너레이터 안으로 전달합니다.</span></span><br></pre></td></tr></table></figure>
+
+<img src="/images/210817-제너레이터/1.png" width="500">
+
+<ol>
+<li><code>generator.next()</code>를 처음 호출할 댄 항상 인수가 없어야 한다. 인수가 들어오면 무시함 이때 <code>yield &quot;2+2=?&quot;</code>의 결과가 반환된다.</li>
+<li>변수 <code>question</code>에 이 값이 할당된다.</li>
+<li><code>generator.next(4)</code> 를 호출하면 인수 4 가 <code>result</code>에 할당된다.</li>
+</ol>
+<p>제너레이터와 외부 호출코드는 <code>next/yield</code>를 이용해 결과를 전달 및 교환한다.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span>* <span class="title">gen</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> ask1 = <span class="keyword">yield</span> <span class="string">&quot;2 + 2 = ?&quot;</span>;</span><br><span class="line"></span><br><span class="line">  alert(ask1); <span class="comment">// 4</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">let</span> ask2 = <span class="keyword">yield</span> <span class="string">&quot;3 * 3 = ?&quot;</span>;</span><br><span class="line"></span><br><span class="line">  alert(ask2); <span class="comment">// 9</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> generator = gen();</span><br><span class="line"></span><br><span class="line">alert(generator.next().value); <span class="comment">// &quot;2 + 2 = ?&quot;</span></span><br><span class="line"></span><br><span class="line">alert(generator.next(<span class="number">4</span>).value); <span class="comment">// &quot;3 * 3 = ?&quot;</span></span><br><span class="line"></span><br><span class="line">alert(generator.next(<span class="number">9</span>).done); <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+
+<p>코드를 실행하면 차례대로 다음과 같이 출력된다.</p>
+<ul>
+<li>2 + 2 = ?</li>
+<li>4</li>
+<li>3 * 3 = ?</li>
+<li>9</li>
+<li>true</li>
+</ul>
+<h2 id="generator-throw"><a href="#generator-throw" class="headerlink" title="generator.throw"></a>generator.throw</h2><p>generator 외부 코드가 에러를 만들거나 던질 수도 있다. 에러를 <code>yield</code> 안으로 전달하려면 <code>generator.throw(err)</code>를 호출해야 한다. 호출하면 <code>err</code>는 <code>yield</code> 가 있는 줄로 던져진다.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span>* <span class="title">gen</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="keyword">let</span> result = <span class="keyword">yield</span> <span class="string">&quot;2 + 2 = ?&quot;</span>; <span class="comment">// (1)</span></span><br><span class="line"></span><br><span class="line">    alert(</span><br><span class="line">      <span class="string">&quot;위에서 에러가 던져졌기 때문에 실행 흐름은 여기까지 다다르지 못합니다.&quot;</span></span><br><span class="line">    );</span><br><span class="line">  &#125; <span class="keyword">catch</span> (e) &#123;</span><br><span class="line">    alert(e); <span class="comment">// 에러 출력</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> generator = gen();</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> question = generator.next().value;</span><br><span class="line"></span><br><span class="line">generator.throw(<span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">&quot;데이터베이스에서 답을 찾지 못했습니다.&quot;</span>)); <span class="comment">// (2)</span></span><br></pre></td></tr></table></figure>
+
+<p>(2)에서 던진 에러는 (1) 에서 예외를 만든다. 만약 제너레이터 안에서 에러를 처리 하지 않았다면 외부로 떨어져 나온다. 바깥에서 에러를 처리해도 된다.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span>* <span class="title">generate</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> result = <span class="keyword">yield</span> <span class="string">&quot;2 + 2 = ?&quot;</span>; <span class="comment">// Error in this line</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> generator = generate();</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> question = generator.next().value;</span><br><span class="line"></span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">  generator.throw(<span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">&quot;데이터베이스에서 답을 찾지 못했습니다.&quot;</span>));</span><br><span class="line">&#125; <span class="keyword">catch</span> (e) &#123;</span><br><span class="line">  alert(e); <span class="comment">// 에러 출력</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/modernJs/" rel="tag"># modernJs</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/09/20/modernJs/210818-async%20%EC%9D%B4%ED%84%B0%EB%A0%88%EC%9D%B4%ED%84%B0%EC%99%80%20%EC%A0%9C%EB%84%88%EB%A0%88%EC%9D%B4%ED%84%B0/" rel="prev" title="async 이터레이터와 제너레이터">
+                  <i class="fa fa-chevron-left"></i> async 이터레이터와 제너레이터
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/09/20/modernJs/210816-async%EC%99%80%20await/" rel="next" title="async와 await">
+                  async와 await <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">JayoonKoo</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>
