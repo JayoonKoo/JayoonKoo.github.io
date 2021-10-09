@@ -22,14 +22,15 @@
 <script class="next-config" data-name="main" type="application/json">{"hostname":"jayoonkoo.github.io","root":"/","images":"/images","scheme":"Muse","version":"8.6.1","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
 <meta name="description" content="DHCPDynamic Host Contorl Protocol 로서 동적으로 IP를 할당하는 프로토콜이다. 흔히 인터넷을 연결하면 자동으로 IP 할당옵션이 이에 해당하는데 필요한 경우 고정 IP를 설정하는등의 작업을 하기도 한다. DHCP를 사용하는 다음과 같다.  요청에 의한 IP 할당으로 효율성 극대화 잘못된 IP 설정으로 인한 장애 예방 IP 변경이 잦">
 <meta property="og:type" content="article">
-<meta property="og:title" content="풍경보면서 일하고 싶다.">
+<meta property="og:title" content="DHCP">
 <meta property="og:url" content="https://jayoonkoo.github.io/2021/10/09/Network/210924-DHCP/index.html">
 <meta property="og:site_name" content="풍경보면서 일하고 싶다.">
 <meta property="og:description" content="DHCPDynamic Host Contorl Protocol 로서 동적으로 IP를 할당하는 프로토콜이다. 흔히 인터넷을 연결하면 자동으로 IP 할당옵션이 이에 해당하는데 필요한 경우 고정 IP를 설정하는등의 작업을 하기도 한다. DHCP를 사용하는 다음과 같다.  요청에 의한 IP 할당으로 효율성 극대화 잘못된 IP 설정으로 인한 장애 예방 IP 변경이 잦">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2021-10-09T12:47:50.039Z">
-<meta property="article:modified_time" content="2021-10-09T12:47:50.040Z">
+<meta property="article:published_time" content="2021-10-09T12:54:45.000Z">
+<meta property="article:modified_time" content="2021-10-09T12:54:45.070Z">
 <meta property="article:author" content="JayoonKoo">
+<meta property="article:tag" content="network">
 <meta name="twitter:card" content="summary">
 
 
@@ -37,10 +38,10 @@
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://jayoonkoo.github.io/2021/10/09/Network/210924-DHCP/","path":"2021/10/09/Network/210924-DHCP/","title":""}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://jayoonkoo.github.io/2021/10/09/Network/210924-DHCP/","path":"2021/10/09/Network/210924-DHCP/","title":"DHCP"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title> | 풍경보면서 일하고 싶다.</title>
+<title>DHCP | 풍경보면서 일하고 싶다.</title>
   
 
 
@@ -87,9 +88,9 @@
   <ul class="main-menu menu">
         <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li>
         <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
-        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">6</span></a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">7</span></a></li>
         <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">5</span></a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">74</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">81</span></a></li>
   </ul>
 </nav>
 
@@ -134,7 +135,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">74</span>
+          <span class="site-state-item-count">81</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -145,7 +146,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-count">7</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -208,7 +209,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          
+          DHCP
         </h1>
 
         <div class="post-meta-container">
@@ -219,7 +220,16 @@
       </span>
       <span class="post-meta-item-text">Posted on</span>
 
-      <time title="Created: 2021-10-09 21:47:50" itemprop="dateCreated datePublished" datetime="2021-10-09T21:47:50+09:00">2021-10-09</time>
+      <time title="Created: 2021-10-09 21:54:45" itemprop="dateCreated datePublished" datetime="2021-10-09T21:54:45+09:00">2021-10-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/CS/" itemprop="url" rel="index"><span itemprop="name">CS</span></a>
+        </span>
     </span>
 
   
@@ -273,18 +283,21 @@
     
 
     <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/network/" rel="tag"># network</a>
+          </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2021/10/09/Network/210923-ICMP/" rel="prev" title="">
-                  <i class="fa fa-chevron-left"></i> 
+                <a href="/2021/10/09/Network/211008-%EC%95%A0%ED%94%8C%EB%A6%AC%EC%BC%80%EC%9D%B4%EC%85%98%20%EC%84%9C%EB%B9%84%EC%8A%A4/" rel="prev" title="애플리케이션 서비스">
+                  <i class="fa fa-chevron-left"></i> 애플리케이션 서비스
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2021/10/09/Network/211008-%EC%95%A0%ED%94%8C%EB%A6%AC%EC%BC%80%EC%9D%B4%EC%85%98%20%EC%84%9C%EB%B9%84%EC%8A%A4/" rel="next" title="">
-                   <i class="fa fa-chevron-right"></i>
+                <a href="/2021/10/09/Network/210923-ICMP/" rel="next" title="ICMP">
+                  ICMP <i class="fa fa-chevron-right"></i>
                 </a>
             </div>
           </div>

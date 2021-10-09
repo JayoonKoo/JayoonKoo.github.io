@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css" integrity="sha256-2H3fkXt6FEmrReK448mDVGKb3WW2ZZw35gI7vqHOE4Y=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"jayoonkoo.github.io","root":"/","images":"/images","scheme":"Muse","version":"8.6.1","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="Rendering Elemnts리엑트 앱의 가장 작은 단위를 의미한다. React dom 은 dom 과 react elemnts 가 일치하도록 업데이트 한다.  컴포넌트와 혼동해서 사용하는 경우가 있다. 엘리먼트는 컴포넌트에 구성요소라고 생각하면 된다.  Rendering an Element into the DOMHTML 파일에 밑에 div가 있다고 가정.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="rendering elementjs">
+<meta property="og:url" content="https://jayoonkoo.github.io/2021/10/09/react/official-docs/210922-rendering%20elementjs/index.html">
+<meta property="og:site_name" content="풍경보면서 일하고 싶다.">
+<meta property="og:description" content="Rendering Elemnts리엑트 앱의 가장 작은 단위를 의미한다. React dom 은 dom 과 react elemnts 가 일치하도록 업데이트 한다.  컴포넌트와 혼동해서 사용하는 경우가 있다. 엘리먼트는 컴포넌트에 구성요소라고 생각하면 된다.  Rendering an Element into the DOMHTML 파일에 밑에 div가 있다고 가정.">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-10-09T12:59:04.000Z">
+<meta property="article:modified_time" content="2021-10-09T12:59:16.052Z">
+<meta property="article:author" content="JayoonKoo">
+<meta property="article:tag" content="react">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://jayoonkoo.github.io/2021/10/09/react/official-docs/210922-rendering%20elementjs/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://jayoonkoo.github.io/2021/10/09/react/official-docs/210922-rendering%20elementjs/","path":"2021/10/09/react/official-docs/210922-rendering elementjs/","title":"rendering elementjs"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>rendering elementjs | 풍경보면서 일하고 싶다.</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">풍경보면서 일하고 싶다.</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">디지털 노마드를 꿈꾸는 초보 개발자의 기술 블로그</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">7</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">5</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">81</span></a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Rendering-Elemnts"><span class="nav-number">1.</span> <span class="nav-text">Rendering Elemnts</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Rendering-an-Element-into-the-DOM"><span class="nav-number">1.1.</span> <span class="nav-text">Rendering an Element into the DOM</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%EA%B3%B5%EC%8B%9D-%EB%AC%B8%EC%84%9C-%EC%BD%94%EB%93%9C"><span class="nav-number">1.1.0.1.</span> <span class="nav-text">공식 문서 코드</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%EC%8B%A4%EC%8A%B5-%EC%BD%94%EB%93%9C"><span class="nav-number">1.1.0.2.</span> <span class="nav-text">실습 코드</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Updating-the-Rendered-Element"><span class="nav-number">1.2.</span> <span class="nav-text">Updating the Rendered Element</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#React-Only-Updates-What%E2%80%99s-Necessary"><span class="nav-number">1.3.</span> <span class="nav-text">React Only Updates What’s Necessary</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-overview">
+            <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">JayoonKoo</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">81</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/JayoonKoo" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;JayoonKoo" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:rnwkdbs12@gmail.com" title="E-Mail → mailto:rnwkdbs12@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/JayoonKoo" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/10/09/react/official-docs/210922-rendering%20elementjs/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JayoonKoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="풍경보면서 일하고 싶다.">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          rendering elementjs
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2021-10-09 21:59:04 / Modified: 21:59:16" itemprop="dateCreated datePublished" datetime="2021-10-09T21:59:04+09:00">2021-10-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/react/" itemprop="url" rel="index"><span itemprop="name">react</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="Rendering-Elemnts"><a href="#Rendering-Elemnts" class="headerlink" title="Rendering Elemnts"></a>Rendering Elemnts</h1><p>리엑트 앱의 가장 작은 단위를 의미한다. React dom 은 dom 과 react elemnts 가 일치하도록 업데이트 한다.</p>
+<blockquote>
+<p>컴포넌트와 혼동해서 사용하는 경우가 있다. 엘리먼트는 컴포넌트에 구성요소라고 생각하면 된다.</p>
+</blockquote>
+<h2 id="Rendering-an-Element-into-the-DOM"><a href="#Rendering-an-Element-into-the-DOM" class="headerlink" title="Rendering an Element into the DOM"></a>Rendering an Element into the DOM</h2><p>HTML 파일에 밑에 <code>div</code>가 있다고 가정.</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;root&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>이제부터 이것을 <code>root DOM node</code>라고 부를 것이다. 루트 돔 노드안에 들어갈 내용을 <code>React DOM</code>을 통해 관리하게 된다.</p>
+<p>만약 어떤 앱을 통합하려는 경우에는 여러개의 루트 노드가 있을 수 있다. React elemnt를 root DOM node 에 렌더링 하려면 <code>ReactDOM.render()</code> 에 인수로 element와 root node를 넣고 호출하면 된다.</p>
+<h4 id="공식-문서-코드"><a href="#공식-문서-코드" class="headerlink" title="공식 문서 코드"></a>공식 문서 코드</h4><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> elment = <span class="xml"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>Hello, World<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span>;</span><br><span class="line">ReactDOM.render(elemnt, <span class="built_in">document</span>.getElementById(<span class="string">&quot;root&quot;</span>));</span><br></pre></td></tr></table></figure>
+
+<h4 id="실습-코드"><a href="#실습-코드" class="headerlink" title="실습 코드"></a>실습 코드</h4><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ReactDOM.render(</span><br><span class="line">  <span class="xml"><span class="tag">&lt;<span class="name">React.StrictMode</span>&gt;</span>&#123;elements&#125;<span class="tag">&lt;/<span class="name">React.StrictMode</span>&gt;</span></span>,</span><br><span class="line">  <span class="built_in">document</span>.getElementById(<span class="string">&quot;root&quot;</span>)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<h2 id="Updating-the-Rendered-Element"><a href="#Updating-the-Rendered-Element" class="headerlink" title="Updating the Rendered Element"></a>Updating the Rendered Element</h2><p>React elements 는 불변 객체이다. 한번 생성하고나면 자식 요소나 속성을 변경할 수 없다. 마치 영화에 프레임과 같아서 특정 시점에 UI를 그리는 역활을 한다.</p>
+<p>지금까지의 지식 수준에서는 UI를 업데이틑 하는 방법은 새로운 elemnts를 생성하고 <code>ReactDOM.render()</code>에 인수로 전달하는 방법밖에 없다.</p>
+<p>시계 예제</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">tick</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> element = (</span><br><span class="line">    <span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;<span class="name">h1</span>&gt;</span>Hello, world!<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;<span class="name">h2</span>&gt;</span>It is &#123;new Date().toLocaleTimeString()&#125;.<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line"></span><br><span class="line">  ReactDOM.render(element, <span class="built_in">document</span>.getElementById(<span class="string">&quot;root&quot;</span>));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">setInterval</span>(tick, <span class="number">1000</span>);</span><br></pre></td></tr></table></figure>
+
+<p>실습</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">tick</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> element = (</span><br><span class="line">    <span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;<span class="name">h1</span>&gt;</span>Hello, World<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;<span class="name">h2</span>&gt;</span>&#123;new Date().toLocaleTimeString()&#125;<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line"></span><br><span class="line">  ReactDOM.render(</span><br><span class="line">    <span class="xml"><span class="tag">&lt;<span class="name">React.StrictMode</span>&gt;</span>&#123;element&#125;<span class="tag">&lt;/<span class="name">React.StrictMode</span>&gt;</span></span>,</span><br><span class="line">    <span class="built_in">document</span>.getElementById(<span class="string">&quot;root&quot;</span>)</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">setInterval</span>(tick, <span class="number">1000</span>);</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>실제로는, <code>ReactDOM.render()</code>는 한번만 실행된다. 다음에 이어지는 주제에서 <code>stateful components</code>에 대해서 배울것이다. 지금 배우는것도 다음 배울 내용과 연관 되어 있으니 쭉 보길 바란다.</p>
+</blockquote>
+<h2 id="React-Only-Updates-What’s-Necessary"><a href="#React-Only-Updates-What’s-Necessary" class="headerlink" title="React Only Updates What’s Necessary"></a>React Only Updates What’s Necessary</h2><p>개발자 도구를 통해 살펴보면 실제로는 전체 UI를 새로 생성하도록 구성하였지만, React DOM은 DOM을 그 자식 엘리먼트를 이전의 엘리먼트와 비교하고 DOM을 원하는 상태로 만드는 데 필요한 경우에만 DOM을 업테이트 한다.</p>
+<p>따라서 전체 UI가 업데이트 되는 것이 아니라 시계부분만 업데이트 되는 것이다. 이런 방식으로 접근하는것이 나중에 버그를 없애는데 도움을 줄 것이다.</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/react/" rel="tag"># react</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/10/09/react/official-docs/210926-State%20and%20Lifecycle/" rel="prev" title="State and Lifecycle">
+                  <i class="fa fa-chevron-left"></i> State and Lifecycle
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/10/09/react/official-docs/210922-Components%20and%20Props/" rel="next" title="Components and Props">
+                  Components and Props <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">JayoonKoo</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>
