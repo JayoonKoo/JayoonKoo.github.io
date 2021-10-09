@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css" integrity="sha256-2H3fkXt6FEmrReK448mDVGKb3WW2ZZw35gI7vqHOE4Y=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"jayoonkoo.github.io","root":"/","images":"/images","scheme":"Muse","version":"8.6.1","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="DHCPDynamic Host Contorl Protocol 로서 동적으로 IP를 할당하는 프로토콜이다. 흔히 인터넷을 연결하면 자동으로 IP 할당옵션이 이에 해당하는데 필요한 경우 고정 IP를 설정하는등의 작업을 하기도 한다. DHCP를 사용하는 다음과 같다.  요청에 의한 IP 할당으로 효율성 극대화 잘못된 IP 설정으로 인한 장애 예방 IP 변경이 잦">
+<meta property="og:type" content="article">
+<meta property="og:title" content="풍경보면서 일하고 싶다.">
+<meta property="og:url" content="https://jayoonkoo.github.io/2021/10/09/Network/210924-DHCP/index.html">
+<meta property="og:site_name" content="풍경보면서 일하고 싶다.">
+<meta property="og:description" content="DHCPDynamic Host Contorl Protocol 로서 동적으로 IP를 할당하는 프로토콜이다. 흔히 인터넷을 연결하면 자동으로 IP 할당옵션이 이에 해당하는데 필요한 경우 고정 IP를 설정하는등의 작업을 하기도 한다. DHCP를 사용하는 다음과 같다.  요청에 의한 IP 할당으로 효율성 극대화 잘못된 IP 설정으로 인한 장애 예방 IP 변경이 잦">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-10-09T12:47:50.039Z">
+<meta property="article:modified_time" content="2021-10-09T12:47:50.040Z">
+<meta property="article:author" content="JayoonKoo">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://jayoonkoo.github.io/2021/10/09/Network/210924-DHCP/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://jayoonkoo.github.io/2021/10/09/Network/210924-DHCP/","path":"2021/10/09/Network/210924-DHCP/","title":""}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title> | 풍경보면서 일하고 싶다.</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">풍경보면서 일하고 싶다.</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">디지털 노마드를 꿈꾸는 초보 개발자의 기술 블로그</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">6</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">5</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">74</span></a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#DHCP"><span class="nav-number">1.</span> <span class="nav-text">DHCP</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#DHCP-%EB%A9%94%EC%84%B8%EC%A7%80-%ED%8F%AC%EB%A7%B7-%EC%84%A4%EB%AA%85"><span class="nav-number">1.1.</span> <span class="nav-text">DHCP 메세지 포맷 설명</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DHCP-%EB%8F%99%EC%9E%91-%EA%B3%BC%EC%A0%95"><span class="nav-number">1.2.</span> <span class="nav-text">DHCP 동작 과정</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#IP-%ED%95%A0%EB%8B%B9"><span class="nav-number">1.2.1.</span> <span class="nav-text">IP 할당</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#IP-%EA%B0%B1%EC%8B%A0"><span class="nav-number">1.2.2.</span> <span class="nav-text">IP 갱신</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#IP-%ED%95%B4%EC%A0%9C"><span class="nav-number">1.2.3.</span> <span class="nav-text">IP 해제</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-overview">
+            <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">JayoonKoo</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">74</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/JayoonKoo" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;JayoonKoo" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:rnwkdbs12@gmail.com" title="E-Mail → mailto:rnwkdbs12@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/JayoonKoo" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/10/09/Network/210924-DHCP/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JayoonKoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="풍경보면서 일하고 싶다.">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-10-09 21:47:50" itemprop="dateCreated datePublished" datetime="2021-10-09T21:47:50+09:00">2021-10-09</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="DHCP"><a href="#DHCP" class="headerlink" title="DHCP"></a>DHCP</h1><p>Dynamic Host Contorl Protocol 로서 동적으로 IP를 할당하는 프로토콜이다. 흔히 인터넷을 연결하면 자동으로 IP 할당옵션이 이에 해당하는데 필요한 경우 고정 IP를 설정하는등의 작업을 하기도 한다.</p>
+<p>DHCP를 사용하는 다음과 같다.</p>
+<ol>
+<li>요청에 의한 IP 할당으로 효율성 극대화</li>
+<li>잘못된 IP 설정으로 인한 장애 예방</li>
+<li>IP 변경이 잦은 호스트의 관리</li>
+</ol>
+<h2 id="DHCP-메세지-포맷-설명"><a href="#DHCP-메세지-포맷-설명" class="headerlink" title="DHCP 메세지 포맷 설명"></a>DHCP 메세지 포맷 설명</h2><ul>
+<li>OpCode: 1 Request, 2 Reply</li>
+<li>Hardware Type: 1, Ethernet</li>
+<li>Hardware address length: 6, Mac address</li>
+<li>Hop count: 0 에서 시작, 네트워크 이동시 증가</li>
+<li>Transaction Id: 클라이언트가 선택하는 랜덤 수, 요청과 응답 매칭</li>
+<li>Seconds: IP 할당 후 경과한 초의 수</li>
+<li>Flags: 서버 응답에 의해서 0 unicast 또는 1 broadcast 응답 구분 값</li>
+<li>Client IP: 최조 0.0.0.0 , Your IP: 할당될 IP, Options: DHCP 메세지 타임 포함</li>
+</ul>
+<h2 id="DHCP-동작-과정"><a href="#DHCP-동작-과정" class="headerlink" title="DHCP 동작 과정"></a>DHCP 동작 과정</h2><h3 id="IP-할당"><a href="#IP-할당" class="headerlink" title="IP 할당"></a>IP 할당</h3><p>네트워크 구성이 GateWay - Switch- DHCP Server - PC 로 구성되어 있다고 본다.</p>
+<ol>
+<li>DHCPDISCOVER : PC는 DHCP Server를 발견한다.</li>
+<li>DHCPOFFER: DHCP Server는 PC에게 IP를 제안한다.</li>
+<li>DHCPREQUEST : PC는 제안 받은 IP할당을 요청한다.</li>
+<li>DHCPACK: DHCP Server는 요청을 수락한다.</li>
+</ol>
+<h3 id="IP-갱신"><a href="#IP-갱신" class="headerlink" title="IP 갱신"></a>IP 갱신</h3><p>지정된 IP 갱신 타임을 토래하면 갱신을 요청한다.</p>
+<ol>
+<li>DHCPREQUEST: PC 는 기존 IP 재 할당을 요청한다.</li>
+<li>DHCPACK: DHCP Server는 IP 확인 후 요청을 수락한다.</li>
+</ol>
+<h3 id="IP-해제"><a href="#IP-해제" class="headerlink" title="IP 해제"></a>IP 해제</h3><p>사용중인 PC가 전원이 off 되는 경우</p>
+<ol>
+<li>DHCPRELEASE: PC 는 더이상 IP 할당이 필요없음을 알린다.</li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/10/09/Network/210923-ICMP/" rel="prev" title="">
+                  <i class="fa fa-chevron-left"></i> 
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/10/09/Network/211008-%EC%95%A0%ED%94%8C%EB%A6%AC%EC%BC%80%EC%9D%B4%EC%85%98%20%EC%84%9C%EB%B9%84%EC%8A%A4/" rel="next" title="">
+                   <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">JayoonKoo</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>
