@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css" integrity="sha256-2H3fkXt6FEmrReK448mDVGKb3WW2ZZw35gI7vqHOE4Y=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"jayoonkoo.github.io","root":"/","images":"/images","scheme":"Muse","version":"8.6.1","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="Long pollingLong polling 은 WebSocket 또는 Server Side Event와 같은 특정 프로토콜을 사용하지 않고 서버와 지속적으로 연결하는 가장 간단한 방법이다. Reqular Polling서버에서 새로운 정보를 얻는 가장 간단한 방법은 주기적인 요청이다. 예를 들어 새로운 정보를 얻기 위해 10초 간격으로 서버에 “새로운 정보">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Long polling">
+<meta property="og:url" content="https://jayoonkoo.github.io/2021/10/23/modernJs/210929-Long%20polling/index.html">
+<meta property="og:site_name" content="풍경보면서 일하고 싶다.">
+<meta property="og:description" content="Long pollingLong polling 은 WebSocket 또는 Server Side Event와 같은 특정 프로토콜을 사용하지 않고 서버와 지속적으로 연결하는 가장 간단한 방법이다. Reqular Polling서버에서 새로운 정보를 얻는 가장 간단한 방법은 주기적인 요청이다. 예를 들어 새로운 정보를 얻기 위해 10초 간격으로 서버에 “새로운 정보">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://jayoonkoo.github.io/2021/10/23/modernJs/210929-Long%20polling/images/210929-Long%20polling/1.png">
+<meta property="article:published_time" content="2021-10-23T13:20:40.000Z">
+<meta property="article:modified_time" content="2021-10-23T13:21:10.349Z">
+<meta property="article:author" content="JayoonKoo">
+<meta property="article:tag" content="modernJs">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://jayoonkoo.github.io/2021/10/23/modernJs/210929-Long%20polling/images/210929-Long%20polling/1.png">
+
+
+<link rel="canonical" href="https://jayoonkoo.github.io/2021/10/23/modernJs/210929-Long%20polling/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://jayoonkoo.github.io/2021/10/23/modernJs/210929-Long%20polling/","path":"2021/10/23/modernJs/210929-Long polling/","title":"Long polling"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Long polling | 풍경보면서 일하고 싶다.</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">풍경보면서 일하고 싶다.</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">디지털 노마드를 꿈꾸는 초보 개발자의 기술 블로그</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">10</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">8</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">102</span></a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Long-polling"><span class="nav-number">1.</span> <span class="nav-text">Long polling</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Reqular-Polling"><span class="nav-number">1.1.</span> <span class="nav-text">Reqular Polling</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Long-polling-1"><span class="nav-number">1.2.</span> <span class="nav-text">Long polling</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-overview">
+            <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">JayoonKoo</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">102</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/JayoonKoo" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;JayoonKoo" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:rnwkdbs12@gmail.com" title="E-Mail → mailto:rnwkdbs12@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/JayoonKoo" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/10/23/modernJs/210929-Long%20polling/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JayoonKoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="풍경보면서 일하고 싶다.">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Long polling
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2021-10-23 22:20:40 / Modified: 22:21:10" itemprop="dateCreated datePublished" datetime="2021-10-23T22:20:40+09:00">2021-10-23</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="Long-polling"><a href="#Long-polling" class="headerlink" title="Long polling"></a>Long polling</h1><p>Long polling 은 WebSocket 또는 Server Side Event와 같은 특정 프로토콜을 사용하지 않고 서버와 지속적으로 연결하는 가장 간단한 방법이다.</p>
+<h2 id="Reqular-Polling"><a href="#Reqular-Polling" class="headerlink" title="Reqular Polling"></a>Reqular Polling</h2><p>서버에서 새로운 정보를 얻는 가장 간단한 방법은 주기적인 요청이다. 예를 들어 새로운 정보를 얻기 위해 10초 간격으로 서버에 “새로운 정보 있나요?” 요청을 보내는 것과 같다.</p>
+<p>서버는 이에대한 응답으로 클라이언트를 확인하고 패킷을 보낸다. 정상적으로 작동하지만 다음과 같은 문제가 있다.</p>
+<ol>
+<li>메시지는 최대 10초 지연으로 전달 된다.</li>
+<li>서버는 사용자의 유무나 메세지가 없더라도 계속해서 요청을 받는다. 이는 성능 부하를 일으킨다.</li>
+</ol>
+<p>개선해 보자.</p>
+<h2 id="Long-polling-1"><a href="#Long-polling-1" class="headerlink" title="Long polling"></a>Long polling</h2><p>Long polling은 구현하기도 쉽고 지연 없이 메세지를 전달한다.</p>
+<ol>
+<li>요청이 서버로 전송된다.</li>
+<li>서버는 보낼 메세지가 있을 때까지 연결을 닫지 않는다.</li>
+<li>메세지가 나타나면 서버는 요청에 응답한다.</li>
+<li>브라우저는 즉시 새 요청을 만든다.</li>
+</ol>
+<p>보통 요청은 보내지면 바로 응답을 받는다. 그런데 Long polling은 서버가 요청을 받고 대기하고 있다고 전달할 메세지가 있다는 이벤트가 발생하면 그때 응답한다. 따라서 연결을 유지할 수 있게 되는 것이다.</p>
+<img src="images/210929-Long polling/1.png" width="500">
+
+<p>네트워크 오류로 인해 연결이 끊어지면 브라우저는 즉시 새 요청을 보낸다.</p>
+<p>긴 요청을 만드는 클라이언트에 <code>subscribe</code> 함수 예제:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">subscribe</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> response = <span class="keyword">await</span> fetch(<span class="string">&quot;/subscribe&quot;</span>);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (response.status == <span class="number">502</span>) &#123;</span><br><span class="line">    <span class="comment">// Status 502 is a connection timeout error,</span></span><br><span class="line">    <span class="comment">// may happen when the connection was pending for too long,</span></span><br><span class="line">    <span class="comment">// and the remote server or a proxy closed it</span></span><br><span class="line">    <span class="comment">// let&#x27;s reconnect</span></span><br><span class="line">    <span class="keyword">await</span> subscribe();</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (response.status != <span class="number">200</span>) &#123;</span><br><span class="line">    <span class="comment">// An error - let&#x27;s show it</span></span><br><span class="line">    showMessage(response.statusText);</span><br><span class="line">    <span class="comment">// Reconnect in one second</span></span><br><span class="line">    <span class="keyword">await</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve</span>) =&gt;</span> <span class="built_in">setTimeout</span>(resolve, <span class="number">1000</span>));</span><br><span class="line">    <span class="keyword">await</span> subscribe();</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="comment">// Get and show the message</span></span><br><span class="line">    <span class="keyword">let</span> message = <span class="keyword">await</span> response.text();</span><br><span class="line">    showMessage(message);</span><br><span class="line">    <span class="comment">// Call subscribe() again to get the next message</span></span><br><span class="line">    <span class="keyword">await</span> subscribe();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">subscribe();</span><br></pre></td></tr></table></figure>
+
+<p>요즘은 web push 와 같은 기능을 사용할 수 있기 때문에, 실시간이 중요한 서비스에서는 web push 기능을 사용하는것이 바람직하다.</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/modernJs/" rel="tag"># modernJs</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/10/23/modernJs/211004-%EC%9B%B9%EC%86%8C%EC%BC%93/" rel="prev" title="웹소켓">
+                  <i class="fa fa-chevron-left"></i> 웹소켓
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/10/23/modernJs/210927-%ED%8C%8C%EC%9D%BC%20%EC%97%85%EB%A1%9C%EB%93%9C%20%EC%9E%AC%EA%B0%9C%ED%95%98%EA%B8%B0/" rel="next" title="파일 업로드 재개하기">
+                  파일 업로드 재개하기 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">JayoonKoo</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

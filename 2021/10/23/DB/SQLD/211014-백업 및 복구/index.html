@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css" integrity="sha256-2H3fkXt6FEmrReK448mDVGKb3WW2ZZw35gI7vqHOE4Y=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"jayoonkoo.github.io","root":"/","images":"/images","scheme":"Muse","version":"8.6.1","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="백업 및 복구지속성과 성능이 양립하는 구조로그 선행 기법WAL(Write-ahead logging)이라고 부르면, 시스템에서 모든 수정은 적용 이전에 로그에 기록된다. 예를 들어서 특정 프고그램이 진행되는 동안 정전이 일어났다고 가정해보자. 다시 시작할 때 프로그램은 어느 작업이 수행을 성공적으로 마쳤는지, 실패했는지 등의 정보를 알고 있어야 한다. 로그">
+<meta property="og:type" content="article">
+<meta property="og:title" content="백업 및 복구">
+<meta property="og:url" content="https://jayoonkoo.github.io/2021/10/23/DB/SQLD/211014-%EB%B0%B1%EC%97%85%20%EB%B0%8F%20%EB%B3%B5%EA%B5%AC/index.html">
+<meta property="og:site_name" content="풍경보면서 일하고 싶다.">
+<meta property="og:description" content="백업 및 복구지속성과 성능이 양립하는 구조로그 선행 기법WAL(Write-ahead logging)이라고 부르면, 시스템에서 모든 수정은 적용 이전에 로그에 기록된다. 예를 들어서 특정 프고그램이 진행되는 동안 정전이 일어났다고 가정해보자. 다시 시작할 때 프로그램은 어느 작업이 수행을 성공적으로 마쳤는지, 실패했는지 등의 정보를 알고 있어야 한다. 로그">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-10-23T13:07:35.000Z">
+<meta property="article:modified_time" content="2021-10-23T13:09:58.275Z">
+<meta property="article:author" content="JayoonKoo">
+<meta property="article:tag" content="SQLD">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://jayoonkoo.github.io/2021/10/23/DB/SQLD/211014-%EB%B0%B1%EC%97%85%20%EB%B0%8F%20%EB%B3%B5%EA%B5%AC/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://jayoonkoo.github.io/2021/10/23/DB/SQLD/211014-%EB%B0%B1%EC%97%85%20%EB%B0%8F%20%EB%B3%B5%EA%B5%AC/","path":"2021/10/23/DB/SQLD/211014-백업 및 복구/","title":"백업 및 복구"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>백업 및 복구 | 풍경보면서 일하고 싶다.</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">풍경보면서 일하고 싶다.</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">디지털 노마드를 꿈꾸는 초보 개발자의 기술 블로그</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">10</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">8</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">102</span></a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%EB%B0%B1%EC%97%85-%EB%B0%8F-%EB%B3%B5%EA%B5%AC"><span class="nav-number">1.</span> <span class="nav-text">백업 및 복구</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%EC%A7%80%EC%86%8D%EC%84%B1%EA%B3%BC-%EC%84%B1%EB%8A%A5%EC%9D%B4-%EC%96%91%EB%A6%BD%ED%95%98%EB%8A%94-%EA%B5%AC%EC%A1%B0"><span class="nav-number">1.1.</span> <span class="nav-text">지속성과 성능이 양립하는 구조</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%EB%A1%9C%EA%B7%B8-%EC%84%A0%ED%96%89-%EA%B8%B0%EB%B2%95"><span class="nav-number">1.1.1.</span> <span class="nav-text">로그 선행 기법</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B2%A0%EC%9D%B4%EC%8A%A4-%EB%B2%84%ED%8D%BC"><span class="nav-number">1.1.2.</span> <span class="nav-text">데이터베이스 버퍼</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Crash-%EB%B3%B5%EA%B5%AC-%ED%9D%90%EB%A6%84"><span class="nav-number">1.1.3.</span> <span class="nav-text">Crash 복구 흐름</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EB%B0%B1%EC%97%85-%EB%B0%8F-%EB%B3%B5%EA%B5%AC-1"><span class="nav-number">1.2.</span> <span class="nav-text">백업 및 복구</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%EB%B0%B1%EC%97%85%EC%9D%98-3%EA%B0%80%EC%A7%80-%EA%B4%80%EC%A0%90"><span class="nav-number">1.2.1.</span> <span class="nav-text">백업의 3가지 관점</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%ED%95%AB%EB%B0%B1%EC%97%85%EA%B3%BC-%EC%BD%9C%EB%93%9C-%EB%B0%B1%EC%97%85"><span class="nav-number">1.2.2.</span> <span class="nav-text">핫백업과 콜드 백업</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%EB%85%BC%EB%A6%AC-%EB%B0%B1%EC%97%85%EA%B3%BC-%EB%AC%BC%EB%A6%AC-%EB%B0%B1%EC%97%85"><span class="nav-number">1.2.3.</span> <span class="nav-text">논리 백업과 물리 백업</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%ED%92%80-%EB%B0%B1%EC%97%85%EA%BD%88-%EB%B6%80%EB%B6%84-%EB%B0%B1%EC%97%85"><span class="nav-number">1.2.4.</span> <span class="nav-text">풀 백업꽈 부분 백업</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-overview">
+            <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">JayoonKoo</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">102</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/JayoonKoo" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;JayoonKoo" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:rnwkdbs12@gmail.com" title="E-Mail → mailto:rnwkdbs12@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/JayoonKoo" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/10/23/DB/SQLD/211014-%EB%B0%B1%EC%97%85%20%EB%B0%8F%20%EB%B3%B5%EA%B5%AC/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JayoonKoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="풍경보면서 일하고 싶다.">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          백업 및 복구
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2021-10-23 22:07:35 / Modified: 22:09:58" itemprop="dateCreated datePublished" datetime="2021-10-23T22:07:35+09:00">2021-10-23</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/DB/" itemprop="url" rel="index"><span itemprop="name">DB</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="백업-및-복구"><a href="#백업-및-복구" class="headerlink" title="백업 및 복구"></a>백업 및 복구</h1><h2 id="지속성과-성능이-양립하는-구조"><a href="#지속성과-성능이-양립하는-구조" class="headerlink" title="지속성과 성능이 양립하는 구조"></a>지속성과 성능이 양립하는 구조</h2><h3 id="로그-선행-기법"><a href="#로그-선행-기법" class="headerlink" title="로그 선행 기법"></a>로그 선행 기법</h3><p>WAL(Write-ahead logging)이라고 부르면, 시스템에서 모든 수정은 적용 이전에 로그에 기록된다. 예를 들어서 특정 프고그램이 진행되는 동안 정전이 일어났다고 가정해보자. 다시 시작할 때 프로그램은 어느 작업이 수행을 성공적으로 마쳤는지, 실패했는지 등의 정보를 알고 있어야 한다. 로그 선행 기법을 사용한다면 프로그램은 이러한 로그를 검사하여 예기치 않은 정전 시 해야 할 일과 실제 했던 일을 비교하게 된다.</p>
+<h3 id="데이터베이스-버퍼"><a href="#데이터베이스-버퍼" class="headerlink" title="데이터베이스 버퍼"></a>데이터베이스 버퍼</h3><p>데이터 파일로의 입력을 데이터 베이스 버퍼를 경유해서 하도록 한다. (성능 양립을 위해서 )</p>
+<p>순서 :</p>
+<ol>
+<li>갱신 대상의 데이터 포함한 블록이 버퍼풀에 있는지 확인</li>
+<li>없을 경우 데이터 파일로부터 해당 블록을 읽어 들임.</li>
+<li>버퍼 풀 내의 해당 블록을 갱신 수행</li>
+<li>갱신 내용이 Commit 과 함께 로그에 기록</li>
+<li>갱신 되었지만 데이터 파일에 쓰이지 않은 블록은 Dirty 블록이 됨.</li>
+<li>갱신된 데이터 블록은 나중에 정리되어 데이터 파일에 적용됨(체크 포인트)</li>
+<li>체크포인트 이전 로그 파일은 불필요 하게 됨</li>
+<li>갱신과 더불어 위 순서 반복</li>
+</ol>
+<h3 id="Crash-복구-흐름"><a href="#Crash-복구-흐름" class="headerlink" title="Crash 복구 흐름"></a>Crash 복구 흐름</h3><p>Crash 가 발생하면</p>
+<ul>
+<li>WAL : 마지막으로 Commit 된 트랜잭션의 갱신 정보 가짐</li>
+<li>데이터베이스 버퍼 : Crash 로 내용이 전부 소실</li>
+<li>데이터베이스 파일 : 최후 체크포인트까지의 갱신 정보 가짐.</li>
+</ul>
+<p>-&gt; 데이터 베이스 파일을 Crash 전 최신 Commit 상태로 수정함.</p>
+<h2 id="백업-및-복구-1"><a href="#백업-및-복구-1" class="headerlink" title="백업 및 복구"></a>백업 및 복구</h2><h3 id="백업의-3가지-관점"><a href="#백업의-3가지-관점" class="headerlink" title="백업의 3가지 관점"></a>백업의 3가지 관점</h3><ol>
+<li>핫 백업과 콜드 백업</li>
+<li>논리 백업과 물리 백업</li>
+<li>풀 백업과 부분(증분/차등) 백업</li>
+</ol>
+<h3 id="핫백업과-콜드-백업"><a href="#핫백업과-콜드-백업" class="headerlink" title="핫백업과 콜드 백업"></a>핫백업과 콜드 백업</h3><p>핫 백엄 : 온라인 백엄/ 데이터 베이스 기능 이용, 데이터 베이스를 정지 하지 않고 백업 데이터를 얻음</p>
+<p>콜드 백업 : 오프라인 백업 / OS 기능 이용, 서버를 내림고 데이터 베이스도 종료 시키고 OS 명령으로 복사</p>
+<h3 id="논리-백업과-물리-백업"><a href="#논리-백업과-물리-백업" class="headerlink" title="논리 백업과 물리 백업"></a>논리 백업과 물리 백업</h3><p>논리 백업 : SQL 기반 텍스트 형식으로 백업 데이터 기록</p>
+<ul>
+<li>장점 : 이식성 우수, 편집가능, 이기종 간의 DB 이행 유리</li>
+<li>단점 : 물리 백업보다 느림, 용량이 큼</li>
+</ul>
+<p>물리 백업 : 데이터 영역을 그대로 덤프 하는 이미지로 바이너리 형식 기록</p>
+<ul>
+<li>장점 : 최소 크기로 데이터 얻음, 백업 및 복원의 속도가 빠름</li>
+<li>단점 : 일부 데이터의 내용 수정은 불가능, 호완성이 좋지 않음.</li>
+</ul>
+<h3 id="풀-백업꽈-부분-백업"><a href="#풀-백업꽈-부분-백업" class="headerlink" title="풀 백업꽈 부분 백업"></a>풀 백업꽈 부분 백업</h3><p>풀백업(전체 백업) : 데이터 베이스 전체 데이터를 매일 백업</p>
+<p>부분 백업 : 풀 백업 이후 갱신된 데이터를 백업</p>
+<ul>
+<li>차등 백업</li>
+<li>증분 백업</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/SQLD/" rel="tag"># SQLD</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/10/23/git/211009-basic%20branching%20and%20merging/" rel="prev" title="basic branching and merging">
+                  <i class="fa fa-chevron-left"></i> basic branching and merging
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/10/23/DB/SQLD/211014-%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B2%A0%EC%9D%B4%EC%8A%A4%20%EC%84%B1%EB%8A%A5/" rel="next" title="데이터베이스 성능">
+                  데이터베이스 성능 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">JayoonKoo</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

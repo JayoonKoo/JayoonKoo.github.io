@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css" integrity="sha256-2H3fkXt6FEmrReK448mDVGKb3WW2ZZw35gI7vqHOE4Y=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"jayoonkoo.github.io","root":"/","images":"/images","scheme":"Muse","version":"8.6.1","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="웹 소켓웹 소켓을 사용하면 HTTP의 새로운 요청이나 중단 없이 데이터를 주고 받을 수 있다. 커넥션을 종료 시키지 않은 체 패킷 형태로 이루어지며 양방향 통신이 가능하다. 실시간으로 데이터를 교환하는 시스템이나 주식 트레이딩 시스템에 적합하다. 간단한 예시1let socket &#x3D; new WebSocket(&quot;ws:&#x2F;&#x2F;javascript.info&amp;q">
+<meta property="og:type" content="article">
+<meta property="og:title" content="웹소켓">
+<meta property="og:url" content="https://jayoonkoo.github.io/2021/10/23/modernJs/211004-%EC%9B%B9%EC%86%8C%EC%BC%93/index.html">
+<meta property="og:site_name" content="풍경보면서 일하고 싶다.">
+<meta property="og:description" content="웹 소켓웹 소켓을 사용하면 HTTP의 새로운 요청이나 중단 없이 데이터를 주고 받을 수 있다. 커넥션을 종료 시키지 않은 체 패킷 형태로 이루어지며 양방향 통신이 가능하다. 실시간으로 데이터를 교환하는 시스템이나 주식 트레이딩 시스템에 적합하다. 간단한 예시1let socket &#x3D; new WebSocket(&quot;ws:&#x2F;&#x2F;javascript.info&amp;q">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://jayoonkoo.github.io/images/211004-웹소켓/1.png">
+<meta property="article:published_time" content="2021-10-23T13:20:40.000Z">
+<meta property="article:modified_time" content="2021-10-23T13:21:10.459Z">
+<meta property="article:author" content="JayoonKoo">
+<meta property="article:tag" content="modernJs">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://jayoonkoo.github.io/images/211004-웹소켓/1.png">
+
+
+<link rel="canonical" href="https://jayoonkoo.github.io/2021/10/23/modernJs/211004-%EC%9B%B9%EC%86%8C%EC%BC%93/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://jayoonkoo.github.io/2021/10/23/modernJs/211004-%EC%9B%B9%EC%86%8C%EC%BC%93/","path":"2021/10/23/modernJs/211004-웹소켓/","title":"웹소켓"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>웹소켓 | 풍경보면서 일하고 싶다.</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">풍경보면서 일하고 싶다.</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">디지털 노마드를 꿈꾸는 초보 개발자의 기술 블로그</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">10</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">8</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">102</span></a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%EC%9B%B9-%EC%86%8C%EC%BC%93"><span class="nav-number">1.</span> <span class="nav-text">웹 소켓</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%EA%B0%84%EB%8B%A8%ED%95%9C-%EC%98%88%EC%8B%9C"><span class="nav-number">1.1.</span> <span class="nav-text">간단한 예시</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EC%9B%B9%EC%86%8C%EC%BC%93-%ED%95%B8%EB%93%9C%EC%85%B0%EC%9D%B4%ED%81%AC"><span class="nav-number">1.2.</span> <span class="nav-text">웹소켓 핸드셰이크</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Extensions%EC%99%80-Subprotocols-%ED%97%A4%EB%8D%94"><span class="nav-number">1.2.1.</span> <span class="nav-text">Extensions와 Subprotocols 헤더</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%A0%84%EC%86%A1"><span class="nav-number">1.3.</span> <span class="nav-text">데이터 전송</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Rate-limiting-%EC%86%8D%EB%8F%84-%EC%A0%9C%ED%95%9C"><span class="nav-number">1.4.</span> <span class="nav-text">Rate limiting (속도 제한)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Connection-close"><span class="nav-number">1.5.</span> <span class="nav-text">Connection close</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Connection-state"><span class="nav-number">1.6.</span> <span class="nav-text">Connection state</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Chat-example"><span class="nav-number">1.7.</span> <span class="nav-text">Chat example</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-overview">
+            <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">JayoonKoo</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">102</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/JayoonKoo" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;JayoonKoo" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:rnwkdbs12@gmail.com" title="E-Mail → mailto:rnwkdbs12@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/JayoonKoo" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/10/23/modernJs/211004-%EC%9B%B9%EC%86%8C%EC%BC%93/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JayoonKoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="풍경보면서 일하고 싶다.">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          웹소켓
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2021-10-23 22:20:40 / Modified: 22:21:10" itemprop="dateCreated datePublished" datetime="2021-10-23T22:20:40+09:00">2021-10-23</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="웹-소켓"><a href="#웹-소켓" class="headerlink" title="웹 소켓"></a>웹 소켓</h1><p>웹 소켓을 사용하면 HTTP의 새로운 요청이나 중단 없이 데이터를 주고 받을 수 있다. 커넥션을 종료 시키지 않은 체 패킷 형태로 이루어지며 양방향 통신이 가능하다. 실시간으로 데이터를 교환하는 시스템이나 주식 트레이딩 시스템에 적합하다.</p>
+<h2 id="간단한-예시"><a href="#간단한-예시" class="headerlink" title="간단한 예시"></a>간단한 예시</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> socket = <span class="keyword">new</span> WebSocket(<span class="string">&quot;ws://javascript.info&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<p><code>ws</code>말고 <code>wss://</code> 라는 프로토콜도 사용하는데 이는 <code>HTTP</code>와 <code>HTTPS</code>의 관계와 유사하다.</p>
+<blockquote>
+<p>항상 <code>wss://</code>를 사용해라.<br>ws를 사용하면 데이터가 암호화 되지 않고 전달되는데 오래된 프락시 서버에 경우는 웹솟켓을 알지 못해서 이상한 헤더를 붙혀서 전달하는 일이 발생한다. wss를 사용하면 TLS라는 보안 계층을 통해서 데이터가 암호화 되어서 프락시에서 열어 볼 수 없고, 복호화는 받는 쪽에서 연결 하기 때문에 안전하게 연결할 수 있다.</p>
+</blockquote>
+<p>다음 이벤트를 사용할 수 있다.</p>
+<ol>
+<li><code>open</code> - 커넥션이 제대로 만들어졌을때 발생함.</li>
+<li><code>message</code> - 데이터를 수신하였을때 발생함.</li>
+<li><code>error</code> - 에러가 생겼을때 발생함.</li>
+<li><code>close</code> - 커넥션이 종료되었을때 발생함.</li>
+</ol>
+<p>커넥션이 만들어진 상태에서 무엇을 보내고 싶다면 <code>socket.send(data)</code>를 사용하면 된다.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> socket = <span class="keyword">new</span> WebSocket(</span><br><span class="line">  <span class="string">&quot;wss://javascript.info/article/websocket/demo/hello&quot;</span></span><br><span class="line">);</span><br><span class="line"></span><br><span class="line">socket.onopen = <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span><br><span class="line">  alert(<span class="string">&quot;[open] 커넥션이 만들어졌습니다.&quot;</span>);</span><br><span class="line">  alert(<span class="string">&quot;데이터를 서버에 전송해봅시다.&quot;</span>);</span><br><span class="line">  socket.send(<span class="string">&quot;My name is Bora&quot;</span>);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">socket.onmessage = <span class="function"><span class="keyword">function</span> (<span class="params">event</span>) </span>&#123;</span><br><span class="line">  alert(<span class="string">`[message] 서버로부터 전송받은 데이터: <span class="subst">$&#123;event.data&#125;</span>`</span>);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">socket.onclose = <span class="function"><span class="keyword">function</span> (<span class="params">event</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (event.wasClean) &#123;</span><br><span class="line">    alert(</span><br><span class="line">      <span class="string">`[close] 커넥션이 정상적으로 종료되었습니다(code=<span class="subst">$&#123;event.code&#125;</span> reason=<span class="subst">$&#123;event.reason&#125;</span>)`</span></span><br><span class="line">    );</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="comment">// 예시: 프로세스가 죽거나 네트워크에 장애가 있는 경우</span></span><br><span class="line">    <span class="comment">// event.code가 1006이 됩니다.</span></span><br><span class="line">    alert(<span class="string">&quot;[close] 커넥션이 죽었습니다.&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">socket.onerror = <span class="function"><span class="keyword">function</span> (<span class="params">error</span>) </span>&#123;</span><br><span class="line">  alert(<span class="string">`[error] <span class="subst">$&#123;error.message&#125;</span>`</span>);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>이벤트는 <code>open</code> -&gt; <code>message</code> -&gt; <code>close</code> 순서로 발생한다.</p>
+<h2 id="웹소켓-핸드셰이크"><a href="#웹소켓-핸드셰이크" class="headerlink" title="웹소켓 핸드셰이크"></a>웹소켓 핸드셰이크</h2><p><code>new WebSocket(url)</code>를 호출해 소켓을 생성하면 즉시 연결이 시작된다.</p>
+<p>브라우저는 서버에게 웹소켓을 지원하는지 묻고 지원한다는 응답이 오면 이제 HTTP가 아닌 WebSocket protocol로 통신한다.</p>
+<img src="/images/211004-웹소켓/1.png" width="500">
+
+<p>요청 헤더 예시 :</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">GET /chat</span><br><span class="line">Host: javascript.info</span><br><span class="line">Origin: https://javascript.info</span><br><span class="line">Connection: Upgrade</span><br><span class="line">Upgrade: websocket</span><br><span class="line">Sec-WebSocket-Key: Iv8io/9s+lYFgZWcXczP8Q==</span><br><span class="line">Sec-WebSocket-Version: 13</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>Origin</code> - 클라이언트 오리진을 나타낸다. 서버는 <code>Origin</code> 헤더를 보고 웹사이트와 소켓통신을 할지 결정하기 때문에 Origin 헤더는 웹소켓 통신에 중요한 역할을 한다.</li>
+<li><code>Connection: Upgrade</code> - 클라이언트 측에서 프로토콜을 바꾸고 싶다고 알려줌.</li>
+<li><code>Upgrade: websocket</code> - 클라이언트 측에서 요청한 프로토콜은 <code>websocket</code> 이라는 것을 의미한다.</li>
+<li><code>Sec-WebSocket-Key</code> - 보안을 위해 브라우저에서 생성한 키를 나타낸다.</li>
+<li><code>Sec-WebSocket-Vertion</code> - 웹소켓 프로토콜 버전이 명시된다. 예시는 13버전</li>
+</ul>
+<blockquote>
+<p>웹소켓 핸드셰이크는 모방이 불가능하다. (바닐라 자바스크립트로 헤더를 설정하는 건 기본적으로 막혀있다.)</p>
+</blockquote>
+<p>응답 예시 :</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">101 Switching Protocols</span><br><span class="line">Upgrade: websocket</span><br><span class="line">Connection: Upgrade</span><br><span class="line">Sec-WebSocket-Accept: hsBlbuDTkk24srzEOTBUlZAlC2g=</span><br></pre></td></tr></table></figure>
+
+<p><code>Sec-WebSocket-Accept</code>는 <code>Sec-WebSocket-Key</code>와 밀접한 관계가 있다. 브라우저는 이 헤더를 보고 특정한 알고리즘을 사용해 자신이 설정한 key인지 확인한다.</p>
+<h3 id="Extensions와-Subprotocols-헤더"><a href="#Extensions와-Subprotocols-헤더" class="headerlink" title="Extensions와 Subprotocols 헤더"></a>Extensions와 Subprotocols 헤더</h3><p>기능확장과 서브 프로토콜로 데이터를 전달할때 <code>Sec-WebSocket-Extenstions</code> 와 <code>Sec-WebSocket-Protocol</code> 헤더를 지원한다.</p>
+<ul>
+<li><code>Sec-WebSocket-Extensions : deflate-frame</code> 이 헤더는 데이터 압축을 지원한다는 것을 의미함. 이 헤더는 브라우저에 의해 자동 생성되는데, 그 값엔 데잍터 전송과 관련된 무언가나 웹소켓 프로토콜 기능 확장과 관련된 무언가가 여러개 나열된다.</li>
+<li><code>Sec-WebSocket-Protocol: soap, wamp</code> - 이렇게 설정되면 평범한 헤더가 아닌 SOAP, WAMP 프로토콜을 준수하는 데이터를 전송하겠다는 의미이다.</li>
+</ul>
+<p>이 헤더는 <code>new WebSocket</code>에 두번째 매겨변수에 값을 넣어서 설정할 수 있다.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> socket = <span class="keyword">new</span> WebSocket(<span class="string">&quot;wss://javascript.info/chat&quot;</span>, [<span class="string">&quot;soap&quot;</span>, <span class="string">&quot;wamp&quot;</span>]);</span><br></pre></td></tr></table></figure>
+
+<p>이때 서버는 지원 가능한 익스텐션과 프로토콜을 응답 헤더에 담아 클라이언트에 전달해야 한다.</p>
+<p>예시 :<br>클라이언트 :</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">GET /chat</span><br><span class="line">Host: javascript.info</span><br><span class="line">Upgrade: websocket</span><br><span class="line">Connection: Upgrade</span><br><span class="line">Origin: https://javascript.info</span><br><span class="line">Sec-WebSocket-Key: Iv8io/9s+lYFgZWcXczP8Q==</span><br><span class="line">Sec-WebSocket-Version: 13</span><br><span class="line">Sec-WebSocket-Extensions: deflate-frame</span><br><span class="line">Sec-WebSocket-Protocol: soap, wamp</span><br></pre></td></tr></table></figure>
+
+<p>서버 :</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">101 Switching Protocols</span><br><span class="line">Upgrade: websocket</span><br><span class="line">Connection: Upgrade</span><br><span class="line">Sec-WebSocket-Accept: hsBlbuDTkk24srzEOTBUlZAlC2g=</span><br><span class="line">Sec-WebSocket-Extensions: deflate-frame</span><br><span class="line">Sec-WebSocket-Protocol: soap</span><br></pre></td></tr></table></figure>
+
+<h2 id="데이터-전송"><a href="#데이터-전송" class="headerlink" title="데이터 전송"></a>데이터 전송</h2><p>웹소켓 통신은 프레임(frame)이라 불리는 데이터 조각을 사용해 이루어진다. 데이터 종류에 따라 다음과 같이 나뉜다.</p>
+<ul>
+<li>텍스트 프레임 (text frame) - 텍스트 데이터가 담긴 프레임</li>
+<li>이진 데이터 프레임 (binary data frame) - 이진 데이터가 담긴 프레임</li>
+<li>핑 또는 퐁 프레임 (ping/pong frame) - 커넥션이 유지되고 있는지 확인할 때 사용하는 프레임으로 서버나 브라우저에서 자동 생성해서 보내는 프레임</li>
+<li>이 외에도 커넥션 종료 프레임(connection close frame) 등 다양한 프레임이 있음.</li>
+</ul>
+<p>브라우저에서 개발자는 텍스트나 이진 프레임만 다루게 된다. 이유는 socket.send(body) 에서 body 에 올수 있는 데이터가 string 과 blog, arraybuffer 같은 형태이기 때문이다.</p>
+<p>받을 때는 텍스트 일경우 문자열로 들어온다. 이진데이터일 경우에는 선택할 수 있다.<br>이진 데이터를 받을 때는 <code>socket.binaryType</code> 프로퍼티를 사용하여 <code>Blob</code> 이나 <code>ArrayBuffer</code> 포맷 중 하나를 고룰 수 있다.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">socket.binaryType = <span class="string">&quot;arraybuffer&quot;</span>;</span><br><span class="line">socket.onmessage = <span class="function">(<span class="params">event</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">// event.data는 (텍스트인 경우) 문자열이거나 (이진 데이터인 경우) arraybuffer 입니다.</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Rate-limiting-속도-제한"><a href="#Rate-limiting-속도-제한" class="headerlink" title="Rate limiting (속도 제한)"></a>Rate limiting (속도 제한)</h2><p>느린 데이터 환경에서 데이터를 전송하고 있다고 생각해 보자. 사용자는 계속해서 send 하겠지만 데이터는 버퍼링 되어 메모리에 저장되고 충분히 전달하기에 빠른 환경에 있을때 보내지게 될 것이다.</p>
+<p><code>socket.bufferedAmount</code> 프로퍼티는 보내고 있는 시점에서 남아있는 바이트나 버퍼를 저장하고 있다. 이 정보를 활용해서 버퍼에 데이터가 없을때 send 하는 로직을 구성할 수 있다.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// every 100ms examine the socket and send more data</span></span><br><span class="line"><span class="comment">// only if all the existing data was sent out</span></span><br><span class="line"><span class="built_in">setInterval</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">if</span> (socket.bufferedAmount == <span class="number">0</span>) &#123;</span><br><span class="line">    socket.send(moreData());</span><br><span class="line">  &#125;</span><br><span class="line">&#125;, <span class="number">100</span>);</span><br></pre></td></tr></table></figure>
+
+<h2 id="Connection-close"><a href="#Connection-close" class="headerlink" title="Connection close"></a>Connection close</h2><p>일반적으로 연결을 종료하고 싶을때 숫자 코드와 이유가 포함된 연결 종료 프레임을 보낸다.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">socket.close([code], [reason]);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>code : 정해진 숫자 코드 (optional)</li>
+<li>reason : 이유를 설하는 문자열 (optional)</li>
+</ul>
+<p>예시 :</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// closing party:</span></span><br><span class="line">socket.close(<span class="number">1000</span>, <span class="string">&quot;Work complete&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// the other party</span></span><br><span class="line">socket.onclose = <span class="function">(<span class="params">event</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">// event.code === 1000</span></span><br><span class="line">  <span class="comment">// event.reason === &quot;Work complete&quot;</span></span><br><span class="line">  <span class="comment">// event.wasClean === true (clean close)</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>많이 사용하는 코드는 다음과 같다.</p>
+<ul>
+<li><code>1000</code> : default, normal closure</li>
+<li><code>1006</code> : 브라우저 구현에 의해 연결이 비정상적으로 (로컬로) 닫혔음을 의미하는 특수 코드</li>
+</ul>
+<p>다른 코드는 다음과 같다.</p>
+<ul>
+<li><code>1001</code> : 서버가 꺼지거나 브라우저에서 페이지를 떠났다.</li>
+<li><code>1009</code> : 메세지가 처리하기에 너무 크다.</li>
+<li><code>1011</code> : 서버에 알수 없는 에러</li>
+</ul>
+<p>WebSocket Code 는 HTTP 코드와 비슷한듯 다르다. 특별히 1000 미만의 코드는 미리 예약되어 있으며 설정하려고 하면 에러를 발생시킨다.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// in case connection is broken</span></span><br><span class="line">socket.onclose = <span class="function">(<span class="params">event</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">// event.code === 1006</span></span><br><span class="line">  <span class="comment">// event.reason === &quot;&quot;</span></span><br><span class="line">  <span class="comment">// event.wasClean === false (no closing frame)</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Connection-state"><a href="#Connection-state" class="headerlink" title="Connection state"></a>Connection state</h2><p><code>socket.readyState</code> 프로퍼티를 사용하여서 연결 상태를 얻을 수 있다.</p>
+<ul>
+<li><code>0</code> : “CONNECTiNG” : 연결 중 아직 연결된 것은 아님</li>
+<li><code>1</code> : “OPEN”: communicating</li>
+<li><code>2</code> : “CLOSING” : the connection is closing</li>
+<li><code>3</code> : “CLOSED” : the connection is closed.</li>
+</ul>
+<h2 id="Chat-example"><a href="#Chat-example" class="headerlink" title="Chat example"></a>Chat example</h2><p>웹소켓을 사용하는 체팅 예제를 살펴보자. 클라이언트에 집중해서 볼 것이지만, 서버도 간단하게 구현 가능하다.</p>
+<p>메세지를 담을 form 이 필요하고, 메세지를 표시할 div 가 필요하다.</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- message form --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">name</span>=<span class="string">&quot;publish&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;message&quot;</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span> <span class="attr">value</span>=<span class="string">&quot;Send&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- div with messages --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;messages&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>자바스크립트를 통해서 해야 할것 :</p>
+<ol>
+<li>연결</li>
+<li>socket.send(message)</li>
+<li>수신 메세지 div에 표시</li>
+</ol>
+<p>구현 :</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> socket = <span class="keyword">new</span> WebSocket(<span class="string">&quot;wss://javascript.info/article/websocket/chat/ws&quot;</span>)</span><br><span class="line"><span class="comment">// send message from the form</span></span><br><span class="line"><span class="built_in">document</span>.forms.publish.onsubmit = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) =&gt; </span>&#123;</span><br><span class="line">	<span class="keyword">let</span> outgoingMessage = <span class="built_in">this</span>.message.value;</span><br><span class="line">	socket.send(outgoingMessage);</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// message received - show the message in div</span></span><br><span class="line">socket.onmessage = <span class="function"><span class="keyword">function</span>(<span class="params">event</span>) =&gt; </span>&#123;</span><br><span class="line">	<span class="keyword">let</span> message = event.data;</span><br><span class="line">	<span class="keyword">let</span> messageElem = <span class="built_in">document</span>.createElement(<span class="string">&#x27;div&#x27;</span>);</span><br><span class="line">	messageElem.textContent = message;</span><br><span class="line">	docuemnt.getElementById(<span class="string">&#x27;messages&#x27;</span>).prepend(messageElem);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/modernJs/" rel="tag"># modernJs</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/10/23/react/official-docs/211012-Lifting%20State%20Up/" rel="prev" title="Lifting State Up">
+                  <i class="fa fa-chevron-left"></i> Lifting State Up
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/10/23/modernJs/210929-Long%20polling/" rel="next" title="Long polling">
+                  Long polling <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">JayoonKoo</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>
