@@ -20,23 +20,28 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"jayoonkoo.github.io","root":"/","images":"/images","scheme":"Muse","version":"8.6.1","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
-<meta property="og:type" content="website">
-<meta property="og:title" content="티끌모아 태산">
-<meta property="og:url" content="https://jayoonkoo.github.io/archives/page/10/index.html">
+<meta name="description" content="211202DOM document.elementFromPoint 를 사용해 포인터 아래의 드롭할 수 있는 요소를 감지한다. Pointer Event 로 touch를 다룰때는 css 속성에 touch-event: none 을 주어야 한다. multi-touch surport pointerId isPrimary pressure , width&#x2F;height cut">
+<meta property="og:type" content="article">
+<meta property="og:title" content="21120">
+<meta property="og:url" content="https://jayoonkoo.github.io/2021/12/03/TIL/211202/index.html">
 <meta property="og:site_name" content="티끌모아 태산">
+<meta property="og:description" content="211202DOM document.elementFromPoint 를 사용해 포인터 아래의 드롭할 수 있는 요소를 감지한다. Pointer Event 로 touch를 다룰때는 css 속성에 touch-event: none 을 주어야 한다. multi-touch surport pointerId isPrimary pressure , width&#x2F;height cut">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-12-03T14:18:13.000Z">
+<meta property="article:modified_time" content="2021-12-03T14:18:34.532Z">
 <meta property="article:author" content="JayoonKoo">
+<meta property="article:tag" content="TIL">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://jayoonkoo.github.io/archives/page/10/">
+<link rel="canonical" href="https://jayoonkoo.github.io/2021/12/03/TIL/211202/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":false,"lang":"en","comments":"","permalink":"","path":"archives/page/10/index.html","title":""}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://jayoonkoo.github.io/2021/12/03/TIL/211202/","path":"2021/12/03/TIL/211202/","title":"21120"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>Archive | 티끌모아 태산</title>
+<title>21120 | 티끌모아 태산</title>
   
 
 
@@ -103,7 +108,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           Table of Contents
@@ -116,6 +121,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#211202"><span class="nav-number">1.</span> <span class="nav-text">211202</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#DOM"><span class="nav-number">1.1.</span> <span class="nav-text">DOM</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EB%A6%AC%EC%95%A1%ED%8A%B8-%ED%83%80%EC%9E%85%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8"><span class="nav-number">1.2.</span> <span class="nav-text">리액트 타입스크립트</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98"><span class="nav-number">1.3.</span> <span class="nav-text">알고리즘</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -179,233 +185,107 @@
 </noscript>
 
 
-    <div class="main-inner archive posts-collapse">
+    <div class="main-inner post posts-expand">
 
 
   
+
+
+<div class="post-block">
   
   
-  <div class="post-block">
-    <div class="post-content">
-      <div class="collection-title">
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/12/03/TIL/211202/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JayoonKoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="티끌모아 태산">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          21120
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2021-12-03 23:18:13 / Modified: 23:18:34" itemprop="dateCreated datePublished" datetime="2021-12-03T23:18:13+09:00">2021-12-03</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/TIL/" itemprop="url" rel="index"><span itemprop="name">TIL</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="211202"><a href="#211202" class="headerlink" title="211202"></a>211202</h1><h2 id="DOM"><a href="#DOM" class="headerlink" title="DOM"></a>DOM</h2><ul>
+<li><code>document.elementFromPoint</code> 를 사용해 포인터 아래의 드롭할 수 있는 요소를 감지한다.</li>
+<li><code>Pointer Event</code> 로 touch를 다룰때는 css 속성에 <code>touch-event: none</code> 을 주어야 한다.</li>
+<li>multi-touch surport <code>pointerId</code> <code>isPrimary</code></li>
+<li><code>pressure</code> , <code>width/height</code></li>
+<li><code>cut</code>, <code>copy</code>, <code>paste</code> 같은 이벤트는 <code>event.clipboardData</code> 를 통해서 클립보드에 저장된 데이터를 확인할 수 있다.</li>
+</ul>
+<h2 id="리액트-타입스크립트"><a href="#리액트-타입스크립트" class="headerlink" title="리액트 타입스크립트"></a>리액트 타입스크립트</h2><ul>
+<li>함수의 실행 결과를 타입으로 가져오고 싶을때는 <code>ReturnType&lt;typeof increase&gt;</code> (<code>increase</code> 는 함수) 와 가은 식으로 사용할 수 있다.</li>
+<li><code>typesafe-actions</code> 를 사용하면 리덕스 관련한 작업을 보다 간단하게 할 수 있다.</li>
+</ul>
+<h2 id="알고리즘"><a href="#알고리즘" class="headerlink" title="알고리즘"></a>알고리즘</h2><p>항상 특정한 조건에 따라서 다른 상황으로 바꿔주기 그리디는 정당성을 확인하는것이 중요하다. 먼저 정렬을 하고 정당성을 확인해보는것도 좋은 방법 N이 200000 이고 1초 → 정렬 가능, 그리디 뭐가 있지?</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/TIL/" rel="tag"># TIL</a>
+          </div>
+
         
-        <span class="collection-header">Good! 104 posts in total. Keep on posting.</span>
-      </div>
 
-      
-    <div class="collection-year">
-      <span class="collection-header">2021</span>
-    </div>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2021-08-15T19:40:25+09:00"
-              content="2021-08-15">
-          08-15
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/08/15/modernJs/210811-%ED%94%84%EB%A1%9C%EB%AF%B8%EC%8A%A4%ED%99%94/" itemprop="url">
-            <span itemprop="name">프로미스화</span>
-          </a>
-      </div>
-
-      
-    </header>
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/12/02/TIL/211201/" rel="prev" title="211201">
+                  <i class="fa fa-chevron-left"></i> 211201
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
   </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2021-08-15T19:40:25+09:00"
-              content="2021-08-15">
-          08-15
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/08/15/modernJs/210812-%EB%A7%88%EC%9D%B4%ED%81%AC%EB%A1%9C%ED%83%9C%EC%8A%A4%ED%81%AC/" itemprop="url">
-            <span itemprop="name">마이크로태스크</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2021-08-06T22:28:10+09:00"
-              content="2021-08-06">
-          08-06
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/08/06/OS/210721-os-basic/" itemprop="url">
-            <span itemprop="name">os-basic</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2021-08-06T22:28:10+09:00"
-              content="2021-08-06">
-          08-06
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/08/06/OS/210721-os-history/" itemprop="url">
-            <span itemprop="name">os-history</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2021-08-06T22:28:10+09:00"
-              content="2021-08-06">
-          08-06
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/08/06/OS/210723-structure/" itemprop="url">
-            <span itemprop="name">structure</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2021-08-06T22:28:10+09:00"
-              content="2021-08-06">
-          08-06
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/08/06/OS/210723-%EC%8A%A4%EC%BC%80%EC%A5%B4%EB%A7%81/" itemprop="url">
-            <span itemprop="name">스케쥴링</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2021-08-06T22:28:10+09:00"
-              content="2021-08-06">
-          08-06
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/08/06/OS/210727-%EC%8A%A4%EC%BC%80%EC%A5%B4%EB%A7%81%EC%83%81%ED%83%9C%EA%B8%B0%EB%B0%98/" itemprop="url">
-            <span itemprop="name">스케쥴링상태기반</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2021-08-06T22:28:10+09:00"
-              content="2021-08-06">
-          08-06
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/08/06/OS/210727-%EC%8A%A4%EC%BC%80%EC%A5%B4%EB%A7%81%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98%EA%B8%B0%EB%B3%B8/" itemprop="url">
-            <span itemprop="name">스케쥴링알고리즘기본</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2021-08-06T22:28:10+09:00"
-              content="2021-08-06">
-          08-06
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/08/06/OS/210729-%EC%9D%B8%ED%84%B0%EB%9F%BD%ED%8A%B8/" itemprop="url">
-            <span itemprop="name">인터럽트</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2021-08-06T22:28:10+09:00"
-              content="2021-08-06">
-          08-06
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/08/06/OS/210730-%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4%EA%B5%AC%EC%A1%B0/" itemprop="url">
-            <span itemprop="name">프로세스구조</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
+</div>
 
 
-    </div>
-  </div>
-  
-  
-  
-  <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/archives/page/9/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/archives/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/9/">9</a><span class="page-number current">10</span><a class="page-number" href="/archives/page/11/">11</a><a class="extend next" rel="next" href="/archives/page/11/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
-  </nav>
+
+
+
 
 </div>
   </main>

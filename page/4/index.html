@@ -85,7 +85,7 @@
         <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
         <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">11</span></a></li>
         <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">9</span></a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">103</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">104</span></a></li>
   </ul>
 </nav>
 
@@ -129,7 +129,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">103</span>
+          <span class="site-state-item-count">104</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -180,6 +180,152 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/10/09/Network/210906-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC%20%EC%86%8C%EA%B0%9C/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JayoonKoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="티끌모아 태산">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/10/09/Network/210906-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC%20%EC%86%8C%EA%B0%9C/" class="post-title-link" itemprop="url">네트워크 소개</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-10-09 21:54:45" itemprop="dateCreated datePublished" datetime="2021-10-09T21:54:45+09:00">2021-10-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/CS/" itemprop="url" rel="index"><span itemprop="name">CS</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="네트워크-소개"><a href="#네트워크-소개" class="headerlink" title="네트워크 소개"></a>네트워크 소개</h1><h2 id="네트워크-형태"><a href="#네트워크-형태" class="headerlink" title="네트워크 형태"></a>네트워크 형태</h2><ul>
+<li>LAN(Local Area Network) : 건거리 통신망</li>
+<li>WAN(Wide Area Network) : 정거리 통신망 (ISP) 로 연결</li>
+<li>VPN(Virtual Private Network) : 가상 사설망으로서 공중망을 사설망처럼 암호화해서 사용함.</li>
+</ul>
+<h2 id="네트워크-구조"><a href="#네트워크-구조" class="headerlink" title="네트워크 구조"></a>네트워크 구조</h2><p>규모, 업종, 통신방식과 경로, 토플로지 등등 나누는 기준이 다양하다.</p>
+<h3 id="토플로지"><a href="#토플로지" class="headerlink" title="토플로지"></a>토플로지</h3><ul>
+<li>star : 중앙에 중계서버를 둔 형태</li>
+</ul>
+<img src="/images/210906-네트워크 소개/star.png" width="200">
+
+<ul>
+<li>Ring: 중앙에 중계서버를 두지 않고 근처에 있는것 끼리 연결 - 뎁스가 깊어지는 문제가 있다.</li>
+</ul>
+<img src="/images/210906-네트워크 소개/ring.png" width="200">
+
+<ul>
+<li>Mesh : 서로 간에 연결 - 뎁스가 깊어지지는 않지만 갯수가 많아지면 경우에 수가 증가하는 문제가 있다.</li>
+</ul>
+<img src="/images/210906-네트워크 소개/mesh.png" width="200">
+
+<ul>
+<li>Bus : 데이터 통로 Bus 를 두고 서로 통신하는 형태</li>
+</ul>
+<img src="/images/210906-네트워크 소개/bus.png" width="200">
+
+<ul>
+<li>Tree : 가장 많이 사용하는 형태 tree 구조를 두고 각각의 node에 다양한 형태로 구성할 수 있다.</li>
+</ul>
+<img src="/images/210906-네트워크 소개/tree.png" width="200">
+
+<ul>
+<li>Redundacy : 가용성, 동일한것을 하나 더 두어서 하나가 기능을 못해도 다른 하나가 동작하도록 한 형태</li>
+</ul>
+<img src="/images/210906-네트워크 소개/Redundancy.png" width="200">
+
+<h2 id="홈-네트워크"><a href="#홈-네트워크" class="headerlink" title="홈 네트워크"></a>홈 네트워크</h2><p>인터넷 - ISP(업체) - 모뎀 - 공유기 - 컴퓨터</p>
+<h2 id="기업용-네트워크"><a href="#기업용-네트워크" class="headerlink" title="기업용 네트워크"></a>기업용 네트워크</h2><p>ISP(전용선) - 라우터 - 방화벽 - L3백본 - (L2 스위치 - 서버) or (L4B - 서버 - DMZ(외부로 노출하는 서버))</p>
+<img src="/images/210906-네트워크 소개/기업용.png" width="500">
+
+<h2 id="클라우드-네트워크-AWS-기준"><a href="#클라우드-네트워크-AWS-기준" class="headerlink" title="클라우드 네트워크 - AWS 기준"></a>클라우드 네트워크 - AWS 기준</h2><p>인터넷 - Route53(AWS에서는 DNS를 제공하는 역할) - IGW(AWS에서는 라우터와 비슷한 역할을 한다.) - VPN (L2, L3를 논리적으로 묶은것)</p>
+<img src="/images/210906-네트워크 소개/AWS.png" width="500">
+
+<ul>
+<li>ELB : 각각의 서버로 분산해 준다.</li>
+<li>Auto Scaling : 사용하는양에 자동으로 용량 산정해서 제공해 주는 서비스</li>
+<li>SG : 일종의 방홤벽</li>
+<li>EC2 : 각각의 서버라고 보면 됨.</li>
+</ul>
+<h2 id="OSI-7-Layer"><a href="#OSI-7-Layer" class="headerlink" title="OSI 7 Layer"></a>OSI 7 Layer</h2><h3 id="정의"><a href="#정의" class="headerlink" title="정의"></a>정의</h3><p>네트워크 프로토콜과 통신을 7계층으로 표현</p>
+<h3 id="목적"><a href="#목적" class="headerlink" title="목적"></a>목적</h3><p>벤더(엄체)간 표준을 정해서 접근하기 쉽게 함.</p>
+<h3 id="OSI-7-Layer-모델"><a href="#OSI-7-Layer-모델" class="headerlink" title="OSI 7 Layer 모델"></a>OSI 7 Layer 모델</h3><img src="/images/210906-네트워크 소개/7.png" width="200">
+
+<ul>
+<li>아래부터 1 -&gt; 7 layer로 나뉨</li>
+<li>1 계층 (Physical) - 장치와 통신 매체 사이의 비정형 데이터의 전송을 담당 (물리적 기계)</li>
+<li>2 계층 (Data Link) - 동일 네트워크 내에서 데이터 전송, 링크를 통해서 연결을 설정하고 관리 함. 물리계층에서 발생할 수 있는 오류를 감지하고 수정</li>
+<li>3 계층 (Network) - 다른 데트워크로 데이터 전송, IP 주소로 통신 <code>IP</code>, IP 통신과 라우팅 (L3 스위치, 라우터)</li>
+<li>4 계층 (Transport) - 호스트 간의 데이터 전송, 완벽한 데이터 전송 보장, 포트 제어 <code>TCP/UDP</code></li>
+<li>5 계층 (Session) - 로컬 및 원격 애플리케이션 간의 IP / Port 연결을 관리 (Session Table로 관리 )</li>
+<li>6 계층 (Presentation) - 사용자 프로그램과 네트워크 형신간에 데이터를 변환하여 표현고ㅓㅏ 독립성을 제공</li>
+<li>7 계층 (Application) - 사용자와 가장 밀접한 소프트웨어 이메일 서비스, HTTP, FTP 등 …</li>
+</ul>
+<h2 id="TCP-IP-suit-비교와-캡슐화"><a href="#TCP-IP-suit-비교와-캡슐화" class="headerlink" title="TCP-IP suit 비교와 캡슐화"></a>TCP-IP suit 비교와 캡슐화</h2><h3 id="TCP-IP"><a href="#TCP-IP" class="headerlink" title="TCP/ IP?"></a>TCP/ IP?</h3><p>네트 워크 프로토콜의 모음 패킷 통신 방식 (IP), 전송조절 프로토콜 (TCP)</p>
+<h3 id="4계층-모델"><a href="#4계층-모델" class="headerlink" title="4계층 모델"></a>4계층 모델</h3><img src="/images/210906-네트워크 소개/8.png" width="500">
+
+<h3 id="OSI-7Layer와-비교"><a href="#OSI-7Layer와-비교" class="headerlink" title="OSI 7Layer와 비교"></a>OSI 7Layer와 비교</h3><img src="/images/210906-네트워크 소개/9.png" width="500">
+
+<h3 id="캠슐화"><a href="#캠슐화" class="headerlink" title="캠슐화"></a>캠슐화</h3><ul>
+<li>인캡슐레이션 : 7계층 부터 1계층 까지 내려가면서 통신의 필요한 header 붙혀서 캡술화 하는 과정</li>
+<li>디캡슐레이션 : 1계층 부터 7계층 까지 올라가면서 통신의 필요한 header를 확인하고 데이터에서 header를 제거하는 과정</li>
+</ul>
+<p>인캡슐레이션의 예, 디캠슐레이션은 반대로 하면 된다.</p>
+<img src="/images/210906-네트워크 소개/10.png" width="500">
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1109,122 +1255,6 @@
 <p>(2)에서 던진 에러는 (1) 에서 예외를 만든다. 만약 제너레이터 안에서 에러를 처리 하지 않았다면 외부로 떨어져 나온다. 바깥에서 에러를 처리해도 된다.</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span>* <span class="title">generate</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> result = <span class="keyword">yield</span> <span class="string">&quot;2 + 2 = ?&quot;</span>; <span class="comment">// Error in this line</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> generator = generate();</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> question = generator.next().value;</span><br><span class="line"></span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">  generator.throw(<span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">&quot;데이터베이스에서 답을 찾지 못했습니다.&quot;</span>));</span><br><span class="line">&#125; <span class="keyword">catch</span> (e) &#123;</span><br><span class="line">  alert(e); <span class="comment">// 에러 출력</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/09/20/modernJs/210818-async%20%EC%9D%B4%ED%84%B0%EB%A0%88%EC%9D%B4%ED%84%B0%EC%99%80%20%EC%A0%9C%EB%84%88%EB%A0%88%EC%9D%B4%ED%84%B0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JayoonKoo">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="티끌모아 태산">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/09/20/modernJs/210818-async%20%EC%9D%B4%ED%84%B0%EB%A0%88%EC%9D%B4%ED%84%B0%EC%99%80%20%EC%A0%9C%EB%84%88%EB%A0%88%EC%9D%B4%ED%84%B0/" class="post-title-link" itemprop="url">async 이터레이터와 제너레이터</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2021-09-20 21:41:14 / Modified: 21:45:40" itemprop="dateCreated datePublished" datetime="2021-09-20T21:41:14+09:00">2021-09-20</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="async-이터레이터와-제너레이터"><a href="#async-이터레이터와-제너레이터" class="headerlink" title="async 이터레이터와 제너레이터"></a>async 이터레이터와 제너레이터</h1><p>비동기 이터레이터, 제너레이터 사용하여 비동기적으로 들어오는 데이터를 필요에 따라 처리할 수 있다.</p>
-<h2 id="async-이터레이터"><a href="#async-이터레이터" class="headerlink" title="async 이터레이터"></a>async 이터레이터</h2><p>일반 이터러블</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> range = &#123;</span><br><span class="line">  <span class="attr">from</span>: <span class="number">1</span>,</span><br><span class="line">  <span class="attr">to</span>: <span class="number">5</span>,</span><br><span class="line"></span><br><span class="line">  <span class="comment">// for..of 최초 실행 시, Symbol.iterator가 호출됩니다.</span></span><br><span class="line">  [<span class="built_in">Symbol</span>.iterator]() &#123;</span><br><span class="line">    <span class="comment">// Symbol.iterator메서드는 이터레이터 객체를 반환합니다.</span></span><br><span class="line">    <span class="comment">// 이후 for..of는 반환된 이터레이터 객체만을 대상으로 동작하는데,</span></span><br><span class="line">    <span class="comment">// 다음 값은 next()에서 정해집니다.</span></span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      <span class="attr">current</span>: <span class="built_in">this</span>.from,</span><br><span class="line">      <span class="attr">last</span>: <span class="built_in">this</span>.to,</span><br><span class="line"></span><br><span class="line">      <span class="comment">// for..of 반복문에 의해 각 이터레이션마다 next()가 호출됩니다.</span></span><br><span class="line">      <span class="function"><span class="title">next</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">        <span class="comment">// (2)</span></span><br><span class="line">        <span class="comment">//  next()는 객체 형태의 값, &#123;done:.., value :...&#125;를 반환합니다.</span></span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">this</span>.current &lt;= <span class="built_in">this</span>.last) &#123;</span><br><span class="line">          <span class="keyword">return</span> &#123; <span class="attr">done</span>: <span class="literal">false</span>, <span class="attr">value</span>: <span class="built_in">this</span>.current++ &#125;;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          <span class="keyword">return</span> &#123; <span class="attr">done</span>: <span class="literal">true</span> &#125;;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;,</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> value <span class="keyword">of</span> range) &#123;</span><br><span class="line">  alert(value); <span class="comment">// 1, 2, 3, 4, 5</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>이터러블 객체를 비동기적으로 만들기 위한 작업</p>
-<ol>
-<li><code>Symbol.iterator</code> 대신, <code>Symbol.asyncIterator</code>를 사용해야 한다.</li>
-<li><code>next()</code> 는 프라미스를 반환해야 한다.</li>
-<li>비동기 이터러블 객체를 대상으로 하는 반복 작업은 <code>for await (let item of iterable)</code> 반복문을 사용해 처리해야 한다.</li>
-</ol>
-<p>1초마다 비동기적으로 값을 반환하는 이터러블 객체를 만들어 본다.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> range = &#123;</span><br><span class="line">  <span class="attr">from</span>: <span class="number">1</span>,</span><br><span class="line">  <span class="attr">to</span>: <span class="number">5</span>,</span><br><span class="line"></span><br><span class="line">  <span class="comment">// for await..of 최초 실행 시, Symbol.asyncIterator가 호출됩니다.</span></span><br><span class="line">  [<span class="built_in">Symbol</span>.asyncIterator]() &#123;</span><br><span class="line">    <span class="comment">// (1)</span></span><br><span class="line">    <span class="comment">// Symbol.asyncIterator 메서드는 이터레이터 객체를 반환합니다.</span></span><br><span class="line">    <span class="comment">// 이후 for await..of는 반환된 이터레이터 객체만을 대상으로 동작하는데,</span></span><br><span class="line">    <span class="comment">// 다음 값은 next()에서 정해집니다.</span></span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      <span class="attr">current</span>: <span class="built_in">this</span>.from,</span><br><span class="line">      <span class="attr">last</span>: <span class="built_in">this</span>.to,</span><br><span class="line"></span><br><span class="line">      <span class="comment">// for await..of 반복문에 의해 각 이터레이션마다 next()가 호출됩니다.</span></span><br><span class="line">      <span class="keyword">async</span> <span class="function"><span class="title">next</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">        <span class="comment">// (2)</span></span><br><span class="line">        <span class="comment">//  next()는 객체 형태의 값, &#123;done:.., value :...&#125;를 반환합니다.</span></span><br><span class="line">        <span class="comment">// (객체는 async에 의해 자동으로 프라미스로 감싸집니다.)</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 비동기로 무언가를 하기 위해 await를 사용할 수 있습니다.</span></span><br><span class="line">        <span class="keyword">await</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve</span>) =&gt;</span> <span class="built_in">setTimeout</span>(resolve, <span class="number">1000</span>)); <span class="comment">// (3)</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">this</span>.current &lt;= <span class="built_in">this</span>.last) &#123;</span><br><span class="line">          <span class="keyword">return</span> &#123; <span class="attr">done</span>: <span class="literal">false</span>, <span class="attr">value</span>: <span class="built_in">this</span>.current++ &#125;;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          <span class="keyword">return</span> &#123; <span class="attr">done</span>: <span class="literal">true</span> &#125;;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;,</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">(<span class="keyword">async</span> () =&gt; &#123;</span><br><span class="line">  <span class="keyword">for</span> <span class="keyword">await</span> (<span class="keyword">let</span> value <span class="keyword">of</span> range) &#123;</span><br><span class="line">    <span class="comment">// (4)</span></span><br><span class="line">    alert(value); <span class="comment">// 1,2,3,4,5</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
-
-<p>일반 이터레이터와, async 이터레이터에 차이점</p>
-<ol>
-<li>객체를 비동기적으로 반복 가능하도록 하려면, <code>Symbol.asyncIterator</code>메서드가 반드시 구현되어야 함.</li>
-<li><code>Symbol.asyncIterator</code>는 프라미스를 반환하는 <code>next()</code>가 구현된 객체를 반환해야 한다.</li>
-<li><code>next()</code> 는 <code>aync</code>메서드일 필요는 없지만 <code>await</code>를 쓰면 편하기 때문에 편의상 이렇게 사용한다.</li>
-<li>반복 작업을 하려면 <code>for await</code>를 붙인다. 그럼 <code>range[Symbol.asyncIterator] ()</code>가 일회 호출되는데, 그 이후엔 각 값을 대상으로 <code>next()</code>가 호출된다.</li>
-</ol>
-<img src="/images/210818-async%20이터레이터와%20제너레이터/1.png" width="500">
-
-<blockquote>
-<p>전개 문법 <code>...</code>은 동기적으로 동작하지 않는다. 동기 작업이 필요한 이터레이터는 <code>Symbol.asyncIterator</code>가 아닌 <code>Symbol.iterator</code>을 찾기 때문이다.</p>
-</blockquote>
-<h2 id="async-제너레이터"><a href="#async-제너레이터" class="headerlink" title="async 제너레이터"></a>async 제너레이터</h2><p>일반 제너레이터</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span>* <span class="title">generateSequence</span>(<span class="params">start, end</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = start; i &lt;= end; i++) &#123;</span><br><span class="line">    <span class="keyword">yield</span> i;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> value <span class="keyword">of</span> generateSequence(<span class="number">1</span>, <span class="number">5</span>)) &#123;</span><br><span class="line">  alert(value); <span class="comment">// 1, then 2, then 3, then 4, then 5</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><code>async</code>를 붙여주면 비동기적으로 제너레이터를 사용할 수 있다.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span>* <span class="title">generateSequence</span>(<span class="params">start, end</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = start; i &lt;= end; i++) &#123;</span><br><span class="line">    <span class="comment">// await를 사용할 수 있습니다!</span></span><br><span class="line">    <span class="keyword">await</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve</span>) =&gt;</span> <span class="built_in">setTimeout</span>(resolve, <span class="number">1000</span>));</span><br><span class="line"></span><br><span class="line">    <span class="keyword">yield</span> i;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">(<span class="keyword">async</span> () =&gt; &#123;</span><br><span class="line">  <span class="keyword">let</span> generator = generateSequence(<span class="number">1</span>, <span class="number">5</span>);</span><br><span class="line">  <span class="keyword">for</span> <span class="keyword">await</span> (<span class="keyword">let</span> value <span class="keyword">of</span> generator) &#123;</span><br><span class="line">    alert(value); <span class="comment">// 1, 2, 3, 4, 5</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
-
-<p><code>aync</code> 제너레이의 <code>generator.next()</code>의 메서드는 비동기적이 되고 프라미스를 반환한다. 따라서 <code>await</code> 키워드를 사용해서 <code>generator.next()</code>를 사용하도록 한다.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">result = <span class="keyword">await</span> generator.next(); <span class="comment">// result = &#123;value: ..., done: true/false&#125;</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="async-이터러블"><a href="#async-이터러블" class="headerlink" title="async 이터러블"></a>async 이터러블</h2><p>반복 가능한 객체를 만들려면 객체에 <code>Symbol.iterator</code>를 추가해야 한다.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> range = &#123;</span><br><span class="line">  <span class="attr">from</span>: <span class="number">1</span>,</span><br><span class="line">  <span class="attr">to</span>: <span class="number">5</span>,</span><br><span class="line">  [<span class="built_in">Symbol</span>.iterator]() &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="xml">&lt;range를 반복가능하게 만드는 next가 구현된 객체&gt;</span></span><br><span class="line"><span class="xml">  &#125;</span></span><br><span class="line"><span class="xml">&#125;</span></span><br></pre></td></tr></table></figure>
-
-<p>일반적으로 제너레이터를 반환하도록 구현하는 경우가 더 많다.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> range = &#123;</span><br><span class="line">  <span class="attr">from</span>: <span class="number">1</span>,</span><br><span class="line">  <span class="attr">to</span>: <span class="number">5</span>,</span><br><span class="line"></span><br><span class="line">  *[<span class="built_in">Symbol</span>.iterator]() &#123;</span><br><span class="line">    <span class="comment">// [Symbol.iterator]: function*()를 짧게 줄임</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> value = <span class="built_in">this</span>.from; value &lt;= <span class="built_in">this</span>.to; value++) &#123;</span><br><span class="line">      <span class="keyword">yield</span> value;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> value <span class="keyword">of</span> range) &#123;</span><br><span class="line">  alert(value); <span class="comment">// 1, 2, 3, 4, 5</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>지금 이 상태에서 비동기 동작을 축하려면, <code>Symbol.iterator</code>를 <code>async Symbol.asyncIterator</code>로 바꿔야 한다.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> range = &#123;</span><br><span class="line">  <span class="attr">from</span>: <span class="number">1</span>,</span><br><span class="line">  <span class="attr">to</span>: <span class="number">5</span>,</span><br><span class="line"></span><br><span class="line">  <span class="keyword">async</span> *[<span class="built_in">Symbol</span>.asyncIterator]() &#123;</span><br><span class="line">    <span class="comment">// [Symbol.asyncIterator]: async function*()와 동일</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> value = <span class="built_in">this</span>.from; value &lt;= <span class="built_in">this</span>.to; value++) &#123;</span><br><span class="line">      <span class="comment">// 값 사이 사이에 약간의 공백을 줌</span></span><br><span class="line">      <span class="keyword">await</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve</span>) =&gt;</span> <span class="built_in">setTimeout</span>(resolve, <span class="number">1000</span>));</span><br><span class="line"></span><br><span class="line">      <span class="keyword">yield</span> value;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">(<span class="keyword">async</span> () =&gt; &#123;</span><br><span class="line">  <span class="keyword">for</span> <span class="keyword">await</span> (<span class="keyword">let</span> value <span class="keyword">of</span> range) &#123;</span><br><span class="line">    alert(value); <span class="comment">// 1, 2, 3, 4, 5</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
-
-<h2 id="실제-사례"><a href="#실제-사례" class="headerlink" title="실제 사례"></a>실제 사례</h2>
       
     </div>
 

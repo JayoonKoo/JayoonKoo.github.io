@@ -85,7 +85,7 @@
         <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
         <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">11</span></a></li>
         <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">9</span></a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">103</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">104</span></a></li>
   </ul>
 </nav>
 
@@ -129,7 +129,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">103</span>
+          <span class="site-state-item-count">104</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -180,6 +180,91 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/12/03/TIL/211202/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JayoonKoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="티끌모아 태산">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/12/03/TIL/211202/" class="post-title-link" itemprop="url">21120</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2021-12-03 23:18:13 / Modified: 23:18:34" itemprop="dateCreated datePublished" datetime="2021-12-03T23:18:13+09:00">2021-12-03</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/TIL/" itemprop="url" rel="index"><span itemprop="name">TIL</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="211202"><a href="#211202" class="headerlink" title="211202"></a>211202</h1><h2 id="DOM"><a href="#DOM" class="headerlink" title="DOM"></a>DOM</h2><ul>
+<li><code>document.elementFromPoint</code> 를 사용해 포인터 아래의 드롭할 수 있는 요소를 감지한다.</li>
+<li><code>Pointer Event</code> 로 touch를 다룰때는 css 속성에 <code>touch-event: none</code> 을 주어야 한다.</li>
+<li>multi-touch surport <code>pointerId</code> <code>isPrimary</code></li>
+<li><code>pressure</code> , <code>width/height</code></li>
+<li><code>cut</code>, <code>copy</code>, <code>paste</code> 같은 이벤트는 <code>event.clipboardData</code> 를 통해서 클립보드에 저장된 데이터를 확인할 수 있다.</li>
+</ul>
+<h2 id="리액트-타입스크립트"><a href="#리액트-타입스크립트" class="headerlink" title="리액트 타입스크립트"></a>리액트 타입스크립트</h2><ul>
+<li>함수의 실행 결과를 타입으로 가져오고 싶을때는 <code>ReturnType&lt;typeof increase&gt;</code> (<code>increase</code> 는 함수) 와 가은 식으로 사용할 수 있다.</li>
+<li><code>typesafe-actions</code> 를 사용하면 리덕스 관련한 작업을 보다 간단하게 할 수 있다.</li>
+</ul>
+<h2 id="알고리즘"><a href="#알고리즘" class="headerlink" title="알고리즘"></a>알고리즘</h2><p>항상 특정한 조건에 따라서 다른 상황으로 바꿔주기 그리디는 정당성을 확인하는것이 중요하다. 먼저 정렬을 하고 정당성을 확인해보는것도 좋은 방법 N이 200000 이고 1초 → 정렬 가능, 그리디 뭐가 있지?</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1292,142 +1377,6 @@
 
 <p><code>useReducer</code> 는 복잡한 컴포넌트들의 state를 reducer로 관리할 수 있게 해준다.</p>
 <figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Todos</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> [todos, dispatch] = useReducer(todosReducer);</span><br><span class="line">  <span class="comment">// ...</span></span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/10/23/TEST_CODE/211018-jest%20Matcher/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JayoonKoo">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="티끌모아 태산">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/10/23/TEST_CODE/211018-jest%20Matcher/" class="post-title-link" itemprop="url">jest Matcher</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-10-23 22:14:44" itemprop="dateCreated datePublished" datetime="2021-10-23T22:14:44+09:00">2021-10-23</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/test/" itemprop="url" rel="index"><span itemprop="name">test</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="Jest-Matcher"><a href="#Jest-Matcher" class="headerlink" title="Jest Matcher"></a>Jest Matcher</h1><h2 id="jest란"><a href="#jest란" class="headerlink" title="jest란?"></a>jest란?</h2><p>jest 는 자바스크립트 코드를 테스트 할수 있게 해주는 도구이다. 패키지만 다운받으면 별도의 설정없이 바로 사용할 수 있는것이 특징이다.</p>
-<h2 id="최소한의-설정"><a href="#최소한의-설정" class="headerlink" title="최소한의 설정?"></a>최소한의 설정?</h2><p>패키지 설정 및 스크립트 설정에 관한 부분으로 거의 할게 없다.</p>
-<p><code>npm init -y</code> : npm 초기화</p>
-<p><code>npm i jest -D</code> : 개발 과정에서만 사용할 것이므로 jest를 -D 옵션을 붙여서 설치한다. –save-dev 와 똑같다.</p>
-<p>package.json으로 이동하여 script를 수정한다.</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">&quot;name&quot;</span>: <span class="string">&quot;jest-tutorial&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;version&quot;</span>: <span class="string">&quot;1.0.0&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;description&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;main&quot;</span>: <span class="string">&quot;index.js&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;scripts&quot;</span>: &#123;</span><br><span class="line">    <span class="attr">&quot;test&quot;</span>: <span class="string">&quot;jest&quot;</span> <span class="comment">// test 부분에 jest 추가</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">&quot;keywords&quot;</span>: [],</span><br><span class="line">  <span class="attr">&quot;author&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;license&quot;</span>: <span class="string">&quot;ISC&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;devDependencies&quot;</span>: &#123;</span><br><span class="line">    <span class="attr">&quot;jest&quot;</span>: <span class="string">&quot;^27.3.0&quot;</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><code>npm test</code> : 테스트 코드 실행 가능</p>
-<p>test 코드는 test.js 등의 이름이나. <code>__tests__</code> 폴더 아래 있는 모든 파일을 찾아서 실행한다.</p>
-<h2 id="matcher"><a href="#matcher" class="headerlink" title="matcher"></a>matcher</h2><p>matcher는 테스트에서 예상한 부분과 실제 결과가 맞는지 매칭시키는 함수를 의미한다. jest 다양한 matcher 가 존재하는데 모두다 외울 필요는 없고 필요할때 확인하면 된다.<br>보통 expect().matcher()를 사용하여 검사하는데 맞지 않는경우를 조사하려면 not을 붙혀서 expect().not.matcher()를 사용하면 된다.</p>
-<ul>
-<li>toBe() : 결과가 같은지 확인, 아닌 경우를 판단하려면 expect().not.matcher()를 사용하면 된다.</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">test(<span class="string">&quot;1은 1이야.&quot;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  expect(<span class="number">1</span>).toBe(<span class="number">1</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>toEqaul() : 결과가 같은지 확인, 배열 객체 등의 요소는 재귀적으로 판단해야 하기 때문에 이것을 사용해야 한다.</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">test(<span class="string">&quot;이름과 나이를 전달받아서 객체를 반환해줘&quot;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  expect(fn.makeUser(<span class="string">&quot;mike&quot;</span>, <span class="number">30</span>)).toEqual(&#123;</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&quot;mike&quot;</span>,</span><br><span class="line">    <span class="attr">age</span>: <span class="number">30</span>,</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>toStrictEqual() : 보다 엄격한 검사를 실시한다.</li>
-<li>toBeNull() : Null 값인지 검사</li>
-<li>toBeUndefined() : undefined인지 검사</li>
-<li>toBeDefined</li>
-<li>toBeTruthy : truthy인 값을 리턴하는지 검사.</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">test(<span class="string">&quot;비어있지 않은 문자열은 truly 입니다.&quot;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  expect(fn.add(<span class="string">&quot;koo&quot;</span>, <span class="string">&quot;ja&quot;</span>)).toBeTruthy();</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>toBeFalsy : falsy인 값을 리턴하는지 검사.</li>
-</ul>
-<p>숫자 관련된 matcher도 있다.</p>
-<ul>
-<li>toBeGraterThan() : 큰지 검사</li>
-<li>toBeGraterThanOrEqual() : 크거나 같은지 검사</li>
-<li>toBeLessThan() : 작은지 검사</li>
-<li>toBeLessThanOrEqual() : 작거나 같은지 검사</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">test(<span class="string">&quot;Id 는 10글자 보다 작아야 한다.&quot;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> ID = <span class="string">&quot;ID_KJDB_&quot;</span>;</span><br><span class="line">  expect(ID.length).toBeLessThanOrEqual(<span class="number">10</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<p>근사치를 검사해야하는 경우도 있는데 이럴땐 toBeCloseTo를 사용하면 된다.</p>
-<ul>
-<li>toBeCloseTo : 근사치 검사</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">test(<span class="string">&quot;0.1 더하기 0.2는 0.3 이다.&quot;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  expect(fn.add(<span class="number">0.1</span>, <span class="number">0.2</span>)).toBeCloseTo(<span class="number">0.3</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<p>문자열 관련해서 정규 표현식을 사용할 수 있는데 toMatch를 사용하면 된다.</p>
-<ul>
-<li>toMatch(regex) : 정규표현식과 매칭 되는지</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">test(<span class="string">&quot;Hello World 에 H라는 글자가 있나?&quot;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  expect(<span class="string">&quot;Hello World&quot;</span>).toMatch(<span class="regexp">/H/</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<p>배열 관련된 matcher 도 있다.</p>
-<ul>
-<li>toContain(요소) : 인자로 넘겨준 요소가 매열내의 포함되어 있는지</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">test(<span class="string">&quot;유저 리스트에 Mike가 있는지&quot;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> user = <span class="string">&quot;Mike&quot;</span>;</span><br><span class="line">  <span class="keyword">const</span> users = [<span class="string">&quot;Tom&quot;</span>, <span class="string">&quot;Mike&quot;</span>, <span class="string">&quot;Kai&quot;</span>];</span><br><span class="line">  expect(users).toContain(user);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<p>에러가 발생하는지 여부도 확인할 수 있다.</p>
-<ul>
-<li>toThrow() : 인자를 넘겨주면 특정 에러인지 확인하고 인자를 넘겨주지 않으면 에러를 발생시키는 여부만 확인한다.</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">test(<span class="string">&quot;이거 에러 나나?&quot;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  expect(<span class="function">() =&gt;</span> fn.throwErr()).toThrow();</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// 어떤 내용인지 확인하려면 인수로 전달하면 된다.</span></span><br><span class="line">test(<span class="string">&quot;이거 xx 에러인가? &quot;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  expect(<span class="function">() =&gt;</span> fn.throwErr()).toThrow(<span class="string">&quot;xx&quot;</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 
       
     </div>
