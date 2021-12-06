@@ -68,7 +68,7 @@
       <h1 class="site-title">티끌모아 태산</h1>
       <i class="logo-line"></i>
     </a>
-      <p class="site-subtitle" itemprop="description">기회는 논리적입니다 여러분</p>
+      <p class="site-subtitle" itemprop="description">작은 조각 모음</p>
   </div>
 
   <div class="site-nav-right">
@@ -317,86 +317,6 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/10/23/git/211023-branching%20workflow/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JayoonKoo">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="티끌모아 태산">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/10/23/git/211023-branching%20workflow/" class="post-title-link" itemprop="url">branching workflow</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2021-10-23 22:05:42 / Modified: 22:06:07" itemprop="dateCreated datePublished" datetime="2021-10-23T22:05:42+09:00">2021-10-23</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/git/" itemprop="url" rel="index"><span itemprop="name">git</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="Branching-Workflows"><a href="#Branching-Workflows" class="headerlink" title="Branching Workflows"></a>Branching Workflows</h1><p>이번에는 브랜치를 이용한 워크 플로우에 대해서 알아본다.</p>
-<h2 id="Long-Running-Branches"><a href="#Long-Running-Branches" class="headerlink" title="Long-Running Branches"></a>Long-Running Branches</h2><p>깃은 장기적으로 브랜치를 열어두고 새로운 브랜치에서 병합하는것이 굉장히 쉬운 편이다. 이를 활용해서 git에서 많이 사용하는 개발 플로우가 있다.</p>
-<p><code>master</code> 브랜치는 배포했거나 배포할 코드로서 안정적인 버전을 유지한다.</p>
-<p><code>develop</code> 브랜치는 개발을 진행하고 있는 브랜치로 안정화가 진행되면 <code>master</code> 브랜치로 병합된다. 또한 기능 개발시 <code>topic</code> 브랜치를 만들어서 개발, 테스트 후 <code>devlop</code> 브랜치로 머지하고 <code>devlop</code> 브랜치에서 안정화 작업을 거친 후 <code>master</code> 브랜치로 머지하는 방법을 사용한다.</p>
-<p>각 브랜치를 하나의 실험실로 생각한다.</p>
-<h2 id="Topic-Branches"><a href="#Topic-Branches" class="headerlink" title="Topic Branches"></a>Topic Branches</h2><p>토픽 브랜치는 어떤 한 가지 주제나 작업을 위해 만든 짧은 호흡에 브랜치이다. git 에서는 브랜치를 만드는 것이 매우 쉬우므로 이렇게 브랜치를 생성 하고 개발하고 머지한다음 삭제한다.</p>
-<p>보통 주제별로 브랜치를 만들고 각각은 독립돼 있기 때문에 매우 쉽게 컨텍스트 사이를 옮겨 다닐 수 있다. 묶음별로 나눠서 일하면 내용별로 검토하기에도, 테스트하기에도 더 편하다. 각 작업을 하루든 한 달이든 유지하다가 <code>master</code> 브랜치에 Merge 할 시점이 되면 순서에 관계없이 그때 Merge 하면 된다.</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/10/23/git/211010-git%20brnaching%20management/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -494,6 +414,86 @@
 <li>이전 분기를 대상으로 하는 모든 pull 요청을 닫거나 병합합니다.</li>
 </ul>
 <p>모든 작업을 완료 한 후에 원격 저장소에 master 브랜치를 삭제하도록 한다.</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/10/23/git/211023-branching%20workflow/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JayoonKoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="티끌모아 태산">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/10/23/git/211023-branching%20workflow/" class="post-title-link" itemprop="url">branching workflow</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2021-10-23 22:05:42 / Modified: 22:06:07" itemprop="dateCreated datePublished" datetime="2021-10-23T22:05:42+09:00">2021-10-23</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/git/" itemprop="url" rel="index"><span itemprop="name">git</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="Branching-Workflows"><a href="#Branching-Workflows" class="headerlink" title="Branching Workflows"></a>Branching Workflows</h1><p>이번에는 브랜치를 이용한 워크 플로우에 대해서 알아본다.</p>
+<h2 id="Long-Running-Branches"><a href="#Long-Running-Branches" class="headerlink" title="Long-Running Branches"></a>Long-Running Branches</h2><p>깃은 장기적으로 브랜치를 열어두고 새로운 브랜치에서 병합하는것이 굉장히 쉬운 편이다. 이를 활용해서 git에서 많이 사용하는 개발 플로우가 있다.</p>
+<p><code>master</code> 브랜치는 배포했거나 배포할 코드로서 안정적인 버전을 유지한다.</p>
+<p><code>develop</code> 브랜치는 개발을 진행하고 있는 브랜치로 안정화가 진행되면 <code>master</code> 브랜치로 병합된다. 또한 기능 개발시 <code>topic</code> 브랜치를 만들어서 개발, 테스트 후 <code>devlop</code> 브랜치로 머지하고 <code>devlop</code> 브랜치에서 안정화 작업을 거친 후 <code>master</code> 브랜치로 머지하는 방법을 사용한다.</p>
+<p>각 브랜치를 하나의 실험실로 생각한다.</p>
+<h2 id="Topic-Branches"><a href="#Topic-Branches" class="headerlink" title="Topic Branches"></a>Topic Branches</h2><p>토픽 브랜치는 어떤 한 가지 주제나 작업을 위해 만든 짧은 호흡에 브랜치이다. git 에서는 브랜치를 만드는 것이 매우 쉬우므로 이렇게 브랜치를 생성 하고 개발하고 머지한다음 삭제한다.</p>
+<p>보통 주제별로 브랜치를 만들고 각각은 독립돼 있기 때문에 매우 쉽게 컨텍스트 사이를 옮겨 다닐 수 있다. 묶음별로 나눠서 일하면 내용별로 검토하기에도, 테스트하기에도 더 편하다. 각 작업을 하루든 한 달이든 유지하다가 <code>master</code> 브랜치에 Merge 할 시점이 되면 순서에 관계없이 그때 Merge 하면 된다.</p>
 
       
     </div>
@@ -631,105 +631,6 @@
 
 <p>react는 매우 유연하지만 한가지 엄격한 규칙이 있는데 모든 React 컴포넌트는 자신의 props를 다룰 때 반드시 순수 함수처럼 동작해야 한다.</p>
 <p>애플리케이션의 UI는 동적으로 변화하기 때문에 props를 변화 시키지 않고 순수함수로 동작시킬수 없지 않을까 싶지만, React 는 state를 사용해 이 문제를 해결한다. state는 다음 장에서 설명하도록 한다.</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/10/09/react/official-docs/210922-rendering%20elementjs/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JayoonKoo">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="티끌모아 태산">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/10/09/react/official-docs/210922-rendering%20elementjs/" class="post-title-link" itemprop="url">rendering elementjs</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2021-10-09 21:59:04 / Modified: 21:59:16" itemprop="dateCreated datePublished" datetime="2021-10-09T21:59:04+09:00">2021-10-09</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/react/" itemprop="url" rel="index"><span itemprop="name">react</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="Rendering-Elemnts"><a href="#Rendering-Elemnts" class="headerlink" title="Rendering Elemnts"></a>Rendering Elemnts</h1><p>리엑트 앱의 가장 작은 단위를 의미한다. React dom 은 dom 과 react elemnts 가 일치하도록 업데이트 한다.</p>
-<blockquote>
-<p>컴포넌트와 혼동해서 사용하는 경우가 있다. 엘리먼트는 컴포넌트에 구성요소라고 생각하면 된다.</p>
-</blockquote>
-<h2 id="Rendering-an-Element-into-the-DOM"><a href="#Rendering-an-Element-into-the-DOM" class="headerlink" title="Rendering an Element into the DOM"></a>Rendering an Element into the DOM</h2><p>HTML 파일에 밑에 <code>div</code>가 있다고 가정.</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;root&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>이제부터 이것을 <code>root DOM node</code>라고 부를 것이다. 루트 돔 노드안에 들어갈 내용을 <code>React DOM</code>을 통해 관리하게 된다.</p>
-<p>만약 어떤 앱을 통합하려는 경우에는 여러개의 루트 노드가 있을 수 있다. React elemnt를 root DOM node 에 렌더링 하려면 <code>ReactDOM.render()</code> 에 인수로 element와 root node를 넣고 호출하면 된다.</p>
-<h4 id="공식-문서-코드"><a href="#공식-문서-코드" class="headerlink" title="공식 문서 코드"></a>공식 문서 코드</h4><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> elment = <span class="xml"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>Hello, World<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span>;</span><br><span class="line">ReactDOM.render(elemnt, <span class="built_in">document</span>.getElementById(<span class="string">&quot;root&quot;</span>));</span><br></pre></td></tr></table></figure>
-
-<h4 id="실습-코드"><a href="#실습-코드" class="headerlink" title="실습 코드"></a>실습 코드</h4><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ReactDOM.render(</span><br><span class="line">  <span class="xml"><span class="tag">&lt;<span class="name">React.StrictMode</span>&gt;</span>&#123;elements&#125;<span class="tag">&lt;/<span class="name">React.StrictMode</span>&gt;</span></span>,</span><br><span class="line">  <span class="built_in">document</span>.getElementById(<span class="string">&quot;root&quot;</span>)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-
-<h2 id="Updating-the-Rendered-Element"><a href="#Updating-the-Rendered-Element" class="headerlink" title="Updating the Rendered Element"></a>Updating the Rendered Element</h2><p>React elements 는 불변 객체이다. 한번 생성하고나면 자식 요소나 속성을 변경할 수 없다. 마치 영화에 프레임과 같아서 특정 시점에 UI를 그리는 역활을 한다.</p>
-<p>지금까지의 지식 수준에서는 UI를 업데이틑 하는 방법은 새로운 elemnts를 생성하고 <code>ReactDOM.render()</code>에 인수로 전달하는 방법밖에 없다.</p>
-<p>시계 예제</p>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">tick</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> element = (</span><br><span class="line">    <span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;<span class="name">h1</span>&gt;</span>Hello, world!<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;<span class="name">h2</span>&gt;</span>It is &#123;new Date().toLocaleTimeString()&#125;.<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line"></span><br><span class="line">  ReactDOM.render(element, <span class="built_in">document</span>.getElementById(<span class="string">&quot;root&quot;</span>));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">setInterval</span>(tick, <span class="number">1000</span>);</span><br></pre></td></tr></table></figure>
-
-<p>실습</p>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">tick</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> element = (</span><br><span class="line">    <span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;<span class="name">h1</span>&gt;</span>Hello, World<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;<span class="name">h2</span>&gt;</span>&#123;new Date().toLocaleTimeString()&#125;<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line"></span><br><span class="line">  ReactDOM.render(</span><br><span class="line">    <span class="xml"><span class="tag">&lt;<span class="name">React.StrictMode</span>&gt;</span>&#123;element&#125;<span class="tag">&lt;/<span class="name">React.StrictMode</span>&gt;</span></span>,</span><br><span class="line">    <span class="built_in">document</span>.getElementById(<span class="string">&quot;root&quot;</span>)</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">setInterval</span>(tick, <span class="number">1000</span>);</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>실제로는, <code>ReactDOM.render()</code>는 한번만 실행된다. 다음에 이어지는 주제에서 <code>stateful components</code>에 대해서 배울것이다. 지금 배우는것도 다음 배울 내용과 연관 되어 있으니 쭉 보길 바란다.</p>
-</blockquote>
-<h2 id="React-Only-Updates-What’s-Necessary"><a href="#React-Only-Updates-What’s-Necessary" class="headerlink" title="React Only Updates What’s Necessary"></a>React Only Updates What’s Necessary</h2><p>개발자 도구를 통해 살펴보면 실제로는 전체 UI를 새로 생성하도록 구성하였지만, React DOM은 DOM을 그 자식 엘리먼트를 이전의 엘리먼트와 비교하고 DOM을 원하는 상태로 만드는 데 필요한 경우에만 DOM을 업테이트 한다.</p>
-<p>따라서 전체 UI가 업데이트 되는 것이 아니라 시계부분만 업데이트 되는 것이다. 이런 방식으로 접근하는것이 나중에 버그를 없애는데 도움을 줄 것이다.</p>
 
       
     </div>
@@ -904,7 +805,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/10/09/react/official-docs/211005-Handling%20Events/">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/10/09/react/official-docs/210922-rendering%20elementjs/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -917,7 +818,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/10/09/react/official-docs/211005-Handling%20Events/" class="post-title-link" itemprop="url">Handling Events</a>
+          <a href="/2021/10/09/react/official-docs/210922-rendering%20elementjs/" class="post-title-link" itemprop="url">rendering elementjs</a>
         </h2>
 
         <div class="post-meta-container">
@@ -951,35 +852,32 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="Handling-Events"><a href="#Handling-Events" class="headerlink" title="Handling Events"></a>Handling Events</h1><p>React 에서 이벤트를 처리하는 방식은 DOM 에서 이벤트를 처리하는 방식과 거의 유사하다. 몇가지 차이점이 있는데 다음과 같다.</p>
-<ol>
-<li>소분자가 아닌 camelCase를 사용한다.</li>
-<li>이벤트 헨들러를 string으로 전달하는것이 아니라 함수로 전달한다.</li>
-</ol>
-<p>DOM:</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">onclick</span>=<span class="string">&quot;activateLasers()&quot;</span>&gt;</span>Activate Lasers<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br></pre></td></tr></table></figure>
+          <h1 id="Rendering-Elemnts"><a href="#Rendering-Elemnts" class="headerlink" title="Rendering Elemnts"></a>Rendering Elemnts</h1><p>리엑트 앱의 가장 작은 단위를 의미한다. React dom 은 dom 과 react elemnts 가 일치하도록 업데이트 한다.</p>
+<blockquote>
+<p>컴포넌트와 혼동해서 사용하는 경우가 있다. 엘리먼트는 컴포넌트에 구성요소라고 생각하면 된다.</p>
+</blockquote>
+<h2 id="Rendering-an-Element-into-the-DOM"><a href="#Rendering-an-Element-into-the-DOM" class="headerlink" title="Rendering an Element into the DOM"></a>Rendering an Element into the DOM</h2><p>HTML 파일에 밑에 <code>div</code>가 있다고 가정.</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;root&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
-<p>React:</p>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;button onClick=&#123;activateLasers&#125;&gt;Activate Lasers&lt;/button&gt;</span><br></pre></td></tr></table></figure>
+<p>이제부터 이것을 <code>root DOM node</code>라고 부를 것이다. 루트 돔 노드안에 들어갈 내용을 <code>React DOM</code>을 통해 관리하게 된다.</p>
+<p>만약 어떤 앱을 통합하려는 경우에는 여러개의 루트 노드가 있을 수 있다. React elemnt를 root DOM node 에 렌더링 하려면 <code>ReactDOM.render()</code> 에 인수로 element와 root node를 넣고 호출하면 된다.</p>
+<h4 id="공식-문서-코드"><a href="#공식-문서-코드" class="headerlink" title="공식 문서 코드"></a>공식 문서 코드</h4><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> elment = <span class="xml"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>Hello, World<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span>;</span><br><span class="line">ReactDOM.render(elemnt, <span class="built_in">document</span>.getElementById(<span class="string">&quot;root&quot;</span>));</span><br></pre></td></tr></table></figure>
 
-<p>DOM 에서는 기본 동작을 막기 위헤서 <code>return false</code>를 사용할 수 있는 반면에 React 에서는 기본 동작을 막기 위해 <code>preventDefault</code>를 사용해야 한다.</p>
-<p>DOM:</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">onsubmit</span>=<span class="string">&quot;console.log(&#x27;You clicked submit.&#x27;); return false&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span>&gt;</span>Submit<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="실습-코드"><a href="#실습-코드" class="headerlink" title="실습 코드"></a>실습 코드</h4><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ReactDOM.render(</span><br><span class="line">  <span class="xml"><span class="tag">&lt;<span class="name">React.StrictMode</span>&gt;</span>&#123;elements&#125;<span class="tag">&lt;/<span class="name">React.StrictMode</span>&gt;</span></span>,</span><br><span class="line">  <span class="built_in">document</span>.getElementById(<span class="string">&quot;root&quot;</span>)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
 
-<p>React:</p>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Form</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">handleSubmit</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">    e.preventDefault();</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;You clicked submit.&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="xml"><span class="tag">&lt;<span class="name">form</span> <span class="attr">onSubmit</span>=<span class="string">&#123;handleSubmit&#125;</span>&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span>&gt;</span>Submit<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Updating-the-Rendered-Element"><a href="#Updating-the-Rendered-Element" class="headerlink" title="Updating the Rendered Element"></a>Updating the Rendered Element</h2><p>React elements 는 불변 객체이다. 한번 생성하고나면 자식 요소나 속성을 변경할 수 없다. 마치 영화에 프레임과 같아서 특정 시점에 UI를 그리는 역활을 한다.</p>
+<p>지금까지의 지식 수준에서는 UI를 업데이틑 하는 방법은 새로운 elemnts를 생성하고 <code>ReactDOM.render()</code>에 인수로 전달하는 방법밖에 없다.</p>
+<p>시계 예제</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">tick</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> element = (</span><br><span class="line">    <span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;<span class="name">h1</span>&gt;</span>Hello, world!<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;<span class="name">h2</span>&gt;</span>It is &#123;new Date().toLocaleTimeString()&#125;.<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line"></span><br><span class="line">  ReactDOM.render(element, <span class="built_in">document</span>.getElementById(<span class="string">&quot;root&quot;</span>));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">setInterval</span>(tick, <span class="number">1000</span>);</span><br></pre></td></tr></table></figure>
 
-<p>React 에서는 DOM 엘리먼트를 생성한 후에 이벤트 리스너를 추가 하기 위해서 <code>addEventListenter</code>를 호출할 필요가 없다. 렌더링 될때 리스너를 제공하는 방법을 사용한다.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Toggle</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">props</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">super</span>(props);</span><br><span class="line">    <span class="built_in">this</span>.state = &#123; <span class="attr">isToggleOn</span>: <span class="literal">true</span> &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 콜백에서 this 가 작동하려면 this를 바인딩 해주어야 한다. -&gt; 호출 시점에서 this는 undefined이기 때문이다.</span></span><br><span class="line">    <span class="built_in">this</span>.handleClick = <span class="built_in">this</span>.handleClick.bind(<span class="built_in">this</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">handleClick</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.setState(<span class="function">(<span class="params">pre</span>) =&gt;</span> (&#123;</span><br><span class="line">      <span class="attr">isToggleOn</span>: !pre.isToggleOn,</span><br><span class="line">    &#125;));</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">render</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      <span class="xml"><span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;this.handleClick&#125;</span>&gt;</span></span></span><br><span class="line"><span class="xml">        &#123;this.state.isToggleOn ? &quot;ON&quot; : &quot;OFF&quot;&#125;</span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>실습</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">tick</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> element = (</span><br><span class="line">    <span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;<span class="name">h1</span>&gt;</span>Hello, World<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;<span class="name">h2</span>&gt;</span>&#123;new Date().toLocaleTimeString()&#125;<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line"></span><br><span class="line">  ReactDOM.render(</span><br><span class="line">    <span class="xml"><span class="tag">&lt;<span class="name">React.StrictMode</span>&gt;</span>&#123;element&#125;<span class="tag">&lt;/<span class="name">React.StrictMode</span>&gt;</span></span>,</span><br><span class="line">    <span class="built_in">document</span>.getElementById(<span class="string">&quot;root&quot;</span>)</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">setInterval</span>(tick, <span class="number">1000</span>);</span><br></pre></td></tr></table></figure>
 
-<p>콜백 함수 내에서 this를 사용하고 싶다면 생성자에서 바인딩을 해주어야 한다. 이는 React 내에서의 특징이 이나리 일반적인 JavaScript에 특징이다. 만약 매번 바인딩 하기 싫다면 다음과 같은 방법을 사용해도 된다.</p>
-<p>publick class fiedls syntax :</p>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">LoggingButton</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">  <span class="comment">// This syntax ensures `this` is bound within handleClick.</span></span><br><span class="line">  <span class="comment">// Warning: this is *experimental* syntax.</span></span><br><span class="line">  handleClick = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;this is:&quot;</span>, <span class="built_in">this</span>);</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">render</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;this.handleClick&#125;</span>&gt;</span>Click me<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>화살표 함수 사용하기:</p>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">LoggingButton</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">handleClick</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;this is:&quot;</span>, <span class="built_in">this</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">render</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="comment">// This syntax ensures `this` is bound within handleClick</span></span><br><span class="line">    <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;()</span> =&gt;</span> this.handleClick()&#125;&gt;Click me<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>화살표 함수를 사용할때에 문제점은 컴포넌트가 렌더링 될때마다 콜백이 새로 생성된다는 것이다. 대부분의 경우는 문제가 되지 않으나, 콜백이 하위 컴포넌트에 props로서 전달된다면 그 컴포넌트들은 추가로 다시 렌더링을 수행할 수 도 있다.</p>
+<blockquote>
+<p>실제로는, <code>ReactDOM.render()</code>는 한번만 실행된다. 다음에 이어지는 주제에서 <code>stateful components</code>에 대해서 배울것이다. 지금 배우는것도 다음 배울 내용과 연관 되어 있으니 쭉 보길 바란다.</p>
+</blockquote>
+<h2 id="React-Only-Updates-What’s-Necessary"><a href="#React-Only-Updates-What’s-Necessary" class="headerlink" title="React Only Updates What’s Necessary"></a>React Only Updates What’s Necessary</h2><p>개발자 도구를 통해 살펴보면 실제로는 전체 UI를 새로 생성하도록 구성하였지만, React DOM은 DOM을 그 자식 엘리먼트를 이전의 엘리먼트와 비교하고 DOM을 원하는 상태로 만드는 데 필요한 경우에만 DOM을 업테이트 한다.</p>
+<p>따라서 전체 UI가 업데이트 되는 것이 아니라 시계부분만 업데이트 되는 것이다. 이런 방식으로 접근하는것이 나중에 버그를 없애는데 도움을 줄 것이다.</p>
 
       
     </div>
@@ -1067,6 +965,108 @@
 <figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">WarningBanner</span>(<span class="params">props</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (!props.warn) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">&quot;warning&quot;</span>&gt;</span>Warning!<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Page</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">props</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">super</span>(props);</span><br><span class="line">    <span class="built_in">this</span>.state = &#123; <span class="attr">showWarning</span>: <span class="literal">true</span> &#125;;</span><br><span class="line">    <span class="built_in">this</span>.handleToggleClick = <span class="built_in">this</span>.handleToggleClick.bind(<span class="built_in">this</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">handleToggleClick</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.setState(<span class="function">(<span class="params">state</span>) =&gt;</span> (&#123;</span><br><span class="line">      <span class="attr">showWarning</span>: !state.showWarning,</span><br><span class="line">    &#125;));</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">render</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      <span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">WarningBanner</span> <span class="attr">warn</span>=<span class="string">&#123;this.state.showWarning&#125;</span> /&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;this.handleToggleClick&#125;</span>&gt;</span></span></span><br><span class="line"><span class="xml">          &#123;this.state.showWarning ? &quot;Hide&quot; : &quot;Show&quot;&#125;</span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">ReactDOM.render(<span class="xml"><span class="tag">&lt;<span class="name">Page</span> /&gt;</span></span>, <span class="built_in">document</span>.getElementById(<span class="string">&quot;root&quot;</span>));</span><br></pre></td></tr></table></figure>
 
 <p>컴포넌트의 render 메서드로부터 null을 반환하는 것은 생명주기 메서드 호출에 영향을 주지 않는다. 그 예로 <code>componentDidUpdate</code>는 계속해서 호출되게 된다.</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/10/09/react/official-docs/211005-Handling%20Events/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JayoonKoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="티끌모아 태산">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/10/09/react/official-docs/211005-Handling%20Events/" class="post-title-link" itemprop="url">Handling Events</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2021-10-09 21:59:04 / Modified: 21:59:16" itemprop="dateCreated datePublished" datetime="2021-10-09T21:59:04+09:00">2021-10-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/react/" itemprop="url" rel="index"><span itemprop="name">react</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="Handling-Events"><a href="#Handling-Events" class="headerlink" title="Handling Events"></a>Handling Events</h1><p>React 에서 이벤트를 처리하는 방식은 DOM 에서 이벤트를 처리하는 방식과 거의 유사하다. 몇가지 차이점이 있는데 다음과 같다.</p>
+<ol>
+<li>소분자가 아닌 camelCase를 사용한다.</li>
+<li>이벤트 헨들러를 string으로 전달하는것이 아니라 함수로 전달한다.</li>
+</ol>
+<p>DOM:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">onclick</span>=<span class="string">&quot;activateLasers()&quot;</span>&gt;</span>Activate Lasers<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>React:</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;button onClick=&#123;activateLasers&#125;&gt;Activate Lasers&lt;/button&gt;</span><br></pre></td></tr></table></figure>
+
+<p>DOM 에서는 기본 동작을 막기 위헤서 <code>return false</code>를 사용할 수 있는 반면에 React 에서는 기본 동작을 막기 위해 <code>preventDefault</code>를 사용해야 한다.</p>
+<p>DOM:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">onsubmit</span>=<span class="string">&quot;console.log(&#x27;You clicked submit.&#x27;); return false&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span>&gt;</span>Submit<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>React:</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Form</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">handleSubmit</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">    e.preventDefault();</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;You clicked submit.&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="xml"><span class="tag">&lt;<span class="name">form</span> <span class="attr">onSubmit</span>=<span class="string">&#123;handleSubmit&#125;</span>&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span>&gt;</span>Submit<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>React 에서는 DOM 엘리먼트를 생성한 후에 이벤트 리스너를 추가 하기 위해서 <code>addEventListenter</code>를 호출할 필요가 없다. 렌더링 될때 리스너를 제공하는 방법을 사용한다.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Toggle</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">props</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">super</span>(props);</span><br><span class="line">    <span class="built_in">this</span>.state = &#123; <span class="attr">isToggleOn</span>: <span class="literal">true</span> &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 콜백에서 this 가 작동하려면 this를 바인딩 해주어야 한다. -&gt; 호출 시점에서 this는 undefined이기 때문이다.</span></span><br><span class="line">    <span class="built_in">this</span>.handleClick = <span class="built_in">this</span>.handleClick.bind(<span class="built_in">this</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">handleClick</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.setState(<span class="function">(<span class="params">pre</span>) =&gt;</span> (&#123;</span><br><span class="line">      <span class="attr">isToggleOn</span>: !pre.isToggleOn,</span><br><span class="line">    &#125;));</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">render</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      <span class="xml"><span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;this.handleClick&#125;</span>&gt;</span></span></span><br><span class="line"><span class="xml">        &#123;this.state.isToggleOn ? &quot;ON&quot; : &quot;OFF&quot;&#125;</span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>콜백 함수 내에서 this를 사용하고 싶다면 생성자에서 바인딩을 해주어야 한다. 이는 React 내에서의 특징이 이나리 일반적인 JavaScript에 특징이다. 만약 매번 바인딩 하기 싫다면 다음과 같은 방법을 사용해도 된다.</p>
+<p>publick class fiedls syntax :</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">LoggingButton</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">  <span class="comment">// This syntax ensures `this` is bound within handleClick.</span></span><br><span class="line">  <span class="comment">// Warning: this is *experimental* syntax.</span></span><br><span class="line">  handleClick = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;this is:&quot;</span>, <span class="built_in">this</span>);</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">render</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;this.handleClick&#125;</span>&gt;</span>Click me<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>화살표 함수 사용하기:</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">LoggingButton</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">handleClick</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;this is:&quot;</span>, <span class="built_in">this</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">render</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="comment">// This syntax ensures `this` is bound within handleClick</span></span><br><span class="line">    <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;()</span> =&gt;</span> this.handleClick()&#125;&gt;Click me<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>화살표 함수를 사용할때에 문제점은 컴포넌트가 렌더링 될때마다 콜백이 새로 생성된다는 것이다. 대부분의 경우는 문제가 되지 않으나, 콜백이 하위 컴포넌트에 props로서 전달된다면 그 컴포넌트들은 추가로 다시 렌더링을 수행할 수 도 있다.</p>
 
       
     </div>

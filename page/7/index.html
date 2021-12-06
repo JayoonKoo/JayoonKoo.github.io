@@ -68,7 +68,7 @@
       <h1 class="site-title">티끌모아 태산</h1>
       <i class="logo-line"></i>
     </a>
-      <p class="site-subtitle" itemprop="description">기회는 논리적입니다 여러분</p>
+      <p class="site-subtitle" itemprop="description">작은 조각 모음</p>
   </div>
 
   <div class="site-nav-right">
@@ -520,6 +520,100 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/09/12/system-programing/210817-%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4%20%EA%B4%80%EB%A6%AC/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JayoonKoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="티끌모아 태산">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/09/12/system-programing/210817-%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4%20%EA%B4%80%EB%A6%AC/" class="post-title-link" itemprop="url">프로세스 관리</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-09-12 23:46:02" itemprop="dateCreated datePublished" datetime="2021-09-12T23:46:02+09:00">2021-09-12</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/CS/" itemprop="url" rel="index"><span itemprop="name">CS</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="프로세스-관리"><a href="#프로세스-관리" class="headerlink" title="프로세스 관리"></a>프로세스 관리</h1><h2 id="프로세스-ID"><a href="#프로세스-ID" class="headerlink" title="프로세스 ID"></a>프로세스 ID</h2><p>각각의 프로세스는 proess id 라고 하는 PID 를 갖는다. </p>
+<ul>
+<li>pid : 해당 시점에 unique한 pid</li>
+<li>최대 값은 2의 15승인 32768( 부호형 16비트 정수값)</li>
+<li>ppid : 부모 프로세스의 pid 값</li>
+</ul>
+<p><code>ps -ef</code>를 통해 pid, ppid 및 프로세스스 정보 확인</p>
+<p><code>vi /etc/passwd</code>를 프로세스와 소유자를 관리함. </p>
+<p>예시</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root:x:0:0:root:/root:/bin/bash</span><br></pre></td></tr></table></figure>
+<ul>
+<li>사용자명 : root</li>
+<li>패스워드 : x (없음)</li>
+<li>사용자 ID : 0</li>
+<li>그룹 ID : 0</li>
+<li>사용자 정보 : root</li>
+<li>홈 디렉토리 : /root</li>
+<li>쉘 환경 : /bin/bash</li>
+</ul>
+<h2 id="pid-및-ppid-확인"><a href="#pid-및-ppid-확인" class="headerlink" title="pid 및 ppid 확인"></a>pid 및 ppid 확인</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sys/types.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;unistd.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;pid=%d\n&quot;</span>, getpid());</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;ppid=%d\n&quot;</span>, getppid());</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ gcc test.c -o test</span><br><span class="line">$ ./test</span><br><span class="line"></span><br><span class="line">pid=22440</span><br><span class="line">ppid=22164</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/09/12/system-programing/210813-%EC%8B%9C%EC%8A%A4%ED%85%9C%20%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D%20%ED%95%B5%EC%8B%AC%EA%B8%B0%EC%88%A0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -594,100 +688,6 @@
 <h3 id="POSIX"><a href="#POSIX" class="headerlink" title="POSIX"></a>POSIX</h3><p>유닉스 시스템 프로그래밍 인터페이스 표준이다.<br>IEEE에서 표준화를 계속해서 시도하고 있고, 리차드 스톨만이 POSIX를 표준안 이름으로 제안했다. </p>
 <h3 id="C-언어-표준"><a href="#C-언어-표준" class="headerlink" title="C 언어 표준"></a>C 언어 표준</h3><p>다양한 C 언어의 변종이 존재한다. 그래서 ANSI에서 ANSI C 표준을 정립했고 리눅스에서는 POSIX 와 ANSI C 를 지원한다. </p>
 <h3 id="시스템-프로그래밍과-버전"><a href="#시스템-프로그래밍과-버전" class="headerlink" title="시스템 프로그래밍과 버전"></a>시스템 프로그래밍과 버전</h3><p>하위 시스템 레벨은 거의 변하지 않고 유지되고 있음. 하위 레벨까지 잘 알고 있으면 상위 레벨에서 동작하는 프로그램을 만들지라도 성능 향상에 도움을 줌. </p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/09/12/system-programing/210817-%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4%20%EA%B4%80%EB%A6%AC/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JayoonKoo">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="티끌모아 태산">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/09/12/system-programing/210817-%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4%20%EA%B4%80%EB%A6%AC/" class="post-title-link" itemprop="url">프로세스 관리</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-09-12 23:46:02" itemprop="dateCreated datePublished" datetime="2021-09-12T23:46:02+09:00">2021-09-12</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/CS/" itemprop="url" rel="index"><span itemprop="name">CS</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="프로세스-관리"><a href="#프로세스-관리" class="headerlink" title="프로세스 관리"></a>프로세스 관리</h1><h2 id="프로세스-ID"><a href="#프로세스-ID" class="headerlink" title="프로세스 ID"></a>프로세스 ID</h2><p>각각의 프로세스는 proess id 라고 하는 PID 를 갖는다. </p>
-<ul>
-<li>pid : 해당 시점에 unique한 pid</li>
-<li>최대 값은 2의 15승인 32768( 부호형 16비트 정수값)</li>
-<li>ppid : 부모 프로세스의 pid 값</li>
-</ul>
-<p><code>ps -ef</code>를 통해 pid, ppid 및 프로세스스 정보 확인</p>
-<p><code>vi /etc/passwd</code>를 프로세스와 소유자를 관리함. </p>
-<p>예시</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root:x:0:0:root:/root:/bin/bash</span><br></pre></td></tr></table></figure>
-<ul>
-<li>사용자명 : root</li>
-<li>패스워드 : x (없음)</li>
-<li>사용자 ID : 0</li>
-<li>그룹 ID : 0</li>
-<li>사용자 정보 : root</li>
-<li>홈 디렉토리 : /root</li>
-<li>쉘 환경 : /bin/bash</li>
-</ul>
-<h2 id="pid-및-ppid-확인"><a href="#pid-및-ppid-확인" class="headerlink" title="pid 및 ppid 확인"></a>pid 및 ppid 확인</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sys/types.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;unistd.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;pid=%d\n&quot;</span>, getpid());</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;ppid=%d\n&quot;</span>, getppid());</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ gcc test.c -o test</span><br><span class="line">$ ./test</span><br><span class="line"></span><br><span class="line">pid=22440</span><br><span class="line">ppid=22164</span><br></pre></td></tr></table></figure>
 
       
     </div>

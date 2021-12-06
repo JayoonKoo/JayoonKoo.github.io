@@ -68,7 +68,7 @@
       <h1 class="site-title">티끌모아 태산</h1>
       <i class="logo-line"></i>
     </a>
-      <p class="site-subtitle" itemprop="description">기회는 논리적입니다 여러분</p>
+      <p class="site-subtitle" itemprop="description">작은 조각 모음</p>
   </div>
 
   <div class="site-nav-right">
@@ -189,100 +189,6 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/10/23/TEST_CODE/211019-%EB%B9%84%EB%8F%99%EA%B8%B0%20test/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JayoonKoo">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="티끌모아 태산">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/10/23/TEST_CODE/211019-%EB%B9%84%EB%8F%99%EA%B8%B0%20test/" class="post-title-link" itemprop="url">비동기 test</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-10-23 22:14:44" itemprop="dateCreated datePublished" datetime="2021-10-23T22:14:44+09:00">2021-10-23</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/test/" itemprop="url" rel="index"><span itemprop="name">test</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="비동기-코드-테스트"><a href="#비동기-코드-테스트" class="headerlink" title="비동기 코드 테스트"></a>비동기 코드 테스트</h1><p>jest 는 테스트가 끝나면 바로 끝나버림. 콜백 함수를 넘겨주어도 기다리지 않고 끝나기 때문에 제대로 된 테스트를 진행할 수 없다. 이때는 test네 콜백에 인자로 done을 넘겨주면 된다. 이 done이 호출되면 테스트가 끝났다고 명시할 수 있어서 콜백이 끝나는 부분에서 done을 호출하면 제대로된 테스트를 할 수 있다.</p>
-<p>fn :</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> fn = &#123;</span><br><span class="line">  <span class="attr">add</span>: <span class="function">(<span class="params">num1, num2</span>) =&gt;</span> num1 + num2,</span><br><span class="line">  <span class="attr">makeUser</span>: <span class="function">(<span class="params">name, age</span>) =&gt;</span> (&#123; name, age, <span class="attr">gender</span>: <span class="literal">undefined</span> &#125;),</span><br><span class="line">  <span class="attr">throwErr</span>: <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">&quot;xx&quot;</span>);</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">getName</span>: <span class="function">(<span class="params">cb</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> name = <span class="string">&quot;Mike&quot;</span>;</span><br><span class="line">    <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">      cb(name);</span><br><span class="line">    &#125;, <span class="number">3000</span>);</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p>test :</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">test(<span class="string">&quot;3초 후에 받아온 이름은 Mike이다.&quot;</span>, <span class="function">(<span class="params">done</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> cb = <span class="function">(<span class="params">name</span>) =&gt;</span> &#123;</span><br><span class="line">    expect(name).toBe(<span class="string">&quot;Mike&quot;</span>);</span><br><span class="line">    done();</span><br><span class="line">  &#125;;</span><br><span class="line">  fn.getName(cb);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<p>만약 done을 받고 호출하지 않으면 timeout으로 종료 되고 테스트는 실패한다.</p>
-<p>에러를 검사하고 싶으면 try catch를 사용하면 된다.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">test(<span class="string">&quot;서버 에러 비동기 테스트&quot;</span>, <span class="function">(<span class="params">done</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> cb = <span class="function">(<span class="params">name</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">      expect(name).toBe(<span class="string">&quot;Mike&quot;</span>);</span><br><span class="line">      done();</span><br><span class="line">    &#125; <span class="keyword">catch</span> (error) &#123;</span><br><span class="line">      done();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br><span class="line">  fn.getNameError(cb);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<p>promise를 리턴하면 jest는 promise 가 resolve 될때까지 기다려 준다. 단 이때는 return을 명시해 주어야 한다.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">test(<span class="string">&quot;promise test&quot;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> fn.getAge().then(<span class="function">(<span class="params">age</span>) =&gt;</span> expect(age).toBe(<span class="number">30</span>));</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<p>보다 간단하게 사용하기 위한 resolves, rejects matcher 가 있다.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">test(<span class="string">&quot;promise test resolve Matcher&quot;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> expect(fn.getAge()).resolves.toBe(<span class="number">30</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<p>async await 도 사용할 수 있다.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">test(<span class="string">&quot;3초후에 async await test&quot;</span>, <span class="keyword">async</span> () =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> age = <span class="keyword">await</span> fn.getAge();</span><br><span class="line">  expect(age).toBe(<span class="number">30</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<p>마찬가지로 resolves, rejects를 사용할 수 있다.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">test(<span class="string">&quot;3초 후에 resolves 쓰는 패턴&quot;</span>, <span class="keyword">async</span> () =&gt; &#123;</span><br><span class="line">  <span class="keyword">await</span> expect(fn.getAge()).resolves.toBe(<span class="number">30</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/10/23/TEST_CODE/211018-jest%20Matcher/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -393,6 +299,100 @@
 <li>toThrow() : 인자를 넘겨주면 특정 에러인지 확인하고 인자를 넘겨주지 않으면 에러를 발생시키는 여부만 확인한다.</li>
 </ul>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">test(<span class="string">&quot;이거 에러 나나?&quot;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  expect(<span class="function">() =&gt;</span> fn.throwErr()).toThrow();</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// 어떤 내용인지 확인하려면 인수로 전달하면 된다.</span></span><br><span class="line">test(<span class="string">&quot;이거 xx 에러인가? &quot;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  expect(<span class="function">() =&gt;</span> fn.throwErr()).toThrow(<span class="string">&quot;xx&quot;</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/10/23/TEST_CODE/211019-%EB%B9%84%EB%8F%99%EA%B8%B0%20test/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JayoonKoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="티끌모아 태산">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/10/23/TEST_CODE/211019-%EB%B9%84%EB%8F%99%EA%B8%B0%20test/" class="post-title-link" itemprop="url">비동기 test</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-10-23 22:14:44" itemprop="dateCreated datePublished" datetime="2021-10-23T22:14:44+09:00">2021-10-23</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/test/" itemprop="url" rel="index"><span itemprop="name">test</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="비동기-코드-테스트"><a href="#비동기-코드-테스트" class="headerlink" title="비동기 코드 테스트"></a>비동기 코드 테스트</h1><p>jest 는 테스트가 끝나면 바로 끝나버림. 콜백 함수를 넘겨주어도 기다리지 않고 끝나기 때문에 제대로 된 테스트를 진행할 수 없다. 이때는 test네 콜백에 인자로 done을 넘겨주면 된다. 이 done이 호출되면 테스트가 끝났다고 명시할 수 있어서 콜백이 끝나는 부분에서 done을 호출하면 제대로된 테스트를 할 수 있다.</p>
+<p>fn :</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> fn = &#123;</span><br><span class="line">  <span class="attr">add</span>: <span class="function">(<span class="params">num1, num2</span>) =&gt;</span> num1 + num2,</span><br><span class="line">  <span class="attr">makeUser</span>: <span class="function">(<span class="params">name, age</span>) =&gt;</span> (&#123; name, age, <span class="attr">gender</span>: <span class="literal">undefined</span> &#125;),</span><br><span class="line">  <span class="attr">throwErr</span>: <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">&quot;xx&quot;</span>);</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">getName</span>: <span class="function">(<span class="params">cb</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> name = <span class="string">&quot;Mike&quot;</span>;</span><br><span class="line">    <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">      cb(name);</span><br><span class="line">    &#125;, <span class="number">3000</span>);</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>test :</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">test(<span class="string">&quot;3초 후에 받아온 이름은 Mike이다.&quot;</span>, <span class="function">(<span class="params">done</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> cb = <span class="function">(<span class="params">name</span>) =&gt;</span> &#123;</span><br><span class="line">    expect(name).toBe(<span class="string">&quot;Mike&quot;</span>);</span><br><span class="line">    done();</span><br><span class="line">  &#125;;</span><br><span class="line">  fn.getName(cb);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>만약 done을 받고 호출하지 않으면 timeout으로 종료 되고 테스트는 실패한다.</p>
+<p>에러를 검사하고 싶으면 try catch를 사용하면 된다.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">test(<span class="string">&quot;서버 에러 비동기 테스트&quot;</span>, <span class="function">(<span class="params">done</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> cb = <span class="function">(<span class="params">name</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">      expect(name).toBe(<span class="string">&quot;Mike&quot;</span>);</span><br><span class="line">      done();</span><br><span class="line">    &#125; <span class="keyword">catch</span> (error) &#123;</span><br><span class="line">      done();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br><span class="line">  fn.getNameError(cb);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>promise를 리턴하면 jest는 promise 가 resolve 될때까지 기다려 준다. 단 이때는 return을 명시해 주어야 한다.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">test(<span class="string">&quot;promise test&quot;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> fn.getAge().then(<span class="function">(<span class="params">age</span>) =&gt;</span> expect(age).toBe(<span class="number">30</span>));</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>보다 간단하게 사용하기 위한 resolves, rejects matcher 가 있다.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">test(<span class="string">&quot;promise test resolve Matcher&quot;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> expect(fn.getAge()).resolves.toBe(<span class="number">30</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>async await 도 사용할 수 있다.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">test(<span class="string">&quot;3초후에 async await test&quot;</span>, <span class="keyword">async</span> () =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> age = <span class="keyword">await</span> fn.getAge();</span><br><span class="line">  expect(age).toBe(<span class="number">30</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>마찬가지로 resolves, rejects를 사용할 수 있다.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">test(<span class="string">&quot;3초 후에 resolves 쓰는 패턴&quot;</span>, <span class="keyword">async</span> () =&gt; &#123;</span><br><span class="line">  <span class="keyword">await</span> expect(fn.getAge()).resolves.toBe(<span class="number">30</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 
       
     </div>
