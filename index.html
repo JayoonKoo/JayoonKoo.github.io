@@ -85,7 +85,7 @@
         <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
         <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">11</span></a></li>
         <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">9</span></a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">106</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">107</span></a></li>
   </ul>
 </nav>
 
@@ -129,7 +129,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">106</span>
+          <span class="site-state-item-count">107</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -180,6 +180,110 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/12/10/TIL/unca/211209/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JayoonKoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="티끌모아 태산">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/12/10/TIL/unca/211209/" class="post-title-link" itemprop="url">211209 백엔드, 마이크로프론트엔드</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2021-12-10 16:48:03 / Modified: 16:48:18" itemprop="dateCreated datePublished" datetime="2021-12-10T16:48:03+09:00">2021-12-10</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/TIL/" itemprop="url" rel="index"><span itemprop="name">TIL</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="211209"><a href="#211209" class="headerlink" title="211209"></a>211209</h1><h2 id="백엔드"><a href="#백엔드" class="headerlink" title="백엔드"></a>백엔드</h2><ul>
+<li>201 데이터가 잘 만들어졌습니다 상태 코드</li>
+<li>204 정상적으로 삭제 했고 이제 리소스가 없음. sendStatus(204) → 상태 메세지만 반환함.</li>
+<li>postman 에서 RUN 버튼 누르면 컬랙션 안에 모든 API를 테스트할 수 있다.</li>
+<li>mvc 패턴 model, view, controller 를 분리하는 패턴 model (DB), controller(logic), View(ui) → 서버에서 View 는 router 와 밀접한 관련이 있다.</li>
+<li>typescript 에서 req.query 에 타입을 정의하고 싶을때 req: Request&lt;{}, {}, {}, Type&gt; 으로 정의할 수 있다.</li>
+<li>마찬가지로 body 나 params 의 타입을 설정하고 싶다면 Request 에 generic 으로 순서에 맞게 넣어주면 된다.</li>
+</ul>
+<h2 id="마이크로-프론트엔드"><a href="#마이크로-프론트엔드" class="headerlink" title="마이크로 프론트엔드"></a>마이크로 프론트엔드</h2><ul>
+<li>각각의 페이지를 각각의 SPA로 만든다. 서로 커뮤니케이션을 하는 것이 아니라 API를 통해 커뮤니케이션 하게 만든다.</li>
+<li>장점? 완전히 독립적인 앱 두게를 갖게 된다. 만약 각각의 팀이 개발하고 있다면? 각각의 팀이 독립적인 결정을 해도 영향을 주지 않는다!</li>
+<li>예를들어 팀 1에서는 react로 구현하고 팀2 에서는 vue 나 angular 같은걸로 개발할 수 있게 된다.</li>
+<li>한 페이지 내에서도 가능하다. 근데 각각의 앱을 어디에 표시할지 어떻게 알까? 컨테이너라는 앱도 만들어서 어떻게 표시할지 구현할 수 있다. 즉 2개의 마이크로프론트 앱이 있다면 한개의 컨테이너 앱을 더 두어서 어떻게 배치할지 정하는 것이다.</li>
+<li>컨테이너를 어떻게 구현할수 있을지는 크게 3가지 관점이 있다.<ol>
+<li>build time integration → 브라우저에 컨테이너가 로딩 되기 전에 각각의 앱에 접근할 수 있다.</li>
+<li>run time integration → 브라우저에 컨테이너가 로딩 된 이후에 각각의 앱에 접근할 수 있다.</li>
+<li>server integration → backend 에서 해야할 내용이므로 여기서는 다루지 않는다.</li>
+</ol>
+</li>
+<li>build tim integration에 가장 간단한 방법?<ul>
+<li>작업 완료하면 npm 패키지로 배포한다. 다음 컨테이너에서 받아서 사용한다.</li>
+<li>장점 : 쉽다. 이해하기 쉬움.</li>
+<li>단점 : container 가 redepoly 되면 패키지도 다시 update 됨. 컨테이너와 강하게 결합되게 된다. 마이크로론트엔드에 컨셉에 맞지 않음.</li>
+</ul>
+</li>
+</ul>
+<h2 id="알고리즘"><a href="#알고리즘" class="headerlink" title="알고리즘"></a>알고리즘</h2><ul>
+<li>실제로 재귀 함수로 DFS 구현하는 경우가 있다.</li>
+<li>BFS 는 보통 큐라서 만약 둘다 가능하다면 BFS로 푸는게 나은 경우가 많다.</li>
+<li>100만 → o(N) 만큼 필요함</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1229,146 +1333,6 @@
 <p><code>Calculator</code> 의 변경사항은 다음과 같다.:</p>
 <figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Calculator</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">props</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">super</span>(props);</span><br><span class="line">    <span class="built_in">this</span>.handleCelsiusChange = <span class="built_in">this</span>.handleCelsiusChange.bind(<span class="built_in">this</span>);</span><br><span class="line">    <span class="built_in">this</span>.handleFahrenheitChange = <span class="built_in">this</span>.handleFahrenheitChange.bind(<span class="built_in">this</span>);</span><br><span class="line">    <span class="built_in">this</span>.state = &#123; <span class="attr">temperature</span>: <span class="string">&quot;&quot;</span>, <span class="attr">scale</span>: <span class="string">&quot;c&quot;</span> &#125;;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">handleCelsiusChange</span>(<span class="params">temperature</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.setState(&#123; <span class="attr">scale</span>: <span class="string">&quot;c&quot;</span>, temperature &#125;);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">handleFahrenheitChange</span>(<span class="params">temperature</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.setState(&#123; <span class="attr">scale</span>: <span class="string">&quot;f&quot;</span>, temperature &#125;);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">render</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> scale = <span class="built_in">this</span>.state.scale;</span><br><span class="line">    <span class="keyword">const</span> temperature = <span class="built_in">this</span>.state.temperature;</span><br><span class="line">    <span class="keyword">const</span> celsius =</span><br><span class="line">      scale === <span class="string">&quot;f&quot;</span> ? tryConvert(temperature, toCelsius) : temperature;</span><br><span class="line">    <span class="keyword">const</span> fahrenheit =</span><br><span class="line">      scale === <span class="string">&quot;c&quot;</span> ? tryConvert(temperature, toFahrenheit) : temperature;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      <span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">TemperatureInput</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">          <span class="attr">scale</span>=<span class="string">&quot;c&quot;</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">          <span class="attr">temperature</span>=<span class="string">&#123;celsius&#125;</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">          <span class="attr">onTemperatureChange</span>=<span class="string">&#123;this.handleCelsiusChange&#125;</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">        /&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">TemperatureInput</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">          <span class="attr">scale</span>=<span class="string">&quot;f&quot;</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">          <span class="attr">temperature</span>=<span class="string">&#123;fahrenheit&#125;</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">          <span class="attr">onTemperatureChange</span>=<span class="string">&#123;this.handleFahrenheitChange&#125;</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">        /&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">BoilingVerdict</span> <span class="attr">celsius</span>=<span class="string">&#123;parseFloat(celsius)&#125;</span> /&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/10/23/react/official-docs/211014-Thinking%20In%20React/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JayoonKoo">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="티끌모아 태산">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/10/23/react/official-docs/211014-Thinking%20In%20React/" class="post-title-link" itemprop="url">Thinking In React</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2021-10-23 22:16:06 / Modified: 22:16:41" itemprop="dateCreated datePublished" datetime="2021-10-23T22:16:06+09:00">2021-10-23</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/react/" itemprop="url" rel="index"><span itemprop="name">react</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="Thinking-in-React"><a href="#Thinking-in-React" class="headerlink" title="Thinking in React"></a>Thinking in React</h1><p>React로 상품들을 검색할 수 있는 데이터 테이블을 만드는 과정을 통해 리엑트로 생각한다는것이 무엇인지 알아보자.</p>
-<h2 id="목업으로-시작하기"><a href="#목업으로-시작하기" class="headerlink" title="목업으로 시작하기"></a>목업으로 시작하기</h2><p>다음과 같은 JSON을 서버로 부터 받았다고 가정하자.</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">  &#123;category: &quot;Sporting Goods&quot;, price: &quot;$49.99&quot;, stocked: true, name: &quot;Football&quot;&#125;,</span><br><span class="line">  &#123;category: &quot;Sporting Goods&quot;, price: &quot;$9.99&quot;, stocked: true, name: &quot;Baseball&quot;&#125;,</span><br><span class="line">  &#123;category: &quot;Sporting Goods&quot;, price: &quot;$29.99&quot;, stocked: false, name: &quot;Basketball&quot;&#125;,</span><br><span class="line">  &#123;category: &quot;Electronics&quot;, price: &quot;$99.99&quot;, stocked: true, name: &quot;iPod Touch&quot;&#125;,</span><br><span class="line">  &#123;category: &quot;Electronics&quot;, price: &quot;$399.99&quot;, stocked: false, name: &quot;iPhone 5&quot;&#125;,</span><br><span class="line">  &#123;category: &quot;Electronics&quot;, price: &quot;$199.99&quot;, stocked: true, name: &quot;Nexus 7&quot;&#125;</span><br><span class="line">];</span><br></pre></td></tr></table></figure>
-
-<h2 id="1단계-UI를-컴포넌트-계층-구조로-나누기"><a href="#1단계-UI를-컴포넌트-계층-구조로-나누기" class="headerlink" title="1단계: UI를 컴포넌트 계층 구조로 나누기"></a>1단계: UI를 컴포넌트 계층 구조로 나누기</h2><p>디자이너가 디자인한 화면을 보고 박스를 그리며 일므을 붙여본다. 이미 그려져 있다면 디자이너와 상의 해보면서 수정하거나 의미를 확실히 파악하도록 해본다.</p>
-<p>하지만 어떤것이 컴포넌트가 될지 알수 있을까? 이것은 우리가 함수나 객체를 만들때처럼 생각하면 된다. 한가지 컴포넌트는 한가지 일만 하도록 작게 나누면서 단일 책임 원칙을 지키는 것이다.</p>
-<p>JSON 데이터 모델이 적절히 만들어 졌다면 UI와 잘 연결 될 것이다. 이것은 ui와 데이터 모델이 <code>information architecture</code> 을 가지는 경향이 있기 때문이다.</p>
-<img src="/images/211014-Thinking In React/1.png" width="500">
-
-<ol>
-<li>FilterableProductTable(노란색): 예시 전체를 포괄합니다.</li>
-<li>SearchBar(파란색): 모든 유저의 입력(user input) 을 받습니다.</li>
-<li>ProductTable(연두색): 유저의 입력(user input)을 기반으로 데이터 콜렉션(data collection)을 필터링 해서 보여줍니다.</li>
-<li>ProductCategoryRow(하늘색): 각 카테고리(category)의 헤더를 보여줍니다.</li>
-<li>ProductRow(빨강색): 각각의 제품(product)에 해당하는 행을 보여줍니다.</li>
-</ol>
-<p>3번은 <code>ProductTableHeader</code>로 바꾸어 Name Price만 따로 표현하는게 더 합리적일 수 있다. 그러나 여기선 데이터 콜렉션이라는 역활 책임을 생각해서 남두었다. 뭐가 좋을지는 선택하면 된다.</p>
-<p>이제 계층적으로 나타내면 다음과 같다.</p>
-<ul>
-<li>FilterableProductTable<ul>
-<li>SearchBar</li>
-<li>ProductTable<ul>
-<li>ProductCategoryRow</li>
-<li>ProductRow</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="2단계-React로-정적인-버전-만들기"><a href="#2단계-React로-정적인-버전-만들기" class="headerlink" title="2단계 : React로 정적인 버전 만들기"></a>2단계 : React로 정적인 버전 만들기</h2><p>데이터 모델을 가지고 UI 렌더링은 되지만 상호 작용은 안되는 정적인 버전을 만들어 본다. 정적은 버전은 생각을 적게하고 타이핑을 많이 하고, 상호작용을 위해서는 생각을 많이 하고 타이핑을 적게 하는데, 나중에 살펴 보기로 하고 정적인 버전을 만들어 본다.</p>
-<p>정적 버전을 위해서 우선은 state를 사용하지 말아라. 우선은 props로 데이터를 부모에서 자식으로 전달하면서 만들어 보아라.</p>
-<p>컴포넌트는 top-down(하양식) 이나 bottom-top(상향식) 으로 만들 수 있다. 간단한 예시에서는 보통 하향식으로 만드는게 쉽지만 프로젝트가 커지면 상향식으로 만드록 테스트를 작성하면서 개발하기가 더 쉽다.</p>
-<p>이 단계가 끝나면 데이터 렌더링을 위해 만들어진 재사용 가능한 컴포넌트들의 라이브러리르 가지게 된다. 지금은 <code>render()</code> 메서드만 가지고 있다. 최상위 컴포넌트는 props를 통해 데이터 모델을 받고 자식 컴포넌트에 전달하는데 한번 만들어 봄으로서 이런 흐름을 파악하기 쉽다.</p>
-<h2 id="3-단계-UI-state-에-대한-최소한의-하지만-완전한-표현-찾아-내기"><a href="#3-단계-UI-state-에-대한-최소한의-하지만-완전한-표현-찾아-내기" class="headerlink" title="3 단계: UI state 에 대한 최소한의 (하지만 완전한) 표현 찾아 내기"></a>3 단계: UI state 에 대한 최소한의 (하지만 완전한) 표현 찾아 내기</h2><p>이제 변경해야할 최소한의 state는 무엇일지 생각해본다. TODO 리스트에서 예를 들면 해야할 일 목록을 state를 관리하고, 할일 목록 갯수를 state를 관리하지 않는것을 의미한다. 이것은 중복 배제 원칙이라고 하는데 만약 할일 목록 갯수를 state로 관리하고 싶다면 할일 목록 배열의 갯수를 세는 방법을 사용한다.</p>
-<p>다음 목록에서 state가 될만한 것이 무엇이 있을지 생각해 보자.</p>
-<ul>
-<li>제품의 원본 목록</li>
-<li>유저가 입력한 검색어</li>
-<li>체크박스의 값</li>
-<li>필터링 된 제품들의 목록</li>
-</ul>
-<p>다음 3가지 질문을 통해서 확인할 수 있다.</p>
-<ol>
-<li>부모로부터 props를 통해 전달 됩니까? -&gt; state가 아니다.</li>
-<li>시간이 지나도 변하지 않나요? -&gt; state가 아니다.</li>
-<li>컴포넌트 안의 다른 state나 props를 가지고 계산 가능한가요? -&gt; 그렇다면 state 가 아니다.</li>
-</ol>
-<p>결과적으로 state는 다음 목록이 된다.</p>
-<ul>
-<li>유저가 입력한 검색어</li>
-<li>체크박스의 값</li>
-</ul>
-<h2 id="4단계-state가-어디-있어야-할지-찾기"><a href="#4단계-state가-어디-있어야-할지-찾기" class="headerlink" title="4단계 : state가 어디 있어야 할지 찾기"></a>4단계 : state가 어디 있어야 할지 찾기</h2><p>리엑트는 단방향 데이터 흐름을 갔기 때문에 어떤 컴포넌트에 state를 가지게 할지가 중요하다. 다음과 같은 기준을 생각해서 정해보자.</p>
-<ul>
-<li>state를 기반으로 렌더링하는 모든 컴포넌트를 찾으세요.</li>
-<li>공통 소유 컴포넌트 (common owner component)를 찾으세요. (계층 구조 내에서 특정 state가 있어야 하는 모든 컴포넌트들의 상위에 있는 하나의 컴포넌트).</li>
-<li>공통 혹은 더 상위에 있는 컴포넌트가 state를 가져야 합니다.</li>
-<li>state를 소유할 적절한 컴포넌트를 찾지 못하였다면, state를 소유하는 컴포넌트를 하나 만들어서 공통 오너 컴포넌트의 상위 계층에 추가하세요.</li>
-</ul>
-<p>결정하는 과정으 다음과 같다.</p>
-<ul>
-<li>ProductTable은 state에 의존한 상품 리스트의 필터링해야 하고 SearchBar는 검색어와 체크박스의 상태를 표시해주어야 합니다.</li>
-<li>공통 소유 컴포넌트는 FilterableProductTable입니다.</li>
-<li>의미상으로도 FilterableProductTable이 검색어와 체크박스의 체크 여부를 가지는 것이 타당합니다.</li>
-</ul>
-<h2 id="5단계-역방향-데이터-흐름-추가하기"><a href="#5단계-역방향-데이터-흐름-추가하기" class="headerlink" title="5단계: 역방향 데이터 흐름 추가하기"></a>5단계: 역방향 데이터 흐름 추가하기</h2><p>우리가 만든 <code>FilterableProductTable</code> 에서 아직 <code>SeacrBar</code>에 setState를 콜백으로 주지 않았기 때문에 폼을 입력해도 데이터가 변하지 않게 된다. 하위 컴포넌트인 <code>SearchBar</code>에서 상위 컴포넌트인 <code>FilterableProductTable</code>에 state를 변경하기 위해서는 콜백으로 setState를 주고 하위 컴포넌트에서 호출하면된다.</p>
-<p>이렇게 역방향 데이터 흐름을 추가할 수 있다.</p>
-<h2 id="이게-전부임"><a href="#이게-전부임" class="headerlink" title="이게 전부임.."></a>이게 전부임..</h2>
       
     </div>
 

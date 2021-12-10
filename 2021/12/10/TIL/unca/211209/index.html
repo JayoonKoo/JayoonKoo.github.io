@@ -20,23 +20,28 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"jayoonkoo.github.io","root":"/","images":"/images","scheme":"Muse","version":"8.6.1","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
-<meta property="og:type" content="website">
-<meta property="og:title" content="티끌모아 태산">
-<meta property="og:url" content="https://jayoonkoo.github.io/archives/page/6/index.html">
+<meta name="description" content="211209백엔드 201 데이터가 잘 만들어졌습니다 상태 코드 204 정상적으로 삭제 했고 이제 리소스가 없음. sendStatus(204) → 상태 메세지만 반환함. postman 에서 RUN 버튼 누르면 컬랙션 안에 모든 API를 테스트할 수 있다. mvc 패턴 model, view, controller 를 분리하는 패턴 model (DB), contr">
+<meta property="og:type" content="article">
+<meta property="og:title" content="211209 백엔드, 마이크로프론트엔드">
+<meta property="og:url" content="https://jayoonkoo.github.io/2021/12/10/TIL/unca/211209/index.html">
 <meta property="og:site_name" content="티끌모아 태산">
+<meta property="og:description" content="211209백엔드 201 데이터가 잘 만들어졌습니다 상태 코드 204 정상적으로 삭제 했고 이제 리소스가 없음. sendStatus(204) → 상태 메세지만 반환함. postman 에서 RUN 버튼 누르면 컬랙션 안에 모든 API를 테스트할 수 있다. mvc 패턴 model, view, controller 를 분리하는 패턴 model (DB), contr">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-12-10T07:48:03.000Z">
+<meta property="article:modified_time" content="2021-12-10T07:48:18.253Z">
 <meta property="article:author" content="JayoonKoo">
+<meta property="article:tag" content="TIL">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://jayoonkoo.github.io/archives/page/6/">
+<link rel="canonical" href="https://jayoonkoo.github.io/2021/12/10/TIL/unca/211209/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":false,"lang":"en","comments":"","permalink":"","path":"archives/page/6/index.html","title":""}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://jayoonkoo.github.io/2021/12/10/TIL/unca/211209/","path":"2021/12/10/TIL/unca/211209/","title":"211209 백엔드, 마이크로프론트엔드"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>Archive | 티끌모아 태산</title>
+<title>211209 백엔드, 마이크로프론트엔드 | 티끌모아 태산</title>
   
 
 
@@ -103,7 +108,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           Table of Contents
@@ -116,6 +121,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#211209"><span class="nav-number">1.</span> <span class="nav-text">211209</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%EB%B0%B1%EC%97%94%EB%93%9C"><span class="nav-number">1.1.</span> <span class="nav-text">백엔드</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EB%A7%88%EC%9D%B4%ED%81%AC%EB%A1%9C-%ED%94%84%EB%A1%A0%ED%8A%B8%EC%97%94%EB%93%9C"><span class="nav-number">1.2.</span> <span class="nav-text">마이크로 프론트엔드</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98"><span class="nav-number">1.3.</span> <span class="nav-text">알고리즘</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -179,233 +185,126 @@
 </noscript>
 
 
-    <div class="main-inner archive posts-collapse">
+    <div class="main-inner post posts-expand">
 
 
   
+
+
+<div class="post-block">
   
   
-  <div class="post-block">
-    <div class="post-content">
-      <div class="collection-title">
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/12/10/TIL/unca/211209/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JayoonKoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="티끌모아 태산">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          211209 백엔드, 마이크로프론트엔드
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2021-12-10 16:48:03 / Modified: 16:48:18" itemprop="dateCreated datePublished" datetime="2021-12-10T16:48:03+09:00">2021-12-10</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/TIL/" itemprop="url" rel="index"><span itemprop="name">TIL</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="211209"><a href="#211209" class="headerlink" title="211209"></a>211209</h1><h2 id="백엔드"><a href="#백엔드" class="headerlink" title="백엔드"></a>백엔드</h2><ul>
+<li>201 데이터가 잘 만들어졌습니다 상태 코드</li>
+<li>204 정상적으로 삭제 했고 이제 리소스가 없음. sendStatus(204) → 상태 메세지만 반환함.</li>
+<li>postman 에서 RUN 버튼 누르면 컬랙션 안에 모든 API를 테스트할 수 있다.</li>
+<li>mvc 패턴 model, view, controller 를 분리하는 패턴 model (DB), controller(logic), View(ui) → 서버에서 View 는 router 와 밀접한 관련이 있다.</li>
+<li>typescript 에서 req.query 에 타입을 정의하고 싶을때 req: Request&lt;{}, {}, {}, Type&gt; 으로 정의할 수 있다.</li>
+<li>마찬가지로 body 나 params 의 타입을 설정하고 싶다면 Request 에 generic 으로 순서에 맞게 넣어주면 된다.</li>
+</ul>
+<h2 id="마이크로-프론트엔드"><a href="#마이크로-프론트엔드" class="headerlink" title="마이크로 프론트엔드"></a>마이크로 프론트엔드</h2><ul>
+<li>각각의 페이지를 각각의 SPA로 만든다. 서로 커뮤니케이션을 하는 것이 아니라 API를 통해 커뮤니케이션 하게 만든다.</li>
+<li>장점? 완전히 독립적인 앱 두게를 갖게 된다. 만약 각각의 팀이 개발하고 있다면? 각각의 팀이 독립적인 결정을 해도 영향을 주지 않는다!</li>
+<li>예를들어 팀 1에서는 react로 구현하고 팀2 에서는 vue 나 angular 같은걸로 개발할 수 있게 된다.</li>
+<li>한 페이지 내에서도 가능하다. 근데 각각의 앱을 어디에 표시할지 어떻게 알까? 컨테이너라는 앱도 만들어서 어떻게 표시할지 구현할 수 있다. 즉 2개의 마이크로프론트 앱이 있다면 한개의 컨테이너 앱을 더 두어서 어떻게 배치할지 정하는 것이다.</li>
+<li>컨테이너를 어떻게 구현할수 있을지는 크게 3가지 관점이 있다.<ol>
+<li>build time integration → 브라우저에 컨테이너가 로딩 되기 전에 각각의 앱에 접근할 수 있다.</li>
+<li>run time integration → 브라우저에 컨테이너가 로딩 된 이후에 각각의 앱에 접근할 수 있다.</li>
+<li>server integration → backend 에서 해야할 내용이므로 여기서는 다루지 않는다.</li>
+</ol>
+</li>
+<li>build tim integration에 가장 간단한 방법?<ul>
+<li>작업 완료하면 npm 패키지로 배포한다. 다음 컨테이너에서 받아서 사용한다.</li>
+<li>장점 : 쉽다. 이해하기 쉬움.</li>
+<li>단점 : container 가 redepoly 되면 패키지도 다시 update 됨. 컨테이너와 강하게 결합되게 된다. 마이크로론트엔드에 컨셉에 맞지 않음.</li>
+</ul>
+</li>
+</ul>
+<h2 id="알고리즘"><a href="#알고리즘" class="headerlink" title="알고리즘"></a>알고리즘</h2><ul>
+<li>실제로 재귀 함수로 DFS 구현하는 경우가 있다.</li>
+<li>BFS 는 보통 큐라서 만약 둘다 가능하다면 BFS로 푸는게 나은 경우가 많다.</li>
+<li>100만 → o(N) 만큼 필요함</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/TIL/" rel="tag"># TIL</a>
+          </div>
+
         
-        <span class="collection-header">Good! 107 posts in total. Keep on posting.</span>
-      </div>
 
-      
-    <div class="collection-year">
-      <span class="collection-header">2021</span>
-    </div>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2021-09-20T21:41:14+09:00"
-              content="2021-09-20">
-          09-20
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/09/20/modernJs/210902-bigint/" itemprop="url">
-            <span itemprop="name">bigint</span>
-          </a>
-      </div>
-
-      
-    </header>
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/12/09/TIL/211207/" rel="prev" title="211207">
+                  <i class="fa fa-chevron-left"></i> 211207
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
   </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2021-09-20T21:41:14+09:00"
-              content="2021-09-20">
-          09-20
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/09/20/modernJs/210906-fetch/" itemprop="url">
-            <span itemprop="name">fetch</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2021-09-20T21:41:14+09:00"
-              content="2021-09-20">
-          09-20
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/09/20/modernJs/210907-formData/" itemprop="url">
-            <span itemprop="name">formData</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2021-09-20T21:41:14+09:00"
-              content="2021-09-20">
-          09-20
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/09/20/modernJs/210908-fetch-Download-progress/" itemprop="url">
-            <span itemprop="name">fetch-Download-progress</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2021-09-20T21:41:14+09:00"
-              content="2021-09-20">
-          09-20
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/09/20/modernJs/210909-fetch-abort/" itemprop="url">
-            <span itemprop="name">fetch-abort</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2021-09-20T21:41:14+09:00"
-              content="2021-09-20">
-          09-20
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/09/20/modernJs/210910-fetch%EC%99%80%20cross-origin%EC%9A%94%EC%B2%AD/" itemprop="url">
-            <span itemprop="name">fetch와 cross-origin요청</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2021-09-20T21:41:14+09:00"
-              content="2021-09-20">
-          09-20
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/09/20/modernJs/210914-URL%20objects/" itemprop="url">
-            <span itemprop="name">URL objects</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2021-09-20T21:39:38+09:00"
-              content="2021-09-20">
-          09-20
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/09/20/git/210721-git-basic/" itemprop="url">
-            <span itemprop="name">git-basic</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2021-09-20T21:39:38+09:00"
-              content="2021-09-20">
-          09-20
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/09/20/git/210728-git-branch/" itemprop="url">
-            <span itemprop="name">git-branch</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2021-09-20T21:39:38+09:00"
-              content="2021-09-20">
-          09-20
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/09/20/git/210817-Git%EC%9D%98%20%EA%B8%B0%EC%B4%88/" itemprop="url">
-            <span itemprop="name">Git의 기초</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
+</div>
 
 
-    </div>
-  </div>
-  
-  
-  
-  <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/archives/page/5/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/archives/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/archives/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/11/">11</a><a class="extend next" rel="next" href="/archives/page/7/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
-  </nav>
+
+
+
 
 </div>
   </main>
