@@ -85,7 +85,7 @@
         <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
         <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">11</span></a></li>
         <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">9</span></a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">107</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">108</span></a></li>
   </ul>
 </nav>
 
@@ -129,7 +129,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">107</span>
+          <span class="site-state-item-count">108</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -180,6 +180,149 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/08/15/modernJs/210803-promise/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JayoonKoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="티끌모아 태산">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/08/15/modernJs/210803-promise/" class="post-title-link" itemprop="url">promise</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2021-08-15 19:40:25 / Modified: 19:48:18" itemprop="dateCreated datePublished" datetime="2021-08-15T19:40:25+09:00">2021-08-15</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="프라미스"><a href="#프라미스" class="headerlink" title="프라미스"></a>프라미스</h1><p>프라미스를 비유로 설명하면 다음과 같다. </p>
+<ol>
+<li>제작 코드는 시간이 걸리는 일로서 가수가 제작한 코드라고 할 수 있다. </li>
+<li>소비 코드는 제작 코드의 결과를 기다리는 코드로 팬이라고 할 수 있다. </li>
+<li>프라미스는 제작코드와 소비코드를 연결해 주는 특별한 자바스크립트 객체이다. 제작 코드가 완료되면 알려주는 역활을 하며 구독 서비스라고 할 수 있다. </li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> promise = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span>(<span class="params">resolve, reject</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// executor (제작 코드, &#x27;가수&#x27;)</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>executor는 promise 가 생성될때 실행된다. resolve와 reject는 js에서 기본으로 제공해 주는 함수로서 개발자는 excutor 만 신경쓰면 된다. 다만, ecutor에서 resolve든 reject든 하나를 반드시 호출해야 한다. </p>
+<ul>
+<li>resolve(value) - 일이 성공적으로 끝난 경우 </li>
+<li>reject(error) - 에러 발생 시 </li>
+</ul>
+<p><code>new Promise</code> 생성자가 반환하는 <code>promise</code> 객체는 다음과 같은 내부 프로퍼티를 갖습니다. </p>
+<img src="/images/imgs/11-2-1.png" width="500">
+
+<ul>
+<li>state - 처음에 pending 이었다가 resolve 가 호출되면 fulfilled, reject가 호출되면 rejected</li>
+<li>result - 처음에 undefined 이었다가 resolve 가 호출되면 value, reject 가 호출되면 error</li>
+</ul>
+<p>간단한 예시</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> promise = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span>(<span class="params">resolve, reject</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 프라미스가 만들어지면 executor 함수는 자동으로 실행됩니다.</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// 1초 뒤에 일이 성공적으로 끝났다는 신호가 전달되면서 result는 &#x27;done&#x27;이 됩니다.</span></span><br><span class="line">  <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> resolve(<span class="string">&quot;done&quot;</span>), <span class="number">1000</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>프로미스 객체의 변화</p>
+<img src="/images/imgs/11-2-2.png" width="500">
+
+<p>반대로 거절한 경우</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> promise = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span>(<span class="params">resolve, reject</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 1초 뒤에 에러와 함께 실행이 종료되었다는 신호를 보냅니다.</span></span><br><span class="line">  <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> reject(<span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">&quot;에러 발생!&quot;</span>)), <span class="number">1000</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>프로미스 객체의 변화</p>
+<img src="/images/imgs/11-2-3.png" width="500">
+
+<p>이행이나 거부된 프로미스를 처리된(settled)된 프라미스라고 한다. 반대로 처리가 안된 프라미스는 pending 상태라고 한다. </p>
+<blockquote>
+<ul>
+<li>프라미스는 성공 또는 실패만 합니다. 성공했다가 실패하고 이렇게 할 수 없다. </li>
+<li>reject는 어떤 객체도 인수로 넘겨 줄 수 있지만 Error 객체를 사용할 것을 추천한다. 혹은 Error 객체를 상속 받는 객체를 사용할것.</li>
+<li>state와 resulot는 내부 프로퍼티로 개발자가 직접 접근할 수 없다. then catch finally 를 사용해야 접근 가능</li>
+</ul>
+</blockquote>
+<h2 id="소비자-then-catch-finally"><a href="#소비자-then-catch-finally" class="headerlink" title="소비자: then, catch, finally"></a>소비자: then, catch, finally</h2><p>프라미스는 excutor와 소비함수를 이어주는 역할을 한다. 소비 함수는 then, catch, finally 를 사용하여 등록한다. (구독)</p>
+<h3 id="then"><a href="#then" class="headerlink" title="then"></a>then</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">promise.then(</span><br><span class="line">  <span class="function"><span class="keyword">function</span>(<span class="params">result</span>) </span>&#123; <span class="comment">/* 결과(result)를 다룹니다 */</span> &#125;,</span><br><span class="line">  <span class="function"><span class="keyword">function</span>(<span class="params">error</span>) </span>&#123; <span class="comment">/* 에러(error)를 다룹니다 */</span> &#125;</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<p>성공적으로 이행된 프라미스가 어떻게 반응하는지</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> promise = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span>(<span class="params">resolve, reject</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> resolve(<span class="string">&quot;done!&quot;</span>), <span class="number">1000</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// resolve 함수는 .then의 첫 번째 함수(인수)를 실행합니다.</span></span><br><span class="line">promise.then(</span><br><span class="line">  <span class="function"><span class="params">result</span> =&gt;</span> alert(result), <span class="comment">// 1초 후 &quot;done!&quot;을 출력</span></span><br><span class="line">  <span class="function"><span class="params">error</span> =&gt;</span> alert(error) <span class="comment">// 실행되지 않음</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<p>프라미스가 거부된 경우 두번째 함수가 실행된다. </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> promise = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span>(<span class="params">resolve, reject</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> reject(<span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">&quot;에러 발생!&quot;</span>)), <span class="number">1000</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// reject 함수는 .then의 두 번째 함수를 실행합니다.</span></span><br><span class="line">promise.then(</span><br><span class="line">  <span class="function"><span class="params">result</span> =&gt;</span> alert(result), <span class="comment">// 실행되지 않음</span></span><br><span class="line">  <span class="function"><span class="params">error</span> =&gt;</span> alert(error) <span class="comment">// 1초 후 &quot;Error: 에러 발생!&quot;를 출력</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<p>작업이 성공적으로 처리된 경우만 다루고 싶다면 .then 인수로 하나만 전달하면 된다. </p>
+<h3 id="catch"><a href="#catch" class="headerlink" title="catch"></a>catch</h3><p>에러를 처리하고 싶다면 <code>.then(null, errorHandlerFunction)</code>과 같이 사용하면되는데, <code>.catch(errorHandlerFunction)</code> 을 사용해도 동일하게 작동한다. </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> promise = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> reject(<span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">&quot;에러 발생!&quot;</span>)), <span class="number">1000</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// .catch(f)는 promise.then(null, f)과 동일하게 작동합니다</span></span><br><span class="line">promise.catch(alert); <span class="comment">// 1초 뒤 &quot;Error: 에러 발생!&quot; 출력</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="finally"><a href="#finally" class="headerlink" title="finally"></a>finally</h3><p>무조건 실행되는 함수 를 등록한다. <code>.then(f, f)</code>와 유사하다. </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">/* 시간이 걸리는 어떤 일을 수행하고, 그 후 resolve, reject를 호출함 */</span></span><br><span class="line">&#125;)</span><br><span class="line">  <span class="comment">// 성공·실패 여부와 상관없이 프라미스가 처리되면 실행됨</span></span><br><span class="line">  .finally(<span class="function">() =&gt;</span> 로딩 인디케이터 중지)</span><br><span class="line">  .then(<span class="function"><span class="params">result</span> =&gt;</span> result와 err 보여줌 =&gt; error 보여줌)</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>finally 는 보변적으로 처리되어야 하는 함수를 등록하기 때문에 성공 실패 여부를 모른다. finally 핸들러엔 인수가 없다.</li>
+<li>자동으로 다음 핸들러에 결과와 에러를 전달한다.</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> resolve(<span class="string">&quot;결과&quot;</span>), <span class="number">2000</span>)</span><br><span class="line">&#125;)</span><br><span class="line">  .finally(<span class="function">() =&gt;</span> alert(<span class="string">&quot;프라미스가 준비되었습니다.&quot;</span>))</span><br><span class="line">  .then(<span class="function"><span class="params">result</span> =&gt;</span> alert(result)); <span class="comment">// &lt;-- .then에서 result를 다룰 수 있음</span></span><br></pre></td></tr></table></figure>
+
+<p>finally는 결과를 처리하기 위해서 만들어진게 아니기 때문에 통과해서 다음 으로 전달된다. </p>
+<h2 id="예시-loadScript"><a href="#예시-loadScript" class="headerlink" title="예시 : loadScript"></a>예시 : loadScript</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">loadScript</span>(<span class="params">src, callback</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> script = <span class="built_in">document</span>.createElement(<span class="string">&#x27;script&#x27;</span>);</span><br><span class="line">  script.src = src;</span><br><span class="line"></span><br><span class="line">  script.onload = <span class="function">() =&gt;</span> callback(<span class="literal">null</span>, script);</span><br><span class="line">  script.onerror = <span class="function">() =&gt;</span> callback(<span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">`<span class="subst">$&#123;src&#125;</span>를 불러오는 도중에 에러가 발생함`</span>));</span><br><span class="line"></span><br><span class="line">  <span class="built_in">document</span>.head.append(script);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">loadScript</span>(<span class="params">src</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span>(<span class="params">resolve, reject</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> script = <span class="built_in">document</span>.createElement(<span class="string">&#x27;script&#x27;</span>);</span><br><span class="line">    script.src = src;</span><br><span class="line"></span><br><span class="line">    script.onload = <span class="function">() =&gt;</span> resolve(script);</span><br><span class="line">    script.onerror = <span class="function">() =&gt;</span> reject(<span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">`<span class="subst">$&#123;src&#125;</span>를 불러오는 도중에 에러가 발생함`</span>));</span><br><span class="line"></span><br><span class="line">    <span class="built_in">document</span>.head.append(script);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>사용법</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> promise = loadScript(<span class="string">&quot;https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.11/lodash.js&quot;</span>);</span><br><span class="line"></span><br><span class="line">promise.then(</span><br><span class="line">  <span class="function"><span class="params">script</span> =&gt;</span> alert(<span class="string">`<span class="subst">$&#123;script.src&#125;</span>을 불러왔습니다!`</span>),</span><br><span class="line">  <span class="function"><span class="params">error</span> =&gt;</span> alert(<span class="string">`Error: <span class="subst">$&#123;error.message&#125;</span>`</span>)</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line">promise.then(<span class="function"><span class="params">script</span> =&gt;</span> alert(<span class="string">&#x27;또다른 핸들러...&#x27;</span>)); <span class="comment">// 원하는 만큼 등록 가능.</span></span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -941,6 +1084,118 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/08/06/OS/210723-%EC%8A%A4%EC%BC%80%EC%A5%B4%EB%A7%81/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JayoonKoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="티끌모아 태산">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/08/06/OS/210723-%EC%8A%A4%EC%BC%80%EC%A5%B4%EB%A7%81/" class="post-title-link" itemprop="url">스케쥴링</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-08-06 22:28:10" itemprop="dateCreated datePublished" datetime="2021-08-06T22:28:10+09:00">2021-08-06</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-09-12 23:50:45" itemprop="dateModified" datetime="2021-09-12T23:50:45+09:00">2021-09-12</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/CS/" itemprop="url" rel="index"><span itemprop="name">CS</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="스케줄링"><a href="#스케줄링" class="headerlink" title="스케줄링"></a>스케줄링</h1><p>프로세스 스케쥴링에 대해서 알아본다.</p>
+<p>여기서 말하는 프로세스는 응용 프로그램 정도로 생각한다.</p>
+<br/>
+
+<h2 id="배치처리"><a href="#배치처리" class="headerlink" title="배치처리"></a>배치처리</h2><p>큐와 유사한 방식으로 동작한다.</p>
+<h3 id="배치처리-시스템의-문제점"><a href="#배치처리-시스템의-문제점" class="headerlink" title="배치처리 시스템의 문제점?"></a>배치처리 시스템의 문제점?</h3><ul>
+<li>시간이 적게 걸리는 프로그램이 있다고 하더라도 배치 처리 시스테으로 오래 걸리는 프로세스가 먼저 진행중이면 그만큼 기달려야 하는 문제가 있다.</li>
+<li>음악을 들으면서 문서를 작업한다 든지 응용 프로그래밍 동시 사용에 대한 처리를 못했다.</li>
+<li>여러 사용자가 동시에 하나의 컴퓨터를 쓴다고 했을테 시스템 응답 시간이 커지기 때문에 다중 사용자에 대한 지원이 되지 않았다.</li>
+</ul>
+<p>시분할 시스템이 등장 : 응용 프록그램이 CPU를 점유하는 시간을 굉장히 잘게 쪼개어 실행될 수 있도록 함. (다중 사용자 지원)</p>
+<br/>
+
+<h2 id="멀티태스킹"><a href="#멀티태스킹" class="headerlink" title="멀티태스킹"></a>멀티태스킹</h2><p>단일 CPU에서 응용 프로그램이 동시에 실행되는 것처럼 보이게 하는 시스템</p>
+<p>마찬가지로 시분할 시스템을 적용하면 작동하지 프로세스가 바뀌어서 동작하는 시간이 있다고 하더라도 그 시간은 매우 작은 시간이기 때문에 사용자가 인지 하지 못한다.</p>
+<p>실제로는 동시에 작동하지 않지만 사용자가 느끼기에 동시에 실행된다고 느끼게 되는 것이다.</p>
+<br/>
+
+<h2 id="멀티-프로세싱"><a href="#멀티-프로세싱" class="headerlink" title="멀티 프로세싱"></a>멀티 프로세싱</h2><center><img src="/images/imgs/스케쥴링/1.png" width="500"></center>
+멀티태스킹이 단일 CPU를 기준으로 동시에 보이는것을 목저으로 한다면 멀티 프로세싱은 여러 CPU 가 존재한다.
+
+<p>멀티 프로세싱은 여러 CPU가 하나의 응용 프로그램을 병렬로 실행시키면서 실행 속도를 극대화 하는 기술이다.</p>
+<br/>
+
+<h2 id="멀티-프로그래밍"><a href="#멀티-프로그래밍" class="headerlink" title="멀티 프로그래밍"></a>멀티 프로그래밍</h2><p>최대한 CPU를 많이 활용하도록 하는 시스템</p>
+<center><img src="/images/imgs/스케쥴링/2.png" width="400"></center>
+
+<p>응용 프로그램은 온전히 CPU를 사용하기 보다 다른 작업을 수행하는 일이 많다.</p>
+<p>어쩔 수 없이 CPU를 사용하지 못하는 상황이 오게 되는데 이때 그냥 대기하는 것이 아니라 다른 프로그래을 그 사이에 실행 시킬 수 있다면 CPU 활용률은 올라갈 것이다.</p>
+<p>이런 개념을 적용한것이 멀티 프로그래밍이다.</p>
+<h3 id="메모리-계층"><a href="#메모리-계층" class="headerlink" title="메모리 계층"></a>메모리 계층</h3><p>CPU 밖에서 일어나는 프로세스는 속도가 느릴 수 밖에 없다.</p>
+<p>특히나 저장매체에서 진행되는 프로세스는 굉장히 느리다.</p>
+<center><img src="/images/imgs/스케쥴링/3.png" width="300"></center>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/08/06/OS/210723-structure/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1056,247 +1311,6 @@
 <h2 id="code-ex1"><a href="#code-ex1" class="headerlink" title="code ex1"></a>code ex1</h2><center><img src="/images/imgs/structure/6.png" width="600"></center>
 
 <p>해당 코드 동작시 처으에는 사용자 모드로 시작했다가 특정 API를 만났을때에는 커널 모드로 전환되고 커널 모드에서 작업 완료시 다시 사용자 모드로 전환된다.</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/08/06/OS/210723-%EC%8A%A4%EC%BC%80%EC%A5%B4%EB%A7%81/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JayoonKoo">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="티끌모아 태산">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/08/06/OS/210723-%EC%8A%A4%EC%BC%80%EC%A5%B4%EB%A7%81/" class="post-title-link" itemprop="url">스케쥴링</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-08-06 22:28:10" itemprop="dateCreated datePublished" datetime="2021-08-06T22:28:10+09:00">2021-08-06</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-09-12 23:50:45" itemprop="dateModified" datetime="2021-09-12T23:50:45+09:00">2021-09-12</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/CS/" itemprop="url" rel="index"><span itemprop="name">CS</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="스케줄링"><a href="#스케줄링" class="headerlink" title="스케줄링"></a>스케줄링</h1><p>프로세스 스케쥴링에 대해서 알아본다.</p>
-<p>여기서 말하는 프로세스는 응용 프로그램 정도로 생각한다.</p>
-<br/>
-
-<h2 id="배치처리"><a href="#배치처리" class="headerlink" title="배치처리"></a>배치처리</h2><p>큐와 유사한 방식으로 동작한다.</p>
-<h3 id="배치처리-시스템의-문제점"><a href="#배치처리-시스템의-문제점" class="headerlink" title="배치처리 시스템의 문제점?"></a>배치처리 시스템의 문제점?</h3><ul>
-<li>시간이 적게 걸리는 프로그램이 있다고 하더라도 배치 처리 시스테으로 오래 걸리는 프로세스가 먼저 진행중이면 그만큼 기달려야 하는 문제가 있다.</li>
-<li>음악을 들으면서 문서를 작업한다 든지 응용 프로그래밍 동시 사용에 대한 처리를 못했다.</li>
-<li>여러 사용자가 동시에 하나의 컴퓨터를 쓴다고 했을테 시스템 응답 시간이 커지기 때문에 다중 사용자에 대한 지원이 되지 않았다.</li>
-</ul>
-<p>시분할 시스템이 등장 : 응용 프록그램이 CPU를 점유하는 시간을 굉장히 잘게 쪼개어 실행될 수 있도록 함. (다중 사용자 지원)</p>
-<br/>
-
-<h2 id="멀티태스킹"><a href="#멀티태스킹" class="headerlink" title="멀티태스킹"></a>멀티태스킹</h2><p>단일 CPU에서 응용 프로그램이 동시에 실행되는 것처럼 보이게 하는 시스템</p>
-<p>마찬가지로 시분할 시스템을 적용하면 작동하지 프로세스가 바뀌어서 동작하는 시간이 있다고 하더라도 그 시간은 매우 작은 시간이기 때문에 사용자가 인지 하지 못한다.</p>
-<p>실제로는 동시에 작동하지 않지만 사용자가 느끼기에 동시에 실행된다고 느끼게 되는 것이다.</p>
-<br/>
-
-<h2 id="멀티-프로세싱"><a href="#멀티-프로세싱" class="headerlink" title="멀티 프로세싱"></a>멀티 프로세싱</h2><center><img src="/images/imgs/스케쥴링/1.png" width="500"></center>
-멀티태스킹이 단일 CPU를 기준으로 동시에 보이는것을 목저으로 한다면 멀티 프로세싱은 여러 CPU 가 존재한다.
-
-<p>멀티 프로세싱은 여러 CPU가 하나의 응용 프로그램을 병렬로 실행시키면서 실행 속도를 극대화 하는 기술이다.</p>
-<br/>
-
-<h2 id="멀티-프로그래밍"><a href="#멀티-프로그래밍" class="headerlink" title="멀티 프로그래밍"></a>멀티 프로그래밍</h2><p>최대한 CPU를 많이 활용하도록 하는 시스템</p>
-<center><img src="/images/imgs/스케쥴링/2.png" width="400"></center>
-
-<p>응용 프로그램은 온전히 CPU를 사용하기 보다 다른 작업을 수행하는 일이 많다.</p>
-<p>어쩔 수 없이 CPU를 사용하지 못하는 상황이 오게 되는데 이때 그냥 대기하는 것이 아니라 다른 프로그래을 그 사이에 실행 시킬 수 있다면 CPU 활용률은 올라갈 것이다.</p>
-<p>이런 개념을 적용한것이 멀티 프로그래밍이다.</p>
-<h3 id="메모리-계층"><a href="#메모리-계층" class="headerlink" title="메모리 계층"></a>메모리 계층</h3><p>CPU 밖에서 일어나는 프로세스는 속도가 느릴 수 밖에 없다.</p>
-<p>특히나 저장매체에서 진행되는 프로세스는 굉장히 느리다.</p>
-<center><img src="/images/imgs/스케쥴링/3.png" width="300"></center>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/08/06/OS/210727-%EC%8A%A4%EC%BC%80%EC%A5%B4%EB%A7%81%EC%83%81%ED%83%9C%EA%B8%B0%EB%B0%98/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JayoonKoo">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="티끌모아 태산">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/08/06/OS/210727-%EC%8A%A4%EC%BC%80%EC%A5%B4%EB%A7%81%EC%83%81%ED%83%9C%EA%B8%B0%EB%B0%98/" class="post-title-link" itemprop="url">스케쥴링상태기반</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-08-06 22:28:10" itemprop="dateCreated datePublished" datetime="2021-08-06T22:28:10+09:00">2021-08-06</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-09-12 23:50:45" itemprop="dateModified" datetime="2021-09-12T23:50:45+09:00">2021-09-12</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/CS/" itemprop="url" rel="index"><span itemprop="name">CS</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="상태-기반-스케쥴링"><a href="#상태-기반-스케쥴링" class="headerlink" title="상태 기반 스케쥴링"></a>상태 기반 스케쥴링</h1><h2 id="프로세스-상태"><a href="#프로세스-상태" class="headerlink" title="프로세스 상태"></a>프로세스 상태</h2><img src="/images/imgs/210727-스케쥴링상태기반/1.png">
-
-<ul>
-<li>running state: 현재 CPU에서 실행 중인 상태</li>
-<li>ready state : CPU 에서 실행 가능 상태 (실행 대기 상태)</li>
-<li>block state: 특정 이벤트 발생 대기 상태 (파일을 다 읽었다!)</li>
-</ul>
-<p>프로세스 생성과 종료는 짧은 시간 동안 발생.</p>
-<p>종료의 경우 실행하면서 갖고 있던 리소스를 해제하는 과정이라고 생각할 수 있다.</p>
-<br/>
-
-<h2 id="프로세스-상태간-관계"><a href="#프로세스-상태간-관계" class="headerlink" title="프로세스 상태간 관계"></a>프로세스 상태간 관계</h2><img src="/images/imgs/210727-스케쥴링상태기반/2.png">
-
-<ol>
-<li>process 가 특정 특정 cpu 사용아 아닌 다른 작업을 수행해야 하는 상태가 됨. 완료 이벤트를 기다리는 상태</li>
-<li>scheduler 가 실행가능한 프로세스 중에서 하나를 골라서 실행 시킴.</li>
-<li>시분할 시스템과 같은 시스템에서 scheduler가 실행 중인 프로세스를 다른 프로세스에 실행을 위해서 ready 상태로 바꿈.</li>
-<li>block 상태에 있는 프로세스가 작업을 완료 후 (완료 이벤트를 받고) ready 상태로 변화.</li>
-</ol>
-<p>but, 단순한 상태만 가지고서 어떻게 스케쥴링을 하지? ready 상태가 여러개일 때에는 어떤걸 선택해야 할까?</p>
-<br/>
-
-<h2 id="상태별-큐를-만들자"><a href="#상태별-큐를-만들자" class="headerlink" title="상태별 큐를 만들자."></a>상태별 큐를 만들자.</h2><p>큐 : 앞 뒤 로 본다.<br>초기 상태</p>
-<ul>
-<li>ready state queue: 1, 2, 3</li>
-<li>runnig state queue</li>
-<li>block state queue</li>
-</ul>
-<img src="/images/imgs/210727-스케쥴링상태기반/3.png">
-
-<p>cpu가 아무것도 실행되고 있지 않은 상태를 idle 상태라고 한다.</p>
-<p>상태 별 큐를 생각하면서 어떻게 돌아갈지 생각해 보기.</p>
-<p><strong>결과</strong> [1, 2, 3, 1, 3, 2, idle, idle, 3]</p>
-<br/>
-
-<h2 id="선점형과-비선점형-스케쥴러"><a href="#선점형과-비선점형-스케쥴러" class="headerlink" title="선점형과 비선점형 스케쥴러"></a>선점형과 비선점형 스케쥴러</h2><p>선점형 스케쥴러는 프로세스가 끝나거나 block 상태가 되지 않더라도 스케쥴러가 ready 상태로 바꾸고 다른 프로세스를 실행시키는 것이 가능한 스케쥴러이다.</p>
-<p>비선점형 스케쥴러는 프로세스가 block 상태가 되거나 끝나지 않으면 다른 프로세스를 실행 시키는것이 불가능한 스케쥴러이다.</p>
-<p>시분할 시스템을 구현하려면 선점형 스케쥴러를 구현할 수 있어야 했는데, 초기에 운영체제는 선점형 스케쥴러 구현의 어려움이 있었다.</p>
-<h3 id="선점형과-비선점형의-차이"><a href="#선점형과-비선점형의-차이" class="headerlink" title="선점형과 비선점형의 차이"></a>선점형과 비선점형의 차이</h3><p>위에 예시에서 선점형과 비선점형을 나눠서 생각해봄.</p>
-<p>이번엔 시분할을 2칸으로 봄. 왜 이렇게 되는지 생각해 보자.</p>
-<img src="/images/imgs/210727-스케쥴링상태기반/4.png">
-
-<p>비선점형은 시스템 응답시간이 길어짐.</p>
-<br/>
-
-<h2 id="스케쥴러의-구분"><a href="#스케쥴러의-구분" class="headerlink" title="스케쥴러의 구분"></a>스케쥴러의 구분</h2><ul>
-<li>FIFO(FCFS), SJF, Priority-based는 어떤 프로세스를 먼저 실행시킬지에 대한 알고리즘 (비선점형에 가까움)</li>
-<li>RoundRobin 은 시분할 시스템을 위한 기본 알고리즘 (선점형 스케쥴러)</li>
-</ul>
-<p>보통 여러가지 알고리즘을 섞어서 사용하는것이 일반적임</p>
 
       
     </div>
