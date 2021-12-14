@@ -20,23 +20,28 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"jayoonkoo.github.io","root":"/","images":"/images","scheme":"Muse","version":"8.6.1","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
-<meta property="og:type" content="website">
-<meta property="og:title" content="티끌모아 태산">
-<meta property="og:url" content="https://jayoonkoo.github.io/categories/DevOps/index.html">
+<meta name="description" content="211213백엔드 배포 채크리스트 보안 관련한 키가 포함되어 있지 않은지? 보안의 위헙이 되는 로그를 남기지 않는지? 반응으로 민감한 정보를 넘기고 있지 않은지 API reate limits 를 정해야 한다. 사용자가 계속 API 요청을 반복적으로 하지 못하도록 막는것   mysql Aws 에서 사용하는 방법 서비스 → RDS (관계형 데이터 베이스 생성)">
+<meta property="og:type" content="article">
+<meta property="og:title" content="211213 백엔드 GraphQL">
+<meta property="og:url" content="https://jayoonkoo.github.io/2021/12/14/TIL/211213/index.html">
 <meta property="og:site_name" content="티끌모아 태산">
+<meta property="og:description" content="211213백엔드 배포 채크리스트 보안 관련한 키가 포함되어 있지 않은지? 보안의 위헙이 되는 로그를 남기지 않는지? 반응으로 민감한 정보를 넘기고 있지 않은지 API reate limits 를 정해야 한다. 사용자가 계속 API 요청을 반복적으로 하지 못하도록 막는것   mysql Aws 에서 사용하는 방법 서비스 → RDS (관계형 데이터 베이스 생성)">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-12-14T10:04:40.000Z">
+<meta property="article:modified_time" content="2021-12-14T10:05:09.512Z">
 <meta property="article:author" content="JayoonKoo">
+<meta property="article:tag" content="TIL">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://jayoonkoo.github.io/categories/DevOps/">
+<link rel="canonical" href="https://jayoonkoo.github.io/2021/12/14/TIL/211213/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":false,"lang":"en","comments":"","permalink":"","path":"categories/DevOps/index.html","title":""}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://jayoonkoo.github.io/2021/12/14/TIL/211213/","path":"2021/12/14/TIL/211213/","title":"211213 백엔드 GraphQL"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>Category: DevOps | 티끌모아 태산</title>
+<title>211213 백엔드 GraphQL | 티끌모아 태산</title>
   
 
 
@@ -103,7 +108,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           Table of Contents
@@ -116,6 +121,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#211213"><span class="nav-number">1.</span> <span class="nav-text">211213</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%EB%B0%B1%EC%97%94%EB%93%9C"><span class="nav-number">1.1.</span> <span class="nav-text">백엔드</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#GraphQL"><span class="nav-number">1.2.</span> <span class="nav-text">GraphQL</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -179,50 +185,126 @@
 </noscript>
 
 
-    <div class="main-inner category posts-collapse">
+    <div class="main-inner post posts-expand">
 
 
   
-  
-  
-  <div class="post-block">
-    <div class="post-content">
-      <div class="collection-title">
-        <h2 class="collection-header">DevOps
-          <small>Category</small>
-        </h2>
-      </div>
 
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/12/14/TIL/211213/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JayoonKoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="티끌모아 태산">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          211213 백엔드 GraphQL
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
       
-    <div class="collection-year">
-      <span class="collection-header">2021</span>
+
+      <time title="Created: 2021-12-14 19:04:40 / Modified: 19:05:09" itemprop="dateCreated datePublished" datetime="2021-12-14T19:04:40+09:00">2021-12-14</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/TIL/" itemprop="url" rel="index"><span itemprop="name">TIL</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="211213"><a href="#211213" class="headerlink" title="211213"></a>211213</h1><h2 id="백엔드"><a href="#백엔드" class="headerlink" title="백엔드"></a>백엔드</h2><ul>
+<li>배포 채크리스트<ul>
+<li>보안 관련한 키가 포함되어 있지 않은지?</li>
+<li>보안의 위헙이 되는 로그를 남기지 않는지?</li>
+<li>반응으로 민감한 정보를 넘기고 있지 않은지</li>
+<li>API reate limits 를 정해야 한다. 사용자가 계속 API 요청을 반복적으로 하지 못하도록 막는것</li>
+</ul>
+</li>
+<li>mysql Aws 에서 사용하는 방법<ul>
+<li>서비스 → RDS (관계형 데이터 베이스 생성)→ 대시보드 → 데이터 베이스 생성 → 표준생성 , 손쉬운 생성은 알아서 늘어남.. 과금 될 수도</li>
+<li>mysql 설정</li>
+<li>텝플릿 ? 무료로 쓰려면 프리티어로</li>
+<li>DB 인스턴스 → DB 이름 정하기</li>
+<li>자격 증명 설정 (꼭 기억) - 이름 비밀저호 설정</li>
+<li>스토리지 기본 20g , 스토리지 자동 조정 활성화 켜져 있으면 늘어나고 그럼 과금이 시작됨. 무료로 사용하려면 비활성화 해줌.</li>
+<li>퍼블릭 엑세스 예로 체크 dbeaver 같은데서 접근 가능하도록</li>
+<li>외부 접속 방법?<ul>
+<li>서비스 → EC2 → 인스턴스 → 네트워크 및 보안 → 보안 그룹 → 인바운드 규칙 (외부로부터 열어놓을 포트)</li>
+<li>인바운드 규칙 편집 → 규칙 추가 → MySQL/Aurora 선택 → 기본포트로 3306 설정됨 aws msql default 값→ IP 대역 설정 0.0.0.0/0 어떠한 주소에서도 가능. → 규칙 저장</li>
+<li>다시 RDS 이동 → 열결및 보안 → 엔드포인트 및 포트 에서 엔드 포인트 확인 → 확인한 정보로 접속</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="GraphQL"><a href="#GraphQL" class="headerlink" title="GraphQL"></a>GraphQL</h2><ul>
+<li>기존 RestAPI 의 단점을 보완해서 쿼리를 보내서 원하는 정보만 가져오도록 함.</li>
+<li>다양한 방법이 있는데 Apollo로 Server을 만들어서 구현해 볼 수 있다. (apollo-server)</li>
+<li>typeDef : grapQL 스키마, Object(데이터 스키마), Query (쿼리 형태, 조회 할때), Mutaion( 생성, 변경, 삭제 할때 , resolve 도 mutation으로 설정해야 함.), Input → gql + tagged template Literals</li>
+<li>resolvers : 구현체</li>
+</ul>
+
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2021-10-23T22:11:53+09:00"
-              content="2021-10-23">
-          10-23
-        </time>
-      </div>
+    
+    
+    
 
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/10/23/DevOps/Docker/211018-Docker%20basic/" itemprop="url">
-            <span itemprop="name">Docker basic</span>
-          </a>
-      </div>
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/TIL/" rel="tag"># TIL</a>
+          </div>
 
-      
-    </header>
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/12/13/TIL/211210/" rel="prev" title="211210 마이크로프론트앤드">
+                  <i class="fa fa-chevron-left"></i> 211210 마이크로프론트앤드
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
   </article>
+</div>
 
-    </div>
-  </div>
-  
-  
-  
+
+
+
+
 
 </div>
   </main>

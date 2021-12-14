@@ -85,7 +85,7 @@
         <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
         <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">11</span></a></li>
         <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">9</span></a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">108</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">109</span></a></li>
   </ul>
 </nav>
 
@@ -129,7 +129,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">108</span>
+          <span class="site-state-item-count">109</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -180,6 +180,115 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/08/30/typeScript/210820-class/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JayoonKoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="티끌모아 태산">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/08/30/typeScript/210820-class/" class="post-title-link" itemprop="url">class</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-08-30 02:32:06" itemprop="dateCreated datePublished" datetime="2021-08-30T02:32:06+09:00">2021-08-30</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/typeScript/" itemprop="url" rel="index"><span itemprop="name">typeScript</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="Classes"><a href="#Classes" class="headerlink" title="Classes"></a>Classes</h1><h2 id="What-a-Class"><a href="#What-a-Class" class="headerlink" title="What a Class"></a>What a Class</h2><p>object를 만드는 설계도이다. ex6 이전에는 function을 사용해서 object를 만들었다. 오브젝트는 new 키워드를 사용해서 만들 수 있고 타입스크립트를 사용하면 oop에 맞게 클래스를 작성할 수 있다. 타입스크립트에서는 class 자체도 어떤 타입이다.</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="built_in">string</span> = <span class="string">&quot;Mark&quot;</span>;</span><br><span class="line">  age: <span class="built_in">number</span>;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">age?: <span class="built_in">number</span></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (age === <span class="literal">undefined</span>) &#123;</span><br><span class="line">      <span class="built_in">this</span>.age = <span class="number">20</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="built_in">this</span>.age = age;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> p1 = <span class="keyword">new</span> Person(<span class="number">39</span>);</span><br><span class="line"><span class="keyword">const</span> p2 = <span class="keyword">new</span> Person();</span><br><span class="line"><span class="built_in">console</span>.log(p1);</span><br><span class="line"><span class="built_in">console</span>.log(p2);</span><br></pre></td></tr></table></figure>
+
+<p>생성자를 통해서 인수를 받을 수 있다. TS에서는 생서자 오버라이드도 지원하지만 생성자에서 받을수도 있고 안받을 수 도 있는 경우엔 ?를 사용해서 생성자를 작성한다.<br>이때 받는 인수에 타엡에 대한 처리를 따로 해주어야 한다.</p>
+<p>생성자는 <code>async</code>를 사용할 수 없다. async 를 사용하기 위해서는 생성자 이외에 함수를 만들어서 <code>async</code> 키워드를 사용해야 한다. 이럴때 클래스에서는 멤버 변수가 할당됬는지 아닌지 알 수 없기 때문에 <code>age!: number</code> 같이 <code>!</code>를 사용한다.</p>
+<h2 id="Access-Modifiers"><a href="#Access-Modifiers" class="headerlink" title="Access Modifiers"></a>Access Modifiers</h2><p>클래스 외부에서 접근하는 것을 막기 위한 접근 제어자를 타입스크립트에서는 지원한다.</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">  <span class="keyword">public</span> name: <span class="built_in">string</span> = <span class="string">&quot;Mark&quot;</span>;</span><br><span class="line">  <span class="keyword">private</span> _age!: <span class="built_in">number</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">public</span> <span class="function"><span class="title">constructor</span>(<span class="params">age?: <span class="built_in">number</span></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (age === <span class="literal">undefined</span>) &#123;</span><br><span class="line">      <span class="built_in">this</span>._age = <span class="number">20</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="built_in">this</span>._age = age;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> p1 = <span class="keyword">new</span> Person(<span class="number">39</span>);</span><br><span class="line"><span class="keyword">const</span> p2 = <span class="keyword">new</span> Person();</span><br><span class="line"><span class="built_in">console</span>.log(p1);</span><br><span class="line"><span class="built_in">console</span>.log(p2);</span><br></pre></td></tr></table></figure>
+
+<p>Js 에서 private 변수를 표현하기 위해서 <code>_</code> 를 붙혔었는데 TS 에서 관례적으로 private 변수 앞에는 <code>_</code>를 붙힌다. ( 없어도 상관 없음. )</p>
+<h2 id="initialization-in-constructor-param"><a href="#initialization-in-constructor-param" class="headerlink" title="initialization in constructor param"></a>initialization in constructor param</h2><p>생성자 안에 접근 제어자를 넣음으로서 생성함과 동시에 할당가지 할수 있다.</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">  <span class="keyword">public</span> <span class="function"><span class="title">constructor</span>(<span class="params"><span class="keyword">public</span> name: <span class="built_in">string</span>, <span class="keyword">private</span> age: <span class="built_in">number</span></span>)</span> &#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> p1 = <span class="keyword">new</span> Person(<span class="string">&quot;koo&quot;</span>, <span class="number">39</span>);</span><br><span class="line"><span class="built_in">console</span>.log(p1);</span><br></pre></td></tr></table></figure>
+
+<p>위코드는 아래 코드와 같다.</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">  <span class="keyword">public</span> name: <span class="built_in">string</span>;</span><br><span class="line">  <span class="keyword">private</span> age: <span class="built_in">number</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">public</span> <span class="function"><span class="title">constructor</span>(<span class="params">name: <span class="built_in">string</span>, age: <span class="built_in">number</span></span>)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.name = name;</span><br><span class="line">    <span class="built_in">this</span>.age = age;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> p1 = <span class="keyword">new</span> Person(<span class="string">&quot;koo&quot;</span>, <span class="number">39</span>);</span><br><span class="line"><span class="built_in">console</span>.log(p1);</span><br></pre></td></tr></table></figure>
+
+<h2 id="Getter-amp-Setters"><a href="#Getter-amp-Setters" class="headerlink" title="Getter &amp; Setters"></a>Getter &amp; Setters</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">class Person &#123;</span><br><span class="line">  public constructor(private _name: string, public age: number) &#123;&#125;</span><br><span class="line"></span><br><span class="line">  get name() &#123;</span><br><span class="line">    return this._name + &quot;Jayoun&quot;;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  set name(n: string) &#123;</span><br><span class="line">    this._name = n;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const p1 = new Person(&quot;koo&quot;, 39);</span><br><span class="line">console.log(p1.name); // get 을하는 함수를 getter</span><br><span class="line">p1.name = &quot;Woongjae&quot;; // set 을하는 함수를 setter</span><br><span class="line">console.log(p1.name); // get 을하는 함수를 getter</span><br></pre></td></tr></table></figure>
+
+<p>getter 만 만들고 setter는 만들지 않는 방식으로 읽기만 가능한 프로퍼티를 만들 수 있다.</p>
+<h2 id="readonly-properties"><a href="#readonly-properties" class="headerlink" title="readonly properties"></a>readonly properties</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">class Person &#123;</span><br><span class="line">  public readonly name: string = &quot;Mark&quot;;</span><br><span class="line">  private readonly country: string = &quot;Korea&quot;;</span><br><span class="line"></span><br><span class="line">  public constructor(private _name: string, public age: number) &#123;</span><br><span class="line">    this.country = &quot;korea&quot;;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  hello() &#123;</span><br><span class="line">    // this.country = &#x27;China&#x27;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const p1 = new Person(&quot;koo&quot;, 39);</span><br><span class="line">console.log(p1.name); // get 을하는 함수를 getter</span><br><span class="line">// p1.name = &quot;Woongjae&quot;; // readonly 이기 대문에 할당할 수 없다.</span><br><span class="line">console.log(p1.name); // get 을하는 함수를 getter</span><br></pre></td></tr></table></figure>
+
+<p>readonly 를 사용하여 get 만 할 수 있는 프로퍼티를 만들 수 있다. 이때 할당은 처음 프로퍼티를 생성하는 부분과 생성자에서만 할 수 있다.</p>
+<h2 id="Index-signatures-in-Class"><a href="#Index-signatures-in-Class" class="headerlink" title="Index signatures in Class"></a>Index signatures in Class</h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// class =&gt; object</span></span><br><span class="line"><span class="comment">// &#123;mark: &#x27;male&#x27;, jade: &#x27;male&#125; Class A</span></span><br><span class="line"><span class="comment">// &#123;chole: &#x27;female&#x27;, alex: &#x27;male&#x27;, anna: &#x27;female&#x27;&#125; Class B</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 동적이라면?</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Students</span> </span>&#123;</span><br><span class="line">  <span class="comment">// [index: string]: string; // 어떤 문자열이 와도 쓸 수 있다.</span></span><br><span class="line">  [index: <span class="built_in">string</span>]: <span class="string">&quot;male&quot;</span> | <span class="string">&quot;female&quot;</span>; <span class="comment">// 받을 수 있는 것 정의 할 수 있음.</span></span><br><span class="line"></span><br><span class="line">  mark: <span class="string">&quot;male&quot;</span> = <span class="string">&quot;male&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> a = <span class="keyword">new</span> Students();</span><br><span class="line"></span><br><span class="line">a.mark = <span class="string">&quot;male&quot;</span>;</span><br><span class="line">a.jade = <span class="string">&quot;male&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(a);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> b = <span class="keyword">new</span> Students();</span><br><span class="line"></span><br><span class="line">b.chole = <span class="string">&quot;female&quot;</span>;</span><br><span class="line">b.alex = <span class="string">&quot;male&quot;</span>;</span><br><span class="line">b.anna = <span class="string">&quot;female&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(b);</span><br></pre></td></tr></table></figure>
+
+<p>동적으로 프로퍼티가 생기는 형식일때 사용할 수 있다. 받을 수 있는 프로퍼티를 정의해 주는 것도 가능하다.</p>
+<h2 id="static-properties-amp-method"><a href="#static-properties-amp-method" class="headerlink" title="static properties &amp; method"></a>static properties &amp; method</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">class Person &#123;</span><br><span class="line">  public static CITY = &quot;Seoul&quot;;</span><br><span class="line">  private static privateCity = &quot;bu&quot;;</span><br><span class="line">  public static hello() &#123;</span><br><span class="line">    console.log(&quot;안녕하세요.&quot;, Person.privateCity);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  public normalHello() &#123;</span><br><span class="line">    console.log(&quot;안녕&quot;, Person.CITY);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  public change() &#123;</span><br><span class="line">    Person.CITY = &quot;LA&quot;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Person.hello();</span><br><span class="line">console.log(Person.CITY);</span><br><span class="line"></span><br><span class="line">const p1 = new Person();</span><br><span class="line">// p1.hello(); // 이렇게 사용할 수 없음.</span><br><span class="line">p1.normalHello();</span><br><span class="line"></span><br><span class="line">const p2 = new Person();</span><br><span class="line">p2.normalHello();</span><br><span class="line">p1.change();</span><br><span class="line">p2.normalHello();</span><br></pre></td></tr></table></figure>
+
+<p>static 키워드를 붙히면 인스턴스를 생성하지 않아도 클래스 이름으로 접근해서 사용할 수 있다.</p>
+<h2 id="Singltons-패턴"><a href="#Singltons-패턴" class="headerlink" title="Singltons 패턴"></a>Singltons 패턴</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">class ClassName &#123;</span><br><span class="line">  private static instance: ClassName | null = null;</span><br><span class="line"></span><br><span class="line">  // 매개체로 이용해서 객체를 꺼내옴.</span><br><span class="line">  public static getInstance(): ClassName &#123;</span><br><span class="line">    // ClassName 으로 부터 만든 Object가 있으면 그걸 리턴</span><br><span class="line">    // 없으면, 만들어서 리턴</span><br><span class="line">    if (ClassName.instance === null) &#123;</span><br><span class="line">      ClassName.instance = new ClassName();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    return ClassName.instance;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  // new 를 직접 호출 할 수 없게 함.</span><br><span class="line">  // 다른 오브젝트 생성 금지</span><br><span class="line">  private constructor() &#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 만들어진 단일 오브젝트를 공유하는 개념</span><br><span class="line">const a = ClassName.getInstance();</span><br><span class="line">const b = ClassName.getInstance();</span><br><span class="line"></span><br><span class="line">console.log(a === b);</span><br></pre></td></tr></table></figure>
+
+<p>생성자 함수를 private 접근 제어자를 사용해서 밖에서 호출하지 못하도록함. <code>getInstance()</code> 같은 함수를 사용해서 인스턴스가 있다면 반환하고 인스턴스가 없다면 새롭게 생성한후 할당, 프로퍼티로 있는 인스턴스를 넘겨준다.</p>
+<p>이렇게 함으로서 클래스로쿠터 단 하나의 오브젝트만 생성해서 사용하는 패턴을 만들 수 있다.</p>
+<h2 id="클래스의-상속"><a href="#클래스의-상속" class="headerlink" title="클래스의 상속"></a>클래스의 상속</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">class Parent &#123;</span><br><span class="line">  constructor(protected _name: string, private _age: number) &#123;&#125;</span><br><span class="line"></span><br><span class="line">  public print(): void &#123;</span><br><span class="line">    console.log(`이름은 $&#123;this._name&#125; 이고 나이는 $&#123;this._age&#125; 입니다.`);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  protected printName(): void &#123;</span><br><span class="line">    // 프로텍티트 접근 제어자를 통해서 부모 클래스의 private 프로퍼티도 접근 가능.</span><br><span class="line">    console.log(this._name, this._age);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class Child extends Parent &#123;</span><br><span class="line">  // 접근 제어자도 오버라이드 됨.</span><br><span class="line">  // public _name = &quot;Mark Jr.&quot;;</span><br><span class="line"></span><br><span class="line">  public gender: string = &quot;male&quot;;</span><br><span class="line"></span><br><span class="line">  constructor(age: number) &#123;</span><br><span class="line">    super(&quot;Mark Jr.&quot;, age);</span><br><span class="line">    this.printName();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// const p = new Parent(&quot;Mark&quot;, 39);</span><br><span class="line">// p.print();</span><br><span class="line"></span><br><span class="line">// const c = new Child(&quot;son&quot;, 39);</span><br><span class="line">const c = new Child(5);</span><br><span class="line">c.print();</span><br></pre></td></tr></table></figure>
+
+<p>부모 클래스에서 <code>protected</code> 로 선언한 함수 또는 프로퍼티는 클래스 외에서 접근은 불가능하지만, 상속받은 자식 클래스에서 접근은 가능하다. 자식 클래스에서 기본 생성자가 아니라 따로 만들었다면, <code>super()</code>를 사용하여 부모 클래스이 생성자를 호출해 주어야 한다. 그렇게 해야지 부모 클래스의 값이 할당 되고 <code>this</code>키워드를 사용하여 호출, 사용할 수 있게 된다.</p>
+<h2 id="abstract"><a href="#abstract" class="headerlink" title="abstract"></a>abstract</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">// new 불가 , 상속후 완전하게 만든다음에 사용 가능.</span><br><span class="line">abstract class AbstractPerson &#123;</span><br><span class="line">  protected _name: string = &quot;Mark&quot;;</span><br><span class="line"></span><br><span class="line">  // 구현 하지 않음 // 클래스의  abstract 붙여야 함.</span><br><span class="line">  abstract setName(name: string): void;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class Person extends AbstractPerson &#123;</span><br><span class="line">  setName(name: string): void &#123;</span><br><span class="line">    this._name = name;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const p = new Person();</span><br><span class="line">p.setName(&quot;Koo&quot;);</span><br></pre></td></tr></table></figure>
+
+<p>완전하지 않은 클래스로서 외형만 만든다고 생각하면된다. 완전하지 않기 때문에 <code>new</code>로 생성할 수 없다. 추상 클래스를 상속 받는 자식 클래스에서는 <code>abstract</code>로 작성한 완전하지 않은 메서드를 완전히 구현해야 <code>new</code>로 생성할 수 있다.</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1175,133 +1284,6 @@
 
 <p>사실 이렇게 작성해도 보기 불편한건 사실이고, 함수를 만들었는데 단지 콜백 지옥을 피하기 위해서만 만들었기 때문에 재사용이 불가능하다. </p>
 <p>가장 좋은 방법은 프로 미스를 사용하는 방법인데 다음 포스팅에서 설명하도록 한다. </p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/08/15/modernJs/210730-customEvent/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JayoonKoo">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="티끌모아 태산">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/08/15/modernJs/210730-customEvent/" class="post-title-link" itemprop="url">customEvent</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-08-15 19:40:25" itemprop="dateCreated datePublished" datetime="2021-08-15T19:40:25+09:00">2021-08-15</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="커스텀-이벤트-디스패치"><a href="#커스텀-이벤트-디스패치" class="headerlink" title="커스텀 이벤트 디스패치"></a>커스텀 이벤트 디스패치</h1><h2 id="Event의-생성자"><a href="#Event의-생성자" class="headerlink" title="Event의 생성자"></a>Event의 생성자</h2><p>내장 이벤트 클래스 계층의 꼭대기엔 <code>Event</code> 클래스가 있다.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> event = <span class="keyword">new</span> Event(type[, options]);</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>type: “click” 같은 내장 이벤트, “my-event” 같은 커스텀 이벤트가 올 수 있음. </li>
-<li>options <ul>
-<li>bubbles: true/false -&gt; true 일 경우 버블링</li>
-<li>cancelable: true/false -&gt; true 인 경우 브라우저 ‘기본동작’ 이 실행되지 않는다. </li>
-<li>아무런 값도 지정하지 않으면 둘다 false 가 됨. </li>
-</ul>
-</li>
-</ul>
-<br/>
-
-<h2 id="dispatchEvent"><a href="#dispatchEvent" class="headerlink" title="dispatchEvent"></a>dispatchEvent</h2><p>이베트 객체를 생성한 다음에는 <code>elem.dispatchEvent(event)</code>를 호출해 요소에 있는 이벤트를 반드시 실행시켜줘야 한다. </p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">&quot;elem&quot;</span> <span class="attr">onclick</span>=<span class="string">&quot;alert(&#x27;클릭!&#x27;);&quot;</span>&gt;</span>자동으로 클릭 되는 버튼<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></span><br><span class="line"><span class="javascript">  <span class="keyword">let</span> event = <span class="keyword">new</span> Event(<span class="string">&quot;click&quot;</span>);</span></span><br><span class="line"><span class="javascript">  elem.dispatchEvent(event);</span></span><br><span class="line"><span class="javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>event.isTrusted 가 true 이면 사용자 액션을 통해서 만든 이벤트라는 것을 의미. isTrusted 가 false 이면 스크립트를 통해 생성된 이벤트라는 것을 의미</p>
-</blockquote>
-<br/>
-
-<h2 id="커스텀-이벤트-버블링"><a href="#커스텀-이벤트-버블링" class="headerlink" title="커스텀 이벤트 버블링"></a>커스텀 이벤트 버블링</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h1</span> <span class="attr">id</span>=<span class="string">&quot;elem&quot;</span>&gt;</span>Hello from the script!<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></span><br><span class="line"><span class="javascript">  <span class="comment">// 버블링이 일어나면서 document에서 이벤트가 처리됨</span></span></span><br><span class="line"><span class="javascript">  <span class="built_in">document</span>.addEventListener(<span class="string">&quot;hello&quot;</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>) </span>&#123; <span class="comment">// (1)</span></span></span><br><span class="line"><span class="javascript">    alert(<span class="string">&quot;Hello from &quot;</span> + event.target.tagName); <span class="comment">// Hello from H1</span></span></span><br><span class="line"><span class="javascript">  &#125;);</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">  <span class="comment">// 이벤트(hello)를 만들고 elem에서 이벤트 디스패치</span></span></span><br><span class="line"><span class="javascript">  <span class="keyword">let</span> event = <span class="keyword">new</span> Event(<span class="string">&quot;hello&quot;</span>, &#123;<span class="attr">bubbles</span>: <span class="literal">true</span>&#125;); <span class="comment">// (2)</span></span></span><br><span class="line"><span class="javascript">  elem.dispatchEvent(event);</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">  <span class="comment">// document에 할당된 핸들러가 동작하고 메시지가 얼럿창에 출력됩니다.</span></span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<ol>
-<li><code>on&lt;event&gt;</code> 는 내장 이벤트에서만 사용 가능 <code>addEventListener</code>를 사용해야 함.</li>
-<li><code>bubbles: true</code>를 명시적으로 써야 버블링 사용 가능</li>
-</ol>
-<br/>
-
-<h2 id="MouseEvent-KeyboardEvent-등의-다양한-이벤트"><a href="#MouseEvent-KeyboardEvent-등의-다양한-이벤트" class="headerlink" title="MouseEvent, KeyboardEvent 등의 다양한 이벤트"></a>MouseEvent, KeyboardEvent 등의 다양한 이벤트</h2><p>마우스나 키보드와 관련된 이벤트들은 Event 로 생성하는 것이 아니라 관련 생성자로 생성해야 한다. 그래야 해당 이벤트의 전용 프로퍼티를 명시할 수 있다.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> event = <span class="keyword">new</span> MouseEvent(<span class="string">&quot;click&quot;</span>, &#123;</span><br><span class="line">  <span class="attr">bubbles</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="attr">cancelable</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="attr">clientX</span>: <span class="number">100</span>,</span><br><span class="line">  <span class="attr">clientY</span>: <span class="number">100</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">alert(event.clientX); <span class="comment">// 100</span></span><br></pre></td></tr></table></figure>
-<p>그냥 Event 로 생성하면 무시된다. </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> event = <span class="keyword">new</span> Event(<span class="string">&quot;click&quot;</span>, &#123;</span><br><span class="line">  <span class="attr">bubbles</span>: <span class="literal">true</span>, <span class="comment">// Event 생성자에선</span></span><br><span class="line">  <span class="attr">cancelable</span>: <span class="literal">true</span>, <span class="comment">// bubbles와 cancelable 프로퍼티만 동작합니다.</span></span><br><span class="line">  <span class="attr">clientX</span>: <span class="number">100</span>,</span><br><span class="line">  <span class="attr">clientY</span>: <span class="number">100</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">alert(event.clientX); <span class="comment">// undefined, 알 수 없는 프로퍼티이기 때문에 무시됩니다.</span></span><br></pre></td></tr></table></figure>
-
-<br/>
-
-<h2 id="커스텀-이벤트"><a href="#커스텀-이벤트" class="headerlink" title="커스텀 이벤트"></a>커스텀 이벤트</h2><p>제대로된 커스텀 이벤트를 만들려면 그냥 Event로 생성하는 것이 아니라 CustomEvent로 생성해야 한다. </p>
-<p>CustomEvent 로 생성하면 두번째 인수로 detail 이라는 프로퍼티를 추가해 커스텀 이벤트에 대한 정보를 명시할 수 있다.</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h1</span> <span class="attr">id</span>=<span class="string">&quot;elem&quot;</span>&gt;</span>이보라님, 환영합니다!<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></span><br><span class="line"><span class="javascript">  <span class="comment">// 추가 정보는 이벤트와 함께 핸들러에 전달됩니다.</span></span></span><br><span class="line"><span class="javascript">  elem.addEventListener(<span class="string">&quot;hello&quot;</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">    alert(event.detail.name);</span></span><br><span class="line"><span class="javascript">  &#125;);</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">  elem.dispatchEvent(<span class="keyword">new</span> CustomEvent(<span class="string">&quot;hello&quot;</span>, &#123;</span></span><br><span class="line"><span class="javascript">    <span class="attr">detail</span>: &#123; <span class="attr">name</span>: <span class="string">&quot;보라&quot;</span> &#125;</span></span><br><span class="line"><span class="javascript">  &#125;));</span></span><br><span class="line"><span class="javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>사실 Event로 생성해서 추가 프로퍼티를 넘겨주면 되긴 하지만, 이렇게 생성하면 충돌을 피할 수 있고 무엇보다 직접 만든 커스텀 이벤트라는 명시가 된다. </p>
-<br/>
-
-<h2 id="event-preventDefault"><a href="#event-preventDefault" class="headerlink" title="event.preventDefault()"></a>event.preventDefault()</h2><p>커스텀 이벤트에는 기본 동작이 없지만 디스패칭 해주는 코드에 원하는 동작을 넣으면, 커스텀 이벤트에도 기본 동작을 설정해줄 수 있다.</p>
-<p><code>event.preventDefault()</code>를 호출하면 <code>elem.dispatchEvent(event)</code> 호출 시 <code>false</code>를 반환한다. 이를 통해서 해당 이벤트에서 기본동작이 취소 되었음을 알 수 있다. </p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">pre</span> <span class="attr">id</span>=<span class="string">&quot;rabbit&quot;</span>&gt;</span></span><br><span class="line">  |\   /|</span><br><span class="line">   \|_|/</span><br><span class="line">   /. .\</span><br><span class="line">  =\_Y_/=</span><br><span class="line">   &#123;&gt;o&lt;&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">pre</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">onclick</span>=<span class="string">&quot;hide()&quot;</span>&gt;</span>hide()를 호출해 토끼 숨기기<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></span><br><span class="line"><span class="javascript">  <span class="comment">// hide() will be called automatically in 2 seconds</span></span></span><br><span class="line"><span class="javascript">  <span class="function"><span class="keyword">function</span> <span class="title">hide</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">    <span class="keyword">let</span> event = <span class="keyword">new</span> CustomEvent(<span class="string">&quot;hide&quot;</span>, &#123;</span></span><br><span class="line"><span class="javascript">      <span class="attr">cancelable</span>: <span class="literal">true</span> <span class="comment">// cancelable를 true로 설정하지 않으면 preventDefault가 동작하지 않습니다.</span></span></span><br><span class="line"><span class="javascript">    &#125;);</span></span><br><span class="line"><span class="javascript">    <span class="keyword">if</span> (!rabbit.dispatchEvent(event)) &#123;</span></span><br><span class="line"><span class="javascript">      alert(<span class="string">&#x27;기본 동작이 핸들러에 의해 취소되었습니다.&#x27;</span>);</span></span><br><span class="line"><span class="javascript">    &#125; <span class="keyword">else</span> &#123;</span></span><br><span class="line"><span class="javascript">      rabbit.hidden = <span class="literal">true</span>;</span></span><br><span class="line"><span class="javascript">    &#125;</span></span><br><span class="line"><span class="javascript">  &#125;</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">  rabbit.addEventListener(<span class="string">&#x27;hide&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">    <span class="keyword">if</span> (confirm(<span class="string">&quot;preventDefault를 호출하시겠습니까?&quot;</span>)) &#123;</span></span><br><span class="line"><span class="javascript">      event.preventDefault();</span></span><br><span class="line"><span class="javascript">    &#125;</span></span><br><span class="line"><span class="javascript">  &#125;);</span></span><br><span class="line"><span class="javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<br/>
-
-<h2 id="이벤트-안-이벤트"><a href="#이벤트-안-이벤트" class="headerlink" title="이벤트 안 이벤트"></a>이벤트 안 이벤트</h2><p>이벤트는 큐로 처리 된다. 따라서 이벤트가 발생되고 다른 이벤트가 또 발생 되면 먼저 발생한 이벤트가 종료 된 이후에 새롭게 발생한 이벤트가 처리 된다. </p>
-<p>하지만, 이벤트 안에 또 다른 이벤트 실행되는 경우는 다르다. 스텍 처럼 안쪽에 있는 이벤트 가 먼저 실행 된 이후에 바깥에 있는 이벤트가 실행되게 된다.</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">&quot;menu&quot;</span>&gt;</span>메뉴(클릭해주세요)<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></span><br><span class="line"><span class="javascript">  menu.onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">    alert(<span class="number">1</span>);</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">    menu.dispatchEvent(<span class="keyword">new</span> CustomEvent(<span class="string">&quot;menu-open&quot;</span>, &#123;</span></span><br><span class="line"><span class="javascript">      <span class="attr">bubbles</span>: <span class="literal">true</span></span></span><br><span class="line"><span class="javascript">    &#125;));</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">    alert(<span class="number">2</span>);</span></span><br><span class="line"><span class="javascript">  &#125;;</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">  <span class="comment">// 1과 2 사이에 트리거됩니다</span></span></span><br><span class="line"><span class="javascript">  <span class="built_in">document</span>.addEventListener(<span class="string">&#x27;menu-open&#x27;</span>, <span class="function">() =&gt;</span> alert(<span class="string">&#x27;중첩 이벤트&#x27;</span>));</span></span><br><span class="line"><span class="javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>1, 중첩이벤트, 2 마치 동기적으로 처리되는 것처럼.</p>
-<p>때로는 비동기적으로 보이고 싶다면 <code>setTimeout(()=&gt; &#123;&#125;, 0)</code> 사용.</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">&quot;menu&quot;</span>&gt;</span>Menu (click me)<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></span><br><span class="line"><span class="javascript">  menu.onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">    alert(<span class="number">1</span>);</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">    <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> menu.dispatchEvent(<span class="keyword">new</span> CustomEvent(<span class="string">&quot;menu-open&quot;</span>, &#123;</span></span><br><span class="line"><span class="javascript">      <span class="attr">bubbles</span>: <span class="literal">true</span></span></span><br><span class="line"><span class="javascript">    &#125;)));</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">    alert(<span class="number">2</span>);</span></span><br><span class="line"><span class="javascript">  &#125;;</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">  <span class="built_in">document</span>.addEventListener(<span class="string">&#x27;menu-open&#x27;</span>, <span class="function">() =&gt;</span> alert(<span class="string">&#x27;중첩 이벤트&#x27;</span>));</span></span><br><span class="line"><span class="javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
       
     </div>
