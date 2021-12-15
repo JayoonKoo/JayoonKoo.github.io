@@ -85,7 +85,7 @@
         <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
         <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">11</span></a></li>
         <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">9</span></a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">109</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">110</span></a></li>
   </ul>
 </nav>
 
@@ -129,7 +129,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">109</span>
+          <span class="site-state-item-count">110</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -180,6 +180,100 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/09/12/system-programing/210817-%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4%20%EA%B4%80%EB%A6%AC/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JayoonKoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="티끌모아 태산">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/09/12/system-programing/210817-%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4%20%EA%B4%80%EB%A6%AC/" class="post-title-link" itemprop="url">프로세스 관리</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-09-12 23:46:02" itemprop="dateCreated datePublished" datetime="2021-09-12T23:46:02+09:00">2021-09-12</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/CS/" itemprop="url" rel="index"><span itemprop="name">CS</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="프로세스-관리"><a href="#프로세스-관리" class="headerlink" title="프로세스 관리"></a>프로세스 관리</h1><h2 id="프로세스-ID"><a href="#프로세스-ID" class="headerlink" title="프로세스 ID"></a>프로세스 ID</h2><p>각각의 프로세스는 proess id 라고 하는 PID 를 갖는다. </p>
+<ul>
+<li>pid : 해당 시점에 unique한 pid</li>
+<li>최대 값은 2의 15승인 32768( 부호형 16비트 정수값)</li>
+<li>ppid : 부모 프로세스의 pid 값</li>
+</ul>
+<p><code>ps -ef</code>를 통해 pid, ppid 및 프로세스스 정보 확인</p>
+<p><code>vi /etc/passwd</code>를 프로세스와 소유자를 관리함. </p>
+<p>예시</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root:x:0:0:root:/root:/bin/bash</span><br></pre></td></tr></table></figure>
+<ul>
+<li>사용자명 : root</li>
+<li>패스워드 : x (없음)</li>
+<li>사용자 ID : 0</li>
+<li>그룹 ID : 0</li>
+<li>사용자 정보 : root</li>
+<li>홈 디렉토리 : /root</li>
+<li>쉘 환경 : /bin/bash</li>
+</ul>
+<h2 id="pid-및-ppid-확인"><a href="#pid-및-ppid-확인" class="headerlink" title="pid 및 ppid 확인"></a>pid 및 ppid 확인</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sys/types.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;unistd.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;pid=%d\n&quot;</span>, getpid());</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;ppid=%d\n&quot;</span>, getppid());</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ gcc test.c -o test</span><br><span class="line">$ ./test</span><br><span class="line"></span><br><span class="line">pid=22440</span><br><span class="line">ppid=22164</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1262,127 +1356,6 @@
 <h3 id="Aliasing-Function"><a href="#Aliasing-Function" class="headerlink" title="Aliasing Function"></a>Aliasing Function</h3><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> EatType = <span class="function">(<span class="params">food: <span class="built_in">string</span></span>) =&gt;</span> <span class="built_in">void</span>;</span><br></pre></td></tr></table></figure>
 <p>어떤 타입이 타입으로서의 존재가치와 목적이 명확하면 <code>interface</code>를 사용하고 단지 가르킬 뿐이라면 <code>type</code>를 사용함.</p>
 <p>물론 기술적으로도 차이가 있음. </p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/08/30/typeScript/210818-interface/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JayoonKoo">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="티끌모아 태산">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/08/30/typeScript/210818-interface/" class="post-title-link" itemprop="url">interface</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-08-30 02:32:06" itemprop="dateCreated datePublished" datetime="2021-08-30T02:32:06+09:00">2021-08-30</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/typeScript/" itemprop="url" rel="index"><span itemprop="name">typeScript</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="interface"><a href="#interface" class="headerlink" title="interface"></a>interface</h1><h2 id="데이터-타입을-인터페이스로-만들기"><a href="#데이터-타입을-인터페이스로-만들기" class="headerlink" title="데이터 타입을 인터페이스로 만들기"></a>데이터 타입을 인터페이스로 만들기</h2><p>인터페이스로 타입을 정의할 수 있다.</p>
-<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> Person1 &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="built_in">string</span>;</span><br><span class="line">  age: <span class="built_in">number</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">hello1</span>(<span class="params">person: Person1</span>): <span class="title">void</span> </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`안녕하세요! <span class="subst">$&#123;person.name&#125;</span> 입니다.`</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> p1: Person1 = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&quot;Mark&quot;</span>,</span><br><span class="line">  <span class="attr">age</span>: <span class="number">27</span>,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">hello1(p1);</span><br></pre></td></tr></table></figure>
-
-<h2 id="optional-Property"><a href="#optional-Property" class="headerlink" title="optional Property"></a>optional Property</h2><p>값으로 받을 수도 있고 아닐 수도 있는 속성을 정의할 수 있다.</p>
-<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> Person2 &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="built_in">string</span>;</span><br><span class="line">  age?: <span class="built_in">number</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">hello2</span>(<span class="params">person: Person2</span>): <span class="title">void</span> </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`안녕하세요! <span class="subst">$&#123;person.name&#125;</span> 입니다.`</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">hello2(&#123; <span class="attr">name</span>: <span class="string">&quot;Koo&quot;</span>, <span class="attr">age</span>: <span class="number">39</span> &#125;);</span><br><span class="line">hello2(&#123; <span class="attr">name</span>: <span class="string">&quot;Koo&quot;</span> &#125;);</span><br></pre></td></tr></table></figure>
-
-<p><code>age?</code> 에서 ? 를 붙히면 받을수도 있고 안받을 수 도 있는 타입이 된다. <code>age: number | undefined</code>와 같아 진다.</p>
-<h3 id="인덱서블-타입"><a href="#인덱서블-타입" class="headerlink" title="인덱서블 타입"></a>인덱서블 타입</h3><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> Person3 &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="built_in">string</span>;</span><br><span class="line">  age?: <span class="built_in">number</span>;</span><br><span class="line">  [index: <span class="built_in">string</span>]: <span class="built_in">any</span>; <span class="comment">// 어떤 이름에 프로퍼티가 와도 괜찮음.</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">hello3</span>(<span class="params">person: Person3</span>): <span class="title">void</span> </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`안녕하세요! <span class="subst">$&#123;person.name&#125;</span> 입니다.`</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> p31: Person3 = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&quot;koo&quot;</span>,</span><br><span class="line">  <span class="attr">age</span>: <span class="number">37</span>,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> p32: Person3 = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&quot;Anna&quot;</span>,</span><br><span class="line">  <span class="attr">systers</span>: [<span class="string">&quot;Sung&quot;</span>, <span class="string">&quot;Chan&quot;</span>],</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> p33: Person3 = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&quot;Bokdaengi&quot;</span>,</span><br><span class="line">  <span class="attr">father</span>: p31,</span><br><span class="line">  <span class="attr">mother</span>: p32,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">hello3(p33);</span><br></pre></td></tr></table></figure>
-
-<p>인덱스에 타입을 지정해 주어서 어떤것도 받을 수 있도록 하려면 <code>[index: string]</code> 과 같이 사용한다.</p>
-<h2 id="function-interface"><a href="#function-interface" class="headerlink" title="function interface"></a>function interface</h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> Person4 &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="built_in">string</span>;</span><br><span class="line">  age: <span class="built_in">number</span>;</span><br><span class="line">  hello(): <span class="built_in">void</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> p41: Person4 = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&quot;Koo&quot;</span>,</span><br><span class="line">  <span class="attr">age</span>: <span class="number">27</span>,</span><br><span class="line">  <span class="attr">hello</span>: <span class="function"><span class="keyword">function</span> (<span class="params"></span>): <span class="title">void</span> </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">`안녕하세요. <span class="subst">$&#123;<span class="built_in">this</span>.name&#125;</span> 입니다.`</span>);</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> p42: Person4 = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&quot;Koo&quot;</span>,</span><br><span class="line">  <span class="attr">age</span>: <span class="number">27</span>,</span><br><span class="line">  hello(): <span class="built_in">void</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">`안녕하세요. <span class="subst">$&#123;<span class="built_in">this</span>.name&#125;</span> 입니다.`</span>);</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// const p43: Person4 = &#123;</span></span><br><span class="line"><span class="comment">// 	name: &quot;Koo&quot;,</span></span><br><span class="line"><span class="comment">// 	age: 27,</span></span><br><span class="line"><span class="comment">// 	hello: (): void =&gt; &#123;</span></span><br><span class="line"><span class="comment">// 		console.log(`안녕하세요. $&#123;this.name&#125; 입니다.`);</span></span><br><span class="line"><span class="comment">// 	&#125;</span></span><br><span class="line"><span class="comment">// &#125;</span></span><br><span class="line"></span><br><span class="line">p41.hello();</span><br><span class="line">p42.hello();</span><br></pre></td></tr></table></figure>
-
-<p>함수로 선언하는 방법에는 3가지 정도 있다.</p>
-<ul>
-<li><code>hello: function(): void &#123;&#125;</code></li>
-<li><code>hello(): void &#123;&#125;</code></li>
-<li><code>hello: (): void =&gt; &#123;&#125;</code> : 화살표 함수를 사용할 경우 <code>this</code>를 사용하지 못한다.</li>
-</ul>
-<h2 id="class-implements"><a href="#class-implements" class="headerlink" title="class implements"></a>class implements</h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> IPerson1 &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="built_in">string</span>;</span><br><span class="line">  age?: <span class="built_in">number</span>;</span><br><span class="line">  hello(): <span class="built_in">void</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> <span class="title">implements</span> <span class="title">IPerson1</span> </span>&#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="built_in">string</span>;</span><br><span class="line">  age?: <span class="built_in">number</span> | <span class="literal">undefined</span>;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">name: <span class="built_in">string</span></span>)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.name = name;</span><br><span class="line">  &#125;</span><br><span class="line">  hello(): <span class="built_in">void</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">`안녕하세요 <span class="subst">$&#123;<span class="built_in">this</span>.name&#125;</span> 입니다.`</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> person: IPerson1 = <span class="keyword">new</span> Person(<span class="string">&quot;Koo&quot;</span>);</span><br><span class="line">person.hello();</span><br></pre></td></tr></table></figure>
-
-<p>객체지향 언어에서 구현하듯이 클래스에서 interface를 구현할 수 있다. interface를 구현하는 class 는 interface 안에 요소를 구현해야 한다. 반드시 받아야 하는 변수에 경우 생성자를 통해 받지 않으면 에러를 발생시킨다.</p>
-<h2 id="interface-extends"><a href="#interface-extends" class="headerlink" title="interface extends"></a>interface extends</h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> IPerson2 &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="built_in">string</span>;</span><br><span class="line">  age?: <span class="built_in">number</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">interface</span> IKorean <span class="keyword">extends</span> IPerson2 &#123;</span><br><span class="line">  <span class="attr">city</span>: <span class="built_in">string</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> k: IKorean = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&quot;Koo&quot;</span>,</span><br><span class="line">  <span class="attr">city</span>: <span class="string">&quot;부천&quot;</span>,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p>interface 에 다른 interface를 상속받을 수 있다.</p>
-<h2 id="function-interface-1"><a href="#function-interface-1" class="headerlink" title="function interface"></a>function interface</h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> HelloPerson &#123;</span><br><span class="line">  (name: <span class="built_in">string</span>, age?: <span class="built_in">number</span>): <span class="built_in">void</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> helloPerson: HelloPerson = <span class="function">(<span class="params">...args</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">typeof</span> args[<span class="number">1</span>] === <span class="string">&quot;number&quot;</span>) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">`안녕하세요. <span class="subst">$&#123;args[<span class="number">0</span>]&#125;</span> 입니다. 나이는 <span class="subst">$&#123;args[<span class="number">1</span>]&#125;</span> 입니다.`</span>);</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`안녕하세요. <span class="subst">$&#123;args[<span class="number">0</span>]&#125;</span> 입니다.`</span>);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">helloPerson(<span class="string">&quot;mark&quot;</span>, <span class="number">39</span>);</span><br></pre></td></tr></table></figure>
-
-<p>실제 타입 검사는 구현하는 함수에서가 아니라 인터페이스에서 한다. 다음과 같은 경우 에러를 발생시킨다.</p>
-<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> HelloPerson &#123;</span><br><span class="line">  (name: <span class="built_in">string</span>, age?: <span class="built_in">number</span>): <span class="built_in">void</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> helloPerson: HelloPerson = <span class="function">(<span class="params">name: <span class="built_in">string</span>, age: <span class="built_in">number</span></span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`안녕하세요. <span class="subst">$&#123;name&#125;</span> 입니다.`</span>);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p>잘 생각해보면 helloPerson은 interface <code>HelloPerson</code>에 의해서 <code>age</code>를 인수로 받을 수도 있고 안받을수도 있다. 그런데 함수를 구현하는 부분에서 무조건 <code>age</code>를 받도록 구현했기 때문에 논리적으로 맞지 않다.</p>
-<h2 id="Readonly-Interface-Properties"><a href="#Readonly-Interface-Properties" class="headerlink" title="Readonly Interface Properties"></a>Readonly Interface Properties</h2><p>읽기 전용 속성으로 만들면 값을 생성하고 나서 수정할 수 없다.</p>
-<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> Person8 &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="built_in">string</span>;</span><br><span class="line">  age?: <span class="built_in">number</span>;</span><br><span class="line">  <span class="keyword">readonly</span> gender: <span class="built_in">string</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> p81: Person8 = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&quot;Mark&quot;</span>,</span><br><span class="line">  <span class="attr">gender</span>: <span class="string">&quot;male&quot;</span>,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// p81.gender = &quot;female&quot;;</span></span><br></pre></td></tr></table></figure>
-
-<p>주석 부분에 p81의 gender 를 바꾸려고 하면 에러가 발생한다.</p>
-<h2 id="type-alias-vs-interface"><a href="#type-alias-vs-interface" class="headerlink" title="type alias vs interface"></a>type alias vs interface</h2><p>몇가지 차이점이 있다.</p>
-<p>함수</p>
-<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> EatType = <span class="function">(<span class="params">food: <span class="built_in">string</span></span>) =&gt;</span> <span class="built_in">void</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">interface</span> IEatType &#123;</span><br><span class="line">  (food: <span class="built_in">string</span>): <span class="built_in">void</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>array를 만들때</p>
-<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> PersonList = <span class="built_in">string</span>[];</span><br><span class="line"></span><br><span class="line"><span class="keyword">interface</span> IPersonList &#123;</span><br><span class="line">  [index: <span class="built_in">number</span>]: <span class="built_in">string</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>intersetction</p>
-<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> ErrorHandling &#123;</span><br><span class="line">  <span class="attr">success</span>: <span class="built_in">boolean</span>;</span><br><span class="line">  error?: &#123; <span class="attr">message</span>: <span class="built_in">string</span> &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">interface</span> ArtistsData &#123;</span><br><span class="line">  <span class="attr">srtists</span>: &#123; <span class="attr">name</span>: <span class="built_in">string</span> &#125;[];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> ArtistsResponseType = ArtistsData &amp; ErrorHandling;</span><br><span class="line"></span><br><span class="line"><span class="keyword">interface</span> IArtistsResponseType <span class="keyword">extends</span> ArtistsData, ErrorHandling &#123;&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>unoon type</strong></p>
-<p>유니온 타입은 인터페이스에서 상속 받을 수 없다. 또한 클래스에서 구현하는것도 불가능하다.</p>
-<p><strong>Declaration Merging</strong></p>
-<p>interface에 경우 같은 이름에 인터페이스를 만들면 머지 되서 사용할때는 하나의 인터페이스 처럼 사용할 수 있음.</p>
-<p>type alias는 같은 이름으로 생성하면 에러가 발생한다.</p>
 
       
     </div>
