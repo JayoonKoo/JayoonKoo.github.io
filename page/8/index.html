@@ -83,9 +83,9 @@
   <ul class="main-menu menu">
         <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li>
         <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
-        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">11</span></a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">12</span></a></li>
         <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">9</span></a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">110</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">113</span></a></li>
   </ul>
 </nav>
 
@@ -129,7 +129,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">110</span>
+          <span class="site-state-item-count">113</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -140,7 +140,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-count">12</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -180,6 +180,302 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/09/12/system-programing/210812-%EB%A6%AC%EB%8B%A4%EC%9D%B4%EB%A0%89%EC%85%98%EA%B3%BC%20%ED%8C%8C%EC%9D%B4%ED%94%84/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JayoonKoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="티끌모아 태산">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/09/12/system-programing/210812-%EB%A6%AC%EB%8B%A4%EC%9D%B4%EB%A0%89%EC%85%98%EA%B3%BC%20%ED%8C%8C%EC%9D%B4%ED%94%84/" class="post-title-link" itemprop="url">리다이렉션과 파이프</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-09-12 23:46:02" itemprop="dateCreated datePublished" datetime="2021-09-12T23:46:02+09:00">2021-09-12</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/CS/" itemprop="url" rel="index"><span itemprop="name">CS</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="리다이렉션과-파이프"><a href="#리다이렉션과-파이프" class="headerlink" title="리다이렉션과 파이프"></a>리다이렉션과 파이프</h1><h2 id="Stansdard-Stream-표준-입출력"><a href="#Stansdard-Stream-표준-입출력" class="headerlink" title="Stansdard Stream(표준 입출력)"></a>Stansdard Stream(표준 입출력)</h2><p>command로 실행되는 프로세스는 세가지 스트림을 가지고 있다. </p>
+<ul>
+<li>표준 입력 스트립(Standard Input Stream) - stdin</li>
+<li>표준 출력 스트립(Standard Output Stream) - stdout</li>
+<li>오츄 출력 스트림 (Standard Error Stream) - stderr</li>
+</ul>
+<p>모든 스트림은 일반적인 plain text로 consol에 출력하도록 되어 있음. </p>
+<h2 id="리다이렉션-redirection"><a href="#리다이렉션-redirection" class="headerlink" title="리다이렉션(redirection)"></a>리다이렉션(redirection)</h2><p>표준 스트림 흐름을 바궈준다.<br>주로 표준 출력을 화면이 아닌 파일로 할때 사용한다.<br>혹은 파일에 있는 내용을 응용 프로그램에 입력으로 바꿔 줄때 사용하기도 한다. </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ls &gt; files.txt</span><br><span class="line">head &lt; files.txt</span><br><span class="line">head &lt; files.txt &gt; files2.txt</span><br></pre></td></tr></table></figure>
+<p>head &lt; files.txt 원래는 이게 화면에 출력 되어야 하지만 뒤에 &gt; files2.txt 가 있기 때문에 리다이렉션 되어서 files2.txt 에 해당 내용이 적힌다. </p>
+<p><code>ls &gt;&gt; files.txt</code> 기존에 파일이 있으면 append 되어서 추가된다. </p>
+<h2 id="파이프-pipe"><a href="#파이프-pipe" class="headerlink" title="파이프 (pipe)"></a>파이프 (pipe)</h2><p>두 프로세스 사이에서 한 프로세스의 출력 스트림을 또다른 프로세스의 입력 스트림으로 사용하는 기능.<br>기호로 <code>|</code>를 사용한다. </p>
+<p>유닉스의 철학 : 프로세스를 간단하게 만듦. </p>
+<p><code>ls | grep files.txt</code> : grep 은 입력으로 들어온 데이터 중에서 인수로 받은 텍스트를 찾는 명령어이다.<br>파일 리스트에서 특정한 파일만 찾을때 사용한다. </p>
+<h3 id="grep-flag"><a href="#grep-flag" class="headerlink" title="grep flag"></a>grep flag</h3><img src="images/210812-리다이렉션과%20파이프/1.png" width="700">
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/09/12/system-programing/210813-%EB%A6%AC%EB%88%85%EC%8A%A4%20%ED%8C%8C%EC%9D%BC%EC%8B%9C%EC%8A%A4%ED%85%9C%20%EB%B0%8F%20%EC%89%98%20%EB%AA%85%EB%A0%B9%EC%96%B4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JayoonKoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="티끌모아 태산">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/09/12/system-programing/210813-%EB%A6%AC%EB%88%85%EC%8A%A4%20%ED%8C%8C%EC%9D%BC%EC%8B%9C%EC%8A%A4%ED%85%9C%20%EB%B0%8F%20%EC%89%98%20%EB%AA%85%EB%A0%B9%EC%96%B4/" class="post-title-link" itemprop="url">리눅스 파일시스템 및 쉘 명령어</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-09-12 23:46:02" itemprop="dateCreated datePublished" datetime="2021-09-12T23:46:02+09:00">2021-09-12</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/CS/" itemprop="url" rel="index"><span itemprop="name">CS</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="리눅스-파일-시스템과-쉘-명령어"><a href="#리눅스-파일-시스템과-쉘-명령어" class="headerlink" title="리눅스 파일 시스템과 쉘 명령어"></a>리눅스 파일 시스템과 쉘 명령어</h1><h2 id="리눅스는-I-O-를-파일-처럼-처리한다"><a href="#리눅스는-I-O-를-파일-처럼-처리한다" class="headerlink" title="리눅스는 I/O 를 파일 처럼 처리한다."></a>리눅스는 I/O 를 파일 처럼 처리한다.</h2><p>가상 파일 시스템을 사용한다. </p>
+<p>예를들어, tty 는 가상파일 시스템 인퍼에스로 가상 터미널 환경과 연결되어 있다.<br>키보드 인풋을 받는다. </p>
+<h2 id="슈퍼-블록-inode와-파일"><a href="#슈퍼-블록-inode와-파일" class="headerlink" title="슈퍼 블록, inode와 파일"></a>슈퍼 블록, inode와 파일</h2><p>슈퍼 블록 : 파일 시스템의 정보 </p>
+<p>파일 : inode 고유값과 자료구조에 의해 주요 정보를 관리한다. </p>
+<ul>
+<li>파일 이름:inode 파일이름은 inode 번호와 매칭</li>
+<li>파일 시스템에서는 inode를 기반으로 파일 엑세스 </li>
+<li>inode 기반 메타 데이터 저장. (프로세스에서 PCB와 비슷하다.)</li>
+</ul>
+<p>메타 데이터에는 파일 권한, 소유자 정보, 파일 사이즈, 생성 시간등 시간 관련 정보, 데이터 저장 위치 같은 정보가 적힌다. </p>
+<img src="images/210821-리눅스%20프로세스/1.png" width="400">
+
+<h2 id="파일과-inode"><a href="#파일과-inode" class="headerlink" title="파일과 inode"></a>파일과 inode</h2><p>각 디렉토리에는 dentry 리 라고 하는 엔트리 정보가 있음.<br><code>/home/ubuntu/link.txt</code> 파일의 경우 / dentry 에서 home 서브 디릭토리를 찾고, home 에서 unbuntu를 찾고, ununtu에서 link.txt를 찾음.</p>
+<p>디렉토리도 마찬가지로 inode를 갖고 있으므로 이를 통해 구별할 수 있다. </p>
+<h2 id="하드-링크와-소프트-링크"><a href="#하드-링크와-소프트-링크" class="headerlink" title="하드 링크와 소프트 링크"></a>하드 링크와 소프트 링크</h2><p><code>cp</code> 파일 복사 : <code>-rf</code> 옵션을 많이 사용함. 폴더 안쪽 까지 모두 복사함.<br><code>cp -rf programing/ programing2</code></p>
+<p><code>rm</code> : 파일 삭제. <code>rm -rf </code> 로 많이 사용함. </p>
+<p>바로가기 처럼 만들고 싶다? -&gt; 링크 하고 싶다. </p>
+<h3 id="하드링크"><a href="#하드링크" class="headerlink" title="하드링크"></a>하드링크</h3><p><code>ln link.txt hard.txt</code> link.txt를 링크하는 hard.txt</p>
+<p>하드 링크는 또다른 파일을 만드는 것인데 inode 구조체는 동일하게 된다. 복사와 다른 점은 복사는 inode 구조체까지 복사한다. </p>
+<p><code>ls -i</code> 로 inode 값 확인 링크로 만들면 inode id 값이 같다. </p>
+<p>만약 link.txt를 변경하면 hard.txt 도 똑같이 변경된다. </p>
+<p>하드링크에 경우에는 원본 파일이 사라지는 경우에도 파일 내용은 그대로이다. 이것은 실제 파일 하고 가르키고 있는 inode 구조체가 분리 되어 있기 때문이다.</p>
+<img src="images/210813-리눅스%20파일시스템%20및%20쉘%20명령어/1.png" width="500">
+
+<p>이렇게 하면 좋은점? inode를 공유 하면서도 파일 복사 같이 되기 때문에 inode 구조체를 또 복사할 필요가 없다. </p>
+<h3 id="소프트-링크-심볼릭-링크"><a href="#소프트-링크-심볼릭-링크" class="headerlink" title="소프트 링크 (심볼릭 링크)"></a>소프트 링크 (심볼릭 링크)</h3><p>윈도우에 바로가기 아이콘과 같다고 할 수 있다.<br>원본 파일이 없어지면 접근이 안된다. </p>
+<p>소프트 링크는 indoe 값이 다르다. 소프트 링크는 l로 시작한다. 링크 파일임으로 원본 파일에 내용이 바뀌면 소프트 링크에 내용 도 바뀐다. but, 원본이 삭제되면 소프트 링크 파일도 사라진다. </p>
+<p>소프트 링크 같은 경우에는 별도의 inode structure을 갖는다. 다만, address 로 direct Block 을 갖는 것이 아니라 원본 파일을 가르키는 redirected path 를 갖는다. </p>
+<img src="images/210813-리눅스%20파일시스템%20및%20쉘%20명령어/2.png" width="500">
+
+<h2 id="특수-파일"><a href="#특수-파일" class="headerlink" title="특수 파일"></a>특수 파일</h2><p>리눅스는 모든것을 파일처럼 다루기 때문에 디바이스도 파일처럼 다룬다. </p>
+<ul>
+<li>블록 디바이스 (Block Device) : 저장 매체 등은 블록 단위로 데이터를 읽거나 써야 효율적이다. I/O 송수신 속도가 높다.</li>
+<li>캐릭터 디바이스 (Charcter Device) : 캐릭터 디바이스는 굳이 블록단위로 데이터를 보내지 않아도 되는 경우로 byte 단위로 데이터를 전송하고 키보드나 마우스 같은 경우가 있다. I/O 송수신 속도가 낮음. </li>
+</ul>
+<p>b 로 시작하면 블록 디바이스 이다. </p>
+<p>c 로 시작하면 캐릭터 디바이스 이다. </p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/09/12/system-programing/210813-%EC%8B%9C%EC%8A%A4%ED%85%9C%20%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D%20%ED%95%B5%EC%8B%AC%EA%B8%B0%EC%88%A0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JayoonKoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="티끌모아 태산">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/09/12/system-programing/210813-%EC%8B%9C%EC%8A%A4%ED%85%9C%20%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D%20%ED%95%B5%EC%8B%AC%EA%B8%B0%EC%88%A0/" class="post-title-link" itemprop="url">시스템 프로그래밍 핵심기술</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-09-12 23:46:02" itemprop="dateCreated datePublished" datetime="2021-09-12T23:46:02+09:00">2021-09-12</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/CS/" itemprop="url" rel="index"><span itemprop="name">CS</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="시스템-프로그래밍-핵심-기술"><a href="#시스템-프로그래밍-핵심-기술" class="headerlink" title="시스템 프로그래밍 핵심 기술"></a>시스템 프로그래밍 핵심 기술</h1><h2 id="시스템-콜과-API"><a href="#시스템-콜과-API" class="headerlink" title="시스템 콜과 API"></a>시스템 콜과 API</h2><h3 id="시스템-프로그래밍의-기반-요소"><a href="#시스템-프로그래밍의-기반-요소" class="headerlink" title="시스템 프로그래밍의 기반 요소"></a>시스템 프로그래밍의 기반 요소</h3><ul>
+<li>시스템 콜 </li>
+<li>C 라이브러리 </li>
+<li>C 컴파일러<br>사용자 영역에서 시스템 프로그래밍을 해본다. </li>
+</ul>
+<h3 id="시스템-콜"><a href="#시스템-콜" class="headerlink" title="시스템 콜"></a>시스템 콜</h3><p>커널 영역으로 들어가는 함수. </p>
+<p>리눅스 유닉스도 C 언어로 만들어져 있으며, 시스템 콜도 C 언어로 구현한다. </p>
+<h3 id="시스템-콜은-어떻게-구현"><a href="#시스템-콜은-어떻게-구현" class="headerlink" title="시스템 콜은 어떻게 구현?"></a>시스템 콜은 어떻게 구현?</h3><p>eax 에 시스템 콜 번호를 넘겨 준다.<br>ebx 에는 시스템 콜 인자를 넘겨준다.<br>INT 로 인터럽트를 실행해서 0x80 에 해당아하는 함수를 실행 시키는데 IDT(Interrupt Descriptor Table) 에서 0x80은 리눅스에서 시스템 콜에 해당한다. </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mov eax, 1</span><br><span class="line">mov ebx, 0</span><br><span class="line">int 0x80</span><br></pre></td></tr></table></figure>
+<p>이때 커널 모드로 바뀌어서 실행되고, 실행이 완료 된 다음에는 다시 사용자 모드로 바뀐다. </p>
+<h3 id="API"><a href="#API" class="headerlink" title="API"></a>API</h3><p>응용 프로그램과 불리된 하위 호환 인터페이스. 예) 시스템 콜 래퍼, 입출력 라이브러리 등등.. </p>
+<h2 id="ABI와-표준"><a href="#ABI와-표준" class="headerlink" title="ABI와 표준"></a>ABI와 표준</h2><h3 id="C-라이브러리"><a href="#C-라이브러리" class="headerlink" title="C 라이브러리"></a>C 라이브러리</h3><p>유닉스 - libc</p>
+<p>리눅스 - glibc</p>
+<p>이 안에 시스템 콜, 시스템 콜 래퍼, 기본 응용 프로그램 기능이 포함 된다. </p>
+<h3 id="C-컴파일러"><a href="#C-컴파일러" class="headerlink" title="C 컴파일러"></a>C 컴파일러</h3><p>유닉스 - cc</p>
+<p>리눅스 - gcc</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install gcc</span><br><span class="line">gcc --version</span><br><span class="line">gcc -o test.c test // 실행 파일이 생성 </span><br></pre></td></tr></table></figure>
+<p>만약 -o 안쓰면 a.out으로 실행파일 생성됨.</p>
+<h3 id="ABI"><a href="#ABI" class="headerlink" title="ABI"></a>ABI</h3><p>Application Binary Interface</p>
+<ul>
+<li>함수 실행 방식, 레지스터 활요으, 시스템 콜 실행, 라이브러리 링크 방식등을 제공 한다. </li>
+<li>ABI가 호환되면 재 컴파일없이 동작한다. </li>
+<li>컴파일러, 링커(라이브러리 링크), 툴체인(컴파일러를 만드는 프로그램) 에서 제공한다. </li>
+</ul>
+<p>각각의 업체에서 이것을 정의해서 표준화 할 필요가 있었다. </p>
+<h3 id="POSIX"><a href="#POSIX" class="headerlink" title="POSIX"></a>POSIX</h3><p>유닉스 시스템 프로그래밍 인터페이스 표준이다.<br>IEEE에서 표준화를 계속해서 시도하고 있고, 리차드 스톨만이 POSIX를 표준안 이름으로 제안했다. </p>
+<h3 id="C-언어-표준"><a href="#C-언어-표준" class="headerlink" title="C 언어 표준"></a>C 언어 표준</h3><p>다양한 C 언어의 변종이 존재한다. 그래서 ANSI에서 ANSI C 표준을 정립했고 리눅스에서는 POSIX 와 ANSI C 를 지원한다. </p>
+<h3 id="시스템-프로그래밍과-버전"><a href="#시스템-프로그래밍과-버전" class="headerlink" title="시스템 프로그래밍과 버전"></a>시스템 프로그래밍과 버전</h3><p>하위 시스템 레벨은 거의 변하지 않고 유지되고 있음. 하위 레벨까지 잘 알고 있으면 상위 레벨에서 동작하는 프로그램을 만들지라도 성능 향상에 도움을 줌. </p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -993,389 +1289,8 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/08/30/typeScript/210809-TypeScript/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JayoonKoo">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="티끌모아 태산">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/08/30/typeScript/210809-TypeScript/" class="post-title-link" itemprop="url">TypeScript</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-08-30 02:32:06" itemprop="dateCreated datePublished" datetime="2021-08-30T02:32:06+09:00">2021-08-30</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/typeScript/" itemprop="url" rel="index"><span itemprop="name">typeScript</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="TypeScript"><a href="#TypeScript" class="headerlink" title="TypeScript"></a>TypeScript</h1><h2 id="TypeScript란-무엇인가"><a href="#TypeScript란-무엇인가" class="headerlink" title="TypeScript란 무엇인가?"></a>TypeScript란 무엇인가?</h2><p>자바 스크립트에 타입을 명시. 확장 한 것 </p>
-<p>코드를 실행 시키기 전에 에러를 잡아줌. </p>
-<p>자바스크립트가 실행되는 어떤 환경에서도 동작함.</p>
-<p>Typed superset of JavaScript</p>
-<p>컴파일해서 plain JavaScript 로 변환함.<br>but, 정통적인 컴파일과는 다름. 타이밍상 컴파일이라 많은 사람들이 Transpile 이라는 용어를 사용함. </p>
-<h2 id="TypeScript-설치-및-설정"><a href="#TypeScript-설치-및-설정" class="headerlink" title="TypeScript 설치 및 설정"></a>TypeScript 설치 및 설정</h2><ul>
-<li><p>node.js 설치</p>
-</li>
-<li><p>크롬 설치</p>
-</li>
-<li><p>타입 스크립트 컴파일러 설치 </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm i typescript -g </span><br><span class="line">tsc source.ts</span><br></pre></td></tr></table></figure>
-<p><code>node_module/.bin/tsc</code> 에 tsc 있음. </p>
-</li>
-<li><p>초기화<br><code>tsc --init</code> 실행하면 어떻게 컴파일 할것인지에 대한 설정 파일 <code>tsconfig.json</code> 생성.<br><code>tscconfig.json</code> 이 있는 폴더에서 tsc 실행하면 해당 폴더에 있는 모든 ts 파일이 설정에 맞게 컴파일 됨. </p>
-</li>
-<li><p>와치 모드로 시작<br>새롭게 파일이 생성되거나 저장될때 마다 tsc 를 실행해 주지 않고 와치 모드로 시작되서 변경 감지 후 자동으로 변환 시작하게 함.<br><code>tsc -w</code></p>
-</li>
-</ul>
-<h3 id="프로젝트에만-설치하기"><a href="#프로젝트에만-설치하기" class="headerlink" title="프로젝트에만 설치하기"></a>프로젝트에만 설치하기</h3><p>글로벌로 설치한 것 지우기<br><code>npm uninstall typescript -g</code></p>
-<p><code>npm init -y</code></p>
-<p><code>npm i typescript -D</code> 개발 라이브러리로 설치 </p>
-<p>글로벌이 아닐때에는 tsc 경로를 명시해줘야함. <code>node_modules/.bin/tsc</code><br><code>npx tsc</code>로 똑같이 사용 가능</p>
-<p>모든 명령어 앞에다 npx 붙여서 사용.</p>
-<p>보통은 package.json 에 script를 수정함.<br><code>&quot;build&quot;: &quot;tsc&quot;</code> npm run build 로 실행 가능. </p>
-<h2 id="First-Type-Annotation"><a href="#First-Type-Annotation" class="headerlink" title="First Type Annotation"></a>First Type Annotation</h2><p>ts 는 처임 초기화 된 변수를 토대로 type를 할당함. 만약 초기화 하지 않았다면 <code>any</code> 가 됨. </p>
-<p>어떤 type인지 명시하는 것을 type annotation 이라고 하고 아래와 같이 사용한다.</p>
-<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a: <span class="built_in">number</span>;</span><br><span class="line">a = <span class="number">39</span>;</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/08/30/typeScript/210813-TypeScript%20Compiler/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JayoonKoo">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="티끌모아 태산">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/08/30/typeScript/210813-TypeScript%20Compiler/" class="post-title-link" itemprop="url">TypeScript Compiler</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-08-30 02:32:06" itemprop="dateCreated datePublished" datetime="2021-08-30T02:32:06+09:00">2021-08-30</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/typeScript/" itemprop="url" rel="index"><span itemprop="name">typeScript</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="TypeScript-Compiler"><a href="#TypeScript-Compiler" class="headerlink" title="TypeScript Compiler"></a>TypeScript Compiler</h1><h2 id="Compliation-Context"><a href="#Compliation-Context" class="headerlink" title="Compliation Context"></a>Compliation Context</h2><p>논리적인 그룹핑과 어떤 방법으로 컴파일 할것인지에 대한 맥락.<br>보통 <code>tsconfig.json</code> 파일로 관리한다.</p>
-<h2 id="tsconfig-schema"><a href="#tsconfig-schema" class="headerlink" title="tsconfig schema"></a>tsconfig schema</h2><p>최상위 프로퍼티 중 주요한 항목</p>
-<ul>
-<li>compileOnSave</li>
-<li>extends</li>
-<li>compileOptions</li>
-<li>files</li>
-<li>include</li>
-<li>exclude</li>
-<li>references</li>
-</ul>
-<h2 id="compileOnSave"><a href="#compileOnSave" class="headerlink" title="compileOnSave"></a>compileOnSave</h2><ul>
-<li>true/false(default fasle): true 로 설정하면 저장하면 컴파일 해줌.</li>
-<li>누가?<ul>
-<li>Visual Studio 2015 with TypeScript 1.8.4 이상</li>
-<li>tom-thypescript 플러그인</li>
-</ul>
-</li>
-</ul>
-<h2 id="extends"><a href="#extends" class="headerlink" title="extends"></a>extends</h2><p>상속 받을 때 사용함.</p>
-<ul>
-<li>파일 (상대) 경로명 : string</li>
-</ul>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">&quot;compilerOptins&quot;</span>: &#123;</span><br><span class="line">    <span class="attr">&quot;strict&quot;</span>: <span class="literal">true</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">&quot;extends&quot;</span>: <span class="string">&quot;./base.json&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><code>tsconfig/base</code> 저장소로 이동하면 다양한 base 설정을 받을 수 있다.</p>
-<p><code>npm install --save-dev @tsconfig/deno</code></p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">&quot;extends&quot;</span>: <span class="string">&quot;@tsconfig/deno/tsconfig.json&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="files-include-exclude"><a href="#files-include-exclude" class="headerlink" title="files, include, exclude"></a>files, include, exclude</h2><p>어떤 파일을 컴파일 할것인지 결정함.</p>
-<p>files 가 가장 강한 설정이다. 따라서 exlucde를 통해서 제외 했더라도 files 안에 있으면 컴파일 된다.</p>
-<p>셋다 설정이 없으면 전부 컴파일 하려고 한다.</p>
-<ul>
-<li>files<ul>
-<li>상대 혹은 절대 경로의 리스트 배열이다.</li>
-<li>exclude 보다 쎄다.</li>
-</ul>
-</li>
-<li>include, exclude<ul>
-<li>glob 패턴 (마치 .gitignore)</li>
-<li>include<ul>
-<li>exclude 보다 약하다.</li>
-</ul>
-</li>
-<li>exclude<ul>
-<li>설정 안하면 4가지 (node_modules, bower_components, jspm_packages, &lt;outDir&gt;) 를 dafault로 제외 함.</li>
-<li>&lt;outDir&gt; 은 항상 제외한다. (include에 있어도)</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="compileOptions-typeRoots-types"><a href="#compileOptions-typeRoots-types" class="headerlink" title="compileOptions - typeRoots, types"></a>compileOptions - typeRoots, types</h2><p>만약 외부 라이브러리를 사용할 경우 타입 검사를 어떻게 수행할까?</p>
-<p>예를 들어 react를 설치하면 js로 만든 것이기 때문에 오류가 발생한다. 따라서 <code>npm i --save-dev @types/react</code>를 하게 되면 <code>node_modules/@types</code>안에서 파일을 찾아서 오류가 나지 않게 된다.<br>이것이 default 설정인데 typeRoots와 types 를 통해 설정을 변경할 수 있다.</p>
-<p>typeRoots로 @types로 사용할 폴더를 설정한다. 유명하지 않는 라이브러리 같은 경우 @types가 없을 수 있고 내가 작성한 패키지는 내가 따로 만들어야 하는 경우도 있다.</p>
-<p><code>@types</code></p>
-<ul>
-<li>내장 type definition 시스템이다.</li>
-<li>아무 설정을 하지 않으면 <code>node_modules/@types</code> 라는 모든 경로를 찾아서 사용한다.</li>
-<li>typeRoots를 사용하면? -&gt; 배열 안에 들어있는 경로들 아래서만 가져온다.</li>
-<li>types 를 사용하면 -&gt; 배열안에 모듈 혹은 <code>./node_module/@types/</code> 안에 모듈 이름에서 찾아온다. [] 빈 배열을 넣는다는 건 이 시스템을 이용하지 않겠다는 것이다.</li>
-<li>typeRoots와 types를 같이 사용하지는 않는다.</li>
-</ul>
-<h2 id="compileOptions-target과-lib"><a href="#compileOptions-target과-lib" class="headerlink" title="compileOptions - target과 lib"></a>compileOptions - target과 lib</h2><p>target - 자바스크립트 버전을 설정한다. 기본값은 es3이다. 컴파일 할때 해당 버전으로 변경한다.</p>
-<p>lib - lib로 사용할것들을 배열로 넘겨줌. target에 따라 default로 저장되는 lib가 있다.</p>
-<h2 id="compileOptions-outDir-outFil-rootDir"><a href="#compileOptions-outDir-outFil-rootDir" class="headerlink" title="compileOptions -outDir, outFil, rootDir"></a>compileOptions -outDir, outFil, rootDir</h2><ul>
-<li>rootDir : 컴파일 대상이 되는 파일이 있는 폴더</li>
-</ul>
-<p>따로 설정하지 않으면 ts 파일이 있는 가장 최상위 폴더를 rootDir로 설정한다.</p>
-<ul>
-<li>outDir : 컴파일 한 파일이 저장될 폴더</li>
-<li>outFile: 지정된 경우 모든 전역 파일이 지정된 단일 출력 파일로 연결된다.</li>
-</ul>
-<h2 id="compileOptions-strict"><a href="#compileOptions-strict" class="headerlink" title="compileOptions - strict"></a>compileOptions - strict</h2><p>무조건 strict를 true로 설정하는 것이 기본이다.</p>
-<p><code>--noImplicitAny</code> any로 추정되는데 any로 명시하지 않았다면 에러가 발생함.<br><code>suppressImplicitAnyIndexErrors</code> 인덱스 객체도 any로 추론될 경우 에러를 발생시키는 옵션인데 이것은 너무 까다로우니 따로 에러가 되지 않게 하는 설정도 있음.</p>
-<p><code>--noImplictThis</code> this 가 any 타입으로 추정될 경우 . this에 타입을 명시해야 한다고 에러를 발생 시킴, 함수 매개변수에 첫번째에 this를 넣고 타입일 지정해줌. js에서는 오류 이지만 ts에서는 가능함.<br>마치 call /applyu/ bind 와 같이 this를 대체하여 함수 콜을 사용하는 용도. class에서는 오류가 나지 않음 왜냐하면 class 자체로 타입 체크가 가능하기 때문에</p>
-<p><code>--strictNullChecks</code> 이것을 적용히지 않으면 모든 타입은 null 과 undefined가 될 수 있다. 꼭 설정해주어야 함. 한가지 예외는 undefined 에 void 할당이 가능하다.</p>
-<p><code>--strictFunctionTypes</code> 반환 타입은 공변적, 인자 타입은 반 공병적. 그런데 타입스크립트에서 인자 타입은 공변적이면서, 반공변적인게 문제. 함수의 파라미터 타입이 반공변적으로 동작핟조록 변경한다. 반공변 이란 공변에 반대라고 생각하면 된다.</p>
-<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> Logger&lt;T&gt; = <span class="function">(<span class="params">param: T</span>) =&gt;</span> <span class="built_in">void</span>;</span><br><span class="line"><span class="keyword">let</span> log: Logger&lt;<span class="built_in">string</span> | <span class="built_in">number</span>&gt; = <span class="function">(<span class="params">param</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(param);</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">let</span> logNumber: Logger&lt;<span class="built_in">number</span>&gt; = <span class="function">(<span class="params">param</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(param);</span><br><span class="line">&#125;;</span><br><span class="line">log = logNumber; <span class="comment">// Error</span></span><br><span class="line">logNumber = log; <span class="comment">// OK</span></span><br></pre></td></tr></table></figure>
-
-<p>공변이라고 생각하면 logNumber 가 서브 타입이기대문에 log에 할당하는 것이 가능할 것이다. 하지만 <code>--strictFunctionTypes</code>를 적용하면 파라미터에 대해서 반공변적으로 작동하기 때문에 반대로 작동한다.<br>사실 <code>logNumber</code>는 숫자 밖에 처리하지 못하기 때문에 string 도 처리할 수 있는 <code>log</code>에 할당하는게 맞지 않다.</p>
-<p><code>--stcitPropertyInitialization</code> 정의되지 않은 클래스의 속성이 생성자에서 초기화되었는지 확인한다. 만약 비동기로 생성되는 클래스일 경우에 생성자에 async를 사용하는것이 불가능하기 때문에 에러가 발생한다.<br>이럴때에는 async 함수로 initialize 같은 함수를 만들어 할당해 주고 클래스 내부 변수로 이름 뒤에 <code>!</code>를 붙여주면 된다. <code>private _name!: string;</code></p>
-<p><code>--strictBindCallApply</code> bind, call, apply 에 대한 검사를 엄격히 수행한다.</p>
-<p><code>--alwaysStrict</code> strict 모드로 코드를 분석함.</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/08/30/typeScript/210813-type%20system/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JayoonKoo">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="티끌모아 태산">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/08/30/typeScript/210813-type%20system/" class="post-title-link" itemprop="url">type system</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-08-30 02:32:06" itemprop="dateCreated datePublished" datetime="2021-08-30T02:32:06+09:00">2021-08-30</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/typeScript/" itemprop="url" rel="index"><span itemprop="name">typeScript</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="type-system"><a href="#type-system" class="headerlink" title="type system"></a>type system</h1><h2 id="작성자와-사용자의-관점으로-코드-바라보기"><a href="#작성자와-사용자의-관점으로-코드-바라보기" class="headerlink" title="작성자와 사용자의 관점으로 코드 바라보기"></a>작성자와 사용자의 관점으로 코드 바라보기</h2><h3 id="타입-시스템"><a href="#타입-시스템" class="headerlink" title="타입 시스템"></a>타입 시스템</h3><p>컴파일러가 자동을 타입을 추론하는 시스템이 있고 컴파일러에게 사용하는 타입을 명시적으로 지정하는 시스템이 있다. </p>
-<h3 id="타입-스크립트의-타입-시스템"><a href="#타입-스크립트의-타입-시스템" class="headerlink" title="타입 스크립트의 타입 시스템"></a>타입 스크립트의 타입 시스템</h3><p>두가지 모두 가능하다. </p>
-<h4 id="타입이란-해당-변수가-할-수-있는-일을-결정한다"><a href="#타입이란-해당-변수가-할-수-있는-일을-결정한다" class="headerlink" title="타입이란 해당 변수가 할 수 있는 일을 결정한다."></a>타입이란 해당 변수가 할 수 있는 일을 결정한다.</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f1</span>(<span class="params">a</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> a;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>a 가 할 수 있는 일은 a 의 타입이 결정한다.</p>
-<h4 id="함수-사용법에-대한-오해를-야기한다"><a href="#함수-사용법에-대한-오해를-야기한다" class="headerlink" title="함수 사용법에 대한 오해를 야기한다."></a>함수 사용법에 대한 오해를 야기한다.</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f2</span>(<span class="params">a</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> a * <span class="number">38</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(f2(<span class="number">10</span>)) <span class="comment">// 380</span></span><br><span class="line"><span class="built_in">console</span>.log(f2(<span class="string">&#x27;Mark&#x27;</span>)) <span class="comment">// NaN</span></span><br></pre></td></tr></table></figure>
-<p>사용자가 직접 f2를 까보지 않는 이상 함수 인수로 뭘 넣어야 하는지 모를 수 있다. </p>
-<p>이는 타입 스크립트의 추론에만 의지하는 경우도 마찬가지이다. </p>
-<h4 id="noImplicitAny-옵션"><a href="#noImplicitAny-옵션" class="headerlink" title="noImplicitAny 옵션"></a>noImplicitAny 옵션</h4><p>타입을 명시적으로 작성하지 않아 any 로 추론되면 에러를 발생 시켜서 타입을 명시적으로 작성하도록 함. </p>
-<h4 id="nuber-타입으로-추론된-리턴-타입"><a href="#nuber-타입으로-추론된-리턴-타입" class="headerlink" title="nuber 타입으로 추론된 리턴 타입"></a>nuber 타입으로 추론된 리턴 타입</h4><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">ft</span>(<span class="params">a: <span class="built_in">number</span></span>) </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (a &gt; <span class="number">0</span>) &#123;</span><br><span class="line">		<span class="keyword">return</span> a * <span class="number">38</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(f4(<span class="number">5</span>)); <span class="comment">// 190</span></span><br><span class="line"><span class="built_in">console</span>.log(f4(-<span class="number">5</span>) + <span class="number">5</span>); <span class="comment">// NaN</span></span><br></pre></td></tr></table></figure>
-<p>a에 음수를 넣었기 때문에 undefined 가 리턴되는데 typescript 에서는 undefined도 number안에 속한 타입으로 추론한다.</p>
-<h4 id="strictNullChecks-옵션을-켜면"><a href="#strictNullChecks-옵션을-켜면" class="headerlink" title="strictNullChecks 옵션을 켜면"></a>strictNullChecks 옵션을 켜면</h4><p>모든 타입에 자동으로 포함되어 있는 null 과 undefined를 제거 한다.<br>무조건 켜야 함.</p>
-<p>옵션을 켜게 되면 f4의 결과는 더이상 number 가 아니라 <code>number | undefined</code> 가 된다. 따라서 f4의 결과와 number를 더하기 할때에 오류가 발생한다. </p>
-<p>그런데 5를 넣은 경우에도 이는 마찬가지이다. 런타임에서 두가지 모두 가능하기 때문에 typescript 에서는 <code>undefined</code> 일때는 에러를 던진다던지 하는 처리를 하는것을 권장한다. </p>
-<h4 id="리턴을-명시적으로-작성"><a href="#리턴을-명시적으로-작성" class="headerlink" title="리턴을 명시적으로 작성"></a>리턴을 명시적으로 작성</h4><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f4</span>(<span class="params">a: <span class="built_in">number</span></span>): <span class="title">number</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (a&gt; <span class="number">0</span>) &#123;</span><br><span class="line">		<span class="keyword">return</span> a* <span class="number">38</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>이렇게 해도 오류가 발생 else인 겨웅에 리턴은 undefined 이기 때문이다. </p>
-<h4 id="noImplicitReturns"><a href="#noImplicitReturns" class="headerlink" title="noImplicitReturns"></a>noImplicitReturns</h4><p>옵션을 켜면 함수 내에서 모든 코드가 값을 리턴하지 않으면 컴파일 에러를 발생 시킨다. </p>
-<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f4</span>(<span class="params">a: <span class="built_in">number</span></span>) </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (a&gt; <span class="number">0</span>) &#123;</span><br><span class="line">		<span class="keyword">return</span> a* <span class="number">38</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>에러 발생 return이 code path 존재. </p>
-<h4 id="매개-변수가-object-가-들어오면-object-literal"><a href="#매개-변수가-object-가-들어오면-object-literal" class="headerlink" title="매개 변수가 object 가 들어오면 object literal"></a>매개 변수가 object 가 들어오면 object literal</h4><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f7</span>(<span class="params">a: &#123;name: <span class="built_in">string</span>, age: <span class="built_in">number</span>&#125;</span>): <span class="title">string</span> </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;a.name&#125;</span>이고 나이는 <span class="subst">$&#123;a.age&#125;</span>`</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="나만의-타입을-만드는-방법"><a href="#나만의-타입을-만드는-방법" class="headerlink" title="나만의 타입을 만드는 방법"></a>나만의 타입을 만드는 방법</h4><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> PersonInterface &#123;</span><br><span class="line">	<span class="attr">name</span>: <span class="built_in">string</span>;</span><br><span class="line">	age: <span class="built_in">number</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> PersonTypeAlias = &#123;</span><br><span class="line">	<span class="attr">name</span>: <span class="built_in">string</span>;</span><br><span class="line">	age: <span class="built_in">number</span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-
-<h2 id="Structural-Type-System-vs-Nominal-Type-System"><a href="#Structural-Type-System-vs-Nominal-Type-System" class="headerlink" title="Structural Type System vs Nominal Type System"></a>Structural Type System vs Nominal Type System</h2><p>nominal type system 은 이름이 다르면 다른 타입으로 여긴다. 반면에<br>타입 스트립트는 structural type system 이다.<br>따라서, 구조가 같으면 같은 타입으로 여긴다. </p>
-<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> IPerson &#123;</span><br><span class="line">	<span class="attr">name</span>: <span class="built_in">string</span>;</span><br><span class="line">	age: <span class="built_in">number</span>;</span><br><span class="line">	speak(): <span class="built_in">string</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> PersonType = &#123;</span><br><span class="line">	<span class="attr">name</span>: <span class="built_in">string</span>;</span><br><span class="line">	age: <span class="built_in">number</span>;</span><br><span class="line">	speak(): <span class="built_in">string</span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> personInterface: Iperson = &#123;&#125; <span class="keyword">as</span> <span class="built_in">any</span>;</span><br><span class="line"><span class="keyword">let</span> personType: PersonType = &#123;&#125; <span class="keyword">as</span> <span class="built_in">any</span>;</span><br><span class="line"></span><br><span class="line">personInterface = personType;</span><br><span class="line">personType = personInterface;</span><br></pre></td></tr></table></figure>
-
-
-<h2 id="type-호환성-Type-Compatibility"><a href="#type-호환성-Type-Compatibility" class="headerlink" title="type 호환성 (Type Compatibility)"></a>type 호환성 (Type Compatibility)</h2><p>서브타임과 슈퍼타입</p>
-<p>슈퍼 타입 안에 서브타입이 있기 때문에 서브타입은 슈퍼 타입으로 넣을 수 있다. 하지만 서브타입 변수에 슈퍼타입에 변수를 할당하려고 하면 할수 없다. </p>
-<p>array 는 object 의 서브 타입이다. 따라서 object 타입에 변수에 array 타입 변수를 할당하는것은 가능하지만 서브타입인 array 변수에 object 타입을 할당하는 것은 불가능하다. </p>
-<p>number 배열과 number로 이루어진 튜플이 있다고 할때 number 배열은 number 튜플에 슈퍼 타입이 되고 튜플은 서브 타입이 된다.<br>따라서 number 배열에 튜플 타입을 할당할수 있지만 반대로 튜플 타입에 number 배열 을 할당할 수 는 없다. </p>
-<p>any는 모든 타입의 슈퍼 타입이다. 하지만 이친구는 이상하게도 서브 타입에 할당할 수 도 있다. </p>
-<p>never 타입은 number 타입의 서브 타입이다. number 타입에 never 타입에 변수를 할당하는 것은 가능하지만 never 타입의 변수에 number 타입에 변수를 할당하는 것은 불가능하다.</p>
-<p>상속관계에서 상속 받는 관계에 있는 클래스는 서브 타입이 된다. 상속해 주는 클래스에 상속 받는 클래스를 할당할 수는 있지만 상속 해주는 클래스를 상속 받는 클래스로 할당하려면 오류가 발생한다. 사실 확장한 메서드가 없기 때문에 구조도 다르다. </p>
-<h3 id="공변"><a href="#공변" class="headerlink" title="공변"></a>공변</h3><p>같거나 서브 타입인 경우, 할당이 가능하다. </p>
-<h3 id="반병"><a href="#반병" class="headerlink" title="반병"></a>반병</h3><p>함수의 매개변수 타입만 같거나 슈퍼타입인 경우, 할당이 가능하다.</p>
-<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span></span>&#123;&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Developer</span> <span class="keyword">extends</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="title">coding</span>(<span class="params"></span>)</span> &#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">StartupDevloper</span> <span class="keyword">extends</span> <span class="title">Developer</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="title">burning</span>(<span class="params"></span>)</span> &#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">tellme</span>(<span class="params">f: (d: Developer) =&gt; Developer</span>) </span>&#123;&#125;</span><br><span class="line"></span><br><span class="line">tellme(<span class="function"><span class="keyword">function</span> <span class="title">dToD</span>(<span class="params">d: Developer</span>): <span class="title">Developer</span> </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">new</span> Developer();</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">tellme(<span class="function"><span class="keyword">function</span> <span class="title">pToD</span>(<span class="params">d: Person</span>): <span class="title">Developer</span> </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">new</span> Developer();</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">tellme(<span class="function"><span class="keyword">function</span> <span class="title">sToD</span>(<span class="params">d: StartupDeveloper</span>): <span class="title">Developer</span> </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">new</span> Developer();</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-
-<p>strictFunctionTypes 옵션을 켜면 함수를 할당할 시에 함수의 매개변수 타입이 같거나 슈퍼타입인 경우가 아닌 경우, 에러를 통해 경고한다. </p>
-<p>이 옵션을 키면 마지막 줄에 tellme 는 에러일 것이다. </p>
-<h2 id="타입-별칭-Type-Alias"><a href="#타입-별칭-Type-Alias" class="headerlink" title="타입 별칭 (Type Alias)"></a>타입 별칭 (Type Alias)</h2><p>만들어진 타입의 refer로 사용함. 타입을 만드는것은 아니다. </p>
-<h3 id="Aliasing-Primitive"><a href="#Aliasing-Primitive" class="headerlink" title="Aliasing Primitive"></a>Aliasing Primitive</h3><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> myStringType = <span class="built_in">string</span>;</span><br><span class="line"><span class="keyword">const</span> str = <span class="string">&#x27;world&#x27;</span>;</span><br><span class="line"><span class="keyword">let</span> myStr: MyStringType = <span class="string">&#x27;hello&#x27;</span>;</span><br><span class="line">myStr = str;</span><br></pre></td></tr></table></figure>
-
-<h3 id="Aliasing-Union-Type"><a href="#Aliasing-Union-Type" class="headerlink" title="Aliasing Union Type"></a>Aliasing Union Type</h3><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> person: <span class="built_in">string</span> | <span class="built_in">number</span> = <span class="number">0</span>;</span><br><span class="line">person = <span class="string">&#x27;Mark&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> StringOrNumber = <span class="built_in">string</span> | <span class="built_in">number</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> another: StringOrNumber = <span class="number">0</span>;</span><br><span class="line">another = <span class="string">&#x27;Anna&#x27;</span>;</span><br></pre></td></tr></table></figure>
-<p>타이핑 해야 하는 야이 줄어들 수 있다. </p>
-<h3 id="Aliasing-Tupele"><a href="#Aliasing-Tupele" class="headerlink" title="Aliasing Tupele"></a>Aliasing Tupele</h3><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> PersonTuple = [<span class="built_in">string</span>, <span class="built_in">number</span>];</span><br></pre></td></tr></table></figure>
-
-<h3 id="Aliasing-Function"><a href="#Aliasing-Function" class="headerlink" title="Aliasing Function"></a>Aliasing Function</h3><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> EatType = <span class="function">(<span class="params">food: <span class="built_in">string</span></span>) =&gt;</span> <span class="built_in">void</span>;</span><br></pre></td></tr></table></figure>
-<p>어떤 타입이 타입으로서의 존재가치와 목적이 명확하면 <code>interface</code>를 사용하고 단지 가르킬 뿐이라면 <code>type</code>를 사용함.</p>
-<p>물론 기술적으로도 차이가 있음. </p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/7/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/9/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+    <a class="extend prev" rel="prev" href="/page/7/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/9/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 </div>

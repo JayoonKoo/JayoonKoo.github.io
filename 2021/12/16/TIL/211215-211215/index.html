@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css" integrity="sha256-2H3fkXt6FEmrReK448mDVGKb3WW2ZZw35gI7vqHOE4Y=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"jayoonkoo.github.io","root":"/","images":"/images","scheme":"Muse","version":"8.6.1","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="211215백엔드 유효성 검사 어디에서 하는게 좋을까? 서버에서 검증을 빨리 하는것이 좋은데 네트워크를 소비하지 않도록 클라이언트에서 검증을 해도 좋다. 하지만 서버에서 검증하는 절차는 필수적이다.   유효성 검사를 위해서 expres-validator 를 이용할 수 있다. Sanitization 이란 ? 유효성 검사 후에 해야 하는데 예를 들어 2 글자">
+<meta property="og:type" content="article">
+<meta property="og:title" content="211215">
+<meta property="og:url" content="https://jayoonkoo.github.io/2021/12/16/TIL/211215-211215/index.html">
+<meta property="og:site_name" content="티끌모아 태산">
+<meta property="og:description" content="211215백엔드 유효성 검사 어디에서 하는게 좋을까? 서버에서 검증을 빨리 하는것이 좋은데 네트워크를 소비하지 않도록 클라이언트에서 검증을 해도 좋다. 하지만 서버에서 검증하는 절차는 필수적이다.   유효성 검사를 위해서 expres-validator 를 이용할 수 있다. Sanitization 이란 ? 유효성 검사 후에 해야 하는데 예를 들어 2 글자">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-12-16T11:07:09.000Z">
+<meta property="article:modified_time" content="2021-12-16T11:07:16.236Z">
+<meta property="article:author" content="JayoonKoo">
+<meta property="article:tag" content="TIL">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://jayoonkoo.github.io/2021/12/16/TIL/211215-211215/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://jayoonkoo.github.io/2021/12/16/TIL/211215-211215/","path":"2021/12/16/TIL/211215-211215/","title":"211215"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>211215 | 티끌모아 태산</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">티끌모아 태산</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">작은 조각 모음</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">12</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">9</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">113</span></a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#211215"><span class="nav-number">1.</span> <span class="nav-text">211215</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%EB%B0%B1%EC%97%94%EB%93%9C"><span class="nav-number">1.1.</span> <span class="nav-text">백엔드</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%ED%94%84%EB%A1%A0%ED%8A%B8"><span class="nav-number">1.2.</span> <span class="nav-text">프론트</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EB%A6%AC%EC%95%A1%ED%8A%B8-%EB%84%A4%EC%9D%B4%ED%8B%B0%EB%B8%8C"><span class="nav-number">1.3.</span> <span class="nav-text">리액트 네이티브</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-overview">
+            <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">JayoonKoo</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">113</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/JayoonKoo" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;JayoonKoo" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:rnwkdbs12@gmail.com" title="E-Mail → mailto:rnwkdbs12@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/JayoonKoo" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/12/16/TIL/211215-211215/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JayoonKoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="티끌모아 태산">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          211215
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2021-12-16 20:07:09 / Modified: 20:07:16" itemprop="dateCreated datePublished" datetime="2021-12-16T20:07:09+09:00">2021-12-16</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/TIL/" itemprop="url" rel="index"><span itemprop="name">TIL</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="211215"><a href="#211215" class="headerlink" title="211215"></a>211215</h1><h2 id="백엔드"><a href="#백엔드" class="headerlink" title="백엔드"></a>백엔드</h2><ul>
+<li>유효성 검사 어디에서 하는게 좋을까?<ul>
+<li>서버에서 검증을 빨리 하는것이 좋은데 네트워크를 소비하지 않도록 클라이언트에서 검증을 해도 좋다. 하지만 서버에서 검증하는 절차는 필수적이다.</li>
+</ul>
+</li>
+<li>유효성 검사를 위해서 expres-validator 를 이용할 수 있다.</li>
+<li>Sanitization 이란 ? 유효성 검사 후에 해야 하는데 예를 들어 2 글자 이상의 벨리데이션이 있었다면, 공백만 3글자로 입력해도 통과 됨. 이런것도 다 잡아줘야 함 → 이경우에는 맨 처음 trim()을 사용해서 해결 가능. express-validator 다양한 Sanitization 을 관련 API를 제공한다. ⇒ 데이터를 일관성있게 적용될 수 있도록</li>
+<li>validation 관련한 함수는 middleware로 따로 관리한다 controller는 비즈니스 관련 핵심 로직만 관리 할 수 있도록 한다.</li>
+<li>Contract Testing: Client-Server 통신시 test, 나중에 공부해보자.</li>
+</ul>
+<h2 id="프론트"><a href="#프론트" class="headerlink" title="프론트"></a>프론트</h2><ul>
+<li>react-query: server 에 상태를 캐쉬해서 network 비용을 줄일 수 있게 해준다. redux 를 사용하면 client 에 상태는 잘 관리할 수 있지만 server의 상태를 관리하려면 캐쉬등 여러가지 해주어야 할 작업이 있다. 이 책임을 reqct-query 에게 줌으로써 개발자는 다른 것에 집중해서 개발할수 있다.</li>
+<li>데이터를 처음 가져올때는 state를 통해 loading, success, error 와 같은 상태를 사용할 수 있고, 두번째로 가져올 때부터는 server 상태와 동기화 되서 다를때만 가져오고 나마저는 캐쉬된 상태를 사용할수 있게 함으로써 사용자 경험을 높인다.</li>
+<li>전역 state는 어떻게? → ContextAPI를 사용하여 전역 상태를 관리 할 수도 있다. 요즘은 redux 에 비중을 줄이고 context 와 react-query에 조합을 많이 사용하기도 한다.</li>
+</ul>
+<h2 id="리액트-네이티브"><a href="#리액트-네이티브" class="headerlink" title="리액트 네이티브"></a>리액트 네이티브</h2><ul>
+<li>react-native-safe-area-context : safe area 나머지 부분에 여백에 관한 설정을 할수 있는 라이브러리</li>
+<li>안드로이드에 경우 자동으로 서드파티 라이브러를 불러와서 사용할 수 있지만 ios에 경우에는 cocoapods 의 도움을 받아야 네이티브 모듈의 적용할 수 있다. ios 폴더 이동후 pod install 을 실행한다.</li>
+<li>react-native-safe-area-context 의 useSafeAreaInsets() hook을 이용하면  반환 값으로 각 safeArea 구성의 필요한 각 모서리에 공백을 top, bottom, left, right로 받아올 수 있다.</li>
+<li>statusBar 의 barStyle props를 전달할 수 있다. dark-content(어두운 내용), light_content(밝은 내용), default(시스템 기본 설정) → 참고로 안드로이드 ios 공통으로 사용할 수 있다.</li>
+<li>리액트 네이티브에서 스타일링할 때 크기는 모두 dp로 설정한다. (Density-independent Pixel) → 1인치당 픽셀 밀도에 따라 크기가 일관된 UI를 보여줄 수 있는 단위이다.<ul>
+<li>dp = px * 160 / ppi</li>
+<li>px = dp * ppi / 160</li>
+</ul>
+</li>
+<li>시뮬레이터 디바이스를 변경하는 방법 → <code>xcrun simctl list devices</code> 를 통해 실행 가능한 디바이스 목록을 확인할 수 있고, <code>yarn react-native run-ios- simulator=&quot;iPhone 5s</code> 와 같은 방법으로 동작 시킬 수 있다. 안드로이드의 경우에는 Android Virtula Device Manager를 열어서 Create Virtual Device 버튼을 눌러 새 디바이스를 추가하면 된다.</li>
+<li>이미지를 리사이즈 해서 실제 이미지와 크기가 달라질때, resizeMode를 설정할 수 있다.<ul>
+<li>cover: 기본값, 가로 세로 비율을 유지한채로 리사이징, 뷰가 더 작으면 이미지가 잘린다.</li>
+<li>contain: 가로 세로 비율을 유지한 체로 리사이징 하며 무조건 영역에 모두 들어오도록 한다.</li>
+<li>stretch: 뷰의 크기대로 이미지를 리사이징 한다. 비율이 달라진다.</li>
+<li>repeat: 바둑판식으로 이미지를 반복한다.</li>
+<li>center: 이미지를 뷰 중앙에 둔다. contain과 마찬가지 이고, 뷰가 이미지보다 크면 이미지의 크기가 커지지 않고 원본 사이즈를 유지한다.</li>
+</ul>
+</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/TIL/" rel="tag"># TIL</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/12/15/DevOps/Docker/211214-DockerOverview/" rel="prev" title="DockerOverview">
+                  <i class="fa fa-chevron-left"></i> DockerOverview
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/12/16/DevOps/Docker/211215-Using%20Node(1)%3CBuildImage%3E/" rel="next" title="Using Node(1)<BuildImage>">
+                  Using Node(1)<BuildImage> <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">JayoonKoo</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

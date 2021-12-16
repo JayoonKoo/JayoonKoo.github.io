@@ -83,9 +83,9 @@
   <ul class="main-menu menu">
         <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li>
         <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
-        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">11</span></a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">12</span></a></li>
         <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">9</span></a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">110</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">113</span></a></li>
   </ul>
 </nav>
 
@@ -129,7 +129,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">110</span>
+          <span class="site-state-item-count">113</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -140,7 +140,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-count">12</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -180,6 +180,332 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/09/20/modernJs/210820-%EB%AA%A8%EB%93%88/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JayoonKoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="티끌모아 태산">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/09/20/modernJs/210820-%EB%AA%A8%EB%93%88/" class="post-title-link" itemprop="url">모듈</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2021-09-20 21:41:14 / Modified: 21:45:40" itemprop="dateCreated datePublished" datetime="2021-09-20T21:41:14+09:00">2021-09-20</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="모듈"><a href="#모듈" class="headerlink" title="모듈"></a>모듈</h1><p>특정 기능별로 클래스나 함수를 묶은 것. 자바스크립트가 커짐에 따라 모듈로 분리할 필요가 생겼다.</p>
+<h2 id="모듈이란"><a href="#모듈이란" class="headerlink" title="모듈이란"></a>모듈이란</h2><p>스크립트 하나는 모듈 하나이다.</p>
+<p>내보내기</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 📁 sayHi.js</span></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">sayHi</span>(<span class="params">user</span>) </span>&#123;</span><br><span class="line">  alert(<span class="string">`Hello, <span class="subst">$&#123;user&#125;</span>!`</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>가져오기</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 📁 main.js</span></span><br><span class="line"><span class="keyword">import</span> &#123; sayHi &#125; <span class="keyword">from</span> <span class="string">&quot;./sayHi.js&quot;</span>;</span><br><span class="line"></span><br><span class="line">alert(sayHi); <span class="comment">// 함수</span></span><br><span class="line">sayHi(<span class="string">&quot;John&quot;</span>); <span class="comment">// Hello, John!</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="모듈의-핵심-기능"><a href="#모듈의-핵심-기능" class="headerlink" title="모듈의 핵심 기능"></a>모듈의 핵심 기능</h2><h3 id="엄격-모드로-실행"><a href="#엄격-모드로-실행" class="headerlink" title="엄격 모드로 실행"></a>엄격 모드로 실행</h3><p>모듈은 항상 엄격 모드 <code>use strict</code>로 실행된다. 선언되지 않은 변수에 값을 할당하는 등의 코드는 에러를 발생시킨다.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=<span class="string">&quot;module&quot;</span>&gt;a = <span class="number">5</span>; <span class="comment">// 에러&lt;/script&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="모듈-레벨-스코프"><a href="#모듈-레벨-스코프" class="headerlink" title="모듈 레벨 스코프"></a>모듈 레벨 스코프</h3><p>모듈간에는 당연히 변수를 공유하지 않는다.</p>
+<h3 id="단-한번만-평가됨"><a href="#단-한번만-평가됨" class="headerlink" title="단 한번만 평가됨"></a>단 한번만 평가됨</h3><p>동일한 모듈이 여러 곳에서 사용되더라도 최초 호출 시 단 한번만 실행된다. 실무에서는 최상위 레벨 모듈을 대게 초기화나 내부에서 쓰이는 데이터 구조를 만들고 이를 내보내 재사용하고 싶을 때 사용한다.</p>
+<p>최초에 가져온 모듈에서 가한 조작이 다음에 가져오는 상황에서 확인할 수 있다.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 📁 admin.js</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">let</span> admin = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&quot;John&quot;</span>,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>모듈 가져오고 조작하기</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 📁 1.js</span></span><br><span class="line"><span class="keyword">import</span> &#123; admin &#125; <span class="keyword">from</span> <span class="string">&quot;./admin.js&quot;</span>;</span><br><span class="line">admin.name = <span class="string">&quot;Pete&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 📁 2.js</span></span><br><span class="line"><span class="keyword">import</span> &#123; admin &#125; <span class="keyword">from</span> <span class="string">&quot;./admin.js&quot;</span>;</span><br><span class="line">alert(admin.name); <span class="comment">// Pete</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 1.js와 2.js 모두 같은 객체를 가져오므로</span></span><br><span class="line"><span class="comment">// 1.js에서 객체에 가한 조작을 2.js에서도 확인할 수 있습니다.</span></span><br></pre></td></tr></table></figure>
+
+<p>이런 특징을 이용하면 모듈 설정을 쉽게 할 수 있다.</p>
+<p>예를 들어 특정 기능을 사용하는 모듈이 사용전에 인증 정보를 받아와야 하는 등의 작업이 필요하다고 생각하면 이 기능을 활용할 수 있다.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 📁 admin.js</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">let</span> admin = &#123;&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">sayHi</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  alert(<span class="string">`<span class="subst">$&#123;admin.name&#125;</span>님, 안녕하세요!`</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 📁 init.js</span></span><br><span class="line"><span class="keyword">import</span> &#123; admin &#125; <span class="keyword">from</span> <span class="string">&quot;./admin.js&quot;</span>;</span><br><span class="line">admin.name = <span class="string">&quot;보라&quot;</span>;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 📁 other.js</span></span><br><span class="line"><span class="keyword">import</span> &#123; admin, sayHi &#125; <span class="keyword">from</span> <span class="string">&quot;./admin.js&quot;</span>;</span><br><span class="line"></span><br><span class="line">alert(admin.name); <span class="comment">// 보라</span></span><br><span class="line"></span><br><span class="line">sayHi(); <span class="comment">// 보라님, 안녕하세요!</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="import-meta"><a href="#import-meta" class="headerlink" title="import.meta"></a>import.meta</h3><p><code>import.meta</code> 객체는 현재 모듈에 대한 정보를 제공해 주는데 브라우저 환경에서는 스크립트의 url 정보를 얻을 수 있다.</p>
+<h3 id="this-는-undefine만"><a href="#this-는-undefine만" class="headerlink" title="this 는 undefine만"></a>this 는 undefine만</h3><p>모듈이 아닌 일반 객체에서 <code>this</code>는 전역 객체 <code>window</code> 이지만 모듈 내에서는 <code>undefined</code>이다.</p>
+<h2 id="브라우저-특정-기능"><a href="#브라우저-특정-기능" class="headerlink" title="브라우저 특정 기능"></a>브라우저 특정 기능</h2><p>브라우저 환경에서 <code>type=&quot;module&quot;</code>로 사용할때의 특징. 간단하게만 알아본다.</p>
+<h3 id="지연실행"><a href="#지연실행" class="headerlink" title="지연실행"></a>지연실행</h3><p><code>defer</code> 속성이 붙은 것처럼 실행되서 html 을 전부 파싱한 후에 실행된다.</p>
+<h3 id="인라인-스크립트의-비동기-처리"><a href="#인라인-스크립트의-비동기-처리" class="headerlink" title="인라인 스크립트의 비동기 처리"></a>인라인 스크립트의 비동기 처리</h3><p>async 속성이 붙은 스크립트는 로딩이 끝나면 다른 스크립트나 HTML 문서가 처리되길 기다리지 않고 바로 실행된다.</p>
+<h3 id="외부-스크립트"><a href="#외부-스크립트" class="headerlink" title="외부 스크립트"></a>외부 스크립트</h3><ol>
+<li>최최 실행</li>
+<li>CORS 헤더가 필요함.</li>
+</ol>
+<h3 id="경로가-없는-모듈은-금지"><a href="#경로가-없는-모듈은-금지" class="headerlink" title="경로가 없는 모듈은 금지"></a>경로가 없는 모듈은 금지</h3><p>Node.js 같은건 모듈 경로를 알고 있어서 가져올 수 있지만 브라우저는 상대 혹은 절대 경로가 무조건 있어야 함.</p>
+<h2 id="빌드-툴"><a href="#빌드-툴" class="headerlink" title="빌드 툴"></a>빌드 툴</h2><p>브라우저 환경에서 모듈을 ‘단독’으로 사용하는 경우는 흔치 않다. 대게 웹팩(Webpack)과 같은 특별한 툴을 사용해 모듈을 한데 묶어 프로덕션 서버에 올리는 방식을 사용한다.</p>
+<p>일반 스크립트로 변환되기 대문에 type=”module”를 사용할 필요가 없어진다.</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/09/20/modernJs/210824-export,%20import/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JayoonKoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="티끌모아 태산">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/09/20/modernJs/210824-export,%20import/" class="post-title-link" itemprop="url">export, import</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2021-09-20 21:41:14 / Modified: 21:45:40" itemprop="dateCreated datePublished" datetime="2021-09-20T21:41:14+09:00">2021-09-20</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="모듈-내보내고-가져오기"><a href="#모듈-내보내고-가져오기" class="headerlink" title="모듈 내보내고 가져오기"></a>모듈 내보내고 가져오기</h1><h2 id="선언부-앞에-export-붙이기"><a href="#선언부-앞에-export-붙이기" class="headerlink" title="선언부 앞에 export 붙이기"></a>선언부 앞에 export 붙이기</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 배열 내보내기</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">let</span> month = [<span class="string">&quot;Jan&quot;</span>, <span class="string">&quot;Feb&quot;</span>, <span class="string">&quot;Mar&quot;</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">// 상수 내보내기</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> MODULES_BECAME_STANDARD_YEAR = <span class="number">2015</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 클래스 내보내기</span></span><br><span class="line"><span class="keyword">export</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">name</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.name = name;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>export class</code> 나 <code>export function</code> 뒤에는 세미콜론을 붙이지 않는다.</p>
+<h2 id="선언부와-떨어진-곳에-export-붙이기"><a href="#선언부와-떨어진-곳에-export-붙이기" class="headerlink" title="선언부와 떨어진 곳에 export 붙이기"></a>선언부와 떨어진 곳에 export 붙이기</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// say.js</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sayHi</span>(<span class="params">user</span>) </span>&#123;</span><br><span class="line">  alert(<span class="string">`Hello, <span class="subst">$&#123;user&#125;</span>!`</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sayBye</span>(<span class="params">user</span>) </span>&#123;</span><br><span class="line">  alert(<span class="string">`Bye, <span class="subst">$&#123;user&#125;</span>!`</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> &#123; sayHi, sayBye &#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="import"><a href="#import" class="headerlink" title="import *"></a>import *</h2><p>무언갈 가져오고 싶을 때</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; sayHi, sayBye &#125; <span class="keyword">from</span> <span class="string">&quot;./say.js&quot;</span>;</span><br><span class="line"></span><br><span class="line">sayHi(<span class="string">&quot;John&quot;</span>);</span><br><span class="line">sayBye(<span class="string">&quot;John&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> say <span class="keyword">from</span> <span class="string">&quot;./say.js&quot;</span>;</span><br><span class="line"></span><br><span class="line">say.sayHi(<span class="string">&quot;John&quot;</span>);</span><br><span class="line">say.sayBye(<span class="string">&quot;John&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>편하긴 하지만 구체적으로 무엇을 가져올지 명시적으로 알려주는것이 좋다.</p>
+<ol>
+<li>웹팩과 같은 모던 빌드 툴은 로딩 속도를 높이기 위해 모듈들을 한데 모으는 번들링과 최적화를 수행한다. 이 과정에서 사용하지 않는 리소스가 삭제되기도 한다.</li>
+<li>더 간결하게 적을 수 있다.</li>
+<li>어디에 어떤게 쓰이는지 명확하기 때문에 리팩토링이나 유지보수에 도움이 된다.</li>
+</ol>
+<h2 id="import-‘as’"><a href="#import-‘as’" class="headerlink" title="import ‘as’"></a>import ‘as’</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; sayHi <span class="keyword">as</span> hi, sayBye <span class="keyword">as</span> bye &#125; <span class="keyword">from</span> <span class="string">&quot;./say.js&quot;</span>;</span><br><span class="line"></span><br><span class="line">hi(<span class="string">&quot;John&quot;</span>);</span><br><span class="line">bye(<span class="string">&quot;John&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<h2 id="Export-‘as’"><a href="#Export-‘as’" class="headerlink" title="Export ‘as’"></a>Export ‘as’</h2><p>이름 바꿔서 내보낼 수 있다.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> &#123; sayHi <span class="keyword">as</span> hi, sayBye <span class="keyword">as</span> bye &#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="export-default"><a href="#export-default" class="headerlink" title="export default"></a>export default</h2><p><code>export default</code> 라는 특별한 문법을 지원한다. 이는 해당 모듈엔 개체가 하나만 있다는 사실을 명백히 나타낼 수 있다.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// user.js</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">name</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.name = name;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>보통 파일 하나엔 <code>export default</code>가 하나만 있다.</p>
+<p>이렇게 내보내면 <code>import</code> 에서 <code>&#123;&#125;</code>를 제거할 수 있다.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> User <span class="keyword">from</span> <span class="string">&quot;./user.js&quot;</span>; <span class="comment">// &#123;User&#125; 가 아니라 User 이다.</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> User(<span class="string">&quot;John&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>이름으로 가져오는 방식을 <code>named export</code>라고 한다.</p>
+<p>파일 하나에 <code>named export</code>와 <code>export default</code>를 함께 사용해도 문제가 되지는 않는다. 하지만 실무에선 파일 하나에 둘중 하나만 사용하는 것이 일반적이다.</p>
+<p>또한 <code>export default</code>의 경우에는 중괄호 없이 내보낼 것이 하나밖에 없다고 정한 것이기 때문에 이름없이 내보내는것이 가능하다. 하지만 <code>named export</code>에서는 이름을 반드시 명시해 주어야 한다.</p>
+<h3 id="default-name"><a href="#default-name" class="headerlink" title="default name"></a><code>default</code> name</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sayHi</span>(<span class="params">user</span>) </span>&#123;</span><br><span class="line">  alert(<span class="string">`Hello, <span class="subst">$&#123;user&#125;</span>`</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 함수 선언분에 export default 한 것과 똑같다.</span></span><br><span class="line"><span class="keyword">export</span> &#123; sayHi <span class="keyword">as</span> <span class="keyword">default</span> &#125;;</span><br></pre></td></tr></table></figure>
+
+<p>흔하진 않지만 default를 사용해서 동시에 가져올 수 있다.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// user.js</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">name</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.name = name;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">sayHi</span>(<span class="params">user</span>) </span>&#123;</span><br><span class="line">  alert(<span class="string">`Hello, <span class="subst">$&#123;user&#125;</span>`</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; <span class="keyword">default</span> <span class="keyword">as</span> User, sayHi &#125; <span class="keyword">from</span> <span class="string">&quot;./user.js&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 혹은</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> user <span class="keyword">from</span> <span class="string">&quot;./user.js&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> User = user.default;</span><br><span class="line"><span class="keyword">new</span> User(<span class="string">&quot;John&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="default-export-의-이름에-관한-규칙"><a href="#default-export-의-이름에-관한-규칙" class="headerlink" title="default export 의 이름에 관한 규칙"></a>default export 의 이름에 관한 규칙</h3><p>default export 는 꼭 파일내에서 내보내는 이름으로 불러오지 않아도 되기 때문에 같은 모듈이라도 사용하는 사람에 따라서 불러온 이름이 다를 수 있다. 이는 혼란을 야기할 수 있는데 이것을 방지하기 위해서 이름을 정하는 규칙이 있다.<br>보통 파일이름에 첫 글자는 대문자인 형식으로 사용한다.</p>
+<h2 id="모듈-다시-내보내기"><a href="#모듈-다시-내보내기" class="headerlink" title="모듈 다시 내보내기"></a>모듈 다시 내보내기</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> &#123; sayHi &#125; <span class="keyword">from</span> <span class="string">&quot;./say.js&quot;</span>; <span class="comment">// sayHi를 다시 내보냄</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> &#123; <span class="keyword">default</span> <span class="keyword">as</span> User &#125; <span class="keyword">from</span> <span class="string">&quot;./user.js&quot;</span>; <span class="comment">// default export 를 다시 내보내기 함.</span></span><br></pre></td></tr></table></figure>
+
+<p>가져온 객체를 즉시 다시 내보내기 할수 있다. 내보낼 기능을 패키지 전반에 분산하여 구현한 후 필요한 파일에서 가져온후 다시 내보내는 방식으로 활용할 수 있다.</p>
+<h3 id="default-export-다시-내보내기"><a href="#default-export-다시-내보내기" class="headerlink" title="default export 다시 내보내기"></a>default export 다시 내보내기</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// user.js</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span> </span>&#123;</span><br><span class="line">  <span class="comment">//...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li><code>User</code>를 <code>export User from &#39;./user.js</code> 로 다시 내보내기 할 때 문법 에러가 발생한다. <code>export &#123;default as User&#125;</code>를 사용해야 한다.</li>
+<li><code>export * from &#39;./user.js&#39;</code>를 사용했다면 <code>dafault export</code>는 무시 되고 <code>named export</code> 만 다시 내보내진다.</li>
+</ol>
+<p>동시에 하기 위해서는 다음과 같이 사용해야 한다.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> * <span class="keyword">from</span> <span class="string">&quot;./user.js&quot;</span>; <span class="comment">// named export를 다시 내보내기</span></span><br><span class="line"><span class="keyword">export</span> &#123; <span class="keyword">default</span> &#125; <span class="keyword">from</span> <span class="string">&quot;./user.js&quot;</span>; <span class="comment">// default export 다시 내보내기</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/09/20/modernJs/210826-%EB%8F%99%EC%A0%81%EC%9C%BC%EB%A1%9C%20%EB%AA%A8%EB%93%88%20%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JayoonKoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="티끌모아 태산">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/09/20/modernJs/210826-%EB%8F%99%EC%A0%81%EC%9C%BC%EB%A1%9C%20%EB%AA%A8%EB%93%88%20%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B0/" class="post-title-link" itemprop="url">동적으로 모듈 가져오기</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2021-09-20 21:41:14 / Modified: 21:45:41" itemprop="dateCreated datePublished" datetime="2021-09-20T21:41:14+09:00">2021-09-20</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="동적으로-모듈-가져오기"><a href="#동적으로-모듈-가져오기" class="headerlink" title="동적으로 모듈 가져오기"></a>동적으로 모듈 가져오기</h1><p>모듈 경로로는 문자열만 가능하기 때문에 함수에 매개변수를 넘겨 줘서 결과값을 갖는 것은 할 수 없다. 또한, 런타임이나 조건부로 모듈을 불러올 수 없다.<br>그럼에도 불구하고 모듈을 동적으로 불러와야 한다면 어떻게 해야 할까?</p>
+<h2 id="import-표현식"><a href="#import-표현식" class="headerlink" title="import() 표현식"></a>import() 표현식</h2><p><code>import(module)</code> 표현식은 모듈을 읽고 이 모듈이 내보내는 것들을 모두 포함하는 객체를 담은 이행된 프로미스를 반환한다.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> modulePath = prompt(<span class="string">&quot;어떤 모듈을 불러오고 싶으세요?&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span>(modulePath)</span><br><span class="line">	.then(<span class="function"><span class="params">obj</span> =&gt;</span> <span class="comment">//&lt;모듈 객체&gt;)</span></span><br><span class="line">	.catch(<span class="function"><span class="params">err</span> =&gt;</span> <span class="comment">//&lt;로딩 엘, e.g 해당하는 모듈이 없는 경우&gt;)</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// say.js</span></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">hi</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  alert(<span class="string">&quot;안녕하세요.&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">bye</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  alert(<span class="string">&quot;안녕히 가세요.&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>let module = await import(modulePath)</code> 와 같이 가져올 수 도 있음.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> &#123; hi, bye &#125; = <span class="keyword">await</span> <span class="keyword">import</span>(modulePath);</span><br><span class="line"></span><br><span class="line">hi();</span><br><span class="line">bye();</span><br></pre></td></tr></table></figure>
+
+<p>say.js 에 export default 추가</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// say.js</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  alert(<span class="string">&quot;export default한 모듈을 불러왔습니다!&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>export defaul로 내보냈으면 default 프로퍼티를 사용하여 가져올수 있다.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = <span class="keyword">await</span> <span class="keyword">import</span>(<span class="string">&quot;./say.js&quot;</span>);</span><br><span class="line"><span class="keyword">let</span> say = obj.default;</span><br><span class="line"></span><br><span class="line">say();</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><code>import()</code> 는 함수가 아니다. <code>super()</code>처럼 괄호를 쓰는 특별한 문법이다.</p>
+</blockquote>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -972,402 +1298,8 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/09/20/modernJs/210909-fetch-abort/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JayoonKoo">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="티끌모아 태산">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/09/20/modernJs/210909-fetch-abort/" class="post-title-link" itemprop="url">fetch-abort</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2021-09-20 21:41:14 / Modified: 21:45:41" itemprop="dateCreated datePublished" datetime="2021-09-20T21:41:14+09:00">2021-09-20</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="Fetch-Abort"><a href="#Fetch-Abort" class="headerlink" title="Fetch: Abort"></a>Fetch: Abort</h1><p>fetch 는 promise를 반환하고 자바스크립트에서는 fetch를 중단하는 개념이 없다. 이런 목적을 위해 내장된 객체인 <code>AbortController</code>가 있다.<br>이것은 fetch 뿐만 아니라 비동기 작업에서도 사용될 수 있다.</p>
-<h2 id="The-AbortController-object"><a href="#The-AbortController-object" class="headerlink" title="The AbortController object"></a>The AbortController object</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> controller = <span class="keyword">new</span> AbortController();</span><br></pre></td></tr></table></figure>
-
-<p>반환하는 객체는 간단하다.</p>
-<ul>
-<li><code>abort()</code> 메서드를 갖는다.</li>
-<li>이벤트 등록을 위한 <code>signal</code> 프로퍼티를 갖는다.</li>
-</ul>
-<p><code>abort()</code>가 호출되었을 때</p>
-<ul>
-<li><code>controller.signal</code> 은 <code>abort</code> 이벤트를 내보낸다.</li>
-<li><code>controller.signal.aborted</code> 프로퍼티가 <code>true</code>가 된다.</li>
-</ul>
-<p>취소 가능한 작업을 <code>controller.signal</code>에 리스너로 등록한다. <code>controller.abort()</code>를 호출할때 리스너가 트리거 된다.</p>
-<p>fetch를 포함하지 않은 예제는 다음과 같다.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> controller = <span class="keyword">new</span> AbortController();</span><br><span class="line"><span class="keyword">let</span> signal = controller.signal;</span><br><span class="line"></span><br><span class="line"><span class="comment">// teh party that performs a cancelable operation</span></span><br><span class="line"><span class="comment">// gets &quot;signal&quot; object</span></span><br><span class="line"><span class="comment">// and sets the listener to trigger when controller.abort() is called</span></span><br><span class="line">signal.addEventListener(<span class="string">&quot;abort&quot;</span>, <span class="function">() =&gt;</span> alert(<span class="string">&quot;abort!!&quot;</span>));</span><br><span class="line"></span><br><span class="line"><span class="comment">// the other party, that cancels (at any point later)</span></span><br><span class="line">controller.abort(); <span class="comment">// abort!!</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//the event triggers and signal.aborted becomes true</span></span><br><span class="line">alert(signal.aborted); <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
-
-<p>코드에서 AbortController 없이 비슷한 작업을 할 수 있지만 fecth 가 AbortController 객체와 함께 작동하고 통합된다는것이 중요하다.</p>
-<h2 id="Using-with-fetch"><a href="#Using-with-fetch" class="headerlink" title="Using with fetch"></a>Using with fetch</h2><p><code>AbortController</code>에 <code>signal</code>프로퍼티를 <code>fetch</code>에 옵션으로 전달해 주면 된다.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> controller = <span class="keyword">new</span> AbortController();</span><br><span class="line">fetch(url, &#123;</span><br><span class="line">  <span class="attr">signal</span>: controller.signal,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<p>fetch가 중단되면 <code>AbortError</code>를 던진다. <code>try..catch</code>를 통해서 에러를 잡을 수 있다.</p>
-<p>전체 예제</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// abort in 1 second</span></span><br><span class="line"><span class="keyword">let</span> controller = <span class="keyword">new</span> AbofrtController();</span><br><span class="line"><span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> controller.abort(), <span class="number">1000</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">  <span class="keyword">let</span> response = <span class="keyword">await</span> fetch(<span class="string">&quot;/article/fetch-abort/demo/hang&quot;</span>, &#123;</span><br><span class="line">    <span class="attr">signal</span>: controller.signal,</span><br><span class="line">  &#125;);</span><br><span class="line">&#125; <span class="keyword">catch</span> (err) &#123;</span><br><span class="line">  <span class="keyword">if</span> (err.name == <span class="string">&quot;AbortError&quot;</span>) &#123;</span><br><span class="line">    alert(<span class="string">&quot;Aborted!&quot;</span>);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">throw</span> err;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="AbortController-is-scalable"><a href="#AbortController-is-scalable" class="headerlink" title="AbortController is scalable"></a>AbortController is scalable</h2><p><code>AbortController</code>은 확장가능햇 한번에 여러 fetch를 중단시킬 수 있다.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> urls = [...];</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> controller = <span class="keyword">new</span> AbortController();</span><br><span class="line"></span><br><span class="line"><span class="comment">// an array of fetch promises</span></span><br><span class="line"><span class="keyword">let</span> fetchJobs = urls.map(<span class="function"><span class="params">url</span> =&gt;</span> fetch(url, &#123;</span><br><span class="line">	<span class="attr">signal</span>: controller.signal</span><br><span class="line">&#125;));</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> results = <span class="keyword">await</span> <span class="built_in">Promise</span>.all(fetchJobs);</span><br><span class="line"></span><br><span class="line"><span class="comment">// if controller.abort() is called from elsewhere, it aborts all fetches</span></span><br></pre></td></tr></table></figure>
-
-<p>다른 비동기 작업도 <code>fetch</code>와 함께 하나의 <code>AbortController</code>로 멈출 수 있다.</p>
-<p>우린 단지 <code>abort</code> 이벤트를 들으면 된다.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> urls = [...];</span><br><span class="line"><span class="keyword">let</span> controller = <span class="keyword">new</span> AbortController();</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> ourJob = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span>  &#123;</span><br><span class="line">	<span class="comment">// our task</span></span><br><span class="line">	controller.signal.addEventListener(<span class="string">&#x27;abort&#x27;</span>, reject);</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> fetchJobs = urls.map(<span class="function"><span class="params">url</span> =&gt;</span> fetch(url, &#123;</span><br><span class="line">	<span class="attr">signal</span>: controller.signal</span><br><span class="line">&#125;));</span><br><span class="line"></span><br><span class="line"><span class="comment">// Wait for feches and our tast in parallel</span></span><br><span class="line"><span class="keyword">let</span> results = <span class="keyword">await</span> <span class="built_in">Promise</span>.all([...fetchJobs, ourJob]);</span><br><span class="line"></span><br><span class="line"><span class="comment">// if controller.abort() is called from elsewhere, it aborts all fetches and our Job</span></span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/09/20/modernJs/210910-fetch%EC%99%80%20cross-origin%EC%9A%94%EC%B2%AD/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JayoonKoo">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="티끌모아 태산">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/09/20/modernJs/210910-fetch%EC%99%80%20cross-origin%EC%9A%94%EC%B2%AD/" class="post-title-link" itemprop="url">fetch와 cross-origin요청</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2021-09-20 21:41:14 / Modified: 21:45:41" itemprop="dateCreated datePublished" datetime="2021-09-20T21:41:14+09:00">2021-09-20</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="fetch와-Cross-Origin-요청"><a href="#fetch와-Cross-Origin-요청" class="headerlink" title="fetch와 Cross-Origin 요청"></a>fetch와 Cross-Origin 요청</h1><p>도메인이나 서브도메인, 프로토콜, 포트가 다른 곳에 요청을 보내는 것을 Croww-Origin Request(크로스 오리진 요청) 이라고 한다. 크로스 오리진 요청을 보내려면 리모트 오리진에서 전송받은 특별한 헤더가 필요하다. 이러한 정책을 CORS라고 부른다.</p>
-<h2 id="왜-CORS-가-필요한가에-대한-짧은-역사"><a href="#왜-CORS-가-필요한가에-대한-짧은-역사" class="headerlink" title="왜 CORS 가 필요한가에 대한 짧은 역사"></a>왜 CORS 가 필요한가에 대한 짧은 역사</h2><p>과거 수 년 동안, 한 사이트의 스크립트에서 다른 사이트에 있는 콘텐츠에 접근할 수 없다는 제약이 있었다. 더 강력한 작업을 위해서 다른 웹사이트로에 요청이 필요했다.</p>
-<p>여러가지 트릭이 있었지만, 오랜 논의 끝에 크로스 오리진 요청을 허용 하기로 결정했다. 대신 크로스 오리진 요청은 서버에서 명시적으로 크로스 오리진 요청을 ‘허가’ 했다는 것을 알려주는 특별한 헤더를 전송받았을 때만 가능하도록 제약을 걸었다.</p>
-<h2 id="안전한-요청"><a href="#안전한-요청" class="headerlink" title="안전한 요청"></a>안전한 요청</h2><p>안전한 요청은 다음과 같은 두 가지 조건 모두를 충족한다.</p>
-<ol>
-<li>안전한 메서드 - GET이나 POST, HEAD를 사용한 요청</li>
-<li>안전한 헤더 - 다음 목록에 속하는 헤더<ul>
-<li>Accept</li>
-<li>Accept-Language</li>
-<li>Content-Language</li>
-<li>값이 application/x-www-form-urlencoded나 multipart/form-data, text/plain 인 Content-Type</li>
-</ul>
-</li>
-</ol>
-<p>표준이 아닌 헤더가 들어있거나 안전하지 않은 메서드를 사용한 요청은 안전한 요청이 될 수 없다. 그런데 시간이 지나고 개발자가 스크립트를 사용해 안전하지 않은 요청을 보낼 수 있게되자, 브라우저는 안전하지 않은 요청을 서버에 전송하기 전에 preflight 요청을 먼저 전송해 서버가 크로스 오리진 요청을 받을 준비가 되어있는지 확인한다.</p>
-<p>이때 서버에서 크로스 오리진 요청은 허용하지 않는다는 정보를 담은 헤더를 브라우저에 응답하면 안전하지 않은 요청은 서버에 전송되지 않는다.</p>
-<h2 id="CORS와-안전한-요청"><a href="#CORS와-안전한-요청" class="headerlink" title="CORS와 안전한 요청"></a>CORS와 안전한 요청</h2><p>크로스 오리진 요청을 보낼 경우 브라우저는 항상 <code>Origin</code>이라는 헤더를 요청에 추가해서 자신에 도메인을 적는다.</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">GET /request</span><br><span class="line">Host: anywhere.com</span><br><span class="line">Origin: https://javascript.info</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
-
-<p>서버는 <code>Origin</code>을 검사하고 요청을 받아들이기로 동의한 상태라면 특별한 헤더 <code>Access-Control-Allow-Origin</code>을 응답에 추가한다. 여기에 오리진 정보나 * 를 붙히면 응답에 성공하고 그렇지 않으면 실패하게 된다.</p>
-<p>이때 브라우저는 중재인의 역할을 수행한다.<br>서버에서 크로스 오리진 요청을 수행한 경우, prefilght 요청에 응답은 다음과 같은 형태를 뛴다.</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">200 OK</span><br><span class="line">Content-Type:text/html; charset=UTF-8</span><br><span class="line">Access-Control-Allow-Origin: https://javascript.info</span><br></pre></td></tr></table></figure>
-
-<img src="/images/210910-fetch와 cross-origin요청/1.png" width="500">
-
-<h2 id="응답-헤더"><a href="#응답-헤더" class="headerlink" title="응답 헤더"></a>응답 헤더</h2><p>크로스 오리진 요청이 이루어진 경우, 자바스크립트는 기본적으로 안전한 응답 헤더로 분류되는 헤더에만 접속할 수 있다.</p>
-<ul>
-<li>Cache-Control</li>
-<li>Content-Language</li>
-<li>Content-Type</li>
-<li>Expires</li>
-<li>Last-Modified</li>
-<li>Pragma</li>
-</ul>
-<p>이 외의 응답 헤더에 접근하면 에러가 발생한다.</p>
-<blockquote>
-<p>위 리스트엔 <code>Contnet-Length</code>헤더는 없다.</p>
-</blockquote>
-<p>안전하지 않는 응답 헤더에 접근하려면 서버에서 <code>Access-Contorol-Expose-Headers</code>라는 헤더를 보내줘야 한다. 여기에 자바스크립트 접근을 허용하는 안전하지 않은 헤더 목록이 담겨 있다.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">200</span> OK</span><br><span class="line">Content-Type:text/html; charset=UTF-<span class="number">8</span></span><br><span class="line">Content-Length: <span class="number">12345</span></span><br><span class="line">API-Key: 2c9de507f2c54aa1</span><br><span class="line">Access-Control-Allow-Origin: https:<span class="comment">//javascript.info</span></span><br><span class="line">Access-Control-Expose-Headers: Content-Length,API-Key</span><br></pre></td></tr></table></figure>
-
-<h2 id="안전하지-않은-요청"><a href="#안전하지-않은-요청" class="headerlink" title="안전하지 않은 요청"></a>안전하지 않은 요청</h2><p>요츰엔 <code>GET</code>, <code>POST</code> 뿐만 아니라 <code>PATCH</code>, <code>DELETE</code> 등 어떤 메서드도 사용할 수 있다.</p>
-<p>과거에는 get 과 post 만 가능한 웹서버만 있었고 요즘도 종종 있다. 혼란스런 상황을 방지하기 위해서 안전하지 않은 요청( 위에서 안전한 요청에 조건을 벗어나는 요청) 을 보낼 때는 바로 요청을 보내지 않고 <code>preflight</code> 요청을 사전에 보낸다.</p>
-<p>preflight 요청은 <code>OPTIONS</code> 메서드를 사용하고 두 헤더가 함께 들어가며, 본문은 비어있다.</p>
-<ul>
-<li><code>Access-Control-Request-Method</code> - 안전하지 않은 요청에 사용하는 메서드 정보</li>
-<li><code>Access-Contorl-Request-Header</code> - 안전하지 않은 요청에 사용하는 헤더 목록</li>
-</ul>
-<p>안전하지 않은 요청을 허용하기로 협의했다면 서버는 본문이 비어있고 상태 코드가 200인 응답을 다음과 같은 헤더와 함께 브라우저로 보낸다.</p>
-<ul>
-<li><code>Access-Contorl-Allow-Origin</code> - <code>*</code>나 요청을 보낸 오리진</li>
-<li><code>Access-Control-Allow-Method</code> - 허용된 메서드 정보</li>
-<li><code>Access-Control-Allow-Headers</code> - 허용된 헤더 목록</li>
-<li><code>Access-Control-Max-Age</code> - 퍼미션 체크 여부를 몇 초간 캐싱해 놓을지를 명시. 이렇게 캐싱해 놓으면 브라우저는 일정 기간 동안 preflight 요청을 생략하고 안전하지 않은 요청을 보낼수 있다.</li>
-</ul>
-<img src="/images/210910-fetch와 cross-origin요청/2.png" width="500">
-
-<p>실제 <code>PATCH</code> 메서드를 사욭하는 예시를 통해서 확인해 본다.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> response = <span class="keyword">await</span> fetch(<span class="string">&quot;https://site.com/service.json&quot;</span>, &#123;</span><br><span class="line">  <span class="attr">method</span>: <span class="string">&quot;PATCH&quot;</span>,</span><br><span class="line">  <span class="attr">headers</span>: &#123;</span><br><span class="line">    <span class="string">&quot;Content-Type&quot;</span>: <span class="string">&quot;application/json&quot;</span>,</span><br><span class="line">    <span class="string">&quot;API-Key&quot;</span>: <span class="string">&quot;secret&quot;</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<p>위 요청은 안전한 요청에 조건을 벗어나므로 안전하지 않은 요청이다.</p>
-<h3 id="1-단계-priflight-요청"><a href="#1-단계-priflight-요청" class="headerlink" title="1 단계 priflight 요청"></a>1 단계 priflight 요청</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">OPTIONS /service.json</span><br><span class="line">Host: site.com</span><br><span class="line">Origin: https://javascript.info</span><br><span class="line">Access-Control-Request-Method: PATCH</span><br><span class="line">Access-Control-Request-Headers: Content-Type,API-Key</span><br></pre></td></tr></table></figure>
-
-<h3 id="2-단계-priflight-응답"><a href="#2-단계-priflight-응답" class="headerlink" title="2 단계 priflight 응답"></a>2 단계 priflight 응답</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">200 OK</span><br><span class="line">Access-Control-Allow-Origin: https://javascript.info</span><br><span class="line">Access-Control-Allow-Methods: PUT,PATCH,DELETE</span><br><span class="line">Access-Control-Allow-Headers: API-Key,Content-Type,If-Modified-Since,Cache-Control</span><br><span class="line">Access-Control-Max-Age: 86400</span><br></pre></td></tr></table></figure>
-
-<h3 id="3-단계-실제-요청"><a href="#3-단계-실제-요청" class="headerlink" title="3 단계 실제 요청"></a>3 단계 실제 요청</h3><p>이제 부터는 안전한 요청에 대한 프로세스와 동일하다. 본 요청은 크로스 오리진 요청이기 때문에 <code>Origin</code> 헤더가 붙는다.</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">PATCH /service.json</span><br><span class="line">Host: site.com</span><br><span class="line">Content-Type: application/json</span><br><span class="line">API-Key: secret</span><br><span class="line">Origin: https://javascript.info</span><br></pre></td></tr></table></figure>
-
-<h3 id="4단계-실제-응답"><a href="#4단계-실제-응답" class="headerlink" title="4단계 실제 응답"></a>4단계 실제 응답</h3><p>서버에서 본 응답에 <code>Access-Contorl-Allow-Origin</code> 헤더를 반드시 붙여야 한다.</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Access-Control-Allow-Origin: https://javascript.info</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>preflight 요청은 자바스크립트를 사용해 관찰 할 수 없다. preflight 요청이 거부된 경우 에러만 확인할 수 있다.</p>
-</blockquote>
-<h2 id="자격-증명"><a href="#자격-증명" class="headerlink" title="자격 증명"></a>자격 증명</h2><p>크로스 오리진 요청은 기본적으로 자격 증명이 함께 전송되지 않는다. 이렇게 한 이유는 크로스 오리진 요청 시 자격 증명을 함께 전송할 수 있으면 사용자 동의 없이 자바스크립트로 민감한 정보에 접근할 수 있기 때문이다.</p>
-<p>그럼에도 불구하고 자걱 증명이 담긴 헤더를 명시적으로 허용하겠다는 세팅을 서버에 해줄 수 있다.</p>
-<p><code>fetch</code> 메서드에 자격 정보를 함께 전송하려면 다음과 같이 <code>credentials: &quot;include&quot;</code> 옵션을 추가하면 된다.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">fetch(<span class="string">&quot;http://another.com&quot;</span>, &#123;</span><br><span class="line">  <span class="attr">credentials</span>: <span class="string">&quot;include&quot;</span>,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<p>서버에서 자격 증명 정보가 담긴 요청을 받아들이기로 했다면 응답에 <code>Access-Control-Allow-Origin</code> 헤더와 함께 <code>Access-Conrol-Allow-Credentials: true</code> 헤더를 추가해서 보낸다.</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">200 OK</span><br><span class="line">Access-Control-Allow-Origin: https://javascript.info</span><br><span class="line">Access-Control-Allow-Credentials: true</span><br></pre></td></tr></table></figure>
-
-<p>이때, <code>Access-Contorl-Allow-Origin</code>에 *를 쓸 수 없다. 정확한 오리진 정보만 명시되어야 서버에서 신뢰할 수 있기 때문이다.</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/09/20/modernJs/210914-URL%20objects/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JayoonKoo">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="티끌모아 태산">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/09/20/modernJs/210914-URL%20objects/" class="post-title-link" itemprop="url">URL objects</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2021-09-20 21:41:14 / Modified: 21:45:41" itemprop="dateCreated datePublished" datetime="2021-09-20T21:41:14+09:00">2021-09-20</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="URL-objects"><a href="#URL-objects" class="headerlink" title="URL objects"></a>URL objects</h1><p>URL 객체를 사용할 수 있다. 물론 string을 사용해도 충분 하지만 유요한 기능을 제공 하기도 한다.</p>
-<h2 id="Creating-a-URL"><a href="#Creating-a-URL" class="headerlink" title="Creating a URL"></a>Creating a URL</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> URL(url, [base]);</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><code>url</code> - full url 이나 베이스가 설정되어 있다면 패스 만</li>
-<li><code>base</code> - base가 설정 되어 있으면 base와 관련지어서 생성된다.</li>
-</ul>
-<p>다음에 두가지 url은 같다.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> url1 = <span class="keyword">new</span> URL(<span class="string">&quot;https://javascript.info/profile/admin&quot;</span>);</span><br><span class="line"><span class="keyword">let</span> url2 = <span class="keyword">new</span> URL(<span class="string">&quot;/profile/admin&quot;</span>, <span class="string">&quot;https://javascript.info&quot;</span>);</span><br></pre></td></tr></table></figure>
-
-<p>url 객체를 사용하면 객체에 구성소에 바로 접근할 수 있다.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> url = <span class="keyword">new</span> URL(<span class="string">&quot;https://javascript.info/url&quot;</span>);</span><br><span class="line"></span><br><span class="line">alert(url.protocol); <span class="comment">// https:</span></span><br><span class="line">alert(url.host); <span class="comment">// javascript.info</span></span><br><span class="line">alert(url.pathname); <span class="comment">// /url</span></span><br></pre></td></tr></table></figure>
-
-<p>url에 구조는 다음과 같다.</p>
-<img src="/images/210914-URL objects/1.png" width="500">
-
-<blockquote>
-<p>네트워킹 메서드에 문자열 대신에 URL Object를 전달할 수 있다.<br>예를 들면 <code>fetch</code>나 <code>XMLHttpRequest</code>에서</p>
-</blockquote>
-<h2 id="SearchParams-“-”"><a href="#SearchParams-“-”" class="headerlink" title="SearchParams “?..”"></a>SearchParams “?..”</h2><p>파라미터는 만약 공백이 포함되어 있거나 라틴 글자가 아니면 인코딩이 필요하다.</p>
-<p>글새 <code>url.searchParams</code>는 유용한 메서드를 제공한다.</p>
-<ul>
-<li><code>append(name, value)</code> - name에 해당하는 파라미터를 추가한다.</li>
-<li><code>delete(name)</code> - name 에 해당하는 파라미터를 제거한다.</li>
-<li><code>get(name)</code> - name 에 해당하는 파라미터를 얻는다.</li>
-<li><code>getAll(name)</code> - name 에 해당하는 파라미터를 모두 얻는다.(여러개일 경우)</li>
-<li><code>has(name)</code> - name에 해당하는 파리머터가 있는지 체크한다.</li>
-<li><code>set(name, value)</code> - set/relace 파리미터</li>
-<li><code>sort()</code> - 이름으로 정렬한다, 드물게 필요하다.</li>
-</ul>
-<p>사용 예시는 다음과 같다.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> url = <span class="keyword">new</span> URL(<span class="string">&quot;https://google.com/search&quot;</span>);</span><br><span class="line"></span><br><span class="line">url.searchParams.set(<span class="string">&quot;q&quot;</span>, <span class="string">&quot;test me!&quot;</span>); <span class="comment">// added parameter with a space and !</span></span><br><span class="line"></span><br><span class="line">alert(url); <span class="comment">// https://google.com/search?q=test+me%21</span></span><br><span class="line"></span><br><span class="line">url.searchParams.set(<span class="string">&quot;tbs&quot;</span>, <span class="string">&quot;qdr:y&quot;</span>); <span class="comment">// added parameter with a colon :</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// parameters are automatically encoded</span></span><br><span class="line">alert(url); <span class="comment">// https://google.com/search?q=test+me%21&amp;tbs=qdr%3Ay</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// iterate over search parameters (decoded)</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> [name, value] <span class="keyword">of</span> url.searchParams) &#123;</span><br><span class="line">  alert(<span class="string">`<span class="subst">$&#123;name&#125;</span>=<span class="subst">$&#123;value&#125;</span>`</span>); <span class="comment">// q=test me!, then tbs=qdr:y</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="Encoding"><a href="#Encoding" class="headerlink" title="Encoding"></a>Encoding</h2><p>url에 가능한 글자가 RFC3986에 정의 되어 있다. 제공되지 않는 문자열에 경우 인코딩이 필요하다.</p>
-<p>다행인건, URL Object를 사용하면 자동으로 이 작업을 해준다.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> url = <span class="keyword">new</span> URL(<span class="string">&quot;https://ru.wikipedia.org/wiki/Тест&quot;</span>);</span><br><span class="line"></span><br><span class="line">url.searchParams.set(<span class="string">&quot;key&quot;</span>, <span class="string">&quot;ъ&quot;</span>);</span><br><span class="line">alert(url); <span class="comment">//https://ru.wikipedia.org/wiki/%D0%A2%D0%B5%D1%81%D1%82?key=%D1%8A</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="Encoding-String"><a href="#Encoding-String" class="headerlink" title="Encoding String"></a>Encoding String</h3><p>URL Object가 아니라 문자열을 사용하는 경우 특수 문자를 수동으로 인코딩/ 디코딩 해야 한다.</p>
-<p>몇가지 내장된 메소드는 다음과 같다.</p>
-<ul>
-<li><code>encodeURI</code></li>
-<li><code>decodeURI</code></li>
-<li><code>encodeURIComponent</code> - 파라미터나 헤쉬 값 같은 것</li>
-<li><code>decodeURIComponent</code></li>
-</ul>
-<p><code>encodeURI</code>와 <code>encodeURIComponent</code>에 차이는 무엇일까?</p>
-<p>예시 url</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://site.com:8080/path/page?p1=v1&amp;p2=v2#hash</span><br></pre></td></tr></table></figure>
-
-<p><code>:</code>, <code>?</code>, <code>=</code>, <code>&amp;</code>, <code>#</code>와 같은 문자가 url에서 허용된다. 파라미터로 사용되는 문자열에는 이런 문자열이 포함되어야 하는데 url에 허용되는 문자열이기 때문에 인코딩 되지 않는 문제가 있다.</p>
-<p>따라서 이러한 문자는 형식을 깨드리지 않고 인코딩되어야 한다.</p>
-<p>전체 URL은 <code>encodeURI</code>를 사용한다.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// using cyrillic characters in url path</span></span><br><span class="line"><span class="keyword">let</span> url = <span class="built_in">encodeURI</span>(<span class="string">&quot;http://site.com/привет&quot;</span>);</span><br><span class="line"></span><br><span class="line">alert(url); <span class="comment">// http://site.com/%D0%BF%D1%80%D0%B8%D0%B2%D0%B5%D1%82</span></span><br></pre></td></tr></table></figure>
-
-<p>매개변수를 사용하는 경우 <code>encodeURIComponent</code>를 대신해서 사용해야 한다.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> music = <span class="built_in">encodeURIComponent</span>(<span class="string">&quot;Rock&amp;Roll&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> url = <span class="string">`https://google.com/search?q=<span class="subst">$&#123;music&#125;</span>`</span>;</span><br><span class="line">alert(url); <span class="comment">// https://google.com/search?q=Rock%26Roll</span></span><br></pre></td></tr></table></figure>
-
-<p><code>encodeURI</code>와 비교하면 다음과 같다.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> music = <span class="built_in">encodeURI</span>(<span class="string">&quot;Rock&amp;Roll&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> url = <span class="string">`https://google.com/search?q=<span class="subst">$&#123;music&#125;</span>`</span>;</span><br><span class="line">alert(url); <span class="comment">// https://google.com/search?q=Rock&amp;Roll</span></span><br></pre></td></tr></table></figure>
-
-<p>&amp; 은 Rock 그리고 Roll 이라는 파라미터를 의미하고 이는 적절히 인코딩 되어야 한다. 그런데 encdoeURI를 사용하면 &amp;를 허용하기 때문에 인코딩 되지 않는 문제가 있다.</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/5/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/7/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+    <a class="extend prev" rel="prev" href="/page/5/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/7/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 </div>
