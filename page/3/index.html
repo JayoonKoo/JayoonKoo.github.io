@@ -85,7 +85,7 @@
         <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
         <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">12</span></a></li>
         <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">9</span></a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">113</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">116</span></a></li>
   </ul>
 </nav>
 
@@ -129,7 +129,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">113</span>
+          <span class="site-state-item-count">116</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -180,6 +180,342 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/10/23/react/official-docs/211014-Thinking%20In%20React/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JayoonKoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="티끌모아 태산">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/10/23/react/official-docs/211014-Thinking%20In%20React/" class="post-title-link" itemprop="url">Thinking In React</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2021-10-23 22:16:06 / Modified: 22:16:41" itemprop="dateCreated datePublished" datetime="2021-10-23T22:16:06+09:00">2021-10-23</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/react/" itemprop="url" rel="index"><span itemprop="name">react</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="Thinking-in-React"><a href="#Thinking-in-React" class="headerlink" title="Thinking in React"></a>Thinking in React</h1><p>React로 상품들을 검색할 수 있는 데이터 테이블을 만드는 과정을 통해 리엑트로 생각한다는것이 무엇인지 알아보자.</p>
+<h2 id="목업으로-시작하기"><a href="#목업으로-시작하기" class="headerlink" title="목업으로 시작하기"></a>목업으로 시작하기</h2><p>다음과 같은 JSON을 서버로 부터 받았다고 가정하자.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">  &#123;category: &quot;Sporting Goods&quot;, price: &quot;$49.99&quot;, stocked: true, name: &quot;Football&quot;&#125;,</span><br><span class="line">  &#123;category: &quot;Sporting Goods&quot;, price: &quot;$9.99&quot;, stocked: true, name: &quot;Baseball&quot;&#125;,</span><br><span class="line">  &#123;category: &quot;Sporting Goods&quot;, price: &quot;$29.99&quot;, stocked: false, name: &quot;Basketball&quot;&#125;,</span><br><span class="line">  &#123;category: &quot;Electronics&quot;, price: &quot;$99.99&quot;, stocked: true, name: &quot;iPod Touch&quot;&#125;,</span><br><span class="line">  &#123;category: &quot;Electronics&quot;, price: &quot;$399.99&quot;, stocked: false, name: &quot;iPhone 5&quot;&#125;,</span><br><span class="line">  &#123;category: &quot;Electronics&quot;, price: &quot;$199.99&quot;, stocked: true, name: &quot;Nexus 7&quot;&#125;</span><br><span class="line">];</span><br></pre></td></tr></table></figure>
+
+<h2 id="1단계-UI를-컴포넌트-계층-구조로-나누기"><a href="#1단계-UI를-컴포넌트-계층-구조로-나누기" class="headerlink" title="1단계: UI를 컴포넌트 계층 구조로 나누기"></a>1단계: UI를 컴포넌트 계층 구조로 나누기</h2><p>디자이너가 디자인한 화면을 보고 박스를 그리며 일므을 붙여본다. 이미 그려져 있다면 디자이너와 상의 해보면서 수정하거나 의미를 확실히 파악하도록 해본다.</p>
+<p>하지만 어떤것이 컴포넌트가 될지 알수 있을까? 이것은 우리가 함수나 객체를 만들때처럼 생각하면 된다. 한가지 컴포넌트는 한가지 일만 하도록 작게 나누면서 단일 책임 원칙을 지키는 것이다.</p>
+<p>JSON 데이터 모델이 적절히 만들어 졌다면 UI와 잘 연결 될 것이다. 이것은 ui와 데이터 모델이 <code>information architecture</code> 을 가지는 경향이 있기 때문이다.</p>
+<img src="/images/211014-Thinking In React/1.png" width="500">
+
+<ol>
+<li>FilterableProductTable(노란색): 예시 전체를 포괄합니다.</li>
+<li>SearchBar(파란색): 모든 유저의 입력(user input) 을 받습니다.</li>
+<li>ProductTable(연두색): 유저의 입력(user input)을 기반으로 데이터 콜렉션(data collection)을 필터링 해서 보여줍니다.</li>
+<li>ProductCategoryRow(하늘색): 각 카테고리(category)의 헤더를 보여줍니다.</li>
+<li>ProductRow(빨강색): 각각의 제품(product)에 해당하는 행을 보여줍니다.</li>
+</ol>
+<p>3번은 <code>ProductTableHeader</code>로 바꾸어 Name Price만 따로 표현하는게 더 합리적일 수 있다. 그러나 여기선 데이터 콜렉션이라는 역활 책임을 생각해서 남두었다. 뭐가 좋을지는 선택하면 된다.</p>
+<p>이제 계층적으로 나타내면 다음과 같다.</p>
+<ul>
+<li>FilterableProductTable<ul>
+<li>SearchBar</li>
+<li>ProductTable<ul>
+<li>ProductCategoryRow</li>
+<li>ProductRow</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="2단계-React로-정적인-버전-만들기"><a href="#2단계-React로-정적인-버전-만들기" class="headerlink" title="2단계 : React로 정적인 버전 만들기"></a>2단계 : React로 정적인 버전 만들기</h2><p>데이터 모델을 가지고 UI 렌더링은 되지만 상호 작용은 안되는 정적인 버전을 만들어 본다. 정적은 버전은 생각을 적게하고 타이핑을 많이 하고, 상호작용을 위해서는 생각을 많이 하고 타이핑을 적게 하는데, 나중에 살펴 보기로 하고 정적인 버전을 만들어 본다.</p>
+<p>정적 버전을 위해서 우선은 state를 사용하지 말아라. 우선은 props로 데이터를 부모에서 자식으로 전달하면서 만들어 보아라.</p>
+<p>컴포넌트는 top-down(하양식) 이나 bottom-top(상향식) 으로 만들 수 있다. 간단한 예시에서는 보통 하향식으로 만드는게 쉽지만 프로젝트가 커지면 상향식으로 만드록 테스트를 작성하면서 개발하기가 더 쉽다.</p>
+<p>이 단계가 끝나면 데이터 렌더링을 위해 만들어진 재사용 가능한 컴포넌트들의 라이브러리르 가지게 된다. 지금은 <code>render()</code> 메서드만 가지고 있다. 최상위 컴포넌트는 props를 통해 데이터 모델을 받고 자식 컴포넌트에 전달하는데 한번 만들어 봄으로서 이런 흐름을 파악하기 쉽다.</p>
+<h2 id="3-단계-UI-state-에-대한-최소한의-하지만-완전한-표현-찾아-내기"><a href="#3-단계-UI-state-에-대한-최소한의-하지만-완전한-표현-찾아-내기" class="headerlink" title="3 단계: UI state 에 대한 최소한의 (하지만 완전한) 표현 찾아 내기"></a>3 단계: UI state 에 대한 최소한의 (하지만 완전한) 표현 찾아 내기</h2><p>이제 변경해야할 최소한의 state는 무엇일지 생각해본다. TODO 리스트에서 예를 들면 해야할 일 목록을 state를 관리하고, 할일 목록 갯수를 state를 관리하지 않는것을 의미한다. 이것은 중복 배제 원칙이라고 하는데 만약 할일 목록 갯수를 state로 관리하고 싶다면 할일 목록 배열의 갯수를 세는 방법을 사용한다.</p>
+<p>다음 목록에서 state가 될만한 것이 무엇이 있을지 생각해 보자.</p>
+<ul>
+<li>제품의 원본 목록</li>
+<li>유저가 입력한 검색어</li>
+<li>체크박스의 값</li>
+<li>필터링 된 제품들의 목록</li>
+</ul>
+<p>다음 3가지 질문을 통해서 확인할 수 있다.</p>
+<ol>
+<li>부모로부터 props를 통해 전달 됩니까? -&gt; state가 아니다.</li>
+<li>시간이 지나도 변하지 않나요? -&gt; state가 아니다.</li>
+<li>컴포넌트 안의 다른 state나 props를 가지고 계산 가능한가요? -&gt; 그렇다면 state 가 아니다.</li>
+</ol>
+<p>결과적으로 state는 다음 목록이 된다.</p>
+<ul>
+<li>유저가 입력한 검색어</li>
+<li>체크박스의 값</li>
+</ul>
+<h2 id="4단계-state가-어디-있어야-할지-찾기"><a href="#4단계-state가-어디-있어야-할지-찾기" class="headerlink" title="4단계 : state가 어디 있어야 할지 찾기"></a>4단계 : state가 어디 있어야 할지 찾기</h2><p>리엑트는 단방향 데이터 흐름을 갔기 때문에 어떤 컴포넌트에 state를 가지게 할지가 중요하다. 다음과 같은 기준을 생각해서 정해보자.</p>
+<ul>
+<li>state를 기반으로 렌더링하는 모든 컴포넌트를 찾으세요.</li>
+<li>공통 소유 컴포넌트 (common owner component)를 찾으세요. (계층 구조 내에서 특정 state가 있어야 하는 모든 컴포넌트들의 상위에 있는 하나의 컴포넌트).</li>
+<li>공통 혹은 더 상위에 있는 컴포넌트가 state를 가져야 합니다.</li>
+<li>state를 소유할 적절한 컴포넌트를 찾지 못하였다면, state를 소유하는 컴포넌트를 하나 만들어서 공통 오너 컴포넌트의 상위 계층에 추가하세요.</li>
+</ul>
+<p>결정하는 과정으 다음과 같다.</p>
+<ul>
+<li>ProductTable은 state에 의존한 상품 리스트의 필터링해야 하고 SearchBar는 검색어와 체크박스의 상태를 표시해주어야 합니다.</li>
+<li>공통 소유 컴포넌트는 FilterableProductTable입니다.</li>
+<li>의미상으로도 FilterableProductTable이 검색어와 체크박스의 체크 여부를 가지는 것이 타당합니다.</li>
+</ul>
+<h2 id="5단계-역방향-데이터-흐름-추가하기"><a href="#5단계-역방향-데이터-흐름-추가하기" class="headerlink" title="5단계: 역방향 데이터 흐름 추가하기"></a>5단계: 역방향 데이터 흐름 추가하기</h2><p>우리가 만든 <code>FilterableProductTable</code> 에서 아직 <code>SeacrBar</code>에 setState를 콜백으로 주지 않았기 때문에 폼을 입력해도 데이터가 변하지 않게 된다. 하위 컴포넌트인 <code>SearchBar</code>에서 상위 컴포넌트인 <code>FilterableProductTable</code>에 state를 변경하기 위해서는 콜백으로 setState를 주고 하위 컴포넌트에서 호출하면된다.</p>
+<p>이렇게 역방향 데이터 흐름을 추가할 수 있다.</p>
+<h2 id="이게-전부임"><a href="#이게-전부임" class="headerlink" title="이게 전부임.."></a>이게 전부임..</h2>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/10/23/react/official-docs/211014-%ED%95%A9%EC%84%B1%20vs%20%EC%83%81%EC%86%8D/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JayoonKoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="티끌모아 태산">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/10/23/react/official-docs/211014-%ED%95%A9%EC%84%B1%20vs%20%EC%83%81%EC%86%8D/" class="post-title-link" itemprop="url">합성 vs 상속</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2021-10-23 22:16:06 / Modified: 22:16:41" itemprop="dateCreated datePublished" datetime="2021-10-23T22:16:06+09:00">2021-10-23</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/react/" itemprop="url" rel="index"><span itemprop="name">react</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="합성-Composition-vs-상속-Inheritance"><a href="#합성-Composition-vs-상속-Inheritance" class="headerlink" title="합성 (Composition) vs 상속 (Inheritance)"></a>합성 (Composition) vs 상속 (Inheritance)</h1><blockquote>
+<p>React는 강력한 합성 모델을 가지고 있으며, 상속 대신 합성을 사용하여 컴포넌트 간에 코드를 재사용한다.</p>
+</blockquote>
+<h2 id="컴포넌트에서-다른-컴포넌트-담기"><a href="#컴포넌트에서-다른-컴포넌트-담기" class="headerlink" title="컴포넌트에서 다른 컴포넌트 담기"></a>컴포넌트에서 다른 컴포넌트 담기</h2><p>props children으로 컴포넌트를 전달해서 컴포넌트를 랜더링 할 수 있다.</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">FancyBorder</span>(<span class="params">props</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">&#123;</span>&quot;<span class="attr">FancyBorder</span> <span class="attr">FancyBorder-</span>&quot; + <span class="attr">props.color</span>&#125;&gt;</span></span></span><br><span class="line"><span class="xml">      &#123;props.children&#125;</span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">WelcomeDialog</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="xml"><span class="tag">&lt;<span class="name">FancyBorder</span> <span class="attr">color</span>=<span class="string">&quot;blue&quot;</span>&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;<span class="name">h1</span> <span class="attr">className</span>=<span class="string">&quot;Dialog-title&quot;</span>&gt;</span>Welcome<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;<span class="name">p</span> <span class="attr">className</span>=<span class="string">&quot;Dialog-message&quot;</span>&gt;</span>Thank you for visiting our spacecraft!<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;/<span class="name">FancyBorder</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="특수화"><a href="#특수화" class="headerlink" title="특수화"></a>특수화</h2><p>일반적인 컴포넌트에서 특수한 경우에 컴포넌트를 뽑아 낼 수 있다. 예를 들어서 Dialog 컴포넌트는 일반적인 컴포넌트라고 할 수 있고 WelcomeDialog는 특수한 컴포넌트라고 할 수 있다.</p>
+<p>이런 컴포넌트를 그릴 때에도 합성을 사용할 수 있는데, 구체적인 컴포넌트에서 일반적인 컴포넌트를 담아서 그리는 것이다.</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Dialog</span>(<span class="params">props</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="xml"><span class="tag">&lt;<span class="name">FancyBorder</span> <span class="attr">color</span>=<span class="string">&quot;blue&quot;</span>&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;<span class="name">h1</span> <span class="attr">className</span>=<span class="string">&quot;Dialog-title&quot;</span>&gt;</span>&#123;props.title&#125;<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;<span class="name">p</span> <span class="attr">className</span>=<span class="string">&quot;Dialog-message&quot;</span>&gt;</span>&#123;props.message&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;/<span class="name">FancyBorder</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">WelcomeDialog</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="xml"><span class="tag">&lt;<span class="name">Dialog</span> <span class="attr">title</span>=<span class="string">&quot;Welcome&quot;</span> <span class="attr">message</span>=<span class="string">&quot;Thank you for visiting our spacecraft!&quot;</span> /&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">ReactDOM.render(<span class="xml"><span class="tag">&lt;<span class="name">WelcomeDialog</span> /&gt;</span></span>, <span class="built_in">document</span>.getElementById(<span class="string">&quot;root&quot;</span>));</span><br></pre></td></tr></table></figure>
+
+<p>마찬가지로 클래스 컴포넌트에서도 합성을 사용할 수 있다.</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Dialog</span>(<span class="params">props</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="xml"><span class="tag">&lt;<span class="name">FancyBorder</span> <span class="attr">color</span>=<span class="string">&quot;blue&quot;</span>&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;<span class="name">h1</span> <span class="attr">className</span>=<span class="string">&quot;Dialog-title&quot;</span>&gt;</span>&#123;props.title&#125;<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;<span class="name">p</span> <span class="attr">className</span>=<span class="string">&quot;Dialog-message&quot;</span>&gt;</span>&#123;props.message&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></span><br><span class="line"><span class="xml">      &#123;props.children&#125;</span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;/<span class="name">FancyBorder</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SignUpDialog</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">props</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">super</span>(props);</span><br><span class="line">    <span class="built_in">this</span>.handleChange = <span class="built_in">this</span>.handleChange.bind(<span class="built_in">this</span>);</span><br><span class="line">    <span class="built_in">this</span>.handleSignUp = <span class="built_in">this</span>.handleSignUp.bind(<span class="built_in">this</span>);</span><br><span class="line">    <span class="built_in">this</span>.state = &#123; <span class="attr">login</span>: <span class="string">&quot;&quot;</span> &#125;;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">render</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      <span class="xml"><span class="tag">&lt;<span class="name">Dialog</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">        <span class="attr">title</span>=<span class="string">&quot;Mars Exploration Program&quot;</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">        <span class="attr">message</span>=<span class="string">&quot;How should we refer to you?&quot;</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">      &gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">value</span>=<span class="string">&#123;this.state.login&#125;</span> <span class="attr">onChange</span>=<span class="string">&#123;this.handleChange&#125;</span> /&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;this.handleSignUp&#125;</span>&gt;</span>Sign Me Up!<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;/<span class="name">Dialog</span>&gt;</span></span></span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">handleChange</span>(<span class="params">e</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.setState(&#123; <span class="attr">login</span>: e.target.value &#125;);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">handleSignUp</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    alert(<span class="string">`Welcome aboard, <span class="subst">$&#123;<span class="built_in">this</span>.state.login&#125;</span>!`</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="상속은"><a href="#상속은" class="headerlink" title="상속은?"></a>상속은?</h2><p>대부분 사용하지 않는다. React에서는 Props로 어떤 값도 전달 가능하기 때문에 모양과 동작을 유연하게 커스터마이징 할 수 있다.<br>또한, JavaScript이기 때문에 모듈로 분리할 수 도 있고 필요할때 import 하기도 가능하다.</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/10/23/react/official-docs/211020-hooks%20%EA%B0%9C%EC%9A%94/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JayoonKoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="티끌모아 태산">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/10/23/react/official-docs/211020-hooks%20%EA%B0%9C%EC%9A%94/" class="post-title-link" itemprop="url">hooks 개요</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2021-10-23 22:16:06 / Modified: 22:16:41" itemprop="dateCreated datePublished" datetime="2021-10-23T22:16:06+09:00">2021-10-23</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/react/" itemprop="url" rel="index"><span itemprop="name">react</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="hooks-개요"><a href="#hooks-개요" class="headerlink" title="hooks 개요"></a>hooks 개요</h1><h2 id="Hook-이-뭔가요"><a href="#Hook-이-뭔가요" class="headerlink" title="Hook 이 뭔가요?"></a>Hook 이 뭔가요?</h2><p>Hook은 함수 컴포넌트에서 React state와 생명주기 기능을 연동(Hook Into) 할 수 있게 해주는 함수이다.</p>
+<p>hooks 를 사용하면 class 컴포넌트가 아닌 함수형 컴포넌트로 생명주기 메서드와 동일한 기능을 사용할 수 있다.</p>
+<p>버튼을 클릭하면 count가 1씩 증가형 rendering 하는 컴포넌트이다. 여기서 <code>useState</code>를 hooks 라고 하고 초기값을 입력하여 호출하면 값과 설정해주는 함수가 나온다. <code>setCount</code>와 같은 메서드는 클래스 컴포넌트에 <code>this.setState</code>와 같다고 할 수 있는데 setState 처럼 꼭 객체를 넣을 필요가 없고, 이전 state와 새로운 state를 합치지 않는다는 차이점이 있다.</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">App</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> [count, setCount] = React.useState(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="xml"><span class="tag">&lt;&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;<span class="name">p</span>&gt;</span> Conter is &#123;count&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;()</span> =&gt;</span> setCount((prev) =&gt; prev + 1)&#125;&gt;Plus button<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;/&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">ReactDOM.render(<span class="xml"><span class="tag">&lt;<span class="name">App</span> /&gt;</span></span>, <span class="built_in">document</span>.getElementById(<span class="string">&quot;root&quot;</span>));</span><br></pre></td></tr></table></figure>
+
+<h2 id="Effect-Hook"><a href="#Effect-Hook" class="headerlink" title="Effect Hook"></a>Effect Hook</h2><p>컴포넌트 안에서 데이털르 가져오거나 구독하고, DOM을 직접 조작하는 작업을 종종 하게 된다. 이런 작업은 다른 컴포넌트에 영향을 줄 수도 있기 때문에 effect 또는 side effcect 라고 한다.</p>
+<p>Effect Hook, 즉 <code>useEffect</code>는 side effects를 수행할 수 있게 해준다. 클래스 컴포넌트의 <code>componentDidMount</code>, <code>componentDidUpdate</code>, <code>componentWillUnmount</code> 와 같은 목적으로 제공된다.</p>
+<p>다음 예는 동적으로 브라우저에 타이틀을 변경 시킨다.</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">App</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> [count, setCount] = React.useState(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">  React.useEffect(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">document</span>.title = <span class="string">`You Clicked <span class="subst">$&#123;count&#125;</span> times`</span>;</span><br><span class="line">  &#125;, [count]);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="xml"><span class="tag">&lt;&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;<span class="name">p</span>&gt;</span> Conter is &#123;count&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;()</span> =&gt;</span> setCount((prev) =&gt; prev + 1)&#125;&gt;Plus button<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;/&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">ReactDOM.render(<span class="xml"><span class="tag">&lt;<span class="name">App</span> /&gt;</span></span>, <span class="built_in">document</span>.getElementById(<span class="string">&quot;root&quot;</span>));</span><br></pre></td></tr></table></figure>
+
+<p>마치 <code>componentDidMount</code>와 <code>componentDidUpdate</code>를 합쳐 놓은것과 같다.</p>
+<p>만약 side effect를 일으키는 작업을 해제 시켜야 한다면 useEffect내에서 함수를 반환하면 된다. <code>componentWillUnmount</code>와 같다.</p>
+<p>useEffect는 useState와 마찬가지로 여러 개를 사용할 수 있고, effect 해제와 같은 로직을 한곳에 작성할 수 있어서 관리하기 슆다.</p>
+<h2 id="Hook-사용-규칙"><a href="#Hook-사용-규칙" class="headerlink" title="Hook 사용 규칙"></a>Hook 사용 규칙</h2><ul>
+<li><p>최상위 에서만 Hook을 호출해야한다. 중첩된 함수에서 hook 실행 금지</p>
+</li>
+<li><p>React 함수 컴포넌트에서만 Hook 을 호출해야 한다. 일반 컴포넌트에서는 Hook 을 호출하면 안된다. 유일하게 허용하는 경우는 costomHook 에서다.</p>
+</li>
+</ul>
+<h2 id="costom-hook"><a href="#costom-hook" class="headerlink" title="costom hook"></a>costom hook</h2><p>커스텀 훅은 컴포넌트 트리에 새 컴포넌트를 추가하지 않고 상태 관련 로직을 재사용할 수 있게 해준다.</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React, &#123; useState, useEffect &#125; <span class="keyword">from</span> <span class="string">&quot;react&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">useFriendStatus</span>(<span class="params">friendID</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> [isOnline, setIsOnline] = useState(<span class="literal">null</span>);</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">handleStatusChange</span>(<span class="params">status</span>) </span>&#123;</span><br><span class="line">    setIsOnline(status.isOnline);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  useEffect(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    ChatAPI.subscribeToFriendStatus(friendID, handleStatusChange);</span><br><span class="line">    <span class="keyword">return</span> <span class="function">() =&gt;</span> &#123;</span><br><span class="line">      ChatAPI.unsubscribeFromFriendStatus(friendID, handleStatusChange);</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> isOnline;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>이것을 다른 컴포넌트에서 재사용할 수 있다.</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">FriendStatus</span>(<span class="params">props</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> isOnline = useFriendStatus(props.friend.id);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (isOnline === <span class="literal">null</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;Loading...&quot;</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> isOnline ? <span class="string">&quot;Online&quot;</span> : <span class="string">&quot;Offline&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>다른 컴포넌트 :</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">FriendListItem</span>(<span class="params">props</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> isOnline = useFriendStatus(props.friend.id);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="xml"><span class="tag">&lt;<span class="name">li</span> <span class="attr">style</span>=<span class="string">&#123;&#123;</span> <span class="attr">color:</span> <span class="attr">isOnline</span> ? &quot;<span class="attr">green</span>&quot; <span class="attr">:</span> &quot;<span class="attr">black</span>&quot; &#125;&#125;&gt;</span>&#123;props.friend.name&#125;<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Hook 은 state 자체가 아니다. Hook의 호출은 완전히 독립된 state를 가진다.</p>
+<p>custom Hook 은 <code>use</code> 로 시작하고 안에서 <code>Hook</code> 을 호출한 것을 의미한다.</p>
+<h2 id="다른-내장-Hook"><a href="#다른-내장-Hook" class="headerlink" title="다른 내장 Hook"></a>다른 내장 Hook</h2><p>유용하다고 생각될 만한 내장 Hook 들이 몇몇 있다. 몇가지만 소개하면</p>
+<p><code>useContext</code> 는 컴포넌트를 중첩하지 않고도 React context를 구동할 수 있게 해준다.</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Example</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> locale = useContext(LocaleContext);</span><br><span class="line">  <span class="keyword">const</span> theme = useContext(ThemeContext);</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>useReducer</code> 는 복잡한 컴포넌트들의 state를 reducer로 관리할 수 있게 해준다.</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Todos</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> [todos, dispatch] = useReducer(todosReducer);</span><br><span class="line">  <span class="comment">// ...</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1003,351 +1339,6 @@
 
 <h3 id="릴레이션십"><a href="#릴레이션십" class="headerlink" title="릴레이션십"></a>릴레이션십</h3><p>엔티티와 엔티티 간의 관계를 의미한다. 엔티티 간의 관계성을 표시한다.</p>
 <img src="/images/211012-테이블 설계/4.png" width="900">
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/10/23/DB/SQLD/211014-%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B2%A0%EC%9D%B4%EC%8A%A4%20%EC%84%B1%EB%8A%A5/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JayoonKoo">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="티끌모아 태산">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/10/23/DB/SQLD/211014-%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B2%A0%EC%9D%B4%EC%8A%A4%20%EC%84%B1%EB%8A%A5/" class="post-title-link" itemprop="url">데이터베이스 성능</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2021-10-23 22:07:35 / Modified: 22:09:58" itemprop="dateCreated datePublished" datetime="2021-10-23T22:07:35+09:00">2021-10-23</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/DB/" itemprop="url" rel="index"><span itemprop="name">DB</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="데이터-베이스-성능"><a href="#데이터-베이스-성능" class="headerlink" title="데이터 베이스 성능"></a>데이터 베이스 성능</h1><h2 id="성능이란"><a href="#성능이란" class="headerlink" title="성능이란 ?"></a>성능이란 ?</h2><p>클라이언트 요청에 대한 응답시간(Response Time) 과 시간당 처리할 수 있는 처리량(Throughtput) 이다.</p>
-<h3 id="용어-알아보기"><a href="#용어-알아보기" class="headerlink" title="용어 알아보기"></a>용어 알아보기</h3><p>Corrent User = Active User + Inactive User : 현제 사용자를 의미하는데 서버에 부하를 일으키는 Active User와 서버에 부하를 일으키지 않는 Inactive User로 나뉜다.</p>
-<p>TPS : 서버가 일정 시간 내의 처리한 트랜잭션의 양</p>
-<p>Response Time : 요청 후 응답을 받을 때 까지 소요된 시간</p>
-<p>Resource : 한정된 값을 가진 시스템의 구성요소</p>
-<h3 id="성능의-특성"><a href="#성능의-특성" class="headerlink" title="성능의 특성"></a>성능의 특성</h3><p>경합 부하 구간에서 Response Time이 급격하게 늘어나게 된다.</p>
-<h2 id="데이터베이스-병목의-원인"><a href="#데이터베이스-병목의-원인" class="headerlink" title="데이터베이스 병목의 원인"></a>데이터베이스 병목의 원인</h2><p>여러 요인이 있지만 DBMS 내부 I/O 병목으로 인한 대기시간 증가가 가장 큰 이유이다. 대부분은 I/O(Sleep) 에서 발생힌다.</p>
-<p>병목현상을 해결하기 위해서는</p>
-<ul>
-<li>절대적인 블록 I/O 를 줄여야 함.</li>
-<li>블록 I/O를 줄이기 위한 모델 설계, DBMS 환경 구축, SQL 튜닝등의 기술이 필요함.</li>
-</ul>
-<h3 id="포로세스-생성-주기에-영향을-받는다"><a href="#포로세스-생성-주기에-영향을-받는다" class="headerlink" title="포로세스 생성 주기에 영향을 받는다."></a>포로세스 생성 주기에 영향을 받는다.</h3><p>여러 프로세스가 하나의 CPU를 공유 할 수 있지만, 특정 순간에는 하나의 프로세스만 CPU를 사용한다. 디스크에서 데이터를 읽어야할 땐 CPU를 OS에 반환하고 잠시 수면 상태에서 I/O 가 완료되기를 기다린다. 즉, SQL 문에서 발생하는 절대적인 I/O 횟루를 줄이는 것이 성냉 개선의 핵심이다.</p>
-<h2 id="성능을-결정하는-요인"><a href="#성능을-결정하는-요인" class="headerlink" title="성능을 결정하는 요인"></a>성능을 결정하는 요인</h2><p>성능을 결정하는 가장 큰 요인에는 옵티마이저의 성능이 있다. 사용자가 SQL 문을 입력하면 옵티마이저는 파싱한 SQL를 최적화하여 프로시저로 변환시키는 작업을 한다.</p>
-<p>옵티마이저는 통계정보를 이용해 각 실행 계획의 예상 비용을 산정한 후 최저 비용을 나나태는 실행 계획을 선택한다.</p>
-<h3 id="옵티마이저가-참조하는-통계정보"><a href="#옵티마이저가-참조하는-통계정보" class="headerlink" title="옵티마이저가 참조하는 통계정보"></a>옵티마이저가 참조하는 통계정보</h3><p>SQL 파식 -&gt; 실행계획 작성 ( 통계 정보 활용) -&gt; 실행계획 선택 ( 옵티마이저의 역활) -&gt; SQL 실행</p>
-<p>통계정보 :</p>
-<ul>
-<li>테이블의 행수</li>
-<li>데이터형</li>
-<li>크기</li>
-<li>제약정보</li>
-<li>인덱스에 대한 통계</li>
-<li>열 값에 대한 통계 등등..</li>
-</ul>
-<h2 id="실행-계획은-어떻게-세워지는"><a href="#실행-계획은-어떻게-세워지는" class="headerlink" title="실행 계획은 어떻게 세워지는"></a>실행 계획은 어떻게 세워지는</h2><h3 id="인덱스"><a href="#인덱스" class="headerlink" title="인덱스"></a>인덱스</h3><p>지정한 컬럼을 기준으로 메모리 영역에 일종의 목차를 생성하는것, 조회 할때는 좋은 성능을 보이만, insert, update, delete 등의 작업을 해야 할때에는 인덱스 테이블까지 변경해하는 상황이 발생하면서 오히려 성능이 안좋을 수 있다.</p>
-<p>``SQL<br>CREATE INDEX IDX_TB_EXECUTION_TEST_01 ON TB_EXECUTION_TEST(CUSTOMER_ID);</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">인덱스는 B-Tree를 사용하여 테이블을 조회한다. 반면에, 인데스가 없는 조회 조건은 모든 요소를 비교하면서 조회하게 된다. 이를 Table Full Scan 이라고 한다.</span><br><span class="line"></span><br><span class="line">반면에 인덱스를 사용하면 B-Tree를 이용하여 Range Scan 을 하게 된다.</span><br><span class="line"></span><br><span class="line">먼저 branch 노드에서 커르고 리픝 노드에서 수평적으로 검사하여 디스크에 접근 하는 것이다.</span><br><span class="line"></span><br><span class="line">인덱스를 사용할 컬럼은 카디너리티가 높은 컬럼을 사용해야 한다. 카디널리티는 Distint 명령을 수행했을때 숫자 라고 생각하면 쉽게 생각 할 수 있는데, 성별보다 주민등록 번호가 카디너리티가 높다는 것은 여기에 기인하여 생각할 수 있다.</span><br><span class="line">여러 컬럼으로 인덱스를 사용할때에는 카디너리티가 높은 순에서 낮은 순서로 사용해야 한다.</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/10/23/DB/SQLD/211014-%EB%B0%B1%EC%97%85%20%EB%B0%8F%20%EB%B3%B5%EA%B5%AC/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JayoonKoo">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="티끌모아 태산">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/10/23/DB/SQLD/211014-%EB%B0%B1%EC%97%85%20%EB%B0%8F%20%EB%B3%B5%EA%B5%AC/" class="post-title-link" itemprop="url">백업 및 복구</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2021-10-23 22:07:35 / Modified: 22:09:58" itemprop="dateCreated datePublished" datetime="2021-10-23T22:07:35+09:00">2021-10-23</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/DB/" itemprop="url" rel="index"><span itemprop="name">DB</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="백업-및-복구"><a href="#백업-및-복구" class="headerlink" title="백업 및 복구"></a>백업 및 복구</h1><h2 id="지속성과-성능이-양립하는-구조"><a href="#지속성과-성능이-양립하는-구조" class="headerlink" title="지속성과 성능이 양립하는 구조"></a>지속성과 성능이 양립하는 구조</h2><h3 id="로그-선행-기법"><a href="#로그-선행-기법" class="headerlink" title="로그 선행 기법"></a>로그 선행 기법</h3><p>WAL(Write-ahead logging)이라고 부르면, 시스템에서 모든 수정은 적용 이전에 로그에 기록된다. 예를 들어서 특정 프고그램이 진행되는 동안 정전이 일어났다고 가정해보자. 다시 시작할 때 프로그램은 어느 작업이 수행을 성공적으로 마쳤는지, 실패했는지 등의 정보를 알고 있어야 한다. 로그 선행 기법을 사용한다면 프로그램은 이러한 로그를 검사하여 예기치 않은 정전 시 해야 할 일과 실제 했던 일을 비교하게 된다.</p>
-<h3 id="데이터베이스-버퍼"><a href="#데이터베이스-버퍼" class="headerlink" title="데이터베이스 버퍼"></a>데이터베이스 버퍼</h3><p>데이터 파일로의 입력을 데이터 베이스 버퍼를 경유해서 하도록 한다. (성능 양립을 위해서 )</p>
-<p>순서 :</p>
-<ol>
-<li>갱신 대상의 데이터 포함한 블록이 버퍼풀에 있는지 확인</li>
-<li>없을 경우 데이터 파일로부터 해당 블록을 읽어 들임.</li>
-<li>버퍼 풀 내의 해당 블록을 갱신 수행</li>
-<li>갱신 내용이 Commit 과 함께 로그에 기록</li>
-<li>갱신 되었지만 데이터 파일에 쓰이지 않은 블록은 Dirty 블록이 됨.</li>
-<li>갱신된 데이터 블록은 나중에 정리되어 데이터 파일에 적용됨(체크 포인트)</li>
-<li>체크포인트 이전 로그 파일은 불필요 하게 됨</li>
-<li>갱신과 더불어 위 순서 반복</li>
-</ol>
-<h3 id="Crash-복구-흐름"><a href="#Crash-복구-흐름" class="headerlink" title="Crash 복구 흐름"></a>Crash 복구 흐름</h3><p>Crash 가 발생하면</p>
-<ul>
-<li>WAL : 마지막으로 Commit 된 트랜잭션의 갱신 정보 가짐</li>
-<li>데이터베이스 버퍼 : Crash 로 내용이 전부 소실</li>
-<li>데이터베이스 파일 : 최후 체크포인트까지의 갱신 정보 가짐.</li>
-</ul>
-<p>-&gt; 데이터 베이스 파일을 Crash 전 최신 Commit 상태로 수정함.</p>
-<h2 id="백업-및-복구-1"><a href="#백업-및-복구-1" class="headerlink" title="백업 및 복구"></a>백업 및 복구</h2><h3 id="백업의-3가지-관점"><a href="#백업의-3가지-관점" class="headerlink" title="백업의 3가지 관점"></a>백업의 3가지 관점</h3><ol>
-<li>핫 백업과 콜드 백업</li>
-<li>논리 백업과 물리 백업</li>
-<li>풀 백업과 부분(증분/차등) 백업</li>
-</ol>
-<h3 id="핫백업과-콜드-백업"><a href="#핫백업과-콜드-백업" class="headerlink" title="핫백업과 콜드 백업"></a>핫백업과 콜드 백업</h3><p>핫 백엄 : 온라인 백엄/ 데이터 베이스 기능 이용, 데이터 베이스를 정지 하지 않고 백업 데이터를 얻음</p>
-<p>콜드 백업 : 오프라인 백업 / OS 기능 이용, 서버를 내림고 데이터 베이스도 종료 시키고 OS 명령으로 복사</p>
-<h3 id="논리-백업과-물리-백업"><a href="#논리-백업과-물리-백업" class="headerlink" title="논리 백업과 물리 백업"></a>논리 백업과 물리 백업</h3><p>논리 백업 : SQL 기반 텍스트 형식으로 백업 데이터 기록</p>
-<ul>
-<li>장점 : 이식성 우수, 편집가능, 이기종 간의 DB 이행 유리</li>
-<li>단점 : 물리 백업보다 느림, 용량이 큼</li>
-</ul>
-<p>물리 백업 : 데이터 영역을 그대로 덤프 하는 이미지로 바이너리 형식 기록</p>
-<ul>
-<li>장점 : 최소 크기로 데이터 얻음, 백업 및 복원의 속도가 빠름</li>
-<li>단점 : 일부 데이터의 내용 수정은 불가능, 호완성이 좋지 않음.</li>
-</ul>
-<h3 id="풀-백업꽈-부분-백업"><a href="#풀-백업꽈-부분-백업" class="headerlink" title="풀 백업꽈 부분 백업"></a>풀 백업꽈 부분 백업</h3><p>풀백업(전체 백업) : 데이터 베이스 전체 데이터를 매일 백업</p>
-<p>부분 백업 : 풀 백업 이후 갱신된 데이터를 백업</p>
-<ul>
-<li>차등 백업</li>
-<li>증분 백업</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/10/23/git/211009-basic%20branching%20and%20merging/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JayoonKoo">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="티끌모아 태산">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/10/23/git/211009-basic%20branching%20and%20merging/" class="post-title-link" itemprop="url">basic branching and merging</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2021-10-23 22:05:42 / Modified: 22:06:06" itemprop="dateCreated datePublished" datetime="2021-10-23T22:05:42+09:00">2021-10-23</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/git/" itemprop="url" rel="index"><span itemprop="name">git</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="Basic-Branching-and-Merging"><a href="#Basic-Branching-and-Merging" class="headerlink" title="Basic Branching and Merging"></a>Basic Branching and Merging</h1><p>실제 개발 과정에 flow는 다음과 같다.</p>
-<ol>
-<li>웹사이트가 있고 뭔가 작업을 진행중이다.</li>
-<li>새로운 이슈를 처리할 branch를 하나를 생성한다.</li>
-<li>새로 만든 branch에서 작업을 진행한다.</li>
-</ol>
-<p>이때 즁오한 문제가 생겨서 처리해야 할 일이 생긴다. 그러면 아래와 같이 진행한다.</p>
-<ol>
-<li>새로운 이슈를 처리하기 위해 운영 브랜치로 이동한다.</li>
-<li>Hotfix 브랜치를 새로 하나 생성한다.</li>
-<li>Hotfix 에서 문제를 수정하고 테스트를 마친 후 운영 브랜치로 머지한다.</li>
-<li>다시 작업하던 brnahc로 이동하고 마찬가지로 작업 완료, 테스트 진행 후 운영 브랜치로 머지한다.</li>
-</ol>
-<h2 id="브랜치의-기초"><a href="#브랜치의-기초" class="headerlink" title="브랜치의 기초"></a>브랜치의 기초</h2><p>회사 내의 새로운 53번 이슈를 해결해야 한다면 다음과 같이 브랜치를 만들고 동시에 switch 할 수 도 있다. 옵션 플래그는 -b 이다.</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout -b iss53</span><br><span class="line">Switched to a new branch &quot;iss53&quot;</span><br></pre></td></tr></table></figure>
-
-<p>이제 iss53 브렌치에서 작업을 진행하고 커밋한다.</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ vim index.html</span><br><span class="line">$ git commit -a -m &#x27;added a new footer [issue 53]&#x27;</span><br></pre></td></tr></table></figure>
-
-<p>그러면 main 브렌치보다 커밋을 하나 더한 상태가 된다. 이때 어떤 문제가 생겨서 빨리 해결해야 한다고 가정하자. 이를 해결 하기 위해서 우선은 main 브랜치로 이동하고 HotFix 브랜치를 만들어서 기존에 작업하던 iss53에 영향을 안주고 고칠 수 있다. 먼저 main 브렌치로 옮긴다. 아직 커밋하지 않은 checkout 브랜치와 충돌을 발생시킬수도 있는데 우선은 모두 커밋한 후에 main 브랜치로 이동하도록 한다.</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout master</span><br><span class="line">Switched to branch &#x27;master&#x27;</span><br></pre></td></tr></table></figure>
-
-<p>(main 브랜치는 기본 브랜치라는 의미여서 이름은 master 여도 상관 없다. )</p>
-<p>이제 hotfix 브랜치를 생성, 전환하고 작업한후 결과를 커밋한다.</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout -b hotfix</span><br><span class="line">Switched to a new branch &#x27;hotfix&#x27;</span><br><span class="line">$ vim index.html</span><br><span class="line">$ git commit -a -m &#x27;fixed the broken email address&#x27;</span><br><span class="line">[hotfix 1fb7853] fixed the broken email address</span><br><span class="line"> 1 file changed, 2 insertions(+)</span><br></pre></td></tr></table></figure>
-
-<p>작업이 완료 되었으면 다시 main 브랜치로 이동하고 hotfix 브랜치를 병합한다.</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout master</span><br><span class="line">$ git merge hotfix</span><br><span class="line">Updating f42c576..3a0874c</span><br><span class="line">Fast-forward</span><br><span class="line"> index.html | 2 ++</span><br><span class="line"> 1 file changed, 2 insertions(+)</span><br></pre></td></tr></table></figure>
-
-<p>hotfix 브랜치는 master 브랜치에서 단순히 이동만 시킨 상태가 되기 때문에 이를 fast=-foward라고 한다.</p>
-<p>이제 hotfix 브랜치는 필요 없어졌기 때문에 삭제 하도록 한다. 플래그는 -d 이다.</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git branch -d hotfix</span><br><span class="line">Deleted branch hotfix (3a0874c).</span><br></pre></td></tr></table></figure>
-
-<p>그리고 다시 iss53 브랜치로 이동한 후 작업을 환료하도록 한다.</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout iss53</span><br><span class="line">Switched to branch &quot;iss53&quot;</span><br><span class="line">$ vim index.html</span><br><span class="line">$ git commit -a -m &#x27;finished the new footer [issue 53]&#x27;</span><br><span class="line">[iss53 ad82d7a] finished the new footer [issue 53]</span><br><span class="line">1 file changed, 1 insertion(+)</span><br></pre></td></tr></table></figure>
-
-<p>작업을 완료하면 main 브랜치로 전환 한 후에 iss53번 브랜치와 병합한다. 그럼 hotfix 내용이 포함된 main 브랜치에 새로운 iss도 처리한 브랜치로 병합할 수 있다.</p>
-<h2 id="Merge-의-기초"><a href="#Merge-의-기초" class="headerlink" title="Merge 의 기초"></a>Merge 의 기초</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout master</span><br><span class="line">Switched to branch &#x27;master&#x27;</span><br><span class="line">$ git merge iss53</span><br><span class="line">Merge made by the &#x27;recursive&#x27; strategy.</span><br><span class="line">index.html |    1 +</span><br><span class="line">1 file changed, 1 insertion(+)</span><br></pre></td></tr></table></figure>
-
-<p>이번에 머지를 진행하면 hotfix 머지했때랑 다른 메세지를 보여준다. 이는 현제 브랜치가 가리키는 커밋이 머지할 브랜치의 조상이 아니므로 fast-foward로 병합하지 못하기 때문이다. 이 경우에 git은 이 둘의 공통 조상이 가리키는 스냅샷과 각각의 스냅샨을 사용한 3-way Merge 실행한다. 각각의 스냅샷을 비교한 후 새로운 커밋을 만들고 그 커밋의 조상이 각각의 브랜치를 바라보게 하는 것이다.</p>
-<h2 id="충돌의-기초"><a href="#충돌의-기초" class="headerlink" title="충돌의 기초"></a>충돌의 기초</h2><p>3-way Merge를 진행할때 충돌이 발생하기도 한다. 충돌은 merge 하려는 브랜치에서 동일한 작업한 브랜치와 동일한 파일에 내용이 달라서 발생한다. 예를 들어 앞서서 hotfix에서 index.html에 대한 작업을 진행했고, iss53에서도 마찬가지로 index.html에 대한 작업을 진행했으면 아래와 같이 충돌이 발생한다.</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ git merge iss53</span><br><span class="line">Auto-merging index.html</span><br><span class="line">CONFLICT (content): Merge conflict in index.html</span><br><span class="line">Automatic merge failed; fix conflicts and then commit the result.</span><br></pre></td></tr></table></figure>
-
-<p>git status 명령을 입력하여 어디가 충돌이 발생했는지 알 수 있다.</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">$ git status</span><br><span class="line">On branch master</span><br><span class="line">You have unmerged paths.</span><br><span class="line">  (fix conflicts and run &quot;git commit&quot;)</span><br><span class="line"></span><br><span class="line">Unmerged paths:</span><br><span class="line">  (use &quot;git add &lt;file&gt;...&quot; to mark resolution)</span><br><span class="line"></span><br><span class="line">    both modified:      index.html</span><br><span class="line"></span><br><span class="line">no changes added to commit (use &quot;git add&quot; and/or &quot;git commit -a&quot;)</span><br></pre></td></tr></table></figure>
-
-<p>Unmerged path: 에 있는 파일을 확인하면 된다.</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD:index.html</span><br><span class="line">&lt;div id=&quot;footer&quot;&gt;contact : email.support@github.com&lt;/div&gt;</span><br><span class="line">=======</span><br><span class="line">&lt;div id=&quot;footer&quot;&gt;</span><br><span class="line"> please contact us at support@github.com</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&gt;&gt;&gt;&gt;&gt;&gt;&gt; iss53:index.html</span><br></pre></td></tr></table></figure>
-
-<p>해당 파일을 열어보면 다음과 같은 표시를 해준다. HEAD 브랜치는 main 브랜치이고 <code>=====</code> 다음에 내용은 iss53에 내요이다. 이럴때는 HEAD에 내용을 선택할지 iss53에 내용을 선택할지, 아니면 다 섞을지, 내용을 삭제할지 , 새로운 내용을 만들지 정한후 수정하면 된다.</p>
-<p>밑에는 새로운 다 지우고 새로운 내용을 추가한 예제이다.</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=&quot;footer&quot;&gt;</span><br><span class="line">please contact us at email.support@github.com</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
-
-<p>충돌을 해결하고 나서 해당 파일을 커밋하면 merge 에 대한 내용을 보여주고 merge된다.</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">Merge branch &#x27;iss53&#x27;</span><br><span class="line"></span><br><span class="line">Conflicts:</span><br><span class="line">    index.html</span><br><span class="line">#</span><br><span class="line"># It looks like you may be committing a merge.</span><br><span class="line"># If this is not correct, please remove the file</span><br><span class="line">#	.git/MERGE_HEAD</span><br><span class="line"># and try again.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># Please enter the commit message for your changes. Lines starting</span><br><span class="line"># with &#x27;#&#x27; will be ignored, and an empty message aborts the commit.</span><br><span class="line"># On branch master</span><br><span class="line"># All conflicts fixed but you are still merging.</span><br><span class="line">#</span><br><span class="line"># Changes to be committed:</span><br><span class="line">#	modified:   index.html</span><br><span class="line">#</span><br></pre></td></tr></table></figure>
 
       
     </div>

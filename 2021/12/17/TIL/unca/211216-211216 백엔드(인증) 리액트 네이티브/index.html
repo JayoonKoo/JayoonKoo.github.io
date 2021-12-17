@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css" integrity="sha256-2H3fkXt6FEmrReK448mDVGKb3WW2ZZw35gI7vqHOE4Y=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"jayoonkoo.github.io","root":"/","images":"/images","scheme":"Muse","version":"8.6.1","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="211216백엔드-Authentication 인증이란? : you are who you say you are, 다양한 방법으로 인증 가능하다 통상적으로 password, id 로 먼저 회원가입을 진행해서 서버에 id, passwrod 를 저장한다. 클라이언트는 로그인 할때 회원가입한  id, password를 서버에 전송한다. 어떻게 로그인 상태를 유지할">
+<meta property="og:type" content="article">
+<meta property="og:title" content="211216 백엔드(인증) 리액트 네이티브">
+<meta property="og:url" content="https://jayoonkoo.github.io/2021/12/17/TIL/unca/211216-211216%20%EB%B0%B1%EC%97%94%EB%93%9C(%EC%9D%B8%EC%A6%9D)%20%EB%A6%AC%EC%95%A1%ED%8A%B8%20%EB%84%A4%EC%9D%B4%ED%8B%B0%EB%B8%8C/index.html">
+<meta property="og:site_name" content="티끌모아 태산">
+<meta property="og:description" content="211216백엔드-Authentication 인증이란? : you are who you say you are, 다양한 방법으로 인증 가능하다 통상적으로 password, id 로 먼저 회원가입을 진행해서 서버에 id, passwrod 를 저장한다. 클라이언트는 로그인 할때 회원가입한  id, password를 서버에 전송한다. 어떻게 로그인 상태를 유지할">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-12-17T04:18:31.000Z">
+<meta property="article:modified_time" content="2021-12-17T04:18:31.258Z">
+<meta property="article:author" content="JayoonKoo">
+<meta property="article:tag" content="TIL">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://jayoonkoo.github.io/2021/12/17/TIL/unca/211216-211216%20%EB%B0%B1%EC%97%94%EB%93%9C(%EC%9D%B8%EC%A6%9D)%20%EB%A6%AC%EC%95%A1%ED%8A%B8%20%EB%84%A4%EC%9D%B4%ED%8B%B0%EB%B8%8C/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://jayoonkoo.github.io/2021/12/17/TIL/unca/211216-211216%20%EB%B0%B1%EC%97%94%EB%93%9C(%EC%9D%B8%EC%A6%9D)%20%EB%A6%AC%EC%95%A1%ED%8A%B8%20%EB%84%A4%EC%9D%B4%ED%8B%B0%EB%B8%8C/","path":"2021/12/17/TIL/unca/211216-211216 백엔드(인증) 리액트 네이티브/","title":"211216 백엔드(인증) 리액트 네이티브"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>211216 백엔드(인증) 리액트 네이티브 | 티끌모아 태산</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">티끌모아 태산</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">작은 조각 모음</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">12</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">9</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">116</span></a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#211216"><span class="nav-number">1.</span> <span class="nav-text">211216</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%EB%B0%B1%EC%97%94%EB%93%9C-Authentication"><span class="nav-number">1.1.</span> <span class="nav-text">백엔드-Authentication</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EB%A6%AC%EC%95%A1%ED%8A%B8-%EB%84%A4%EC%9D%B4%ED%8B%B0%EB%B8%8C"><span class="nav-number">1.2.</span> <span class="nav-text">리액트 네이티브</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-overview">
+            <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">JayoonKoo</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">116</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/JayoonKoo" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;JayoonKoo" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:rnwkdbs12@gmail.com" title="E-Mail → mailto:rnwkdbs12@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/JayoonKoo" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/12/17/TIL/unca/211216-211216%20%EB%B0%B1%EC%97%94%EB%93%9C(%EC%9D%B8%EC%A6%9D)%20%EB%A6%AC%EC%95%A1%ED%8A%B8%20%EB%84%A4%EC%9D%B4%ED%8B%B0%EB%B8%8C/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JayoonKoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="티끌모아 태산">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          211216 백엔드(인증) 리액트 네이티브
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-12-17 13:18:31" itemprop="dateCreated datePublished" datetime="2021-12-17T13:18:31+09:00">2021-12-17</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/TIL/" itemprop="url" rel="index"><span itemprop="name">TIL</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="211216"><a href="#211216" class="headerlink" title="211216"></a>211216</h1><h2 id="백엔드-Authentication"><a href="#백엔드-Authentication" class="headerlink" title="백엔드-Authentication"></a>백엔드-Authentication</h2><ul>
+<li>인증이란? : you are who you say you are, 다양한 방법으로 인증 가능하다 통상적으로 password, id 로<ul>
+<li>먼저 회원가입을 진행해서 서버에 id, passwrod 를 저장한다.</li>
+<li>클라이언트는 로그인 할때 회원가입한  id, password를 서버에 전송한다.</li>
+<li>어떻게 로그인 상태를 유지할 수 있을까?</li>
+</ul>
+</li>
+<li>세션과 쿠기 (서버에서 사용할 수 있는 전통적인 옵션- 어떻게 로그인 상태를 유지할지에 대한 방법)<ol>
+<li>세션 <ul>
+<li>서버에서 확인후 세션을 만든다 (userId, sessiontId, expiration) - Session DB에 저장 or 파일시스템이나 메모리도 될 수 있음</li>
+<li>쿠키에 HTTP Only로 sessiontId 정보를 전달함.</li>
+<li>다음 요청때마다 쿠키 정보를 전달해줌</li>
+<li>장점 : 브라우저에 전달만 하면 되서 간단하고, sessionId 만 전달하면되서 사용자의 정보를 전달하지 않아도 된다. HTTP Only를 사용하면 스크립트로 못읽기 때문에 보안상의 이점도 있다.</li>
+<li>단점 : Stateful 하기 때문에 다양한 서버들이 SettionDb를 읽어야 하고 많은 요청이 들어오게 된다. 내부적으로 네트워킹이 많아짐. 성능 하락</li>
+</ul>
+</li>
+<li>JWT (Json Web Token)<ul>
+<li>다음과 같은 정보를 JSON으로 만들고 토큰화해서 보낸다. header, payload, signature, 모든 정보는 인코딩해서 보내고 서버에서 secrete으로 사용하는 키도 인코딩해서 signature에 포함해서 보낸다.</li>
+<li>로그인 하면, 로그인 정보 + 만료 시간 등등 합쳐서 JWT를 만듦.</li>
+<li>클라이언트는 Header를 이용하여 모든 request마다 JWT를 포함해서 전달해 줌.</li>
+<li>서버는 JWT를 검증한 후에 데이터를 반환함.</li>
+<li>장점 : 서버에 State가 없다. 서버를 확장하거나 분산하기에 용이하다.</li>
+<li>단점 : JWT 자체가 단점이 될 수 있다. → 계속 JWT를 주고 받아야 한다. 만약 영원히 만료되지 않은 JWT를 헤커가 탈취한다면.. 사용할때 보안에 신경써야 한다.</li>
+</ul>
+</li>
+</ol>
+</li>
+<li>bcrypt 란?  : 사용자 정보를 그대로 저장하는 것이 아니라 암호화 해서 저장하기 위해 사용함. → 암호화만 가능한데 (암호화 한것을 비교하는 것), salt 가 없다면 경우의 수로 암호화 해 보면서 유추할 수 있어서 salt를 포함하여 경우의 수를 늘림. 10~12 정도로 설정. 길어지면 cpu 부하 심해짐..</li>
+<li>JWT, 32 시크릿 키로 권고 됨. 한번 발행된 토근은 변경되면 안된다. → 만약 한버이라도 변경 한다면 최종적으로 붙은 signature도 변경되어서 verify시 오류 발생하고 누군가 변경한 토큰인지 확인 가능하다.<ul>
+<li>만료될 수 있도록 만들어야 한다. → option으로 전달함. {expiresIn: 2} 이런식으로 → 2초 후에 만료</li>
+</ul>
+</li>
+</ul>
+<h2 id="리액트-네이티브"><a href="#리액트-네이티브" class="headerlink" title="리액트 네이티브"></a>리액트 네이티브</h2><ul>
+<li>Platform.OS 로 플랫폼 종류를 알 수 있다.</li>
+<li>KeyboardAvoidingView 에서 behavior Props 로 동작 장식을 정의할 수 있다.<ul>
+<li>padding : 키보드 열렸을때 뷰 하단에 패딩을 설정</li>
+<li>height: 뷰의 높이 자체를 변경</li>
+<li>position:  뷰의 위치를 설정</li>
+</ul>
+</li>
+<li>Platform.select({ios:, android,}) 를 사용해서 플랫폼 별로 옵션을 줄 수 있다.</li>
+<li>터치 했을때 효과 주기<ul>
+<li>TouchableHighlight: 터치했을 대 배경색 변경</li>
+<li>TouchableNativeFeedback: 안드로이드에서 물결 효과 ios에서는 오류</li>
+<li>ToucableOpacity: 투명도 조정</li>
+<li>ToucableWithoutFeedback: 아무 효과도 적용하지 않는다.</li>
+</ul>
+</li>
+<li>keyboard.dismiss() 는 현제 나타난 키보드를 닫는다.</li>
+<li>onSubmitEditing → enter 눌렀을때 이벤트</li>
+<li>returnkeyType=”done” → 키보드 눌렀을대 return 타입을 보여줌.</li>
+<li>FlatList에 ItemSeparatorComponent Props를 지정해서 컴포넌트 사이에 구분선을 설정할 수 있다.</li>
+<li>react-nativevector-icons 를 사용하면 벡터 아이콘을 리액트 네이티브 프로젝트에서 간편하게 컴포넌트처럼 사용할 수 있게 해준다.</li>
+<li>ios/proejctForderName/info.plist → 앱의 이름, 아이콘, 버전 등 앱에서 필요한 설정값을 지니고 있다.</li>
+<li>android/app/build.gradle → 프로젝트의 의존성, 프로그인 및 빌드에 필요한 설정에 대한 정보를 지니고 있다.</li>
+<li>Alert.aler(제목, 내용, 버튼, 옵션) 버튼 부분에 {text, onPress, style} 을 각각 설정해서 버튼 스타일 내용, 눌렀을때 동작등을 정의할수 있다. 안드로이드에서는 버튼 스타일이 적용되지 않아서 따로 만들어야 한다. 설정할 수 있는 style은 다음과 같다.<ul>
+<li>cancel: 취소 기본에 폰트 두껍게</li>
+<li>default: 기본 파란색</li>
+<li>destructive: 파괴적인? 삭제하는 상황에 적합 빨간색이 됨.</li>
+</ul>
+</li>
+<li>옵션으로는 바깥에 눌렀을때 동작이나, 안드로이드에서는 바깥에 눌렀을때 취소 옵션 같은걸 줄 수 있다.</li>
+<li>브라우저에 localStorage 와 비슷한 AsyncStorage 를 사용할 수 있다. API도 비슷한데 다른점이라면 AsyncStorage는 비동기로 동작해서 Promise를 반환한다. <code>yarn add @react-native-community/async-strage</code> 로 설치한다.</li>
+<li>useEffect 에는 cleanup 하는 기능이 있는데 내부 함수가 promise를 반환하면 충돌하기 때문에 내부에서 async 함수를 선언한 후에 호출하는 방법을 사용한다.</li>
+<li>AsyncStorage를 사용할때는 추상화 해서 사용하는 것을 추천한다 → 나중에 다른 스토리지를 사용할때 쉽게 교체할 수 있도록</li>
+<li>android 는 AsyncStorage 로 6MB를 저장할 수 있다 늘리려면 gradle.properties를 수정한다. ios 는 따로 최대 용량이 설정되어 있지 않다.</li>
+<li>AsyncStorage는 데이터가 많아지면 성능이 떨어진다. 또한 정렬이나 인덱싱 기능을 지원하지 않는다. 소규모에서 적합하고 조금 규모가 커지면 대안으로 <code>react-native-sqlite-storage</code> 같은것을 사용하면 된다.</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/TIL/" rel="tag"># TIL</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/12/16/DevOps/Docker/211215-Using%20Node(1)%3CBuildImage%3E/" rel="prev" title="Using Node(1)<BuildImage>">
+                  <i class="fa fa-chevron-left"></i> Using Node(1)<BuildImage>
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/12/17/DevOps/Docker/211216-Docker%20tutorial(2)/" rel="next" title="Docker tutorial(2)">
+                  Docker tutorial(2) <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">JayoonKoo</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>
