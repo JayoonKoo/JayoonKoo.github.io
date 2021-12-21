@@ -83,9 +83,9 @@
   <ul class="main-menu menu">
         <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li>
         <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
-        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">12</span></a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">11</span></a></li>
         <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">9</span></a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">116</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">118</span></a></li>
   </ul>
 </nav>
 
@@ -129,7 +129,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">116</span>
+          <span class="site-state-item-count">118</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -140,7 +140,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-count">11</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -180,6 +180,193 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/12/14/TIL/211213/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JayoonKoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="티끌모아 태산">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/12/14/TIL/211213/" class="post-title-link" itemprop="url">211213 백엔드 GraphQL</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2021-12-14 19:04:40 / Modified: 19:05:09" itemprop="dateCreated datePublished" datetime="2021-12-14T19:04:40+09:00">2021-12-14</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/TIL/" itemprop="url" rel="index"><span itemprop="name">TIL</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="211213"><a href="#211213" class="headerlink" title="211213"></a>211213</h1><h2 id="백엔드"><a href="#백엔드" class="headerlink" title="백엔드"></a>백엔드</h2><ul>
+<li>배포 채크리스트<ul>
+<li>보안 관련한 키가 포함되어 있지 않은지?</li>
+<li>보안의 위헙이 되는 로그를 남기지 않는지?</li>
+<li>반응으로 민감한 정보를 넘기고 있지 않은지</li>
+<li>API reate limits 를 정해야 한다. 사용자가 계속 API 요청을 반복적으로 하지 못하도록 막는것</li>
+</ul>
+</li>
+<li>mysql Aws 에서 사용하는 방법<ul>
+<li>서비스 → RDS (관계형 데이터 베이스 생성)→ 대시보드 → 데이터 베이스 생성 → 표준생성 , 손쉬운 생성은 알아서 늘어남.. 과금 될 수도</li>
+<li>mysql 설정</li>
+<li>텝플릿 ? 무료로 쓰려면 프리티어로</li>
+<li>DB 인스턴스 → DB 이름 정하기</li>
+<li>자격 증명 설정 (꼭 기억) - 이름 비밀저호 설정</li>
+<li>스토리지 기본 20g , 스토리지 자동 조정 활성화 켜져 있으면 늘어나고 그럼 과금이 시작됨. 무료로 사용하려면 비활성화 해줌.</li>
+<li>퍼블릭 엑세스 예로 체크 dbeaver 같은데서 접근 가능하도록</li>
+<li>외부 접속 방법?<ul>
+<li>서비스 → EC2 → 인스턴스 → 네트워크 및 보안 → 보안 그룹 → 인바운드 규칙 (외부로부터 열어놓을 포트)</li>
+<li>인바운드 규칙 편집 → 규칙 추가 → MySQL/Aurora 선택 → 기본포트로 3306 설정됨 aws msql default 값→ IP 대역 설정 0.0.0.0/0 어떠한 주소에서도 가능. → 규칙 저장</li>
+<li>다시 RDS 이동 → 열결및 보안 → 엔드포인트 및 포트 에서 엔드 포인트 확인 → 확인한 정보로 접속</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="GraphQL"><a href="#GraphQL" class="headerlink" title="GraphQL"></a>GraphQL</h2><ul>
+<li>기존 RestAPI 의 단점을 보완해서 쿼리를 보내서 원하는 정보만 가져오도록 함.</li>
+<li>다양한 방법이 있는데 Apollo로 Server을 만들어서 구현해 볼 수 있다. (apollo-server)</li>
+<li>typeDef : grapQL 스키마, Object(데이터 스키마), Query (쿼리 형태, 조회 할때), Mutaion( 생성, 변경, 삭제 할때 , resolve 도 mutation으로 설정해야 함.), Input → gql + tagged template Literals</li>
+<li>resolvers : 구현체</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/12/13/TIL/211210/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JayoonKoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="티끌모아 태산">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/12/13/TIL/211210/" class="post-title-link" itemprop="url">211210 마이크로프론트앤드</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2021-12-13 15:58:53 / Modified: 15:59:14" itemprop="dateCreated datePublished" datetime="2021-12-13T15:58:53+09:00">2021-12-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/TIL/" itemprop="url" rel="index"><span itemprop="name">TIL</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="211210"><a href="#211210" class="headerlink" title="211210"></a>211210</h1><h2 id="마이크로프론트앤드"><a href="#마이크로프론트앤드" class="headerlink" title="마이크로프론트앤드"></a>마이크로프론트앤드</h2><ul>
+<li>RunTime Integration<ul>
+<li>개발 마친 앱을 url 나 다른 포트를 통해 전달하는 등의 방식</li>
+<li>장점: 완전 독립적이다.</li>
+<li>단점: webpack 설정 등.. 이해하기 어려운 부분이 있다.</li>
+<li>→ 이번 과정에서는 RunTime Integration에 대해서 공부한다.</li>
+</ul>
+</li>
+<li>구조를 어떻게 ? 작은 앱을 만든다고 생각한다. 예를들어서 prodicts와 cart 앱을 만들어서 각각 다른 포트로 연다고 생각하면 된다 이를 위해서 각각의 폴터에 package.json, html, 을 만들고 webpack 을 이용해서 파일을 bundle하고 서버를 연다.</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1033,305 +1220,6 @@
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">subscribe</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> response = <span class="keyword">await</span> fetch(<span class="string">&quot;/subscribe&quot;</span>);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (response.status == <span class="number">502</span>) &#123;</span><br><span class="line">    <span class="comment">// Status 502 is a connection timeout error,</span></span><br><span class="line">    <span class="comment">// may happen when the connection was pending for too long,</span></span><br><span class="line">    <span class="comment">// and the remote server or a proxy closed it</span></span><br><span class="line">    <span class="comment">// let&#x27;s reconnect</span></span><br><span class="line">    <span class="keyword">await</span> subscribe();</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (response.status != <span class="number">200</span>) &#123;</span><br><span class="line">    <span class="comment">// An error - let&#x27;s show it</span></span><br><span class="line">    showMessage(response.statusText);</span><br><span class="line">    <span class="comment">// Reconnect in one second</span></span><br><span class="line">    <span class="keyword">await</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve</span>) =&gt;</span> <span class="built_in">setTimeout</span>(resolve, <span class="number">1000</span>));</span><br><span class="line">    <span class="keyword">await</span> subscribe();</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="comment">// Get and show the message</span></span><br><span class="line">    <span class="keyword">let</span> message = <span class="keyword">await</span> response.text();</span><br><span class="line">    showMessage(message);</span><br><span class="line">    <span class="comment">// Call subscribe() again to get the next message</span></span><br><span class="line">    <span class="keyword">await</span> subscribe();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">subscribe();</span><br></pre></td></tr></table></figure>
 
 <p>요즘은 web push 와 같은 기능을 사용할 수 있기 때문에, 실시간이 중요한 서비스에서는 web push 기능을 사용하는것이 바람직하다.</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/10/23/modernJs/211004-%EC%9B%B9%EC%86%8C%EC%BC%93/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JayoonKoo">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="티끌모아 태산">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/10/23/modernJs/211004-%EC%9B%B9%EC%86%8C%EC%BC%93/" class="post-title-link" itemprop="url">웹소켓</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2021-10-23 22:20:40 / Modified: 22:21:10" itemprop="dateCreated datePublished" datetime="2021-10-23T22:20:40+09:00">2021-10-23</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="웹-소켓"><a href="#웹-소켓" class="headerlink" title="웹 소켓"></a>웹 소켓</h1><p>웹 소켓을 사용하면 HTTP의 새로운 요청이나 중단 없이 데이터를 주고 받을 수 있다. 커넥션을 종료 시키지 않은 체 패킷 형태로 이루어지며 양방향 통신이 가능하다. 실시간으로 데이터를 교환하는 시스템이나 주식 트레이딩 시스템에 적합하다.</p>
-<h2 id="간단한-예시"><a href="#간단한-예시" class="headerlink" title="간단한 예시"></a>간단한 예시</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> socket = <span class="keyword">new</span> WebSocket(<span class="string">&quot;ws://javascript.info&quot;</span>);</span><br></pre></td></tr></table></figure>
-
-<p><code>ws</code>말고 <code>wss://</code> 라는 프로토콜도 사용하는데 이는 <code>HTTP</code>와 <code>HTTPS</code>의 관계와 유사하다.</p>
-<blockquote>
-<p>항상 <code>wss://</code>를 사용해라.<br>ws를 사용하면 데이터가 암호화 되지 않고 전달되는데 오래된 프락시 서버에 경우는 웹솟켓을 알지 못해서 이상한 헤더를 붙혀서 전달하는 일이 발생한다. wss를 사용하면 TLS라는 보안 계층을 통해서 데이터가 암호화 되어서 프락시에서 열어 볼 수 없고, 복호화는 받는 쪽에서 연결 하기 때문에 안전하게 연결할 수 있다.</p>
-</blockquote>
-<p>다음 이벤트를 사용할 수 있다.</p>
-<ol>
-<li><code>open</code> - 커넥션이 제대로 만들어졌을때 발생함.</li>
-<li><code>message</code> - 데이터를 수신하였을때 발생함.</li>
-<li><code>error</code> - 에러가 생겼을때 발생함.</li>
-<li><code>close</code> - 커넥션이 종료되었을때 발생함.</li>
-</ol>
-<p>커넥션이 만들어진 상태에서 무엇을 보내고 싶다면 <code>socket.send(data)</code>를 사용하면 된다.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> socket = <span class="keyword">new</span> WebSocket(</span><br><span class="line">  <span class="string">&quot;wss://javascript.info/article/websocket/demo/hello&quot;</span></span><br><span class="line">);</span><br><span class="line"></span><br><span class="line">socket.onopen = <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span><br><span class="line">  alert(<span class="string">&quot;[open] 커넥션이 만들어졌습니다.&quot;</span>);</span><br><span class="line">  alert(<span class="string">&quot;데이터를 서버에 전송해봅시다.&quot;</span>);</span><br><span class="line">  socket.send(<span class="string">&quot;My name is Bora&quot;</span>);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">socket.onmessage = <span class="function"><span class="keyword">function</span> (<span class="params">event</span>) </span>&#123;</span><br><span class="line">  alert(<span class="string">`[message] 서버로부터 전송받은 데이터: <span class="subst">$&#123;event.data&#125;</span>`</span>);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">socket.onclose = <span class="function"><span class="keyword">function</span> (<span class="params">event</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (event.wasClean) &#123;</span><br><span class="line">    alert(</span><br><span class="line">      <span class="string">`[close] 커넥션이 정상적으로 종료되었습니다(code=<span class="subst">$&#123;event.code&#125;</span> reason=<span class="subst">$&#123;event.reason&#125;</span>)`</span></span><br><span class="line">    );</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="comment">// 예시: 프로세스가 죽거나 네트워크에 장애가 있는 경우</span></span><br><span class="line">    <span class="comment">// event.code가 1006이 됩니다.</span></span><br><span class="line">    alert(<span class="string">&quot;[close] 커넥션이 죽었습니다.&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">socket.onerror = <span class="function"><span class="keyword">function</span> (<span class="params">error</span>) </span>&#123;</span><br><span class="line">  alert(<span class="string">`[error] <span class="subst">$&#123;error.message&#125;</span>`</span>);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p>이벤트는 <code>open</code> -&gt; <code>message</code> -&gt; <code>close</code> 순서로 발생한다.</p>
-<h2 id="웹소켓-핸드셰이크"><a href="#웹소켓-핸드셰이크" class="headerlink" title="웹소켓 핸드셰이크"></a>웹소켓 핸드셰이크</h2><p><code>new WebSocket(url)</code>를 호출해 소켓을 생성하면 즉시 연결이 시작된다.</p>
-<p>브라우저는 서버에게 웹소켓을 지원하는지 묻고 지원한다는 응답이 오면 이제 HTTP가 아닌 WebSocket protocol로 통신한다.</p>
-<img src="/images/211004-웹소켓/1.png" width="500">
-
-<p>요청 헤더 예시 :</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">GET /chat</span><br><span class="line">Host: javascript.info</span><br><span class="line">Origin: https://javascript.info</span><br><span class="line">Connection: Upgrade</span><br><span class="line">Upgrade: websocket</span><br><span class="line">Sec-WebSocket-Key: Iv8io/9s+lYFgZWcXczP8Q==</span><br><span class="line">Sec-WebSocket-Version: 13</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><code>Origin</code> - 클라이언트 오리진을 나타낸다. 서버는 <code>Origin</code> 헤더를 보고 웹사이트와 소켓통신을 할지 결정하기 때문에 Origin 헤더는 웹소켓 통신에 중요한 역할을 한다.</li>
-<li><code>Connection: Upgrade</code> - 클라이언트 측에서 프로토콜을 바꾸고 싶다고 알려줌.</li>
-<li><code>Upgrade: websocket</code> - 클라이언트 측에서 요청한 프로토콜은 <code>websocket</code> 이라는 것을 의미한다.</li>
-<li><code>Sec-WebSocket-Key</code> - 보안을 위해 브라우저에서 생성한 키를 나타낸다.</li>
-<li><code>Sec-WebSocket-Vertion</code> - 웹소켓 프로토콜 버전이 명시된다. 예시는 13버전</li>
-</ul>
-<blockquote>
-<p>웹소켓 핸드셰이크는 모방이 불가능하다. (바닐라 자바스크립트로 헤더를 설정하는 건 기본적으로 막혀있다.)</p>
-</blockquote>
-<p>응답 예시 :</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">101 Switching Protocols</span><br><span class="line">Upgrade: websocket</span><br><span class="line">Connection: Upgrade</span><br><span class="line">Sec-WebSocket-Accept: hsBlbuDTkk24srzEOTBUlZAlC2g=</span><br></pre></td></tr></table></figure>
-
-<p><code>Sec-WebSocket-Accept</code>는 <code>Sec-WebSocket-Key</code>와 밀접한 관계가 있다. 브라우저는 이 헤더를 보고 특정한 알고리즘을 사용해 자신이 설정한 key인지 확인한다.</p>
-<h3 id="Extensions와-Subprotocols-헤더"><a href="#Extensions와-Subprotocols-헤더" class="headerlink" title="Extensions와 Subprotocols 헤더"></a>Extensions와 Subprotocols 헤더</h3><p>기능확장과 서브 프로토콜로 데이터를 전달할때 <code>Sec-WebSocket-Extenstions</code> 와 <code>Sec-WebSocket-Protocol</code> 헤더를 지원한다.</p>
-<ul>
-<li><code>Sec-WebSocket-Extensions : deflate-frame</code> 이 헤더는 데이터 압축을 지원한다는 것을 의미함. 이 헤더는 브라우저에 의해 자동 생성되는데, 그 값엔 데잍터 전송과 관련된 무언가나 웹소켓 프로토콜 기능 확장과 관련된 무언가가 여러개 나열된다.</li>
-<li><code>Sec-WebSocket-Protocol: soap, wamp</code> - 이렇게 설정되면 평범한 헤더가 아닌 SOAP, WAMP 프로토콜을 준수하는 데이터를 전송하겠다는 의미이다.</li>
-</ul>
-<p>이 헤더는 <code>new WebSocket</code>에 두번째 매겨변수에 값을 넣어서 설정할 수 있다.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> socket = <span class="keyword">new</span> WebSocket(<span class="string">&quot;wss://javascript.info/chat&quot;</span>, [<span class="string">&quot;soap&quot;</span>, <span class="string">&quot;wamp&quot;</span>]);</span><br></pre></td></tr></table></figure>
-
-<p>이때 서버는 지원 가능한 익스텐션과 프로토콜을 응답 헤더에 담아 클라이언트에 전달해야 한다.</p>
-<p>예시 :<br>클라이언트 :</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">GET /chat</span><br><span class="line">Host: javascript.info</span><br><span class="line">Upgrade: websocket</span><br><span class="line">Connection: Upgrade</span><br><span class="line">Origin: https://javascript.info</span><br><span class="line">Sec-WebSocket-Key: Iv8io/9s+lYFgZWcXczP8Q==</span><br><span class="line">Sec-WebSocket-Version: 13</span><br><span class="line">Sec-WebSocket-Extensions: deflate-frame</span><br><span class="line">Sec-WebSocket-Protocol: soap, wamp</span><br></pre></td></tr></table></figure>
-
-<p>서버 :</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">101 Switching Protocols</span><br><span class="line">Upgrade: websocket</span><br><span class="line">Connection: Upgrade</span><br><span class="line">Sec-WebSocket-Accept: hsBlbuDTkk24srzEOTBUlZAlC2g=</span><br><span class="line">Sec-WebSocket-Extensions: deflate-frame</span><br><span class="line">Sec-WebSocket-Protocol: soap</span><br></pre></td></tr></table></figure>
-
-<h2 id="데이터-전송"><a href="#데이터-전송" class="headerlink" title="데이터 전송"></a>데이터 전송</h2><p>웹소켓 통신은 프레임(frame)이라 불리는 데이터 조각을 사용해 이루어진다. 데이터 종류에 따라 다음과 같이 나뉜다.</p>
-<ul>
-<li>텍스트 프레임 (text frame) - 텍스트 데이터가 담긴 프레임</li>
-<li>이진 데이터 프레임 (binary data frame) - 이진 데이터가 담긴 프레임</li>
-<li>핑 또는 퐁 프레임 (ping/pong frame) - 커넥션이 유지되고 있는지 확인할 때 사용하는 프레임으로 서버나 브라우저에서 자동 생성해서 보내는 프레임</li>
-<li>이 외에도 커넥션 종료 프레임(connection close frame) 등 다양한 프레임이 있음.</li>
-</ul>
-<p>브라우저에서 개발자는 텍스트나 이진 프레임만 다루게 된다. 이유는 socket.send(body) 에서 body 에 올수 있는 데이터가 string 과 blog, arraybuffer 같은 형태이기 때문이다.</p>
-<p>받을 때는 텍스트 일경우 문자열로 들어온다. 이진데이터일 경우에는 선택할 수 있다.<br>이진 데이터를 받을 때는 <code>socket.binaryType</code> 프로퍼티를 사용하여 <code>Blob</code> 이나 <code>ArrayBuffer</code> 포맷 중 하나를 고룰 수 있다.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">socket.binaryType = <span class="string">&quot;arraybuffer&quot;</span>;</span><br><span class="line">socket.onmessage = <span class="function">(<span class="params">event</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">// event.data는 (텍스트인 경우) 문자열이거나 (이진 데이터인 경우) arraybuffer 입니다.</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<h2 id="Rate-limiting-속도-제한"><a href="#Rate-limiting-속도-제한" class="headerlink" title="Rate limiting (속도 제한)"></a>Rate limiting (속도 제한)</h2><p>느린 데이터 환경에서 데이터를 전송하고 있다고 생각해 보자. 사용자는 계속해서 send 하겠지만 데이터는 버퍼링 되어 메모리에 저장되고 충분히 전달하기에 빠른 환경에 있을때 보내지게 될 것이다.</p>
-<p><code>socket.bufferedAmount</code> 프로퍼티는 보내고 있는 시점에서 남아있는 바이트나 버퍼를 저장하고 있다. 이 정보를 활용해서 버퍼에 데이터가 없을때 send 하는 로직을 구성할 수 있다.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// every 100ms examine the socket and send more data</span></span><br><span class="line"><span class="comment">// only if all the existing data was sent out</span></span><br><span class="line"><span class="built_in">setInterval</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">if</span> (socket.bufferedAmount == <span class="number">0</span>) &#123;</span><br><span class="line">    socket.send(moreData());</span><br><span class="line">  &#125;</span><br><span class="line">&#125;, <span class="number">100</span>);</span><br></pre></td></tr></table></figure>
-
-<h2 id="Connection-close"><a href="#Connection-close" class="headerlink" title="Connection close"></a>Connection close</h2><p>일반적으로 연결을 종료하고 싶을때 숫자 코드와 이유가 포함된 연결 종료 프레임을 보낸다.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">socket.close([code], [reason]);</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>code : 정해진 숫자 코드 (optional)</li>
-<li>reason : 이유를 설하는 문자열 (optional)</li>
-</ul>
-<p>예시 :</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// closing party:</span></span><br><span class="line">socket.close(<span class="number">1000</span>, <span class="string">&quot;Work complete&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// the other party</span></span><br><span class="line">socket.onclose = <span class="function">(<span class="params">event</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">// event.code === 1000</span></span><br><span class="line">  <span class="comment">// event.reason === &quot;Work complete&quot;</span></span><br><span class="line">  <span class="comment">// event.wasClean === true (clean close)</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p>많이 사용하는 코드는 다음과 같다.</p>
-<ul>
-<li><code>1000</code> : default, normal closure</li>
-<li><code>1006</code> : 브라우저 구현에 의해 연결이 비정상적으로 (로컬로) 닫혔음을 의미하는 특수 코드</li>
-</ul>
-<p>다른 코드는 다음과 같다.</p>
-<ul>
-<li><code>1001</code> : 서버가 꺼지거나 브라우저에서 페이지를 떠났다.</li>
-<li><code>1009</code> : 메세지가 처리하기에 너무 크다.</li>
-<li><code>1011</code> : 서버에 알수 없는 에러</li>
-</ul>
-<p>WebSocket Code 는 HTTP 코드와 비슷한듯 다르다. 특별히 1000 미만의 코드는 미리 예약되어 있으며 설정하려고 하면 에러를 발생시킨다.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// in case connection is broken</span></span><br><span class="line">socket.onclose = <span class="function">(<span class="params">event</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">// event.code === 1006</span></span><br><span class="line">  <span class="comment">// event.reason === &quot;&quot;</span></span><br><span class="line">  <span class="comment">// event.wasClean === false (no closing frame)</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<h2 id="Connection-state"><a href="#Connection-state" class="headerlink" title="Connection state"></a>Connection state</h2><p><code>socket.readyState</code> 프로퍼티를 사용하여서 연결 상태를 얻을 수 있다.</p>
-<ul>
-<li><code>0</code> : “CONNECTiNG” : 연결 중 아직 연결된 것은 아님</li>
-<li><code>1</code> : “OPEN”: communicating</li>
-<li><code>2</code> : “CLOSING” : the connection is closing</li>
-<li><code>3</code> : “CLOSED” : the connection is closed.</li>
-</ul>
-<h2 id="Chat-example"><a href="#Chat-example" class="headerlink" title="Chat example"></a>Chat example</h2><p>웹소켓을 사용하는 체팅 예제를 살펴보자. 클라이언트에 집중해서 볼 것이지만, 서버도 간단하게 구현 가능하다.</p>
-<p>메세지를 담을 form 이 필요하고, 메세지를 표시할 div 가 필요하다.</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- message form --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">name</span>=<span class="string">&quot;publish&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;message&quot;</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span> <span class="attr">value</span>=<span class="string">&quot;Send&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- div with messages --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;messages&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>자바스크립트를 통해서 해야 할것 :</p>
-<ol>
-<li>연결</li>
-<li>socket.send(message)</li>
-<li>수신 메세지 div에 표시</li>
-</ol>
-<p>구현 :</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> socket = <span class="keyword">new</span> WebSocket(<span class="string">&quot;wss://javascript.info/article/websocket/chat/ws&quot;</span>)</span><br><span class="line"><span class="comment">// send message from the form</span></span><br><span class="line"><span class="built_in">document</span>.forms.publish.onsubmit = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) =&gt; </span>&#123;</span><br><span class="line">	<span class="keyword">let</span> outgoingMessage = <span class="built_in">this</span>.message.value;</span><br><span class="line">	socket.send(outgoingMessage);</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// message received - show the message in div</span></span><br><span class="line">socket.onmessage = <span class="function"><span class="keyword">function</span>(<span class="params">event</span>) =&gt; </span>&#123;</span><br><span class="line">	<span class="keyword">let</span> message = event.data;</span><br><span class="line">	<span class="keyword">let</span> messageElem = <span class="built_in">document</span>.createElement(<span class="string">&#x27;div&#x27;</span>);</span><br><span class="line">	messageElem.textContent = message;</span><br><span class="line">	docuemnt.getElementById(<span class="string">&#x27;messages&#x27;</span>).prepend(messageElem);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/10/23/react/official-docs/211012-Lifting%20State%20Up/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JayoonKoo">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="티끌모아 태산">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/10/23/react/official-docs/211012-Lifting%20State%20Up/" class="post-title-link" itemprop="url">Lifting State Up</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2021-10-23 22:16:06 / Modified: 22:16:40" itemprop="dateCreated datePublished" datetime="2021-10-23T22:16:06+09:00">2021-10-23</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/react/" itemprop="url" rel="index"><span itemprop="name">react</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="Lifting-State-Up"><a href="#Lifting-State-Up" class="headerlink" title="Lifting State Up"></a>Lifting State Up</h1><blockquote>
-<p>종종 변경 사항을 여러 컴포넌트에 공유 해야할 상황이 있는데 이때 state를 선조 컴포넌트로 끌어 올리는 것이 유용하게 동작한다.</p>
-</blockquote>
-<p>이번에는 물이 특정 온도에서 끓는지 여부를 추정하는 온도계를 만들어 본다.</p>
-<p>props 로 celsius를 받고 끓는 온도인지 판단하는 컴포넌트인 <code>BolingVerdict</code>를 만든다.</p>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">BoilingVerdict</span>(<span class="params">props</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (props.celsius &gt;= <span class="number">100</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">p</span>&gt;</span>The water would boil.<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">p</span>&gt;</span>The water would not boil.<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>다음으로 <code>Calculator</code> 를 만든다. 사용자의 인풋을 받아서 상태로 관리한다.</p>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Calculator</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">props</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">super</span>(props);</span><br><span class="line">    <span class="built_in">this</span>.handleChange = <span class="built_in">this</span>.handleChange.bind(<span class="built_in">this</span>);</span><br><span class="line">    <span class="built_in">this</span>.state = &#123; <span class="attr">temperature</span>: <span class="string">&quot;&quot;</span> &#125;;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">handleChange</span>(<span class="params">e</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.setState(&#123; <span class="attr">temperature</span>: e.target.value &#125;);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">render</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> temperature = <span class="built_in">this</span>.state.temperature;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      <span class="xml"><span class="tag">&lt;<span class="name">fieldset</span>&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">legend</span>&gt;</span>Enter temperature in Celsius:<span class="tag">&lt;/<span class="name">legend</span>&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">value</span>=<span class="string">&#123;temperature&#125;</span> <span class="attr">onChange</span>=<span class="string">&#123;this.handleChange&#125;</span> /&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">BoilingVerdict</span> <span class="attr">celsius</span>=<span class="string">&#123;parseFloat(temperature)&#125;</span> /&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;/<span class="name">fieldset</span>&gt;</span></span></span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="Adding-a-Second-input"><a href="#Adding-a-Second-input" class="headerlink" title="Adding a Second input"></a>Adding a Second input</h2><p>화씨 입력도 입력 받아 동기화 하도록 한다.</p>
-<p><code>Calculator</code> 에서 <code>TemperatureInput</code>을 추출한다. props 로 scale를 받아서 화면에 화씨 인지 섭씨 인지 표시해 준다.</p>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> scaleNames = &#123;</span><br><span class="line">  <span class="attr">c</span>: <span class="string">&quot;Celsius&quot;</span>,</span><br><span class="line">  <span class="attr">f</span>: <span class="string">&quot;Fahrenheit&quot;</span>,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TemperatureInput</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">props</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">super</span>(props);</span><br><span class="line">    <span class="built_in">this</span>.handleChange = <span class="built_in">this</span>.handleChange.bind(<span class="built_in">this</span>);</span><br><span class="line">    <span class="built_in">this</span>.state = &#123; <span class="attr">temperature</span>: <span class="string">&quot;&quot;</span> &#125;;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">handleChange</span>(<span class="params">e</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.setState(&#123; <span class="attr">temperature</span>: e.target.value &#125;);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">render</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> temperature = <span class="built_in">this</span>.state.temperature;</span><br><span class="line">    <span class="keyword">const</span> scale = <span class="built_in">this</span>.props.scale;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      <span class="xml"><span class="tag">&lt;<span class="name">fieldset</span>&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">legend</span>&gt;</span>Enter temperature in &#123;scaleNames[scale]&#125;:<span class="tag">&lt;/<span class="name">legend</span>&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">value</span>=<span class="string">&#123;temperature&#125;</span> <span class="attr">onChange</span>=<span class="string">&#123;this.handleChange&#125;</span> /&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;/<span class="name">fieldset</span>&gt;</span></span></span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>이제 두개의 분리된 인풋으로 <code>Calculator</code>를 만들 수 있다.</p>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Calculator</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">render</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      <span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">TemperatureInput</span> <span class="attr">scale</span>=<span class="string">&quot;c&quot;</span> /&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">TemperatureInput</span> <span class="attr">scale</span>=<span class="string">&quot;f&quot;</span> /&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>하지만, 두개의 인풋 사이에서 동기화는 되지 않는다. 또한, 현재 입력한 온도가 <code>TemperatureInput</code>에서 관리하기 때문에 <code>Calculator</code> 에서 <code>BoilingVerdict</code>도 렌더할 수 없다.</p>
-<h2 id="Writing-Conversion-Functions"><a href="#Writing-Conversion-Functions" class="headerlink" title="Writing Conversion Functions"></a>Writing Conversion Functions</h2><p>섭씨 화씨 변환 함수 작성</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">toCelsius</span>(<span class="params">fahrenheit</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> ((fahrenheit - <span class="number">32</span>) * <span class="number">5</span>) / <span class="number">9</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">toFahrenheit</span>(<span class="params">celsius</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> (celsius * <span class="number">9</span>) / <span class="number">5</span> + <span class="number">32</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>입력한 온도가 숫자로 변환할 수 없으면 빈 문자열을 반환하고, 변환 가능하며 소수점 세 번째 자리에로 반올림하여 리턴한다.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">tryConvert</span>(<span class="params">temperature, convert</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> input = <span class="built_in">parseFloat</span>(temperature);</span><br><span class="line">  <span class="keyword">if</span> (<span class="built_in">Number</span>.isNaN(input)) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;&quot;</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">const</span> output = convert(input);</span><br><span class="line">  <span class="keyword">const</span> rounded = <span class="built_in">Math</span>.round(output * <span class="number">1000</span>) / <span class="number">1000</span>;</span><br><span class="line">  <span class="keyword">return</span> rounded.toString();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="Lifting-State-Up-1"><a href="#Lifting-State-Up-1" class="headerlink" title="Lifting State Up"></a>Lifting State Up</h2><p>지금은 인풋 컴포넌트가 각자 상태를 관리하고 있다.</p>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TemperatureInput</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">props</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">super</span>(props);</span><br><span class="line">    <span class="built_in">this</span>.handleChange = <span class="built_in">this</span>.handleChange.bind(<span class="built_in">this</span>);</span><br><span class="line">    <span class="built_in">this</span>.state = &#123;<span class="attr">temperature</span>: <span class="string">&#x27;&#x27;</span>&#125;;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">handleChange</span>(<span class="params">e</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.setState(&#123;<span class="attr">temperature</span>: e.target.value&#125;);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">render</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> temperature = <span class="built_in">this</span>.state.temperature;</span><br><span class="line">    <span class="comment">// ...</span></span><br></pre></td></tr></table></figure>
-
-<p>리엑트는 공유 되는 State를 만들기 위해서 가장 가까운 조상 요소로 state를 옮기는 방법을 사용하는데 이를 Lifting State Up 이라고 한다.</p>
-<p>예제에서는 인풋에 조상 요소인 Calculator 가 state를 관리할 수 있도록 하고 props 로 인풋에 온도를 전달해주면 동기화 기능을 구현할 수 있다.</p>
-<p>인풋에서 state로 사용하던 temperature 를 props에 temperature 로 변경한다.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">render</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="comment">// Before: const temperature = this.state.temperature;</span></span><br><span class="line">    <span class="keyword">const</span> temperature = <span class="built_in">this</span>.props.temperature;</span><br><span class="line">    <span class="comment">// ...</span></span><br></pre></td></tr></table></figure>
-
-<p>props는 읽기 전용이다. 그전에 <code>TemperatureInput</code>에서 변경 됬을때 다시 렌더링 하기 위해서 <code>this.setState()</code>를 호출했던것은 이제 할 수 없다. 대신에 온도 변화에 해당하는 함수인 <code>onTemperatureChange</code>와 같은 함수를 조상 요소인 <code>Calculator</code>에서 만들어서 <code>props</code>로 전달해 주면 똑같은 기능을 할 수 있게 만들 수 있다.</p>
-<blockquote>
-<p>onTemperatureChnage 와 같은 함수 이름은 임의로 정한 것이다 onValueChange 와 같은 이름도 가능하고 마음대로 설정 가능하다.</p>
-</blockquote>
-<p><code>TemperatureInput</code>에 변경사항은 다음과 같다 :</p>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TemperatureInput</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">props</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">super</span>(props);</span><br><span class="line">    <span class="built_in">this</span>.handleChange = <span class="built_in">this</span>.handleChange.bind(<span class="built_in">this</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">handleChange</span>(<span class="params">e</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.props.onTemperatureChange(e.target.value);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">render</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> temperature = <span class="built_in">this</span>.props.temperature;</span><br><span class="line">    <span class="keyword">const</span> scale = <span class="built_in">this</span>.props.scale;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      <span class="xml"><span class="tag">&lt;<span class="name">fieldset</span>&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">legend</span>&gt;</span>Enter temperature in &#123;scaleNames[scale]&#125;:<span class="tag">&lt;/<span class="name">legend</span>&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">value</span>=<span class="string">&#123;temperature&#125;</span> <span class="attr">onChange</span>=<span class="string">&#123;this.handleChange&#125;</span> /&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;/<span class="name">fieldset</span>&gt;</span></span></span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><code>Calculator</code> 의 변경사항은 다음과 같다.:</p>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Calculator</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">props</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">super</span>(props);</span><br><span class="line">    <span class="built_in">this</span>.handleCelsiusChange = <span class="built_in">this</span>.handleCelsiusChange.bind(<span class="built_in">this</span>);</span><br><span class="line">    <span class="built_in">this</span>.handleFahrenheitChange = <span class="built_in">this</span>.handleFahrenheitChange.bind(<span class="built_in">this</span>);</span><br><span class="line">    <span class="built_in">this</span>.state = &#123; <span class="attr">temperature</span>: <span class="string">&quot;&quot;</span>, <span class="attr">scale</span>: <span class="string">&quot;c&quot;</span> &#125;;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">handleCelsiusChange</span>(<span class="params">temperature</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.setState(&#123; <span class="attr">scale</span>: <span class="string">&quot;c&quot;</span>, temperature &#125;);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">handleFahrenheitChange</span>(<span class="params">temperature</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.setState(&#123; <span class="attr">scale</span>: <span class="string">&quot;f&quot;</span>, temperature &#125;);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">render</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> scale = <span class="built_in">this</span>.state.scale;</span><br><span class="line">    <span class="keyword">const</span> temperature = <span class="built_in">this</span>.state.temperature;</span><br><span class="line">    <span class="keyword">const</span> celsius =</span><br><span class="line">      scale === <span class="string">&quot;f&quot;</span> ? tryConvert(temperature, toCelsius) : temperature;</span><br><span class="line">    <span class="keyword">const</span> fahrenheit =</span><br><span class="line">      scale === <span class="string">&quot;c&quot;</span> ? tryConvert(temperature, toFahrenheit) : temperature;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      <span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">TemperatureInput</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">          <span class="attr">scale</span>=<span class="string">&quot;c&quot;</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">          <span class="attr">temperature</span>=<span class="string">&#123;celsius&#125;</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">          <span class="attr">onTemperatureChange</span>=<span class="string">&#123;this.handleCelsiusChange&#125;</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">        /&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">TemperatureInput</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">          <span class="attr">scale</span>=<span class="string">&quot;f&quot;</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">          <span class="attr">temperature</span>=<span class="string">&#123;fahrenheit&#125;</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">          <span class="attr">onTemperatureChange</span>=<span class="string">&#123;this.handleFahrenheitChange&#125;</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">        /&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">BoilingVerdict</span> <span class="attr">celsius</span>=<span class="string">&#123;parseFloat(celsius)&#125;</span> /&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>

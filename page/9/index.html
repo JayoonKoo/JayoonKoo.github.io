@@ -83,9 +83,9 @@
   <ul class="main-menu menu">
         <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li>
         <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
-        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">12</span></a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">11</span></a></li>
         <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">9</span></a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">116</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">118</span></a></li>
   </ul>
 </nav>
 
@@ -129,7 +129,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">116</span>
+          <span class="site-state-item-count">118</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -140,7 +140,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-count">11</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -180,6 +180,235 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/09/12/system-programing/210819-IPC%EA%B8%B0%EB%B2%95%20%EC%A0%95%EB%A6%AC/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JayoonKoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="티끌모아 태산">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/09/12/system-programing/210819-IPC%EA%B8%B0%EB%B2%95%20%EC%A0%95%EB%A6%AC/" class="post-title-link" itemprop="url">IPC기법 정리</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-09-12 23:46:02" itemprop="dateCreated datePublished" datetime="2021-09-12T23:46:02+09:00">2021-09-12</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/CS/" itemprop="url" rel="index"><span itemprop="name">CS</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="IPC-기법관련-시스템콜-사용법-이해"><a href="#IPC-기법관련-시스템콜-사용법-이해" class="headerlink" title="IPC 기법관련 시스템콜 사용법 이해"></a>IPC 기법관련 시스템콜 사용법 이해</h1><h2 id="파이프"><a href="#파이프" class="headerlink" title="파이프"></a>파이프</h2><p>파이프를 통한 부모 -&gt; 자식 간 단방향 통신</p>
+<h3 id="예제"><a href="#예제" class="headerlink" title="예제"></a>예제</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;unistd.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MSGSIZE 255</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">char</span>* msg = <span class="string">&quot;Hello Child Process!&quot;</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">char</span> buf[<span class="number">255</span>];</span><br><span class="line">    <span class="keyword">int</span> fd[<span class="number">2</span>], pid, nbytes;</span><br><span class="line">    <span class="keyword">if</span> (pipe(fd) &lt; <span class="number">0</span>) <span class="comment">// pipe(fd) 로 파이프 생성</span></span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">1</span>);</span><br><span class="line">    pid = fork(); <span class="comment">// 이 함수 실행 다음 코드부터 부모/ 자식 프로세스로 나뉘어짐</span></span><br><span class="line">    <span class="keyword">if</span> (pid &gt;<span class="number">0</span>) &#123; <span class="comment">// 부모 프로세스에는 자식 프로세스 pid 값이 들어감</span></span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;parent PID:%d, child PID%d\n&quot;</span>, getpid(), pid);</span><br><span class="line">        write(fd[<span class="number">1</span>], msg, MSGSIZE); <span class="comment">// fd[1] 에 씁니다.</span></span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> &#123; <span class="comment">// 자식 프로세스에는 pid 값이 0이 됨.</span></span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;child PID: %d\n&quot;</span>, getpid());</span><br><span class="line">        nbytes = read(fd[<span class="number">0</span>], buf, MSGSIZE); <span class="comment">// fd[0] 으로 읽음</span></span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%d %s\n&quot;</span>, nbytes, buf);</span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="메시지-큐-message-queue"><a href="#메시지-큐-message-queue" class="headerlink" title="메시지 큐(message queue)"></a>메시지 큐(message queue)</h2><p>FIFO 정책을 데이터 전송.</p>
+<p>전송하는 코드</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sys/msg.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">msgbuf</span> &#123;</span></span><br><span class="line">    <span class="keyword">long</span> type;</span><br><span class="line">    <span class="keyword">char</span> text[<span class="number">50</span>];</span><br><span class="line">&#125; MsgBuf;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> msgid, len;</span><br><span class="line">    MsgBuf msg;</span><br><span class="line">    <span class="keyword">key_t</span> key = <span class="number">1234</span>;</span><br><span class="line">    msgid = msgget(key, IPC_CREAT|<span class="number">0644</span>);</span><br><span class="line">    <span class="keyword">if</span>(msgid == <span class="number">-1</span>) &#123;</span><br><span class="line">        perror(<span class="string">&quot;msgget&quot;</span>);</span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    msg.type = <span class="number">1</span>;</span><br><span class="line">    <span class="built_in">strcpy</span>(msg.text, <span class="string">&quot;Hello Message Queue\n&quot;</span>);</span><br><span class="line">    <span class="keyword">if</span>(msgsnd(msgid, (<span class="keyword">void</span> *)&amp;msg, <span class="number">50</span>, IPC_NOWAIT) == <span class="number">-1</span>) &#123;</span><br><span class="line">        perror(<span class="string">&quot;msgsnd&quot;</span>);</span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>동일한 <code>key</code>를 사용해야 함.</li>
+<li><code>msgget</code> 으로 msgid 를 얻음.</li>
+<li><code>msgsnd</code> 으로 큐에 메세지 전송</li>
+</ul>
+<p>받는 코드</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sys/msg.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">msgbuf</span> &#123;</span></span><br><span class="line">    <span class="keyword">long</span> type;</span><br><span class="line">    <span class="keyword">char</span> text[<span class="number">50</span>];</span><br><span class="line">&#125; MsgBuf;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span> </span>&#123;</span><br><span class="line">    MsgBuf msg;</span><br><span class="line">    <span class="keyword">int</span> msgid, len;</span><br><span class="line">    <span class="keyword">key_t</span> key = <span class="number">1234</span>;</span><br><span class="line">    <span class="keyword">if</span>((msgid = msgget(key, IPC_CREAT|<span class="number">0644</span>))&lt;<span class="number">0</span>) &#123;</span><br><span class="line">        perror(<span class="string">&quot;msgget&quot;</span>);</span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    len = msgrcv(msgid, &amp;msg, <span class="number">50</span>, <span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;Received Message is [%d] %s\n&quot;</span>, len, msg.text);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>동일한 key 사용</li>
+<li>msgid 를 얻음</li>
+<li><code>msgrcv</code>를 통해 메세지큐에 데이터 받음.</li>
+</ul>
+<h2 id="공유-메모리-shared-memory"><a href="#공유-메모리-shared-memory" class="headerlink" title="공유 메모리(shared memory)"></a>공유 메모리(shared memory)</h2><p>커널 공간에 메모리 공간을 만들고, 해당 공간을 변수처럼 쓰는 방식. mesage queue 처럼 FIFO 방식이 아니라, 해당 메모리 주소를 마치 변수처럼 접근하는 방식이다. 공유 메모리 key를 가지고 여러 프로세스가 접근 가능하다.</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sys/types.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sys/ipc.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sys/shm.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sys/wait.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;unistd.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> shmid, pid;</span><br><span class="line">    <span class="keyword">char</span> *shmaddr_parent, *shmaddr_child;</span><br><span class="line">    shmid = shmget((<span class="keyword">key_t</span>)<span class="number">1234</span>, <span class="number">10</span>, IPC_CREAT|<span class="number">0644</span>);</span><br><span class="line">    <span class="keyword">if</span>(shmid == <span class="number">-1</span>) &#123;</span><br><span class="line">        perror(<span class="string">&quot;shmget error\n&quot;</span>);</span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    pid = fork();</span><br><span class="line">    <span class="keyword">if</span> (pid &gt;<span class="number">0</span>) &#123;</span><br><span class="line">        wait(<span class="number">0</span>);</span><br><span class="line">        shmaddr_parent = (<span class="keyword">char</span> *)shmat(shmid, (<span class="keyword">char</span> *)<span class="literal">NULL</span>, <span class="number">0</span>);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%s\n&quot;</span>, shmaddr_parent);</span><br><span class="line">        shmdt((<span class="keyword">char</span> *)shmaddr_parent);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        shmaddr_child = (<span class="keyword">char</span> *)shmat(shmid, (<span class="keyword">char</span> *)<span class="literal">NULL</span>, <span class="number">0</span>);</span><br><span class="line">        <span class="built_in">strcpy</span>((<span class="keyword">char</span> *)shmaddr_child, <span class="string">&quot;Hello Parent!&quot;</span>);</span><br><span class="line">        shmdt((<span class="keyword">char</span> *)shmaddr_child); <span class="comment">// 해당 프로세스에서 메모리에 올라간 변수 삭제</span></span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    shmctl(shmid, IPC_RMID, (struct shmid_ds *)<span class="literal">NULL</span>); <span class="comment">// 공유 메모리에서 삭제</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/09/12/system-programing/210820-%EC%89%98%20%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JayoonKoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="티끌모아 태산">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/09/12/system-programing/210820-%EC%89%98%20%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8/" class="post-title-link" itemprop="url">쉘 스크립트</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-09-12 23:46:02" itemprop="dateCreated datePublished" datetime="2021-09-12T23:46:02+09:00">2021-09-12</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/CS/" itemprop="url" rel="index"><span itemprop="name">CS</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="쉘로-시작하는-시스템-프로그래밍-기본"><a href="#쉘로-시작하는-시스템-프로그래밍-기본" class="headerlink" title="쉘로 시작하는 시스템 프로그래밍 기본"></a>쉘로 시작하는 시스템 프로그래밍 기본</h1><h2 id="쉘-스크립트"><a href="#쉘-스크립트" class="headerlink" title="쉘 스크립트"></a>쉘 스크립트</h2><p>쉘을 사용한 프로그래밍 작업으로서 서버 작업 자동화 및 운영(DevOps)를 위해서 기본적으로 익혀둘 필요가 있다.</p>
+<p>로그가 많이 쌓여서 서버가 죽을 경우 스크립트를 생성해서 로그를 주기적으로 삭제 하도록 하는 등의 작업을 들 수 있다.</p>
+<h2 id="기본-문법"><a href="#기본-문법" class="headerlink" title="기본 문법"></a>기본 문법</h2><p><code>#!/bin/bash</code>로 시작해야 하고 실행 권한을 가지고 있어야 한다. 파일 이름은 일반적으로 <code>파일이름.sh</code>와 같은 형태로작성한다.</p>
+<h3 id="실습"><a href="#실습" class="headerlink" title="실습"></a>실습</h3><p>echo 함수를 이용하여 화면에 <code>Hello bash!&quot;</code>를 출력 할 수 있도록 스크립트 작성</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">!/bin/bash</span></span><br><span class="line"></span><br><span class="line">echo &quot;Hello bash&quot;</span><br></pre></td></tr></table></figure>
+
+<p>실행 권한이 있어야 한다. <code>chmod +x test.sh</code></p>
+<p>실행은 <code>test.sh</code>가 있는 폴더로 들어간 후 <code>./test.sh</code> 입력.</p>
+<h2 id="주석"><a href="#주석" class="headerlink" title="주석"></a>주석</h2><p><code>#</code>으로 시작하면 주석이다.</p>
+<h2 id="변수"><a href="#변수" class="headerlink" title="변수"></a>변수</h2><p>선언</p>
+<ul>
+<li><code>변수명=데이터</code>로 사용한다. 띄어씌기는 허용되지 않는다.</li>
+</ul>
+<p>사용</p>
+<ul>
+<li><code>$변수명</code> 으로 사용된다.</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">!/bin/bash</span></span><br><span class="line"></span><br><span class="line">mysql_id=&#x27;root&#x27;</span><br><span class="line">mysql_directory=&#x27;/etc/mysql&#x27;</span><br><span class="line"></span><br><span class="line">echo $mysql_id</span><br><span class="line">echo $mysql_directory</span><br></pre></td></tr></table></figure>
+
+<h3 id="실습-1"><a href="#실습-1" class="headerlink" title="실습"></a>실습</h3><p>아이디 관련 정보 변수만들기 (실제 이름, 나이, 직업)</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">!/bin/bash</span></span><br><span class="line"></span><br><span class="line">name=&#x27;koo&#x27;</span><br><span class="line">age=27</span><br><span class="line">job=&#x27;no job&#x27;</span><br><span class="line"></span><br><span class="line">echo $name $age $job</span><br></pre></td></tr></table></figure>
+
+<h2 id="리스트"><a href="#리스트" class="headerlink" title="리스트"></a>리스트</h2><p>선언</p>
+<ul>
+<li>변수명=(데이터1 데이터2 데이터3 …)</li>
+</ul>
+<p>사용</p>
+<ul>
+<li><code>$&#123;변수명[인덱스번호]&#125;</code> 로 사용한다.</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">!/bin/bash</span></span><br><span class="line"></span><br><span class="line">daemons=(&quot;httpd&quot; &quot;mysqld&quot; &quot;vsftpd&quot;)</span><br><span class="line">echo $&#123;daemons[1]&#125;</span><br><span class="line">echo $&#123;daemons[@]&#125;    # $daemons 배열의 모든 데이터 출력</span><br><span class="line">echo $&#123;daemons[*]&#125;    # $daemons 배열의 모든 데이터 출력</span><br><span class="line">echo $&#123;#daemons[@]&#125;   # daemons 배열 크기 출력</span><br><span class="line"></span><br><span class="line">filelist=( $(ls) )    # 해당 쉘스크립트 실행 디렉토리의 파일 리스트를 배열로 $filelist 변수에 받음.</span><br><span class="line">echo $&#123;filelist[*]&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="실습-2"><a href="#실습-2" class="headerlink" title="실습"></a>실습</h3><p>아이디 관련 정보 리스트 변수로 만들고, 각 정보 출력하기</p>
+<h2 id="사전에-정의된-지역-변수"><a href="#사전에-정의된-지역-변수" class="headerlink" title="사전에 정의된 지역 변수"></a>사전에 정의된 지역 변수</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$$ : 쉘의 프로세스 번호</span><br><span class="line">$0 : 쉘스크립트 이름</span><br><span class="line">$1 ~ $9 : 명령줄 인수</span><br><span class="line">$* : 모든 명령줄 인수리스트</span><br><span class="line">$# : 인수의 개수</span><br><span class="line">$? : 최근 실행한 명령어의 종료 값</span><br><span class="line">	- 0 (성공), 1~125 (에러)</span><br><span class="line">	- 126(파일이 실행가능하지 않음),</span><br><span class="line">	- 128~255 (시그널 발생)</span><br></pre></td></tr></table></figure>
+
+<h3 id="실습-3"><a href="#실습-3" class="headerlink" title="실습"></a>실습</h3><p>쉘 프로세스 번호, 쉘 스크립트 이름, 명령줄 인수, 모든 명령줄 인수리스트, 인수 개수 출력해보기</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">!/bin/bash</span></span><br><span class="line"></span><br><span class="line">echo $$ $0 $1 $* $#</span><br></pre></td></tr></table></figure>
+
+<h2 id="연산자"><a href="#연산자" class="headerlink" title="연산자"></a>연산자</h2><p><code>expr</code>: 숫자 계산</p>
+<p><code>expr</code>를 사용하는 경우 백틱을 사용해야 함. 연산자 *와 괄호 앞에는 역슬래시를 넣어야 한. 연산자와 숫자, 변수 사이에는 space를 넣어야 함.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">!/bin/bash</span></span><br><span class="line"></span><br><span class="line">num=`expr \( 10 + 20 \) / 8 - 8`</span><br><span class="line">echo $num</span><br></pre></td></tr></table></figure>
+
+<h2 id="조건문-문법"><a href="#조건문-문법" class="headerlink" title="조건문 문법"></a>조건문 문법</h2><p>기본 if 구문</p>
+<ul>
+<li>명령문을 꼭 탭으로 띄워야 하는 것은 아님(then과 if 안에만 들어가 있으면 됨.)</li>
+</ul>
+<p>두 인자값을 받아서 두 인자값이 다르면 <code>differnt values</code> 출력</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">!/bin/bash</span></span><br><span class="line"></span><br><span class="line">if [ $1 != $2 ]</span><br><span class="line">then</span><br><span class="line">    echo &#x27;different values&#x27;</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
+
+<p>조건 문에 띄어쓰기를 주의한다.</p>
+<p>조건 작성이 다른 프로그래밍 언어와 달리 가동성이 현저히 떨어짐, 필요할때마다 찾아보길..</p>
+<h2 id="파일-검사"><a href="#파일-검사" class="headerlink" title="파일 검사"></a>파일 검사</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">-e 파일명 # 파일이 존재하면 참</span><br><span class="line">-d 파일명 # 파일이 디렉토리면 참</span><br><span class="line">-h 파일명 # 심볼릭 링크파일</span><br><span class="line">-f 파일명 # 파일이 일반파일이면 참</span><br><span class="line">-r 파일명 # 파일 읽기 가능이면 참</span><br><span class="line">-s 파일명 # 0 파일 크기가 0이 아니면 참</span><br><span class="line">-u 파일명 # 파일이 set-user-id가 설정되면 참</span><br><span class="line">-w 파일명 # 파일 쓰기 가능 상태이면 참</span><br><span class="line">-x 파일명 # 파일이 실행 가능 상태이면 참</span><br></pre></td></tr></table></figure>
+
+<h3 id="해당-파일이-있는지-없는지-출력하는-쉘-스크립트-작성해-보기"><a href="#해당-파일이-있는지-없는지-출력하는-쉘-스크립트-작성해-보기" class="headerlink" title="해당 파일이 있는지 없는지 출력하는 쉘 스크립트 작성해 보기"></a>해당 파일이 있는지 없는지 출력하는 쉘 스크립트 작성해 보기</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">if [ -e $1 ]</span><br><span class="line">then</span><br><span class="line">    echo &quot;file exist&quot;</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
+
+<h2 id="if-else"><a href="#if-else" class="headerlink" title="if else"></a>if else</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">!/bin/bash</span></span><br><span class="line"></span><br><span class="line">if [ $1 == $2 ]</span><br><span class="line">then</span><br><span class="line">    echo &#x27;same values&#x27;</span><br><span class="line">else</span><br><span class="line">    echo &#x27;different values&#x27;</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
+
+<h2 id="쉘-크립트-해석하기"><a href="#쉘-크립트-해석하기" class="headerlink" title="쉘 크립트 해석하기"></a>쉘 크립트 해석하기</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">!/bin/bash</span></span><br><span class="line"></span><br><span class="line">ping -c 1 192.168.0.1 1&gt; /dev/null</span><br><span class="line">if [ $? == 0 ]</span><br><span class="line">then</span><br><span class="line">    echo &quot;게이트웨이 핑 성공!&quot;</span><br><span class="line">else</span><br><span class="line">    echo &quot;게이트웨이 핑 실패!&quot;</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
+
+<p><code>ping -c 1 192.168.0.1 1&gt; /dev/null</code> 응답 확인 요청 <code>-c 1</code>를 통해 1번만 요청, <code>1&gt; /dev/null</code>를 통해 응답 결과 표준 출력을 버림,</p>
+<h2 id="반복문"><a href="#반복문" class="headerlink" title="반복문"></a>반복문</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">!/bin/bash</span></span><br><span class="line"></span><br><span class="line">for database in $(ls)</span><br><span class="line">do</span><br><span class="line">    echo $database</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
+
+<p>for 문을 while로 바꿔서 사용도 가능. (일반적인 프로그래밍 언어처럼 사용 가능.</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1120,193 +1349,6 @@
 <h2 id="abstract"><a href="#abstract" class="headerlink" title="abstract"></a>abstract</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">// new 불가 , 상속후 완전하게 만든다음에 사용 가능.</span><br><span class="line">abstract class AbstractPerson &#123;</span><br><span class="line">  protected _name: string = &quot;Mark&quot;;</span><br><span class="line"></span><br><span class="line">  // 구현 하지 않음 // 클래스의  abstract 붙여야 함.</span><br><span class="line">  abstract setName(name: string): void;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class Person extends AbstractPerson &#123;</span><br><span class="line">  setName(name: string): void &#123;</span><br><span class="line">    this._name = name;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const p = new Person();</span><br><span class="line">p.setName(&quot;Koo&quot;);</span><br></pre></td></tr></table></figure>
 
 <p>완전하지 않은 클래스로서 외형만 만든다고 생각하면된다. 완전하지 않기 때문에 <code>new</code>로 생성할 수 없다. 추상 클래스를 상속 받는 자식 클래스에서는 <code>abstract</code>로 작성한 완전하지 않은 메서드를 완전히 구현해야 <code>new</code>로 생성할 수 있다.</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/08/30/typeScript/210824-generic/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JayoonKoo">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="티끌모아 태산">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/08/30/typeScript/210824-generic/" class="post-title-link" itemprop="url">generic</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-08-30 02:32:06" itemprop="dateCreated datePublished" datetime="2021-08-30T02:32:06+09:00">2021-08-30</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/typeScript/" itemprop="url" rel="index"><span itemprop="name">typeScript</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="generic"><a href="#generic" class="headerlink" title="generic"></a>generic</h1><h2 id="generic-과-any-에-다른점"><a href="#generic-과-any-에-다른점" class="headerlink" title="generic 과 any 에 다른점"></a>generic 과 any 에 다른점</h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">helloString</span>(<span class="params">message: <span class="built_in">string</span></span>): <span class="title">string</span> </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> message;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">helloNumber</span>(<span class="params">message: <span class="built_in">number</span></span>): <span class="title">number</span> </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> message;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 타입만 다르고 로직은 같은 함수가 반복된다면 ...</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">hello</span>(<span class="params">message: <span class="built_in">any</span></span>): <span class="title">any</span> </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> message;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 같은 로직이면 문자로 생각하고 싶지만 any가 나옴</span></span><br><span class="line"><span class="comment">// lnegth 같은 메서드를 사용해도 number 가 아니라 any가 나옴..</span></span><br><span class="line"><span class="built_in">console</span>.log(hello(<span class="string">&quot;Mark&quot;</span>));</span><br><span class="line"><span class="comment">// 같은 로직이면 숫자로 생각하고 싶지만..</span></span><br><span class="line"><span class="built_in">console</span>.log(hello(<span class="number">4</span>));</span><br><span class="line"></span><br><span class="line"><span class="comment">// 만약 string을 넣으면 T 가 string이 되는 것. 마치 변수처럼 사용</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">helloGeneric</span>&lt;<span class="title">T</span>&gt;(<span class="params">message: T</span>): <span class="title">T</span> </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> message;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 리턴 타입은 &#x27;Mark&#x27;로 추정함.. 리터럴 타입으로</span></span><br><span class="line"><span class="built_in">console</span>.log(helloGeneric(<span class="string">&quot;Mark&quot;</span>).length);</span><br><span class="line"><span class="comment">// 리턴 타입을 27로 추정함.</span></span><br><span class="line"><span class="built_in">console</span>.log(helloGeneric(<span class="number">27</span>));</span><br><span class="line"><span class="comment">// true로 추정함.</span></span><br><span class="line"><span class="built_in">console</span>.log(helloGeneric(<span class="literal">true</span>));</span><br></pre></td></tr></table></figure>
-
-<p>제너릭 타입을 사용하면 함수 안에서 동적으로 받은 타입을 변수처럼 사용할 수 있다. 이를 활용하여 리턴 타입을 명시 하는지에 기능을 사용할 수 있다.</p>
-<h2 id="generic-basic"><a href="#generic-basic" class="headerlink" title="generic basic"></a>generic basic</h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">helloBasic</span>&lt;<span class="title">T</span>, <span class="title">U</span>&gt;(<span class="params">message: T, coment: U</span>): <span class="title">T</span> </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> message;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 사용법</span></span><br><span class="line"><span class="comment">// T 는 string U 는 27</span></span><br><span class="line">helloBasic&lt;<span class="built_in">string</span>, <span class="built_in">number</span>&gt;(<span class="string">&quot;mark&quot;</span>, <span class="number">27</span>);</span><br><span class="line"><span class="comment">// T 는 27 , U 39</span></span><br><span class="line">helloBasic(<span class="number">27</span>, <span class="number">39</span>);</span><br></pre></td></tr></table></figure>
-
-<p>사용할 때에는 두가지 방법으로 사용 가능하다.</p>
-<ol>
-<li><code>&lt;&gt;</code> 안에 타입 명시 -&gt; 이렇게 하면 매개변수로 주는 타입을 명시한 터입으로 지정해야 한다.</li>
-<li>평범하게 사용, 이렇게 하면 타입스크립트가 추론해서 타입을 정하게 된다. 일반적으로 27과 같은 숫자를 넣으면 number 라고 생각할 수 도 있지만, 타입 스크립트는 타입을 가능한 좁게 가져가기 때문에 타입은 number 가 아니라 27이 된다.</li>
-</ol>
-<h2 id="generics-array-amp-tuple"><a href="#generics-array-amp-tuple" class="headerlink" title="generics array &amp; tuple"></a>generics array &amp; tuple</h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">helloArray</span>&lt;<span class="title">T</span>&gt;(<span class="params">message: T[]</span>): <span class="title">T</span> </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> message[<span class="number">0</span>];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// T는 string으로 추론됨.</span></span><br><span class="line">helloArray([<span class="string">&quot;hello&quot;</span>, <span class="string">&quot;world&quot;</span>]);</span><br><span class="line"><span class="comment">// T는 &lt;string | number&gt; 로 추론함. 유니온 타입이됨.</span></span><br><span class="line"><span class="comment">// string과 number 에서 모두 사용할수 있는 메서드만 사용할 수 있음.</span></span><br><span class="line">helloArray([<span class="string">&quot;Hello&quot;</span>, <span class="number">5</span>]);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">helloTuple</span>&lt;<span class="title">T</span>, <span class="title">K</span>&gt;(<span class="params">message: [T, K]</span>): <span class="title">T</span> </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> message[<span class="number">0</span>];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// string 이 리턴 타입</span></span><br><span class="line">helloTuple([<span class="string">&quot;hello&quot;</span>, <span class="string">&quot;world&quot;</span>]);</span><br><span class="line"><span class="comment">// 리턴 타입이 정확하게 string으로 추정됨.</span></span><br><span class="line">helloTuple([<span class="string">&quot;Hello&quot;</span>, <span class="number">5</span>]);</span><br></pre></td></tr></table></figure>
-
-<p>제너릭에서 배열과 튜플을 활용하는 방법은 다음과 같다. 이때 어떤 타입에 데이터가 인수로 들어올지 알 수 있다면 튜플로 사용하는것이 타입을 더 명시적으로 관리할 수 있다.</p>
-<h2 id="generic-function"><a href="#generic-function" class="headerlink" title="generic function"></a>generic function</h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> helloFunctionGeneric1 = &lt;T&gt;<span class="function">(<span class="params">message: T</span>) =&gt;</span> T;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> helloFuncion1: helloFunctionGeneric1 = &lt;T&gt;(message: T): <span class="function"><span class="params">T</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> message;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">interface</span> helloFunctionGeneric2 &#123;</span><br><span class="line">  &lt;T&gt;(message: T): T;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> helloFunction2: helloFunctionGeneric2 = &lt;T&gt;(message: T): <span class="function"><span class="params">T</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> message;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p>함수에서도 동일하게 generic 을 사용할 수 있다.</p>
-<h2 id="generic-class"><a href="#generic-class" class="headerlink" title="generic class"></a>generic class</h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 클래스 전체에서 T는 유효범위를 갖는다.</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span>&lt;<span class="title">T</span>, <span class="title">K</span>&gt; </span>&#123;</span><br><span class="line">  <span class="keyword">private</span> _name: T;</span><br><span class="line">  <span class="keyword">private</span> _age: K;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">name: T, age: K</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>._name = name;</span><br><span class="line">    <span class="built_in">this</span>._age = age;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> Person(<span class="string">&quot;Mark&quot;</span>, <span class="number">39</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> Person&lt;<span class="built_in">string</span>, <span class="built_in">number</span>&gt;(<span class="string">&quot;koo&quot;</span>, <span class="number">27</span>);</span><br></pre></td></tr></table></figure>
-
-<h2 id="generic-with-extends"><a href="#generic-with-extends" class="headerlink" title="generic with extends"></a>generic with extends</h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">PersonExtends</span>&lt;<span class="title">T</span> <span class="keyword">extends</span> <span class="title">string</span> | <span class="title">number</span>&gt; </span>&#123;</span><br><span class="line">  <span class="keyword">private</span> _name: T;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">name: T</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>._name = name;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> PersonExtends(<span class="string">&quot;Mark&quot;</span>);</span><br><span class="line"><span class="keyword">new</span> PersonExtends(<span class="number">27</span>);</span><br><span class="line"><span class="comment">// new PersonExtends(true);</span></span><br></pre></td></tr></table></figure>
-
-<p>generic 에서 extends 는 일반적인 상속과는 다른 개념으로 사용된다. generic 에서 사용하게 되면 타입을 제한하는 역활을 하게 된다. 따라서 코드에서 <code>new PersonExtends(true)</code>는 에러를 인수로 <code>&lt;string | number &gt;</code> 가 아닌 값을 주었기 때문에 에러를 발생시킨다.</p>
-<h2 id="keyof-amp-type-lookup-system"><a href="#keyof-amp-type-lookup-system" class="headerlink" title="keyof &amp; type lookup system"></a>keyof &amp; type lookup system</h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> IPerson &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="built_in">string</span>;</span><br><span class="line">  age: <span class="built_in">number</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> person: IPerson = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&quot;mark&quot;</span>,</span><br><span class="line">  <span class="attr">age</span>: <span class="number">39</span>,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// key 이름으로 된 유니온 타입이 반환된다.</span></span><br><span class="line"><span class="keyword">type</span> Keys = keyof IPerson;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 리턴 타이에도 문제가 생김...</span></span><br><span class="line"><span class="comment">// IPerson[keyof IPerson]</span></span><br><span class="line"><span class="comment">// =&gt; IPerson[&quot;name&quot; | &quot;age&quot;]</span></span><br><span class="line"><span class="comment">// =&gt; IPerson[&quot;name&quot;] | IPerson[&quot;age&quot;]</span></span><br><span class="line"><span class="comment">// =&gt; string | number</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getProp</span>&lt;<span class="title">T</span>, <span class="title">K</span> <span class="title">extends</span> <span class="title">keyof</span> <span class="title">T</span>&gt;(<span class="params">obj: T, key: K</span>): <span class="title">T</span>[<span class="title">K</span>] </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> obj[key];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// key 가 name 일 때 string</span></span><br><span class="line"><span class="comment">// key 가 age 일 때 number</span></span><br><span class="line">getProp(person, <span class="string">&quot;name&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">setProp</span>&lt;<span class="title">T</span>, <span class="title">K</span> <span class="title">extends</span> <span class="title">keyof</span> <span class="title">T</span>&gt;(<span class="params">obj: T, key: K, value: T[K]</span>): <span class="title">void</span> </span>&#123;</span><br><span class="line">  <span class="comment">// 경우에 따라서 넣어야 하는 타입이 달라지기 때문에</span></span><br><span class="line">  obj[key] = value;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">setProp(person, <span class="string">&quot;name&quot;</span>, <span class="string">&quot;koo&quot;</span>);</span><br><span class="line">setProp(person, <span class="string">&quot;age&quot;</span>, <span class="number">27</span>);</span><br></pre></td></tr></table></figure>
-
-<p><code>keyof</code> 를 사용하면 인터페이스에 key로 구성된 유니온 타입을 반환한다. 어떤 매개변수끼리 혹은 리턴 값 끼리 서로 관련 성이 있어서 타입이 달라지는 경우 <code>keyof</code>와 <code>extends</code>를 활용하여 관계성을 정의할 수 있다.</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/08/15/modernJs/210722-%EB%82%B4%EC%9E%A5%ED%81%B4%EB%9E%98%EC%8A%A4-%ED%99%95%EC%9E%A5/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JayoonKoo">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="티끌모아 태산">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/08/15/modernJs/210722-%EB%82%B4%EC%9E%A5%ED%81%B4%EB%9E%98%EC%8A%A4-%ED%99%95%EC%9E%A5/" class="post-title-link" itemprop="url">내장클래스-확장</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2021-08-15 19:40:25 / Modified: 19:45:50" itemprop="dateCreated datePublished" datetime="2021-08-15T19:40:25+09:00">2021-08-15</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="9-5-내장-클래스-확장하기"><a href="#9-5-내장-클래스-확장하기" class="headerlink" title="9.5 내장 클래스 확장하기"></a>9.5 내장 클래스 확장하기</h1><p>배열, 맵과 같은 내장 클래스도 확장이 가능하다. </p>
-<p>PowerArray 라는 클래스를 내장 클래스 Array 를 상속받아서 구현해 본다. </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 메서드 하나를 추가합니다(더 많이 추가하는 것도 가능).</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">PowerArray</span> <span class="keyword">extends</span> <span class="title">Array</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">isEmpty</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">this</span>.length === <span class="number">0</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> arr = <span class="keyword">new</span> PowerArray(<span class="number">1</span>, <span class="number">2</span>, <span class="number">5</span>, <span class="number">10</span>, <span class="number">50</span>);</span><br><span class="line">alert(arr.isEmpty()); <span class="comment">// false</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> filteredArr = arr.filter(<span class="function"><span class="params">item</span> =&gt;</span> item &gt;= <span class="number">10</span>);</span><br><span class="line">alert(filteredArr); <span class="comment">// 10, 50</span></span><br><span class="line">alert(filteredArr.isEmpty()); <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
-
-<p>주목할 점은 filter, map 등의 내장 메서드가 상속받은 클래스인 PowerArray를 반환한다는 점이다. </p>
-<p><code>arr.filter()</code>가 호출될때 내부에선 기본 Array 가 아닌 <code>arr.constructor</code>를 기반으로 새로운 배열이 만들어지고 여기에 필터 후 배열이 담긴다. </p>
-<p>이러한 동작 방법을 바꾸기 특수 정적 getter인 <code>[Symbol.species]</code>를 추가할 수 있다. </p>
-<p>getter에서 명시한 클래스로 내장 메서드에 반환값을 결정할 수 있다. </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">PowerArray</span> <span class="keyword">extends</span> <span class="title">Array</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">isEmpty</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">this</span>.length === <span class="number">0</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 내장 메서드는 반환 값에 명시된 클래스를 생성자로 사용합니다.</span></span><br><span class="line">  <span class="keyword">static</span> get [<span class="built_in">Symbol</span>.species]() &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">Array</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> arr = <span class="keyword">new</span> PowerArray(<span class="number">1</span>, <span class="number">2</span>, <span class="number">5</span>, <span class="number">10</span>, <span class="number">50</span>);</span><br><span class="line">alert(arr.isEmpty()); <span class="comment">// false</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// filter는 arr.constructor[Symbol.species]를 생성자로 사용해 새로운 배열을 만듭니다.</span></span><br><span class="line"><span class="keyword">let</span> filteredArr = arr.filter(<span class="function"><span class="params">item</span> =&gt;</span> item &gt;= <span class="number">10</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// filteredArr는 PowerArray가 아닌 Array의 인스턴스입니다.</span></span><br><span class="line">alert(filteredArr.isEmpty()); <span class="comment">// Error: filteredArr.isEmpty is not a function</span></span><br></pre></td></tr></table></figure>
-
-<br/>
-
-<h2 id="내장-객체와-정적-메서드-상속"><a href="#내장-객체와-정적-메서드-상속" class="headerlink" title="내장 객체와 정적 메서드 상속"></a>내장 객체와 정적 메서드 상속</h2><p>일반적으로 한 클래스가 다른 클래스를 상속 받으면 정적 메서드와 정적 프로퍼티를 상속 받는다. </p>
-<p>하지만 내장 클래스는 정적 메서드를 상속받지 못한다. </p>
-<p>예를 들어 <code>Date</code>의 경우 <code>Object</code>를 상속 받기 때문에 <code>Object.prototype</code>에 구현된 메서드를 사용할 수 있다.</p>
-<p>하지만 <code>Object</code> 자체를 차조하는 어떠한 변수도 없기 때문에 <code>Object</code>에 선언된 정적 메서드는 사용할 수 없는 것이다. </p>
-<p><code>Date</code>와 <code>Object</code>와의 관계는 다음과 같다. </p>
-<img src="/images/imgs/9-4.png" width="500">
 
       
     </div>
