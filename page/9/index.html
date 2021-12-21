@@ -85,7 +85,7 @@
         <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
         <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">11</span></a></li>
         <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">9</span></a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">118</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">119</span></a></li>
   </ul>
 </nav>
 
@@ -129,7 +129,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">118</span>
+          <span class="site-state-item-count">119</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -180,6 +180,149 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/09/12/system-programing/210817-%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4%20%EC%83%9D%EC%84%B1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JayoonKoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="티끌모아 태산">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/09/12/system-programing/210817-%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4%20%EC%83%9D%EC%84%B1/" class="post-title-link" itemprop="url">프로세스 생성</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-09-12 23:46:02" itemprop="dateCreated datePublished" datetime="2021-09-12T23:46:02+09:00">2021-09-12</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/CS/" itemprop="url" rel="index"><span itemprop="name">CS</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="프로세스-생성"><a href="#프로세스-생성" class="headerlink" title="프로세스 생성"></a>프로세스 생성</h1><p>기본 프로세스는 text, data, bss, heap, stack의 공간을 생성 한 후 프로세스 이미지를 해당 공간에 업로드하고 실행을 시작한다.</p>
+<h2 id="fork-와-exec-시스템콜"><a href="#fork-와-exec-시스템콜" class="headerlink" title="fork() 와 exec() 시스템콜"></a>fork() 와 exec() 시스템콜</h2><ul>
+<li>fork() : 새로운 프로세스 공간을 별도로 만들고, fork() 시스템 콜을 호출한 프로세스 (부모 프로세스) 공간을 모두 복사<ul>
+<li>별도의 프로세스 공간을 만들고, 부모 프로세스 공간의 데이터를 그대로 복사( 부모 프로세스는 그대로 살아 있음.)</li>
+</ul>
+</li>
+<li>exec() : 호출한 현재 프로세스 공간의 text, data, bss 영역을 새로운 프로세스의 이미지로 덮어씌움<ul>
+<li>별도의 프로세스 공간을 만들지 않음. (덮어 씌워 지는 거라 부모 프로세스 없음.)</li>
+</ul>
+</li>
+</ul>
+<h2 id="fork"><a href="#fork" class="headerlink" title="fork"></a>fork</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sys/types.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;unistd.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">pid_t</span> pid;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;Before fork() call\n&quot;</span>);</span><br><span class="line">        pid = fork();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (pid == <span class="number">0</span>)</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">&quot;this is Child process. PID is %d\n&quot;</span>, pid);</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (pid &gt; <span class="number">0</span>)</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">&quot;this is Parent process. PID is %d\n&quot;</span>, pid);</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">&quot;fork() is failed\n&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>fork()가 실행되면 부모 프로세스와 동일한 자식 프로세를 별도의 메모리 공간에 생성한다. 자식 프로세스에 pid 값은 0으로 리턴된다. 이때 동일한 pc 값을 가지기 때문에 이후에 코드가 실행되고 위에서 예시에선 pid &gt; 0 일때 코드 가 출력되고 다음으로 pid == 0 일때 코드가 출력된다.</p>
+<h2 id="exec"><a href="#exec" class="headerlink" title="exec()"></a>exec()</h2><p>인자로 덮어씌워질 프로세스 정보를 넘겨준다. exec는 여러가지 함수 패밀리들이 있다. pc 다음부터는 코드가 덮어씌워지기 때문에 제대로 동작했으면 exec를 후출한 다음줄 부터는 실행이 안될 것이다.</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;unistd.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;execute ls\n&quot;</span>);</span><br><span class="line">        execl(<span class="string">&quot;/bin/ls&quot;</span>, <span class="string">&quot;ls&quot;</span>, <span class="string">&quot;-l&quot;</span>, <span class="literal">NULL</span>);</span><br><span class="line">        perror(<span class="string">&quot;execl is failed\n&quot;</span>);</span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>execl</code>은 첫번재 인수로 디렉토리 이름이 명시된 명령어를 받고 다음부터 명령어 플래그등을 인수로 받는다. 갯수는 상관 없이 받을 수 있지만 마지막 인수는 NULL 로 끝나야 한다.<br>실행 시키면 perror 부분에 코드는 실행되지 않고 덮어씌워진 ls 명령이 실행된다.</p>
+<p><code>execlp</code> 디폴트 환경변수 패스 값을 사용하기 때문에 명령어만 넘겨주면 된다. <code>execlp(&quot;ls&quot;, &quot;ls&quot;, &quot;-l&quot;, NULL)</code></p>
+<p><code>execle()</code> 환경변수를 지정하고 넘겨준다.</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span> *envp[] = &#123;<span class="string">&quot;user=dave&quot;</span>, <span class="string">&quot;PATH=/bin&quot;</span>, (<span class="keyword">char</span> *)<span class="number">0</span>&#125;;</span><br><span class="line">execle(<span class="string">&quot;ls&quot;</span>, <span class="string">&quot;ls&quot;</span>, <span class="string">&quot;-al&quot;</span>, <span class="literal">NULL</span>, envp);</span><br></pre></td></tr></table></figure>
+
+<p><code>execv</code>는 인자로 변수로 만들어서 넣을 수 있다.</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span> *arg[] = &#123;<span class="string">&quot;ls&quot;</span>, <span class="string">&quot;-al&quot;</span>, <span class="literal">NULL</span>&#125;;</span><br><span class="line">execv(<span class="string">&quot;/bin/ls&quot;</span>, arg);</span><br></pre></td></tr></table></figure>
+
+<h2 id="fork와-exec"><a href="#fork와-exec" class="headerlink" title="fork와 exec"></a>fork와 exec</h2><p>fork : 부모 프로세스로부터 새로운 프로세스 공간을 만들고 부모 프로세스 데이터를 복사(fork)</p>
+<p>exec : 새로운 프로세스를 위한 바이너리를 새로운 프로세스 공간에 덮어 씌움 (exec)</p>
+<h2 id="wait-시스템-콜"><a href="#wait-시스템-콜" class="headerlink" title="wait() 시스템 콜"></a>wait() 시스템 콜</h2><p><code>wait()</code> 함수를 사용하면, <code>fork()</code> 함수 호출시, 자식 프로세스가 종료할 때까지, 부모 프로세스가 기다림. 브모 프로세스가 자식 프로세스보다 먼저 죽는 경우를 막기 위해 사용된다.</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sys/types.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;unistd.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> pid;</span><br><span class="line">        <span class="keyword">int</span> child_pid;</span><br><span class="line">        <span class="keyword">int</span> status;</span><br><span class="line">        pid = fork();</span><br><span class="line">        <span class="keyword">switch</span>(pid) &#123;</span><br><span class="line">                <span class="keyword">case</span> <span class="number">-1</span>:</span><br><span class="line">                        perror(<span class="string">&quot;fork is failed\n&quot;</span>);</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">case</span> <span class="number">0</span>:</span><br><span class="line">                        execl(<span class="string">&quot;/bin/ls&quot;</span>, <span class="string">&quot;ls&quot;</span>, <span class="string">&quot;-la&quot;</span>, <span class="literal">NULL</span>);</span><br><span class="line">                        perror(<span class="string">&quot;execl is failed\n&quot;</span>);</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">default</span>:</span><br><span class="line">                        child_pid = wait(<span class="literal">NULL</span>);</span><br><span class="line">                        <span class="built_in">printf</span>(<span class="string">&quot;ls is complete\n&quot;</span>);</span><br><span class="line">                        <span class="built_in">printf</span>(<span class="string">&quot;Parent PID (%d), Child PID (%d)\n&quot;</span>, getpid(), child_pid);</span><br><span class="line">                        <span class="built_in">exit</span>(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>execl</code>를 호출하면 부모 프로세스가 덮어씌어 지니까 <code>fork</code>를 통해 자식 프로세스 생성. case 0 인 경우는 자식 프로세스 인 겨으로 여기에 ls 명령어를 덮어씌움.</p>
+<p>ls 명령어 출력</p>
+<p><code>wait()</code>를 통해서 자식 프로세스가 끝나기를 기다렸다가 부모 프로세스를 실행 시킬 수 있음.</p>
+<h2 id="copy-on-write"><a href="#copy-on-write" class="headerlink" title="copy-on-write"></a>copy-on-write</h2><p>리눅스에 프로세스 크기는 4GB에 크기를 가지는데 <code>fork()</code>로 복제할때마다 전체를 복사하려고 하면 오래 걸린다.<br>따라서 자식 프로세스를 생성했다면 우선은 부모 프로세스에 페이지를 같이 굥유하는 방법으로 생성한다.<br>그리고 페이지를 읽는 것이 아니라 써야 할때 페이지를 복사하고 분리하는 방법을 사용한다.</p>
+<p>장점</p>
+<ul>
+<li>프로세스 생성 시간을 줄일 수 있다.</li>
+<li>새로 생성된 프로세스에 새롭게 할당되어야 하는 페이지 수도 최소화 된다.</li>
+</ul>
+<img src="./images/210817-프로세스 생성/1.png" widht="500">
+
+<h2 id="프로세스-종료"><a href="#프로세스-종료" class="headerlink" title="프로세스 종료"></a>프로세스 종료</h2><p>exit() 세스템콜 : 프로세스 종료</p>
+<p>c 언어에서 main 함수에서 return 을 호출하는 것과 exit()을 호출하는 것에는 어떤 차이가 있을까?</p>
+<p>c 언어 실행 파일은 우선 _start() 함수를 호출하고 그 안에서 main() 함수를 호출함. return 하면 main 함수가 끝나고 다음 exit()함수를 호출함.</p>
+<p>만약 main 함수에서 exit() 함수를 호출했다면 바로 프로세스를 종료시키는 것임.</p>
+<h2 id="exit-시스템-콜"><a href="#exit-시스템-콜" class="headerlink" title="exit() 시스템 콜"></a>exit() 시스템 콜</h2><p>부모 프로세스는 status &amp; 0377 계산 값으로 자식 프로세스 종료 상태 확인 가능</p>
+<p>기본 사용</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">exit</span>(EXIT_SUCCESS);</span><br><span class="line"><span class="built_in">exit</span>(EXIT_FAILURE);</span><br></pre></td></tr></table></figure>
+
+<p>주요 동작</p>
+<ul>
+<li>atexit() 에 등록된 함수 실행</li>
+<li>열려 있는 모든 입출력 스트림 버퍼 삭제</li>
+<li>프로세스가 오픈한 파일을 모두 닫음</li>
+<li>tempfile() 함수를 생성한 임시 파일 삭제</li>
+</ul>
+<h2 id="atexit-함수"><a href="#atexit-함수" class="headerlink" title="atexit() 함수"></a>atexit() 함수</h2><p>프로세스 종료시 실행될 함수를 등록하기 위해 사용한다. 등록된 함수를 등록된 역순서대로 실행한다.</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sys/types.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;unistd.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">exithandling</span><span class="params">(<span class="keyword">void</span>)</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">goodbymessage</span><span class="params">(<span class="keyword">void</span>)</span></span>;</span><br><span class="line">    <span class="keyword">int</span> ret;</span><br><span class="line"></span><br><span class="line">    ret = atexit(exithandling);</span><br><span class="line">    <span class="keyword">if</span> (ret != <span class="number">0</span>) perror(<span class="string">&quot;Error in atexit\n&quot;</span>);</span><br><span class="line">    ret = atexit(goodbymessage);</span><br><span class="line">    <span class="keyword">if</span> (ret != <span class="number">0</span>) perror(<span class="string">&quot;Error in atexit\n&quot;</span>);</span><br><span class="line">    <span class="built_in">exit</span>(EXIT_SUCCESS);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">exithandling</span><span class="params">(<span class="keyword">void</span>)</span> </span>&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;exit handling\n&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">goodbymessage</span><span class="params">(<span class="keyword">void</span>)</span> </span>&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;see you again!\n&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>역순이기 때문에 goodbymessage 가 먼저 호출 됨.</p>
+<h2 id="wait-시스템-콜-1"><a href="#wait-시스템-콜-1" class="headerlink" title="wait() 시스템 콜"></a>wait() 시스템 콜</h2><ul>
+<li>wait() 함수를 사용하면 fork()로 생성된 자식 프로세스가 종료될때까지 부모 프로세스가 기다림</li>
+<li>자식 프로세스가 완전히 끝나면 좀비 프로세스가 가지고 있던 최소 정보도 삭제하고 부모 프로세스에 SIGCHLD 시그널이 보내짐</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sys/types.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;unistd.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> pid;</span><br><span class="line">    <span class="keyword">int</span> child_pid;</span><br><span class="line">    <span class="keyword">int</span> status;</span><br><span class="line">    pid = fork();</span><br><span class="line">    <span class="keyword">switch</span> (pid) &#123;</span><br><span class="line">        <span class="keyword">case</span> <span class="number">-1</span>:</span><br><span class="line">            perror(<span class="string">&quot;fork is failed\n&quot;</span>);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="number">0</span>:</span><br><span class="line">            execl(<span class="string">&quot;/bin/ls&quot;</span>, <span class="string">&quot;ls&quot;</span>, <span class="string">&quot;-al&quot;</span>, <span class="literal">NULL</span>);</span><br><span class="line">            perror(<span class="string">&quot;execl is failed\n&quot;</span>);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">default</span>:</span><br><span class="line">            child_pid = wait(&amp;status);</span><br><span class="line">            <span class="keyword">if</span> (WIFEXITED(status)) &#123;</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">&quot;Child process is normally terminated\n&quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="built_in">exit</span>(<span class="number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>wait의 리턴값은 종료된 자식 프로세스의 pid 값임.</p>
+<p><code>status</code> 정보를 통해 기본적인 자식 프로세스 관련 정보를 확인할 수 있음</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">WIFEXITED</span><span class="params">(status)</span></span>;</span><br></pre></td></tr></table></figure>
+
+<p>자식 프로세스가 정상 종료 시 리턴값은 0 이 아닌 값이 됨.</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1240,115 +1383,6 @@
 <p><strong>Declaration Merging</strong></p>
 <p>interface에 경우 같은 이름에 인터페이스를 만들면 머지 되서 사용할때는 하나의 인터페이스 처럼 사용할 수 있음.</p>
 <p>type alias는 같은 이름으로 생성하면 에러가 발생한다.</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/08/30/typeScript/210820-class/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JayoonKoo">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="티끌모아 태산">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/08/30/typeScript/210820-class/" class="post-title-link" itemprop="url">class</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-08-30 02:32:06" itemprop="dateCreated datePublished" datetime="2021-08-30T02:32:06+09:00">2021-08-30</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/typeScript/" itemprop="url" rel="index"><span itemprop="name">typeScript</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="Classes"><a href="#Classes" class="headerlink" title="Classes"></a>Classes</h1><h2 id="What-a-Class"><a href="#What-a-Class" class="headerlink" title="What a Class"></a>What a Class</h2><p>object를 만드는 설계도이다. ex6 이전에는 function을 사용해서 object를 만들었다. 오브젝트는 new 키워드를 사용해서 만들 수 있고 타입스크립트를 사용하면 oop에 맞게 클래스를 작성할 수 있다. 타입스크립트에서는 class 자체도 어떤 타입이다.</p>
-<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="built_in">string</span> = <span class="string">&quot;Mark&quot;</span>;</span><br><span class="line">  age: <span class="built_in">number</span>;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">age?: <span class="built_in">number</span></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (age === <span class="literal">undefined</span>) &#123;</span><br><span class="line">      <span class="built_in">this</span>.age = <span class="number">20</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="built_in">this</span>.age = age;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> p1 = <span class="keyword">new</span> Person(<span class="number">39</span>);</span><br><span class="line"><span class="keyword">const</span> p2 = <span class="keyword">new</span> Person();</span><br><span class="line"><span class="built_in">console</span>.log(p1);</span><br><span class="line"><span class="built_in">console</span>.log(p2);</span><br></pre></td></tr></table></figure>
-
-<p>생성자를 통해서 인수를 받을 수 있다. TS에서는 생서자 오버라이드도 지원하지만 생성자에서 받을수도 있고 안받을 수 도 있는 경우엔 ?를 사용해서 생성자를 작성한다.<br>이때 받는 인수에 타엡에 대한 처리를 따로 해주어야 한다.</p>
-<p>생성자는 <code>async</code>를 사용할 수 없다. async 를 사용하기 위해서는 생성자 이외에 함수를 만들어서 <code>async</code> 키워드를 사용해야 한다. 이럴때 클래스에서는 멤버 변수가 할당됬는지 아닌지 알 수 없기 때문에 <code>age!: number</code> 같이 <code>!</code>를 사용한다.</p>
-<h2 id="Access-Modifiers"><a href="#Access-Modifiers" class="headerlink" title="Access Modifiers"></a>Access Modifiers</h2><p>클래스 외부에서 접근하는 것을 막기 위한 접근 제어자를 타입스크립트에서는 지원한다.</p>
-<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">  <span class="keyword">public</span> name: <span class="built_in">string</span> = <span class="string">&quot;Mark&quot;</span>;</span><br><span class="line">  <span class="keyword">private</span> _age!: <span class="built_in">number</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">public</span> <span class="function"><span class="title">constructor</span>(<span class="params">age?: <span class="built_in">number</span></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (age === <span class="literal">undefined</span>) &#123;</span><br><span class="line">      <span class="built_in">this</span>._age = <span class="number">20</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="built_in">this</span>._age = age;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> p1 = <span class="keyword">new</span> Person(<span class="number">39</span>);</span><br><span class="line"><span class="keyword">const</span> p2 = <span class="keyword">new</span> Person();</span><br><span class="line"><span class="built_in">console</span>.log(p1);</span><br><span class="line"><span class="built_in">console</span>.log(p2);</span><br></pre></td></tr></table></figure>
-
-<p>Js 에서 private 변수를 표현하기 위해서 <code>_</code> 를 붙혔었는데 TS 에서 관례적으로 private 변수 앞에는 <code>_</code>를 붙힌다. ( 없어도 상관 없음. )</p>
-<h2 id="initialization-in-constructor-param"><a href="#initialization-in-constructor-param" class="headerlink" title="initialization in constructor param"></a>initialization in constructor param</h2><p>생성자 안에 접근 제어자를 넣음으로서 생성함과 동시에 할당가지 할수 있다.</p>
-<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">  <span class="keyword">public</span> <span class="function"><span class="title">constructor</span>(<span class="params"><span class="keyword">public</span> name: <span class="built_in">string</span>, <span class="keyword">private</span> age: <span class="built_in">number</span></span>)</span> &#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> p1 = <span class="keyword">new</span> Person(<span class="string">&quot;koo&quot;</span>, <span class="number">39</span>);</span><br><span class="line"><span class="built_in">console</span>.log(p1);</span><br></pre></td></tr></table></figure>
-
-<p>위코드는 아래 코드와 같다.</p>
-<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">  <span class="keyword">public</span> name: <span class="built_in">string</span>;</span><br><span class="line">  <span class="keyword">private</span> age: <span class="built_in">number</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">public</span> <span class="function"><span class="title">constructor</span>(<span class="params">name: <span class="built_in">string</span>, age: <span class="built_in">number</span></span>)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.name = name;</span><br><span class="line">    <span class="built_in">this</span>.age = age;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> p1 = <span class="keyword">new</span> Person(<span class="string">&quot;koo&quot;</span>, <span class="number">39</span>);</span><br><span class="line"><span class="built_in">console</span>.log(p1);</span><br></pre></td></tr></table></figure>
-
-<h2 id="Getter-amp-Setters"><a href="#Getter-amp-Setters" class="headerlink" title="Getter &amp; Setters"></a>Getter &amp; Setters</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">class Person &#123;</span><br><span class="line">  public constructor(private _name: string, public age: number) &#123;&#125;</span><br><span class="line"></span><br><span class="line">  get name() &#123;</span><br><span class="line">    return this._name + &quot;Jayoun&quot;;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  set name(n: string) &#123;</span><br><span class="line">    this._name = n;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const p1 = new Person(&quot;koo&quot;, 39);</span><br><span class="line">console.log(p1.name); // get 을하는 함수를 getter</span><br><span class="line">p1.name = &quot;Woongjae&quot;; // set 을하는 함수를 setter</span><br><span class="line">console.log(p1.name); // get 을하는 함수를 getter</span><br></pre></td></tr></table></figure>
-
-<p>getter 만 만들고 setter는 만들지 않는 방식으로 읽기만 가능한 프로퍼티를 만들 수 있다.</p>
-<h2 id="readonly-properties"><a href="#readonly-properties" class="headerlink" title="readonly properties"></a>readonly properties</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">class Person &#123;</span><br><span class="line">  public readonly name: string = &quot;Mark&quot;;</span><br><span class="line">  private readonly country: string = &quot;Korea&quot;;</span><br><span class="line"></span><br><span class="line">  public constructor(private _name: string, public age: number) &#123;</span><br><span class="line">    this.country = &quot;korea&quot;;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  hello() &#123;</span><br><span class="line">    // this.country = &#x27;China&#x27;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const p1 = new Person(&quot;koo&quot;, 39);</span><br><span class="line">console.log(p1.name); // get 을하는 함수를 getter</span><br><span class="line">// p1.name = &quot;Woongjae&quot;; // readonly 이기 대문에 할당할 수 없다.</span><br><span class="line">console.log(p1.name); // get 을하는 함수를 getter</span><br></pre></td></tr></table></figure>
-
-<p>readonly 를 사용하여 get 만 할 수 있는 프로퍼티를 만들 수 있다. 이때 할당은 처음 프로퍼티를 생성하는 부분과 생성자에서만 할 수 있다.</p>
-<h2 id="Index-signatures-in-Class"><a href="#Index-signatures-in-Class" class="headerlink" title="Index signatures in Class"></a>Index signatures in Class</h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// class =&gt; object</span></span><br><span class="line"><span class="comment">// &#123;mark: &#x27;male&#x27;, jade: &#x27;male&#125; Class A</span></span><br><span class="line"><span class="comment">// &#123;chole: &#x27;female&#x27;, alex: &#x27;male&#x27;, anna: &#x27;female&#x27;&#125; Class B</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 동적이라면?</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Students</span> </span>&#123;</span><br><span class="line">  <span class="comment">// [index: string]: string; // 어떤 문자열이 와도 쓸 수 있다.</span></span><br><span class="line">  [index: <span class="built_in">string</span>]: <span class="string">&quot;male&quot;</span> | <span class="string">&quot;female&quot;</span>; <span class="comment">// 받을 수 있는 것 정의 할 수 있음.</span></span><br><span class="line"></span><br><span class="line">  mark: <span class="string">&quot;male&quot;</span> = <span class="string">&quot;male&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> a = <span class="keyword">new</span> Students();</span><br><span class="line"></span><br><span class="line">a.mark = <span class="string">&quot;male&quot;</span>;</span><br><span class="line">a.jade = <span class="string">&quot;male&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(a);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> b = <span class="keyword">new</span> Students();</span><br><span class="line"></span><br><span class="line">b.chole = <span class="string">&quot;female&quot;</span>;</span><br><span class="line">b.alex = <span class="string">&quot;male&quot;</span>;</span><br><span class="line">b.anna = <span class="string">&quot;female&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(b);</span><br></pre></td></tr></table></figure>
-
-<p>동적으로 프로퍼티가 생기는 형식일때 사용할 수 있다. 받을 수 있는 프로퍼티를 정의해 주는 것도 가능하다.</p>
-<h2 id="static-properties-amp-method"><a href="#static-properties-amp-method" class="headerlink" title="static properties &amp; method"></a>static properties &amp; method</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">class Person &#123;</span><br><span class="line">  public static CITY = &quot;Seoul&quot;;</span><br><span class="line">  private static privateCity = &quot;bu&quot;;</span><br><span class="line">  public static hello() &#123;</span><br><span class="line">    console.log(&quot;안녕하세요.&quot;, Person.privateCity);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  public normalHello() &#123;</span><br><span class="line">    console.log(&quot;안녕&quot;, Person.CITY);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  public change() &#123;</span><br><span class="line">    Person.CITY = &quot;LA&quot;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Person.hello();</span><br><span class="line">console.log(Person.CITY);</span><br><span class="line"></span><br><span class="line">const p1 = new Person();</span><br><span class="line">// p1.hello(); // 이렇게 사용할 수 없음.</span><br><span class="line">p1.normalHello();</span><br><span class="line"></span><br><span class="line">const p2 = new Person();</span><br><span class="line">p2.normalHello();</span><br><span class="line">p1.change();</span><br><span class="line">p2.normalHello();</span><br></pre></td></tr></table></figure>
-
-<p>static 키워드를 붙히면 인스턴스를 생성하지 않아도 클래스 이름으로 접근해서 사용할 수 있다.</p>
-<h2 id="Singltons-패턴"><a href="#Singltons-패턴" class="headerlink" title="Singltons 패턴"></a>Singltons 패턴</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">class ClassName &#123;</span><br><span class="line">  private static instance: ClassName | null = null;</span><br><span class="line"></span><br><span class="line">  // 매개체로 이용해서 객체를 꺼내옴.</span><br><span class="line">  public static getInstance(): ClassName &#123;</span><br><span class="line">    // ClassName 으로 부터 만든 Object가 있으면 그걸 리턴</span><br><span class="line">    // 없으면, 만들어서 리턴</span><br><span class="line">    if (ClassName.instance === null) &#123;</span><br><span class="line">      ClassName.instance = new ClassName();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    return ClassName.instance;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  // new 를 직접 호출 할 수 없게 함.</span><br><span class="line">  // 다른 오브젝트 생성 금지</span><br><span class="line">  private constructor() &#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 만들어진 단일 오브젝트를 공유하는 개념</span><br><span class="line">const a = ClassName.getInstance();</span><br><span class="line">const b = ClassName.getInstance();</span><br><span class="line"></span><br><span class="line">console.log(a === b);</span><br></pre></td></tr></table></figure>
-
-<p>생성자 함수를 private 접근 제어자를 사용해서 밖에서 호출하지 못하도록함. <code>getInstance()</code> 같은 함수를 사용해서 인스턴스가 있다면 반환하고 인스턴스가 없다면 새롭게 생성한후 할당, 프로퍼티로 있는 인스턴스를 넘겨준다.</p>
-<p>이렇게 함으로서 클래스로쿠터 단 하나의 오브젝트만 생성해서 사용하는 패턴을 만들 수 있다.</p>
-<h2 id="클래스의-상속"><a href="#클래스의-상속" class="headerlink" title="클래스의 상속"></a>클래스의 상속</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">class Parent &#123;</span><br><span class="line">  constructor(protected _name: string, private _age: number) &#123;&#125;</span><br><span class="line"></span><br><span class="line">  public print(): void &#123;</span><br><span class="line">    console.log(`이름은 $&#123;this._name&#125; 이고 나이는 $&#123;this._age&#125; 입니다.`);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  protected printName(): void &#123;</span><br><span class="line">    // 프로텍티트 접근 제어자를 통해서 부모 클래스의 private 프로퍼티도 접근 가능.</span><br><span class="line">    console.log(this._name, this._age);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class Child extends Parent &#123;</span><br><span class="line">  // 접근 제어자도 오버라이드 됨.</span><br><span class="line">  // public _name = &quot;Mark Jr.&quot;;</span><br><span class="line"></span><br><span class="line">  public gender: string = &quot;male&quot;;</span><br><span class="line"></span><br><span class="line">  constructor(age: number) &#123;</span><br><span class="line">    super(&quot;Mark Jr.&quot;, age);</span><br><span class="line">    this.printName();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// const p = new Parent(&quot;Mark&quot;, 39);</span><br><span class="line">// p.print();</span><br><span class="line"></span><br><span class="line">// const c = new Child(&quot;son&quot;, 39);</span><br><span class="line">const c = new Child(5);</span><br><span class="line">c.print();</span><br></pre></td></tr></table></figure>
-
-<p>부모 클래스에서 <code>protected</code> 로 선언한 함수 또는 프로퍼티는 클래스 외에서 접근은 불가능하지만, 상속받은 자식 클래스에서 접근은 가능하다. 자식 클래스에서 기본 생성자가 아니라 따로 만들었다면, <code>super()</code>를 사용하여 부모 클래스이 생성자를 호출해 주어야 한다. 그렇게 해야지 부모 클래스의 값이 할당 되고 <code>this</code>키워드를 사용하여 호출, 사용할 수 있게 된다.</p>
-<h2 id="abstract"><a href="#abstract" class="headerlink" title="abstract"></a>abstract</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">// new 불가 , 상속후 완전하게 만든다음에 사용 가능.</span><br><span class="line">abstract class AbstractPerson &#123;</span><br><span class="line">  protected _name: string = &quot;Mark&quot;;</span><br><span class="line"></span><br><span class="line">  // 구현 하지 않음 // 클래스의  abstract 붙여야 함.</span><br><span class="line">  abstract setName(name: string): void;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class Person extends AbstractPerson &#123;</span><br><span class="line">  setName(name: string): void &#123;</span><br><span class="line">    this._name = name;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const p = new Person();</span><br><span class="line">p.setName(&quot;Koo&quot;);</span><br></pre></td></tr></table></figure>
-
-<p>완전하지 않은 클래스로서 외형만 만든다고 생각하면된다. 완전하지 않기 때문에 <code>new</code>로 생성할 수 없다. 추상 클래스를 상속 받는 자식 클래스에서는 <code>abstract</code>로 작성한 완전하지 않은 메서드를 완전히 구현해야 <code>new</code>로 생성할 수 있다.</p>
 
       
     </div>

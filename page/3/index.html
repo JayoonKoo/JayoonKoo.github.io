@@ -85,7 +85,7 @@
         <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
         <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">11</span></a></li>
         <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">9</span></a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">118</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">119</span></a></li>
   </ul>
 </nav>
 
@@ -129,7 +129,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">118</span>
+          <span class="site-state-item-count">119</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -180,6 +180,102 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/10/23/modernJs/210929-Long%20polling/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JayoonKoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="티끌모아 태산">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/10/23/modernJs/210929-Long%20polling/" class="post-title-link" itemprop="url">Long polling</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2021-10-23 22:20:40 / Modified: 22:21:10" itemprop="dateCreated datePublished" datetime="2021-10-23T22:20:40+09:00">2021-10-23</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="Long-polling"><a href="#Long-polling" class="headerlink" title="Long polling"></a>Long polling</h1><p>Long polling 은 WebSocket 또는 Server Side Event와 같은 특정 프로토콜을 사용하지 않고 서버와 지속적으로 연결하는 가장 간단한 방법이다.</p>
+<h2 id="Reqular-Polling"><a href="#Reqular-Polling" class="headerlink" title="Reqular Polling"></a>Reqular Polling</h2><p>서버에서 새로운 정보를 얻는 가장 간단한 방법은 주기적인 요청이다. 예를 들어 새로운 정보를 얻기 위해 10초 간격으로 서버에 “새로운 정보 있나요?” 요청을 보내는 것과 같다.</p>
+<p>서버는 이에대한 응답으로 클라이언트를 확인하고 패킷을 보낸다. 정상적으로 작동하지만 다음과 같은 문제가 있다.</p>
+<ol>
+<li>메시지는 최대 10초 지연으로 전달 된다.</li>
+<li>서버는 사용자의 유무나 메세지가 없더라도 계속해서 요청을 받는다. 이는 성능 부하를 일으킨다.</li>
+</ol>
+<p>개선해 보자.</p>
+<h2 id="Long-polling-1"><a href="#Long-polling-1" class="headerlink" title="Long polling"></a>Long polling</h2><p>Long polling은 구현하기도 쉽고 지연 없이 메세지를 전달한다.</p>
+<ol>
+<li>요청이 서버로 전송된다.</li>
+<li>서버는 보낼 메세지가 있을 때까지 연결을 닫지 않는다.</li>
+<li>메세지가 나타나면 서버는 요청에 응답한다.</li>
+<li>브라우저는 즉시 새 요청을 만든다.</li>
+</ol>
+<p>보통 요청은 보내지면 바로 응답을 받는다. 그런데 Long polling은 서버가 요청을 받고 대기하고 있다고 전달할 메세지가 있다는 이벤트가 발생하면 그때 응답한다. 따라서 연결을 유지할 수 있게 되는 것이다.</p>
+<img src="images/210929-Long polling/1.png" width="500">
+
+<p>네트워크 오류로 인해 연결이 끊어지면 브라우저는 즉시 새 요청을 보낸다.</p>
+<p>긴 요청을 만드는 클라이언트에 <code>subscribe</code> 함수 예제:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">subscribe</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> response = <span class="keyword">await</span> fetch(<span class="string">&quot;/subscribe&quot;</span>);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (response.status == <span class="number">502</span>) &#123;</span><br><span class="line">    <span class="comment">// Status 502 is a connection timeout error,</span></span><br><span class="line">    <span class="comment">// may happen when the connection was pending for too long,</span></span><br><span class="line">    <span class="comment">// and the remote server or a proxy closed it</span></span><br><span class="line">    <span class="comment">// let&#x27;s reconnect</span></span><br><span class="line">    <span class="keyword">await</span> subscribe();</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (response.status != <span class="number">200</span>) &#123;</span><br><span class="line">    <span class="comment">// An error - let&#x27;s show it</span></span><br><span class="line">    showMessage(response.statusText);</span><br><span class="line">    <span class="comment">// Reconnect in one second</span></span><br><span class="line">    <span class="keyword">await</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve</span>) =&gt;</span> <span class="built_in">setTimeout</span>(resolve, <span class="number">1000</span>));</span><br><span class="line">    <span class="keyword">await</span> subscribe();</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="comment">// Get and show the message</span></span><br><span class="line">    <span class="keyword">let</span> message = <span class="keyword">await</span> response.text();</span><br><span class="line">    showMessage(message);</span><br><span class="line">    <span class="comment">// Call subscribe() again to get the next message</span></span><br><span class="line">    <span class="keyword">await</span> subscribe();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">subscribe();</span><br></pre></td></tr></table></figure>
+
+<p>요즘은 web push 와 같은 기능을 사용할 수 있기 때문에, 실시간이 중요한 서비스에서는 web push 기능을 사용하는것이 바람직하다.</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1263,155 +1359,6 @@
 <li>lastCalledWith(10, 20) 마지막으로 받은 인수가 10, 20이면 통과</li>
 </ul>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> fn = <span class="built_in">require</span>(<span class="string">&quot;./fn&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> mock = jest.fn();</span><br><span class="line"></span><br><span class="line">mock(<span class="number">10</span>, <span class="number">20</span>);</span><br><span class="line">mock();</span><br><span class="line">mock(<span class="number">30</span>, <span class="number">40</span>);</span><br><span class="line"></span><br><span class="line">test(<span class="string">&quot;호출됨&quot;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  expect(mock).toBeCalled();</span><br><span class="line">&#125;);</span><br><span class="line">test(<span class="string">&quot;3 번 호출됨&quot;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  expect(mock).toBeCalledTimes(<span class="number">3</span>);</span><br><span class="line">&#125;);</span><br><span class="line">test(<span class="string">&quot;10, 20 인수로 받음&quot;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  expect(mock).toBeCalledWith(<span class="number">10</span>, <span class="number">20</span>);</span><br><span class="line">&#125;);</span><br><span class="line">test(<span class="string">&quot;호출됨&quot;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  expect(mock).lastCalledWith(<span class="number">30</span>, <span class="number">40</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/10/23/DB/SQLD/211008-5.SQL%20%EA%B8%B0%EB%B3%B8/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JayoonKoo">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="티끌모아 태산">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/10/23/DB/SQLD/211008-5.SQL%20%EA%B8%B0%EB%B3%B8/" class="post-title-link" itemprop="url">5.SQL 기본</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2021-10-23 22:07:35 / Modified: 22:09:58" itemprop="dateCreated datePublished" datetime="2021-10-23T22:07:35+09:00">2021-10-23</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/DB/" itemprop="url" rel="index"><span itemprop="name">DB</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="5-SQL-기본"><a href="#5-SQL-기본" class="headerlink" title="5.SQL 기본"></a>5.SQL 기본</h1><h2 id="SELECT-문"><a href="#SELECT-문" class="headerlink" title="SELECT 문"></a>SELECT 문</h2><p>데이터 조회 조회할 테이블과 항목을 명시해 준다.</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">		CUSTOMER_ID ,</span><br><span class="line">		NAME ,</span><br><span class="line">		CREDIT_LIMIT</span><br><span class="line"><span class="keyword">FROM</span> CUSTOMERS ;</span><br></pre></td></tr></table></figure>
-
-<p>모든 항목 조회는</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">		<span class="operator">*</span></span><br><span class="line">	<span class="keyword">FROM</span> CUSTOMERS</span><br></pre></td></tr></table></figure>
-
-<h3 id="DUAL-테이블"><a href="#DUAL-테이블" class="headerlink" title="DUAL 테이블"></a>DUAL 테이블</h3><p>DB에서 기본적으로 제공해주는 테이블로서 연산 작업에 사용할 수 있다.</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">		<span class="operator">*</span></span><br><span class="line">	<span class="keyword">FROM</span> DUAL;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">		(<span class="number">10</span> <span class="operator">+</span> <span class="number">5</span>) <span class="operator">/</span> <span class="number">2</span> <span class="keyword">AS</span> VAL</span><br><span class="line">	<span class="keyword">FROM</span> DUAL;</span><br></pre></td></tr></table></figure>
-
-<h3 id="ORDER-BY"><a href="#ORDER-BY" class="headerlink" title="ORDER BY"></a>ORDER BY</h3><p>크기를 기준으로 정렬해준다.</p>
-<ul>
-<li>ASC: 오름차순 (디폴트)</li>
-<li>DESC: 내림차순</li>
-</ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">		NAME,</span><br><span class="line">		ADDRESS,</span><br><span class="line">		CREDIT_LIMIT,</span><br><span class="line">	<span class="keyword">FROM</span> CUSTOMERS</span><br><span class="line">	<span class="keyword">ORDER</span> <span class="keyword">BY</span> NAME <span class="keyword">ASC</span>;</span><br></pre></td></tr></table></figure>
-
-<p>ORDER BY 다음으로는 여러개의 항목을 줄 수 있다.</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">		FIRST_NAME,</span><br><span class="line">		LAST_NAME,</span><br><span class="line">	<span class="keyword">FROM</span> CONTACTS</span><br><span class="line">	<span class="keyword">ORDER</span> <span class="keyword">BY</span> FIRST_NAME, LAST_NAME <span class="keyword">DESC</span></span><br><span class="line">;</span><br></pre></td></tr></table></figure>
-
-<p>FIRST_NAME은 디폴트 값인 오름차순으로 정렬하고 그다음에 LAST_NAME을 기준으로 내림차순 정렬한다.</p>
-<h3 id="DISTINCT"><a href="#DISTINCT" class="headerlink" title="DISTINCT"></a>DISTINCT</h3><p>중복 값을 제거한다.</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">		<span class="keyword">DISTINCT</span> FIRST_NAME</span><br><span class="line">	<span class="keyword">FROM</span> CONTACTS</span><br><span class="line">	<span class="keyword">ORDER</span> <span class="keyword">BY</span> FIRST_NAME</span><br></pre></td></tr></table></figure>
-
-<p>조회 결과 중에서 FIRST_NAME 이 겹친다면 중복된 요소를 제거한다.</p>
-<h3 id="WHERE"><a href="#WHERE" class="headerlink" title="WHERE"></a>WHERE</h3><p>조건을 주어서 검생할 수 있다.</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">		PRODUCT_NAME,</span><br><span class="line">		DESCRIPTION,</span><br><span class="line">		LIST_PRICE,</span><br><span class="line">		CATEGORY_ID</span><br><span class="line">	<span class="keyword">FROM</span> PRODUCTS</span><br><span class="line">	<span class="keyword">WHERE</span> PRODUCT_NAME<span class="operator">=</span><span class="string">&#x27;Kinston&#x27;</span>;</span><br></pre></td></tr></table></figure>
-
-<p>일반적인 프로그래밍 언어와 마찬가지로 AND 와 OR을 사용할 수 있고 조건 사이에 넣어 주면 된다.</p>
-<p>BETWEEN을 입력하여 이상 이하에 조건을 간략하게 표현할 수 있다.</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">		PRODUCT_NAME,</span><br><span class="line">		LIST_PRICE</span><br><span class="line">	<span class="keyword">FROM</span> PRODUCTS</span><br><span class="line">	<span class="keyword">WHERE</span> LIST_PRICE <span class="keyword">BETWEEN</span> <span class="number">650</span> <span class="keyword">AND</span> <span class="number">680</span></span><br><span class="line">	<span class="keyword">ORDER</span> <span class="keyword">BY</span> LIST_PRICE;</span><br></pre></td></tr></table></figure>
-
-<p>LIST_PRICE 가 650 이상 680 미만인 것을 조회한다.</p>
-<p>IN 조건을 주면 집합에 속한 모든 요소를 출력할 수 있다. OR 조건과 비슷하다고 생각하면 된다.</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">       PRODUCT_NAME</span><br><span class="line">     , CATEGORY_ID</span><br><span class="line"><span class="keyword">FROM</span> PRODUCTS</span><br><span class="line"><span class="keyword">WHERE</span> CATEGORY_ID <span class="keyword">IN</span> (<span class="number">1</span>, <span class="number">4</span>)</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> PRODUCT_NAME ;</span><br></pre></td></tr></table></figure>
-
-<p>LIKE 를 사용해서 조건을 넣을 수 있다. 밑에는 ASUS로 시작하는 요소를 검색한다.</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">       PRODUCT_NAME</span><br><span class="line">     , LIST_PRICE</span><br><span class="line"><span class="keyword">FROM</span> PRODUCTS</span><br><span class="line"><span class="keyword">WHERE</span> PRODUCT_NAME <span class="keyword">LIKE</span> <span class="string">&#x27;Asus%&#x27;</span></span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> LIST_PRICE ;</span><br></pre></td></tr></table></figure>
-
-<h2 id="INSERT-UPDATE-DELETE-문"><a href="#INSERT-UPDATE-DELETE-문" class="headerlink" title="INSERT, UPDATE, DELETE 문"></a>INSERT, UPDATE, DELETE 문</h2><p>테이블 생성</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DROP</span> <span class="keyword">TABLE</span> DISCOUNTS;</span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> DISCOUNTS (</span><br><span class="line">DISCOUNT_ID NUMBER GENERATED <span class="keyword">BY</span> <span class="keyword">DEFAULT</span> <span class="keyword">AS</span> <span class="keyword">IDENTITY</span> , DISCOUNT_NAME VARCHAR2(<span class="number">255</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span></span><br><span class="line">, AMOUNT NUMBER(<span class="number">3</span>, <span class="number">1</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span></span><br><span class="line">, START_DATE <span class="type">DATE</span> <span class="keyword">NOT</span> <span class="keyword">NULL</span></span><br><span class="line">, EXPIRED_DATE <span class="type">DATE</span> <span class="keyword">NOT</span> <span class="keyword">NULL</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-
-<h3 id="INSERT"><a href="#INSERT" class="headerlink" title="INSERT"></a>INSERT</h3><p>데이터를 삽입한다. 데이터를 삽입을 확정하기 위해서 COMMIT을 해야 한다. 하지만 보통 DB tools 에서는 자동으로 COMMIT 까지 들어가도록 지원한다. 테이블 생성 명령어는 COMMIT 이 필요하지 않다.</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span></span><br><span class="line">DISCOUNTS (</span><br><span class="line">DISCOUNT_NAME , AMOUNT</span><br><span class="line">, START_DATE</span><br><span class="line">, EXPIRED_DATE )</span><br><span class="line"><span class="keyword">VALUES</span> ( <span class="string">&#x27;Summer Promotion&#x27;</span> , <span class="number">9.5</span></span><br><span class="line">, <span class="type">DATE</span> <span class="string">&#x27;2017-05-01&#x27;</span> , <span class="type">DATE</span> <span class="string">&#x27;2017-08-31&#x27;</span> );</span><br><span class="line"><span class="keyword">COMMIT</span>;</span><br></pre></td></tr></table></figure>
-
-<h3 id="UPDATE"><a href="#UPDATE" class="headerlink" title="UPDATE"></a>UPDATE</h3><p>테이블 안에 데이터를 업데이트 한다.</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">UPDATE PARTS</span><br><span class="line"><span class="keyword">SET</span> COST <span class="operator">=</span> <span class="number">130</span></span><br><span class="line"><span class="keyword">WHERE</span> PART_ID <span class="operator">=</span> <span class="number">1</span> ;</span><br><span class="line"><span class="keyword">COMMIT</span>;</span><br></pre></td></tr></table></figure>
-
-<p>조건을 입력하지 않으면 테이블에 모든 행을 업데이트 한다. 조건문이 없는 UPDATE, DELETE 문은 DB tools 에서 경고문을 던진다.</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">UPDATE PARTS</span><br><span class="line">   <span class="keyword">SET</span> COST <span class="operator">=</span> COST <span class="operator">*</span> <span class="number">1.05</span></span><br><span class="line">;</span><br><span class="line"><span class="keyword">COMMIT</span>;</span><br></pre></td></tr></table></figure>
-
-<h3 id="DELETE"><a href="#DELETE" class="headerlink" title="DELETE"></a>DELETE</h3><p>데이터를 삭제한다.</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DELETE</span></span><br><span class="line">  <span class="keyword">FROM</span> SALES</span><br><span class="line"> <span class="keyword">WHERE</span> ORDER_ID <span class="operator">=</span> <span class="number">1</span></span><br><span class="line">   <span class="keyword">AND</span> ITEM_ID <span class="operator">=</span> <span class="number">1</span></span><br><span class="line">;</span><br><span class="line"><span class="keyword">COMMIT</span>;</span><br></pre></td></tr></table></figure>
-
-<h2 id="VIEW"><a href="#VIEW" class="headerlink" title="VIEW"></a>VIEW</h2><p>VIEW 는 물리적으로 데이터를 저장하지 않는 테이블이라고 생각할 수 있는데 쉽게 생각하면 어떤 SQL에 결과값을 저장해 둔 것이라고 생각하면 된다.</p>
-<h3 id="INLINE-VIEW"><a href="#INLINE-VIEW" class="headerlink" title="INLINE VIEW"></a>INLINE VIEW</h3><p>SQL 문 안에서 INLINE VIEW 를 사용할 수 있다.</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> A.<span class="operator">*</span> <span class="keyword">FROM</span></span><br><span class="line">(</span><br><span class="line">	<span class="keyword">SELECT</span></span><br><span class="line">		NAME</span><br><span class="line">	, CREDIT_LIMIT</span><br><span class="line">	<span class="keyword">FROM</span> CUSTOMERS</span><br><span class="line"> )A</span><br><span class="line">;</span><br></pre></td></tr></table></figure>
-
-<h3 id="VIEW-1"><a href="#VIEW-1" class="headerlink" title="VIEW"></a>VIEW</h3><p>복잡한 쿼리에 대한 결과를 VIEW로 저장해두고 사용할 수 있다. 다음 쿼리는 발송된 주문에 대한 연도별 각 고객의 매출 총 금액을 구하는 SQL 문이다.</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">C.NAME <span class="keyword">AS</span> CUSTOMER</span><br><span class="line">, TO_CHAR(A.ORDER_DATE, <span class="string">&#x27;YYYY&#x27;</span>) <span class="keyword">AS</span> <span class="keyword">YEAR</span></span><br><span class="line">, <span class="built_in">SUM</span>( B.QUANTITY <span class="operator">*</span> B.UNIT_PRICE ) SALES_AMOUNT <span class="keyword">FROM</span> ORDERS A</span><br><span class="line">     , ORDER_ITEMS B</span><br><span class="line">, CUSTOMERS C</span><br><span class="line"><span class="keyword">WHERE</span> <span class="number">1</span><span class="operator">=</span><span class="number">1</span></span><br><span class="line"><span class="keyword">AND</span> A.STATUS <span class="operator">=</span> <span class="string">&#x27;Shipped&#x27;</span></span><br><span class="line"><span class="keyword">AND</span> A.ORDER_ID <span class="operator">=</span> B.ORDER_ID</span><br><span class="line"><span class="keyword">AND</span> A.CUSTOMER_ID <span class="operator">=</span> C.CUSTOMER_ID</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> C.NAME, TO_CHAR(A.ORDER_DATE, <span class="string">&#x27;YYYY&#x27;</span>) <span class="keyword">ORDER</span> <span class="keyword">BY</span> C.NAME</span><br><span class="line">;</span><br></pre></td></tr></table></figure>
-
-<p>CREATE OR REPLACE VIEW 로 VIEW를 생성할 수있다.</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">OR</span> REPLACE <span class="keyword">VIEW</span> CUSTOMER_SALES <span class="keyword">AS</span> <span class="keyword">SELECT</span></span><br><span class="line">C.NAME <span class="keyword">AS</span> CUSTOMER</span><br><span class="line">, TO_CHAR(A.ORDER_DATE, <span class="string">&#x27;YYYY&#x27;</span>) <span class="keyword">AS</span> <span class="keyword">YEAR</span></span><br><span class="line">, <span class="built_in">SUM</span>( B.QUANTITY <span class="operator">*</span> B.UNIT_PRICE ) SALES_AMOUNT</span><br><span class="line"><span class="keyword">FROM</span> ORDERS A</span><br><span class="line">, ORDER_ITEMS B , CUSTOMERS C</span><br><span class="line"> <span class="keyword">WHERE</span> <span class="number">1</span><span class="operator">=</span><span class="number">1</span></span><br><span class="line">   <span class="keyword">AND</span> A.STATUS <span class="operator">=</span> <span class="string">&#x27;Shipped&#x27;</span></span><br><span class="line">   <span class="keyword">AND</span> A.ORDER_ID <span class="operator">=</span> B.ORDER_ID</span><br><span class="line">   <span class="keyword">AND</span> A.CUSTOMER_ID <span class="operator">=</span> C.CUSTOMER_ID</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> C.NAME, TO_CHAR(A.ORDER_DATE, <span class="string">&#x27;YYYY&#x27;</span>) <span class="keyword">ORDER</span> <span class="keyword">BY</span> C.NAME;</span><br></pre></td></tr></table></figure>
-
-<p>다음 부터는 CUSTOMER_SALES 로 VIEW 테이블을 조회할 수 있다.</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">       CUSTOMER</span><br><span class="line">     , SALES_AMOUNT</span><br><span class="line"><span class="keyword">FROM</span> CUSTOMER_SALES</span><br><span class="line"><span class="keyword">WHERE</span> <span class="keyword">YEAR</span> <span class="operator">=</span> <span class="number">2017</span></span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> SALES_AMOUNT <span class="keyword">DESC</span>;</span><br></pre></td></tr></table></figure>
-
-<h2 id="서브-쿼리"><a href="#서브-쿼리" class="headerlink" title="서브 쿼리"></a>서브 쿼리</h2><h3 id="서브쿼리-기본"><a href="#서브쿼리-기본" class="headerlink" title="서브쿼리 기본"></a>서브쿼리 기본</h3><p>select 절에 또다른 select절이 있어서 쿼리 안에 또다른 쿼리가 있으면 서브 쿼리라고 한다.</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">PRODUCT_ID , PRODUCT_NAME , LIST_PRICE</span><br><span class="line">  <span class="keyword">FROM</span> PRODUCTS</span><br><span class="line"> <span class="keyword">WHERE</span> LIST_PRICE <span class="operator">=</span> (</span><br><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">                          <span class="built_in">MAX</span>(LIST_PRICE)</span><br><span class="line">                     <span class="keyword">FROM</span> PRODUCTS</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-
-<h3 id="스칼라-서브-쿼리"><a href="#스칼라-서브-쿼리" class="headerlink" title="스칼라 서브 쿼리"></a>스칼라 서브 쿼리</h3><p>select 중간에 쿼리가 있으면 스칼라 서브 쿼리라고 한다.</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">A.PRODUCT_NAME</span><br><span class="line">, A.LIST_PRICE</span><br><span class="line">, ROUND( (<span class="keyword">SELECT</span> <span class="built_in">AVG</span>(K.LIST_PRICE)</span><br><span class="line">                 <span class="keyword">FROM</span> PRODUCTS K</span><br><span class="line">               <span class="keyword">WHERE</span> K.CATEGORY_ID <span class="operator">=</span> A.CATEGORY_ID</span><br><span class="line">            ), <span class="number">2</span></span><br><span class="line">       ) AVG_LIST_PRICE</span><br><span class="line">  <span class="keyword">FROM</span> PRODUCTS A</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> A.PRODUCT_NAME;</span><br></pre></td></tr></table></figure>
-
-<h3 id="인라인-뷰-서브-쿼리"><a href="#인라인-뷰-서브-쿼리" class="headerlink" title="인라인 뷰 서브 쿼리"></a>인라인 뷰 서브 쿼리</h3><p>앞서서 뷰를 보았는데 인라인 뷰도 일종의 서브 쿼리이다. 그래서 이를 인라인 뷰 서브쿼리라고 한다.</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> ORDER_ID</span><br><span class="line">, ORDER_VALUE</span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">(</span><br><span class="line"><span class="keyword">SELECT</span> ORDER_ID</span><br><span class="line">, <span class="built_in">SUM</span>( QUANTITY <span class="operator">*</span> UNIT_PRICE ) ORDER_VALUE</span><br><span class="line">  <span class="keyword">FROM</span> ORDER_ITEMS</span><br><span class="line"> <span class="keyword">GROUP</span> <span class="keyword">BY</span> ORDER_ID</span><br><span class="line"> <span class="keyword">ORDER</span> <span class="keyword">BY</span> ORDER_VALUE <span class="keyword">DESC</span></span><br><span class="line">)</span><br><span class="line"><span class="keyword">WHERE</span> ROWNUM <span class="operator">&lt;=</span> <span class="number">10</span>;</span><br></pre></td></tr></table></figure>
 
       
     </div>
