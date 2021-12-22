@@ -85,7 +85,7 @@
         <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
         <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">11</span></a></li>
         <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">9</span></a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">119</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">121</span></a></li>
   </ul>
 </nav>
 
@@ -129,7 +129,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">119</span>
+          <span class="site-state-item-count">121</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -180,6 +180,276 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/09/20/modernJs/210914-URL%20objects/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JayoonKoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="티끌모아 태산">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/09/20/modernJs/210914-URL%20objects/" class="post-title-link" itemprop="url">URL objects</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2021-09-20 21:41:14 / Modified: 21:45:41" itemprop="dateCreated datePublished" datetime="2021-09-20T21:41:14+09:00">2021-09-20</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="URL-objects"><a href="#URL-objects" class="headerlink" title="URL objects"></a>URL objects</h1><p>URL 객체를 사용할 수 있다. 물론 string을 사용해도 충분 하지만 유요한 기능을 제공 하기도 한다.</p>
+<h2 id="Creating-a-URL"><a href="#Creating-a-URL" class="headerlink" title="Creating a URL"></a>Creating a URL</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> URL(url, [base]);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>url</code> - full url 이나 베이스가 설정되어 있다면 패스 만</li>
+<li><code>base</code> - base가 설정 되어 있으면 base와 관련지어서 생성된다.</li>
+</ul>
+<p>다음에 두가지 url은 같다.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> url1 = <span class="keyword">new</span> URL(<span class="string">&quot;https://javascript.info/profile/admin&quot;</span>);</span><br><span class="line"><span class="keyword">let</span> url2 = <span class="keyword">new</span> URL(<span class="string">&quot;/profile/admin&quot;</span>, <span class="string">&quot;https://javascript.info&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>url 객체를 사용하면 객체에 구성소에 바로 접근할 수 있다.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> url = <span class="keyword">new</span> URL(<span class="string">&quot;https://javascript.info/url&quot;</span>);</span><br><span class="line"></span><br><span class="line">alert(url.protocol); <span class="comment">// https:</span></span><br><span class="line">alert(url.host); <span class="comment">// javascript.info</span></span><br><span class="line">alert(url.pathname); <span class="comment">// /url</span></span><br></pre></td></tr></table></figure>
+
+<p>url에 구조는 다음과 같다.</p>
+<img src="/images/210914-URL objects/1.png" width="500">
+
+<blockquote>
+<p>네트워킹 메서드에 문자열 대신에 URL Object를 전달할 수 있다.<br>예를 들면 <code>fetch</code>나 <code>XMLHttpRequest</code>에서</p>
+</blockquote>
+<h2 id="SearchParams-“-”"><a href="#SearchParams-“-”" class="headerlink" title="SearchParams “?..”"></a>SearchParams “?..”</h2><p>파라미터는 만약 공백이 포함되어 있거나 라틴 글자가 아니면 인코딩이 필요하다.</p>
+<p>글새 <code>url.searchParams</code>는 유용한 메서드를 제공한다.</p>
+<ul>
+<li><code>append(name, value)</code> - name에 해당하는 파라미터를 추가한다.</li>
+<li><code>delete(name)</code> - name 에 해당하는 파라미터를 제거한다.</li>
+<li><code>get(name)</code> - name 에 해당하는 파라미터를 얻는다.</li>
+<li><code>getAll(name)</code> - name 에 해당하는 파라미터를 모두 얻는다.(여러개일 경우)</li>
+<li><code>has(name)</code> - name에 해당하는 파리머터가 있는지 체크한다.</li>
+<li><code>set(name, value)</code> - set/relace 파리미터</li>
+<li><code>sort()</code> - 이름으로 정렬한다, 드물게 필요하다.</li>
+</ul>
+<p>사용 예시는 다음과 같다.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> url = <span class="keyword">new</span> URL(<span class="string">&quot;https://google.com/search&quot;</span>);</span><br><span class="line"></span><br><span class="line">url.searchParams.set(<span class="string">&quot;q&quot;</span>, <span class="string">&quot;test me!&quot;</span>); <span class="comment">// added parameter with a space and !</span></span><br><span class="line"></span><br><span class="line">alert(url); <span class="comment">// https://google.com/search?q=test+me%21</span></span><br><span class="line"></span><br><span class="line">url.searchParams.set(<span class="string">&quot;tbs&quot;</span>, <span class="string">&quot;qdr:y&quot;</span>); <span class="comment">// added parameter with a colon :</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// parameters are automatically encoded</span></span><br><span class="line">alert(url); <span class="comment">// https://google.com/search?q=test+me%21&amp;tbs=qdr%3Ay</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// iterate over search parameters (decoded)</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> [name, value] <span class="keyword">of</span> url.searchParams) &#123;</span><br><span class="line">  alert(<span class="string">`<span class="subst">$&#123;name&#125;</span>=<span class="subst">$&#123;value&#125;</span>`</span>); <span class="comment">// q=test me!, then tbs=qdr:y</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Encoding"><a href="#Encoding" class="headerlink" title="Encoding"></a>Encoding</h2><p>url에 가능한 글자가 RFC3986에 정의 되어 있다. 제공되지 않는 문자열에 경우 인코딩이 필요하다.</p>
+<p>다행인건, URL Object를 사용하면 자동으로 이 작업을 해준다.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> url = <span class="keyword">new</span> URL(<span class="string">&quot;https://ru.wikipedia.org/wiki/Тест&quot;</span>);</span><br><span class="line"></span><br><span class="line">url.searchParams.set(<span class="string">&quot;key&quot;</span>, <span class="string">&quot;ъ&quot;</span>);</span><br><span class="line">alert(url); <span class="comment">//https://ru.wikipedia.org/wiki/%D0%A2%D0%B5%D1%81%D1%82?key=%D1%8A</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Encoding-String"><a href="#Encoding-String" class="headerlink" title="Encoding String"></a>Encoding String</h3><p>URL Object가 아니라 문자열을 사용하는 경우 특수 문자를 수동으로 인코딩/ 디코딩 해야 한다.</p>
+<p>몇가지 내장된 메소드는 다음과 같다.</p>
+<ul>
+<li><code>encodeURI</code></li>
+<li><code>decodeURI</code></li>
+<li><code>encodeURIComponent</code> - 파라미터나 헤쉬 값 같은 것</li>
+<li><code>decodeURIComponent</code></li>
+</ul>
+<p><code>encodeURI</code>와 <code>encodeURIComponent</code>에 차이는 무엇일까?</p>
+<p>예시 url</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://site.com:8080/path/page?p1=v1&amp;p2=v2#hash</span><br></pre></td></tr></table></figure>
+
+<p><code>:</code>, <code>?</code>, <code>=</code>, <code>&amp;</code>, <code>#</code>와 같은 문자가 url에서 허용된다. 파라미터로 사용되는 문자열에는 이런 문자열이 포함되어야 하는데 url에 허용되는 문자열이기 때문에 인코딩 되지 않는 문제가 있다.</p>
+<p>따라서 이러한 문자는 형식을 깨드리지 않고 인코딩되어야 한다.</p>
+<p>전체 URL은 <code>encodeURI</code>를 사용한다.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// using cyrillic characters in url path</span></span><br><span class="line"><span class="keyword">let</span> url = <span class="built_in">encodeURI</span>(<span class="string">&quot;http://site.com/привет&quot;</span>);</span><br><span class="line"></span><br><span class="line">alert(url); <span class="comment">// http://site.com/%D0%BF%D1%80%D0%B8%D0%B2%D0%B5%D1%82</span></span><br></pre></td></tr></table></figure>
+
+<p>매개변수를 사용하는 경우 <code>encodeURIComponent</code>를 대신해서 사용해야 한다.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> music = <span class="built_in">encodeURIComponent</span>(<span class="string">&quot;Rock&amp;Roll&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> url = <span class="string">`https://google.com/search?q=<span class="subst">$&#123;music&#125;</span>`</span>;</span><br><span class="line">alert(url); <span class="comment">// https://google.com/search?q=Rock%26Roll</span></span><br></pre></td></tr></table></figure>
+
+<p><code>encodeURI</code>와 비교하면 다음과 같다.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> music = <span class="built_in">encodeURI</span>(<span class="string">&quot;Rock&amp;Roll&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> url = <span class="string">`https://google.com/search?q=<span class="subst">$&#123;music&#125;</span>`</span>;</span><br><span class="line">alert(url); <span class="comment">// https://google.com/search?q=Rock&amp;Roll</span></span><br></pre></td></tr></table></figure>
+
+<p>&amp; 은 Rock 그리고 Roll 이라는 파라미터를 의미하고 이는 적절히 인코딩 되어야 한다. 그런데 encdoeURI를 사용하면 &amp;를 허용하기 때문에 인코딩 되지 않는 문제가 있다.</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/09/20/git/210721-git-basic/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JayoonKoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="티끌모아 태산">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/09/20/git/210721-git-basic/" class="post-title-link" itemprop="url">git-basic</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-09-20 21:39:38" itemprop="dateCreated datePublished" datetime="2021-09-20T21:39:38+09:00">2021-09-20</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/git/" itemprop="url" rel="index"><span itemprop="name">git</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="git-basic"><a href="#git-basic" class="headerlink" title="git basic"></a>git basic</h1><ul>
+<li>리눅스에 대해서 간략히 공부했다.</li>
+<li>git의 대한 기본적인 설정방법과 사용법을 알아보고 리뷰어와 조를 이루어 풀리퀘스트를 요청화는 과정을 연습해 보았다.</li>
+</ul>
+<h2 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h2><p>리눅스는 unix 기반에 오픈소스 운영체제로서 수많은 배포 버전이 있다. 헬싱키 대학생이던 리누스 토발즈가 앤디 타넨 비우의 MINX를 개조한 Linux를 배포했다.</p>
+<h3 id="Kernel"><a href="#Kernel" class="headerlink" title="Kernel"></a>Kernel</h3><p>커널은 하드웨어와 응용 프로그램을 이어주는 운영체제의 핵심 소프트 웨어이다.</p>
+<h3 id="Shell"><a href="#Shell" class="headerlink" title="Shell"></a>Shell</h3><p>쉘은 운영체제의 커널과 사용자를 이어주는 소프트웨어로서 사용자가 Kernel를 제어하기 위해 새용한다.</p>
+<h2 id="git-object"><a href="#git-object" class="headerlink" title="git object"></a>git object</h2><p>git에는 3가지의 객체가 있다.</p>
+<ol>
+<li>Blob: 파일 하나의 대한 정보로서 사진으로 비유하자면 사진 파일 자체인 .jpg 파일이 될 수 있다.</li>
+<li>Tree: Blob 이나 subtree 의 메타데이터로서 사진으로 비유하자면 찍히 날짜에 대한 정보라던지, 저장된 위치 같은 정보가 될 수 있다.</li>
+<li>Commit: 커밋 순간의 스냅샷으로서 버전으로 저장하려고 압축한 파일들과 같다.</li>
+</ol>
+<h2 id="git-저장소"><a href="#git-저장소" class="headerlink" title="git 저장소"></a>git 저장소</h2><p>git repo 에는 크게 Local 저장소와 remote 저장소가 있다. 흔히 사용하는 github과 같은 서비스가 remote 저장소라고 할 수 있다.</p>
+<p>Local 저장소는 크게 3가지 상태로 나눌 수 있다.</p>
+<ol>
+<li>Working Directory : 지금 작업하고 있는 폴더이다. <code>git init</code>을 통해 git repo를 만들거나 clone 받은 폴더가 될 수 있다.</li>
+<li>staging area : <code>git add</code> 를 통해 추가한 파일들에 상태를 말한다. 아직 커밋을 하기 전 상태이며 add를 해야지 git 에서 버전을 추적할 수 있다.</li>
+<li>localrepo : <code>git commit</code>을 수행해서 버전이 등록한 파일들에 상태이다. <code>git push</code>를 통해 remote 저장소로 파일을 올리거나 <code>git pull</code>을 통해 받아올 수 있다.</li>
+</ol>
+<img src="/images/img/git-process.png" width="500">
+
+<h2 id="configure"><a href="#configure" class="headerlink" title="configure"></a>configure</h2><p>깃을 사용하기전 환경 설정으로 해주면 좋을 것들을 알아본다.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ git config --global user.name &quot;당신의유저네임&quot;</span><br><span class="line">$ git config --global user.email &quot;당신의메일주소&quot;</span><br><span class="line">$ git config --global core.editor &quot;vim&quot;</span><br><span class="line">$ git config --global core.pager &quot;cat&quot;</span><br><span class="line">$ git config --global init.defaultBranch &quot;main&quot;</span><br></pre></td></tr></table></figure>
+
+<p>commit 을 입력할 editor을 vim으로 설정하는 설정과 default branch를 main으로 바꾸는 설정이 포함되어 있다. 필수적인 사항은 아니다.</p>
+<p>만약 환경변수 설정을 내리고 싶다면 <code>--unset</code> 플래그를 추가하면된다.</p>
+<p><code>git config --global --unset core.editor</code></p>
+<h2 id="Commit-Convention"><a href="#Commit-Convention" class="headerlink" title="Commit Convention"></a>Commit Convention</h2><p>commit을 한번에 알기쉽게 하기위해서 보편적으로 사용하는 규칙들이 있다.</p>
+<ul>
+<li>feat: features (기능 개발에 대한 커밋)</li>
+<li>docs: documentations (문서 작업에 대한 커밋)</li>
+<li>conf: configurations (환경 변수 설정에 대한 커밋 ex)node pakage)</li>
+<li>test: test (test 코드에 대한 수정 생성에 대한 커밋)</li>
+<li>fix: bug-fix (버그를 고치거나 에러를 고친 커밋)</li>
+<li>refactor: refactoring (같은 기능을 하나 보기 좋고 효율적인 코드로 대체했을때)</li>
+<li>ci: Continuous Integration</li>
+<li>build: Build</li>
+<li>perf: Performance</li>
+</ul>
+<p>이 외에도 제목은 50자 이내로 간결하게 작성하고 내용은 되도록 상세히 작성하도록 한다.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">feat: add back button</span><br><span class="line"></span><br><span class="line">add back button using &lt;buuton&gt; tag</span><br><span class="line"></span><br><span class="line">TODO</span><br><span class="line">- create page</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="작업의-단위"><a href="#작업의-단위" class="headerlink" title="작업의 단위"></a>작업의 단위</h2><p>commit 작업의 단위는 어떻게 될까?</p>
+<p>commit 을 하는 단위는 어떤 동작을 기준으로 한다고 보면된다. JS에서 예를 들자면 어떤 함수를 만들고 동작까지 확인했다면 그때를 commit 기점으로 생각하면된다.</p>
+<p>작업 최소 단위로 생각하고 세세하게 작성하도록 한다.</p>
+<h2 id="staging-area가-있는-이유"><a href="#staging-area가-있는-이유" class="headerlink" title="staging area가 있는 이유?"></a>staging area가 있는 이유?</h2><p>만약 staging area 가 없다면 어떻게 될까?</p>
+<p>우리는 모든 파일에 변경에 커밋을 한번에 날려야할 것이다. 만약 문서화 작업에대한 변경과 기능 추가에 대한 변경이 존재한다면 이를 한꺼번에 커밋해야 되는 것이다.</p>
+<p>stging area 가 있기 때문에 하나의 파일을 올려두고 staging area 에 있는 파일을 commit 대상으로 삼을 수 있다.</p>
+<h2 id="pull-request-실습"><a href="#pull-request-실습" class="headerlink" title="pull request 실습"></a>pull request 실습</h2><p>github repo &gt; Settings &gt; Mnage access &gt; Invate a collaborator 를 통해 코드 리뷰어를 초대한다.</p>
+<p>새로운 브렌치를 만들어 기능을 만든다.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ git branch [new branch name]</span><br><span class="line">$ git checkout [new branch name]</span><br><span class="line">$ git add [수정한 파일]</span><br><span class="line">$ git commit</span><br><span class="line">$ git push -u origin [new branch name]</span><br></pre></td></tr></table></figure>
+
+<p>새로운 브랜치를 로컬에서 생성했다면 remote repo 에는 새로운 브랜치가 없을 것이다. -u 플래그를 통해 새로운 브랜치를 remote repo 에 생성하면서 push 할 수 있다.</p>
+<p>github 저장소로 이동하여 pull request를 요청한다.</p>
+<p>이제 코드 리뷰어가 코드를 보고 수정할 것을 요청할 것이다. 그럼 다시 로컬 저장소로 돌아와서 파일을 수정하고 push 하는 과정까지 진행하면된다.</p>
+<p>코드리뷰어가 확인하고 문제가 없다 판단하면 승인을 해줄 것이다. 그럼 merge 를 클릭하여 remote repo 에 브랜치를 머지하면된다.</p>
+<p>로컬 저장소에는 아직 머지 되지 않은 상태 이기 때문에 머지명령어를 입력한다.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout main</span><br><span class="line">$ git fecth origin main</span><br><span class="line">$ git merge FETCH_HEAD</span><br></pre></td></tr></table></figure>
+
+<p>사실 <code>git pull origin main</code> 을 통해서도 동일한 과정을 진행할 수 있다. 내부적으로 보자면 git pull을 통한 머지가 위에 코드블럭에서 설명한 것을 똑같이 수행한다.</p>
+<p>차이점은 fetch를 통해 이시적으로 받아올 수 있기 때문에 변경사항을 확인하면서 머지할 수 있다는 것이다. 복잡한 코드를 머지해야 할때나 다시한번 확인이 필요할 경우가 있을 수 있으니 fetch를 사용하도록 하자.</p>
+<h2 id="다음에-배울-것"><a href="#다음에-배울-것" class="headerlink" title="다음에 배울 것"></a>다음에 배울 것</h2><p>branch 를 더 배울 예정이다.</p>
+<p>풀 리퀘스트하는 과정을 더 연습해서 익숙해 지도록 해야 겠다.</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1155,202 +1425,8 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/09/12/system-programing/210813-%EC%8B%9C%EC%8A%A4%ED%85%9C%20%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D%20%ED%95%B5%EC%8B%AC%EA%B8%B0%EC%88%A0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JayoonKoo">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="티끌모아 태산">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/09/12/system-programing/210813-%EC%8B%9C%EC%8A%A4%ED%85%9C%20%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D%20%ED%95%B5%EC%8B%AC%EA%B8%B0%EC%88%A0/" class="post-title-link" itemprop="url">시스템 프로그래밍 핵심기술</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-09-12 23:46:02" itemprop="dateCreated datePublished" datetime="2021-09-12T23:46:02+09:00">2021-09-12</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/CS/" itemprop="url" rel="index"><span itemprop="name">CS</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="시스템-프로그래밍-핵심-기술"><a href="#시스템-프로그래밍-핵심-기술" class="headerlink" title="시스템 프로그래밍 핵심 기술"></a>시스템 프로그래밍 핵심 기술</h1><h2 id="시스템-콜과-API"><a href="#시스템-콜과-API" class="headerlink" title="시스템 콜과 API"></a>시스템 콜과 API</h2><h3 id="시스템-프로그래밍의-기반-요소"><a href="#시스템-프로그래밍의-기반-요소" class="headerlink" title="시스템 프로그래밍의 기반 요소"></a>시스템 프로그래밍의 기반 요소</h3><ul>
-<li>시스템 콜 </li>
-<li>C 라이브러리 </li>
-<li>C 컴파일러<br>사용자 영역에서 시스템 프로그래밍을 해본다. </li>
-</ul>
-<h3 id="시스템-콜"><a href="#시스템-콜" class="headerlink" title="시스템 콜"></a>시스템 콜</h3><p>커널 영역으로 들어가는 함수. </p>
-<p>리눅스 유닉스도 C 언어로 만들어져 있으며, 시스템 콜도 C 언어로 구현한다. </p>
-<h3 id="시스템-콜은-어떻게-구현"><a href="#시스템-콜은-어떻게-구현" class="headerlink" title="시스템 콜은 어떻게 구현?"></a>시스템 콜은 어떻게 구현?</h3><p>eax 에 시스템 콜 번호를 넘겨 준다.<br>ebx 에는 시스템 콜 인자를 넘겨준다.<br>INT 로 인터럽트를 실행해서 0x80 에 해당아하는 함수를 실행 시키는데 IDT(Interrupt Descriptor Table) 에서 0x80은 리눅스에서 시스템 콜에 해당한다. </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mov eax, 1</span><br><span class="line">mov ebx, 0</span><br><span class="line">int 0x80</span><br></pre></td></tr></table></figure>
-<p>이때 커널 모드로 바뀌어서 실행되고, 실행이 완료 된 다음에는 다시 사용자 모드로 바뀐다. </p>
-<h3 id="API"><a href="#API" class="headerlink" title="API"></a>API</h3><p>응용 프로그램과 불리된 하위 호환 인터페이스. 예) 시스템 콜 래퍼, 입출력 라이브러리 등등.. </p>
-<h2 id="ABI와-표준"><a href="#ABI와-표준" class="headerlink" title="ABI와 표준"></a>ABI와 표준</h2><h3 id="C-라이브러리"><a href="#C-라이브러리" class="headerlink" title="C 라이브러리"></a>C 라이브러리</h3><p>유닉스 - libc</p>
-<p>리눅스 - glibc</p>
-<p>이 안에 시스템 콜, 시스템 콜 래퍼, 기본 응용 프로그램 기능이 포함 된다. </p>
-<h3 id="C-컴파일러"><a href="#C-컴파일러" class="headerlink" title="C 컴파일러"></a>C 컴파일러</h3><p>유닉스 - cc</p>
-<p>리눅스 - gcc</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install gcc</span><br><span class="line">gcc --version</span><br><span class="line">gcc -o test.c test // 실행 파일이 생성 </span><br></pre></td></tr></table></figure>
-<p>만약 -o 안쓰면 a.out으로 실행파일 생성됨.</p>
-<h3 id="ABI"><a href="#ABI" class="headerlink" title="ABI"></a>ABI</h3><p>Application Binary Interface</p>
-<ul>
-<li>함수 실행 방식, 레지스터 활요으, 시스템 콜 실행, 라이브러리 링크 방식등을 제공 한다. </li>
-<li>ABI가 호환되면 재 컴파일없이 동작한다. </li>
-<li>컴파일러, 링커(라이브러리 링크), 툴체인(컴파일러를 만드는 프로그램) 에서 제공한다. </li>
-</ul>
-<p>각각의 업체에서 이것을 정의해서 표준화 할 필요가 있었다. </p>
-<h3 id="POSIX"><a href="#POSIX" class="headerlink" title="POSIX"></a>POSIX</h3><p>유닉스 시스템 프로그래밍 인터페이스 표준이다.<br>IEEE에서 표준화를 계속해서 시도하고 있고, 리차드 스톨만이 POSIX를 표준안 이름으로 제안했다. </p>
-<h3 id="C-언어-표준"><a href="#C-언어-표준" class="headerlink" title="C 언어 표준"></a>C 언어 표준</h3><p>다양한 C 언어의 변종이 존재한다. 그래서 ANSI에서 ANSI C 표준을 정립했고 리눅스에서는 POSIX 와 ANSI C 를 지원한다. </p>
-<h3 id="시스템-프로그래밍과-버전"><a href="#시스템-프로그래밍과-버전" class="headerlink" title="시스템 프로그래밍과 버전"></a>시스템 프로그래밍과 버전</h3><p>하위 시스템 레벨은 거의 변하지 않고 유지되고 있음. 하위 레벨까지 잘 알고 있으면 상위 레벨에서 동작하는 프로그램을 만들지라도 성능 향상에 도움을 줌. </p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/09/12/system-programing/210817-%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4%20%EA%B4%80%EB%A6%AC/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JayoonKoo">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="티끌모아 태산">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/09/12/system-programing/210817-%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4%20%EA%B4%80%EB%A6%AC/" class="post-title-link" itemprop="url">프로세스 관리</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-09-12 23:46:02" itemprop="dateCreated datePublished" datetime="2021-09-12T23:46:02+09:00">2021-09-12</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/CS/" itemprop="url" rel="index"><span itemprop="name">CS</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="프로세스-관리"><a href="#프로세스-관리" class="headerlink" title="프로세스 관리"></a>프로세스 관리</h1><h2 id="프로세스-ID"><a href="#프로세스-ID" class="headerlink" title="프로세스 ID"></a>프로세스 ID</h2><p>각각의 프로세스는 proess id 라고 하는 PID 를 갖는다. </p>
-<ul>
-<li>pid : 해당 시점에 unique한 pid</li>
-<li>최대 값은 2의 15승인 32768( 부호형 16비트 정수값)</li>
-<li>ppid : 부모 프로세스의 pid 값</li>
-</ul>
-<p><code>ps -ef</code>를 통해 pid, ppid 및 프로세스스 정보 확인</p>
-<p><code>vi /etc/passwd</code>를 프로세스와 소유자를 관리함. </p>
-<p>예시</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root:x:0:0:root:/root:/bin/bash</span><br></pre></td></tr></table></figure>
-<ul>
-<li>사용자명 : root</li>
-<li>패스워드 : x (없음)</li>
-<li>사용자 ID : 0</li>
-<li>그룹 ID : 0</li>
-<li>사용자 정보 : root</li>
-<li>홈 디렉토리 : /root</li>
-<li>쉘 환경 : /bin/bash</li>
-</ul>
-<h2 id="pid-및-ppid-확인"><a href="#pid-및-ppid-확인" class="headerlink" title="pid 및 ppid 확인"></a>pid 및 ppid 확인</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sys/types.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;unistd.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;pid=%d\n&quot;</span>, getpid());</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;ppid=%d\n&quot;</span>, getppid());</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ gcc test.c -o test</span><br><span class="line">$ ./test</span><br><span class="line"></span><br><span class="line">pid=22440</span><br><span class="line">ppid=22164</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/7/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/9/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+    <a class="extend prev" rel="prev" href="/page/7/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" href="/page/9/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 </div>

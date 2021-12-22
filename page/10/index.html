@@ -85,7 +85,7 @@
         <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
         <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">11</span></a></li>
         <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">9</span></a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">119</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">121</span></a></li>
   </ul>
 </nav>
 
@@ -129,7 +129,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">119</span>
+          <span class="site-state-item-count">121</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -180,6 +180,249 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/08/30/typeScript/210813-type%20system/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JayoonKoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="티끌모아 태산">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/08/30/typeScript/210813-type%20system/" class="post-title-link" itemprop="url">type system</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-08-30 02:32:06" itemprop="dateCreated datePublished" datetime="2021-08-30T02:32:06+09:00">2021-08-30</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/typeScript/" itemprop="url" rel="index"><span itemprop="name">typeScript</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="type-system"><a href="#type-system" class="headerlink" title="type system"></a>type system</h1><h2 id="작성자와-사용자의-관점으로-코드-바라보기"><a href="#작성자와-사용자의-관점으로-코드-바라보기" class="headerlink" title="작성자와 사용자의 관점으로 코드 바라보기"></a>작성자와 사용자의 관점으로 코드 바라보기</h2><h3 id="타입-시스템"><a href="#타입-시스템" class="headerlink" title="타입 시스템"></a>타입 시스템</h3><p>컴파일러가 자동을 타입을 추론하는 시스템이 있고 컴파일러에게 사용하는 타입을 명시적으로 지정하는 시스템이 있다. </p>
+<h3 id="타입-스크립트의-타입-시스템"><a href="#타입-스크립트의-타입-시스템" class="headerlink" title="타입 스크립트의 타입 시스템"></a>타입 스크립트의 타입 시스템</h3><p>두가지 모두 가능하다. </p>
+<h4 id="타입이란-해당-변수가-할-수-있는-일을-결정한다"><a href="#타입이란-해당-변수가-할-수-있는-일을-결정한다" class="headerlink" title="타입이란 해당 변수가 할 수 있는 일을 결정한다."></a>타입이란 해당 변수가 할 수 있는 일을 결정한다.</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f1</span>(<span class="params">a</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> a;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>a 가 할 수 있는 일은 a 의 타입이 결정한다.</p>
+<h4 id="함수-사용법에-대한-오해를-야기한다"><a href="#함수-사용법에-대한-오해를-야기한다" class="headerlink" title="함수 사용법에 대한 오해를 야기한다."></a>함수 사용법에 대한 오해를 야기한다.</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f2</span>(<span class="params">a</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> a * <span class="number">38</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(f2(<span class="number">10</span>)) <span class="comment">// 380</span></span><br><span class="line"><span class="built_in">console</span>.log(f2(<span class="string">&#x27;Mark&#x27;</span>)) <span class="comment">// NaN</span></span><br></pre></td></tr></table></figure>
+<p>사용자가 직접 f2를 까보지 않는 이상 함수 인수로 뭘 넣어야 하는지 모를 수 있다. </p>
+<p>이는 타입 스크립트의 추론에만 의지하는 경우도 마찬가지이다. </p>
+<h4 id="noImplicitAny-옵션"><a href="#noImplicitAny-옵션" class="headerlink" title="noImplicitAny 옵션"></a>noImplicitAny 옵션</h4><p>타입을 명시적으로 작성하지 않아 any 로 추론되면 에러를 발생 시켜서 타입을 명시적으로 작성하도록 함. </p>
+<h4 id="nuber-타입으로-추론된-리턴-타입"><a href="#nuber-타입으로-추론된-리턴-타입" class="headerlink" title="nuber 타입으로 추론된 리턴 타입"></a>nuber 타입으로 추론된 리턴 타입</h4><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">ft</span>(<span class="params">a: <span class="built_in">number</span></span>) </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (a &gt; <span class="number">0</span>) &#123;</span><br><span class="line">		<span class="keyword">return</span> a * <span class="number">38</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(f4(<span class="number">5</span>)); <span class="comment">// 190</span></span><br><span class="line"><span class="built_in">console</span>.log(f4(-<span class="number">5</span>) + <span class="number">5</span>); <span class="comment">// NaN</span></span><br></pre></td></tr></table></figure>
+<p>a에 음수를 넣었기 때문에 undefined 가 리턴되는데 typescript 에서는 undefined도 number안에 속한 타입으로 추론한다.</p>
+<h4 id="strictNullChecks-옵션을-켜면"><a href="#strictNullChecks-옵션을-켜면" class="headerlink" title="strictNullChecks 옵션을 켜면"></a>strictNullChecks 옵션을 켜면</h4><p>모든 타입에 자동으로 포함되어 있는 null 과 undefined를 제거 한다.<br>무조건 켜야 함.</p>
+<p>옵션을 켜게 되면 f4의 결과는 더이상 number 가 아니라 <code>number | undefined</code> 가 된다. 따라서 f4의 결과와 number를 더하기 할때에 오류가 발생한다. </p>
+<p>그런데 5를 넣은 경우에도 이는 마찬가지이다. 런타임에서 두가지 모두 가능하기 때문에 typescript 에서는 <code>undefined</code> 일때는 에러를 던진다던지 하는 처리를 하는것을 권장한다. </p>
+<h4 id="리턴을-명시적으로-작성"><a href="#리턴을-명시적으로-작성" class="headerlink" title="리턴을 명시적으로 작성"></a>리턴을 명시적으로 작성</h4><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f4</span>(<span class="params">a: <span class="built_in">number</span></span>): <span class="title">number</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (a&gt; <span class="number">0</span>) &#123;</span><br><span class="line">		<span class="keyword">return</span> a* <span class="number">38</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>이렇게 해도 오류가 발생 else인 겨웅에 리턴은 undefined 이기 때문이다. </p>
+<h4 id="noImplicitReturns"><a href="#noImplicitReturns" class="headerlink" title="noImplicitReturns"></a>noImplicitReturns</h4><p>옵션을 켜면 함수 내에서 모든 코드가 값을 리턴하지 않으면 컴파일 에러를 발생 시킨다. </p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f4</span>(<span class="params">a: <span class="built_in">number</span></span>) </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (a&gt; <span class="number">0</span>) &#123;</span><br><span class="line">		<span class="keyword">return</span> a* <span class="number">38</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>에러 발생 return이 code path 존재. </p>
+<h4 id="매개-변수가-object-가-들어오면-object-literal"><a href="#매개-변수가-object-가-들어오면-object-literal" class="headerlink" title="매개 변수가 object 가 들어오면 object literal"></a>매개 변수가 object 가 들어오면 object literal</h4><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f7</span>(<span class="params">a: &#123;name: <span class="built_in">string</span>, age: <span class="built_in">number</span>&#125;</span>): <span class="title">string</span> </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;a.name&#125;</span>이고 나이는 <span class="subst">$&#123;a.age&#125;</span>`</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="나만의-타입을-만드는-방법"><a href="#나만의-타입을-만드는-방법" class="headerlink" title="나만의 타입을 만드는 방법"></a>나만의 타입을 만드는 방법</h4><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> PersonInterface &#123;</span><br><span class="line">	<span class="attr">name</span>: <span class="built_in">string</span>;</span><br><span class="line">	age: <span class="built_in">number</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> PersonTypeAlias = &#123;</span><br><span class="line">	<span class="attr">name</span>: <span class="built_in">string</span>;</span><br><span class="line">	age: <span class="built_in">number</span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="Structural-Type-System-vs-Nominal-Type-System"><a href="#Structural-Type-System-vs-Nominal-Type-System" class="headerlink" title="Structural Type System vs Nominal Type System"></a>Structural Type System vs Nominal Type System</h2><p>nominal type system 은 이름이 다르면 다른 타입으로 여긴다. 반면에<br>타입 스트립트는 structural type system 이다.<br>따라서, 구조가 같으면 같은 타입으로 여긴다. </p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> IPerson &#123;</span><br><span class="line">	<span class="attr">name</span>: <span class="built_in">string</span>;</span><br><span class="line">	age: <span class="built_in">number</span>;</span><br><span class="line">	speak(): <span class="built_in">string</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> PersonType = &#123;</span><br><span class="line">	<span class="attr">name</span>: <span class="built_in">string</span>;</span><br><span class="line">	age: <span class="built_in">number</span>;</span><br><span class="line">	speak(): <span class="built_in">string</span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> personInterface: Iperson = &#123;&#125; <span class="keyword">as</span> <span class="built_in">any</span>;</span><br><span class="line"><span class="keyword">let</span> personType: PersonType = &#123;&#125; <span class="keyword">as</span> <span class="built_in">any</span>;</span><br><span class="line"></span><br><span class="line">personInterface = personType;</span><br><span class="line">personType = personInterface;</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="type-호환성-Type-Compatibility"><a href="#type-호환성-Type-Compatibility" class="headerlink" title="type 호환성 (Type Compatibility)"></a>type 호환성 (Type Compatibility)</h2><p>서브타임과 슈퍼타입</p>
+<p>슈퍼 타입 안에 서브타입이 있기 때문에 서브타입은 슈퍼 타입으로 넣을 수 있다. 하지만 서브타입 변수에 슈퍼타입에 변수를 할당하려고 하면 할수 없다. </p>
+<p>array 는 object 의 서브 타입이다. 따라서 object 타입에 변수에 array 타입 변수를 할당하는것은 가능하지만 서브타입인 array 변수에 object 타입을 할당하는 것은 불가능하다. </p>
+<p>number 배열과 number로 이루어진 튜플이 있다고 할때 number 배열은 number 튜플에 슈퍼 타입이 되고 튜플은 서브 타입이 된다.<br>따라서 number 배열에 튜플 타입을 할당할수 있지만 반대로 튜플 타입에 number 배열 을 할당할 수 는 없다. </p>
+<p>any는 모든 타입의 슈퍼 타입이다. 하지만 이친구는 이상하게도 서브 타입에 할당할 수 도 있다. </p>
+<p>never 타입은 number 타입의 서브 타입이다. number 타입에 never 타입에 변수를 할당하는 것은 가능하지만 never 타입의 변수에 number 타입에 변수를 할당하는 것은 불가능하다.</p>
+<p>상속관계에서 상속 받는 관계에 있는 클래스는 서브 타입이 된다. 상속해 주는 클래스에 상속 받는 클래스를 할당할 수는 있지만 상속 해주는 클래스를 상속 받는 클래스로 할당하려면 오류가 발생한다. 사실 확장한 메서드가 없기 때문에 구조도 다르다. </p>
+<h3 id="공변"><a href="#공변" class="headerlink" title="공변"></a>공변</h3><p>같거나 서브 타입인 경우, 할당이 가능하다. </p>
+<h3 id="반병"><a href="#반병" class="headerlink" title="반병"></a>반병</h3><p>함수의 매개변수 타입만 같거나 슈퍼타입인 경우, 할당이 가능하다.</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span></span>&#123;&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Developer</span> <span class="keyword">extends</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="title">coding</span>(<span class="params"></span>)</span> &#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">StartupDevloper</span> <span class="keyword">extends</span> <span class="title">Developer</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="title">burning</span>(<span class="params"></span>)</span> &#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">tellme</span>(<span class="params">f: (d: Developer) =&gt; Developer</span>) </span>&#123;&#125;</span><br><span class="line"></span><br><span class="line">tellme(<span class="function"><span class="keyword">function</span> <span class="title">dToD</span>(<span class="params">d: Developer</span>): <span class="title">Developer</span> </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">new</span> Developer();</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">tellme(<span class="function"><span class="keyword">function</span> <span class="title">pToD</span>(<span class="params">d: Person</span>): <span class="title">Developer</span> </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">new</span> Developer();</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">tellme(<span class="function"><span class="keyword">function</span> <span class="title">sToD</span>(<span class="params">d: StartupDeveloper</span>): <span class="title">Developer</span> </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">new</span> Developer();</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>strictFunctionTypes 옵션을 켜면 함수를 할당할 시에 함수의 매개변수 타입이 같거나 슈퍼타입인 경우가 아닌 경우, 에러를 통해 경고한다. </p>
+<p>이 옵션을 키면 마지막 줄에 tellme 는 에러일 것이다. </p>
+<h2 id="타입-별칭-Type-Alias"><a href="#타입-별칭-Type-Alias" class="headerlink" title="타입 별칭 (Type Alias)"></a>타입 별칭 (Type Alias)</h2><p>만들어진 타입의 refer로 사용함. 타입을 만드는것은 아니다. </p>
+<h3 id="Aliasing-Primitive"><a href="#Aliasing-Primitive" class="headerlink" title="Aliasing Primitive"></a>Aliasing Primitive</h3><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> myStringType = <span class="built_in">string</span>;</span><br><span class="line"><span class="keyword">const</span> str = <span class="string">&#x27;world&#x27;</span>;</span><br><span class="line"><span class="keyword">let</span> myStr: MyStringType = <span class="string">&#x27;hello&#x27;</span>;</span><br><span class="line">myStr = str;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Aliasing-Union-Type"><a href="#Aliasing-Union-Type" class="headerlink" title="Aliasing Union Type"></a>Aliasing Union Type</h3><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> person: <span class="built_in">string</span> | <span class="built_in">number</span> = <span class="number">0</span>;</span><br><span class="line">person = <span class="string">&#x27;Mark&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> StringOrNumber = <span class="built_in">string</span> | <span class="built_in">number</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> another: StringOrNumber = <span class="number">0</span>;</span><br><span class="line">another = <span class="string">&#x27;Anna&#x27;</span>;</span><br></pre></td></tr></table></figure>
+<p>타이핑 해야 하는 야이 줄어들 수 있다. </p>
+<h3 id="Aliasing-Tupele"><a href="#Aliasing-Tupele" class="headerlink" title="Aliasing Tupele"></a>Aliasing Tupele</h3><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> PersonTuple = [<span class="built_in">string</span>, <span class="built_in">number</span>];</span><br></pre></td></tr></table></figure>
+
+<h3 id="Aliasing-Function"><a href="#Aliasing-Function" class="headerlink" title="Aliasing Function"></a>Aliasing Function</h3><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> EatType = <span class="function">(<span class="params">food: <span class="built_in">string</span></span>) =&gt;</span> <span class="built_in">void</span>;</span><br></pre></td></tr></table></figure>
+<p>어떤 타입이 타입으로서의 존재가치와 목적이 명확하면 <code>interface</code>를 사용하고 단지 가르킬 뿐이라면 <code>type</code>를 사용함.</p>
+<p>물론 기술적으로도 차이가 있음. </p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/08/30/typeScript/210818-interface/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JayoonKoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="티끌모아 태산">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/08/30/typeScript/210818-interface/" class="post-title-link" itemprop="url">interface</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-08-30 02:32:06" itemprop="dateCreated datePublished" datetime="2021-08-30T02:32:06+09:00">2021-08-30</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/typeScript/" itemprop="url" rel="index"><span itemprop="name">typeScript</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="interface"><a href="#interface" class="headerlink" title="interface"></a>interface</h1><h2 id="데이터-타입을-인터페이스로-만들기"><a href="#데이터-타입을-인터페이스로-만들기" class="headerlink" title="데이터 타입을 인터페이스로 만들기"></a>데이터 타입을 인터페이스로 만들기</h2><p>인터페이스로 타입을 정의할 수 있다.</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> Person1 &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="built_in">string</span>;</span><br><span class="line">  age: <span class="built_in">number</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">hello1</span>(<span class="params">person: Person1</span>): <span class="title">void</span> </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`안녕하세요! <span class="subst">$&#123;person.name&#125;</span> 입니다.`</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> p1: Person1 = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&quot;Mark&quot;</span>,</span><br><span class="line">  <span class="attr">age</span>: <span class="number">27</span>,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">hello1(p1);</span><br></pre></td></tr></table></figure>
+
+<h2 id="optional-Property"><a href="#optional-Property" class="headerlink" title="optional Property"></a>optional Property</h2><p>값으로 받을 수도 있고 아닐 수도 있는 속성을 정의할 수 있다.</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> Person2 &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="built_in">string</span>;</span><br><span class="line">  age?: <span class="built_in">number</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">hello2</span>(<span class="params">person: Person2</span>): <span class="title">void</span> </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`안녕하세요! <span class="subst">$&#123;person.name&#125;</span> 입니다.`</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">hello2(&#123; <span class="attr">name</span>: <span class="string">&quot;Koo&quot;</span>, <span class="attr">age</span>: <span class="number">39</span> &#125;);</span><br><span class="line">hello2(&#123; <span class="attr">name</span>: <span class="string">&quot;Koo&quot;</span> &#125;);</span><br></pre></td></tr></table></figure>
+
+<p><code>age?</code> 에서 ? 를 붙히면 받을수도 있고 안받을 수 도 있는 타입이 된다. <code>age: number | undefined</code>와 같아 진다.</p>
+<h3 id="인덱서블-타입"><a href="#인덱서블-타입" class="headerlink" title="인덱서블 타입"></a>인덱서블 타입</h3><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> Person3 &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="built_in">string</span>;</span><br><span class="line">  age?: <span class="built_in">number</span>;</span><br><span class="line">  [index: <span class="built_in">string</span>]: <span class="built_in">any</span>; <span class="comment">// 어떤 이름에 프로퍼티가 와도 괜찮음.</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">hello3</span>(<span class="params">person: Person3</span>): <span class="title">void</span> </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`안녕하세요! <span class="subst">$&#123;person.name&#125;</span> 입니다.`</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> p31: Person3 = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&quot;koo&quot;</span>,</span><br><span class="line">  <span class="attr">age</span>: <span class="number">37</span>,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> p32: Person3 = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&quot;Anna&quot;</span>,</span><br><span class="line">  <span class="attr">systers</span>: [<span class="string">&quot;Sung&quot;</span>, <span class="string">&quot;Chan&quot;</span>],</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> p33: Person3 = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&quot;Bokdaengi&quot;</span>,</span><br><span class="line">  <span class="attr">father</span>: p31,</span><br><span class="line">  <span class="attr">mother</span>: p32,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">hello3(p33);</span><br></pre></td></tr></table></figure>
+
+<p>인덱스에 타입을 지정해 주어서 어떤것도 받을 수 있도록 하려면 <code>[index: string]</code> 과 같이 사용한다.</p>
+<h2 id="function-interface"><a href="#function-interface" class="headerlink" title="function interface"></a>function interface</h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> Person4 &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="built_in">string</span>;</span><br><span class="line">  age: <span class="built_in">number</span>;</span><br><span class="line">  hello(): <span class="built_in">void</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> p41: Person4 = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&quot;Koo&quot;</span>,</span><br><span class="line">  <span class="attr">age</span>: <span class="number">27</span>,</span><br><span class="line">  <span class="attr">hello</span>: <span class="function"><span class="keyword">function</span> (<span class="params"></span>): <span class="title">void</span> </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">`안녕하세요. <span class="subst">$&#123;<span class="built_in">this</span>.name&#125;</span> 입니다.`</span>);</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> p42: Person4 = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&quot;Koo&quot;</span>,</span><br><span class="line">  <span class="attr">age</span>: <span class="number">27</span>,</span><br><span class="line">  hello(): <span class="built_in">void</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">`안녕하세요. <span class="subst">$&#123;<span class="built_in">this</span>.name&#125;</span> 입니다.`</span>);</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// const p43: Person4 = &#123;</span></span><br><span class="line"><span class="comment">// 	name: &quot;Koo&quot;,</span></span><br><span class="line"><span class="comment">// 	age: 27,</span></span><br><span class="line"><span class="comment">// 	hello: (): void =&gt; &#123;</span></span><br><span class="line"><span class="comment">// 		console.log(`안녕하세요. $&#123;this.name&#125; 입니다.`);</span></span><br><span class="line"><span class="comment">// 	&#125;</span></span><br><span class="line"><span class="comment">// &#125;</span></span><br><span class="line"></span><br><span class="line">p41.hello();</span><br><span class="line">p42.hello();</span><br></pre></td></tr></table></figure>
+
+<p>함수로 선언하는 방법에는 3가지 정도 있다.</p>
+<ul>
+<li><code>hello: function(): void &#123;&#125;</code></li>
+<li><code>hello(): void &#123;&#125;</code></li>
+<li><code>hello: (): void =&gt; &#123;&#125;</code> : 화살표 함수를 사용할 경우 <code>this</code>를 사용하지 못한다.</li>
+</ul>
+<h2 id="class-implements"><a href="#class-implements" class="headerlink" title="class implements"></a>class implements</h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> IPerson1 &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="built_in">string</span>;</span><br><span class="line">  age?: <span class="built_in">number</span>;</span><br><span class="line">  hello(): <span class="built_in">void</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> <span class="title">implements</span> <span class="title">IPerson1</span> </span>&#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="built_in">string</span>;</span><br><span class="line">  age?: <span class="built_in">number</span> | <span class="literal">undefined</span>;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">name: <span class="built_in">string</span></span>)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.name = name;</span><br><span class="line">  &#125;</span><br><span class="line">  hello(): <span class="built_in">void</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">`안녕하세요 <span class="subst">$&#123;<span class="built_in">this</span>.name&#125;</span> 입니다.`</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> person: IPerson1 = <span class="keyword">new</span> Person(<span class="string">&quot;Koo&quot;</span>);</span><br><span class="line">person.hello();</span><br></pre></td></tr></table></figure>
+
+<p>객체지향 언어에서 구현하듯이 클래스에서 interface를 구현할 수 있다. interface를 구현하는 class 는 interface 안에 요소를 구현해야 한다. 반드시 받아야 하는 변수에 경우 생성자를 통해 받지 않으면 에러를 발생시킨다.</p>
+<h2 id="interface-extends"><a href="#interface-extends" class="headerlink" title="interface extends"></a>interface extends</h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> IPerson2 &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="built_in">string</span>;</span><br><span class="line">  age?: <span class="built_in">number</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">interface</span> IKorean <span class="keyword">extends</span> IPerson2 &#123;</span><br><span class="line">  <span class="attr">city</span>: <span class="built_in">string</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> k: IKorean = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&quot;Koo&quot;</span>,</span><br><span class="line">  <span class="attr">city</span>: <span class="string">&quot;부천&quot;</span>,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>interface 에 다른 interface를 상속받을 수 있다.</p>
+<h2 id="function-interface-1"><a href="#function-interface-1" class="headerlink" title="function interface"></a>function interface</h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> HelloPerson &#123;</span><br><span class="line">  (name: <span class="built_in">string</span>, age?: <span class="built_in">number</span>): <span class="built_in">void</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> helloPerson: HelloPerson = <span class="function">(<span class="params">...args</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">typeof</span> args[<span class="number">1</span>] === <span class="string">&quot;number&quot;</span>) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">`안녕하세요. <span class="subst">$&#123;args[<span class="number">0</span>]&#125;</span> 입니다. 나이는 <span class="subst">$&#123;args[<span class="number">1</span>]&#125;</span> 입니다.`</span>);</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`안녕하세요. <span class="subst">$&#123;args[<span class="number">0</span>]&#125;</span> 입니다.`</span>);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">helloPerson(<span class="string">&quot;mark&quot;</span>, <span class="number">39</span>);</span><br></pre></td></tr></table></figure>
+
+<p>실제 타입 검사는 구현하는 함수에서가 아니라 인터페이스에서 한다. 다음과 같은 경우 에러를 발생시킨다.</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> HelloPerson &#123;</span><br><span class="line">  (name: <span class="built_in">string</span>, age?: <span class="built_in">number</span>): <span class="built_in">void</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> helloPerson: HelloPerson = <span class="function">(<span class="params">name: <span class="built_in">string</span>, age: <span class="built_in">number</span></span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`안녕하세요. <span class="subst">$&#123;name&#125;</span> 입니다.`</span>);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>잘 생각해보면 helloPerson은 interface <code>HelloPerson</code>에 의해서 <code>age</code>를 인수로 받을 수도 있고 안받을수도 있다. 그런데 함수를 구현하는 부분에서 무조건 <code>age</code>를 받도록 구현했기 때문에 논리적으로 맞지 않다.</p>
+<h2 id="Readonly-Interface-Properties"><a href="#Readonly-Interface-Properties" class="headerlink" title="Readonly Interface Properties"></a>Readonly Interface Properties</h2><p>읽기 전용 속성으로 만들면 값을 생성하고 나서 수정할 수 없다.</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> Person8 &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="built_in">string</span>;</span><br><span class="line">  age?: <span class="built_in">number</span>;</span><br><span class="line">  <span class="keyword">readonly</span> gender: <span class="built_in">string</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> p81: Person8 = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&quot;Mark&quot;</span>,</span><br><span class="line">  <span class="attr">gender</span>: <span class="string">&quot;male&quot;</span>,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// p81.gender = &quot;female&quot;;</span></span><br></pre></td></tr></table></figure>
+
+<p>주석 부분에 p81의 gender 를 바꾸려고 하면 에러가 발생한다.</p>
+<h2 id="type-alias-vs-interface"><a href="#type-alias-vs-interface" class="headerlink" title="type alias vs interface"></a>type alias vs interface</h2><p>몇가지 차이점이 있다.</p>
+<p>함수</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> EatType = <span class="function">(<span class="params">food: <span class="built_in">string</span></span>) =&gt;</span> <span class="built_in">void</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">interface</span> IEatType &#123;</span><br><span class="line">  (food: <span class="built_in">string</span>): <span class="built_in">void</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>array를 만들때</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> PersonList = <span class="built_in">string</span>[];</span><br><span class="line"></span><br><span class="line"><span class="keyword">interface</span> IPersonList &#123;</span><br><span class="line">  [index: <span class="built_in">number</span>]: <span class="built_in">string</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>intersetction</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> ErrorHandling &#123;</span><br><span class="line">  <span class="attr">success</span>: <span class="built_in">boolean</span>;</span><br><span class="line">  error?: &#123; <span class="attr">message</span>: <span class="built_in">string</span> &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">interface</span> ArtistsData &#123;</span><br><span class="line">  <span class="attr">srtists</span>: &#123; <span class="attr">name</span>: <span class="built_in">string</span> &#125;[];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> ArtistsResponseType = ArtistsData &amp; ErrorHandling;</span><br><span class="line"></span><br><span class="line"><span class="keyword">interface</span> IArtistsResponseType <span class="keyword">extends</span> ArtistsData, ErrorHandling &#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>unoon type</strong></p>
+<p>유니온 타입은 인터페이스에서 상속 받을 수 없다. 또한 클래스에서 구현하는것도 불가능하다.</p>
+<p><strong>Declaration Merging</strong></p>
+<p>interface에 경우 같은 이름에 인터페이스를 만들면 머지 되서 사용할때는 하나의 인터페이스 처럼 사용할 수 있음.</p>
+<p>type alias는 같은 이름으로 생성하면 에러가 발생한다.</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1065,245 +1308,8 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/08/15/modernJs/210728-%EC%BB%A4%EC%8A%A4%ED%85%80%20%EC%97%90%EB%9F%AC%EC%99%80%20%EC%97%90%EB%9F%AC%20%ED%99%95%EC%9E%A5/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JayoonKoo">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="티끌모아 태산">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/08/15/modernJs/210728-%EC%BB%A4%EC%8A%A4%ED%85%80%20%EC%97%90%EB%9F%AC%EC%99%80%20%EC%97%90%EB%9F%AC%20%ED%99%95%EC%9E%A5/" class="post-title-link" itemprop="url">커스텀 에러와 에러 확장</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-08-15 19:40:25" itemprop="dateCreated datePublished" datetime="2021-08-15T19:40:25+09:00">2021-08-15</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="커스텀-에러와-에러-확장"><a href="#커스텀-에러와-에러-확장" class="headerlink" title="커스텀 에러와 에러 확장"></a>커스텀 에러와 에러 확장</h1><p>개발하다면 자체 에러를 만드는 것이 직관적이기 때문에 필요할 때가 있다. </p>
-<p>직접 에러 클래스를 만든다면 name, message 프로퍼티를 만들어야 하고 가능하다면 stack 프로퍼티도 지원해야 한다. 물론 추가 프로퍼티 사용은 무엇이든 가능하다.</p>
-<p><code>throw</code> 인수엔 무엇이든 사용 가능해서 꼭 <code>Error</code> 객체를 상속받아야 하는것은 아니지만, <code>Error</code> 객체를 상속받으면 <code>obj instance Error</code>를 사용하여 에러 여부를 확인하는것이 가능하기 때문에 그냥 만드는 것보다 <code>Error</code> 객체를 상속받아서 만드는것을 추천한다. </p>
-<br/>
-
-<h2 id="에러-확장하기"><a href="#에러-확장하기" class="headerlink" title="에러 확장하기"></a>에러 확장하기</h2><p>user 정보를 읽는 <code>readUser(json)</code>을 만들것이다.</p>
-<p><code>readUser(json)</code>은 <code>JSON.parse()</code> 를 내부적으로 사용할거라 형식에 맞지 않으면 <code>SyntaxError</code>발생.</p>
-<p>하지만 user라면 반드시 가져야 할 name 이나 age 같은 속성이 없을때는 이런 에러를 던지면 안된다. 따로 데이터를 검증할 것인데 이때 발생하는 에러를 <code>validationError</code>라고 만들것이다. </p>
-<p>먼저 <code>Error</code>를 상속 받기 전에 어떤 객체인지 살펴보자. </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 자바스크립트 자체 내장 에러 클래스 Error의 &#x27;슈도 코드&#x27;</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Error</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">message</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.message = message;</span><br><span class="line">    <span class="built_in">this</span>.name = <span class="string">&quot;Error&quot;</span>; <span class="comment">// (name은 내장 에러 클래스마다 다릅니다.)</span></span><br><span class="line">    <span class="built_in">this</span>.stack = <span class="xml"><span class="tag">&lt;<span class="name">call</span> <span class="attr">stack</span>&gt;</span>;  // stack은 표준은 아니지만, 대다수 환경이 지원합니다.</span></span><br><span class="line"><span class="xml">  &#125;</span></span><br><span class="line"><span class="xml">&#125;</span></span><br></pre></td></tr></table></figure>
-
-<p>상속 받기</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ValidationError</span> <span class="keyword">extends</span> <span class="title">Error</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">message</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">super</span>(message); <span class="comment">// (1)</span></span><br><span class="line">    <span class="built_in">this</span>.name = <span class="string">&quot;ValidationError&quot;</span>; <span class="comment">// (2)</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">throw</span> <span class="keyword">new</span> ValidationError(<span class="string">&quot;에러 발생!&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">  test();</span><br><span class="line">&#125; <span class="keyword">catch</span>(err) &#123;</span><br><span class="line">  alert(err.message); <span class="comment">// 에러 발생!</span></span><br><span class="line">  alert(err.name); <span class="comment">// ValidationError</span></span><br><span class="line">  alert(err.stack); <span class="comment">// 각 행 번호가 있는 중첩된 호출들의 목록</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><code>message</code> 프로퍼티는 부모 생성자의 의해 설정된다. </p>
-<p>name 프로퍼티는 ‘Error’ 로 설정되는데 원하는 이름으로 재설정 해준다.</p>
-<p>이제 <code>readUser(json)</code> 안에서 <code>ValidationError</code>를 사용해 보자.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ValidationError</span> <span class="keyword">extends</span> <span class="title">Error</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">message</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">super</span>(message);</span><br><span class="line">    <span class="built_in">this</span>.name = <span class="string">&quot;ValidationError&quot;</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 사용법</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">readUser</span>(<span class="params">json</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> user = <span class="built_in">JSON</span>.parse(json);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (!user.age) &#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> ValidationError(<span class="string">&quot;No field: age&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (!user.name) &#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> ValidationError(<span class="string">&quot;No field: name&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> user;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// try..catch와 readUser를 함께 사용한 예시</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">  <span class="keyword">let</span> user = readUser(<span class="string">&#x27;&#123; &quot;age&quot;: 25 &#125;&#x27;</span>);</span><br><span class="line">&#125; <span class="keyword">catch</span> (err) &#123;</span><br><span class="line">  <span class="keyword">if</span> (err <span class="keyword">instanceof</span> ValidationError) &#123;</span><br><span class="line">    alert(<span class="string">&quot;Invalid data: &quot;</span> + err.message); <span class="comment">// Invalid data: No field: name</span></span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (err <span class="keyword">instanceof</span> <span class="built_in">SyntaxError</span>) &#123; <span class="comment">// (*)</span></span><br><span class="line">    alert(<span class="string">&quot;JSON Syntax Error: &quot;</span> + err.message);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">throw</span> err; <span class="comment">// 알려지지 않은 에러는 재던지기 합니다. (**)</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>에러 유형에 맞게 처리해 주었다.</p>
-<p>에러 유형은 instanceof 말고도 <code>err.name</code>으로 확인 가능하다.</p>
-<br/>
-
-<h2 id="더-깊게-상속하기"><a href="#더-깊게-상속하기" class="headerlink" title="더 깊게 상속하기"></a>더 깊게 상속하기</h2><p><code>ValidationError</code>는 너무 포괄적이니 필요한 프로퍼티가 없는 경우에 상세한 에러를 만들어서 상속 하도록 한다.</p>
-<p><code>PropertyRequiredError</code> 만들기.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ValidationError</span> <span class="keyword">extends</span> <span class="title">Error</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">message</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">super</span>(message);</span><br><span class="line">    <span class="built_in">this</span>.name = <span class="string">&quot;ValidationError&quot;</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">PropertyRequiredError</span> <span class="keyword">extends</span> <span class="title">ValidationError</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">property</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">super</span>(<span class="string">&quot;No property: &quot;</span> + property);</span><br><span class="line">    <span class="built_in">this</span>.name = <span class="string">&quot;PropertyRequiredError&quot;</span>;</span><br><span class="line">    <span class="built_in">this</span>.property = property;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 사용법</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">readUser</span>(<span class="params">json</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> user = <span class="built_in">JSON</span>.parse(json);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (!user.age) &#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> PropertyRequiredError(<span class="string">&quot;age&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (!user.name) &#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> PropertyRequiredError(<span class="string">&quot;name&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> user;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// try..catch와 readUser를 함께 사용하면 다음과 같습니다.</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">  <span class="keyword">let</span> user = readUser(<span class="string">&#x27;&#123; &quot;age&quot;: 25 &#125;&#x27;</span>);</span><br><span class="line">&#125; <span class="keyword">catch</span> (err) &#123;</span><br><span class="line">  <span class="keyword">if</span> (err <span class="keyword">instanceof</span> ValidationError) &#123;</span><br><span class="line">    alert(<span class="string">&quot;Invalid data: &quot;</span> + err.message); <span class="comment">// Invalid data: No property: name</span></span><br><span class="line">    alert(err.name); <span class="comment">// PropertyRequiredError</span></span><br><span class="line">    alert(err.property); <span class="comment">// name</span></span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (err <span class="keyword">instanceof</span> <span class="built_in">SyntaxError</span>) &#123;</span><br><span class="line">    alert(<span class="string">&quot;JSON Syntax Error: &quot;</span> + err.message);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">throw</span> err; <span class="comment">// 알려지지 않은 에러는 재던지기 합니다.</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><code>Error</code> 클래스를 상속받아 직접 커스텀한 에러들은 <code>this.name</code> 을 수동으로 할당해 주고 있다. </p>
-<p>이런 방법은 상당히 귀찮은 작업이 될 수 있다.</p>
-<p>이런걸 피하기 위해서는 기본 에러 클래스를 만들고 상속 받으면 된다. </p>
-<p>기본 에러 클래스는 <code>this.name = this.constructor.name</code> 을 추가해야 한다. </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyError</span> <span class="keyword">extends</span> <span class="title">Error</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">message</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">super</span>(message);</span><br><span class="line">    <span class="built_in">this</span>.name = <span class="built_in">this</span>.constructor.name;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ValidationError</span> <span class="keyword">extends</span> <span class="title">MyError</span> </span>&#123; &#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">PropertyRequiredError</span> <span class="keyword">extends</span> <span class="title">ValidationError</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">property</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">super</span>(<span class="string">&quot;No property: &quot;</span> + property);</span><br><span class="line">    <span class="built_in">this</span>.property = property;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 제대로 된 이름이 출력됩니다.</span></span><br><span class="line">alert( <span class="keyword">new</span> PropertyRequiredError(<span class="string">&quot;field&quot;</span>).name ); <span class="comment">// PropertyRequiredError</span></span><br></pre></td></tr></table></figure>
-
-<br/>
-
-<h2 id="예외-감싸기"><a href="#예외-감싸기" class="headerlink" title="예외 감싸기"></a>예외 감싸기</h2><p><code>readUser</code> 가 점점 커지면 에러도 다양해 질 것이고 <code>VallidationError</code> 는 이런 에러를 포함해야 할 것이다. </p>
-<p>그런데 이렇게 에러를 추가하다보면 처리하는 곳에서 분기별로 처리하는 코드를 늘려야 할까?</p>
-<p>대부분의 경우 그렇지 않다. 데이터를 읽었을때 에러 발생 여부만 알려주고 필요할때 세부 내용을 알려주는 방버을 사용한다.</p>
-<p>wrapping exception을 해보자.</p>
-<ol>
-<li>ReadError 만들기 </li>
-<li>ValidationError, SyntaxError 등의 에러는 readUser 내부에서 잡고 이때 ReadErrorㄹㄹ 생성.</li>
-<li>ReadError 객체의 cause 프로퍼티엔 실제 에러에 대한 참조 저장.</li>
-</ol>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ReadError</span> <span class="keyword">extends</span> <span class="title">Error</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">message, cause</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">super</span>(message);</span><br><span class="line">    <span class="built_in">this</span>.cause = cause;</span><br><span class="line">    <span class="built_in">this</span>.name = <span class="string">&#x27;ReadError&#x27;</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ValidationError</span> <span class="keyword">extends</span> <span class="title">Error</span> </span>&#123; <span class="comment">/*...*/</span> &#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">PropertyRequiredError</span> <span class="keyword">extends</span> <span class="title">ValidationError</span> </span>&#123; <span class="comment">/* ... */</span> &#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">validateUser</span>(<span class="params">user</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (!user.age) &#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> PropertyRequiredError(<span class="string">&quot;age&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (!user.name) &#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> PropertyRequiredError(<span class="string">&quot;name&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">readUser</span>(<span class="params">json</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> user;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    user = <span class="built_in">JSON</span>.parse(json);</span><br><span class="line">  &#125; <span class="keyword">catch</span> (err) &#123;</span><br><span class="line">    <span class="keyword">if</span> (err <span class="keyword">instanceof</span> <span class="built_in">SyntaxError</span>) &#123;</span><br><span class="line">      <span class="keyword">throw</span> <span class="keyword">new</span> ReadError(<span class="string">&quot;Syntax Error&quot;</span>, err);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">throw</span> err;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    validateUser(user);</span><br><span class="line">  &#125; <span class="keyword">catch</span> (err) &#123;</span><br><span class="line">    <span class="keyword">if</span> (err <span class="keyword">instanceof</span> ValidationError) &#123;</span><br><span class="line">      <span class="keyword">throw</span> <span class="keyword">new</span> ReadError(<span class="string">&quot;Validation Error&quot;</span>, err);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">throw</span> err;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">  readUser(<span class="string">&#x27;&#123;잘못된 형식의 json&#125;&#x27;</span>);</span><br><span class="line">&#125; <span class="keyword">catch</span> (e) &#123;</span><br><span class="line">  <span class="keyword">if</span> (e <span class="keyword">instanceof</span> ReadError) &#123;</span><br><span class="line">    alert(e);</span><br><span class="line">    <span class="comment">// Original error: SyntaxError: Unexpected token b in JSON at position 1</span></span><br><span class="line">    alert(<span class="string">&quot;Original error: &quot;</span> + e.cause);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">throw</span> e;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>이런 기법은 객체 지향 프로그래밍에서 널리 쓰이는 패턴임.</p>
-<p><a href="js/210728-%EC%BB%A4%EC%8A%A4%ED%85%80%20%EC%97%90%EB%9F%AC%EC%99%80%20%EC%97%90%EB%9F%AC%20%ED%99%95%EC%9E%A5/1.js">과제1</a><br>내장된 SyntaxError 클래스를 상속하는 FormatError 클래스를 만들어 봅시다.</p>
-<p>만들어진 클래스에서 message, name, stack를 참조할 수 있어야 합니다.</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/08/15/modernJs/210730-callback/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JayoonKoo">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="티끌모아 태산">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/08/15/modernJs/210730-callback/" class="post-title-link" itemprop="url">callback</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-08-15 19:40:25" itemprop="dateCreated datePublished" datetime="2021-08-15T19:40:25+09:00">2021-08-15</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="콜백"><a href="#콜백" class="headerlink" title="콜백"></a>콜백</h1><p>비동기적 처리에 대해서 </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">loadScript</span>(<span class="params">src</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// &lt;script&gt; 태그를 만들고 페이지에 태그를 추가합니다.</span></span><br><span class="line">  <span class="comment">// 태그가 페이지에 추가되면 src에 있는 스크립트를 로딩하고 실행합니다.</span></span><br><span class="line">  <span class="keyword">let</span> script = <span class="built_in">document</span>.createElement(<span class="string">&#x27;script&#x27;</span>);</span><br><span class="line">  script.src = src;</span><br><span class="line">  <span class="built_in">document</span>.head.append(script);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 해당 경로에 위치한 스크립트를 불러오고 실행함</span></span><br><span class="line">loadScript(<span class="string">&#x27;/my/script.js&#x27;</span>);</span><br></pre></td></tr></table></figure>
-
-<p>loadScript 는 비동기적으로 실행된다. </p>
-<p><code>loadScript()</code>아래에 있는 코드들은 loadScript 가 실행되는 것을 기달려 주지 않고 바로 실행 됨. </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">loadScript(<span class="string">&#x27;/my/script.js&#x27;</span>); <span class="comment">// script.js엔 &quot;function newFunction() &#123;…&#125;&quot;이 있습니다.</span></span><br><span class="line"></span><br><span class="line">newFunction(); <span class="comment">// 함수가 존재하지 않는다는 에러가 발생합니다!</span></span><br></pre></td></tr></table></figure>
-<p>newFunction은 loadScript 안에 있으니가 아직 생성 되지 않았을 것이다. </p>
-<p>현재로서는 loadScript가 완료 됬는지 알 수 있는 방법이 없다. </p>
-<p>loadScript가 완료되면 원하는 함수를 실행 시키기 위해서 콜백 함수를 추가 행야 한다. </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">loadScript</span>(<span class="params">src, callback</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> script = <span class="built_in">document</span>.createElement(<span class="string">&#x27;script&#x27;</span>);</span><br><span class="line">  script.src = src;</span><br><span class="line"></span><br><span class="line">  script.onload = <span class="function">() =&gt;</span> callback(script);</span><br><span class="line"></span><br><span class="line">  <span class="built_in">document</span>.head.append(script);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">loadScript(<span class="string">&#x27;/my/script.js&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 콜백 함수는 스크립트 로드가 끝나면 실행됩니다.</span></span><br><span class="line">  newFunction(); <span class="comment">// 이제 함수 호출이 제대로 동작합니다.</span></span><br><span class="line">  ...</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<p>실제 사용 예시</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">loadScript</span>(<span class="params">src, callback</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> script = <span class="built_in">document</span>.createElement(<span class="string">&#x27;script&#x27;</span>);</span><br><span class="line">  script.src = src;</span><br><span class="line">  script.onload = <span class="function">() =&gt;</span> callback(script);</span><br><span class="line">  <span class="built_in">document</span>.head.append(script);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">loadScript(<span class="string">&#x27;https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.2.0/lodash.js&#x27;</span>, <span class="function"><span class="params">script</span> =&gt;</span> &#123;</span><br><span class="line">  alert(<span class="string">`<span class="subst">$&#123;script.src&#125;</span>가 로드되었습니다.`</span>);</span><br><span class="line">  alert( _ ); <span class="comment">// 스크립트에 정의된 함수</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<p>무언가 비동기적으로 처리되는 함수는 처리가 끝난 이후 동작할 함수를 반드시 인수로 제공해야 한다. </p>
-<br/>
-
-<h2 id="콜백-속-콜백"><a href="#콜백-속-콜백" class="headerlink" title="콜백 속 콜백"></a>콜백 속 콜백</h2><p>첫번째 스크립트를 읽은후 순차적으로 스크립트를 읽고 싶다면 어떻게 처리해야 할까?</p>
-<p>콜백 함수 안에 두번째 loadScript를 호출하면 된다. </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">loadScript(<span class="string">&#x27;/my/script.js&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params">script</span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">  alert(<span class="string">`<span class="subst">$&#123;script.src&#125;</span>을 로딩했습니다. 이젠, 다음 스크립트를 로딩합시다.`</span>);</span><br><span class="line"></span><br><span class="line">  loadScript(<span class="string">&#x27;/my/script2.js&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params">script</span>) </span>&#123;</span><br><span class="line">    alert(<span class="string">`두 번째 스크립트를 성공적으로 로딩했습니다.`</span>);</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<p>만약 3개라면?</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">loadScript(<span class="string">&#x27;/my/script.js&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params">script</span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">  loadScript(<span class="string">&#x27;/my/script2.js&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params">script</span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">    loadScript(<span class="string">&#x27;/my/script3.js&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params">script</span>) </span>&#123;</span><br><span class="line">      <span class="comment">// 세 스크립트 로딩이 끝난 후 실행됨</span></span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<p>만약 갯수가 굉장히 많아진다면??</p>
-<p>이렇게 작성히는 것은 적을때는 가능하지만 많을때는 좋은 방법이 아니다..</p>
-<br/>
-
-<h2 id="에러-핸들링"><a href="#에러-핸들링" class="headerlink" title="에러 핸들링"></a>에러 핸들링</h2><p>스크립트 로딩이 실패했을때 에러 핸들링 추가</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">loadScript</span>(<span class="params">src, callback</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> script = <span class="built_in">document</span>.createElement(<span class="string">&#x27;script&#x27;</span>);</span><br><span class="line">  script.src = src;</span><br><span class="line"></span><br><span class="line">  script.onload = <span class="function">() =&gt;</span> callback(<span class="literal">null</span>, script);</span><br><span class="line">  script.onerror = <span class="function">() =&gt;</span> callback(<span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">`<span class="subst">$&#123;src&#125;</span>를 불러오는 도중에 에러가 발생했습니다.`</span>));</span><br><span class="line"></span><br><span class="line">  <span class="built_in">document</span>.head.append(script);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>사용</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">loadScript(<span class="string">&#x27;/my/script.js&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params">error, script</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (error) &#123;</span><br><span class="line">    <span class="comment">// 에러 처리</span></span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="comment">// 스크립트 로딩이 성공적으로 끝남</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<p>이런 패턴을 <code>오류 우선 콜백(error-first callback)</code> 이라고 한다. </p>
-<p>첫 번째 인수는 에러를 위해 남겨 둔다. 두번재 부터 여러개 추가 할 수 있음. 이렇게 하면 에러 케이스와 성공 케이스 모두 처리 가능하게 된다. </p>
-<br/>
-
-<h2 id="멸망의-피라미드"><a href="#멸망의-피라미드" class="headerlink" title="멸망의 피라미드"></a>멸망의 피라미드</h2><p>언뜻 좋아 보이지만 여러개가 반복되면 콜백 지옥이 발생한다. </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">loadScript(<span class="string">&#x27;1.js&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params">error, script</span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (error) &#123;</span><br><span class="line">    handleError(error);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">    loadScript(<span class="string">&#x27;2.js&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params">error, script</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">if</span> (error) &#123;</span><br><span class="line">        handleError(error);</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="comment">// ...</span></span><br><span class="line">        loadScript(<span class="string">&#x27;3.js&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params">error, script</span>) </span>&#123;</span><br><span class="line">          <span class="keyword">if</span> (error) &#123;</span><br><span class="line">            handleError(error);</span><br><span class="line">          &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="comment">// 모든 스크립트가 로딩된 후, 실행 흐름이 이어집니다. (*)</span></span><br><span class="line">          &#125;</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<p>각 동작을 독립적인 함수로 만들어 완화하도록 한다. </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">loadScript(<span class="string">&#x27;1.js&#x27;</span>, step1);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">step1</span>(<span class="params">error, script</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (error) &#123;</span><br><span class="line">    handleError(error);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">    loadScript(<span class="string">&#x27;2.js&#x27;</span>, step2);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">step2</span>(<span class="params">error, script</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (error) &#123;</span><br><span class="line">    handleError(error);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">    loadScript(<span class="string">&#x27;3.js&#x27;</span>, step3);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">step3</span>(<span class="params">error, script</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (error) &#123;</span><br><span class="line">    handleError(error);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="comment">// 모든 스크립트가 로딩되면 다른 동작을 수행합니다. (*)</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p>사실 이렇게 작성해도 보기 불편한건 사실이고, 함수를 만들었는데 단지 콜백 지옥을 피하기 위해서만 만들었기 때문에 재사용이 불가능하다. </p>
-<p>가장 좋은 방법은 프로 미스를 사용하는 방법인데 다음 포스팅에서 설명하도록 한다. </p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/9/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><span class="page-number current">10</span><a class="page-number" href="/page/11/">11</a><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/11/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+    <a class="extend prev" rel="prev" href="/page/9/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><span class="page-number current">10</span><a class="page-number" href="/page/11/">11</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" href="/page/11/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 </div>
