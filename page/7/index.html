@@ -85,7 +85,7 @@
         <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
         <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">11</span></a></li>
         <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">9</span></a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">121</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">123</span></a></li>
   </ul>
 </nav>
 
@@ -129,7 +129,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">121</span>
+          <span class="site-state-item-count">123</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -180,6 +180,241 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/09/20/modernJs/210820-%EB%AA%A8%EB%93%88/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JayoonKoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="티끌모아 태산">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/09/20/modernJs/210820-%EB%AA%A8%EB%93%88/" class="post-title-link" itemprop="url">모듈</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2021-09-20 21:41:14 / Modified: 21:45:40" itemprop="dateCreated datePublished" datetime="2021-09-20T21:41:14+09:00">2021-09-20</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="모듈"><a href="#모듈" class="headerlink" title="모듈"></a>모듈</h1><p>특정 기능별로 클래스나 함수를 묶은 것. 자바스크립트가 커짐에 따라 모듈로 분리할 필요가 생겼다.</p>
+<h2 id="모듈이란"><a href="#모듈이란" class="headerlink" title="모듈이란"></a>모듈이란</h2><p>스크립트 하나는 모듈 하나이다.</p>
+<p>내보내기</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 📁 sayHi.js</span></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">sayHi</span>(<span class="params">user</span>) </span>&#123;</span><br><span class="line">  alert(<span class="string">`Hello, <span class="subst">$&#123;user&#125;</span>!`</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>가져오기</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 📁 main.js</span></span><br><span class="line"><span class="keyword">import</span> &#123; sayHi &#125; <span class="keyword">from</span> <span class="string">&quot;./sayHi.js&quot;</span>;</span><br><span class="line"></span><br><span class="line">alert(sayHi); <span class="comment">// 함수</span></span><br><span class="line">sayHi(<span class="string">&quot;John&quot;</span>); <span class="comment">// Hello, John!</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="모듈의-핵심-기능"><a href="#모듈의-핵심-기능" class="headerlink" title="모듈의 핵심 기능"></a>모듈의 핵심 기능</h2><h3 id="엄격-모드로-실행"><a href="#엄격-모드로-실행" class="headerlink" title="엄격 모드로 실행"></a>엄격 모드로 실행</h3><p>모듈은 항상 엄격 모드 <code>use strict</code>로 실행된다. 선언되지 않은 변수에 값을 할당하는 등의 코드는 에러를 발생시킨다.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=<span class="string">&quot;module&quot;</span>&gt;a = <span class="number">5</span>; <span class="comment">// 에러&lt;/script&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="모듈-레벨-스코프"><a href="#모듈-레벨-스코프" class="headerlink" title="모듈 레벨 스코프"></a>모듈 레벨 스코프</h3><p>모듈간에는 당연히 변수를 공유하지 않는다.</p>
+<h3 id="단-한번만-평가됨"><a href="#단-한번만-평가됨" class="headerlink" title="단 한번만 평가됨"></a>단 한번만 평가됨</h3><p>동일한 모듈이 여러 곳에서 사용되더라도 최초 호출 시 단 한번만 실행된다. 실무에서는 최상위 레벨 모듈을 대게 초기화나 내부에서 쓰이는 데이터 구조를 만들고 이를 내보내 재사용하고 싶을 때 사용한다.</p>
+<p>최초에 가져온 모듈에서 가한 조작이 다음에 가져오는 상황에서 확인할 수 있다.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 📁 admin.js</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">let</span> admin = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&quot;John&quot;</span>,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>모듈 가져오고 조작하기</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 📁 1.js</span></span><br><span class="line"><span class="keyword">import</span> &#123; admin &#125; <span class="keyword">from</span> <span class="string">&quot;./admin.js&quot;</span>;</span><br><span class="line">admin.name = <span class="string">&quot;Pete&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 📁 2.js</span></span><br><span class="line"><span class="keyword">import</span> &#123; admin &#125; <span class="keyword">from</span> <span class="string">&quot;./admin.js&quot;</span>;</span><br><span class="line">alert(admin.name); <span class="comment">// Pete</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 1.js와 2.js 모두 같은 객체를 가져오므로</span></span><br><span class="line"><span class="comment">// 1.js에서 객체에 가한 조작을 2.js에서도 확인할 수 있습니다.</span></span><br></pre></td></tr></table></figure>
+
+<p>이런 특징을 이용하면 모듈 설정을 쉽게 할 수 있다.</p>
+<p>예를 들어 특정 기능을 사용하는 모듈이 사용전에 인증 정보를 받아와야 하는 등의 작업이 필요하다고 생각하면 이 기능을 활용할 수 있다.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 📁 admin.js</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">let</span> admin = &#123;&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">sayHi</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  alert(<span class="string">`<span class="subst">$&#123;admin.name&#125;</span>님, 안녕하세요!`</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 📁 init.js</span></span><br><span class="line"><span class="keyword">import</span> &#123; admin &#125; <span class="keyword">from</span> <span class="string">&quot;./admin.js&quot;</span>;</span><br><span class="line">admin.name = <span class="string">&quot;보라&quot;</span>;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 📁 other.js</span></span><br><span class="line"><span class="keyword">import</span> &#123; admin, sayHi &#125; <span class="keyword">from</span> <span class="string">&quot;./admin.js&quot;</span>;</span><br><span class="line"></span><br><span class="line">alert(admin.name); <span class="comment">// 보라</span></span><br><span class="line"></span><br><span class="line">sayHi(); <span class="comment">// 보라님, 안녕하세요!</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="import-meta"><a href="#import-meta" class="headerlink" title="import.meta"></a>import.meta</h3><p><code>import.meta</code> 객체는 현재 모듈에 대한 정보를 제공해 주는데 브라우저 환경에서는 스크립트의 url 정보를 얻을 수 있다.</p>
+<h3 id="this-는-undefine만"><a href="#this-는-undefine만" class="headerlink" title="this 는 undefine만"></a>this 는 undefine만</h3><p>모듈이 아닌 일반 객체에서 <code>this</code>는 전역 객체 <code>window</code> 이지만 모듈 내에서는 <code>undefined</code>이다.</p>
+<h2 id="브라우저-특정-기능"><a href="#브라우저-특정-기능" class="headerlink" title="브라우저 특정 기능"></a>브라우저 특정 기능</h2><p>브라우저 환경에서 <code>type=&quot;module&quot;</code>로 사용할때의 특징. 간단하게만 알아본다.</p>
+<h3 id="지연실행"><a href="#지연실행" class="headerlink" title="지연실행"></a>지연실행</h3><p><code>defer</code> 속성이 붙은 것처럼 실행되서 html 을 전부 파싱한 후에 실행된다.</p>
+<h3 id="인라인-스크립트의-비동기-처리"><a href="#인라인-스크립트의-비동기-처리" class="headerlink" title="인라인 스크립트의 비동기 처리"></a>인라인 스크립트의 비동기 처리</h3><p>async 속성이 붙은 스크립트는 로딩이 끝나면 다른 스크립트나 HTML 문서가 처리되길 기다리지 않고 바로 실행된다.</p>
+<h3 id="외부-스크립트"><a href="#외부-스크립트" class="headerlink" title="외부 스크립트"></a>외부 스크립트</h3><ol>
+<li>최최 실행</li>
+<li>CORS 헤더가 필요함.</li>
+</ol>
+<h3 id="경로가-없는-모듈은-금지"><a href="#경로가-없는-모듈은-금지" class="headerlink" title="경로가 없는 모듈은 금지"></a>경로가 없는 모듈은 금지</h3><p>Node.js 같은건 모듈 경로를 알고 있어서 가져올 수 있지만 브라우저는 상대 혹은 절대 경로가 무조건 있어야 함.</p>
+<h2 id="빌드-툴"><a href="#빌드-툴" class="headerlink" title="빌드 툴"></a>빌드 툴</h2><p>브라우저 환경에서 모듈을 ‘단독’으로 사용하는 경우는 흔치 않다. 대게 웹팩(Webpack)과 같은 특별한 툴을 사용해 모듈을 한데 묶어 프로덕션 서버에 올리는 방식을 사용한다.</p>
+<p>일반 스크립트로 변환되기 대문에 type=”module”를 사용할 필요가 없어진다.</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/09/20/modernJs/210824-export,%20import/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JayoonKoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="티끌모아 태산">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/09/20/modernJs/210824-export,%20import/" class="post-title-link" itemprop="url">export, import</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2021-09-20 21:41:14 / Modified: 21:45:40" itemprop="dateCreated datePublished" datetime="2021-09-20T21:41:14+09:00">2021-09-20</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="모듈-내보내고-가져오기"><a href="#모듈-내보내고-가져오기" class="headerlink" title="모듈 내보내고 가져오기"></a>모듈 내보내고 가져오기</h1><h2 id="선언부-앞에-export-붙이기"><a href="#선언부-앞에-export-붙이기" class="headerlink" title="선언부 앞에 export 붙이기"></a>선언부 앞에 export 붙이기</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 배열 내보내기</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">let</span> month = [<span class="string">&quot;Jan&quot;</span>, <span class="string">&quot;Feb&quot;</span>, <span class="string">&quot;Mar&quot;</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">// 상수 내보내기</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> MODULES_BECAME_STANDARD_YEAR = <span class="number">2015</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 클래스 내보내기</span></span><br><span class="line"><span class="keyword">export</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">name</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.name = name;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>export class</code> 나 <code>export function</code> 뒤에는 세미콜론을 붙이지 않는다.</p>
+<h2 id="선언부와-떨어진-곳에-export-붙이기"><a href="#선언부와-떨어진-곳에-export-붙이기" class="headerlink" title="선언부와 떨어진 곳에 export 붙이기"></a>선언부와 떨어진 곳에 export 붙이기</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// say.js</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sayHi</span>(<span class="params">user</span>) </span>&#123;</span><br><span class="line">  alert(<span class="string">`Hello, <span class="subst">$&#123;user&#125;</span>!`</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sayBye</span>(<span class="params">user</span>) </span>&#123;</span><br><span class="line">  alert(<span class="string">`Bye, <span class="subst">$&#123;user&#125;</span>!`</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> &#123; sayHi, sayBye &#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="import"><a href="#import" class="headerlink" title="import *"></a>import *</h2><p>무언갈 가져오고 싶을 때</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; sayHi, sayBye &#125; <span class="keyword">from</span> <span class="string">&quot;./say.js&quot;</span>;</span><br><span class="line"></span><br><span class="line">sayHi(<span class="string">&quot;John&quot;</span>);</span><br><span class="line">sayBye(<span class="string">&quot;John&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> say <span class="keyword">from</span> <span class="string">&quot;./say.js&quot;</span>;</span><br><span class="line"></span><br><span class="line">say.sayHi(<span class="string">&quot;John&quot;</span>);</span><br><span class="line">say.sayBye(<span class="string">&quot;John&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>편하긴 하지만 구체적으로 무엇을 가져올지 명시적으로 알려주는것이 좋다.</p>
+<ol>
+<li>웹팩과 같은 모던 빌드 툴은 로딩 속도를 높이기 위해 모듈들을 한데 모으는 번들링과 최적화를 수행한다. 이 과정에서 사용하지 않는 리소스가 삭제되기도 한다.</li>
+<li>더 간결하게 적을 수 있다.</li>
+<li>어디에 어떤게 쓰이는지 명확하기 때문에 리팩토링이나 유지보수에 도움이 된다.</li>
+</ol>
+<h2 id="import-‘as’"><a href="#import-‘as’" class="headerlink" title="import ‘as’"></a>import ‘as’</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; sayHi <span class="keyword">as</span> hi, sayBye <span class="keyword">as</span> bye &#125; <span class="keyword">from</span> <span class="string">&quot;./say.js&quot;</span>;</span><br><span class="line"></span><br><span class="line">hi(<span class="string">&quot;John&quot;</span>);</span><br><span class="line">bye(<span class="string">&quot;John&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<h2 id="Export-‘as’"><a href="#Export-‘as’" class="headerlink" title="Export ‘as’"></a>Export ‘as’</h2><p>이름 바꿔서 내보낼 수 있다.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> &#123; sayHi <span class="keyword">as</span> hi, sayBye <span class="keyword">as</span> bye &#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="export-default"><a href="#export-default" class="headerlink" title="export default"></a>export default</h2><p><code>export default</code> 라는 특별한 문법을 지원한다. 이는 해당 모듈엔 개체가 하나만 있다는 사실을 명백히 나타낼 수 있다.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// user.js</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">name</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.name = name;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>보통 파일 하나엔 <code>export default</code>가 하나만 있다.</p>
+<p>이렇게 내보내면 <code>import</code> 에서 <code>&#123;&#125;</code>를 제거할 수 있다.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> User <span class="keyword">from</span> <span class="string">&quot;./user.js&quot;</span>; <span class="comment">// &#123;User&#125; 가 아니라 User 이다.</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> User(<span class="string">&quot;John&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>이름으로 가져오는 방식을 <code>named export</code>라고 한다.</p>
+<p>파일 하나에 <code>named export</code>와 <code>export default</code>를 함께 사용해도 문제가 되지는 않는다. 하지만 실무에선 파일 하나에 둘중 하나만 사용하는 것이 일반적이다.</p>
+<p>또한 <code>export default</code>의 경우에는 중괄호 없이 내보낼 것이 하나밖에 없다고 정한 것이기 때문에 이름없이 내보내는것이 가능하다. 하지만 <code>named export</code>에서는 이름을 반드시 명시해 주어야 한다.</p>
+<h3 id="default-name"><a href="#default-name" class="headerlink" title="default name"></a><code>default</code> name</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sayHi</span>(<span class="params">user</span>) </span>&#123;</span><br><span class="line">  alert(<span class="string">`Hello, <span class="subst">$&#123;user&#125;</span>`</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 함수 선언분에 export default 한 것과 똑같다.</span></span><br><span class="line"><span class="keyword">export</span> &#123; sayHi <span class="keyword">as</span> <span class="keyword">default</span> &#125;;</span><br></pre></td></tr></table></figure>
+
+<p>흔하진 않지만 default를 사용해서 동시에 가져올 수 있다.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// user.js</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">name</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.name = name;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">sayHi</span>(<span class="params">user</span>) </span>&#123;</span><br><span class="line">  alert(<span class="string">`Hello, <span class="subst">$&#123;user&#125;</span>`</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; <span class="keyword">default</span> <span class="keyword">as</span> User, sayHi &#125; <span class="keyword">from</span> <span class="string">&quot;./user.js&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 혹은</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> user <span class="keyword">from</span> <span class="string">&quot;./user.js&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> User = user.default;</span><br><span class="line"><span class="keyword">new</span> User(<span class="string">&quot;John&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="default-export-의-이름에-관한-규칙"><a href="#default-export-의-이름에-관한-규칙" class="headerlink" title="default export 의 이름에 관한 규칙"></a>default export 의 이름에 관한 규칙</h3><p>default export 는 꼭 파일내에서 내보내는 이름으로 불러오지 않아도 되기 때문에 같은 모듈이라도 사용하는 사람에 따라서 불러온 이름이 다를 수 있다. 이는 혼란을 야기할 수 있는데 이것을 방지하기 위해서 이름을 정하는 규칙이 있다.<br>보통 파일이름에 첫 글자는 대문자인 형식으로 사용한다.</p>
+<h2 id="모듈-다시-내보내기"><a href="#모듈-다시-내보내기" class="headerlink" title="모듈 다시 내보내기"></a>모듈 다시 내보내기</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> &#123; sayHi &#125; <span class="keyword">from</span> <span class="string">&quot;./say.js&quot;</span>; <span class="comment">// sayHi를 다시 내보냄</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> &#123; <span class="keyword">default</span> <span class="keyword">as</span> User &#125; <span class="keyword">from</span> <span class="string">&quot;./user.js&quot;</span>; <span class="comment">// default export 를 다시 내보내기 함.</span></span><br></pre></td></tr></table></figure>
+
+<p>가져온 객체를 즉시 다시 내보내기 할수 있다. 내보낼 기능을 패키지 전반에 분산하여 구현한 후 필요한 파일에서 가져온후 다시 내보내는 방식으로 활용할 수 있다.</p>
+<h3 id="default-export-다시-내보내기"><a href="#default-export-다시-내보내기" class="headerlink" title="default export 다시 내보내기"></a>default export 다시 내보내기</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// user.js</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span> </span>&#123;</span><br><span class="line">  <span class="comment">//...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li><code>User</code>를 <code>export User from &#39;./user.js</code> 로 다시 내보내기 할 때 문법 에러가 발생한다. <code>export &#123;default as User&#125;</code>를 사용해야 한다.</li>
+<li><code>export * from &#39;./user.js&#39;</code>를 사용했다면 <code>dafault export</code>는 무시 되고 <code>named export</code> 만 다시 내보내진다.</li>
+</ol>
+<p>동시에 하기 위해서는 다음과 같이 사용해야 한다.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> * <span class="keyword">from</span> <span class="string">&quot;./user.js&quot;</span>; <span class="comment">// named export를 다시 내보내기</span></span><br><span class="line"><span class="keyword">export</span> &#123; <span class="keyword">default</span> &#125; <span class="keyword">from</span> <span class="string">&quot;./user.js&quot;</span>; <span class="comment">// default export 다시 내보내기</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -868,110 +1103,6 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/09/20/modernJs/210907-formData/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JayoonKoo">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="티끌모아 태산">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/09/20/modernJs/210907-formData/" class="post-title-link" itemprop="url">formData</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2021-09-20 21:41:14 / Modified: 21:45:41" itemprop="dateCreated datePublished" datetime="2021-09-20T21:41:14+09:00">2021-09-20</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="FormData"><a href="#FormData" class="headerlink" title="FormData"></a>FormData</h1><p>HTML에 formData를 나타내는 생성자는 다음과 같다.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> formData = <span class="keyword">new</span> FormData([form]);</span><br></pre></td></tr></table></figure>
-
-<p>이렇게 생성해서 서버에서 보내는 작업을 하면 서버에서 볼 때 일반적인 양식 제출처럼 보인다.</p>
-<h2 id="Sending-a-simple-form"><a href="#Sending-a-simple-form" class="headerlink" title="Sending a simple form"></a>Sending a simple form</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">id</span>=<span class="string">&quot;formElem&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;name&quot;</span> <span class="attr">value</span>=<span class="string">&quot;John&quot;</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;surname&quot;</span> <span class="attr">value</span>=<span class="string">&quot;Smith&quot;</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></span><br><span class="line"><span class="javascript">  formElem.onsubmit = <span class="keyword">async</span> (e) =&gt; &#123;</span></span><br><span class="line"><span class="javascript">    e.preventDefault();</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">    <span class="keyword">let</span> response = <span class="keyword">await</span> fetch(<span class="string">&quot;/article/formdata/post/user&quot;</span>, &#123;</span></span><br><span class="line"><span class="javascript">      <span class="attr">method</span>: <span class="string">&quot;POST&quot;</span>,</span></span><br><span class="line"><span class="javascript">      <span class="attr">body</span>: <span class="keyword">new</span> FormData(formElem),</span></span><br><span class="line"><span class="javascript">    &#125;);</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">    <span class="keyword">let</span> result = <span class="keyword">await</span> response.json();</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">    alert(result.message);</span></span><br><span class="line"><span class="javascript">  &#125;;</span></span><br><span class="line"><span class="javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>서버 코드는 여기에 없다. 서버는 위에 코드에서 보낸 request를 받아서 응답한다.</p>
-<h2 id="FormData-Methods"><a href="#FormData-Methods" class="headerlink" title="FormData Methods"></a>FormData Methods</h2><ul>
-<li><code>formData.append(name, value)</code> - form data에 name과 value를 추가</li>
-<li><code>formData.append(name, blob, fileName)</code> - <code>&lt;input type=&quot;file&quot;&gt;</code> 인 것처럼 추가, 세번째 매개변수인 <code>fileName</code>인 진짜 파일 이름을 넣어줌.</li>
-<li><code>formData.delete(name)</code> - <code>name</code>이란 이름으로 추가된 필드를 제거함</li>
-<li><code>formData.get(name)</code> - <code>name</code>이란 이름으로 추가된 필드에 <code>value</code> 값을 얻음.</li>
-<li><code>formData.had(name)</code> - <code>name</code>이란 이름으로 추가된 필드가 있다면 ,<code>true</code> 반환 아닐 경우 <code>false</code> 반환</li>
-</ul>
-<p>formData는 기술적으로 같은 name에 필드를 추가할 수 있다. 따라서 append를 사용한다. 비슷한 역할을 하는 <code>.set</code> 메서드도 있다. 이 경우 기존에 있던것을 삭제 하고 추가한다.</p>
-<ul>
-<li><code>formData.set(name, value)</code></li>
-<li><code>formData.set(name, blob, fileName)</code></li>
-</ul>
-<p>또한 <code>for..of</code> 를 사용해서 요소를 반복할 수 있다.</p>
-<h2 id="Sending-a-form-with-a-file"><a href="#Sending-a-form-with-a-file" class="headerlink" title="Sending a form with a file"></a>Sending a form with a file</h2><p>form은 <code>Content-Type: multipart/form-data</code>로 보내지고 이것은 파일도 보낼 수 있다.</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">id</span>=<span class="string">&quot;formElem&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;firstName&quot;</span> <span class="attr">value</span>=<span class="string">&quot;John&quot;</span> /&gt;</span></span><br><span class="line">  Picture: <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;file&quot;</span> <span class="attr">name</span>=<span class="string">&quot;picture&quot;</span> <span class="attr">accept</span>=<span class="string">&quot;image/*&quot;</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></span><br><span class="line"><span class="javascript">  formElem.onsubmit = <span class="keyword">async</span> (e) =&gt; &#123;</span></span><br><span class="line"><span class="javascript">    e.preventDefault();</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">    <span class="keyword">let</span> response = <span class="keyword">await</span> fetch(<span class="string">&quot;/article/formdata/post/user-avatar&quot;</span>, &#123;</span></span><br><span class="line"><span class="javascript">      <span class="attr">method</span>: <span class="string">&quot;POST&quot;</span>,</span></span><br><span class="line"><span class="javascript">      <span class="attr">body</span>: <span class="keyword">new</span> FormData(formElem),</span></span><br><span class="line"><span class="javascript">    &#125;);</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">    <span class="keyword">let</span> result = <span class="keyword">await</span> response.json();</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">    alert(result.message);</span></span><br><span class="line"><span class="javascript">  &#125;;</span></span><br><span class="line"><span class="javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="Sending-a-form-with-Blob-data"><a href="#Sending-a-form-with-Blob-data" class="headerlink" title="Sending a form with Blob data"></a>Sending a form with Blob data</h2><p>동적으로 생성된 바이너리 데이타 이미지 같은 것을 <code>Blob</code>으로 보낼 수 있다. <code>fetch</code>에 <code>body</code> 파라미터로 넒길 수 있다.<br>그러나 실제로는 이미지를 별도로 보내는 것이 아니라 name 을 추가한 form 으로 보내는 것이 편리한 경우가 많다.</p>
-<p>서버도 form으로 받는게 더 어울린다.</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span> <span class="attr">style</span>=<span class="string">&quot;margin:0&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">canvas</span></span></span><br><span class="line"><span class="tag">    <span class="attr">id</span>=<span class="string">&quot;canvasElem&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">width</span>=<span class="string">&quot;100&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">height</span>=<span class="string">&quot;80&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">style</span>=<span class="string">&quot;border:1px solid&quot;</span></span></span><br><span class="line"><span class="tag">  &gt;</span><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;button&quot;</span> <span class="attr">value</span>=<span class="string">&quot;Submit&quot;</span> <span class="attr">onclick</span>=<span class="string">&quot;submit()&quot;</span> /&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></span><br><span class="line"><span class="javascript">    canvasElem.onmousemove = <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">      <span class="keyword">let</span> ctx = canvasElem.getContext(<span class="string">&quot;2d&quot;</span>);</span></span><br><span class="line"><span class="javascript">      ctx.lineTo(e.clientX, e.clientY);</span></span><br><span class="line"><span class="javascript">      ctx.stroke();</span></span><br><span class="line"><span class="javascript">    &#125;;</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">    <span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">submit</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">      <span class="keyword">let</span> imageBlob = <span class="keyword">await</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve</span>) =&gt;</span></span></span><br><span class="line"><span class="javascript">        canvasElem.toBlob(resolve, <span class="string">&quot;image/png&quot;</span>)</span></span><br><span class="line"><span class="javascript">      );</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">      <span class="keyword">let</span> formData = <span class="keyword">new</span> FormData();</span></span><br><span class="line"><span class="javascript">      formData.append(<span class="string">&quot;firstName&quot;</span>, <span class="string">&quot;John&quot;</span>);</span></span><br><span class="line"><span class="javascript">      formData.append(<span class="string">&quot;image&quot;</span>, imageBlob, <span class="string">&quot;image.png&quot;</span>);</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">      <span class="keyword">let</span> response = <span class="keyword">await</span> fetch(<span class="string">&quot;/article/formdata/post/image-form&quot;</span>, &#123;</span></span><br><span class="line"><span class="javascript">        <span class="attr">method</span>: <span class="string">&quot;POST&quot;</span>,</span></span><br><span class="line"><span class="javascript">        <span class="attr">body</span>: formData,</span></span><br><span class="line"><span class="javascript">      &#125;);</span></span><br><span class="line"><span class="javascript">      <span class="keyword">let</span> result = <span class="keyword">await</span> response.json();</span></span><br><span class="line"><span class="javascript">      alert(result.message);</span></span><br><span class="line"><span class="javascript">    &#125;</span></span><br><span class="line"><span class="javascript">  </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>이미지 blob 데이터를 어떻게 추가했는지 보자.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">formData.append(<span class="string">&quot;image&quot;</span>, imageBlob, <span class="string">&quot;image.png&quot;</span>);</span><br></pre></td></tr></table></figure>
-
-<p>이는 <code>&lt;input type=&quot;file&quot; name=&quot;image&quot;&gt;</code>와 같다.</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/09/20/modernJs/210908-fetch-Download-progress/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1071,7 +1202,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/09/20/modernJs/210909-fetch-abort/">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/09/20/modernJs/210907-formData/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -1084,7 +1215,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/09/20/modernJs/210909-fetch-abort/" class="post-title-link" itemprop="url">fetch-abort</a>
+          <a href="/2021/09/20/modernJs/210907-formData/" class="post-title-link" itemprop="url">formData</a>
         </h2>
 
         <div class="post-meta-container">
@@ -1118,193 +1249,37 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="Fetch-Abort"><a href="#Fetch-Abort" class="headerlink" title="Fetch: Abort"></a>Fetch: Abort</h1><p>fetch 는 promise를 반환하고 자바스크립트에서는 fetch를 중단하는 개념이 없다. 이런 목적을 위해 내장된 객체인 <code>AbortController</code>가 있다.<br>이것은 fetch 뿐만 아니라 비동기 작업에서도 사용될 수 있다.</p>
-<h2 id="The-AbortController-object"><a href="#The-AbortController-object" class="headerlink" title="The AbortController object"></a>The AbortController object</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> controller = <span class="keyword">new</span> AbortController();</span><br></pre></td></tr></table></figure>
+          <h1 id="FormData"><a href="#FormData" class="headerlink" title="FormData"></a>FormData</h1><p>HTML에 formData를 나타내는 생성자는 다음과 같다.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> formData = <span class="keyword">new</span> FormData([form]);</span><br></pre></td></tr></table></figure>
 
-<p>반환하는 객체는 간단하다.</p>
+<p>이렇게 생성해서 서버에서 보내는 작업을 하면 서버에서 볼 때 일반적인 양식 제출처럼 보인다.</p>
+<h2 id="Sending-a-simple-form"><a href="#Sending-a-simple-form" class="headerlink" title="Sending a simple form"></a>Sending a simple form</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">id</span>=<span class="string">&quot;formElem&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;name&quot;</span> <span class="attr">value</span>=<span class="string">&quot;John&quot;</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;surname&quot;</span> <span class="attr">value</span>=<span class="string">&quot;Smith&quot;</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></span><br><span class="line"><span class="javascript">  formElem.onsubmit = <span class="keyword">async</span> (e) =&gt; &#123;</span></span><br><span class="line"><span class="javascript">    e.preventDefault();</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">    <span class="keyword">let</span> response = <span class="keyword">await</span> fetch(<span class="string">&quot;/article/formdata/post/user&quot;</span>, &#123;</span></span><br><span class="line"><span class="javascript">      <span class="attr">method</span>: <span class="string">&quot;POST&quot;</span>,</span></span><br><span class="line"><span class="javascript">      <span class="attr">body</span>: <span class="keyword">new</span> FormData(formElem),</span></span><br><span class="line"><span class="javascript">    &#125;);</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">    <span class="keyword">let</span> result = <span class="keyword">await</span> response.json();</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">    alert(result.message);</span></span><br><span class="line"><span class="javascript">  &#125;;</span></span><br><span class="line"><span class="javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>서버 코드는 여기에 없다. 서버는 위에 코드에서 보낸 request를 받아서 응답한다.</p>
+<h2 id="FormData-Methods"><a href="#FormData-Methods" class="headerlink" title="FormData Methods"></a>FormData Methods</h2><ul>
+<li><code>formData.append(name, value)</code> - form data에 name과 value를 추가</li>
+<li><code>formData.append(name, blob, fileName)</code> - <code>&lt;input type=&quot;file&quot;&gt;</code> 인 것처럼 추가, 세번째 매개변수인 <code>fileName</code>인 진짜 파일 이름을 넣어줌.</li>
+<li><code>formData.delete(name)</code> - <code>name</code>이란 이름으로 추가된 필드를 제거함</li>
+<li><code>formData.get(name)</code> - <code>name</code>이란 이름으로 추가된 필드에 <code>value</code> 값을 얻음.</li>
+<li><code>formData.had(name)</code> - <code>name</code>이란 이름으로 추가된 필드가 있다면 ,<code>true</code> 반환 아닐 경우 <code>false</code> 반환</li>
+</ul>
+<p>formData는 기술적으로 같은 name에 필드를 추가할 수 있다. 따라서 append를 사용한다. 비슷한 역할을 하는 <code>.set</code> 메서드도 있다. 이 경우 기존에 있던것을 삭제 하고 추가한다.</p>
 <ul>
-<li><code>abort()</code> 메서드를 갖는다.</li>
-<li>이벤트 등록을 위한 <code>signal</code> 프로퍼티를 갖는다.</li>
+<li><code>formData.set(name, value)</code></li>
+<li><code>formData.set(name, blob, fileName)</code></li>
 </ul>
-<p><code>abort()</code>가 호출되었을 때</p>
-<ul>
-<li><code>controller.signal</code> 은 <code>abort</code> 이벤트를 내보낸다.</li>
-<li><code>controller.signal.aborted</code> 프로퍼티가 <code>true</code>가 된다.</li>
-</ul>
-<p>취소 가능한 작업을 <code>controller.signal</code>에 리스너로 등록한다. <code>controller.abort()</code>를 호출할때 리스너가 트리거 된다.</p>
-<p>fetch를 포함하지 않은 예제는 다음과 같다.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> controller = <span class="keyword">new</span> AbortController();</span><br><span class="line"><span class="keyword">let</span> signal = controller.signal;</span><br><span class="line"></span><br><span class="line"><span class="comment">// teh party that performs a cancelable operation</span></span><br><span class="line"><span class="comment">// gets &quot;signal&quot; object</span></span><br><span class="line"><span class="comment">// and sets the listener to trigger when controller.abort() is called</span></span><br><span class="line">signal.addEventListener(<span class="string">&quot;abort&quot;</span>, <span class="function">() =&gt;</span> alert(<span class="string">&quot;abort!!&quot;</span>));</span><br><span class="line"></span><br><span class="line"><span class="comment">// the other party, that cancels (at any point later)</span></span><br><span class="line">controller.abort(); <span class="comment">// abort!!</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//the event triggers and signal.aborted becomes true</span></span><br><span class="line">alert(signal.aborted); <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+<p>또한 <code>for..of</code> 를 사용해서 요소를 반복할 수 있다.</p>
+<h2 id="Sending-a-form-with-a-file"><a href="#Sending-a-form-with-a-file" class="headerlink" title="Sending a form with a file"></a>Sending a form with a file</h2><p>form은 <code>Content-Type: multipart/form-data</code>로 보내지고 이것은 파일도 보낼 수 있다.</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">id</span>=<span class="string">&quot;formElem&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;firstName&quot;</span> <span class="attr">value</span>=<span class="string">&quot;John&quot;</span> /&gt;</span></span><br><span class="line">  Picture: <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;file&quot;</span> <span class="attr">name</span>=<span class="string">&quot;picture&quot;</span> <span class="attr">accept</span>=<span class="string">&quot;image/*&quot;</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></span><br><span class="line"><span class="javascript">  formElem.onsubmit = <span class="keyword">async</span> (e) =&gt; &#123;</span></span><br><span class="line"><span class="javascript">    e.preventDefault();</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">    <span class="keyword">let</span> response = <span class="keyword">await</span> fetch(<span class="string">&quot;/article/formdata/post/user-avatar&quot;</span>, &#123;</span></span><br><span class="line"><span class="javascript">      <span class="attr">method</span>: <span class="string">&quot;POST&quot;</span>,</span></span><br><span class="line"><span class="javascript">      <span class="attr">body</span>: <span class="keyword">new</span> FormData(formElem),</span></span><br><span class="line"><span class="javascript">    &#125;);</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">    <span class="keyword">let</span> result = <span class="keyword">await</span> response.json();</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">    alert(result.message);</span></span><br><span class="line"><span class="javascript">  &#125;;</span></span><br><span class="line"><span class="javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
-<p>코드에서 AbortController 없이 비슷한 작업을 할 수 있지만 fecth 가 AbortController 객체와 함께 작동하고 통합된다는것이 중요하다.</p>
-<h2 id="Using-with-fetch"><a href="#Using-with-fetch" class="headerlink" title="Using with fetch"></a>Using with fetch</h2><p><code>AbortController</code>에 <code>signal</code>프로퍼티를 <code>fetch</code>에 옵션으로 전달해 주면 된다.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> controller = <span class="keyword">new</span> AbortController();</span><br><span class="line">fetch(url, &#123;</span><br><span class="line">  <span class="attr">signal</span>: controller.signal,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h2 id="Sending-a-form-with-Blob-data"><a href="#Sending-a-form-with-Blob-data" class="headerlink" title="Sending a form with Blob data"></a>Sending a form with Blob data</h2><p>동적으로 생성된 바이너리 데이타 이미지 같은 것을 <code>Blob</code>으로 보낼 수 있다. <code>fetch</code>에 <code>body</code> 파라미터로 넒길 수 있다.<br>그러나 실제로는 이미지를 별도로 보내는 것이 아니라 name 을 추가한 form 으로 보내는 것이 편리한 경우가 많다.</p>
+<p>서버도 form으로 받는게 더 어울린다.</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span> <span class="attr">style</span>=<span class="string">&quot;margin:0&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">canvas</span></span></span><br><span class="line"><span class="tag">    <span class="attr">id</span>=<span class="string">&quot;canvasElem&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">width</span>=<span class="string">&quot;100&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">height</span>=<span class="string">&quot;80&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">style</span>=<span class="string">&quot;border:1px solid&quot;</span></span></span><br><span class="line"><span class="tag">  &gt;</span><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;button&quot;</span> <span class="attr">value</span>=<span class="string">&quot;Submit&quot;</span> <span class="attr">onclick</span>=<span class="string">&quot;submit()&quot;</span> /&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></span><br><span class="line"><span class="javascript">    canvasElem.onmousemove = <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">      <span class="keyword">let</span> ctx = canvasElem.getContext(<span class="string">&quot;2d&quot;</span>);</span></span><br><span class="line"><span class="javascript">      ctx.lineTo(e.clientX, e.clientY);</span></span><br><span class="line"><span class="javascript">      ctx.stroke();</span></span><br><span class="line"><span class="javascript">    &#125;;</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">    <span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">submit</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">      <span class="keyword">let</span> imageBlob = <span class="keyword">await</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve</span>) =&gt;</span></span></span><br><span class="line"><span class="javascript">        canvasElem.toBlob(resolve, <span class="string">&quot;image/png&quot;</span>)</span></span><br><span class="line"><span class="javascript">      );</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">      <span class="keyword">let</span> formData = <span class="keyword">new</span> FormData();</span></span><br><span class="line"><span class="javascript">      formData.append(<span class="string">&quot;firstName&quot;</span>, <span class="string">&quot;John&quot;</span>);</span></span><br><span class="line"><span class="javascript">      formData.append(<span class="string">&quot;image&quot;</span>, imageBlob, <span class="string">&quot;image.png&quot;</span>);</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">      <span class="keyword">let</span> response = <span class="keyword">await</span> fetch(<span class="string">&quot;/article/formdata/post/image-form&quot;</span>, &#123;</span></span><br><span class="line"><span class="javascript">        <span class="attr">method</span>: <span class="string">&quot;POST&quot;</span>,</span></span><br><span class="line"><span class="javascript">        <span class="attr">body</span>: formData,</span></span><br><span class="line"><span class="javascript">      &#125;);</span></span><br><span class="line"><span class="javascript">      <span class="keyword">let</span> result = <span class="keyword">await</span> response.json();</span></span><br><span class="line"><span class="javascript">      alert(result.message);</span></span><br><span class="line"><span class="javascript">    &#125;</span></span><br><span class="line"><span class="javascript">  </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
-<p>fetch가 중단되면 <code>AbortError</code>를 던진다. <code>try..catch</code>를 통해서 에러를 잡을 수 있다.</p>
-<p>전체 예제</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// abort in 1 second</span></span><br><span class="line"><span class="keyword">let</span> controller = <span class="keyword">new</span> AbofrtController();</span><br><span class="line"><span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> controller.abort(), <span class="number">1000</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">  <span class="keyword">let</span> response = <span class="keyword">await</span> fetch(<span class="string">&quot;/article/fetch-abort/demo/hang&quot;</span>, &#123;</span><br><span class="line">    <span class="attr">signal</span>: controller.signal,</span><br><span class="line">  &#125;);</span><br><span class="line">&#125; <span class="keyword">catch</span> (err) &#123;</span><br><span class="line">  <span class="keyword">if</span> (err.name == <span class="string">&quot;AbortError&quot;</span>) &#123;</span><br><span class="line">    alert(<span class="string">&quot;Aborted!&quot;</span>);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">throw</span> err;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>이미지 blob 데이터를 어떻게 추가했는지 보자.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">formData.append(<span class="string">&quot;image&quot;</span>, imageBlob, <span class="string">&quot;image.png&quot;</span>);</span><br></pre></td></tr></table></figure>
 
-<h2 id="AbortController-is-scalable"><a href="#AbortController-is-scalable" class="headerlink" title="AbortController is scalable"></a>AbortController is scalable</h2><p><code>AbortController</code>은 확장가능햇 한번에 여러 fetch를 중단시킬 수 있다.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> urls = [...];</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> controller = <span class="keyword">new</span> AbortController();</span><br><span class="line"></span><br><span class="line"><span class="comment">// an array of fetch promises</span></span><br><span class="line"><span class="keyword">let</span> fetchJobs = urls.map(<span class="function"><span class="params">url</span> =&gt;</span> fetch(url, &#123;</span><br><span class="line">	<span class="attr">signal</span>: controller.signal</span><br><span class="line">&#125;));</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> results = <span class="keyword">await</span> <span class="built_in">Promise</span>.all(fetchJobs);</span><br><span class="line"></span><br><span class="line"><span class="comment">// if controller.abort() is called from elsewhere, it aborts all fetches</span></span><br></pre></td></tr></table></figure>
-
-<p>다른 비동기 작업도 <code>fetch</code>와 함께 하나의 <code>AbortController</code>로 멈출 수 있다.</p>
-<p>우린 단지 <code>abort</code> 이벤트를 들으면 된다.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> urls = [...];</span><br><span class="line"><span class="keyword">let</span> controller = <span class="keyword">new</span> AbortController();</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> ourJob = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span>  &#123;</span><br><span class="line">	<span class="comment">// our task</span></span><br><span class="line">	controller.signal.addEventListener(<span class="string">&#x27;abort&#x27;</span>, reject);</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> fetchJobs = urls.map(<span class="function"><span class="params">url</span> =&gt;</span> fetch(url, &#123;</span><br><span class="line">	<span class="attr">signal</span>: controller.signal</span><br><span class="line">&#125;));</span><br><span class="line"></span><br><span class="line"><span class="comment">// Wait for feches and our tast in parallel</span></span><br><span class="line"><span class="keyword">let</span> results = <span class="keyword">await</span> <span class="built_in">Promise</span>.all([...fetchJobs, ourJob]);</span><br><span class="line"></span><br><span class="line"><span class="comment">// if controller.abort() is called from elsewhere, it aborts all fetches and our Job</span></span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/09/20/modernJs/210910-fetch%EC%99%80%20cross-origin%EC%9A%94%EC%B2%AD/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JayoonKoo">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="티끌모아 태산">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/09/20/modernJs/210910-fetch%EC%99%80%20cross-origin%EC%9A%94%EC%B2%AD/" class="post-title-link" itemprop="url">fetch와 cross-origin요청</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2021-09-20 21:41:14 / Modified: 21:45:41" itemprop="dateCreated datePublished" datetime="2021-09-20T21:41:14+09:00">2021-09-20</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="fetch와-Cross-Origin-요청"><a href="#fetch와-Cross-Origin-요청" class="headerlink" title="fetch와 Cross-Origin 요청"></a>fetch와 Cross-Origin 요청</h1><p>도메인이나 서브도메인, 프로토콜, 포트가 다른 곳에 요청을 보내는 것을 Croww-Origin Request(크로스 오리진 요청) 이라고 한다. 크로스 오리진 요청을 보내려면 리모트 오리진에서 전송받은 특별한 헤더가 필요하다. 이러한 정책을 CORS라고 부른다.</p>
-<h2 id="왜-CORS-가-필요한가에-대한-짧은-역사"><a href="#왜-CORS-가-필요한가에-대한-짧은-역사" class="headerlink" title="왜 CORS 가 필요한가에 대한 짧은 역사"></a>왜 CORS 가 필요한가에 대한 짧은 역사</h2><p>과거 수 년 동안, 한 사이트의 스크립트에서 다른 사이트에 있는 콘텐츠에 접근할 수 없다는 제약이 있었다. 더 강력한 작업을 위해서 다른 웹사이트로에 요청이 필요했다.</p>
-<p>여러가지 트릭이 있었지만, 오랜 논의 끝에 크로스 오리진 요청을 허용 하기로 결정했다. 대신 크로스 오리진 요청은 서버에서 명시적으로 크로스 오리진 요청을 ‘허가’ 했다는 것을 알려주는 특별한 헤더를 전송받았을 때만 가능하도록 제약을 걸었다.</p>
-<h2 id="안전한-요청"><a href="#안전한-요청" class="headerlink" title="안전한 요청"></a>안전한 요청</h2><p>안전한 요청은 다음과 같은 두 가지 조건 모두를 충족한다.</p>
-<ol>
-<li>안전한 메서드 - GET이나 POST, HEAD를 사용한 요청</li>
-<li>안전한 헤더 - 다음 목록에 속하는 헤더<ul>
-<li>Accept</li>
-<li>Accept-Language</li>
-<li>Content-Language</li>
-<li>값이 application/x-www-form-urlencoded나 multipart/form-data, text/plain 인 Content-Type</li>
-</ul>
-</li>
-</ol>
-<p>표준이 아닌 헤더가 들어있거나 안전하지 않은 메서드를 사용한 요청은 안전한 요청이 될 수 없다. 그런데 시간이 지나고 개발자가 스크립트를 사용해 안전하지 않은 요청을 보낼 수 있게되자, 브라우저는 안전하지 않은 요청을 서버에 전송하기 전에 preflight 요청을 먼저 전송해 서버가 크로스 오리진 요청을 받을 준비가 되어있는지 확인한다.</p>
-<p>이때 서버에서 크로스 오리진 요청은 허용하지 않는다는 정보를 담은 헤더를 브라우저에 응답하면 안전하지 않은 요청은 서버에 전송되지 않는다.</p>
-<h2 id="CORS와-안전한-요청"><a href="#CORS와-안전한-요청" class="headerlink" title="CORS와 안전한 요청"></a>CORS와 안전한 요청</h2><p>크로스 오리진 요청을 보낼 경우 브라우저는 항상 <code>Origin</code>이라는 헤더를 요청에 추가해서 자신에 도메인을 적는다.</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">GET /request</span><br><span class="line">Host: anywhere.com</span><br><span class="line">Origin: https://javascript.info</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
-
-<p>서버는 <code>Origin</code>을 검사하고 요청을 받아들이기로 동의한 상태라면 특별한 헤더 <code>Access-Control-Allow-Origin</code>을 응답에 추가한다. 여기에 오리진 정보나 * 를 붙히면 응답에 성공하고 그렇지 않으면 실패하게 된다.</p>
-<p>이때 브라우저는 중재인의 역할을 수행한다.<br>서버에서 크로스 오리진 요청을 수행한 경우, prefilght 요청에 응답은 다음과 같은 형태를 뛴다.</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">200 OK</span><br><span class="line">Content-Type:text/html; charset=UTF-8</span><br><span class="line">Access-Control-Allow-Origin: https://javascript.info</span><br></pre></td></tr></table></figure>
-
-<img src="/images/210910-fetch와 cross-origin요청/1.png" width="500">
-
-<h2 id="응답-헤더"><a href="#응답-헤더" class="headerlink" title="응답 헤더"></a>응답 헤더</h2><p>크로스 오리진 요청이 이루어진 경우, 자바스크립트는 기본적으로 안전한 응답 헤더로 분류되는 헤더에만 접속할 수 있다.</p>
-<ul>
-<li>Cache-Control</li>
-<li>Content-Language</li>
-<li>Content-Type</li>
-<li>Expires</li>
-<li>Last-Modified</li>
-<li>Pragma</li>
-</ul>
-<p>이 외의 응답 헤더에 접근하면 에러가 발생한다.</p>
-<blockquote>
-<p>위 리스트엔 <code>Contnet-Length</code>헤더는 없다.</p>
-</blockquote>
-<p>안전하지 않는 응답 헤더에 접근하려면 서버에서 <code>Access-Contorol-Expose-Headers</code>라는 헤더를 보내줘야 한다. 여기에 자바스크립트 접근을 허용하는 안전하지 않은 헤더 목록이 담겨 있다.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">200</span> OK</span><br><span class="line">Content-Type:text/html; charset=UTF-<span class="number">8</span></span><br><span class="line">Content-Length: <span class="number">12345</span></span><br><span class="line">API-Key: 2c9de507f2c54aa1</span><br><span class="line">Access-Control-Allow-Origin: https:<span class="comment">//javascript.info</span></span><br><span class="line">Access-Control-Expose-Headers: Content-Length,API-Key</span><br></pre></td></tr></table></figure>
-
-<h2 id="안전하지-않은-요청"><a href="#안전하지-않은-요청" class="headerlink" title="안전하지 않은 요청"></a>안전하지 않은 요청</h2><p>요츰엔 <code>GET</code>, <code>POST</code> 뿐만 아니라 <code>PATCH</code>, <code>DELETE</code> 등 어떤 메서드도 사용할 수 있다.</p>
-<p>과거에는 get 과 post 만 가능한 웹서버만 있었고 요즘도 종종 있다. 혼란스런 상황을 방지하기 위해서 안전하지 않은 요청( 위에서 안전한 요청에 조건을 벗어나는 요청) 을 보낼 때는 바로 요청을 보내지 않고 <code>preflight</code> 요청을 사전에 보낸다.</p>
-<p>preflight 요청은 <code>OPTIONS</code> 메서드를 사용하고 두 헤더가 함께 들어가며, 본문은 비어있다.</p>
-<ul>
-<li><code>Access-Control-Request-Method</code> - 안전하지 않은 요청에 사용하는 메서드 정보</li>
-<li><code>Access-Contorl-Request-Header</code> - 안전하지 않은 요청에 사용하는 헤더 목록</li>
-</ul>
-<p>안전하지 않은 요청을 허용하기로 협의했다면 서버는 본문이 비어있고 상태 코드가 200인 응답을 다음과 같은 헤더와 함께 브라우저로 보낸다.</p>
-<ul>
-<li><code>Access-Contorl-Allow-Origin</code> - <code>*</code>나 요청을 보낸 오리진</li>
-<li><code>Access-Control-Allow-Method</code> - 허용된 메서드 정보</li>
-<li><code>Access-Control-Allow-Headers</code> - 허용된 헤더 목록</li>
-<li><code>Access-Control-Max-Age</code> - 퍼미션 체크 여부를 몇 초간 캐싱해 놓을지를 명시. 이렇게 캐싱해 놓으면 브라우저는 일정 기간 동안 preflight 요청을 생략하고 안전하지 않은 요청을 보낼수 있다.</li>
-</ul>
-<img src="/images/210910-fetch와 cross-origin요청/2.png" width="500">
-
-<p>실제 <code>PATCH</code> 메서드를 사욭하는 예시를 통해서 확인해 본다.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> response = <span class="keyword">await</span> fetch(<span class="string">&quot;https://site.com/service.json&quot;</span>, &#123;</span><br><span class="line">  <span class="attr">method</span>: <span class="string">&quot;PATCH&quot;</span>,</span><br><span class="line">  <span class="attr">headers</span>: &#123;</span><br><span class="line">    <span class="string">&quot;Content-Type&quot;</span>: <span class="string">&quot;application/json&quot;</span>,</span><br><span class="line">    <span class="string">&quot;API-Key&quot;</span>: <span class="string">&quot;secret&quot;</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<p>위 요청은 안전한 요청에 조건을 벗어나므로 안전하지 않은 요청이다.</p>
-<h3 id="1-단계-priflight-요청"><a href="#1-단계-priflight-요청" class="headerlink" title="1 단계 priflight 요청"></a>1 단계 priflight 요청</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">OPTIONS /service.json</span><br><span class="line">Host: site.com</span><br><span class="line">Origin: https://javascript.info</span><br><span class="line">Access-Control-Request-Method: PATCH</span><br><span class="line">Access-Control-Request-Headers: Content-Type,API-Key</span><br></pre></td></tr></table></figure>
-
-<h3 id="2-단계-priflight-응답"><a href="#2-단계-priflight-응답" class="headerlink" title="2 단계 priflight 응답"></a>2 단계 priflight 응답</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">200 OK</span><br><span class="line">Access-Control-Allow-Origin: https://javascript.info</span><br><span class="line">Access-Control-Allow-Methods: PUT,PATCH,DELETE</span><br><span class="line">Access-Control-Allow-Headers: API-Key,Content-Type,If-Modified-Since,Cache-Control</span><br><span class="line">Access-Control-Max-Age: 86400</span><br></pre></td></tr></table></figure>
-
-<h3 id="3-단계-실제-요청"><a href="#3-단계-실제-요청" class="headerlink" title="3 단계 실제 요청"></a>3 단계 실제 요청</h3><p>이제 부터는 안전한 요청에 대한 프로세스와 동일하다. 본 요청은 크로스 오리진 요청이기 때문에 <code>Origin</code> 헤더가 붙는다.</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">PATCH /service.json</span><br><span class="line">Host: site.com</span><br><span class="line">Content-Type: application/json</span><br><span class="line">API-Key: secret</span><br><span class="line">Origin: https://javascript.info</span><br></pre></td></tr></table></figure>
-
-<h3 id="4단계-실제-응답"><a href="#4단계-실제-응답" class="headerlink" title="4단계 실제 응답"></a>4단계 실제 응답</h3><p>서버에서 본 응답에 <code>Access-Contorl-Allow-Origin</code> 헤더를 반드시 붙여야 한다.</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Access-Control-Allow-Origin: https://javascript.info</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>preflight 요청은 자바스크립트를 사용해 관찰 할 수 없다. preflight 요청이 거부된 경우 에러만 확인할 수 있다.</p>
-</blockquote>
-<h2 id="자격-증명"><a href="#자격-증명" class="headerlink" title="자격 증명"></a>자격 증명</h2><p>크로스 오리진 요청은 기본적으로 자격 증명이 함께 전송되지 않는다. 이렇게 한 이유는 크로스 오리진 요청 시 자격 증명을 함께 전송할 수 있으면 사용자 동의 없이 자바스크립트로 민감한 정보에 접근할 수 있기 때문이다.</p>
-<p>그럼에도 불구하고 자걱 증명이 담긴 헤더를 명시적으로 허용하겠다는 세팅을 서버에 해줄 수 있다.</p>
-<p><code>fetch</code> 메서드에 자격 정보를 함께 전송하려면 다음과 같이 <code>credentials: &quot;include&quot;</code> 옵션을 추가하면 된다.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">fetch(<span class="string">&quot;http://another.com&quot;</span>, &#123;</span><br><span class="line">  <span class="attr">credentials</span>: <span class="string">&quot;include&quot;</span>,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<p>서버에서 자격 증명 정보가 담긴 요청을 받아들이기로 했다면 응답에 <code>Access-Control-Allow-Origin</code> 헤더와 함께 <code>Access-Conrol-Allow-Credentials: true</code> 헤더를 추가해서 보낸다.</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">200 OK</span><br><span class="line">Access-Control-Allow-Origin: https://javascript.info</span><br><span class="line">Access-Control-Allow-Credentials: true</span><br></pre></td></tr></table></figure>
-
-<p>이때, <code>Access-Contorl-Allow-Origin</code>에 *를 쓸 수 없다. 정확한 오리진 정보만 명시되어야 서버에서 신뢰할 수 있기 때문이다.</p>
+<p>이는 <code>&lt;input type=&quot;file&quot; name=&quot;image&quot;&gt;</code>와 같다.</p>
 
       
     </div>

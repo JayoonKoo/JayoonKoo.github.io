@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css" integrity="sha256-2H3fkXt6FEmrReK448mDVGKb3WW2ZZw35gI7vqHOE4Y=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"jayoonkoo.github.io","root":"/","images":"/images","scheme":"Muse","version":"8.6.1","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="Run your testsIntroNode.js 와 Mocha frameworks 를 사용하여 Docker  안에서 Unit test 를 진행하는 방법을 알아본다. Create a test.&#x2F;test 폴더를 application 안에서 생성한다  1$ mkdir -p test  test.js 파일을 .&#x2F;test 폴더 안에 생성한다.  12345678var">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Using Node(4)">
+<meta property="og:url" content="https://jayoonkoo.github.io/2021/12/24/DevOps/Docker/211224-Using%20Node(4)/index.html">
+<meta property="og:site_name" content="티끌모아 태산">
+<meta property="og:description" content="Run your testsIntroNode.js 와 Mocha frameworks 를 사용하여 Docker  안에서 Unit test 를 진행하는 방법을 알아본다. Create a test.&#x2F;test 폴더를 application 안에서 생성한다  1$ mkdir -p test  test.js 파일을 .&#x2F;test 폴더 안에 생성한다.  12345678var">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-12-24T03:55:56.000Z">
+<meta property="article:modified_time" content="2021-12-24T03:59:25.330Z">
+<meta property="article:author" content="JayoonKoo">
+<meta property="article:tag" content="Docker">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://jayoonkoo.github.io/2021/12/24/DevOps/Docker/211224-Using%20Node(4)/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://jayoonkoo.github.io/2021/12/24/DevOps/Docker/211224-Using%20Node(4)/","path":"2021/12/24/DevOps/Docker/211224-Using Node(4)/","title":"Using Node(4)"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Using Node(4) | 티끌모아 태산</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">티끌모아 태산</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">작은 조각 모음</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">11</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">9</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">123</span></a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Run-your-tests"><span class="nav-number">1.</span> <span class="nav-text">Run your tests</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Intro"><span class="nav-number">1.1.</span> <span class="nav-text">Intro</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Create-a-test"><span class="nav-number">1.2.</span> <span class="nav-text">Create a test</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Running-locally-and-testing-the-application"><span class="nav-number">1.3.</span> <span class="nav-text">Running locally and testing the application</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Install-Mocha"><span class="nav-number">1.4.</span> <span class="nav-text">Install Mocha</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Update-package-json-and-Dockerfile-to-run-tests"><span class="nav-number">1.5.</span> <span class="nav-text">Update package.json and Dockerfile to run tests</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Multi-stage-Dockerfile-for-testing"><span class="nav-number">1.6.</span> <span class="nav-text">Multi-stage Dockerfile for testing</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-overview">
+            <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">JayoonKoo</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">123</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/JayoonKoo" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;JayoonKoo" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:rnwkdbs12@gmail.com" title="E-Mail → mailto:rnwkdbs12@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/JayoonKoo" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/12/24/DevOps/Docker/211224-Using%20Node(4)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JayoonKoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="티끌모아 태산">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Using Node(4)
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2021-12-24 12:55:56 / Modified: 12:59:25" itemprop="dateCreated datePublished" datetime="2021-12-24T12:55:56+09:00">2021-12-24</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/DevOps/" itemprop="url" rel="index"><span itemprop="name">DevOps</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="Run-your-tests"><a href="#Run-your-tests" class="headerlink" title="Run your tests"></a>Run your tests</h1><h2 id="Intro"><a href="#Intro" class="headerlink" title="Intro"></a>Intro</h2><p>Node.js 와 Mocha frameworks 를 사용하여 Docker  안에서 Unit test 를 진행하는 방법을 알아본다.</p>
+<h2 id="Create-a-test"><a href="#Create-a-test" class="headerlink" title="Create a test"></a>Create a test</h2><p><code>./test</code> 폴더를 application 안에서 생성한다 </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ mkdir -p <span class="built_in">test</span></span><br></pre></td></tr></table></figure>
+
+<p><code>test.js</code> 파일을 <code>./test</code> 폴더 안에 생성한다. </p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> assert = <span class="built_in">require</span>(<span class="string">&#x27;assert&#x27;</span>);</span><br><span class="line">describe(<span class="string">&#x27;Array&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  describe(<span class="string">&#x27;#indexOf()&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    it(<span class="string">&#x27;should return -1 when the value is not present&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      assert.equal([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>].indexOf(<span class="number">4</span>), -<span class="number">1</span>);</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="Running-locally-and-testing-the-application"><a href="#Running-locally-and-testing-the-application" class="headerlink" title="Running locally and testing the application"></a>Running locally and testing the application</h2><p>Docker image 를 컨테이너 안에서 build 하고 실행시킨다.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker-compose -f docker-compose.dev.yml up --build</span><br></pre></td></tr></table></figure>
+
+<h2 id="Install-Mocha"><a href="#Install-Mocha" class="headerlink" title="Install Mocha"></a>Install Mocha</h2><p>개발 의존성으로 Mocha 를 설치한다. </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install --save-dev mocha</span><br></pre></td></tr></table></figure>
+
+<h2 id="Update-package-json-and-Dockerfile-to-run-tests"><a href="#Update-package-json-and-Dockerfile-to-run-tests" class="headerlink" title="Update package.json and Dockerfile to run tests"></a>Update package.json and Dockerfile to run tests</h2><p>컨테이너 안에서 test 가 진행될 수 있도록 package.json을 수정하자. 위에서 똑같은 docker run command를 실행시킬건데 이번에는 package.json 에 test 스크립트를 추가하고 test가 실행 될 수 있도록 한다. </p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	<span class="attr">&quot;script&quot;</span>: &#123;</span><br><span class="line">		<span class="attr">&quot;test&quot;</span> : <span class="string">&quot;mocha ./**/*.js&quot;</span>,</span><br><span class="line">		<span class="attr">&quot;start&quot;</span> : <span class="string">&quot;nodemon --inspect=0.0.0.0:9229 server.js&quot;</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>test 실행:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker-compose -f docker-compose.dev.yml run notes npm run <span class="built_in">test</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Multi-stage-Dockerfile-for-testing"><a href="#Multi-stage-Dockerfile-for-testing" class="headerlink" title="Multi-stage Dockerfile for testing"></a>Multi-stage Dockerfile for testing</h2><p>명령에 따라 테스트를 실행하는 것 외에도 Dockerfile을 사용해서 이미지를 빌드할 때 테스트를 실행할 수 있다. 밑에 Dockerfile 은 test를 진행하고 production image 를 build 한다.</p>
+<figure class="highlight docker"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># syntax=docker/dockerfile:1</span></span><br><span class="line"><span class="keyword">FROM</span> node:<span class="number">14.15</span>.<span class="number">4</span> as base</span><br><span class="line"></span><br><span class="line"><span class="keyword">WORKDIR</span><span class="bash"> /code</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">COPY</span><span class="bash"> package.json package.json</span></span><br><span class="line"><span class="keyword">COPY</span><span class="bash"> package-lock.json package-lock.json</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">FROM</span> base as test</span><br><span class="line"><span class="keyword">RUN</span><span class="bash"> npm ci</span></span><br><span class="line"><span class="keyword">COPY</span><span class="bash"> . .</span></span><br><span class="line"><span class="keyword">CMD</span><span class="bash"> [ <span class="string">&quot;npm&quot;</span>, <span class="string">&quot;run&quot;</span>, <span class="string">&quot;test&quot;</span> ]</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">FROM</span> base as prod</span><br><span class="line"><span class="keyword">RUN</span><span class="bash"> npm ci --production</span></span><br><span class="line"><span class="keyword">COPY</span><span class="bash"> . .</span></span><br><span class="line"><span class="keyword">CMD</span><span class="bash"> [ <span class="string">&quot;node&quot;</span>, <span class="string">&quot;server.js&quot;</span> ]</span></span><br></pre></td></tr></table></figure>
+
+<p>먼저 , base image에 라벨을 <code>as base</code> 로 추가한다. build stage 마다 참조할 수 있도록 해준다. docker command 를 입력할 때 <code>--target test</code> 같이 명시해서 build stage를 명시해서 build 할 수 있다. </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker build -t node-docker --target <span class="built_in">test</span> .</span><br></pre></td></tr></table></figure>
+
+<p>이렇게 하면 test 이미지가 빌드 된다. 이제 test 이미지를 실행해 본다. </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker run -it --rm -p 8000:8000 node-docker</span><br></pre></td></tr></table></figure>
+
+<p>테스트가 실행 된다. </p>
+<p>지금은 build 한다음 run 을 하는 방식을 사용하는데 이렇게 하면 실행하기 위해 2번씩 명령어를 입력해야 한다. Dockerfile 내부에 CMD 를 RUN 으로 바꾸어서 조금 개선할 수 있다. CMD 는 컨테이너에서 이미지를 실행할 때 실행된다. 반면에 RUN 은 이미지를 build 할때 실행 되고 실패하면 중지된다. 수정한 Dockerfile은 다음과 같다. </p>
+<figure class="highlight docker"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># syntax=docker/dockerfile:1</span></span><br><span class="line"><span class="keyword">FROM</span> node:<span class="number">14.15</span>.<span class="number">4</span> as base</span><br><span class="line"></span><br><span class="line"><span class="keyword">WORKDIR</span><span class="bash"> /code</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">COPY</span><span class="bash"> package.json package.json</span></span><br><span class="line"><span class="keyword">COPY</span><span class="bash"> package-lock.json package-lock.json</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">FROM</span> base as test</span><br><span class="line"><span class="keyword">RUN</span><span class="bash"> npm ci</span></span><br><span class="line"><span class="keyword">COPY</span><span class="bash"> . .</span></span><br><span class="line"><span class="keyword">RUN</span><span class="bash"> npm run <span class="built_in">test</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">FROM</span> base as prod</span><br><span class="line"><span class="keyword">RUN</span><span class="bash"> npm ci --production</span></span><br><span class="line"><span class="keyword">COPY</span><span class="bash"> . .</span></span><br><span class="line"><span class="keyword">CMD</span><span class="bash"> [ <span class="string">&quot;node&quot;</span>, <span class="string">&quot;server.js&quot;</span> ]</span></span><br></pre></td></tr></table></figure>
+
+<p>똑같이 build 한다</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker build -t node-docker --target <span class="built_in">test</span> .</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Docker/" rel="tag"># Docker</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/12/22/DevOps/Docker/211221-Docker%20compose%EB%A1%9C%20%EC%84%9C%EB%B2%84%20%EB%9D%84%EC%9A%B0%EA%B8%B0/" rel="prev" title="Docker compose로 서버 띄우기">
+                  <i class="fa fa-chevron-left"></i> Docker compose로 서버 띄우기
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/12/24/TIL/211223-211223%20%EB%A6%AC%EC%97%91%ED%8A%B8%20%EC%BF%BC%EB%A6%AC/" rel="next" title="211223 리엑트 쿼리">
+                  211223 리엑트 쿼리 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">JayoonKoo</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>
