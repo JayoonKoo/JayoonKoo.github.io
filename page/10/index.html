@@ -83,9 +83,9 @@
   <ul class="main-menu menu">
         <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li>
         <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
-        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">11</span></a></li>
-        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">9</span></a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">124</span></a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">13</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">11</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">126</span></a></li>
   </ul>
 </nav>
 
@@ -129,18 +129,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">124</span>
+          <span class="site-state-item-count">126</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-count">11</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-count">13</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -180,6 +180,189 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/09/12/system-programing/210820-%EC%8B%9C%EA%B7%B8%EB%84%90%20%EB%8F%99%EC%9E%91%20%EB%A9%94%EC%BB%A4%EB%8B%88%EC%A6%98/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JayoonKoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="티끌모아 태산">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/09/12/system-programing/210820-%EC%8B%9C%EA%B7%B8%EB%84%90%20%EB%8F%99%EC%9E%91%20%EB%A9%94%EC%BB%A4%EB%8B%88%EC%A6%98/" class="post-title-link" itemprop="url">시그널 동작 메커니즘</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-09-12 23:46:02" itemprop="dateCreated datePublished" datetime="2021-09-12T23:46:02+09:00">2021-09-12</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/CS/" itemprop="url" rel="index"><span itemprop="name">CS</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="시그널-동작-메커니즘"><a href="#시그널-동작-메커니즘" class="headerlink" title="시그널 동작 메커니즘"></a>시그널 동작 메커니즘</h1><p>본래는 다른 용도 이지만 IPC 로도 사용 가능한 기법</p>
+<ul>
+<li>시그널(signal) - 프로세스에 이벤트 전달.</li>
+<li>소켓(socket) - 네트워크</li>
+</ul>
+<h2 id="시그널"><a href="#시그널" class="headerlink" title="시그널"></a>시그널</h2><p>유닉스에서 오래전부터 사용되온 기술이다. 커널 또는 프로세스에서 다른 프로세스에서 어떤 이벤트가 발생되었는지를 알려주는 기법이다.</p>
+<h2 id="시그널-동작"><a href="#시그널-동작" class="headerlink" title="시그널 동작"></a>시그널 동작</h2><p>프로그램에서 특정 시그널의 기본 동작 대신 다른 동작을 하도록 구현 가능하다.</p>
+<p>각 프로세스에서 시그널 처리에 대해 다음과 같은 동작 설정이 가능하다.</p>
+<ul>
+<li>시그널 무시</li>
+<li>시그널 블록</li>
+<li>프로그램 안에 등록된 시그널 핸들러로 재정의한 특정 동작 수행</li>
+<li>등록된 시그널 핸들러가 없다면, 커널에서 기본 동작 수행</li>
+</ul>
+<h2 id="시그널과-프로세스"><a href="#시그널과-프로세스" class="headerlink" title="시그널과 프로세스"></a>시그널과 프로세스</h2><p>프로세스는 PCB 에서 해당 프로세스가 블록 또는 처리해야하는 시그널 관련 정보를 관리한다. 커널 모드에서 사용자 모드 전환시 시그널 정보를 확인해서 해당 처리를 한다.</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/09/12/system-programing/210821-%EB%A6%AC%EB%88%85%EC%8A%A4%20%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JayoonKoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="티끌모아 태산">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/09/12/system-programing/210821-%EB%A6%AC%EB%88%85%EC%8A%A4%20%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4/" class="post-title-link" itemprop="url">리눅스 프로세스</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-09-12 23:46:02" itemprop="dateCreated datePublished" datetime="2021-09-12T23:46:02+09:00">2021-09-12</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/CS/" itemprop="url" rel="index"><span itemprop="name">CS</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="리눅스-프로세스"><a href="#리눅스-프로세스" class="headerlink" title="리눅스 프로세스"></a>리눅스 프로세스</h1><h2 id="프로세스-vs-바이너리"><a href="#프로세스-vs-바이너리" class="headerlink" title="프로세스 vs 바이너리"></a>프로세스 vs 바이너리</h2><p>바이너리 - 코드 이미지 (실행 파일)<br>실행 중인 프로그램을 프로세스라고 한다. </p>
+<h2 id="리눅스는-다양한-프로세스-실행-환경"><a href="#리눅스는-다양한-프로세스-실행-환경" class="headerlink" title="리눅스는 다양한 프로세스 실행 환경"></a>리눅스는 다양한 프로세스 실행 환경</h2><p>유닉스 철학 : 여러 프로그램이 유기적으로 각자의 일을 수행하면서 전체 시스템이 동작하도록 하는 모델</p>
+<h2 id="foreground-process-background-process"><a href="#foreground-process-background-process" class="headerlink" title="foreground process / background process"></a>foreground process / background process</h2><p>foreground process: 쉘 에서 해당 프로세스가 실행되고 있으면 수행 종료 전까지 다른 입력을 하지 못하는 프로세스 </p>
+<p>background process: 사용자 입력과 상관 없이 실행되는 프로세스.<br>쉘(shell) 에서 해당 프로세스 실행시, 맨 뒤에 &amp;를 붙여줌.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">find / -name &#x27;*.py&#x27; &gt; list.txt &amp;</span><br><span class="line">[1] 57</span><br></pre></td></tr></table></figure>
+<p><code>[1]</code>은 작업 번호 57은 pid를 나타냄. </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">kill -9 [pid번호]</span><br><span class="line"></span><br><span class="line">jobs</span><br></pre></td></tr></table></figure>
+<p>kill 명령어를 통해 프로세스를 종료시키고, jobs 명령어를 통해 background process로 실행중인 프로세스를 확인한다. </p>
+<h2 id="foreground-process-제어하기"><a href="#foreground-process-제어하기" class="headerlink" title="foreground process 제어하기"></a>foreground process 제어하기</h2><p>컨트롤 +  z : foreground 프로세스를 실행 중지 상태로 변경</p>
+<p>맨 마지막 컨트롤 + z 로 중지된 프로세스는 bg 명령으로 background로 실행될 수 있다. </p>
+<p>jobs 명령어를 통해 진행 또는 중지된 프로세스를 보여준다. </p>
+<p>컨트롤 + c : 프로세스를 완전히 종료 시킴</p>
+<h3 id="프로세스-상태-확인"><a href="#프로세스-상태-확인" class="headerlink" title="프로세스 상태 확인"></a>프로세스 상태 확인</h3><p><code>ps</code> 프로세스 상태 확인 </p>
+<p>데몬 프로세스(daemon process) : 사용자 모르게 시스템 관리를 위해 실행되는 프로세스로 보통 시스템이 부팅될 때 자동 실행. </p>
+<p>보통 <code>ps aux</code>를 많이 사용한다.</p>
+<p>USER: 소유자 정보</p>
+<p>PID : process id</p>
+<p>%CPU : CPU 사용하고 있는 퍼센트</p>
+<p>%MEM : memory 사용하고 있는 퍼센트 </p>
+<p>VSZ : 가상메모리에서 실제로 쓰고 있는 메모리</p>
+<p>RSS : 페이징 시스템을 사용해서 실제 물리 메모리에서 사용하고 있는 사이즈</p>
+<p>TTY : 어떤 터미널과 연결되 있는가? 하드웨어 리소스 </p>
+<p>STAT : 상태 </p>
+<h3 id="프로세스-죽이기"><a href="#프로세스-죽이기" class="headerlink" title="프로세스 죽이기"></a>프로세스 죽이기</h3><p><code>kill -9 &lt;pid&gt;</code> -9 강제로 죽이기 </p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1142,214 +1325,6 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/08/15/modernJs/210726-instanceof/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JayoonKoo">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="티끌모아 태산">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/08/15/modernJs/210726-instanceof/" class="post-title-link" itemprop="url">instanceof</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-08-15 19:40:25" itemprop="dateCreated datePublished" datetime="2021-08-15T19:40:25+09:00">2021-08-15</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="instanceof-로-클래스-확인하기"><a href="#instanceof-로-클래스-확인하기" class="headerlink" title="instanceof 로 클래스 확인하기"></a>instanceof 로 클래스 확인하기</h1><p>instanceof 를 사용하면 특정 클래스에 속하는지 확인할 수 있다. </p>
-<p>이를 통해 특적 인스턴스의 상속 관계까지도 확인할 수 있다.</p>
-<p>다양한 곳에서 사용할 수 있는데 이번 챕터에서는 다형적인 함수를 만드는데 사용해 보도록 한다.</p>
-<br/>
-
-<h2 id="instanceof-연산자"><a href="#instanceof-연산자" class="headerlink" title="instanceof 연산자"></a>instanceof 연산자</h2><p>기본 사용법</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">obj <span class="keyword">instanceof</span> Class</span><br></pre></td></tr></table></figure>
-<p>obj 가 Class에 속하거나 Class를 상속받는 클래스에 속하면 true를 반환한다.</p>
-<p>instanceof는 보통 프로토타입 체인을 거슬러 올라가며 인스턴스 여부나 상속 여부를 확인한다. </p>
-<p>그런데 정적 메서드 <code>Symbol.hasInstance</code>를 사용하면 직접 확인 로직을 설정할 수 도 있다. </p>
-<p>동작 방식은 다음과 같다. </p>
-<ol>
-<li>Class 안에 Symbol.hasInstance가 구현되어 있으면, obj instanceof Class문이 실행될때 <code>Class[Symbol.hasInstance](obj)</code> 가 실행됨. 호출결과는 true 이거나 false 이어야 한다. </li>
-</ol>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// canEat 프로퍼티가 있으면 animal이라고 판단할 수 있도록</span></span><br><span class="line"><span class="comment">// instanceOf의 로직을 직접 설정합니다.</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Animal</span> </span>&#123;</span><br><span class="line">  <span class="keyword">static</span> [<span class="built_in">Symbol</span>.hasInstance](obj) &#123;</span><br><span class="line">    <span class="keyword">if</span> (obj.canEat) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> obj = &#123; <span class="attr">canEat</span>: <span class="literal">true</span> &#125;;</span><br><span class="line"></span><br><span class="line">alert(obj <span class="keyword">instanceof</span> Animal); <span class="comment">// true, Animal[Symbol.hasInstance](obj)가 호출됨</span></span><br></pre></td></tr></table></figure>
-
-<ol start="2">
-<li>대부분의 클래스엔 Symbol.hasInstance가 구현되어 있지 않음. 따라서 프로토타입 체인을 거치면서 하나와 일치하면 true를 반환함. </li>
-</ol>
-<br/>
-
-<h2 id="보너스-타입-확인을-위한-Object-prototype-toString"><a href="#보너스-타입-확인을-위한-Object-prototype-toString" class="headerlink" title="보너스: 타입 확인을 위한 Object.prototype.toString"></a>보너스: 타입 확인을 위한 Object.prototype.toString</h2><p>toString 을 사용하면 typeOf 나 instancof의 좋은 대안이 될 수 있다.</p>
-<p>toString 알고리즘은 내부적으로 this를 검사하고 this에 상응하는 결과를 반환한다.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> s = <span class="built_in">Object</span>.prototype.toString;</span><br><span class="line"></span><br><span class="line">alert( s.call(<span class="number">123</span>) ); <span class="comment">// [object Number]</span></span><br><span class="line">alert( s.call(<span class="literal">null</span>) ); <span class="comment">// [object Null]</span></span><br><span class="line">alert( s.call(alert) ); <span class="comment">// [object Function]</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="Symbol-toStringTag"><a href="#Symbol-toStringTag" class="headerlink" title="Symbol.toStringTag"></a>Symbol.toStringTag</h3><p>특수 객체 프로퍼티 Symbol.toStringTag를 사용하면 toString의 동작ㅇ을 커스터마이징 가능하다.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> user = &#123;</span><br><span class="line">  [<span class="built_in">Symbol</span>.toStringTag]: <span class="string">&quot;User&quot;</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">alert( &#123;&#125;.toString.call(user) ); <span class="comment">// [object User]</span></span><br></pre></td></tr></table></figure>
-
-<p>객채의 확인 뿐만 아니라 문자열로 받고 싶다면 <code>&#123;&#125;.toString.call</code>를 활용하면 됨.</p>
-<p><a href="js/210726-instanceof/1.js">과제1</a></p>
-<br/>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/08/15/modernJs/210726-%EB%AF%B9%EC%8A%A4%EC%9D%B8/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JayoonKoo">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="티끌모아 태산">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/08/15/modernJs/210726-%EB%AF%B9%EC%8A%A4%EC%9D%B8/" class="post-title-link" itemprop="url">믹스인</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2021-08-15 19:40:25 / Modified: 19:47:03" itemprop="dateCreated datePublished" datetime="2021-08-15T19:40:25+09:00">2021-08-15</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="믹스인"><a href="#믹스인" class="headerlink" title="믹스인"></a>믹스인</h1><p>자바스크립트에서는 단일상속만을 허용하는 언어이다. </p>
-<p>다중 상속이 필요한 경우는 어떻게 해야 할까? </p>
-<p>믹스인이라는 기능을 통해서 다른 클래스의 상속 없이 이들 클래스에 구현되어 있는 메서드를 담게 할 수 있다. </p>
-<p>믹슥인은 특정 행동을 실행해주는 메서드를 제공하는데 단독으로 쓰이지 않고 다른 클래스에 행동을 더해주는 용도로 사용된다.</p>
-<br/>
-
-<h2 id="믹스인-예시"><a href="#믹스인-예시" class="headerlink" title="믹스인 예시"></a>믹스인 예시</h2><p>유용한 메서드가 여러 개가 담긴 객체를 하난 만든다. </p>
-<p>이렇게 하면 다수의 메서드를 원하는 클래스의 프로토타입에 쉽게 병합할 수 있다. </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 믹스인</span></span><br><span class="line"><span class="keyword">let</span> sayHiMixin = &#123;</span><br><span class="line">  <span class="function"><span class="title">sayHi</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    alert(<span class="string">`Hello <span class="subst">$&#123;<span class="built_in">this</span>.name&#125;</span>`</span>);</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="function"><span class="title">sayBye</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    alert(<span class="string">`Bye <span class="subst">$&#123;<span class="built_in">this</span>.name&#125;</span>`</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 사용법:</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">User</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">name</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.name = name;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 메서드 복사</span></span><br><span class="line"><span class="built_in">Object</span>.assign(User.prototype, sayHiMixin);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 이제 User가 인사를 할 수 있습니다.</span></span><br><span class="line"><span class="keyword">new</span> User(<span class="string">&quot;Dude&quot;</span>).sayHi(); <span class="comment">// Hello Dude!</span></span><br></pre></td></tr></table></figure>
-
-<p>믹스인을 사용했다면 만약 User가 다른 클래스를 상속 받고 있더라도 믹스인에 구현된 메서드를 사용할 수 있다. </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">User</span> <span class="keyword">extends</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">Object</span>.assign(User.prototype, sayHiMixin);</span><br></pre></td></tr></table></figure>
-
-<p>믹스인인에서 클래스를 상속 받는것도 가능하다.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> sayMixin = &#123;</span><br><span class="line">  <span class="function"><span class="title">say</span>(<span class="params">phrase</span>)</span> &#123;</span><br><span class="line">    alert(phrase);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> sayHiMixin = &#123;</span><br><span class="line">  <span class="attr">__proto__</span>: sayMixin, <span class="comment">// (Object.create를 사용해 프로토타입을 설정할 수도 있습니다.)</span></span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">sayHi</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="comment">// 부모 메서드 호출</span></span><br><span class="line">    <span class="built_in">super</span>.say(<span class="string">`Hello <span class="subst">$&#123;<span class="built_in">this</span>.name&#125;</span>`</span>); <span class="comment">// (*)</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="function"><span class="title">sayBye</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="built_in">super</span>.say(<span class="string">`Bye <span class="subst">$&#123;<span class="built_in">this</span>.name&#125;</span>`</span>); <span class="comment">// (*)</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">User</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">name</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.name = name;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 메서드 복사</span></span><br><span class="line"><span class="built_in">Object</span>.assign(User.prototype, sayHiMixin);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 이제 User가 인사를 할 수 있습니다.</span></span><br><span class="line"><span class="keyword">new</span> User(<span class="string">&quot;Dude&quot;</span>).sayHi(); <span class="comment">// Hello Dude!</span></span><br></pre></td></tr></table></figure>
-
-<p>참조 관계</p>
-<img src="/images/imgs/9-7-1.png" width="400">
-
-<br/>
-
-<h2 id="이벤트-믹스인"><a href="#이벤트-믹스인" class="headerlink" title="이벤트 믹스인"></a>이벤트 믹스인</h2><p>클래스나 객체의 이벤트 관련함수를 쉽게 추가할 수 있는 믹스인을 만들어 보도록 한다. </p>
-<ul>
-<li>믹스인은 중요한 일이 발생했을 때 이벤트를 생성하는 메서드인 <code>.trigger(name, [...data])</code>를 제공함.</li>
-<li>메서드 <code>.on(name, handler)</code>를 통해서 trigger 됬을 때 이벤트를 등록할 수 있음.</li>
-<li>메서드 <code>.off(name, handler)</code>를 통해서 handler 리스너를 제거한다. </li>
-</ul>
-<p>믹스인을 축하면 사용자가 로그인할 때 객체 user 가 “login” 이라는 이벤트를 생성 한다든지의 기능을 만들 수 있다.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> eventMixin = &#123;</span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   *  이벤트 구독</span></span><br><span class="line"><span class="comment">   *  사용패턴: menu.on(&#x27;select&#x27;, function(item) &#123; ... &#125;</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line">  <span class="function"><span class="title">on</span>(<span class="params">eventName, handler</span>)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (!<span class="built_in">this</span>._eventHandlers) <span class="built_in">this</span>._eventHandlers = &#123;&#125;;</span><br><span class="line">    <span class="keyword">if</span> (!<span class="built_in">this</span>._eventHandlers[eventName]) &#123;</span><br><span class="line">      <span class="built_in">this</span>._eventHandlers[eventName] = [];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">this</span>._eventHandlers[eventName].push(handler);</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   *  구독 취소</span></span><br><span class="line"><span class="comment">   *  사용패턴: menu.off(&#x27;select&#x27;, handler)</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="function"><span class="title">off</span>(<span class="params">eventName, handler</span>)</span> &#123;</span><br><span class="line">    <span class="keyword">let</span> handlers = <span class="built_in">this</span>._eventHandlers?.[eventName];</span><br><span class="line">    <span class="keyword">if</span> (!handlers) <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; handlers.length; i++) &#123;</span><br><span class="line">      <span class="keyword">if</span> (handlers[i] === handler) &#123;</span><br><span class="line">        handlers.splice(i--, <span class="number">1</span>);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   *  주어진 이름과 데이터를 기반으로 이벤트 생성</span></span><br><span class="line"><span class="comment">   *  사용패턴: this.trigger(&#x27;select&#x27;, data1, data2);</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="function"><span class="title">trigger</span>(<span class="params">eventName, ...args</span>)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (!<span class="built_in">this</span>._eventHandlers?.[eventName]) &#123;</span><br><span class="line">      <span class="keyword">return</span>; <span class="comment">// no handlers for that event name</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 핸들러 호출</span></span><br><span class="line">    <span class="built_in">this</span>._eventHandlers[eventName].forEach(<span class="function"><span class="params">handler</span> =&gt;</span> handler.apply(<span class="built_in">this</span>, args));</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p>사용법</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 클래스 생성</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Menu</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">choose</span>(<span class="params">value</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.trigger(<span class="string">&quot;select&quot;</span>, value);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 이벤트 관련 메서드가 구현된 믹스인 추가</span></span><br><span class="line"><span class="built_in">Object</span>.assign(Menu.prototype, eventMixin);</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> menu = <span class="keyword">new</span> Menu();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 메뉴 항목을 선택할 때 호출될 핸들러 추가</span></span><br><span class="line">menu.on(<span class="string">&quot;select&quot;</span>, <span class="function"><span class="params">value</span> =&gt;</span> alert(<span class="string">`선택된 값: <span class="subst">$&#123;value&#125;</span>`</span>));</span><br><span class="line"></span><br><span class="line"><span class="comment">// 이벤트가 트리거 되면 핸들러가 실행되어 얼럿창이 뜸</span></span><br><span class="line"><span class="comment">// 얼럿창 메시지: Value selected: 123</span></span><br><span class="line">menu.choose(<span class="string">&quot;123&quot;</span>);</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
     <a class="extend prev" rel="prev" href="/page/9/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><span class="page-number current">10</span><a class="page-number" href="/page/11/">11</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" href="/page/11/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
@@ -1363,7 +1338,7 @@
 
 <div class="copyright">
   &copy; 
-  <span itemprop="copyrightYear">2021</span>
+  <span itemprop="copyrightYear">2022</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
