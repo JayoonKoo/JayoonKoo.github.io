@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css" integrity="sha256-2H3fkXt6FEmrReK448mDVGKb3WW2ZZw35gI7vqHOE4Y=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"jayoonkoo.github.io","root":"/","images":"/images","scheme":"Muse","version":"8.6.1","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="LED배울 기술  UINavigationController 화면 전환 개념 ViewController Life Cycle 화면간 데이터 전달 하는 방법 에셋 카탈로그  UINavigationController Content View Conroller : 화면을 구성하는 뷰를 직접 구현하고 관련된 이벤트를 처리하는 뷰 컨트롤러 Container View Co">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LEDBoard">
+<meta property="og:url" content="https://jayoonkoo.github.io/2022/01/06/IOS/220105-LEDBoard/index.html">
+<meta property="og:site_name" content="티끌모아 태산">
+<meta property="og:description" content="LED배울 기술  UINavigationController 화면 전환 개념 ViewController Life Cycle 화면간 데이터 전달 하는 방법 에셋 카탈로그  UINavigationController Content View Conroller : 화면을 구성하는 뷰를 직접 구현하고 관련된 이벤트를 처리하는 뷰 컨트롤러 Container View Co">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-01-06T05:38:45.000Z">
+<meta property="article:modified_time" content="2022-01-06T05:38:55.637Z">
+<meta property="article:author" content="JayoonKoo">
+<meta property="article:tag" content="IOS">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://jayoonkoo.github.io/2022/01/06/IOS/220105-LEDBoard/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://jayoonkoo.github.io/2022/01/06/IOS/220105-LEDBoard/","path":"2022/01/06/IOS/220105-LEDBoard/","title":"LEDBoard"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>LEDBoard | 티끌모아 태산</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">티끌모아 태산</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">작은 조각 모음</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">13</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">11</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">128</span></a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#LED"><span class="nav-number">1.</span> <span class="nav-text">LED</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#UINavigationController"><span class="nav-number">1.1.</span> <span class="nav-text">UINavigationController</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%ED%99%94%EB%A9%B4-%EC%A0%84%ED%99%98-%EA%B0%9C%EB%85%90"><span class="nav-number">1.2.</span> <span class="nav-text">화면 전환 개념</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ViewContoller-Life-Cycle"><span class="nav-number">1.3.</span> <span class="nav-text">ViewContoller Life Cycle</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%ED%99%94%EB%A9%B4%EA%B0%84-%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%A5%BC-%EC%A0%84%EB%8B%AC%ED%95%98%EB%8A%94-%EB%B0%A9%EB%B2%95"><span class="nav-number">1.4.</span> <span class="nav-text">화면간 데이터를 전달하는 방법</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%EC%97%90%EC%85%8B-%EC%B9%B4%ED%83%88%EB%A1%9C%EA%B7%B8"><span class="nav-number">1.5.</span> <span class="nav-text">에셋 카탈로그</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%EA%B8%B0%ED%83%80"><span class="nav-number">1.6.</span> <span class="nav-text">기타</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-overview">
+            <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">JayoonKoo</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">128</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/JayoonKoo" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;JayoonKoo" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:rnwkdbs12@gmail.com" title="E-Mail → mailto:rnwkdbs12@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/JayoonKoo" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2022/01/06/IOS/220105-LEDBoard/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JayoonKoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="티끌모아 태산">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          LEDBoard
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2022-01-06 14:38:45 / Modified: 14:38:55" itemprop="dateCreated datePublished" datetime="2022-01-06T14:38:45+09:00">2022-01-06</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/IOS/" itemprop="url" rel="index"><span itemprop="name">IOS</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="LED"><a href="#LED" class="headerlink" title="LED"></a>LED</h2><p>배울 기술</p>
+<ul>
+<li>UINavigationController</li>
+<li>화면 전환 개념</li>
+<li>ViewController Life Cycle</li>
+<li>화면간 데이터 전달 하는 방법</li>
+<li>에셋 카탈로그</li>
+</ul>
+<h3 id="UINavigationController"><a href="#UINavigationController" class="headerlink" title="UINavigationController"></a>UINavigationController</h3><ul>
+<li>Content View Conroller : 화면을 구성하는 뷰를 직접 구현하고 관련된 이벤트를 처리하는 뷰 컨트롤러</li>
+<li>Container View Controller : 하나 이상의 Child View Conroller를 가지고 있다. 레이아웃하고, 화면 전환을 담당한다.</li>
+<li>화면 구성과 이벤트 관리는 child view Controller에서 한다.</li>
+<li>대표적으로 Navigation Controller 와 TabBar Controller가 있다.</li>
+</ul>
+<p>계층 구조로 구성된 content를 순차적으로 보여주는 container view controller</p>
+<p>Navigation Stack 을 가짐</p>
+<p>Navigation Bar를 가짐. backItem ,topItem prompt, topItem Title, topItem rightBarButtonItem 등을 구성요소로 가진다.</p>
+<h3 id="화면-전환-개념"><a href="#화면-전환-개념" class="headerlink" title="화면 전환 개념"></a>화면 전환 개념</h3><p>3가지 정도 사용됨.</p>
+<ul>
+<li>View Controller 에서 다른 View Controller를 호출하여 전환하기 (프레젠테이션 방법) → 비동기로 동작함 (화면을 덮고, 걷어내는 개념)</li>
+<li>Navigation Contoller 를 사용하여 화면 전환하기 ( stack 으로 push, pop 하는 방식)</li>
+<li>화면 전환용 객체 세그웨이(Segueway)를 사용하여 화면 전환하기, strory board 이용 화면과 화면 사이에 SegueWay 객체를 둠</li>
+</ul>
+<h3 id="ViewContoller-Life-Cycle"><a href="#ViewContoller-Life-Cycle" class="headerlink" title="ViewContoller Life Cycle"></a>ViewContoller Life Cycle</h3><ul>
+<li>Appearing : 뷰가 화면에 나타나는 중</li>
+<li>Appeard: 뷰가 화면에 나타나는게 완료 된 상태</li>
+<li>Disappearing: 뷰가 화면에서 사라지는 중</li>
+<li>Disappeared: 뷰가 화면에서 사라진 상태</li>
+</ul>
+<p>관련 메서드 </p>
+<p>viewDidLoad()</p>
+<ul>
+<li>뷰 컨트롤러의 모든 뷰들이 메모리에 로드됐을 때 호출(메모리 처음 로드시 한번만 호출)</li>
+<li>보통 딱 한번 호출될 행위들을 이 메소드 안에 정의 함</li>
+<li>초기화나, 네트워크 호출등의 작업</li>
+</ul>
+<p>viewWillAppear()</p>
+<ul>
+<li>뷰가 뷰 계층에 추가 되고, 화면에 보이기 직전에 매 번 호출</li>
+<li>다른 뷰로 이동했다가 다시 오면 다시 호출</li>
+<li>뷰와 관련된 추가적인 초기화 작업을 여기서</li>
+</ul>
+<p>viewDidAppear()</p>
+<ul>
+<li>뷰가 뷰 계층의 추가된 후 호출</li>
+<li>뷰를 나타낼때 필요한 추가 작업을 여기서(애니메이션 시작 작업 등..)</li>
+</ul>
+<p>viewWillDisappear()</p>
+<ul>
+<li>뷰 컨트롤러의 뷰가 뷰 계층에서 사라지기 전에 호출</li>
+<li>작업한 내용을 되돌리거나, 데이터를 저장하는 작업</li>
+</ul>
+<p>viewDidDisappear()</p>
+<ul>
+<li>뷰 컨트롤러의 뷰가 뷰 계층에서 사라진 뒤에 호출</li>
+<li>뷰가 사라지는 것과 관련된 추가 작업</li>
+</ul>
+<h3 id="화면간-데이터를-전달하는-방법"><a href="#화면간-데이터를-전달하는-방법" class="headerlink" title="화면간 데이터를 전달하는 방법"></a>화면간 데이터를 전달하는 방법</h3><ul>
+<li>viewController 프로퍼티를 생성하고 → viewContoroller를 인스턴스화 해서 사용하는 변수에 타입 케스팅을 한 다음 → 프로퍼티를 추가하는 형태로 데이터를 전달 할 수 있다.</li>
+<li>반대로 뒤로 가기 할때나 pop 할때 전달하는 법 : delegate 패턴을 활용한다. (다른 객체에게 자신의 일을 위임하는 형태의 디자인 패턴)</li>
+<li>delegate 변수를 사용할때에는 week 키워드를 사용해서 강한 순환 참조를 막는다. → 데이터를 전달하는 곳에서 delegate 프로토콜을 만들고 전달받을 뷰에서 프로토콜을 준수하게 하면 전달하는 곳에서 메서드가 실행되게 할 수 있다.</li>
+<li>리엑트에서 부모 요소에서 실행할 메서드를 자식에게 props로 전달해서 실행 시키는것과 비슷하다.</li>
+<li>세그웨이를 사용할때에는 prepare 메서드를 사용해서 시스템에 의해서 호출될 수 있도록 해서 전달한다</li>
+</ul>
+<h3 id="에셋-카탈로그"><a href="#에셋-카탈로그" class="headerlink" title="에셋 카탈로그"></a>에셋 카탈로그</h3><p>Assets 폴더 안에 리소스를 추가할 수 있다. 리소스 추가 시에 1x 2x 3x 등의 크기에 이미지를 넣어주어야 하는데 이는 다양한 해상도의 깨지지 않는 이미지를 제공하기 위해서이다.</p>
+<h3 id="기타"><a href="#기타" class="headerlink" title="기타"></a>기타</h3><ul>
+<li>action 함수에서 sender 변수를 이용해서 어떤 인스턴스에서 발생한 액션인지 알 수 있다.</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/IOS/" rel="tag"># IOS</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/01/06/IOS/220105-Calcurator/" rel="prev" title="Calcurator">
+                  <i class="fa fa-chevron-left"></i> Calcurator
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">JayoonKoo</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

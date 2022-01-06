@@ -85,7 +85,7 @@
         <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
         <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">13</span></a></li>
         <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">11</span></a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">126</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">128</span></a></li>
   </ul>
 </nav>
 
@@ -129,7 +129,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">126</span>
+          <span class="site-state-item-count">128</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -180,6 +180,303 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/10/09/react/official-docs/211005-Conditional%20Rendering/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JayoonKoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="티끌모아 태산">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/10/09/react/official-docs/211005-Conditional%20Rendering/" class="post-title-link" itemprop="url">Conditional Rendering</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2021-10-09 21:59:04 / Modified: 21:59:16" itemprop="dateCreated datePublished" datetime="2021-10-09T21:59:04+09:00">2021-10-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/react/" itemprop="url" rel="index"><span itemprop="name">react</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="Conditional-Rendering"><a href="#Conditional-Rendering" class="headerlink" title="Conditional Rendering"></a>Conditional Rendering</h1><p>React 에서는 JavaScript에서 조건문을 사용하듯이 컴포넌트를 조겅부로 렌더링할 수 있다.</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Greeting</span>(<span class="params">props</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> isLoggedIn = props.isLoggedIn;</span><br><span class="line">  <span class="keyword">if</span> (isLoggedIn) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">UserGreeting</span> /&gt;</span></span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">GuestGreeting</span> /&gt;</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">ReactDOM.render(</span><br><span class="line">  <span class="comment">// Try changing to isLoggedIn=&#123;true&#125;:</span></span><br><span class="line">  <span class="xml"><span class="tag">&lt;<span class="name">Greeting</span> <span class="attr">isLoggedIn</span>=<span class="string">&#123;false&#125;</span> /&gt;</span></span>,</span><br><span class="line">  <span class="built_in">document</span>.getElementById(<span class="string">&quot;root&quot;</span>)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<h2 id="논리-amp-amp-연산자로-if를-인라인으로-표현하기"><a href="#논리-amp-amp-연산자로-if를-인라인으로-표현하기" class="headerlink" title="논리 &amp;&amp; 연산자로 if를 인라인으로 표현하기"></a>논리 &amp;&amp; 연산자로 if를 인라인으로 표현하기</h2><p>JavaScript에서 <code>true &amp;&amp; expression</code> 은 항상 <code>expression</code>으로 평가되고 <code>false&amp;&amp; expression</code>은 항상 <code>false</code>로 평가된다.</p>
+<p>따라서 &amp;&amp; 뒤에 조건이 <code>true</code>일때 출력되고 <code>false</code>일때 React는 무시한다.</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Mailbox</span>(<span class="params">props</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> unreadMessages = props.unreadMessages;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;<span class="name">h1</span>&gt;</span>Hello!<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span></span><br><span class="line"><span class="xml">      &#123;unreadMessages.length &gt; 0 &amp;&amp; (</span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">h2</span>&gt;</span>You have &#123;unreadMessages.length&#125; unread messages.<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span></span><br><span class="line"><span class="xml">      )&#125;</span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> messages = [<span class="string">&quot;React&quot;</span>, <span class="string">&quot;Re: React&quot;</span>, <span class="string">&quot;Re:Re: React&quot;</span>];</span><br><span class="line">ReactDOM.render(</span><br><span class="line">  <span class="xml"><span class="tag">&lt;<span class="name">Mailbox</span> <span class="attr">unreadMessages</span>=<span class="string">&#123;messages&#125;</span> /&gt;</span></span>,</span><br><span class="line">  <span class="built_in">document</span>.getElementById(<span class="string">&quot;root&quot;</span>)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<h2 id="삼항-연산자로-if-else-표현하기"><a href="#삼항-연산자로-if-else-표현하기" class="headerlink" title="삼항 연산자로 if else 표현하기"></a>삼항 연산자로 if else 표현하기</h2><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">render</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> isLoggedIn = <span class="built_in">this</span>.state.isLoggedIn;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="xml">      &#123;isLoggedIn</span></span><br><span class="line"><span class="xml">        ? <span class="tag">&lt;<span class="name">LogoutButton</span> <span class="attr">onClick</span>=<span class="string">&#123;this.handleLogoutClick&#125;</span> /&gt;</span></span></span><br><span class="line"><span class="xml">        : <span class="tag">&lt;<span class="name">LoginButton</span> <span class="attr">onClick</span>=<span class="string">&#123;this.handleLoginClick&#125;</span> /&gt;</span></span></span><br><span class="line"><span class="xml">      &#125;</span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>삼항 연산자를 사용하면 if else로 조건부 렌더링을 할 수 있다.</p>
+<h2 id="컴포넌트가-렌더링하는-것을-막기"><a href="#컴포넌트가-렌더링하는-것을-막기" class="headerlink" title="컴포넌트가 렌더링하는 것을 막기"></a>컴포넌트가 렌더링하는 것을 막기</h2><p>렌더링 하는 대신에 <code>null</code>을 반환하면 렌더링하는 것을 막을 수 있다.</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">WarningBanner</span>(<span class="params">props</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (!props.warn) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">&quot;warning&quot;</span>&gt;</span>Warning!<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Page</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">props</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">super</span>(props);</span><br><span class="line">    <span class="built_in">this</span>.state = &#123; <span class="attr">showWarning</span>: <span class="literal">true</span> &#125;;</span><br><span class="line">    <span class="built_in">this</span>.handleToggleClick = <span class="built_in">this</span>.handleToggleClick.bind(<span class="built_in">this</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">handleToggleClick</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.setState(<span class="function">(<span class="params">state</span>) =&gt;</span> (&#123;</span><br><span class="line">      <span class="attr">showWarning</span>: !state.showWarning,</span><br><span class="line">    &#125;));</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">render</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      <span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">WarningBanner</span> <span class="attr">warn</span>=<span class="string">&#123;this.state.showWarning&#125;</span> /&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;this.handleToggleClick&#125;</span>&gt;</span></span></span><br><span class="line"><span class="xml">          &#123;this.state.showWarning ? &quot;Hide&quot; : &quot;Show&quot;&#125;</span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">ReactDOM.render(<span class="xml"><span class="tag">&lt;<span class="name">Page</span> /&gt;</span></span>, <span class="built_in">document</span>.getElementById(<span class="string">&quot;root&quot;</span>));</span><br></pre></td></tr></table></figure>
+
+<p>컴포넌트의 render 메서드로부터 null을 반환하는 것은 생명주기 메서드 호출에 영향을 주지 않는다. 그 예로 <code>componentDidUpdate</code>는 계속해서 호출되게 된다.</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/10/09/react/official-docs/211005-Handling%20Events/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JayoonKoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="티끌모아 태산">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/10/09/react/official-docs/211005-Handling%20Events/" class="post-title-link" itemprop="url">Handling Events</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2021-10-09 21:59:04 / Modified: 21:59:16" itemprop="dateCreated datePublished" datetime="2021-10-09T21:59:04+09:00">2021-10-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/react/" itemprop="url" rel="index"><span itemprop="name">react</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="Handling-Events"><a href="#Handling-Events" class="headerlink" title="Handling Events"></a>Handling Events</h1><p>React 에서 이벤트를 처리하는 방식은 DOM 에서 이벤트를 처리하는 방식과 거의 유사하다. 몇가지 차이점이 있는데 다음과 같다.</p>
+<ol>
+<li>소분자가 아닌 camelCase를 사용한다.</li>
+<li>이벤트 헨들러를 string으로 전달하는것이 아니라 함수로 전달한다.</li>
+</ol>
+<p>DOM:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">onclick</span>=<span class="string">&quot;activateLasers()&quot;</span>&gt;</span>Activate Lasers<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>React:</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;button onClick=&#123;activateLasers&#125;&gt;Activate Lasers&lt;/button&gt;</span><br></pre></td></tr></table></figure>
+
+<p>DOM 에서는 기본 동작을 막기 위헤서 <code>return false</code>를 사용할 수 있는 반면에 React 에서는 기본 동작을 막기 위해 <code>preventDefault</code>를 사용해야 한다.</p>
+<p>DOM:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">onsubmit</span>=<span class="string">&quot;console.log(&#x27;You clicked submit.&#x27;); return false&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span>&gt;</span>Submit<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>React:</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Form</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">handleSubmit</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">    e.preventDefault();</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;You clicked submit.&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="xml"><span class="tag">&lt;<span class="name">form</span> <span class="attr">onSubmit</span>=<span class="string">&#123;handleSubmit&#125;</span>&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span>&gt;</span>Submit<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>React 에서는 DOM 엘리먼트를 생성한 후에 이벤트 리스너를 추가 하기 위해서 <code>addEventListenter</code>를 호출할 필요가 없다. 렌더링 될때 리스너를 제공하는 방법을 사용한다.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Toggle</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">props</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">super</span>(props);</span><br><span class="line">    <span class="built_in">this</span>.state = &#123; <span class="attr">isToggleOn</span>: <span class="literal">true</span> &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 콜백에서 this 가 작동하려면 this를 바인딩 해주어야 한다. -&gt; 호출 시점에서 this는 undefined이기 때문이다.</span></span><br><span class="line">    <span class="built_in">this</span>.handleClick = <span class="built_in">this</span>.handleClick.bind(<span class="built_in">this</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">handleClick</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.setState(<span class="function">(<span class="params">pre</span>) =&gt;</span> (&#123;</span><br><span class="line">      <span class="attr">isToggleOn</span>: !pre.isToggleOn,</span><br><span class="line">    &#125;));</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">render</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      <span class="xml"><span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;this.handleClick&#125;</span>&gt;</span></span></span><br><span class="line"><span class="xml">        &#123;this.state.isToggleOn ? &quot;ON&quot; : &quot;OFF&quot;&#125;</span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>콜백 함수 내에서 this를 사용하고 싶다면 생성자에서 바인딩을 해주어야 한다. 이는 React 내에서의 특징이 이나리 일반적인 JavaScript에 특징이다. 만약 매번 바인딩 하기 싫다면 다음과 같은 방법을 사용해도 된다.</p>
+<p>publick class fiedls syntax :</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">LoggingButton</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">  <span class="comment">// This syntax ensures `this` is bound within handleClick.</span></span><br><span class="line">  <span class="comment">// Warning: this is *experimental* syntax.</span></span><br><span class="line">  handleClick = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;this is:&quot;</span>, <span class="built_in">this</span>);</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">render</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;this.handleClick&#125;</span>&gt;</span>Click me<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>화살표 함수 사용하기:</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">LoggingButton</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">handleClick</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;this is:&quot;</span>, <span class="built_in">this</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">render</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="comment">// This syntax ensures `this` is bound within handleClick</span></span><br><span class="line">    <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;()</span> =&gt;</span> this.handleClick()&#125;&gt;Click me<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>화살표 함수를 사용할때에 문제점은 컴포넌트가 렌더링 될때마다 콜백이 새로 생성된다는 것이다. 대부분의 경우는 문제가 되지 않으나, 콜백이 하위 컴포넌트에 props로서 전달된다면 그 컴포넌트들은 추가로 다시 렌더링을 수행할 수 도 있다.</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/10/09/react/official-docs/211008-form/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JayoonKoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="티끌모아 태산">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/10/09/react/official-docs/211008-form/" class="post-title-link" itemprop="url">form</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2021-10-09 21:59:04 / Modified: 21:59:16" itemprop="dateCreated datePublished" datetime="2021-10-09T21:59:04+09:00">2021-10-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/react/" itemprop="url" rel="index"><span itemprop="name">react</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="Forms"><a href="#Forms" class="headerlink" title="Forms"></a>Forms</h1><p>forms 엘리먼트는 자체가 내부 상태를 가지기 때문에 React의 다르 DOM 엘리먼트와 들게 동작한다.</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">label</span>&gt;</span></span><br><span class="line">    Name:</span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;name&quot;</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span> <span class="attr">value</span>=<span class="string">&quot;Submit&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>기본적으로 폼을 제출하면 새로운 페이지로 이동하는 동작을 수행한다. 원한다면 사용하면 되는데 일반적으로는 Javascript를 통해서 제출을 처리하고 사용자가 입력한 값에 접근하는 방법을 사용한다. 이런 방법을 사용하기 위해서는 <code>controlled components</code> 라고 불리는 기술을 사용해야 한다.</p>
+<h2 id="Controlled-Components"><a href="#Controlled-Components" class="headerlink" title="Controlled Components"></a>Controlled Components</h2><p>일반적으로 html 에서 input, textarea, selct와 같은 폼 엘리먼트는 사용자의 입력을 기반으로 자신의 state를 관리하고 업데이트 한다. React서는 setState를 해야 state를 변경할 수 있으므로 사용자의 입력을 철리하려면 관리하는 state를 추가해야 한다.<br>React에 의해 값이 제어되는 입력 폼 엘리먼트를 <code>controlled component</code>라고 한다.</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">NameForm</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">props</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">super</span>(props);</span><br><span class="line">    <span class="built_in">this</span>.state = &#123; <span class="attr">value</span>: <span class="string">&quot;&quot;</span> &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">this</span>.handleChange = <span class="built_in">this</span>.handleChange.bind(<span class="built_in">this</span>);</span><br><span class="line">    <span class="built_in">this</span>.handleSubmit = <span class="built_in">this</span>.handleSubmit.bind(<span class="built_in">this</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">handleChange</span>(<span class="params">event</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.setState(&#123; <span class="attr">value</span>: event.target.value &#125;);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">handleSubmit</span>(<span class="params">event</span>)</span> &#123;</span><br><span class="line">    alert(<span class="string">&quot;A name was submitted: &quot;</span> + <span class="built_in">this</span>.state.value);</span><br><span class="line">    event.preventDefault();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">render</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      <span class="xml"><span class="tag">&lt;<span class="name">form</span> <span class="attr">onSubmit</span>=<span class="string">&#123;this.handleSubmit&#125;</span>&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">label</span>&gt;</span></span></span><br><span class="line"><span class="xml">          Name:</span></span><br><span class="line"><span class="xml">          <span class="tag">&lt;<span class="name">input</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">            <span class="attr">type</span>=<span class="string">&quot;text&quot;</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">            <span class="attr">value</span>=<span class="string">&#123;this.state.value&#125;</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">            <span class="attr">onChange</span>=<span class="string">&#123;this.handleChange&#125;</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">          /&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;/<span class="name">label</span>&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span> <span class="attr">value</span>=<span class="string">&quot;Submit&quot;</span> /&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span></span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>코드를 조금 더 생성해야 하긴 하지만, 다른 이벤트에 의해서 값을 초기화 할 수 도 있고 전달 할 수 있어서 편리하다.</p>
+<h2 id="textarea-태그"><a href="#textarea-태그" class="headerlink" title="textarea 태그"></a>textarea 태그</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">textarea</span>&gt;</span></span><br><span class="line">  Hello there, this is some text in a text area</span><br><span class="line"><span class="tag">&lt;/<span class="name">textarea</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>html 에서는 textarea 테그는 자식 요소로 text를 받아서 자신의 value로 사용한다. react 에서는 value에 어트리뷰트로 추가해여 똑같이 동작 시킬 수 있다.</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">EssayForm</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">props</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">super</span>(props);</span><br><span class="line">    <span class="built_in">this</span>.state = &#123;</span><br><span class="line">      <span class="attr">value</span>: <span class="string">&quot;Please write an essay about your favorite DOM element.&quot;</span>,</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">this</span>.handleChange = <span class="built_in">this</span>.handleChange.bind(<span class="built_in">this</span>);</span><br><span class="line">    <span class="built_in">this</span>.handleSubmit = <span class="built_in">this</span>.handleSubmit.bind(<span class="built_in">this</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">handleChange</span>(<span class="params">event</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.setState(&#123; <span class="attr">value</span>: event.target.value &#125;);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">handleSubmit</span>(<span class="params">event</span>)</span> &#123;</span><br><span class="line">    alert(<span class="string">&quot;An essay was submitted: &quot;</span> + <span class="built_in">this</span>.state.value);</span><br><span class="line">    event.preventDefault();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">render</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      <span class="xml"><span class="tag">&lt;<span class="name">form</span> <span class="attr">onSubmit</span>=<span class="string">&#123;this.handleSubmit&#125;</span>&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">label</span>&gt;</span></span></span><br><span class="line"><span class="xml">          Essay:</span></span><br><span class="line"><span class="xml">          <span class="tag">&lt;<span class="name">textarea</span> <span class="attr">value</span>=<span class="string">&#123;this.state.value&#125;</span> <span class="attr">onChange</span>=<span class="string">&#123;this.handleChange&#125;</span> /&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;/<span class="name">label</span>&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span> <span class="attr">value</span>=<span class="string">&quot;Submit&quot;</span> /&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span></span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="The-select-Tag"><a href="#The-select-Tag" class="headerlink" title="The select Tag"></a>The select Tag</h2><p>html 에서 select는 드롭다운 메뉴를 만든다.</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">select</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">&quot;grapefruit&quot;</span>&gt;</span>Grapefruit<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">&quot;lime&quot;</span>&gt;</span>Lime<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">option</span> <span class="attr">selected</span> <span class="attr">value</span>=<span class="string">&quot;coconut&quot;</span>&gt;</span>Coconut<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">&quot;mango&quot;</span>&gt;</span>Mango<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><code>selected</code> 옵션을 사용하여 초기에 선택되는 값을 정하는데 리엑트에서는 <code>select</code> 태그에 <code>value</code> 옵션을 줌으로써 똑같이 동작시킬 수 있다.</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">FlavorForm</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">props</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">super</span>(props);</span><br><span class="line">    <span class="built_in">this</span>.state = &#123; <span class="attr">value</span>: <span class="string">&quot;coconut&quot;</span> &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">this</span>.handleChange = <span class="built_in">this</span>.handleChange.bind(<span class="built_in">this</span>);</span><br><span class="line">    <span class="built_in">this</span>.handleSubmit = <span class="built_in">this</span>.handleSubmit.bind(<span class="built_in">this</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">handleChange</span>(<span class="params">event</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.setState(&#123; <span class="attr">value</span>: event.target.value &#125;);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">handleSubmit</span>(<span class="params">event</span>)</span> &#123;</span><br><span class="line">    alert(<span class="string">&quot;Your favorite flavor is: &quot;</span> + <span class="built_in">this</span>.state.value);</span><br><span class="line">    event.preventDefault();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">render</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      <span class="xml"><span class="tag">&lt;<span class="name">form</span> <span class="attr">onSubmit</span>=<span class="string">&#123;this.handleSubmit&#125;</span>&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">label</span>&gt;</span></span></span><br><span class="line"><span class="xml">          Pick your favorite flavor:</span></span><br><span class="line"><span class="xml">          <span class="tag">&lt;<span class="name">select</span> <span class="attr">value</span>=<span class="string">&#123;this.state.value&#125;</span> <span class="attr">onChange</span>=<span class="string">&#123;this.handleChange&#125;</span>&gt;</span></span></span><br><span class="line"><span class="xml">            <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">&quot;grapefruit&quot;</span>&gt;</span>Grapefruit<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span></span><br><span class="line"><span class="xml">            <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">&quot;lime&quot;</span>&gt;</span>Lime<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span></span><br><span class="line"><span class="xml">            <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">&quot;coconut&quot;</span>&gt;</span>Coconut<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span></span><br><span class="line"><span class="xml">            <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">&quot;mango&quot;</span>&gt;</span>Mango<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span></span><br><span class="line"><span class="xml">          <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;/<span class="name">label</span>&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span> <span class="attr">value</span>=<span class="string">&quot;Submit&quot;</span> /&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span></span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>select 태그에 multiple 옵션을 허용한다면 value 어트리뷰트에 배열을 전달할 수 잇다.</p>
+</blockquote>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;select multiple=&#123;<span class="literal">true</span>&#125; value=&#123;[<span class="string">&#x27;B&#x27;</span>, <span class="string">&#x27;C&#x27;</span>]&#125;&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="file-input-태그"><a href="#file-input-태그" class="headerlink" title="file input 태그"></a>file input 태그</h2><p>HTML 에서 input 태그에 type 을 file 로 설정하여 파일을 입력 받을 수 있다.<br>값은 읽기 전용 이기때문에 React 에서는 이를 비제어 컴포넌트라고 부른다.</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=<span class="string">&quot;file&quot;</span> /&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="다중-입력-제어하기"><a href="#다중-입력-제어하기" class="headerlink" title="다중 입력 제어하기"></a>다중 입력 제어하기</h2><p>다중 입력을 제어할때 입력 태그에 name 을 주어서 구분 할 수 있다.</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Reservation</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">props</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">super</span>(props);</span><br><span class="line">    <span class="built_in">this</span>.state = &#123;</span><br><span class="line">      <span class="attr">isGoing</span>: <span class="literal">true</span>,</span><br><span class="line">      <span class="attr">numberOfGuests</span>: <span class="number">2</span>,</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">this</span>.handleInputChange = <span class="built_in">this</span>.handleInputChange.bind(<span class="built_in">this</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">handleInputChange</span>(<span class="params">event</span>)</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> target = event.target;</span><br><span class="line">    <span class="keyword">const</span> value = target.type === <span class="string">&quot;checkbox&quot;</span> ? target.checked : target.value;</span><br><span class="line">    <span class="keyword">const</span> name = target.name;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">this</span>.setState(&#123;</span><br><span class="line">      [name]: value,</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">render</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      <span class="xml"><span class="tag">&lt;<span class="name">form</span>&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">label</span>&gt;</span></span></span><br><span class="line"><span class="xml">          Is going:</span></span><br><span class="line"><span class="xml">          <span class="tag">&lt;<span class="name">input</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">            <span class="attr">name</span>=<span class="string">&quot;isGoing&quot;</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">            <span class="attr">type</span>=<span class="string">&quot;checkbox&quot;</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">            <span class="attr">checked</span>=<span class="string">&#123;this.state.isGoing&#125;</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">            <span class="attr">onChange</span>=<span class="string">&#123;this.handleInputChange&#125;</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">          /&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;/<span class="name">label</span>&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">br</span> /&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">label</span>&gt;</span></span></span><br><span class="line"><span class="xml">          Number of guests:</span></span><br><span class="line"><span class="xml">          <span class="tag">&lt;<span class="name">input</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">            <span class="attr">name</span>=<span class="string">&quot;numberOfGuests&quot;</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">            <span class="attr">type</span>=<span class="string">&quot;number&quot;</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">            <span class="attr">value</span>=<span class="string">&#123;this.state.numberOfGuests&#125;</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">            <span class="attr">onChange</span>=<span class="string">&#123;this.handleInputChange&#125;</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">          /&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;/<span class="name">label</span>&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span></span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Controlled-Input-Null-Value"><a href="#Controlled-Input-Null-Value" class="headerlink" title="Controlled Input Null Value"></a>Controlled Input Null Value</h2><p>value props 를 주면은 사용자가 값을 변경할 수 없다. React에서 state로 관리해야 그때부터 변경할 수 있게 된다. 그런데 value prop으로 null 이나 undifiend를 주면 state를 관리하지 않아도 사용자가 변경할 수 있게 된다.</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ReactDOM.render(<span class="xml"><span class="tag">&lt;<span class="name">input</span> <span class="attr">value</span>=<span class="string">&quot;hi&quot;</span> /&gt;</span></span>, mountNode);</span><br><span class="line"></span><br><span class="line"><span class="built_in">setTimeout</span>(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  ReactDOM.render(<span class="xml"><span class="tag">&lt;<span class="name">input</span> <span class="attr">value</span>=<span class="string">&#123;null&#125;</span> /&gt;</span></span>, mountNode);</span><br><span class="line">&#125;, <span class="number">1000</span>);</span><br></pre></td></tr></table></figure>
+
+<h2 id="Alternatives-to-Controlled-Components"><a href="#Alternatives-to-Controlled-Components" class="headerlink" title="Alternatives to Controlled Components"></a>Alternatives to Controlled Components</h2><p>사실 제어 컴포넌트를 사용하느것이 해보면 좀 귀찮은 작업이라는 것을 알게 된다. 또한 다른 앱을 리액트 앱으로 바꾸려 할때에도 이는 정말로 귀찮은 작업으로 다가올 수 있다. 이때 대안으로 사용할 수 있는 비제어 컴포넌트가 있는데 자세한건 홈페이지에서 문서를 찾아 보길 바란다.</p>
+<h2 id="Fully-Fledged-Solutions"><a href="#Fully-Fledged-Solutions" class="headerlink" title="Fully-Fledged Solutions"></a>Fully-Fledged Solutions</h2><p>Formik 이 완벽한 해결을 줄수 있다. 근데 이것도 기본적인 원칙은 위에서 설명한 것과 같기 때문에 기본적인 원칙을 모르면 어렵다. 기본적인 원칙을 공부하길 바란다.</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -316,7 +613,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/10/09/react/official-docs/211008-form/">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/10/09/Network/210907-%EB%AC%BC%EB%A6%AC%EA%B3%84%EC%B8%B5/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -329,7 +626,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/10/09/react/official-docs/211008-form/" class="post-title-link" itemprop="url">form</a>
+          <a href="/2021/10/09/Network/210907-%EB%AC%BC%EB%A6%AC%EA%B3%84%EC%B8%B5/" class="post-title-link" itemprop="url">물리계층</a>
         </h2>
 
         <div class="post-meta-container">
@@ -339,9 +636,8 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
-      
 
-      <time title="Created: 2021-10-09 21:59:04 / Modified: 21:59:16" itemprop="dateCreated datePublished" datetime="2021-10-09T21:59:04+09:00">2021-10-09</time>
+      <time title="Created: 2021-10-09 21:54:45" itemprop="dateCreated datePublished" datetime="2021-10-09T21:54:45+09:00">2021-10-09</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -349,7 +645,7 @@
       </span>
       <span class="post-meta-item-text">In</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/react/" itemprop="url" rel="index"><span itemprop="name">react</span></a>
+          <a href="/categories/CS/" itemprop="url" rel="index"><span itemprop="name">CS</span></a>
         </span>
     </span>
 
@@ -363,41 +659,53 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="Forms"><a href="#Forms" class="headerlink" title="Forms"></a>Forms</h1><p>forms 엘리먼트는 자체가 내부 상태를 가지기 때문에 React의 다르 DOM 엘리먼트와 들게 동작한다.</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">label</span>&gt;</span></span><br><span class="line">    Name:</span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;name&quot;</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span> <span class="attr">value</span>=<span class="string">&quot;Submit&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+          <h1 id="물리-계층"><a href="#물리-계층" class="headerlink" title="물리 계층"></a>물리 계층</h1><p>L1 물리 계층에 대해서 알아본다.</p>
+<h2 id="물리-계층의-역할과-기능"><a href="#물리-계층의-역할과-기능" class="headerlink" title="물리 계층의 역할과 기능"></a>물리 계층의 역할과 기능</h2><p>OSI 7 계층에 1계층으로 하드웨어 영역이다. 데이터 계층의 프레임을 비트로 인코 딩하고 신호로 바꾸어 통신한다. 받은 신호를 통하여 비트로 바꾸고 비트를 프레임으로 바꾸는 역활을 담당한다.</p>
+<h3 id="Signalilng의-종류"><a href="#Signalilng의-종류" class="headerlink" title="Signalilng의 종류"></a>Signalilng의 종류</h3><ul>
+<li>전기 (대표적으로 UTP 케이블이 있다.)</li>
+<li>광 (대표적으로 Fiber 가 있다. )</li>
+<li>전파 (wifi)</li>
+</ul>
+<h3 id="Signaling-전송-방식"><a href="#Signaling-전송-방식" class="headerlink" title="Signaling 전송 방식"></a>Signaling 전송 방식</h3><img src="/images/210907-물리계층/1.png" width="500">
 
-<p>기본적으로 폼을 제출하면 새로운 페이지로 이동하는 동작을 수행한다. 원한다면 사용하면 되는데 일반적으로는 Javascript를 통해서 제출을 처리하고 사용자가 입력한 값에 접근하는 방법을 사용한다. 이런 방법을 사용하기 위해서는 <code>controlled components</code> 라고 불리는 기술을 사용해야 한다.</p>
-<h2 id="Controlled-Components"><a href="#Controlled-Components" class="headerlink" title="Controlled Components"></a>Controlled Components</h2><p>일반적으로 html 에서 input, textarea, selct와 같은 폼 엘리먼트는 사용자의 입력을 기반으로 자신의 state를 관리하고 업데이트 한다. React서는 setState를 해야 state를 변경할 수 있으므로 사용자의 입력을 철리하려면 관리하는 state를 추가해야 한다.<br>React에 의해 값이 제어되는 입력 폼 엘리먼트를 <code>controlled component</code>라고 한다.</p>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">NameForm</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">props</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">super</span>(props);</span><br><span class="line">    <span class="built_in">this</span>.state = &#123; <span class="attr">value</span>: <span class="string">&quot;&quot;</span> &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">this</span>.handleChange = <span class="built_in">this</span>.handleChange.bind(<span class="built_in">this</span>);</span><br><span class="line">    <span class="built_in">this</span>.handleSubmit = <span class="built_in">this</span>.handleSubmit.bind(<span class="built_in">this</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">handleChange</span>(<span class="params">event</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.setState(&#123; <span class="attr">value</span>: event.target.value &#125;);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">handleSubmit</span>(<span class="params">event</span>)</span> &#123;</span><br><span class="line">    alert(<span class="string">&quot;A name was submitted: &quot;</span> + <span class="built_in">this</span>.state.value);</span><br><span class="line">    event.preventDefault();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">render</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      <span class="xml"><span class="tag">&lt;<span class="name">form</span> <span class="attr">onSubmit</span>=<span class="string">&#123;this.handleSubmit&#125;</span>&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">label</span>&gt;</span></span></span><br><span class="line"><span class="xml">          Name:</span></span><br><span class="line"><span class="xml">          <span class="tag">&lt;<span class="name">input</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">            <span class="attr">type</span>=<span class="string">&quot;text&quot;</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">            <span class="attr">value</span>=<span class="string">&#123;this.state.value&#125;</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">            <span class="attr">onChange</span>=<span class="string">&#123;this.handleChange&#125;</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">          /&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;/<span class="name">label</span>&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span> <span class="attr">value</span>=<span class="string">&quot;Submit&quot;</span> /&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span></span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="물리-계층-장비와-케이블"><a href="#물리-계층-장비와-케이블" class="headerlink" title="물리 계층 장비와 케이블"></a>물리 계층 장비와 케이블</h2><p>물리 계층의 장비로는 대표적으로 허브와 리피터가 있다.</p>
+<h3 id="허브의-동작-방식"><a href="#허브의-동작-방식" class="headerlink" title="허브의 동작 방식"></a>허브의 동작 방식</h3><p>브로드 케스팅 방식을 사용하여 허브 내에 모든 pc 에게 송신하고 주소에 맞는 pc 만 수신 하는 형식을 사용한다.</p>
+<p>유니 캐스트 방식은 1 : 1 통신을 의마한다.</p>
+<p>멀티 캐스트 방식은 1 : N 통신을 의미한다.</p>
+<h3 id="CSMA-CD"><a href="#CSMA-CD" class="headerlink" title="CSMA/CD"></a>CSMA/CD</h3><ol>
+<li>데이터를 보내기 전에 다른 노드에서 데이터를 보내는 중인지 확인한다.</li>
+<li>보내는 곳이 없다면 전송을 시작한다.</li>
+<li>동시간대 보내게 되면 통신이 중단되고 일정 시간이 흐른 후에 다시 통신을 시작한다.</li>
+</ol>
+<p>이런 방식을 Half Duplex 라고 한다. 흔히 무전기에서 사용하는 방식과 비슷하다.</p>
+<p>Simplex : 는 단방향 통신을 의미한다.</p>
+<p>Full Duplex : 동시 양방향 통신이 가능한 형태로 전화기와 비슷하다고 생각하면 된다.</p>
+<h3 id="성능"><a href="#성능" class="headerlink" title="성능"></a>성능</h3><ul>
+<li>Bandwidth(대역폭) - 주어진 시간대에 네트워크를 통해 이동할 수 있는 정보의 양 ( 도로 넓이 )</li>
+<li>Throughput(처리량) - 단위 시간당 디지털 데이터 전송으로 처리하는 양 (자동차 수 )</li>
+<li>Backplane(최대 처리 량) - 네트워크 장비가 최대로 처리할 수 있는 데이터 용량</li>
+<li>CPS : L4, 초당 커넥션 연결 수</li>
+<li>CC : 최대 수용 가능한 커넥션</li>
+<li>TPS : 초당 트랜잭션 연결 수 ,L&amp;</li>
+</ul>
+<h2 id="UTP-케이블과-wifi"><a href="#UTP-케이블과-wifi" class="headerlink" title="UTP 케이블과 wifi"></a>UTP 케이블과 wifi</h2><h3 id="UTP-케이블이란"><a href="#UTP-케이블이란" class="headerlink" title="UTP 케이블이란?"></a>UTP 케이블이란?</h3><p>주로 근거리 통신망 (LAN) 에 사용되는 케이블로서 자기장을 방지하기 위해 꼬여 있다.</p>
+<h3 id="코드-배열"><a href="#코드-배열" class="headerlink" title="코드 배열"></a>코드 배열</h3><ul>
+<li>8p8c<br>8개의 선 배열에 따라 다이렉트 또는 크로스 케이블로 구성한다. (TIA-568A, TIA-568B)</li>
+</ul>
+<p>같은 기계 끼리는 크로스로 다른 디바이스 끼리는 다이렉트로 연결한다.</p>
+<ul>
+<li>Auto MDI-x<br>노드 별로 크로스냐 다이렉트냐 구분하기 어렵기 때문에 자동으로 정해지도록 할 수 있는 기술</li>
+</ul>
+<h3 id="UTP-카테고리"><a href="#UTP-카테고리" class="headerlink" title="UTP 카테고리"></a>UTP 카테고리</h3><p>UTP 케이블의 전송 가능한 대역폭을 기준으로 분류.<br>cat3~cat6 까지 있음</p>
+<h3 id="WIFI란"><a href="#WIFI란" class="headerlink" title="WIFI란?"></a>WIFI란?</h3><p>비영리 기구인 WIFI Aliance의 상표로 전자기기들이 무선랜에 연결할 수 있게 하는 기술</p>
+<h3 id="무선랜-구성"><a href="#무선랜-구성" class="headerlink" title="무선랜 구성"></a>무선랜 구성</h3><p>인터넷 - ISP - 라우터 - WIPS - AP - 라우터</p>
+<img src="/images/210907-물리계층/2.png" width="500">
 
-<p>코드를 조금 더 생성해야 하긴 하지만, 다른 이벤트에 의해서 값을 초기화 할 수 도 있고 전달 할 수 있어서 편리하다.</p>
-<h2 id="textarea-태그"><a href="#textarea-태그" class="headerlink" title="textarea 태그"></a>textarea 태그</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">textarea</span>&gt;</span></span><br><span class="line">  Hello there, this is some text in a text area</span><br><span class="line"><span class="tag">&lt;/<span class="name">textarea</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>html 에서는 textarea 테그는 자식 요소로 text를 받아서 자신의 value로 사용한다. react 에서는 value에 어트리뷰트로 추가해여 똑같이 동작 시킬 수 있다.</p>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">EssayForm</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">props</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">super</span>(props);</span><br><span class="line">    <span class="built_in">this</span>.state = &#123;</span><br><span class="line">      <span class="attr">value</span>: <span class="string">&quot;Please write an essay about your favorite DOM element.&quot;</span>,</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">this</span>.handleChange = <span class="built_in">this</span>.handleChange.bind(<span class="built_in">this</span>);</span><br><span class="line">    <span class="built_in">this</span>.handleSubmit = <span class="built_in">this</span>.handleSubmit.bind(<span class="built_in">this</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">handleChange</span>(<span class="params">event</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.setState(&#123; <span class="attr">value</span>: event.target.value &#125;);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">handleSubmit</span>(<span class="params">event</span>)</span> &#123;</span><br><span class="line">    alert(<span class="string">&quot;An essay was submitted: &quot;</span> + <span class="built_in">this</span>.state.value);</span><br><span class="line">    event.preventDefault();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">render</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      <span class="xml"><span class="tag">&lt;<span class="name">form</span> <span class="attr">onSubmit</span>=<span class="string">&#123;this.handleSubmit&#125;</span>&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">label</span>&gt;</span></span></span><br><span class="line"><span class="xml">          Essay:</span></span><br><span class="line"><span class="xml">          <span class="tag">&lt;<span class="name">textarea</span> <span class="attr">value</span>=<span class="string">&#123;this.state.value&#125;</span> <span class="attr">onChange</span>=<span class="string">&#123;this.handleChange&#125;</span> /&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;/<span class="name">label</span>&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span> <span class="attr">value</span>=<span class="string">&quot;Submit&quot;</span> /&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span></span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="The-select-Tag"><a href="#The-select-Tag" class="headerlink" title="The select Tag"></a>The select Tag</h2><p>html 에서 select는 드롭다운 메뉴를 만든다.</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">select</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">&quot;grapefruit&quot;</span>&gt;</span>Grapefruit<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">&quot;lime&quot;</span>&gt;</span>Lime<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">option</span> <span class="attr">selected</span> <span class="attr">value</span>=<span class="string">&quot;coconut&quot;</span>&gt;</span>Coconut<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">&quot;mango&quot;</span>&gt;</span>Mango<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p><code>selected</code> 옵션을 사용하여 초기에 선택되는 값을 정하는데 리엑트에서는 <code>select</code> 태그에 <code>value</code> 옵션을 줌으로써 똑같이 동작시킬 수 있다.</p>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">FlavorForm</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">props</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">super</span>(props);</span><br><span class="line">    <span class="built_in">this</span>.state = &#123; <span class="attr">value</span>: <span class="string">&quot;coconut&quot;</span> &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">this</span>.handleChange = <span class="built_in">this</span>.handleChange.bind(<span class="built_in">this</span>);</span><br><span class="line">    <span class="built_in">this</span>.handleSubmit = <span class="built_in">this</span>.handleSubmit.bind(<span class="built_in">this</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">handleChange</span>(<span class="params">event</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.setState(&#123; <span class="attr">value</span>: event.target.value &#125;);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">handleSubmit</span>(<span class="params">event</span>)</span> &#123;</span><br><span class="line">    alert(<span class="string">&quot;Your favorite flavor is: &quot;</span> + <span class="built_in">this</span>.state.value);</span><br><span class="line">    event.preventDefault();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">render</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      <span class="xml"><span class="tag">&lt;<span class="name">form</span> <span class="attr">onSubmit</span>=<span class="string">&#123;this.handleSubmit&#125;</span>&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">label</span>&gt;</span></span></span><br><span class="line"><span class="xml">          Pick your favorite flavor:</span></span><br><span class="line"><span class="xml">          <span class="tag">&lt;<span class="name">select</span> <span class="attr">value</span>=<span class="string">&#123;this.state.value&#125;</span> <span class="attr">onChange</span>=<span class="string">&#123;this.handleChange&#125;</span>&gt;</span></span></span><br><span class="line"><span class="xml">            <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">&quot;grapefruit&quot;</span>&gt;</span>Grapefruit<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span></span><br><span class="line"><span class="xml">            <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">&quot;lime&quot;</span>&gt;</span>Lime<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span></span><br><span class="line"><span class="xml">            <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">&quot;coconut&quot;</span>&gt;</span>Coconut<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span></span><br><span class="line"><span class="xml">            <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">&quot;mango&quot;</span>&gt;</span>Mango<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span></span><br><span class="line"><span class="xml">          <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;/<span class="name">label</span>&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span> <span class="attr">value</span>=<span class="string">&quot;Submit&quot;</span> /&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span></span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>select 태그에 multiple 옵션을 허용한다면 value 어트리뷰트에 배열을 전달할 수 잇다.</p>
-</blockquote>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;select multiple=&#123;<span class="literal">true</span>&#125; value=&#123;[<span class="string">&#x27;B&#x27;</span>, <span class="string">&#x27;C&#x27;</span>]&#125;&gt;</span><br></pre></td></tr></table></figure>
-
-<h2 id="file-input-태그"><a href="#file-input-태그" class="headerlink" title="file input 태그"></a>file input 태그</h2><p>HTML 에서 input 태그에 type 을 file 로 설정하여 파일을 입력 받을 수 있다.<br>값은 읽기 전용 이기때문에 React 에서는 이를 비제어 컴포넌트라고 부른다.</p>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=<span class="string">&quot;file&quot;</span> /&gt;</span><br></pre></td></tr></table></figure>
-
-<h2 id="다중-입력-제어하기"><a href="#다중-입력-제어하기" class="headerlink" title="다중 입력 제어하기"></a>다중 입력 제어하기</h2><p>다중 입력을 제어할때 입력 태그에 name 을 주어서 구분 할 수 있다.</p>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Reservation</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">props</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">super</span>(props);</span><br><span class="line">    <span class="built_in">this</span>.state = &#123;</span><br><span class="line">      <span class="attr">isGoing</span>: <span class="literal">true</span>,</span><br><span class="line">      <span class="attr">numberOfGuests</span>: <span class="number">2</span>,</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">this</span>.handleInputChange = <span class="built_in">this</span>.handleInputChange.bind(<span class="built_in">this</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">handleInputChange</span>(<span class="params">event</span>)</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> target = event.target;</span><br><span class="line">    <span class="keyword">const</span> value = target.type === <span class="string">&quot;checkbox&quot;</span> ? target.checked : target.value;</span><br><span class="line">    <span class="keyword">const</span> name = target.name;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">this</span>.setState(&#123;</span><br><span class="line">      [name]: value,</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">render</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      <span class="xml"><span class="tag">&lt;<span class="name">form</span>&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">label</span>&gt;</span></span></span><br><span class="line"><span class="xml">          Is going:</span></span><br><span class="line"><span class="xml">          <span class="tag">&lt;<span class="name">input</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">            <span class="attr">name</span>=<span class="string">&quot;isGoing&quot;</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">            <span class="attr">type</span>=<span class="string">&quot;checkbox&quot;</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">            <span class="attr">checked</span>=<span class="string">&#123;this.state.isGoing&#125;</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">            <span class="attr">onChange</span>=<span class="string">&#123;this.handleInputChange&#125;</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">          /&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;/<span class="name">label</span>&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">br</span> /&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">label</span>&gt;</span></span></span><br><span class="line"><span class="xml">          Number of guests:</span></span><br><span class="line"><span class="xml">          <span class="tag">&lt;<span class="name">input</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">            <span class="attr">name</span>=<span class="string">&quot;numberOfGuests&quot;</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">            <span class="attr">type</span>=<span class="string">&quot;number&quot;</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">            <span class="attr">value</span>=<span class="string">&#123;this.state.numberOfGuests&#125;</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">            <span class="attr">onChange</span>=<span class="string">&#123;this.handleInputChange&#125;</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">          /&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;/<span class="name">label</span>&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span></span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="Controlled-Input-Null-Value"><a href="#Controlled-Input-Null-Value" class="headerlink" title="Controlled Input Null Value"></a>Controlled Input Null Value</h2><p>value props 를 주면은 사용자가 값을 변경할 수 없다. React에서 state로 관리해야 그때부터 변경할 수 있게 된다. 그런데 value prop으로 null 이나 undifiend를 주면 state를 관리하지 않아도 사용자가 변경할 수 있게 된다.</p>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ReactDOM.render(<span class="xml"><span class="tag">&lt;<span class="name">input</span> <span class="attr">value</span>=<span class="string">&quot;hi&quot;</span> /&gt;</span></span>, mountNode);</span><br><span class="line"></span><br><span class="line"><span class="built_in">setTimeout</span>(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  ReactDOM.render(<span class="xml"><span class="tag">&lt;<span class="name">input</span> <span class="attr">value</span>=<span class="string">&#123;null&#125;</span> /&gt;</span></span>, mountNode);</span><br><span class="line">&#125;, <span class="number">1000</span>);</span><br></pre></td></tr></table></figure>
-
-<h2 id="Alternatives-to-Controlled-Components"><a href="#Alternatives-to-Controlled-Components" class="headerlink" title="Alternatives to Controlled Components"></a>Alternatives to Controlled Components</h2><p>사실 제어 컴포넌트를 사용하느것이 해보면 좀 귀찮은 작업이라는 것을 알게 된다. 또한 다른 앱을 리액트 앱으로 바꾸려 할때에도 이는 정말로 귀찮은 작업으로 다가올 수 있다. 이때 대안으로 사용할 수 있는 비제어 컴포넌트가 있는데 자세한건 홈페이지에서 문서를 찾아 보길 바란다.</p>
-<h2 id="Fully-Fledged-Solutions"><a href="#Fully-Fledged-Solutions" class="headerlink" title="Fully-Fledged Solutions"></a>Fully-Fledged Solutions</h2><p>Formik 이 완벽한 해결을 줄수 있다. 근데 이것도 기본적인 원칙은 위에서 설명한 것과 같기 때문에 기본적인 원칙을 모르면 어렵다. 기본적인 원칙을 공부하길 바란다.</p>
+<ul>
+<li>WIPS(Wireless IPS) : 보안과 관련된 역할을 한다.</li>
+<li>AP(Access Point) : 무선 허브와 같은 역할을 한다. 무선 랜카드와 연결된다.</li>
+</ul>
+<p>AP 에 반경과 동시 접속 가능 단말기의 개수를 고려하여 설치해야 한다.</p>
 
       
     </div>
@@ -655,7 +963,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/10/09/Network/210907-%EB%AC%BC%EB%A6%AC%EA%B3%84%EC%B8%B5/">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/10/09/Network/210923-ICMP/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -668,7 +976,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/10/09/Network/210907-%EB%AC%BC%EB%A6%AC%EA%B3%84%EC%B8%B5/" class="post-title-link" itemprop="url">물리계층</a>
+          <a href="/2021/10/09/Network/210923-ICMP/" class="post-title-link" itemprop="url">ICMP</a>
         </h2>
 
         <div class="post-meta-container">
@@ -701,53 +1009,18 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="물리-계층"><a href="#물리-계층" class="headerlink" title="물리 계층"></a>물리 계층</h1><p>L1 물리 계층에 대해서 알아본다.</p>
-<h2 id="물리-계층의-역할과-기능"><a href="#물리-계층의-역할과-기능" class="headerlink" title="물리 계층의 역할과 기능"></a>물리 계층의 역할과 기능</h2><p>OSI 7 계층에 1계층으로 하드웨어 영역이다. 데이터 계층의 프레임을 비트로 인코 딩하고 신호로 바꾸어 통신한다. 받은 신호를 통하여 비트로 바꾸고 비트를 프레임으로 바꾸는 역활을 담당한다.</p>
-<h3 id="Signalilng의-종류"><a href="#Signalilng의-종류" class="headerlink" title="Signalilng의 종류"></a>Signalilng의 종류</h3><ul>
-<li>전기 (대표적으로 UTP 케이블이 있다.)</li>
-<li>광 (대표적으로 Fiber 가 있다. )</li>
-<li>전파 (wifi)</li>
-</ul>
-<h3 id="Signaling-전송-방식"><a href="#Signaling-전송-방식" class="headerlink" title="Signaling 전송 방식"></a>Signaling 전송 방식</h3><img src="/images/210907-물리계층/1.png" width="500">
-
-<h2 id="물리-계층-장비와-케이블"><a href="#물리-계층-장비와-케이블" class="headerlink" title="물리 계층 장비와 케이블"></a>물리 계층 장비와 케이블</h2><p>물리 계층의 장비로는 대표적으로 허브와 리피터가 있다.</p>
-<h3 id="허브의-동작-방식"><a href="#허브의-동작-방식" class="headerlink" title="허브의 동작 방식"></a>허브의 동작 방식</h3><p>브로드 케스팅 방식을 사용하여 허브 내에 모든 pc 에게 송신하고 주소에 맞는 pc 만 수신 하는 형식을 사용한다.</p>
-<p>유니 캐스트 방식은 1 : 1 통신을 의마한다.</p>
-<p>멀티 캐스트 방식은 1 : N 통신을 의미한다.</p>
-<h3 id="CSMA-CD"><a href="#CSMA-CD" class="headerlink" title="CSMA/CD"></a>CSMA/CD</h3><ol>
-<li>데이터를 보내기 전에 다른 노드에서 데이터를 보내는 중인지 확인한다.</li>
-<li>보내는 곳이 없다면 전송을 시작한다.</li>
-<li>동시간대 보내게 되면 통신이 중단되고 일정 시간이 흐른 후에 다시 통신을 시작한다.</li>
-</ol>
-<p>이런 방식을 Half Duplex 라고 한다. 흔히 무전기에서 사용하는 방식과 비슷하다.</p>
-<p>Simplex : 는 단방향 통신을 의미한다.</p>
-<p>Full Duplex : 동시 양방향 통신이 가능한 형태로 전화기와 비슷하다고 생각하면 된다.</p>
-<h3 id="성능"><a href="#성능" class="headerlink" title="성능"></a>성능</h3><ul>
-<li>Bandwidth(대역폭) - 주어진 시간대에 네트워크를 통해 이동할 수 있는 정보의 양 ( 도로 넓이 )</li>
-<li>Throughput(처리량) - 단위 시간당 디지털 데이터 전송으로 처리하는 양 (자동차 수 )</li>
-<li>Backplane(최대 처리 량) - 네트워크 장비가 최대로 처리할 수 있는 데이터 용량</li>
-<li>CPS : L4, 초당 커넥션 연결 수</li>
-<li>CC : 최대 수용 가능한 커넥션</li>
-<li>TPS : 초당 트랜잭션 연결 수 ,L&amp;</li>
-</ul>
-<h2 id="UTP-케이블과-wifi"><a href="#UTP-케이블과-wifi" class="headerlink" title="UTP 케이블과 wifi"></a>UTP 케이블과 wifi</h2><h3 id="UTP-케이블이란"><a href="#UTP-케이블이란" class="headerlink" title="UTP 케이블이란?"></a>UTP 케이블이란?</h3><p>주로 근거리 통신망 (LAN) 에 사용되는 케이블로서 자기장을 방지하기 위해 꼬여 있다.</p>
-<h3 id="코드-배열"><a href="#코드-배열" class="headerlink" title="코드 배열"></a>코드 배열</h3><ul>
-<li>8p8c<br>8개의 선 배열에 따라 다이렉트 또는 크로스 케이블로 구성한다. (TIA-568A, TIA-568B)</li>
-</ul>
-<p>같은 기계 끼리는 크로스로 다른 디바이스 끼리는 다이렉트로 연결한다.</p>
+          <h1 id="ICMP"><a href="#ICMP" class="headerlink" title="ICMP"></a>ICMP</h1><h2 id="정의"><a href="#정의" class="headerlink" title="정의"></a>정의</h2><p>인터넷 제어 메세지 프로토콜을 의미한다. IP 통신은 목적지에 패킷을 정상적으로 전달하는 방법은 있지만 에러 발생시 처리가 불가능하다. 이때 ICMP 는 IP 통신의 에러 상황을 출발지에 전달하고 메시지를 제어하는 역활을 수행한다.</p>
+<h2 id="기능"><a href="#기능" class="headerlink" title="기능"></a>기능</h2><p>IP 패킷에 포함되어 있다.</p>
 <ul>
-<li>Auto MDI-x<br>노드 별로 크로스냐 다이렉트냐 구분하기 어렵기 때문에 자동으로 정해지도록 할 수 있는 기술</li>
+<li>Type: ICMP 메세지 종류</li>
+<li>Code: 메시지 Type 별 세부 코드 정보</li>
+<li>Checksum: ICMP 헤더 손상 여부 확인</li>
 </ul>
-<h3 id="UTP-카테고리"><a href="#UTP-카테고리" class="headerlink" title="UTP 카테고리"></a>UTP 카테고리</h3><p>UTP 케이블의 전송 가능한 대역폭을 기준으로 분류.<br>cat3~cat6 까지 있음</p>
-<h3 id="WIFI란"><a href="#WIFI란" class="headerlink" title="WIFI란?"></a>WIFI란?</h3><p>비영리 기구인 WIFI Aliance의 상표로 전자기기들이 무선랜에 연결할 수 있게 하는 기술</p>
-<h3 id="무선랜-구성"><a href="#무선랜-구성" class="headerlink" title="무선랜 구성"></a>무선랜 구성</h3><p>인터넷 - ISP - 라우터 - WIPS - AP - 라우터</p>
-<img src="/images/210907-물리계층/2.png" width="500">
-
+<h3 id="Type"><a href="#Type" class="headerlink" title="Type"></a>Type</h3><p>ICMP 헤더의 Type은 0~ 254의 길이로 구성되어 있다. 각각은 정보용과 오류 보고형으로 나뉘어서 사용되는데 자주 사용되는 번호는 다음과 같다.</p>
 <ul>
-<li>WIPS(Wireless IPS) : 보안과 관련된 역할을 한다.</li>
-<li>AP(Access Point) : 무선 허브와 같은 역할을 한다. 무선 랜카드와 연결된다.</li>
+<li>정보용 : 8, 0, 9, 10</li>
+<li>오류 보고용 : 3, 5, 11, 12</li>
 </ul>
-<p>AP 에 반경과 동시 접속 가능 단말기의 개수를 고려하여 설치해야 한다.</p>
 
       
     </div>
@@ -879,90 +1152,6 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/10/09/Network/210923-ICMP/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JayoonKoo">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="티끌모아 태산">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/10/09/Network/210923-ICMP/" class="post-title-link" itemprop="url">ICMP</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-10-09 21:54:45" itemprop="dateCreated datePublished" datetime="2021-10-09T21:54:45+09:00">2021-10-09</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/CS/" itemprop="url" rel="index"><span itemprop="name">CS</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="ICMP"><a href="#ICMP" class="headerlink" title="ICMP"></a>ICMP</h1><h2 id="정의"><a href="#정의" class="headerlink" title="정의"></a>정의</h2><p>인터넷 제어 메세지 프로토콜을 의미한다. IP 통신은 목적지에 패킷을 정상적으로 전달하는 방법은 있지만 에러 발생시 처리가 불가능하다. 이때 ICMP 는 IP 통신의 에러 상황을 출발지에 전달하고 메시지를 제어하는 역활을 수행한다.</p>
-<h2 id="기능"><a href="#기능" class="headerlink" title="기능"></a>기능</h2><p>IP 패킷에 포함되어 있다.</p>
-<ul>
-<li>Type: ICMP 메세지 종류</li>
-<li>Code: 메시지 Type 별 세부 코드 정보</li>
-<li>Checksum: ICMP 헤더 손상 여부 확인</li>
-</ul>
-<h3 id="Type"><a href="#Type" class="headerlink" title="Type"></a>Type</h3><p>ICMP 헤더의 Type은 0~ 254의 길이로 구성되어 있다. 각각은 정보용과 오류 보고형으로 나뉘어서 사용되는데 자주 사용되는 번호는 다음과 같다.</p>
-<ul>
-<li>정보용 : 8, 0, 9, 10</li>
-<li>오류 보고용 : 3, 5, 11, 12</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/10/09/Network/211008-%EC%95%A0%ED%94%8C%EB%A6%AC%EC%BC%80%EC%9D%B4%EC%85%98%20%EC%84%9C%EB%B9%84%EC%8A%A4/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1047,205 +1236,6 @@
 
 <p>메일 서버 : MTA(Mail Transfer Agent) - 메일 전송<br>메일 클라이언트 : MUA(Mail User Agent) - 메일 송수신 프로그램<br>MDA(Mail Delivery Agent) : MTA가 수신한 메일을 수신한 우편함에 기록<br>MRA(Mail Retrieval Agent) : 리모트 서버의 우편함에서 사용자에게 메일을 가져오는 프로그램</p>
 <img src="/images/211008-애플리케이션 서비스/4.png" width="500">
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/09/20/react/official-docs/210917-Heelo-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JayoonKoo">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="티끌모아 태산">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/09/20/react/official-docs/210917-Heelo-world/" class="post-title-link" itemprop="url">Heelo-world</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-09-20 21:48:16" itemprop="dateCreated datePublished" datetime="2021-09-20T21:48:16+09:00">2021-09-20</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/react/" itemprop="url" rel="index"><span itemprop="name">react</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="1-Hello-World"><a href="#1-Hello-World" class="headerlink" title="1. Hello World"></a>1. Hello World</h1><p>React의 가장 간단한 예제는 다음과 같다.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">App</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>Hellow, world!<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> App;</span><br></pre></td></tr></table></figure>
-
-<h2 id="안내서를-읽는-방법"><a href="#안내서를-읽는-방법" class="headerlink" title="안내서를 읽는 방법"></a>안내서를 읽는 방법</h2><p>이 안내서에서는 엘리먼트와 컴포넌트라고 불리는 재사용 가능한 작은 블록을 만드는 방법을 알려줍니다. 이것을 마스터하고나면 복잡한 앱을 만들 수 있습니다.</p>
-<p>이전 장에 내용을 토대로 다음장의 내용이 구성된다.</p>
-<h2 id="지식-수준-가정"><a href="#지식-수준-가정" class="headerlink" title="지식 수준 가정"></a>지식 수준 가정</h2><p>리엑트는 자바스크립트 라이브러리이다. 따라서 자바스크립트에 기본적인 내용을 알고 있다고 가정한다.</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/09/20/react/official-docs/210918-Introduce-JSX/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JayoonKoo">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="티끌모아 태산">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/09/20/react/official-docs/210918-Introduce-JSX/" class="post-title-link" itemprop="url">Introduce-JSX</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-09-20 21:48:16" itemprop="dateCreated datePublished" datetime="2021-09-20T21:48:16+09:00">2021-09-20</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/react/" itemprop="url" rel="index"><span itemprop="name">react</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="Introducing-JSX"><a href="#Introducing-JSX" class="headerlink" title="Introducing JSX"></a>Introducing JSX</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> element = <span class="xml"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>Hello, world!<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span>;</span><br></pre></td></tr></table></figure>
-
-<p>위에 예시에 테그는 문자열도 아니고 html도 아니다. 이것은 JSX라고 불린다. React는 JSX로 UI를 표현하기를 추천한다. JSX는 템플릿을 상기시키지만 자바스크립트에 모든 기능이 포함되어 있다.</p>
-<p>JSX는 React에 엘리먼트를 생성한다. 우리는 이것이 DOM으로 렌더링 되는것을 다음 섹션에서 살펴볼 것이다. JSX에 기본적인 내용은 아래와 같다.</p>
-<h2 id="Why-JSX"><a href="#Why-JSX" class="headerlink" title="Why JSX?"></a>Why JSX?</h2><p>React는 렌더링 로직이 본질적으로 다른 UI로직과 결합된다는 것을 받아들인다. (어떻게 이벤트가 다뤄지지, 어떻게 시간이 흐름에 따라 상태가 변하지, 디스플레이를 위해 데이터가 어떻게 준비되지…)</p>
-<p>인위적으로 기술을 마크업 과 로직을 분리한 파일로 넣음으로서 분리하는 대신에 리액트는 관심사를 컴포넌트라고 불리는 로직과 마크업을 포함한 느슨한 단위 결합으로 나눈다.</p>
-<p>리액트가 JSX를 필수적으로 필요로 하는것은 아니지만, 자바스크립트 코드로 UI를 작업할때 시각적으로 많은 도움이 된다는것을 많은 사람들이 발견했다. 또한 이는 리액트가 유용한 에러와 경고 메세지를 표시할수 있도록 해줍니다.</p>
-<h2 id="Embedding-Expression-in-JSX"><a href="#Embedding-Expression-in-JSX" class="headerlink" title="Embedding Expression in JSX"></a>Embedding Expression in JSX</h2><p>변수를 램핑해서 사용할 수 있다.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">App</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> name = <span class="string">&quot;koo&quot;</span>;</span><br><span class="line">  <span class="keyword">const</span> element = <span class="xml"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>Hello &#123;name&#125;<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span>;</span><br><span class="line">  <span class="keyword">return</span> element;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>어떤 자바스크립트에 표현식도 이 안에 서용할 수 있다.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">userNameElemnt</span>(<span class="params">user</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="xml"><span class="tag">&lt;<span class="name">h1</span>&gt;</span></span></span><br><span class="line"><span class="xml">      내 이름은 &#123;user.name&#125; 이고 &#123;user.age&#125;살이야.</span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> user = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&quot;koo JaYoon&quot;</span>,</span><br><span class="line">  <span class="attr">age</span>: <span class="number">27</span>,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">App</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> element = <span class="xml"><span class="tag">&lt;<span class="name">header</span>&gt;</span>&#123;userNameElemnt(user)&#125;<span class="tag">&lt;/<span class="name">header</span>&gt;</span></span>;</span><br><span class="line">  <span class="keyword">return</span> element;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>함수를 넣는것도 가능하다. 필수는 아니지만 가독성을 위해 줄을 나눌 것과 자동 세미콜론 방지를 위해서 괄호로 래핑할 것을 추천한다.</p>
-<h2 id="JSX-is-an-Expression-Too"><a href="#JSX-is-an-Expression-Too" class="headerlink" title="JSX is an Expression Too"></a>JSX is an Expression Too</h2><p>편집이 끝나면, JSX 표현식이 자바스크립트 정규 함수로 호출되고 자바스크립트에 객채로 평가 된다.</p>
-<p>이것은 JSX를 if 나 for 에 사용해서 인수를 넣거나 할당하거나 리턴할 수 있단느 것을 의미한다.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getStranger</span>(<span class="params">user</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (user) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>&#123;userNameElemnt(user)&#125;<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>Hello Stranger<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">App</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> element = <span class="xml"><span class="tag">&lt;<span class="name">header</span>&gt;</span>&#123;getStranger()&#125;<span class="tag">&lt;/<span class="name">header</span>&gt;</span></span>;</span><br><span class="line">  <span class="keyword">return</span> element;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="Specifying-Attributes-with-JSX"><a href="#Specifying-Attributes-with-JSX" class="headerlink" title="Specifying Attributes with JSX"></a>Specifying Attributes with JSX</h2><p>스트링 문자열을 quotes를 사용해 속성으로 정의할 수 있다. 또한 중괄호를 사용해서 자바스크립트 표현식을 속성으로 사용할 수 도 있다.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> element = <span class="xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">tabIndex</span>=<span class="string">&quot;0&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> cuElemnt = <span class="xml"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&#123;user.avatarUrl&#125;</span>&gt;</span><span class="tag">&lt;/<span class="name">img</span>&gt;</span></span>;</span><br></pre></td></tr></table></figure>
-
-<p>중괄호를 사용할때 qutos를 사용하지 않도록 주의해라.</p>
-<blockquote>
-<p>JSX는 HTML 보다는 JavaScript에 가깝기 때문에 camelCase를 프로퍼티로 사용한다.</p>
-</blockquote>
-<h2 id="Specifying-Children-with-JSX"><a href="#Specifying-Children-with-JSX" class="headerlink" title="Specifying Children with JSX"></a>Specifying Children with JSX</h2><p>빈태그일 경우 XML 과 비슷하게 <code>/&gt;</code>를 사용해서 닫아준다.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> element = <span class="xml"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&#123;user.avatarUrl&#125;</span> /&gt;</span></span>;</span><br></pre></td></tr></table></figure>
-
-<p>JSX 태그는 자식 태그를 포함할 수 있다.</p>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> element = (</span><br><span class="line">  <span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>Hello!<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;<span class="name">h2</span>&gt;</span>Good to see you here.<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span></span><br><span class="line"><span class="xml">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-
-<h2 id="JSX-Prevents-Injection-Attacks"><a href="#JSX-Prevents-Injection-Attacks" class="headerlink" title="JSX Prevents Injection Attacks"></a>JSX Prevents Injection Attacks</h2><p>유저에 입력을 JSX에 삽입시키는 것은 안전하다.</p>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> title = response.potentiallMaliciousInput;</span><br><span class="line"><span class="comment">// This is safe:</span></span><br><span class="line"><span class="keyword">const</span> element = <span class="xml"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>&#123;title&#125;<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span>;</span><br></pre></td></tr></table></figure>
-
-<p>기본적으로 React DOM 은 렌더링 하기전에 JSX 내장된 어떤 값이든 이스케이프 한다. 그러므로 애플리 케이션에서 명시적으로 적히지 않은 내용은 주입되지 않는다. 모든 것은 렌더링 하기전에 문자열로 변환된다. 이것은 XSS 공격을 막는데 도움을 준다.</p>
-<h2 id="JSX-Represents-Objects"><a href="#JSX-Represents-Objects" class="headerlink" title="JSX Represents Objects"></a>JSX Represents Objects</h2><p>Babel은 JSX를 <code>React.createElement()</code>에 호출로 컴파일한다.</p>
-<p>아래 두개는 동일하다.</p>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> element = <span class="xml"><span class="tag">&lt;<span class="name">h1</span> <span class="attr">className</span>=<span class="string">&quot;greeting&quot;</span>&gt;</span>Hello, world!<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span>;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> element = React.createElement(</span><br><span class="line">  <span class="string">&quot;h1&quot;</span>,</span><br><span class="line">  &#123; <span class="attr">className</span>: <span class="string">&quot;greeting&quot;</span> &#125;,</span><br><span class="line">  <span class="string">&quot;Hello, world!&quot;</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-
-<p>`React.createElement()’ 너가 버그 없는 코드를 작성하하도록 도움이되는 몇가지 체크를 수행한다. 하지만 이것은 본질적으로 다음에 객체를 생상한다.</p>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Note: this structure is simplifed</span></span><br><span class="line"><span class="keyword">const</span> element = &#123;</span><br><span class="line">  <span class="attr">thpe</span>: <span class="string">&quot;h1&quot;</span>,</span><br><span class="line">  <span class="attr">props</span>: &#123;</span><br><span class="line">    <span class="attr">className</span>: <span class="string">&quot;greeting&quot;</span>,</span><br><span class="line">    <span class="attr">children</span>: <span class="string">&quot;Hellok world!&quot;</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p>이 객체는 React elements라고 불린다. 이것을 너가 스크린에서 보고싶은 것에 설명이라고 생각할 수 있다.<br>React는 이 객체를 DOM 을 생상하고 최신상태로 유지하는데 사용한다.</p>
-<p>다음 섹션에서 React elements가 DOM으로 렌더링 되는것을 살펴볼 것이다.</p>
-<blockquote>
-<p>당신의 에디터에 Babel 언어 설정을 선택하기를 추천한다. 그러면 ES6 와 JSX 코드가 하이라이트 될것이다.</p>
-</blockquote>
 
       
     </div>

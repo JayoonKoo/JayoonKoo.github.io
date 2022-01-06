@@ -85,7 +85,7 @@
         <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
         <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">13</span></a></li>
         <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">11</span></a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">126</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">128</span></a></li>
   </ul>
 </nav>
 
@@ -129,7 +129,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">126</span>
+          <span class="site-state-item-count">128</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -180,6 +180,205 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/12/21/TIL/211221-211221%20%EB%A6%AC%EC%95%A1%ED%8A%B8%20%EB%84%A4%EC%9D%B4%ED%8B%B0%EB%B8%8C,%20%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JayoonKoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="티끌모아 태산">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/12/21/TIL/211221-211221%20%EB%A6%AC%EC%95%A1%ED%8A%B8%20%EB%84%A4%EC%9D%B4%ED%8B%B0%EB%B8%8C,%20%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/" class="post-title-link" itemprop="url">211221 리액트 네이티브, 알고리즘</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2021-12-21 21:39:28 / Modified: 21:39:46" itemprop="dateCreated datePublished" datetime="2021-12-21T21:39:28+09:00">2021-12-21</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/TIL/" itemprop="url" rel="index"><span itemprop="name">TIL</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="211221"><a href="#211221" class="headerlink" title="211221"></a>211221</h1><h2 id="리액트-네이티브"><a href="#리액트-네이티브" class="headerlink" title="리액트 네이티브"></a>리액트 네이티브</h2><h3 id="네비게이션"><a href="#네비게이션" class="headerlink" title="네비게이션"></a>네비게이션</h3><ul>
+<li>네비게이션을 위해서 @react-navigation/native 를 사용한다. 의존하는 라이브러리로 react-native-screens react-native-safe-area-context 를 설치한다.</li>
+<li>브라우저에 history 와 같은 기능을 사용하기 위해서 Native Stack Navigator 를 사용한다. 설치 @react-navigation/native-stack</li>
+<li>스크린을 사용되는 컴포넌트는 navigation을 props로 받음. navigation.navigate 나 navigation.push 로 화면 전환을 할 수 있다.</li>
+<li>마찬가지로 props로 route도 받아온다. route는 key, name, params 를 갖는다.</li>
+<li>navigate 와 push 에 차이는 navigate 는 전환 화면이 현제 화면과 다르면 화면을 쌓지 않고, push 는 다른 화면을 쌓는다.</li>
+<li>뒤로가기 navigation.pop( ) 으로 하고, 가장 처음 화면으로 이동할 때에는 navigation.popToTop() 으로 이동한다.</li>
+<li>드로어 네비게이터를 사용하려면 @react-navigation/drawer react-native-gesture-handler react-native-reanimated 를 설치한다</li>
+<li>Screen 이 아닌 곳에서는 React와 마찬가지로 hook을 통해 route 와 navigationd 을 가져올  수 있다. <code>useNavigation</code> , <code>useRoute</code></li>
+<li><code>useFocusEffect</code> 웹과 달리 앱은 화면이 사라지는 것이 아니라 쌓게 된다. 따라서 Home 면에서 Detail 화면으로 넘어갈때 화면을 쌓일 뿐이여서 componentWillUnmount 같은 로직이 호출되지 않는다. 마찬가지로 Detail 에서 Home으로 돌아올 때도 componentDidMount 같은 로직이 호출되지 않는다. 그래서 만약 다른 화면을 봤다가 다시 돌아왔을때 어떤 작업을 하려면 <code>useFocusEffect</code> hook 을 사용해야 한다. → 반드시 <code>useCallback</code> 과 같이 사용해야 한다. 안그러면 렌더링 될때마마다 useFocusEffect 에 등록한 함수가 실행된다.</li>
+</ul>
+<h2 id="알고리즘"><a href="#알고리즘" class="headerlink" title="알고리즘"></a>알고리즘</h2><ul>
+<li>DP 와 분활정복의 차이 ?<ul>
+<li>큰문제가 작은 문제로 나누어짐, 가장 큰 차이점은 부분 문제의 중복이다. DP 는 부분 문제의 중복이 존재하고, 분할정복은 그렇지 않다.</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/12/21/DevOps/Docker/211221-Docker%20tutorial(3)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JayoonKoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="티끌모아 태산">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/12/21/DevOps/Docker/211221-Docker%20tutorial(3)/" class="post-title-link" itemprop="url">Docker tutorial(3)</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2021-12-21 21:34:27 / Modified: 21:34:44" itemprop="dateCreated datePublished" datetime="2021-12-21T21:34:27+09:00">2021-12-21</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/DevOps/" itemprop="url" rel="index"><span itemprop="name">DevOps</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="Update-the-source-code"><a href="#Update-the-source-code" class="headerlink" title="Update the source code"></a>Update the source code</h1><p>코드를 업데이트하고 적용하는 방법을 알아본다.</p>
+<ol>
+<li>코드를 고친다. </li>
+<li>build 할때 사용했던 명령어를 똑같이 입력한다. </li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker build -t getting-started .</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>업데이트된 코드를 사용해서 새로운 컨테이너를 시작한다.</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker run -db 3000:3000 getting-started</span><br></pre></td></tr></table></figure>
+
+<p>하지만 에러가 발생한다.. (docker: Error response from daemon: driver failed….)</p>
+<p>왜냐하면 이미 3000 번 포트로 전에 컨테이너가 실행중이기 때문이다. 하나의 머신에 특정한 포트는 한게만 실행 실행시킬 수 있다. 오래된 컨테이너를 지워야 한다.</p>
+<h2 id="Replace-the-old-container"><a href="#Replace-the-old-container" class="headerlink" title="Replace the old container"></a>Replace the old container</h2><p>컨테이너를 지우기 위해서는 컨테이너 실행을 중지 시켜야 한다. 두가지 방법이 있는데 편한것을 선택하면 된다. </p>
+<h3 id="Remove-a-container-using-the-CLI"><a href="#Remove-a-container-using-the-CLI" class="headerlink" title="Remove a container using the CLI"></a>Remove a container using the CLI</h3><ol>
+<li>컨테이너의 ID를 얻는다. </li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker ps</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>docker ID 혹은 이름을 사용해서 컨테이너를 멈춘다.</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker stop &lt;the-container-id or name&gt;</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>컨테이너가 멈추면 <code>docker rm</code> 커멘드로 지울 수 있다. </li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker rm &lt;the-container-id or name&gt;</span><br></pre></td></tr></table></figure>
+
+<p>-f 플래그를 이요해서 실행중인 중에도 삭제할 수 있다. <code>docker rm -f &lt;the-continaer-id or name&gt;</code> </p>
+<h3 id="Docker-Dashboard"><a href="#Docker-Dashboard" class="headerlink" title="Docker Dashboard"></a>Docker Dashboard</h3><p>Docker Dashboard에서 실행중인 컨테이널르 확인하고 쓰레기통 아이콘을 누르면 삭제할 수 있다. </p>
+<h3 id="Start-the-updated-app-container"><a href="#Start-the-updated-app-container" class="headerlink" title="Start the updated app container"></a>Start the updated app container</h3><ol>
+<li>앱을 실행시킨다. </li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker run -dp 3000:3000 getting-started</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1012,193 +1211,6 @@
 <li>가상화된 공간을 사용할 때의 성능손실이 적다.</li>
 </ol>
 <h2 id="Docker-설치"><a href="#Docker-설치" class="headerlink" title="Docker 설치"></a>Docker 설치</h2><p><a target="_blank" rel="noopener" href="https://docs.docker.com/engine/install/ubuntu/">설치 docs</a> 우분투에 대한 내용은 여기서 찾아 볼 수 있다. 문서를 보고 다른 os도 따라서 해보면 된다.</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/12/14/TIL/211213/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JayoonKoo">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="티끌모아 태산">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/12/14/TIL/211213/" class="post-title-link" itemprop="url">211213 백엔드 GraphQL</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2021-12-14 19:04:40 / Modified: 19:05:09" itemprop="dateCreated datePublished" datetime="2021-12-14T19:04:40+09:00">2021-12-14</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/TIL/" itemprop="url" rel="index"><span itemprop="name">TIL</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="211213"><a href="#211213" class="headerlink" title="211213"></a>211213</h1><h2 id="백엔드"><a href="#백엔드" class="headerlink" title="백엔드"></a>백엔드</h2><ul>
-<li>배포 채크리스트<ul>
-<li>보안 관련한 키가 포함되어 있지 않은지?</li>
-<li>보안의 위헙이 되는 로그를 남기지 않는지?</li>
-<li>반응으로 민감한 정보를 넘기고 있지 않은지</li>
-<li>API reate limits 를 정해야 한다. 사용자가 계속 API 요청을 반복적으로 하지 못하도록 막는것</li>
-</ul>
-</li>
-<li>mysql Aws 에서 사용하는 방법<ul>
-<li>서비스 → RDS (관계형 데이터 베이스 생성)→ 대시보드 → 데이터 베이스 생성 → 표준생성 , 손쉬운 생성은 알아서 늘어남.. 과금 될 수도</li>
-<li>mysql 설정</li>
-<li>텝플릿 ? 무료로 쓰려면 프리티어로</li>
-<li>DB 인스턴스 → DB 이름 정하기</li>
-<li>자격 증명 설정 (꼭 기억) - 이름 비밀저호 설정</li>
-<li>스토리지 기본 20g , 스토리지 자동 조정 활성화 켜져 있으면 늘어나고 그럼 과금이 시작됨. 무료로 사용하려면 비활성화 해줌.</li>
-<li>퍼블릭 엑세스 예로 체크 dbeaver 같은데서 접근 가능하도록</li>
-<li>외부 접속 방법?<ul>
-<li>서비스 → EC2 → 인스턴스 → 네트워크 및 보안 → 보안 그룹 → 인바운드 규칙 (외부로부터 열어놓을 포트)</li>
-<li>인바운드 규칙 편집 → 규칙 추가 → MySQL/Aurora 선택 → 기본포트로 3306 설정됨 aws msql default 값→ IP 대역 설정 0.0.0.0/0 어떠한 주소에서도 가능. → 규칙 저장</li>
-<li>다시 RDS 이동 → 열결및 보안 → 엔드포인트 및 포트 에서 엔드 포인트 확인 → 확인한 정보로 접속</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="GraphQL"><a href="#GraphQL" class="headerlink" title="GraphQL"></a>GraphQL</h2><ul>
-<li>기존 RestAPI 의 단점을 보완해서 쿼리를 보내서 원하는 정보만 가져오도록 함.</li>
-<li>다양한 방법이 있는데 Apollo로 Server을 만들어서 구현해 볼 수 있다. (apollo-server)</li>
-<li>typeDef : grapQL 스키마, Object(데이터 스키마), Query (쿼리 형태, 조회 할때), Mutaion( 생성, 변경, 삭제 할때 , resolve 도 mutation으로 설정해야 함.), Input → gql + tagged template Literals</li>
-<li>resolvers : 구현체</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/12/13/TIL/211210/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JayoonKoo">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="티끌모아 태산">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/12/13/TIL/211210/" class="post-title-link" itemprop="url">211210 마이크로프론트앤드</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2021-12-13 15:58:53 / Modified: 15:59:14" itemprop="dateCreated datePublished" datetime="2021-12-13T15:58:53+09:00">2021-12-13</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/TIL/" itemprop="url" rel="index"><span itemprop="name">TIL</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="211210"><a href="#211210" class="headerlink" title="211210"></a>211210</h1><h2 id="마이크로프론트앤드"><a href="#마이크로프론트앤드" class="headerlink" title="마이크로프론트앤드"></a>마이크로프론트앤드</h2><ul>
-<li>RunTime Integration<ul>
-<li>개발 마친 앱을 url 나 다른 포트를 통해 전달하는 등의 방식</li>
-<li>장점: 완전 독립적이다.</li>
-<li>단점: webpack 설정 등.. 이해하기 어려운 부분이 있다.</li>
-<li>→ 이번 과정에서는 RunTime Integration에 대해서 공부한다.</li>
-</ul>
-</li>
-<li>구조를 어떻게 ? 작은 앱을 만든다고 생각한다. 예를들어서 prodicts와 cart 앱을 만들어서 각각 다른 포트로 연다고 생각하면 된다 이를 위해서 각각의 폴터에 package.json, html, 을 만들고 webpack 을 이용해서 파일을 bundle하고 서버를 연다.</li>
-</ul>
 
       
     </div>
