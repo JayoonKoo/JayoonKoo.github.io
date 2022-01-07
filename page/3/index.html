@@ -85,7 +85,7 @@
         <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
         <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">13</span></a></li>
         <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">11</span></a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">128</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">129</span></a></li>
   </ul>
 </nav>
 
@@ -129,7 +129,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">128</span>
+          <span class="site-state-item-count">129</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -180,6 +180,88 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/12/15/DevOps/Docker/211018-Docker%20basic/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JayoonKoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="티끌모아 태산">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/12/15/DevOps/Docker/211018-Docker%20basic/" class="post-title-link" itemprop="url">Docker basic</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2021-12-15 21:35:12 / Modified: 21:35:29" itemprop="dateCreated datePublished" datetime="2021-12-15T21:35:12+09:00">2021-12-15</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/DevOps/" itemprop="url" rel="index"><span itemprop="name">DevOps</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="Docker"><a href="#Docker" class="headerlink" title="Docker"></a>Docker</h1><p>가상 os를 사용해본 경험이 한번쯤은 있을 것이다. 가상 os는 vm 같은 프로그램을 사용해서 현제 os 위에 새로운 os를 설치하는 것인데 이를 통해서 다른 host os 와는 다른 os를 사용할 수 있게 된다.</p>
+<p>vm ware와 같은 소프트웨어에서는 hostos 위에 hypervisor 를 두어서 그 위에 가상 os를 설치하는 방법을 사용한다. 이때 하드웨어 리소스를 필요한 부분 만큼 떼어 놓고 그 리소스 안에서 os를 사용하게 되는데 성능상에 손실이 있을 수 있다.</p>
+<p>그에 반에 Docker는 Docker engine 을 사용하여 프로세스 수준으로 리소스를 격리할 수 있다.</p>
+<h2 id="Docker를-사용하는-이유"><a href="#Docker를-사용하는-이유" class="headerlink" title="Docker를 사용하는 이유?"></a>Docker를 사용하는 이유?</h2><ol>
+<li>컨테이너 이미지의 용량이 적다.</li>
+<li>배포 속도가 빠르다.</li>
+<li>가상화된 공간을 사용할 때의 성능손실이 적다.</li>
+</ol>
+<h2 id="Docker-설치"><a href="#Docker-설치" class="headerlink" title="Docker 설치"></a>Docker 설치</h2><p><a target="_blank" rel="noopener" href="https://docs.docker.com/engine/install/ubuntu/">설치 docs</a> 우분투에 대한 내용은 여기서 찾아 볼 수 있다. 문서를 보고 다른 os도 따라서 해보면 된다.</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1124,102 +1206,6 @@
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">xhr.open(<span class="string">&quot;POST&quot;</span>, <span class="string">&quot;upload&quot;</span>, <span class="literal">true</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 파일 아이디를 통해 서버는 어떤 파일을 업로드 받을지 알게 된다.</span></span><br><span class="line">xhr.setRequestHeader(<span class="string">&quot;X-File-Id&quot;</span>, fileId);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 서버는 업로드를 제개할 파일의 시작 바이트를 통해 파일 업로드가 재개될 것을 알게 된다.</span></span><br><span class="line">xhr.setRequestHeader(<span class="string">&quot;X-Start-Byte&quot;</span>, startByte);</span><br><span class="line"></span><br><span class="line">xhr.upload.onprogress = <span class="function">(<span class="params">e</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`Uploaded <span class="subst">$&#123;startByte + e.loaded&#125;</span> of <span class="subst">$&#123;startByte + e.total&#125;</span>`</span>);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 업로드를 할 파일은 input.files[0]나 또 다른 출처가 될 수 있습니다.</span></span><br><span class="line">xhr.send(file.slice(startByte));</span><br></pre></td></tr></table></figure>
 
 <p>파일 아이디인 <code>X-File-Id</code>를 서버로 보내 업로드를 진행할 파일이 어떤 것인지 알리고, 시작 바이트인 <code>X-Start-Byte</code>를 서버에 보내 파일 업로드를 초기화하지 않고 파일 업로드를 다시 시작한다는 것을 서버에 알게 한다.</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/10/23/modernJs/210929-Long%20polling/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JayoonKoo">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="티끌모아 태산">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/10/23/modernJs/210929-Long%20polling/" class="post-title-link" itemprop="url">Long polling</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2021-10-23 22:20:40 / Modified: 22:21:10" itemprop="dateCreated datePublished" datetime="2021-10-23T22:20:40+09:00">2021-10-23</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="Long-polling"><a href="#Long-polling" class="headerlink" title="Long polling"></a>Long polling</h1><p>Long polling 은 WebSocket 또는 Server Side Event와 같은 특정 프로토콜을 사용하지 않고 서버와 지속적으로 연결하는 가장 간단한 방법이다.</p>
-<h2 id="Reqular-Polling"><a href="#Reqular-Polling" class="headerlink" title="Reqular Polling"></a>Reqular Polling</h2><p>서버에서 새로운 정보를 얻는 가장 간단한 방법은 주기적인 요청이다. 예를 들어 새로운 정보를 얻기 위해 10초 간격으로 서버에 “새로운 정보 있나요?” 요청을 보내는 것과 같다.</p>
-<p>서버는 이에대한 응답으로 클라이언트를 확인하고 패킷을 보낸다. 정상적으로 작동하지만 다음과 같은 문제가 있다.</p>
-<ol>
-<li>메시지는 최대 10초 지연으로 전달 된다.</li>
-<li>서버는 사용자의 유무나 메세지가 없더라도 계속해서 요청을 받는다. 이는 성능 부하를 일으킨다.</li>
-</ol>
-<p>개선해 보자.</p>
-<h2 id="Long-polling-1"><a href="#Long-polling-1" class="headerlink" title="Long polling"></a>Long polling</h2><p>Long polling은 구현하기도 쉽고 지연 없이 메세지를 전달한다.</p>
-<ol>
-<li>요청이 서버로 전송된다.</li>
-<li>서버는 보낼 메세지가 있을 때까지 연결을 닫지 않는다.</li>
-<li>메세지가 나타나면 서버는 요청에 응답한다.</li>
-<li>브라우저는 즉시 새 요청을 만든다.</li>
-</ol>
-<p>보통 요청은 보내지면 바로 응답을 받는다. 그런데 Long polling은 서버가 요청을 받고 대기하고 있다고 전달할 메세지가 있다는 이벤트가 발생하면 그때 응답한다. 따라서 연결을 유지할 수 있게 되는 것이다.</p>
-<img src="images/210929-Long polling/1.png" width="500">
-
-<p>네트워크 오류로 인해 연결이 끊어지면 브라우저는 즉시 새 요청을 보낸다.</p>
-<p>긴 요청을 만드는 클라이언트에 <code>subscribe</code> 함수 예제:</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">subscribe</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> response = <span class="keyword">await</span> fetch(<span class="string">&quot;/subscribe&quot;</span>);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (response.status == <span class="number">502</span>) &#123;</span><br><span class="line">    <span class="comment">// Status 502 is a connection timeout error,</span></span><br><span class="line">    <span class="comment">// may happen when the connection was pending for too long,</span></span><br><span class="line">    <span class="comment">// and the remote server or a proxy closed it</span></span><br><span class="line">    <span class="comment">// let&#x27;s reconnect</span></span><br><span class="line">    <span class="keyword">await</span> subscribe();</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (response.status != <span class="number">200</span>) &#123;</span><br><span class="line">    <span class="comment">// An error - let&#x27;s show it</span></span><br><span class="line">    showMessage(response.statusText);</span><br><span class="line">    <span class="comment">// Reconnect in one second</span></span><br><span class="line">    <span class="keyword">await</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve</span>) =&gt;</span> <span class="built_in">setTimeout</span>(resolve, <span class="number">1000</span>));</span><br><span class="line">    <span class="keyword">await</span> subscribe();</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="comment">// Get and show the message</span></span><br><span class="line">    <span class="keyword">let</span> message = <span class="keyword">await</span> response.text();</span><br><span class="line">    showMessage(message);</span><br><span class="line">    <span class="comment">// Call subscribe() again to get the next message</span></span><br><span class="line">    <span class="keyword">await</span> subscribe();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">subscribe();</span><br></pre></td></tr></table></figure>
-
-<p>요즘은 web push 와 같은 기능을 사용할 수 있기 때문에, 실시간이 중요한 서비스에서는 web push 기능을 사용하는것이 바람직하다.</p>
 
       
     </div>

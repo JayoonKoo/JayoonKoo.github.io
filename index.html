@@ -85,7 +85,7 @@
         <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
         <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">13</span></a></li>
         <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">11</span></a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">128</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">129</span></a></li>
   </ul>
 </nav>
 
@@ -129,7 +129,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">128</span>
+          <span class="site-state-item-count">129</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -180,6 +180,101 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2022/01/07/IOS/220107-TodoList/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JayoonKoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="티끌모아 태산">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/01/07/IOS/220107-TodoList/" class="post-title-link" itemprop="url">TodoList</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2022-01-07 10:09:23 / Modified: 10:09:31" itemprop="dateCreated datePublished" datetime="2022-01-07T10:09:23+09:00">2022-01-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/IOS/" itemprop="url" rel="index"><span itemprop="name">IOS</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="TodoList"><a href="#TodoList" class="headerlink" title="TodoList"></a>TodoList</h1><h2 id="활용-기술"><a href="#활용-기술" class="headerlink" title="활용 기술"></a>활용 기술</h2><ul>
+<li>UITableView</li>
+<li>UIAlertController</li>
+<li>UserDefaults</li>
+</ul>
+<h2 id="UITableView"><a href="#UITableView" class="headerlink" title="UITableView"></a>UITableView</h2><p>데이터를 목록 형태로 보여 줄 수 있는 가장 기본적인 UI 컴포넌트 → UIScrollVIew 를 상속받고 있어서 스크롤 가능하다.</p>
+<ul>
+<li>여러개의 Cell을 가지고 있고 하나의 열과 여러 줄의 행을 지니고 있으며, 수직으로만 스크롤 가능하다.</li>
+<li>센션을 이용해 행을 그룹화하여 콘텐츠를 좀 더 쉽게 탐색할 수 있다.</li>
+<li>섹션의 헤더와 푸터에 View를 구성하여 추가적인 정보를 표시할 수 있다.</li>
+</ul>
+<p>Delegate와 DataSource로 구성된다.</p>
+<p>UITableViewDataSource : 테이블 뷰를 생성하고 수정하는데 필요한 정보를 테이블 뷰 객체에 제공, UITabelView 자체에서는 데이터를 관리하지 못한다. </p>
+<p>UITableViewDelegate : 테이블 뷰의 시각적인 부분을 설정하고, 행의 액션 관리, 엑세서리 뷰 지원 그리고 테이블 뷰의 개별 행 편집을 도와줌</p>
+<h2 id="UIAlertController"><a href="#UIAlertController" class="headerlink" title="UIAlertController"></a>UIAlertController</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@IBAction</span> <span class="function"><span class="keyword">func</span> <span class="title">tabBarAddButton</span>(<span class="keyword">_</span> <span class="params">sender</span>: <span class="type">UIBarButtonItem</span>)</span> &#123;</span><br><span class="line">    <span class="keyword">let</span> alert <span class="operator">=</span> <span class="type">UIAlertController</span>(title: <span class="string">&quot;할일 등록&quot;</span>, message: <span class="literal">nil</span>, preferredStyle: .alert)</span><br><span class="line">    <span class="keyword">let</span> registerButton <span class="operator">=</span> <span class="type">UIAlertAction</span>(title: <span class="string">&quot;등록&quot;</span>, style: .default, handler: &#123; [<span class="keyword">weak</span> <span class="keyword">self</span>] <span class="keyword">_</span> <span class="keyword">in</span></span><br><span class="line">      <span class="keyword">guard</span> <span class="keyword">let</span> title <span class="operator">=</span>  alert.textFields<span class="operator">?</span>[<span class="number">0</span>].text <span class="keyword">else</span> &#123; <span class="keyword">return</span> &#125;</span><br><span class="line">      <span class="keyword">let</span> task <span class="operator">=</span> <span class="type">Task</span>(title: title, done: <span class="literal">false</span>)</span><br><span class="line">      <span class="keyword">self</span><span class="operator">?</span>.tasks.append(task)</span><br><span class="line">      <span class="keyword">self</span><span class="operator">?</span>.tableView.reloadData()</span><br><span class="line">    &#125;)</span><br><span class="line">    <span class="keyword">let</span> cancleButton <span class="operator">=</span> <span class="type">UIAlertAction</span>(title: <span class="string">&quot;취소&quot;</span>, style: .cancel, handler: <span class="literal">nil</span>)</span><br><span class="line">    alert.addAction(cancleButton)</span><br><span class="line">    alert.addAction(registerButton)</span><br><span class="line">    alert.addTextField(configurationHandler: &#123;textField <span class="keyword">in</span></span><br><span class="line">      textField.placeholder <span class="operator">=</span> <span class="string">&quot;할 일을 입력해주세요&quot;</span></span><br><span class="line">    &#125;)</span><br><span class="line">    <span class="keyword">self</span>.present(alert, animated: <span class="literal">true</span>, completion: <span class="literal">nil</span>)</span><br><span class="line">    </span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>UIAlertContoller</code> 로 alert 생성 </p>
+<p><code>UIAlertAction</code> 으로 action button 정의</p>
+<p><code>alert.addAction</code> 으로 action button 추가하기 ,self 사용할떼 강한 순환참조 막기 위해서 weak 선언하기</p>
+<p><code>alert.addTextField</code> 로 alert에 textFiled 추가하가기</p>
+<p><code>self.present</code> 로 화면에 띄어주기</p>
+<h2 id="UserDefaults"><a href="#UserDefaults" class="headerlink" title="UserDefaults"></a>UserDefaults</h2><p>런타임에 동작하여 기본 저장소에서 정보를 저장하거나 가져오는 기능을 한다. 키 값 형태로 값을 저장하고 싱글톤 패턴으로 구현되어서 앱내의 하나의 인스턴스만 존재한다.</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1076,148 +1171,6 @@
 <li>RefreshControl 을 사요하면 FlatList 에서 아래로 내리는 스와이프 동작으로 새로고침을 구현할 수 있다. FlatList 에 refreshControl 컴포넌트로 RefreshControl 을 주입하면 된다.</li>
 <li>useNavigationState 함수를 사용해서 내비게이션 상태를 조회할 수 있다.</li>
 <li>Pressable 에 hitSlop을 설정하면 컴포넌트 영역은 그대로 유지하고 터치 가능한 영역만 설정한 숫자 만큼 늘려준다. 숫자도 넣을 수 있고, Rect 타입의 객체를 넣을 수 도 있다.</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/12/21/TIL/211216-211216%20%EB%B0%B1%EC%97%94%EB%93%9C(%EC%9D%B8%EC%A6%9D)%20%EB%A6%AC%EC%95%A1%ED%8A%B8%20%EB%84%A4%EC%9D%B4%ED%8B%B0%EB%B8%8C/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JayoonKoo">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="티끌모아 태산">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/12/21/TIL/211216-211216%20%EB%B0%B1%EC%97%94%EB%93%9C(%EC%9D%B8%EC%A6%9D)%20%EB%A6%AC%EC%95%A1%ED%8A%B8%20%EB%84%A4%EC%9D%B4%ED%8B%B0%EB%B8%8C/" class="post-title-link" itemprop="url">211216 백엔드(인증) 리액트 네이티브</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2021-12-21 21:39:28 / Modified: 21:39:46" itemprop="dateCreated datePublished" datetime="2021-12-21T21:39:28+09:00">2021-12-21</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/TIL/" itemprop="url" rel="index"><span itemprop="name">TIL</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="211216"><a href="#211216" class="headerlink" title="211216"></a>211216</h1><h2 id="백엔드-Authentication"><a href="#백엔드-Authentication" class="headerlink" title="백엔드-Authentication"></a>백엔드-Authentication</h2><ul>
-<li>인증이란? : you are who you say you are, 다양한 방법으로 인증 가능하다 통상적으로 password, id 로<ul>
-<li>먼저 회원가입을 진행해서 서버에 id, passwrod 를 저장한다.</li>
-<li>클라이언트는 로그인 할때 회원가입한  id, password를 서버에 전송한다.</li>
-<li>어떻게 로그인 상태를 유지할 수 있을까?</li>
-</ul>
-</li>
-<li>세션과 쿠기 (서버에서 사용할 수 있는 전통적인 옵션- 어떻게 로그인 상태를 유지할지에 대한 방법)<ol>
-<li>세션 <ul>
-<li>서버에서 확인후 세션을 만든다 (userId, sessiontId, expiration) - Session DB에 저장 or 파일시스템이나 메모리도 될 수 있음</li>
-<li>쿠키에 HTTP Only로 sessiontId 정보를 전달함.</li>
-<li>다음 요청때마다 쿠키 정보를 전달해줌</li>
-<li>장점 : 브라우저에 전달만 하면 되서 간단하고, sessionId 만 전달하면되서 사용자의 정보를 전달하지 않아도 된다. HTTP Only를 사용하면 스크립트로 못읽기 때문에 보안상의 이점도 있다.</li>
-<li>단점 : Stateful 하기 때문에 다양한 서버들이 SettionDb를 읽어야 하고 많은 요청이 들어오게 된다. 내부적으로 네트워킹이 많아짐. 성능 하락</li>
-</ul>
-</li>
-<li>JWT (Json Web Token)<ul>
-<li>다음과 같은 정보를 JSON으로 만들고 토큰화해서 보낸다. header, payload, signature, 모든 정보는 인코딩해서 보내고 서버에서 secrete으로 사용하는 키도 인코딩해서 signature에 포함해서 보낸다.</li>
-<li>로그인 하면, 로그인 정보 + 만료 시간 등등 합쳐서 JWT를 만듦.</li>
-<li>클라이언트는 Header를 이용하여 모든 request마다 JWT를 포함해서 전달해 줌.</li>
-<li>서버는 JWT를 검증한 후에 데이터를 반환함.</li>
-<li>장점 : 서버에 State가 없다. 서버를 확장하거나 분산하기에 용이하다.</li>
-<li>단점 : JWT 자체가 단점이 될 수 있다. → 계속 JWT를 주고 받아야 한다. 만약 영원히 만료되지 않은 JWT를 헤커가 탈취한다면.. 사용할때 보안에 신경써야 한다.</li>
-</ul>
-</li>
-</ol>
-</li>
-<li>bcrypt 란?  : 사용자 정보를 그대로 저장하는 것이 아니라 암호화 해서 저장하기 위해 사용함. → 암호화만 가능한데 (암호화 한것을 비교하는 것), salt 가 없다면 경우의 수로 암호화 해 보면서 유추할 수 있어서 salt를 포함하여 경우의 수를 늘림. 10~12 정도로 설정. 길어지면 cpu 부하 심해짐..</li>
-<li>JWT, 32 시크릿 키로 권고 됨. 한번 발행된 토근은 변경되면 안된다. → 만약 한버이라도 변경 한다면 최종적으로 붙은 signature도 변경되어서 verify시 오류 발생하고 누군가 변경한 토큰인지 확인 가능하다.<ul>
-<li>만료될 수 있도록 만들어야 한다. → option으로 전달함. {expiresIn: 2} 이런식으로 → 2초 후에 만료</li>
-</ul>
-</li>
-</ul>
-<h2 id="리액트-네이티브"><a href="#리액트-네이티브" class="headerlink" title="리액트 네이티브"></a>리액트 네이티브</h2><ul>
-<li>Platform.OS 로 플랫폼 종류를 알 수 있다.</li>
-<li>KeyboardAvoidingView 에서 behavior Props 로 동작 장식을 정의할 수 있다.<ul>
-<li>padding : 키보드 열렸을때 뷰 하단에 패딩을 설정</li>
-<li>height: 뷰의 높이 자체를 변경</li>
-<li>position:  뷰의 위치를 설정</li>
-</ul>
-</li>
-<li>Platform.select({ios:, android,}) 를 사용해서 플랫폼 별로 옵션을 줄 수 있다.</li>
-<li>터치 했을때 효과 주기<ul>
-<li>TouchableHighlight: 터치했을 대 배경색 변경</li>
-<li>TouchableNativeFeedback: 안드로이드에서 물결 효과 ios에서는 오류</li>
-<li>ToucableOpacity: 투명도 조정</li>
-<li>ToucableWithoutFeedback: 아무 효과도 적용하지 않는다.</li>
-</ul>
-</li>
-<li>keyboard.dismiss() 는 현제 나타난 키보드를 닫는다.</li>
-<li>onSubmitEditing → enter 눌렀을때 이벤트</li>
-<li>returnkeyType=”done” → 키보드 눌렀을대 return 타입을 보여줌.</li>
-<li>FlatList에 ItemSeparatorComponent Props를 지정해서 컴포넌트 사이에 구분선을 설정할 수 있다.</li>
-<li>react-nativevector-icons 를 사용하면 벡터 아이콘을 리액트 네이티브 프로젝트에서 간편하게 컴포넌트처럼 사용할 수 있게 해준다.</li>
-<li>ios/proejctForderName/info.plist → 앱의 이름, 아이콘, 버전 등 앱에서 필요한 설정값을 지니고 있다.</li>
-<li>android/app/build.gradle → 프로젝트의 의존성, 프로그인 및 빌드에 필요한 설정에 대한 정보를 지니고 있다.</li>
-<li>Alert.aler(제목, 내용, 버튼, 옵션) 버튼 부분에 {text, onPress, style} 을 각각 설정해서 버튼 스타일 내용, 눌렀을때 동작등을 정의할수 있다. 안드로이드에서는 버튼 스타일이 적용되지 않아서 따로 만들어야 한다. 설정할 수 있는 style은 다음과 같다.<ul>
-<li>cancel: 취소 기본에 폰트 두껍게</li>
-<li>default: 기본 파란색</li>
-<li>destructive: 파괴적인? 삭제하는 상황에 적합 빨간색이 됨.</li>
-</ul>
-</li>
-<li>옵션으로는 바깥에 눌렀을때 동작이나, 안드로이드에서는 바깥에 눌렀을때 취소 옵션 같은걸 줄 수 있다.</li>
-<li>브라우저에 localStorage 와 비슷한 AsyncStorage 를 사용할 수 있다. API도 비슷한데 다른점이라면 AsyncStorage는 비동기로 동작해서 Promise를 반환한다. <code>yarn add @react-native-community/async-strage</code> 로 설치한다.</li>
-<li>useEffect 에는 cleanup 하는 기능이 있는데 내부 함수가 promise를 반환하면 충돌하기 때문에 내부에서 async 함수를 선언한 후에 호출하는 방법을 사용한다.</li>
-<li>AsyncStorage를 사용할때는 추상화 해서 사용하는 것을 추천한다 → 나중에 다른 스토리지를 사용할때 쉽게 교체할 수 있도록</li>
-<li>android 는 AsyncStorage 로 6MB를 저장할 수 있다 늘리려면 gradle.properties를 수정한다. ios 는 따로 최대 용량이 설정되어 있지 않다.</li>
-<li>AsyncStorage는 데이터가 많아지면 성능이 떨어진다. 또한 정렬이나 인덱싱 기능을 지원하지 않는다. 소규모에서 적합하고 조금 규모가 커지면 대안으로 <code>react-native-sqlite-storage</code> 같은것을 사용하면 된다.</li>
 </ul>
 
       
