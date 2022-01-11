@@ -85,7 +85,7 @@
         <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
         <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">13</span></a></li>
         <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">11</span></a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">129</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">131</span></a></li>
   </ul>
 </nav>
 
@@ -129,7 +129,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">129</span>
+          <span class="site-state-item-count">131</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -180,6 +180,223 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/12/16/TIL/211215-211215/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JayoonKoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="티끌모아 태산">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/12/16/TIL/211215-211215/" class="post-title-link" itemprop="url">211215</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2021-12-16 20:07:09 / Modified: 20:07:16" itemprop="dateCreated datePublished" datetime="2021-12-16T20:07:09+09:00">2021-12-16</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/TIL/" itemprop="url" rel="index"><span itemprop="name">TIL</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="211215"><a href="#211215" class="headerlink" title="211215"></a>211215</h1><h2 id="백엔드"><a href="#백엔드" class="headerlink" title="백엔드"></a>백엔드</h2><ul>
+<li>유효성 검사 어디에서 하는게 좋을까?<ul>
+<li>서버에서 검증을 빨리 하는것이 좋은데 네트워크를 소비하지 않도록 클라이언트에서 검증을 해도 좋다. 하지만 서버에서 검증하는 절차는 필수적이다.</li>
+</ul>
+</li>
+<li>유효성 검사를 위해서 expres-validator 를 이용할 수 있다.</li>
+<li>Sanitization 이란 ? 유효성 검사 후에 해야 하는데 예를 들어 2 글자 이상의 벨리데이션이 있었다면, 공백만 3글자로 입력해도 통과 됨. 이런것도 다 잡아줘야 함 → 이경우에는 맨 처음 trim()을 사용해서 해결 가능. express-validator 다양한 Sanitization 을 관련 API를 제공한다. ⇒ 데이터를 일관성있게 적용될 수 있도록</li>
+<li>validation 관련한 함수는 middleware로 따로 관리한다 controller는 비즈니스 관련 핵심 로직만 관리 할 수 있도록 한다.</li>
+<li>Contract Testing: Client-Server 통신시 test, 나중에 공부해보자.</li>
+</ul>
+<h2 id="프론트"><a href="#프론트" class="headerlink" title="프론트"></a>프론트</h2><ul>
+<li>react-query: server 에 상태를 캐쉬해서 network 비용을 줄일 수 있게 해준다. redux 를 사용하면 client 에 상태는 잘 관리할 수 있지만 server의 상태를 관리하려면 캐쉬등 여러가지 해주어야 할 작업이 있다. 이 책임을 reqct-query 에게 줌으로써 개발자는 다른 것에 집중해서 개발할수 있다.</li>
+<li>데이터를 처음 가져올때는 state를 통해 loading, success, error 와 같은 상태를 사용할 수 있고, 두번째로 가져올 때부터는 server 상태와 동기화 되서 다를때만 가져오고 나마저는 캐쉬된 상태를 사용할수 있게 함으로써 사용자 경험을 높인다.</li>
+<li>전역 state는 어떻게? → ContextAPI를 사용하여 전역 상태를 관리 할 수도 있다. 요즘은 redux 에 비중을 줄이고 context 와 react-query에 조합을 많이 사용하기도 한다.</li>
+</ul>
+<h2 id="리액트-네이티브"><a href="#리액트-네이티브" class="headerlink" title="리액트 네이티브"></a>리액트 네이티브</h2><ul>
+<li>react-native-safe-area-context : safe area 나머지 부분에 여백에 관한 설정을 할수 있는 라이브러리</li>
+<li>안드로이드에 경우 자동으로 서드파티 라이브러를 불러와서 사용할 수 있지만 ios에 경우에는 cocoapods 의 도움을 받아야 네이티브 모듈의 적용할 수 있다. ios 폴더 이동후 pod install 을 실행한다.</li>
+<li>react-native-safe-area-context 의 useSafeAreaInsets() hook을 이용하면  반환 값으로 각 safeArea 구성의 필요한 각 모서리에 공백을 top, bottom, left, right로 받아올 수 있다.</li>
+<li>statusBar 의 barStyle props를 전달할 수 있다. dark-content(어두운 내용), light_content(밝은 내용), default(시스템 기본 설정) → 참고로 안드로이드 ios 공통으로 사용할 수 있다.</li>
+<li>리액트 네이티브에서 스타일링할 때 크기는 모두 dp로 설정한다. (Density-independent Pixel) → 1인치당 픽셀 밀도에 따라 크기가 일관된 UI를 보여줄 수 있는 단위이다.<ul>
+<li>dp = px * 160 / ppi</li>
+<li>px = dp * ppi / 160</li>
+</ul>
+</li>
+<li>시뮬레이터 디바이스를 변경하는 방법 → <code>xcrun simctl list devices</code> 를 통해 실행 가능한 디바이스 목록을 확인할 수 있고, <code>yarn react-native run-ios- simulator=&quot;iPhone 5s</code> 와 같은 방법으로 동작 시킬 수 있다. 안드로이드의 경우에는 Android Virtula Device Manager를 열어서 Create Virtual Device 버튼을 눌러 새 디바이스를 추가하면 된다.</li>
+<li>이미지를 리사이즈 해서 실제 이미지와 크기가 달라질때, resizeMode를 설정할 수 있다.<ul>
+<li>cover: 기본값, 가로 세로 비율을 유지한채로 리사이징, 뷰가 더 작으면 이미지가 잘린다.</li>
+<li>contain: 가로 세로 비율을 유지한 체로 리사이징 하며 무조건 영역에 모두 들어오도록 한다.</li>
+<li>stretch: 뷰의 크기대로 이미지를 리사이징 한다. 비율이 달라진다.</li>
+<li>repeat: 바둑판식으로 이미지를 반복한다.</li>
+<li>center: 이미지를 뷰 중앙에 둔다. contain과 마찬가지 이고, 뷰가 이미지보다 크면 이미지의 크기가 커지지 않고 원본 사이즈를 유지한다.</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/12/15/DevOps/Docker/211214-DockerOverview/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JayoonKoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="티끌모아 태산">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/12/15/DevOps/Docker/211214-DockerOverview/" class="post-title-link" itemprop="url">DockerOverview</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2021-12-15 21:35:41 / Modified: 21:35:53" itemprop="dateCreated datePublished" datetime="2021-12-15T21:35:41+09:00">2021-12-15</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/DevOps/" itemprop="url" rel="index"><span itemprop="name">DevOps</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="Docker-Overview"><a href="#Docker-Overview" class="headerlink" title="Docker Overview"></a>Docker Overview</h1><h2 id="What-can-I-use-Docker-for"><a href="#What-can-I-use-Docker-for" class="headerlink" title="What can I use Docker for?"></a>What can I use Docker for?</h2><ul>
+<li>CI/CD WorkFlows</li>
+</ul>
+<ol>
+<li>개발한 코드를 도커 컨테이너와 함께 공유한다.</li>
+<li>Docker 를 사용하여 애플리케이션을 테스트 환경으로 푸시하고 자동화 및 수동 테스트를 실행함. </li>
+<li>버그를 발견하면 개발 환경에서 고치고 다시 테스팅과 검증을 위해 제배포 할 수 있다.</li>
+<li>테스트 까지 완료되면, 고객에게 전달하는것은 단지 production 환경으로 이미지를 push 해서 업데이트 하면 끝인 간단한 작업이다. </li>
+</ol>
+<h2 id="Docker-architecture"><a href="#Docker-architecture" class="headerlink" title="Docker architecture"></a>Docker architecture</h2><img src="images/211214-DockerOverview/1.png" width="300">
+
+<ul>
+<li>Docker daemon (<code>dockerd</code>):</li>
+</ul>
+<p>Docker API 요청을 수신하고 이미지, 컨테이너, 네트워크 및 볼륨과 같은 Docker 객체를 관리한다. 다른 daemon 과 통신할 수 도 있다. </p>
+<ul>
+<li>The Docker client (<code>docker</code>):</li>
+</ul>
+<p><code>docker run</code> 과 같은 명령어를 실행하면 Docker client는 <code>dockerd</code> 로 명령을 옮긴다. Docker client는 둘이상의 docker daemon과 통신할 수 있다. </p>
+<ul>
+<li>Docker Desktop :</li>
+</ul>
+<p>Window와 Mac 에서 도커 애플리케이션을 공유할수 있게 해준다. <code>dockerd</code> , <code>docker</code> , Docker Compose, Docker Content Trust.. 같은것을 포함한다. </p>
+<ul>
+<li>Docker registries :</li>
+</ul>
+<p>Docker hub 와 같이 이미지들을 모아 둔 곳, </p>
+<h2 id="Docker-Object"><a href="#Docker-Object" class="headerlink" title="Docker Object"></a>Docker Object</h2><p>docker images, containers, networks, volumes, plugins.. 등등 다양한 오브젝트가 있다. 간단하게 몇게만 살펴본다. </p>
+<ul>
+<li>images :</li>
+</ul>
+<p>컨테이너를 생성 지침이 포함된 읽기 전용 템플릿이다. 이미지를 이용해서 커스텀한 이미지를 만들 수도 있다. Dockerfile 을 만들어서 image를 생성하고 실행하는 스텝을 정의할 수도 있다. Dockerfile의 각 지침은 image layer를 만든다.</p>
+<ul>
+<li>Containers :</li>
+</ul>
+<p>컨테이너는 이미지에 실행가능한 인스턴스이다. 기본적으로 각 컨테이너와 host는 잘 격리 되어 있고, 얼마나 격리 될지 정할 수 도 있다. 만들때 설정한 설정과 이미지들로 컨테이너가 정의 된다.</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -919,313 +1136,8 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/10/23/modernJs/210915-XMLHttpRequest/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JayoonKoo">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="티끌모아 태산">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/10/23/modernJs/210915-XMLHttpRequest/" class="post-title-link" itemprop="url">XMLHttpRequest</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2021-10-23 22:20:40 / Modified: 22:21:10" itemprop="dateCreated datePublished" datetime="2021-10-23T22:20:40+09:00">2021-10-23</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="XMLHttpRequest"><a href="#XMLHttpRequest" class="headerlink" title="XMLHttpRequest"></a>XMLHttpRequest</h1><p>브라우저에 내장 객체이다. 자바스크립트로 request를 보낼 수 있게 해준다. 이름과 달리 XML 뿐만 아니라 다른 어떤 형식에 대해서도 가능하다.</p>
-<p>요즘은 fetch라는 모던한 기능이 있어서 더이상 사용되지 않는다. 모던 웹에서 3가지 이류로 사용된다.</p>
-<ol>
-<li>예전 코드에 이미 적용된 경우</li>
-<li>플로필 하고 싶지 않고 옛날 브라우저에서도 가능하게 하려면 사용해야 함.</li>
-<li>업로드 과정을 트래킹 한다든지 아직 fetch에서 지원하지 않는 기능을 사용하려면</li>
-</ol>
-<h2 id="the-basic"><a href="#the-basic" class="headerlink" title="the basic"></a>the basic</h2><p><code>XMLHttpRequest</code>에는 비동기와 동기 동작이 있다. 주로 사용되는 동기 동작부터 알아본다.</p>
-<ol>
-<li><code>XMLHttpRequest</code> 생성</li>
-</ol>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> xhr = <span class="keyword">new</span> XMLHttpRequest();</span><br></pre></td></tr></table></figure>
-
-<ol start="2">
-<li>보통 생성하고 나서 초기화 한다.</li>
-</ol>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xhr.open(mehtod, URL, [<span class="keyword">async</span>, user, password]);</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><code>method</code> : HTTP method 보통 <code>GET</code>이나 <code>POST</code>이다.</li>
-<li><code>URL</code> : 리퀘스트 보내는 URL, 스트링이나 URL 오브젝트가 될 수 있다.</li>
-<li><code>async</code> : 만약 <code>false</code>로 설정할 경우 동기로 동작한다.</li>
-<li><code>user</code>, <code>password</code> : 기본 HTTP에서 인증을 위해 사용함. 필요할때 추가한다.</li>
-</ul>
-<p><code>open</code>이라는 메서드는 request를 구성한다고 생각하면 된다. 실제적으로 요청을 보내는 것은 <code>send</code>라는 메서드를 통해서 진행된다.</p>
-<ol start="3">
-<li>보내기</li>
-</ol>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xhr.send([body]);</span><br></pre></td></tr></table></figure>
-
-<p>실제 적으로 연결을 open 하고 서버로 데이터를 request 한다. body 파라미터를 통해서 데이터를 보낼 수 있는데, <code>GET</code>메서드의 경우 body 파라미터가 필요 없을 수 있다. <code>POST</code> 메서드로 요청을 보낼때 body에 데이터를 담아서 보낸다.</p>
-<ol start="4">
-<li>응답에 대한 xhr 이벤트를 듣는다.</li>
-</ol>
-<p>다음에 세가지 이벤트가 주로 폭넓게 사용된다.</p>
-<ul>
-<li><code>load</code> : request가 완전히 완료 되었을때(심지어 400 이나 500에 상태코드를 받았을 때도), 응답이 완전히 받아졌을때도</li>
-<li><code>error</code> : request가 만들어지지 않았을때, 잘못된 URL이거나 하는 등..</li>
-<li><code>progress</code> : 얼마나 다운로드 됬는지 리포트 한기 위해서 주기적으로 트리거 된다.</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">xhr.onload = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  alert(<span class="string">`Loaded: <span class="subst">$&#123;xhr.status&#125;</span> <span class="subst">$&#123;xhr.response&#125;</span>`</span>);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">xhr.onerror = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">// only triggers if the request couldn&#x27;t be made at all</span></span><br><span class="line">  alert(<span class="string">`Network Error`</span>);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">xhr.onprogress = <span class="function"><span class="keyword">function</span> (<span class="params">event</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// triggers periodically</span></span><br><span class="line">  <span class="comment">// event.loaded - how many bytes downloaded</span></span><br><span class="line">  <span class="comment">// event.lengthComputable = true if the server sent Content-Length header</span></span><br><span class="line">  <span class="comment">// event.total - total number of bytes (if lengthComputable)</span></span><br><span class="line">  alert(<span class="string">`Received <span class="subst">$&#123;event.loaded&#125;</span> of <span class="subst">$&#123;event.total&#125;</span>`</span>);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p>progress 를 프린트하는 전체 예제는 다음과 같다.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1. Create a new XMLHttpRequest object</span></span><br><span class="line"><span class="keyword">let</span> xhr = <span class="keyword">new</span> XMLHttpRequest();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 2. Configure it: GET-request for the URL /article/.../load</span></span><br><span class="line">xhr.open(<span class="string">&quot;GET&quot;</span>, <span class="string">&quot;/article/xmlhttprequest/example/load&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 3. Send the request over the network</span></span><br><span class="line">xhr.send();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 4. This will be called after the response is received</span></span><br><span class="line">xhr.onload = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (xhr.status != <span class="number">200</span>) &#123;</span><br><span class="line">    <span class="comment">// analyze HTTP status of the response</span></span><br><span class="line">    alert(<span class="string">`Error <span class="subst">$&#123;xhr.status&#125;</span>: <span class="subst">$&#123;xhr.statusText&#125;</span>`</span>); <span class="comment">// e.g. 404: Not Found</span></span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="comment">// show the result</span></span><br><span class="line">    alert(<span class="string">`Done, got <span class="subst">$&#123;xhr.response.length&#125;</span> bytes`</span>); <span class="comment">// response is the server</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">xhr.onprogress = <span class="function"><span class="keyword">function</span> (<span class="params">event</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (event.lengthComputable) &#123;</span><br><span class="line">    alert(<span class="string">`Received <span class="subst">$&#123;event.loaded&#125;</span> of <span class="subst">$&#123;event.total&#125;</span> bytes`</span>);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    alert(<span class="string">`Received <span class="subst">$&#123;event.loaded&#125;</span> bytes`</span>); <span class="comment">// no Content-Length</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">xhr.onerror = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  alert(<span class="string">&quot;Request failed&quot;</span>);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p>서버가 응답하면 다음에 xhr 속성에서 결과를 받아올 수 있다.</p>
-<p><code>status</code> : HTTP status code를 확인할 수 있다. HTTP가 아닌 오류의 경우에는 0이 될 수 있다.</p>
-<p><code>statusText</code> : HTTP status message를 확인할 수 있다. (OK, Not Found 같은거..)</p>
-<p><code>response</code>(오래된 스크립트는 <code>responseText</code>를 사용할 것이다.) : 서버에 응답 본문이다.</p>
-<p>또한, timeout 프로퍼티를 설정해서 설정한 시간동안 응답을 받이 못하면 <code>timeout</code> 이벤트가 트리거 되게 할 수 도 있다.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xhr.timeout = <span class="number">10000</span>; <span class="comment">// timeout in ms, 10 seconds</span></span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>파라미터를 설정하고 적절히 인코딩 되는것을 보장하기 위해서 URL Object를 사용할 수 도 있다.</p>
-</blockquote>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> url = <span class="keyword">new</span> URL(<span class="string">&quot;https://google.com/search&quot;</span>);</span><br><span class="line">url.searchParams.set(<span class="string">&quot;q&quot;</span>, <span class="string">&quot;test me!&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// the parameter &#x27;q&#x27; is encoded</span></span><br><span class="line">xhr.open(<span class="string">&quot;GET&quot;</span>, url); <span class="comment">// https://google.com/search?q=test+me%21</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="Response-Type"><a href="#Response-Type" class="headerlink" title="Response Type"></a>Response Type</h2><p><code>xhr.responseType</code> 프로퍼티를 사용하엿 응답 포멧을 설정할수 있다.</p>
-<ul>
-<li><code>&quot;&quot;</code> : string</li>
-<li><code>&quot;text&quot;</code> : string</li>
-<li><code>&quot;arraybuffer&quot;</code> : <code>ArrayBuffer</code></li>
-<li><code>&quot;blob&quot;</code> - <code>Blob</code></li>
-<li><code>&quot;document&quot;</code> - XML document</li>
-<li><code>&quot;json&quot;</code> - JSON</li>
-</ul>
-<p>JSON으로 응답 받는 예제는 다음과 같다.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> xhr = <span class="keyword">new</span> XMLHttpRequest();</span><br><span class="line"></span><br><span class="line">xhr.open(<span class="string">&quot;GET&quot;</span>, <span class="string">&quot;/article/xmlhttprequest/example/json&quot;</span>);</span><br><span class="line"></span><br><span class="line">xhr.responseType = <span class="string">&quot;json&quot;</span>;</span><br><span class="line"></span><br><span class="line">xhr.send();</span><br><span class="line"></span><br><span class="line"><span class="comment">// the response is &#123;&quot;message&quot;: &quot;Hello, world!&quot;&#125;</span></span><br><span class="line">xhr.onload = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> responseObj = xhr.response;</span><br><span class="line">  alert(responseObj.message); <span class="comment">// Hello, world!</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>예전에는 <code>xhr.responseText</code> 나 <code>xhr.responseXML</code> 같은걸 사용했는데 요즘에는 <code>xhr.responseeType</code>을 설정하고 <code>xhr.response</code>를 받는 방법을 주로 사용한다.</p>
-</blockquote>
-<h2 id="Ready-states"><a href="#Ready-states" class="headerlink" title="Ready states"></a>Ready states</h2><p><code>XMLHttpRequest</code>는 진행됨에 따라서 상태가 바뀐다. 접근 가능한 상태는 다음과 같다.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">UNSENT = <span class="number">0</span>; <span class="comment">// initial state</span></span><br><span class="line">OPENED = <span class="number">1</span>; <span class="comment">// open called</span></span><br><span class="line">HEADERS_RECEIVED = <span class="number">2</span>; <span class="comment">// response headers received</span></span><br><span class="line">LOADING = <span class="number">3</span>; <span class="comment">// response is loading (a data packed is received)</span></span><br><span class="line">DONE = <span class="number">4</span>; <span class="comment">// request complete</span></span><br></pre></td></tr></table></figure>
-
-<p>순서는 다음과 같아 진다. 0 -&gt; 1 -&gt; 2 -&gt; 3 -&gt; … -&gt; 3 -&gt; 4, 3이 반복되는 이유는 네트워크에서 패킷을 받을때마다 3 상태가 되기 때문이다.</p>
-<p><code>readystateChange</code>이벤트를 통해 트래킹 할 수 있다.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">xhr.onreadystatechange = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (xhr.readyState == <span class="number">3</span>) &#123;</span><br><span class="line">    <span class="comment">// loading</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (xhr.readyState == <span class="number">4</span>) &#123;</span><br><span class="line">    <span class="comment">// request finished</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p>이 이벤트는 예전에 사용하던 것으로 역사적인 이유로 남아있다. 요즘은 <code>open/ error / progress</code> 같은것을 사용하면 된다.</p>
-<h2 id="Aborting-request"><a href="#Aborting-request" class="headerlink" title="Aborting request"></a>Aborting request</h2><p><code>xhr.abort()</code> 를 호출하면 즉시 request를 중단할 수 있다.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xhr.abort();</span><br></pre></td></tr></table></figure>
-
-<p><code>abort</code>가 트리거 되면. <code>xhr.status</code> 는 0 이 된다.</p>
-<h2 id="Synchronous-requests"><a href="#Synchronous-requests" class="headerlink" title="Synchronous requests"></a>Synchronous requests</h2><p><code>open</code>에 3번째 파라미터인 <code>async</code>에 값이 <code>false</code> 로 절정되면 요청이 비동기로 실행될 것이다. 이는 alert 이나 prompt와 같이 실행이 멈춘되 응답을 받으면 다시 실행된다는 것을 의미한다.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> xhr = <span class="keyword">new</span> XMLHttpRequest();</span><br><span class="line"></span><br><span class="line">xhr.open(<span class="string">&quot;GET&quot;</span>, <span class="string">&quot;/article/xmlhttprequest/hello.txt&quot;</span>, <span class="literal">false</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">  xhr.send();</span><br><span class="line">  <span class="keyword">if</span> (xhr.status != <span class="number">200</span>) &#123;</span><br><span class="line">    alert(<span class="string">`Error <span class="subst">$&#123;xhr.status&#125;</span>: <span class="subst">$&#123;xhr.statusText&#125;</span>`</span>);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    alert(xhr.response);</span><br><span class="line">  &#125;</span><br><span class="line">&#125; <span class="keyword">catch</span> (err) &#123;</span><br><span class="line">  <span class="comment">// instead of onerror</span></span><br><span class="line">  alert(<span class="string">&quot;Request failed&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>동기를 사용하면 사이트가 멈춘것 처럼 보이기 때문에 거의 사욯아지 않는다. 또한 진행 사항을 보는 기능이던지 timout을 설정하는 기능이던지 <code>XMLHttpRequest</code>에 정의되어 있는 기능을 사용할 수 없게 된다. 따라서 대부분의 경우는 비동기를 사용하면 된다.</p>
-<h2 id="HTTP-headers"><a href="#HTTP-headers" class="headerlink" title="HTTP-headers"></a>HTTP-headers</h2><p><code>XMLHttpRequests</code>에 요청에 헤더를 설정하고 헤더를 읽을 수 도 있다.</p>
-<h3 id="setRequestHeader-name-value"><a href="#setRequestHeader-name-value" class="headerlink" title="setRequestHeader(name, value)"></a><code>setRequestHeader(name, value)</code></h3><p>리퀘스트에 헤더를 설정한다.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xhr.setRequestHeqader(<span class="string">&quot;Content-Type&quot;</span>, <span class="string">&quot;application/json&quot;</span>);</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>헤더 제한 : 몇몇에 헤더들은 브라우저에 의해서 관리된다. (<code>Referer</code> and <code>Host</code>)<br>헤더를 제거할 수는 없다. 헤더는 추가 설정되지 덮어씌워지지 않는다.</p>
-</blockquote>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">xhr.setRequestHeader(<span class="string">&quot;X-Auth&quot;</span>, <span class="string">&quot;123&quot;</span>);</span><br><span class="line">xhr.setRequestHeader(<span class="string">&quot;X-Auth&quot;</span>, <span class="string">&quot;456&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// the header will be:</span></span><br><span class="line"><span class="comment">// X-Auth: 123, 456</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="getResponseHeader-name"><a href="#getResponseHeader-name" class="headerlink" title="getResponseHeader(name)"></a><code>getResponseHeader(name)</code></h3><p>header를 주어진 이름을 통해서 얻는다. (<code>Set-Cookie</code>나 <code>Set-Cookie2</code> 제외)</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xhr.getReponseHeader(<span class="string">&quot;Content-Type&quot;</span>);</span><br></pre></td></tr></table></figure>
-
-<h3 id="getAllResponseHeaders"><a href="#getAllResponseHeaders" class="headerlink" title="getAllResponseHeaders()"></a><code>getAllResponseHeaders()</code></h3><p><code>Set-Cookie</code> 나 <code>Set-Cookie2</code>를 제외한 모든 헤더를 얻는다.</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Cache-Control: max-age=31536000</span><br><span class="line">Content-Length: 4260</span><br><span class="line">Content-Type: image/png</span><br><span class="line">Date: Sat, 08 Sep 2012 16:53:16 GMT</span><br></pre></td></tr></table></figure>
-
-<p>개행은 항상 <code>\r\n</code>이다. os에 의존하지 않는다.</p>
-<p>헤더 덮어씌우기 예제</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> headers = xhr</span><br><span class="line">  .getAllResponseHeaders()</span><br><span class="line">  .split(<span class="string">&quot;\r\n&quot;</span>)</span><br><span class="line">  .reduce(<span class="function">(<span class="params">result, current</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">let</span> [name, value] = current.split(<span class="string">&quot;: &quot;</span>);</span><br><span class="line">    result[name] = value;</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">  &#125;, &#123;&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// headers[&#x27;Content-Type&#x27;] = &#x27;image/png&#x27;</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="POST-FormData"><a href="#POST-FormData" class="headerlink" title="POST, FormData"></a>POST, FormData</h2><p>POST로 리퀘스트를 보낼때 FormData Object를 사요할 수 있다.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> formData = <span class="keyword">new</span> FormData([form]); <span class="comment">// create an object</span></span><br><span class="line">formdata.append(name, value); <span class="comment">// appends a field</span></span><br></pre></td></tr></table></figure>
-
-<p>form을 설정하면 <code>xhr.open(&#39;POST&#39;, ...)</code> POST 메서드로 리퀘스트를 설정하고, <code>xhr.send(formData)</code> 에 send 메서드에 formData를 전달해서 리퀘스트 할 수 있다.</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">name</span>=<span class="string">&quot;person&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">name</span>=<span class="string">&quot;name&quot;</span> <span class="attr">value</span>=<span class="string">&quot;John&quot;</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">name</span>=<span class="string">&quot;surname&quot;</span> <span class="attr">value</span>=<span class="string">&quot;Smith&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></span><br><span class="line"><span class="javascript">  <span class="comment">// pre-fill FormData from the form</span></span></span><br><span class="line"><span class="javascript">  <span class="keyword">let</span> formData = <span class="keyword">new</span> FormData(<span class="built_in">document</span>.forms.person);</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">  <span class="comment">// add one more field</span></span></span><br><span class="line"><span class="javascript">  formData.append(<span class="string">&quot;middle&quot;</span>, <span class="string">&quot;Lee&quot;</span>);</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">  <span class="comment">// send it out</span></span></span><br><span class="line"><span class="javascript">  <span class="keyword">let</span> xhr = <span class="keyword">new</span> XMLHttpRequest();</span></span><br><span class="line"><span class="javascript">  xhr.open(<span class="string">&quot;POST&quot;</span>, <span class="string">&quot;/article/xmlhttprequest/post/user&quot;</span>);</span></span><br><span class="line"><span class="javascript">  xhr.send(formData);</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">  xhr.onload = <span class="function">() =&gt;</span> alert(xhr.response);</span></span><br><span class="line"><span class="javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>form 은 기본적으로 <code>multipart/form-data</code>로 보내진다. 만약 json으로 보내고 싶으면 <code>JSON.stringfy()</code> 를 통해 스트링으로 변환 후 보내면 된다. 이때, 헤더에 <code>Content-Type: applicatioin/json</code>을 설정해 두면 서버 측에 프레임워크에서 자동으로 JSON으로 디코딩 할수 있는 정보를 줄수 있다.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> xhr = <span class="keyword">new</span> XMLHttpRequest();</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> json = <span class="built_in">JSON</span>.stringify(&#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&quot;John&quot;</span>,</span><br><span class="line">  <span class="attr">surname</span>: <span class="string">&quot;Smith&quot;</span>,</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">xhr.open(<span class="string">&quot;POST&quot;</span>, <span class="string">&quot;/submit&quot;</span>);</span><br><span class="line">xhr.setRequestHeader(<span class="string">&quot;Content-type&quot;</span>, <span class="string">&quot;application/json; charset=utf-8&quot;</span>);</span><br><span class="line"></span><br><span class="line">xhr.send(json);</span><br></pre></td></tr></table></figure>
-
-<p><code>sned(body)</code> 에서 body에는 정말로 다양한 매개변수를 받을 수 있다. 사용 가능한 예로는 <code>body</code>, <code>Blob</code> 그리고 <code>BufferSource</code> 객체가 있다.</p>
-<h2 id="Upload-progress"><a href="#Upload-progress" class="headerlink" title="Upload progress"></a>Upload progress</h2><p><code>progress</code> 이벤트는 다운로드 할때만 동작한다. post 요청이 보내지고 업로드가 완료되고 나면 response가 오는데 이때 추적을 할 수 있다.</p>
-<p>만약 Upload에 트랙킹을 사용하고 싶다면 이때 사용하는 다운로드를 트래킹할때 사용하는 <code>xhr.onprogress</code>는 도움이 되지 못할 것이다. 대신에 xhr에서는 명시적으로 업로드를 트래킹할 수 있는 <code>xhr.upload</code>를 제공한다.</p>
-<p>다음에 이벤트를 발생시킨다.</p>
-<ul>
-<li><code>loadstart</code> - upload started</li>
-<li><code>progress</code> - triggers periodically during the upload</li>
-<li><code>abort</code> - upload aborted.</li>
-<li><code>error</code> - non-HTTP error.</li>
-<li><code>load</code> - upload finished successfully.</li>
-<li><code>timeout</code> - upload timed out (if <code>timout</code> property is set.)</li>
-<li><code>loadend</code> = upload finished with either success of error.</li>
-</ul>
-<p>헨들러 예제 :</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">xhr.upload.onprogress = <span class="function"><span class="keyword">function</span> (<span class="params">event</span>) </span>&#123;</span><br><span class="line">  alert(<span class="string">`Uploaded <span class="subst">$&#123;event.loaded&#125;</span> of <span class="subst">$&#123;event.total&#125;</span> bytes`</span>);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">xhr.upload.onload = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  alert(<span class="string">`Upload finished successfully.`</span>);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">xhr.upload.onerror = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  alert(<span class="string">`Error during the upload: <span class="subst">$&#123;xhr.status&#125;</span>`</span>);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p>실전 예제 :</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;file&quot;</span> <span class="attr">onchange</span>=<span class="string">&quot;upload(this.files[0])&quot;</span> /&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></span><br><span class="line"><span class="javascript">  <span class="function"><span class="keyword">function</span> <span class="title">upload</span>(<span class="params">file</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">    <span class="keyword">let</span> xhr = <span class="keyword">new</span> XMLHttpRequest();</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">    <span class="comment">// track upload progress</span></span></span><br><span class="line"><span class="javascript">    xhr.upload.onprogress = <span class="function"><span class="keyword">function</span> (<span class="params">event</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">      <span class="built_in">console</span>.log(<span class="string">`Uploaded <span class="subst">$&#123;event.loaded&#125;</span> of <span class="subst">$&#123;event.total&#125;</span>`</span>);</span></span><br><span class="line"><span class="javascript">    &#125;;</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">    <span class="comment">// track completion: both successful or not</span></span></span><br><span class="line"><span class="javascript">    xhr.onloadend = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">      <span class="keyword">if</span> (xhr.status == <span class="number">200</span>) &#123;</span></span><br><span class="line"><span class="javascript">        <span class="built_in">console</span>.log(<span class="string">&quot;success&quot;</span>);</span></span><br><span class="line"><span class="javascript">      &#125; <span class="keyword">else</span> &#123;</span></span><br><span class="line"><span class="javascript">        <span class="built_in">console</span>.log(<span class="string">&quot;error &quot;</span> + <span class="built_in">this</span>.status);</span></span><br><span class="line"><span class="javascript">      &#125;</span></span><br><span class="line"><span class="javascript">    &#125;;</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">    xhr.open(<span class="string">&quot;POST&quot;</span>, <span class="string">&quot;/article/xmlhttprequest/post/upload&quot;</span>);</span></span><br><span class="line"><span class="javascript">    xhr.send(file);</span></span><br><span class="line"><span class="javascript">  &#125;</span></span><br><span class="line"><span class="javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="Cross-origin-requests"><a href="#Cross-origin-requests" class="headerlink" title="Cross-origin requests"></a>Cross-origin requests</h2><p>기본적으로 fetch의 정책와 같이 <code>Cross-origin</code> request 를 보낼 수 있다. fetch 와 바찬가지로 cookie와 HTTP-authorization을 다른 origin으로 보낼 수 없는데 이를 이런 설정을 사용하기 위해서는 <code>xhr.withCredentials</code>이 <code>true</code>가 되어야 한다.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> xhr = <span class="keyword">new</span> XMLHttpRequest();</span><br><span class="line">xhr.withCredentials = <span class="literal">true</span>;</span><br><span class="line"></span><br><span class="line">xhr.open(<span class="string">&#x27;POST&#x27;</span>, <span class="string">&#x27;http://anywhere.com/request&#x27;</span>);</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/10/23/modernJs/210927-%ED%8C%8C%EC%9D%BC%20%EC%97%85%EB%A1%9C%EB%93%9C%20%EC%9E%AC%EA%B0%9C%ED%95%98%EA%B8%B0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JayoonKoo">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="티끌모아 태산">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/10/23/modernJs/210927-%ED%8C%8C%EC%9D%BC%20%EC%97%85%EB%A1%9C%EB%93%9C%20%EC%9E%AC%EA%B0%9C%ED%95%98%EA%B8%B0/" class="post-title-link" itemprop="url">파일 업로드 재개하기</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2021-10-23 22:20:40 / Modified: 22:21:10" itemprop="dateCreated datePublished" datetime="2021-10-23T22:20:40+09:00">2021-10-23</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="파일-업로드-재개하기"><a href="#파일-업로드-재개하기" class="headerlink" title="파일 업로드 재개하기"></a>파일 업로드 재개하기</h1><p><code>fetch</code> 메서드를 사용하면 파일을 업로드 할 수 있다. 용량이 큰파일을 업로드할 때 나누어서 업로드 해야하는 경우가 생기는데, 이때 사용하는 내장된 기능은 없지만 부분적으로 구현할 수 있는 여러 기능은 있다.</p>
-<p>해당 기능을 사용하기 위해서는 업로드 진행률을 알아야 하는데 <code>fetch</code> 로는 업로드 진행률을 알지 못하기 때문에 <code>XMLHttpRequest</code>를 사용해서 알아낸다.</p>
-<h2 id="별-도움-안되는-진행률-이벤트"><a href="#별-도움-안되는-진행률-이벤트" class="headerlink" title="별 도움 안되는 진행률 이벤트"></a>별 도움 안되는 진행률 이벤트</h2><p>앞서서 <code>xhr.upload.onprogress</code>로 업로드 진행률을 알수 있다는 것을 살펴 보았다. 하지만 이는 브라우저에서 요청 보낼때 작동할 뿐이지, 서버에서 데이터를 받았을때 작동하지는 않는다.</p>
-<p>이는 네트워크 문제나 여러가지 상황에서 서버가 리시브 받지 못했음에도 업로드 한것처럼 보일수 있는 위험이 있다. 따라서 서버에서 정확히 얼마만큼 리시브 받았는지에 대한 정보가 필요한데 이는 따로 요청을 보내서 확인해야 한다.</p>
-<h2 id="알고리즘"><a href="#알고리즘" class="headerlink" title="알고리즘"></a>알고리즘</h2><ol>
-<li>업로드할 파일에 고유값을 생성한다.</li>
-</ol>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> fileId = file.name + <span class="string">&quot;-&quot;</span> + file.size + <span class="string">&quot;-&quot;</span> + file.lastModifiedDate;</span><br></pre></td></tr></table></figure>
-
-<p>파일 아이디는 파일 업로드를 재개할 때 서버에 어떤 파일을 재개할지 말해주는데 필요하다.</p>
-<ol start="2">
-<li>서버에 요청을 보내어 얼마만큼 바이트를 전송했는지 질의한다.</li>
-</ol>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> response = <span class="keyword">await</span> fetch(<span class="string">&quot;status&quot;</span>, &#123;</span><br><span class="line">  <span class="attr">headers</span>: &#123;</span><br><span class="line">    <span class="string">&quot;X-File-Id&quot;</span>: fileId,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 서버가 얼마만큼 파일 바이트를 가졌는지 확인한다.</span></span><br><span class="line"><span class="keyword">let</span> startByte = +(<span class="keyword">await</span> response.text());</span><br></pre></td></tr></table></figure>
-
-<p>서버가 <code>X-File-Id</code> 헤더에서 파일 업로드를 추적한다고 가정한다. 이 작업은 사버사이드에서 구현되어 있어야 하고, 아직 파일이 서버에 없으면 서버는 0으로 응답해야 한다.</p>
-<ol start="3">
-<li><code>startByte</code> 에서 파일을 보내기 위해 <code>Blob</code>의 <code>slice</code> 메서드를 사용한다.</li>
-</ol>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">xhr.open(<span class="string">&quot;POST&quot;</span>, <span class="string">&quot;upload&quot;</span>, <span class="literal">true</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 파일 아이디를 통해 서버는 어떤 파일을 업로드 받을지 알게 된다.</span></span><br><span class="line">xhr.setRequestHeader(<span class="string">&quot;X-File-Id&quot;</span>, fileId);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 서버는 업로드를 제개할 파일의 시작 바이트를 통해 파일 업로드가 재개될 것을 알게 된다.</span></span><br><span class="line">xhr.setRequestHeader(<span class="string">&quot;X-Start-Byte&quot;</span>, startByte);</span><br><span class="line"></span><br><span class="line">xhr.upload.onprogress = <span class="function">(<span class="params">e</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`Uploaded <span class="subst">$&#123;startByte + e.loaded&#125;</span> of <span class="subst">$&#123;startByte + e.total&#125;</span>`</span>);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 업로드를 할 파일은 input.files[0]나 또 다른 출처가 될 수 있습니다.</span></span><br><span class="line">xhr.send(file.slice(startByte));</span><br></pre></td></tr></table></figure>
-
-<p>파일 아이디인 <code>X-File-Id</code>를 서버로 보내 업로드를 진행할 파일이 어떤 것인지 알리고, 시작 바이트인 <code>X-Start-Byte</code>를 서버에 보내 파일 업로드를 초기화하지 않고 파일 업로드를 다시 시작한다는 것을 서버에 알게 한다.</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 </div>

@@ -85,7 +85,7 @@
         <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
         <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">13</span></a></li>
         <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">11</span></a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">129</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">131</span></a></li>
   </ul>
 </nav>
 
@@ -129,7 +129,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">129</span>
+          <span class="site-state-item-count">131</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -180,6 +180,265 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/09/20/modernJs/210826-%EB%8F%99%EC%A0%81%EC%9C%BC%EB%A1%9C%20%EB%AA%A8%EB%93%88%20%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JayoonKoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="티끌모아 태산">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/09/20/modernJs/210826-%EB%8F%99%EC%A0%81%EC%9C%BC%EB%A1%9C%20%EB%AA%A8%EB%93%88%20%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B0/" class="post-title-link" itemprop="url">동적으로 모듈 가져오기</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2021-09-20 21:41:14 / Modified: 21:45:41" itemprop="dateCreated datePublished" datetime="2021-09-20T21:41:14+09:00">2021-09-20</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="동적으로-모듈-가져오기"><a href="#동적으로-모듈-가져오기" class="headerlink" title="동적으로 모듈 가져오기"></a>동적으로 모듈 가져오기</h1><p>모듈 경로로는 문자열만 가능하기 때문에 함수에 매개변수를 넘겨 줘서 결과값을 갖는 것은 할 수 없다. 또한, 런타임이나 조건부로 모듈을 불러올 수 없다.<br>그럼에도 불구하고 모듈을 동적으로 불러와야 한다면 어떻게 해야 할까?</p>
+<h2 id="import-표현식"><a href="#import-표현식" class="headerlink" title="import() 표현식"></a>import() 표현식</h2><p><code>import(module)</code> 표현식은 모듈을 읽고 이 모듈이 내보내는 것들을 모두 포함하는 객체를 담은 이행된 프로미스를 반환한다.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> modulePath = prompt(<span class="string">&quot;어떤 모듈을 불러오고 싶으세요?&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span>(modulePath)</span><br><span class="line">	.then(<span class="function"><span class="params">obj</span> =&gt;</span> <span class="comment">//&lt;모듈 객체&gt;)</span></span><br><span class="line">	.catch(<span class="function"><span class="params">err</span> =&gt;</span> <span class="comment">//&lt;로딩 엘, e.g 해당하는 모듈이 없는 경우&gt;)</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// say.js</span></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">hi</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  alert(<span class="string">&quot;안녕하세요.&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">bye</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  alert(<span class="string">&quot;안녕히 가세요.&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>let module = await import(modulePath)</code> 와 같이 가져올 수 도 있음.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> &#123; hi, bye &#125; = <span class="keyword">await</span> <span class="keyword">import</span>(modulePath);</span><br><span class="line"></span><br><span class="line">hi();</span><br><span class="line">bye();</span><br></pre></td></tr></table></figure>
+
+<p>say.js 에 export default 추가</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// say.js</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  alert(<span class="string">&quot;export default한 모듈을 불러왔습니다!&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>export defaul로 내보냈으면 default 프로퍼티를 사용하여 가져올수 있다.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = <span class="keyword">await</span> <span class="keyword">import</span>(<span class="string">&quot;./say.js&quot;</span>);</span><br><span class="line"><span class="keyword">let</span> say = obj.default;</span><br><span class="line"></span><br><span class="line">say();</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><code>import()</code> 는 함수가 아니다. <code>super()</code>처럼 괄호를 쓰는 특별한 문법이다.</p>
+</blockquote>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/09/20/modernJs/210827-proxy%EC%99%80%20reflect/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JayoonKoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="티끌모아 태산">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/09/20/modernJs/210827-proxy%EC%99%80%20reflect/" class="post-title-link" itemprop="url">proxy와 reflect</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2021-09-20 21:41:14 / Modified: 21:45:41" itemprop="dateCreated datePublished" datetime="2021-09-20T21:41:14+09:00">2021-09-20</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="Proxy-와-Reflect"><a href="#Proxy-와-Reflect" class="headerlink" title="Proxy 와 Reflect"></a>Proxy 와 Reflect</h1><p><code>Proxy</code>는 특정 객체의 행동을 가로챔. 직접 처리하기도 하고 넘겨 주기도 하는 방식으로 동작.</p>
+<h2 id="Proxy"><a href="#Proxy" class="headerlink" title="Proxy"></a>Proxy</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> proxy = <span class="keyword">new</span> <span class="built_in">Proxy</span>(target, handler);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>target</code> 감싸게 될 객체</li>
+<li><code>handler</code> 동작을 가로채는 메서드인 트랩이 담긴 객체</li>
+</ul>
+<p>타겟을 처리할 트랩이 있으면 트랩이 실행하고 아니면 target 이 직접 수행함.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> target = &#123;&#125;;</span><br><span class="line"><span class="keyword">let</span> proxy = <span class="keyword">new</span> <span class="built_in">Proxy</span>(target, &#123;&#125;); <span class="comment">// 빈 핸들러</span></span><br><span class="line"></span><br><span class="line">proxy.test = <span class="number">5</span>; <span class="comment">// 프락시에 값을 씀.</span></span><br><span class="line"></span><br><span class="line">alert(target.test); <span class="comment">// target에 프로퍼티가 생김.</span></span><br><span class="line"></span><br><span class="line">alert(proxy.test); <span class="comment">// 프락시를 사용해 값을 읽을수도 있음.</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> key <span class="keyword">in</span> proxy) alert(key); <span class="comment">// test, 반족도 잘 동작함.</span></span><br></pre></td></tr></table></figure>
+
+<p>트랩이 없기 때문에 다음과 같이 동작한다.</p>
+<ol>
+<li>proxy.test = 하면 target에 값이 설정된다.</li>
+<li>proxy.test 를 이용해 값을 읽으면 target 에서 값을 읽어온다.</li>
+<li>proxy를 대상으로 반복을 수행하면 target에 지정한 값이 반환된다.</li>
+</ol>
+<p>핸들러가 비어있으면 모든 작업은 target에서 수행된다.</p>
+<p>객체의 어떤 작업을 할때는 코드로 확인할 수 없는 내부 메서드를 이용하여 수행한다. 프록시를 사용하면 이 내부 메서드를 가로챈다.</p>
+<p><code>new Proxy</code>의 <code>handler</code>에 매개변수로 추가할 수 있는 메서드는 아래와 같다.</p>
+<img src="/images/210827-proxy와 reflect/1.png" width="500">
+
+<blockquote>
+<p>내부 메서드나 트랩을 쓸 땐 자바스크립트에서 정한 몇 가지 규칙(invariant)를 반드시 따라야 함.</p>
+</blockquote>
+<h2 id="get-트랩으로-프로퍼티-기본값-설정하기"><a href="#get-트랩으로-프로퍼티-기본값-설정하기" class="headerlink" title="get 트랩으로 프로퍼티 기본값 설정하기"></a>get 트랩으로 프로퍼티 기본값 설정하기</h2><p>프로퍼티 읽기를 가로채려면 <code>handler</code>에 <code>get(target, property, receiver)</code> 메서드가 있어야 한다.</p>
+<ul>
+<li>target: 동작을 전달할 객체로 <code>new Proxy</code>dml 첫번째 인자이다.</li>
+<li>property: 프로퍼티 이름</li>
+<li>receiver: 타깃 프로퍼티가 getter 라면 <code>receiver</code>는 getter가 호출될 때 <code>this</code>이다.</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> numbers = [<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>];</span><br><span class="line"></span><br><span class="line">numbers = <span class="keyword">new</span> <span class="built_in">Proxy</span>(numbers, &#123;</span><br><span class="line">  <span class="function"><span class="title">get</span>(<span class="params">target, prop</span>)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (prop <span class="keyword">in</span> target) &#123;</span><br><span class="line">      <span class="keyword">return</span> target[prop];</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="number">0</span>; <span class="comment">// 기본값 undefined 대신에</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">alert(numbers[<span class="number">1</span>]); <span class="comment">// 1</span></span><br><span class="line">alert(numbers[<span class="number">123</span>]); <span class="comment">// 0 해당 요소가 없으므로</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>프락시로 객체를 감쌌다면 target 객체에 접근할 수 없도록 해야 함. 위에서 number를 덮어씌워 줌으로서 원래의 numbers의 접근하지 못하도록 함.</p>
+</blockquote>
+<h2 id="set-트랩으로-프로퍼티-값-검증하기"><a href="#set-트랩으로-프로퍼티-값-검증하기" class="headerlink" title="set 트랩으로 프로퍼티 값 검증하기"></a>set 트랩으로 프로퍼티 값 검증하기</h2><p>set 메서드의 인수는 아래와 같은 역활을 한다.</p>
+<p><code>set(target, property, value, receiver)</code>:</p>
+<ul>
+<li>target: 동작을 전달할 객체로 <code>new Proxy</code>의 첫 번째 인자이다.</li>
+<li>property: 프로퍼티 이름</li>
+<li>value: 프로퍼티 값</li>
+<li>receiver: get 트랩과 유사하게 동작하는 객체로, setter 프로퍼티에만 관여한다.</li>
+</ul>
+<p>number 일때만 setter 되는 프록시 만들기</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> numbers = [];</span><br><span class="line">numbers = <span class="keyword">new</span> <span class="built_in">Proxy</span>(numbers, &#123;</span><br><span class="line">	<span class="function"><span class="title">set</span>(<span class="params">target, prop, val</span>)</span> &#123;</span><br><span class="line">		<span class="keyword">if</span> (<span class="keyword">typeof</span> <span class="keyword">var</span> == <span class="string">&#x27;number&#x27;</span>) &#123;</span><br><span class="line">			target[prop] = val;</span><br><span class="line">			<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">numbers.push(<span class="number">1</span>);</span><br><span class="line">numbers.push(<span class="number">2</span>);</span><br><span class="line">alert(numbers.length); <span class="comment">// 2</span></span><br><span class="line"></span><br><span class="line">numbers.push(<span class="string">&quot;test&quot;</span>) <span class="comment">// Error: &#x27;set&#x27; on proxy</span></span><br></pre></td></tr></table></figure>
+
+<p>배열관련 기능들도 여전히 사용할 수 있다.</p>
+<blockquote>
+<p>true를 반환하는 것을 잊지 말아야 한다.</p>
+</blockquote>
+<h2 id="ownKeys와-getOwnPropertyDescriptor로-반복-작업하기"><a href="#ownKeys와-getOwnPropertyDescriptor로-반복-작업하기" class="headerlink" title="ownKeys와 getOwnPropertyDescriptor로 반복 작업하기"></a>ownKeys와 getOwnPropertyDescriptor로 반복 작업하기</h2><p><code>Object.keys</code>, <code>for..in</code> 반복문을 비로한 프로퍼티 순환 관련 메서드 대다수는 내부 메서드 <code>[[OwnPropertyKeys]]</code> (트랩 메서드는 (<code>ownKeys</code>)) 를 사용해 프로퍼티 목록을 얻는다.</p>
+<p><code>_</code>로 시작하는 프로퍼티는 <code>for..in</code> 반복문의 순환 대상에서 제외하도록 만듦.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> user &#123;</span><br><span class="line">	<span class="attr">name</span>: <span class="string">&quot;John&quot;</span>,</span><br><span class="line">	<span class="attr">age</span>: <span class="number">30</span>,</span><br><span class="line">	<span class="attr">_password</span>: <span class="string">&quot;***&quot;</span>,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">user = <span class="keyword">new</span> <span class="built_in">Proxy</span>(user, &#123;</span><br><span class="line">	<span class="function"><span class="title">ownKeys</span>(<span class="params">target</span>)</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="built_in">Object</span>.keys(target).filter(<span class="function"><span class="params">key</span> =&gt;</span> !key.startsWith(<span class="string">&#x27;_&#x27;</span>));</span><br><span class="line">	&#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> key <span class="keyword">in</span> user) alert(key); <span class="comment">// name, age</span></span><br><span class="line"></span><br><span class="line">alert(<span class="built_in">Object</span>.keys(user)); <span class="comment">// name, age;</span></span><br><span class="line">alert(<span class="built_in">Object</span>.values(user)); <span class="comment">// John, 30</span></span><br></pre></td></tr></table></figure>
+
+<p><code>Object.keys</code>는 <code>enumerable</code> 플래그가 있는 프로퍼티만 반환한다. <code>ownKeys</code>에서 <code>enumerable</code> 플래그가 없는 객체를 반환했다면, <code>Object.keys</code>를 호출해도 빈 문자열이 반환된다.</p>
+<p>이럴땐 <code>getOwnPropertyDescriptor</code>를 사용하면 된다.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> user = &#123;&#125;;</span><br><span class="line"></span><br><span class="line">user = <span class="keyword">new</span> <span class="built_in">Proxy</span>(user, &#123;</span><br><span class="line">	<span class="function"><span class="title">ownKeys</span>(<span class="params">target</span>)</span> &#123; <span class="comment">// 프로퍼티 리스트를 받을 때 딱 한번 호출된다.</span></span><br><span class="line">		<span class="keyword">return</span> [<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;c&#x27;</span>];</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="title">getOwnPropertyDescriptor</span>(<span class="params">target, prop</span>)</span> &#123; <span class="comment">// 모든 프로퍼티를 대상으로 호출된다.</span></span><br><span class="line">		<span class="keyword">return</span> &#123;</span><br><span class="line">			<span class="attr">enumerable</span>: <span class="literal">true</span>,</span><br><span class="line">			<span class="attr">configurable</span>: <span class="literal">true</span>,</span><br><span class="line">			<span class="comment">// 이 외의 플래그도 반환할 수 있다. &quot;value:...&quot;도 가능하다.</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">alert(<span class="built_in">Object</span>.keys(user)); <span class="comment">// a, b, c</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="deleteProperty-와-여러-트랩을-사용해-프로퍼티-보호하기"><a href="#deleteProperty-와-여러-트랩을-사용해-프로퍼티-보호하기" class="headerlink" title="deleteProperty 와 여러 트랩을 사용해 프로퍼티 보호하기"></a>deleteProperty 와 여러 트랩을 사용해 프로퍼티 보호하기</h2><p><code>_</code>가 붙은 프로퍼티는 내부에서만 사용하는 프로퍼티를 의미한다. 외부에서 접근해서는 안되는데 기술적으로 접근 가능한 문제가 있다.</p>
+<p>프록시를 이요해서 접근하지 못하도록 막아 본다.</p>
+<ul>
+<li>get: 프로퍼티를 읽으려고 하면 에러를 던져줌</li>
+<li>set: 포로퍼티에 쓰려고 하면 에러를 던져줌</li>
+<li>deleteProperty: 프로퍼티를 지우려고 하면 에러를 던져줌</li>
+<li>ownKeys: <code>for..in</code> 이나 <code>Object.keys</code>같은 프로퍼티 순환 메서드를 사용할 때 <code>_</code>로 시작하는 메서드는 제외함.</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> user = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&quot;John&quot;</span>,</span><br><span class="line">  <span class="attr">_password</span>: <span class="string">&quot;***&quot;</span>,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">user = <span class="keyword">new</span> <span class="built_in">Proxy</span>(user, &#123;</span><br><span class="line">  <span class="function"><span class="title">get</span>(<span class="params">target, prop</span>)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (prop.startWith(<span class="string">&quot;_&quot;</span>)) &#123;</span><br><span class="line">      <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">&quot;접근이 제한되어 있습니다.&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">let</span> value = target[prop];</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">typeof</span> value === <span class="string">&quot;function&quot;</span> ? value.bind(target) : value;</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">set</span>(<span class="params">target, prop, val</span>)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (prop.startWith(<span class="string">&quot;_&quot;</span>)) &#123;</span><br><span class="line">      <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">&quot;접근이 제한됭있습니다&quot;</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      target[prop] = val;</span><br><span class="line">      <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">deleteProperty</span>(<span class="params">target, prop</span>)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (prop.startWith(<span class="string">&quot;_&quot;</span>)) &#123;</span><br><span class="line">      <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">&quot;접근이 제한되어 잇습니다.&quot;</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">delete</span> target[prop];</span><br><span class="line">      <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">ownKeys</span>(<span class="params">target</span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">Object</span>.keys(target).filter(<span class="function">(<span class="params">key</span>) =&gt;</span> !key.startsWith(<span class="string">&quot;_&quot;</span>));</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>함수를 반환할 때 함수를 target으로 바인딩 해주고 있음을 주목해야 한다. 그냥 사용하려고 프록시 객체로 사용하면 원본 target 객체 메서드에서 내부 변수로 접근할때 this 는 프록시기 때문에 접근이 거부된다.</p>
+<p>이 함수에 this를 target 원본으로 바인딩 함으로써 문제를 해결할 수 있다. 하지만 프록시로 여러번 쌓여 있다던지 하면 문제가 또 생긴다. 프록시마다 객체에 가하는 수정이 달라지는 문제도 있다..</p>
+<p>따라서 이런 형태의 프록시는 사용하면 안된다.</p>
+<h2 id="has-트랩으로-‘범위’내-여부-확인하기"><a href="#has-트랩으로-‘범위’내-여부-확인하기" class="headerlink" title="has 트랩으로 ‘범위’내 여부 확인하기"></a>has 트랩으로 ‘범위’내 여부 확인하기</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> range = &#123;</span><br><span class="line">  <span class="attr">start</span>: <span class="number">1</span>,</span><br><span class="line">  <span class="attr">end</span>: <span class="number">10</span>,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p><code>in</code> 연산자를 사용해 특정 숫자가 <code>range</code> 내에 있는지 확인해 본다. <code>has</code> 트랩은 <code>in</code> 호출을 가로챈다.</p>
+<p><code>has(target, property)</code></p>
+<ul>
+<li>target: new Proxy의 첫 번째 인자로 전달되는 타깃 갳게</li>
+<li>property: 프로퍼티 이름.</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> range = &#123;</span><br><span class="line">  <span class="attr">start</span>: <span class="number">1</span>,</span><br><span class="line">  <span class="attr">end</span>: <span class="number">10</span>,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">range = <span class="keyword">new</span> <span class="built_in">Proxy</span>(range, &#123;</span><br><span class="line">  <span class="function"><span class="title">has</span>(<span class="params">target, prop</span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> prop &gt;= target.start &amp;&amp; prop &lt;= target.end;</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">alert(<span class="number">5</span> <span class="keyword">in</span> range); <span class="comment">// true</span></span><br><span class="line">alert(<span class="number">50</span> <span class="keyword">in</span> range); <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="apply-랩으로-함수-감싸기"><a href="#apply-랩으로-함수-감싸기" class="headerlink" title="apply 랩으로 함수 감싸기"></a>apply 랩으로 함수 감싸기</h2><p><code>apply(target, thisArg, args)</code> 트랩은 프락시를 함수처럼 호출하려고 할때 동작한다.</p>
+<ul>
+<li>target: 타깃 객체</li>
+<li>thisArg: this의 값</li>
+<li>args: 인수 목록</li>
+</ul>
+<p>일반 함수를 사용하는 데코레이터로 예시를 들어본다.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">delay</span>(<span class="params">f, ms</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 지정한 시간이 흐른 다음에 f 호출을 전달해주는 래퍼 함수를 반환한다.</span></span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> f.apply(<span class="built_in">this</span>, <span class="built_in">arguments</span>), ms);</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sayHi</span>(<span class="params">user</span>) </span>&#123;</span><br><span class="line">  alert(<span class="string">`Hello, <span class="subst">$&#123;user&#125;</span>!`</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 래퍼 함수로 감싼 다음에 sayHi 를 호출하면 3초 후 함수가 호출된다.</span></span><br><span class="line">sayHi = delay(sayHi, <span class="number">3000</span>);</span><br><span class="line"></span><br><span class="line">sayHi(<span class="string">&quot;John&quot;</span>); <span class="comment">// Hello, John! (3초후)</span></span><br></pre></td></tr></table></figure>
+
+<p>래퍼함수로 감싸고 나면 기존 함수의 프로퍼티 (name, length등 ) 정보가 사라짐.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">delay</span>(<span class="params">f, ms</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> f.apply(<span class="built_in">this</span>, <span class="built_in">arguments</span>), ms);</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sayHi</span>(<span class="params">user</span>) </span>&#123;</span><br><span class="line">  alert(<span class="string">`Hello, <span class="subst">$&#123;user&#125;</span>!`</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">alert(sayHi.length); <span class="comment">// 1 (함수 정의부에서 명시한 인수의 개수)</span></span><br><span class="line"></span><br><span class="line">sayHi = delay(sayHi, <span class="number">3000</span>);</span><br><span class="line"></span><br><span class="line">alert(sayHi.length); <span class="comment">// 0 (래퍼 함수 정의부엔 인수가 없음)</span></span><br></pre></td></tr></table></figure>
+
+<p><code>Proxy</code> 객체는 타깃 객체에 모든 것을 전달해주므로 훨씬 강력하다.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">delay</span>(<span class="params">f, ms</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Proxy</span>(f, &#123;</span><br><span class="line">    <span class="function"><span class="title">apply</span>(<span class="params">target, thisArg, args</span>)</span> &#123;</span><br><span class="line">      <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> target.apply(thisArg, args), ms);</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sayHi</span>(<span class="params">user</span>) </span>&#123;</span><br><span class="line">  alert(<span class="string">`Hello, %<span class="subst">$&#123;user&#125;</span>!`</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">sayHi = delay(sayHi, <span class="number">3000</span>);</span><br><span class="line"></span><br><span class="line">alert(sayHi.length); <span class="comment">// 1 프락시는 &quot;get length&quot; 연산까지 타깃 객체에 전달해줍니다.</span></span><br><span class="line"></span><br><span class="line">sayHi(<span class="string">&quot;John&quot;</span>); <span class="comment">// Hello, John! (3초후)</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1064,278 +1323,8 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/09/20/modernJs/210914-URL%20objects/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JayoonKoo">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="티끌모아 태산">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/09/20/modernJs/210914-URL%20objects/" class="post-title-link" itemprop="url">URL objects</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2021-09-20 21:41:14 / Modified: 21:45:41" itemprop="dateCreated datePublished" datetime="2021-09-20T21:41:14+09:00">2021-09-20</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="URL-objects"><a href="#URL-objects" class="headerlink" title="URL objects"></a>URL objects</h1><p>URL 객체를 사용할 수 있다. 물론 string을 사용해도 충분 하지만 유요한 기능을 제공 하기도 한다.</p>
-<h2 id="Creating-a-URL"><a href="#Creating-a-URL" class="headerlink" title="Creating a URL"></a>Creating a URL</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> URL(url, [base]);</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><code>url</code> - full url 이나 베이스가 설정되어 있다면 패스 만</li>
-<li><code>base</code> - base가 설정 되어 있으면 base와 관련지어서 생성된다.</li>
-</ul>
-<p>다음에 두가지 url은 같다.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> url1 = <span class="keyword">new</span> URL(<span class="string">&quot;https://javascript.info/profile/admin&quot;</span>);</span><br><span class="line"><span class="keyword">let</span> url2 = <span class="keyword">new</span> URL(<span class="string">&quot;/profile/admin&quot;</span>, <span class="string">&quot;https://javascript.info&quot;</span>);</span><br></pre></td></tr></table></figure>
-
-<p>url 객체를 사용하면 객체에 구성소에 바로 접근할 수 있다.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> url = <span class="keyword">new</span> URL(<span class="string">&quot;https://javascript.info/url&quot;</span>);</span><br><span class="line"></span><br><span class="line">alert(url.protocol); <span class="comment">// https:</span></span><br><span class="line">alert(url.host); <span class="comment">// javascript.info</span></span><br><span class="line">alert(url.pathname); <span class="comment">// /url</span></span><br></pre></td></tr></table></figure>
-
-<p>url에 구조는 다음과 같다.</p>
-<img src="/images/210914-URL objects/1.png" width="500">
-
-<blockquote>
-<p>네트워킹 메서드에 문자열 대신에 URL Object를 전달할 수 있다.<br>예를 들면 <code>fetch</code>나 <code>XMLHttpRequest</code>에서</p>
-</blockquote>
-<h2 id="SearchParams-“-”"><a href="#SearchParams-“-”" class="headerlink" title="SearchParams “?..”"></a>SearchParams “?..”</h2><p>파라미터는 만약 공백이 포함되어 있거나 라틴 글자가 아니면 인코딩이 필요하다.</p>
-<p>글새 <code>url.searchParams</code>는 유용한 메서드를 제공한다.</p>
-<ul>
-<li><code>append(name, value)</code> - name에 해당하는 파라미터를 추가한다.</li>
-<li><code>delete(name)</code> - name 에 해당하는 파라미터를 제거한다.</li>
-<li><code>get(name)</code> - name 에 해당하는 파라미터를 얻는다.</li>
-<li><code>getAll(name)</code> - name 에 해당하는 파라미터를 모두 얻는다.(여러개일 경우)</li>
-<li><code>has(name)</code> - name에 해당하는 파리머터가 있는지 체크한다.</li>
-<li><code>set(name, value)</code> - set/relace 파리미터</li>
-<li><code>sort()</code> - 이름으로 정렬한다, 드물게 필요하다.</li>
-</ul>
-<p>사용 예시는 다음과 같다.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> url = <span class="keyword">new</span> URL(<span class="string">&quot;https://google.com/search&quot;</span>);</span><br><span class="line"></span><br><span class="line">url.searchParams.set(<span class="string">&quot;q&quot;</span>, <span class="string">&quot;test me!&quot;</span>); <span class="comment">// added parameter with a space and !</span></span><br><span class="line"></span><br><span class="line">alert(url); <span class="comment">// https://google.com/search?q=test+me%21</span></span><br><span class="line"></span><br><span class="line">url.searchParams.set(<span class="string">&quot;tbs&quot;</span>, <span class="string">&quot;qdr:y&quot;</span>); <span class="comment">// added parameter with a colon :</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// parameters are automatically encoded</span></span><br><span class="line">alert(url); <span class="comment">// https://google.com/search?q=test+me%21&amp;tbs=qdr%3Ay</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// iterate over search parameters (decoded)</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> [name, value] <span class="keyword">of</span> url.searchParams) &#123;</span><br><span class="line">  alert(<span class="string">`<span class="subst">$&#123;name&#125;</span>=<span class="subst">$&#123;value&#125;</span>`</span>); <span class="comment">// q=test me!, then tbs=qdr:y</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="Encoding"><a href="#Encoding" class="headerlink" title="Encoding"></a>Encoding</h2><p>url에 가능한 글자가 RFC3986에 정의 되어 있다. 제공되지 않는 문자열에 경우 인코딩이 필요하다.</p>
-<p>다행인건, URL Object를 사용하면 자동으로 이 작업을 해준다.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> url = <span class="keyword">new</span> URL(<span class="string">&quot;https://ru.wikipedia.org/wiki/Тест&quot;</span>);</span><br><span class="line"></span><br><span class="line">url.searchParams.set(<span class="string">&quot;key&quot;</span>, <span class="string">&quot;ъ&quot;</span>);</span><br><span class="line">alert(url); <span class="comment">//https://ru.wikipedia.org/wiki/%D0%A2%D0%B5%D1%81%D1%82?key=%D1%8A</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="Encoding-String"><a href="#Encoding-String" class="headerlink" title="Encoding String"></a>Encoding String</h3><p>URL Object가 아니라 문자열을 사용하는 경우 특수 문자를 수동으로 인코딩/ 디코딩 해야 한다.</p>
-<p>몇가지 내장된 메소드는 다음과 같다.</p>
-<ul>
-<li><code>encodeURI</code></li>
-<li><code>decodeURI</code></li>
-<li><code>encodeURIComponent</code> - 파라미터나 헤쉬 값 같은 것</li>
-<li><code>decodeURIComponent</code></li>
-</ul>
-<p><code>encodeURI</code>와 <code>encodeURIComponent</code>에 차이는 무엇일까?</p>
-<p>예시 url</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://site.com:8080/path/page?p1=v1&amp;p2=v2#hash</span><br></pre></td></tr></table></figure>
-
-<p><code>:</code>, <code>?</code>, <code>=</code>, <code>&amp;</code>, <code>#</code>와 같은 문자가 url에서 허용된다. 파라미터로 사용되는 문자열에는 이런 문자열이 포함되어야 하는데 url에 허용되는 문자열이기 때문에 인코딩 되지 않는 문제가 있다.</p>
-<p>따라서 이러한 문자는 형식을 깨드리지 않고 인코딩되어야 한다.</p>
-<p>전체 URL은 <code>encodeURI</code>를 사용한다.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// using cyrillic characters in url path</span></span><br><span class="line"><span class="keyword">let</span> url = <span class="built_in">encodeURI</span>(<span class="string">&quot;http://site.com/привет&quot;</span>);</span><br><span class="line"></span><br><span class="line">alert(url); <span class="comment">// http://site.com/%D0%BF%D1%80%D0%B8%D0%B2%D0%B5%D1%82</span></span><br></pre></td></tr></table></figure>
-
-<p>매개변수를 사용하는 경우 <code>encodeURIComponent</code>를 대신해서 사용해야 한다.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> music = <span class="built_in">encodeURIComponent</span>(<span class="string">&quot;Rock&amp;Roll&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> url = <span class="string">`https://google.com/search?q=<span class="subst">$&#123;music&#125;</span>`</span>;</span><br><span class="line">alert(url); <span class="comment">// https://google.com/search?q=Rock%26Roll</span></span><br></pre></td></tr></table></figure>
-
-<p><code>encodeURI</code>와 비교하면 다음과 같다.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> music = <span class="built_in">encodeURI</span>(<span class="string">&quot;Rock&amp;Roll&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> url = <span class="string">`https://google.com/search?q=<span class="subst">$&#123;music&#125;</span>`</span>;</span><br><span class="line">alert(url); <span class="comment">// https://google.com/search?q=Rock&amp;Roll</span></span><br></pre></td></tr></table></figure>
-
-<p>&amp; 은 Rock 그리고 Roll 이라는 파라미터를 의미하고 이는 적절히 인코딩 되어야 한다. 그런데 encdoeURI를 사용하면 &amp;를 허용하기 때문에 인코딩 되지 않는 문제가 있다.</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/09/20/git/210721-git-basic/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JayoonKoo">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="티끌모아 태산">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/09/20/git/210721-git-basic/" class="post-title-link" itemprop="url">git-basic</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-09-20 21:39:38" itemprop="dateCreated datePublished" datetime="2021-09-20T21:39:38+09:00">2021-09-20</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/git/" itemprop="url" rel="index"><span itemprop="name">git</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="git-basic"><a href="#git-basic" class="headerlink" title="git basic"></a>git basic</h1><ul>
-<li>리눅스에 대해서 간략히 공부했다.</li>
-<li>git의 대한 기본적인 설정방법과 사용법을 알아보고 리뷰어와 조를 이루어 풀리퀘스트를 요청화는 과정을 연습해 보았다.</li>
-</ul>
-<h2 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h2><p>리눅스는 unix 기반에 오픈소스 운영체제로서 수많은 배포 버전이 있다. 헬싱키 대학생이던 리누스 토발즈가 앤디 타넨 비우의 MINX를 개조한 Linux를 배포했다.</p>
-<h3 id="Kernel"><a href="#Kernel" class="headerlink" title="Kernel"></a>Kernel</h3><p>커널은 하드웨어와 응용 프로그램을 이어주는 운영체제의 핵심 소프트 웨어이다.</p>
-<h3 id="Shell"><a href="#Shell" class="headerlink" title="Shell"></a>Shell</h3><p>쉘은 운영체제의 커널과 사용자를 이어주는 소프트웨어로서 사용자가 Kernel를 제어하기 위해 새용한다.</p>
-<h2 id="git-object"><a href="#git-object" class="headerlink" title="git object"></a>git object</h2><p>git에는 3가지의 객체가 있다.</p>
-<ol>
-<li>Blob: 파일 하나의 대한 정보로서 사진으로 비유하자면 사진 파일 자체인 .jpg 파일이 될 수 있다.</li>
-<li>Tree: Blob 이나 subtree 의 메타데이터로서 사진으로 비유하자면 찍히 날짜에 대한 정보라던지, 저장된 위치 같은 정보가 될 수 있다.</li>
-<li>Commit: 커밋 순간의 스냅샷으로서 버전으로 저장하려고 압축한 파일들과 같다.</li>
-</ol>
-<h2 id="git-저장소"><a href="#git-저장소" class="headerlink" title="git 저장소"></a>git 저장소</h2><p>git repo 에는 크게 Local 저장소와 remote 저장소가 있다. 흔히 사용하는 github과 같은 서비스가 remote 저장소라고 할 수 있다.</p>
-<p>Local 저장소는 크게 3가지 상태로 나눌 수 있다.</p>
-<ol>
-<li>Working Directory : 지금 작업하고 있는 폴더이다. <code>git init</code>을 통해 git repo를 만들거나 clone 받은 폴더가 될 수 있다.</li>
-<li>staging area : <code>git add</code> 를 통해 추가한 파일들에 상태를 말한다. 아직 커밋을 하기 전 상태이며 add를 해야지 git 에서 버전을 추적할 수 있다.</li>
-<li>localrepo : <code>git commit</code>을 수행해서 버전이 등록한 파일들에 상태이다. <code>git push</code>를 통해 remote 저장소로 파일을 올리거나 <code>git pull</code>을 통해 받아올 수 있다.</li>
-</ol>
-<img src="/images/img/git-process.png" width="500">
-
-<h2 id="configure"><a href="#configure" class="headerlink" title="configure"></a>configure</h2><p>깃을 사용하기전 환경 설정으로 해주면 좋을 것들을 알아본다.</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ git config --global user.name &quot;당신의유저네임&quot;</span><br><span class="line">$ git config --global user.email &quot;당신의메일주소&quot;</span><br><span class="line">$ git config --global core.editor &quot;vim&quot;</span><br><span class="line">$ git config --global core.pager &quot;cat&quot;</span><br><span class="line">$ git config --global init.defaultBranch &quot;main&quot;</span><br></pre></td></tr></table></figure>
-
-<p>commit 을 입력할 editor을 vim으로 설정하는 설정과 default branch를 main으로 바꾸는 설정이 포함되어 있다. 필수적인 사항은 아니다.</p>
-<p>만약 환경변수 설정을 내리고 싶다면 <code>--unset</code> 플래그를 추가하면된다.</p>
-<p><code>git config --global --unset core.editor</code></p>
-<h2 id="Commit-Convention"><a href="#Commit-Convention" class="headerlink" title="Commit Convention"></a>Commit Convention</h2><p>commit을 한번에 알기쉽게 하기위해서 보편적으로 사용하는 규칙들이 있다.</p>
-<ul>
-<li>feat: features (기능 개발에 대한 커밋)</li>
-<li>docs: documentations (문서 작업에 대한 커밋)</li>
-<li>conf: configurations (환경 변수 설정에 대한 커밋 ex)node pakage)</li>
-<li>test: test (test 코드에 대한 수정 생성에 대한 커밋)</li>
-<li>fix: bug-fix (버그를 고치거나 에러를 고친 커밋)</li>
-<li>refactor: refactoring (같은 기능을 하나 보기 좋고 효율적인 코드로 대체했을때)</li>
-<li>ci: Continuous Integration</li>
-<li>build: Build</li>
-<li>perf: Performance</li>
-</ul>
-<p>이 외에도 제목은 50자 이내로 간결하게 작성하고 내용은 되도록 상세히 작성하도록 한다.</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">feat: add back button</span><br><span class="line"></span><br><span class="line">add back button using &lt;buuton&gt; tag</span><br><span class="line"></span><br><span class="line">TODO</span><br><span class="line">- create page</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h2 id="작업의-단위"><a href="#작업의-단위" class="headerlink" title="작업의 단위"></a>작업의 단위</h2><p>commit 작업의 단위는 어떻게 될까?</p>
-<p>commit 을 하는 단위는 어떤 동작을 기준으로 한다고 보면된다. JS에서 예를 들자면 어떤 함수를 만들고 동작까지 확인했다면 그때를 commit 기점으로 생각하면된다.</p>
-<p>작업 최소 단위로 생각하고 세세하게 작성하도록 한다.</p>
-<h2 id="staging-area가-있는-이유"><a href="#staging-area가-있는-이유" class="headerlink" title="staging area가 있는 이유?"></a>staging area가 있는 이유?</h2><p>만약 staging area 가 없다면 어떻게 될까?</p>
-<p>우리는 모든 파일에 변경에 커밋을 한번에 날려야할 것이다. 만약 문서화 작업에대한 변경과 기능 추가에 대한 변경이 존재한다면 이를 한꺼번에 커밋해야 되는 것이다.</p>
-<p>stging area 가 있기 때문에 하나의 파일을 올려두고 staging area 에 있는 파일을 commit 대상으로 삼을 수 있다.</p>
-<h2 id="pull-request-실습"><a href="#pull-request-실습" class="headerlink" title="pull request 실습"></a>pull request 실습</h2><p>github repo &gt; Settings &gt; Mnage access &gt; Invate a collaborator 를 통해 코드 리뷰어를 초대한다.</p>
-<p>새로운 브렌치를 만들어 기능을 만든다.</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ git branch [new branch name]</span><br><span class="line">$ git checkout [new branch name]</span><br><span class="line">$ git add [수정한 파일]</span><br><span class="line">$ git commit</span><br><span class="line">$ git push -u origin [new branch name]</span><br></pre></td></tr></table></figure>
-
-<p>새로운 브랜치를 로컬에서 생성했다면 remote repo 에는 새로운 브랜치가 없을 것이다. -u 플래그를 통해 새로운 브랜치를 remote repo 에 생성하면서 push 할 수 있다.</p>
-<p>github 저장소로 이동하여 pull request를 요청한다.</p>
-<p>이제 코드 리뷰어가 코드를 보고 수정할 것을 요청할 것이다. 그럼 다시 로컬 저장소로 돌아와서 파일을 수정하고 push 하는 과정까지 진행하면된다.</p>
-<p>코드리뷰어가 확인하고 문제가 없다 판단하면 승인을 해줄 것이다. 그럼 merge 를 클릭하여 remote repo 에 브랜치를 머지하면된다.</p>
-<p>로컬 저장소에는 아직 머지 되지 않은 상태 이기 때문에 머지명령어를 입력한다.</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout main</span><br><span class="line">$ git fecth origin main</span><br><span class="line">$ git merge FETCH_HEAD</span><br></pre></td></tr></table></figure>
-
-<p>사실 <code>git pull origin main</code> 을 통해서도 동일한 과정을 진행할 수 있다. 내부적으로 보자면 git pull을 통한 머지가 위에 코드블럭에서 설명한 것을 똑같이 수행한다.</p>
-<p>차이점은 fetch를 통해 이시적으로 받아올 수 있기 때문에 변경사항을 확인하면서 머지할 수 있다는 것이다. 복잡한 코드를 머지해야 할때나 다시한번 확인이 필요할 경우가 있을 수 있으니 fetch를 사용하도록 하자.</p>
-<h2 id="다음에-배울-것"><a href="#다음에-배울-것" class="headerlink" title="다음에 배울 것"></a>다음에 배울 것</h2><p>branch 를 더 배울 예정이다.</p>
-<p>풀 리퀘스트하는 과정을 더 연습해서 익숙해 지도록 해야 겠다.</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/7/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" href="/page/9/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+    <a class="extend prev" rel="prev" href="/page/7/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><a class="extend next" rel="next" href="/page/9/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 </div>
