@@ -83,9 +83,9 @@
   <ul class="main-menu menu">
         <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li>
         <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
-        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">13</span></a></li>
-        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">11</span></a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">134</span></a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">14</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">12</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">135</span></a></li>
   </ul>
 </nav>
 
@@ -129,18 +129,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">134</span>
+          <span class="site-state-item-count">135</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-count">12</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-count">14</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -189,7 +189,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/08/30/typeScript/210813-TypeScript%20Compiler/">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/09/12/system-programing/210821-%EB%A6%AC%EB%88%85%EC%8A%A4%20%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -202,7 +202,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/08/30/typeScript/210813-TypeScript%20Compiler/" class="post-title-link" itemprop="url">TypeScript Compiler</a>
+          <a href="/2021/09/12/system-programing/210821-%EB%A6%AC%EB%88%85%EC%8A%A4%20%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4/" class="post-title-link" itemprop="url">리눅스 프로세스</a>
         </h2>
 
         <div class="post-meta-container">
@@ -213,7 +213,7 @@
       </span>
       <span class="post-meta-item-text">Posted on</span>
 
-      <time title="Created: 2021-08-30 02:32:06" itemprop="dateCreated datePublished" datetime="2021-08-30T02:32:06+09:00">2021-08-30</time>
+      <time title="Created: 2021-09-12 23:46:02" itemprop="dateCreated datePublished" datetime="2021-09-12T23:46:02+09:00">2021-09-12</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -221,7 +221,7 @@
       </span>
       <span class="post-meta-item-text">In</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/typeScript/" itemprop="url" rel="index"><span itemprop="name">typeScript</span></a>
+          <a href="/categories/CS/" itemprop="url" rel="index"><span itemprop="name">CS</span></a>
         </span>
     </span>
 
@@ -235,193 +235,30 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="TypeScript-Compiler"><a href="#TypeScript-Compiler" class="headerlink" title="TypeScript Compiler"></a>TypeScript Compiler</h1><h2 id="Compliation-Context"><a href="#Compliation-Context" class="headerlink" title="Compliation Context"></a>Compliation Context</h2><p>논리적인 그룹핑과 어떤 방법으로 컴파일 할것인지에 대한 맥락.<br>보통 <code>tsconfig.json</code> 파일로 관리한다.</p>
-<h2 id="tsconfig-schema"><a href="#tsconfig-schema" class="headerlink" title="tsconfig schema"></a>tsconfig schema</h2><p>최상위 프로퍼티 중 주요한 항목</p>
-<ul>
-<li>compileOnSave</li>
-<li>extends</li>
-<li>compileOptions</li>
-<li>files</li>
-<li>include</li>
-<li>exclude</li>
-<li>references</li>
-</ul>
-<h2 id="compileOnSave"><a href="#compileOnSave" class="headerlink" title="compileOnSave"></a>compileOnSave</h2><ul>
-<li>true/false(default fasle): true 로 설정하면 저장하면 컴파일 해줌.</li>
-<li>누가?<ul>
-<li>Visual Studio 2015 with TypeScript 1.8.4 이상</li>
-<li>tom-thypescript 플러그인</li>
-</ul>
-</li>
-</ul>
-<h2 id="extends"><a href="#extends" class="headerlink" title="extends"></a>extends</h2><p>상속 받을 때 사용함.</p>
-<ul>
-<li>파일 (상대) 경로명 : string</li>
-</ul>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">&quot;compilerOptins&quot;</span>: &#123;</span><br><span class="line">    <span class="attr">&quot;strict&quot;</span>: <span class="literal">true</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">&quot;extends&quot;</span>: <span class="string">&quot;./base.json&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><code>tsconfig/base</code> 저장소로 이동하면 다양한 base 설정을 받을 수 있다.</p>
-<p><code>npm install --save-dev @tsconfig/deno</code></p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">&quot;extends&quot;</span>: <span class="string">&quot;@tsconfig/deno/tsconfig.json&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="files-include-exclude"><a href="#files-include-exclude" class="headerlink" title="files, include, exclude"></a>files, include, exclude</h2><p>어떤 파일을 컴파일 할것인지 결정함.</p>
-<p>files 가 가장 강한 설정이다. 따라서 exlucde를 통해서 제외 했더라도 files 안에 있으면 컴파일 된다.</p>
-<p>셋다 설정이 없으면 전부 컴파일 하려고 한다.</p>
-<ul>
-<li>files<ul>
-<li>상대 혹은 절대 경로의 리스트 배열이다.</li>
-<li>exclude 보다 쎄다.</li>
-</ul>
-</li>
-<li>include, exclude<ul>
-<li>glob 패턴 (마치 .gitignore)</li>
-<li>include<ul>
-<li>exclude 보다 약하다.</li>
-</ul>
-</li>
-<li>exclude<ul>
-<li>설정 안하면 4가지 (node_modules, bower_components, jspm_packages, &lt;outDir&gt;) 를 dafault로 제외 함.</li>
-<li>&lt;outDir&gt; 은 항상 제외한다. (include에 있어도)</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="compileOptions-typeRoots-types"><a href="#compileOptions-typeRoots-types" class="headerlink" title="compileOptions - typeRoots, types"></a>compileOptions - typeRoots, types</h2><p>만약 외부 라이브러리를 사용할 경우 타입 검사를 어떻게 수행할까?</p>
-<p>예를 들어 react를 설치하면 js로 만든 것이기 때문에 오류가 발생한다. 따라서 <code>npm i --save-dev @types/react</code>를 하게 되면 <code>node_modules/@types</code>안에서 파일을 찾아서 오류가 나지 않게 된다.<br>이것이 default 설정인데 typeRoots와 types 를 통해 설정을 변경할 수 있다.</p>
-<p>typeRoots로 @types로 사용할 폴더를 설정한다. 유명하지 않는 라이브러리 같은 경우 @types가 없을 수 있고 내가 작성한 패키지는 내가 따로 만들어야 하는 경우도 있다.</p>
-<p><code>@types</code></p>
-<ul>
-<li>내장 type definition 시스템이다.</li>
-<li>아무 설정을 하지 않으면 <code>node_modules/@types</code> 라는 모든 경로를 찾아서 사용한다.</li>
-<li>typeRoots를 사용하면? -&gt; 배열 안에 들어있는 경로들 아래서만 가져온다.</li>
-<li>types 를 사용하면 -&gt; 배열안에 모듈 혹은 <code>./node_module/@types/</code> 안에 모듈 이름에서 찾아온다. [] 빈 배열을 넣는다는 건 이 시스템을 이용하지 않겠다는 것이다.</li>
-<li>typeRoots와 types를 같이 사용하지는 않는다.</li>
-</ul>
-<h2 id="compileOptions-target과-lib"><a href="#compileOptions-target과-lib" class="headerlink" title="compileOptions - target과 lib"></a>compileOptions - target과 lib</h2><p>target - 자바스크립트 버전을 설정한다. 기본값은 es3이다. 컴파일 할때 해당 버전으로 변경한다.</p>
-<p>lib - lib로 사용할것들을 배열로 넘겨줌. target에 따라 default로 저장되는 lib가 있다.</p>
-<h2 id="compileOptions-outDir-outFil-rootDir"><a href="#compileOptions-outDir-outFil-rootDir" class="headerlink" title="compileOptions -outDir, outFil, rootDir"></a>compileOptions -outDir, outFil, rootDir</h2><ul>
-<li>rootDir : 컴파일 대상이 되는 파일이 있는 폴더</li>
-</ul>
-<p>따로 설정하지 않으면 ts 파일이 있는 가장 최상위 폴더를 rootDir로 설정한다.</p>
-<ul>
-<li>outDir : 컴파일 한 파일이 저장될 폴더</li>
-<li>outFile: 지정된 경우 모든 전역 파일이 지정된 단일 출력 파일로 연결된다.</li>
-</ul>
-<h2 id="compileOptions-strict"><a href="#compileOptions-strict" class="headerlink" title="compileOptions - strict"></a>compileOptions - strict</h2><p>무조건 strict를 true로 설정하는 것이 기본이다.</p>
-<p><code>--noImplicitAny</code> any로 추정되는데 any로 명시하지 않았다면 에러가 발생함.<br><code>suppressImplicitAnyIndexErrors</code> 인덱스 객체도 any로 추론될 경우 에러를 발생시키는 옵션인데 이것은 너무 까다로우니 따로 에러가 되지 않게 하는 설정도 있음.</p>
-<p><code>--noImplictThis</code> this 가 any 타입으로 추정될 경우 . this에 타입을 명시해야 한다고 에러를 발생 시킴, 함수 매개변수에 첫번째에 this를 넣고 타입일 지정해줌. js에서는 오류 이지만 ts에서는 가능함.<br>마치 call /applyu/ bind 와 같이 this를 대체하여 함수 콜을 사용하는 용도. class에서는 오류가 나지 않음 왜냐하면 class 자체로 타입 체크가 가능하기 때문에</p>
-<p><code>--strictNullChecks</code> 이것을 적용히지 않으면 모든 타입은 null 과 undefined가 될 수 있다. 꼭 설정해주어야 함. 한가지 예외는 undefined 에 void 할당이 가능하다.</p>
-<p><code>--strictFunctionTypes</code> 반환 타입은 공변적, 인자 타입은 반 공병적. 그런데 타입스크립트에서 인자 타입은 공변적이면서, 반공변적인게 문제. 함수의 파라미터 타입이 반공변적으로 동작핟조록 변경한다. 반공변 이란 공변에 반대라고 생각하면 된다.</p>
-<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> Logger&lt;T&gt; = <span class="function">(<span class="params">param: T</span>) =&gt;</span> <span class="built_in">void</span>;</span><br><span class="line"><span class="keyword">let</span> log: Logger&lt;<span class="built_in">string</span> | <span class="built_in">number</span>&gt; = <span class="function">(<span class="params">param</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(param);</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">let</span> logNumber: Logger&lt;<span class="built_in">number</span>&gt; = <span class="function">(<span class="params">param</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(param);</span><br><span class="line">&#125;;</span><br><span class="line">log = logNumber; <span class="comment">// Error</span></span><br><span class="line">logNumber = log; <span class="comment">// OK</span></span><br></pre></td></tr></table></figure>
-
-<p>공변이라고 생각하면 logNumber 가 서브 타입이기대문에 log에 할당하는 것이 가능할 것이다. 하지만 <code>--strictFunctionTypes</code>를 적용하면 파라미터에 대해서 반공변적으로 작동하기 때문에 반대로 작동한다.<br>사실 <code>logNumber</code>는 숫자 밖에 처리하지 못하기 때문에 string 도 처리할 수 있는 <code>log</code>에 할당하는게 맞지 않다.</p>
-<p><code>--stcitPropertyInitialization</code> 정의되지 않은 클래스의 속성이 생성자에서 초기화되었는지 확인한다. 만약 비동기로 생성되는 클래스일 경우에 생성자에 async를 사용하는것이 불가능하기 때문에 에러가 발생한다.<br>이럴때에는 async 함수로 initialize 같은 함수를 만들어 할당해 주고 클래스 내부 변수로 이름 뒤에 <code>!</code>를 붙여주면 된다. <code>private _name!: string;</code></p>
-<p><code>--strictBindCallApply</code> bind, call, apply 에 대한 검사를 엄격히 수행한다.</p>
-<p><code>--alwaysStrict</code> strict 모드로 코드를 분석함.</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/08/30/typeScript/210809-TypeScript/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JayoonKoo">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="티끌모아 태산">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/08/30/typeScript/210809-TypeScript/" class="post-title-link" itemprop="url">TypeScript</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-08-30 02:32:06" itemprop="dateCreated datePublished" datetime="2021-08-30T02:32:06+09:00">2021-08-30</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/typeScript/" itemprop="url" rel="index"><span itemprop="name">typeScript</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="TypeScript"><a href="#TypeScript" class="headerlink" title="TypeScript"></a>TypeScript</h1><h2 id="TypeScript란-무엇인가"><a href="#TypeScript란-무엇인가" class="headerlink" title="TypeScript란 무엇인가?"></a>TypeScript란 무엇인가?</h2><p>자바 스크립트에 타입을 명시. 확장 한 것 </p>
-<p>코드를 실행 시키기 전에 에러를 잡아줌. </p>
-<p>자바스크립트가 실행되는 어떤 환경에서도 동작함.</p>
-<p>Typed superset of JavaScript</p>
-<p>컴파일해서 plain JavaScript 로 변환함.<br>but, 정통적인 컴파일과는 다름. 타이밍상 컴파일이라 많은 사람들이 Transpile 이라는 용어를 사용함. </p>
-<h2 id="TypeScript-설치-및-설정"><a href="#TypeScript-설치-및-설정" class="headerlink" title="TypeScript 설치 및 설정"></a>TypeScript 설치 및 설정</h2><ul>
-<li><p>node.js 설치</p>
-</li>
-<li><p>크롬 설치</p>
-</li>
-<li><p>타입 스크립트 컴파일러 설치 </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm i typescript -g </span><br><span class="line">tsc source.ts</span><br></pre></td></tr></table></figure>
-<p><code>node_module/.bin/tsc</code> 에 tsc 있음. </p>
-</li>
-<li><p>초기화<br><code>tsc --init</code> 실행하면 어떻게 컴파일 할것인지에 대한 설정 파일 <code>tsconfig.json</code> 생성.<br><code>tscconfig.json</code> 이 있는 폴더에서 tsc 실행하면 해당 폴더에 있는 모든 ts 파일이 설정에 맞게 컴파일 됨. </p>
-</li>
-<li><p>와치 모드로 시작<br>새롭게 파일이 생성되거나 저장될때 마다 tsc 를 실행해 주지 않고 와치 모드로 시작되서 변경 감지 후 자동으로 변환 시작하게 함.<br><code>tsc -w</code></p>
-</li>
-</ul>
-<h3 id="프로젝트에만-설치하기"><a href="#프로젝트에만-설치하기" class="headerlink" title="프로젝트에만 설치하기"></a>프로젝트에만 설치하기</h3><p>글로벌로 설치한 것 지우기<br><code>npm uninstall typescript -g</code></p>
-<p><code>npm init -y</code></p>
-<p><code>npm i typescript -D</code> 개발 라이브러리로 설치 </p>
-<p>글로벌이 아닐때에는 tsc 경로를 명시해줘야함. <code>node_modules/.bin/tsc</code><br><code>npx tsc</code>로 똑같이 사용 가능</p>
-<p>모든 명령어 앞에다 npx 붙여서 사용.</p>
-<p>보통은 package.json 에 script를 수정함.<br><code>&quot;build&quot;: &quot;tsc&quot;</code> npm run build 로 실행 가능. </p>
-<h2 id="First-Type-Annotation"><a href="#First-Type-Annotation" class="headerlink" title="First Type Annotation"></a>First Type Annotation</h2><p>ts 는 처임 초기화 된 변수를 토대로 type를 할당함. 만약 초기화 하지 않았다면 <code>any</code> 가 됨. </p>
-<p>어떤 type인지 명시하는 것을 type annotation 이라고 하고 아래와 같이 사용한다.</p>
-<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a: <span class="built_in">number</span>;</span><br><span class="line">a = <span class="number">39</span>;</span><br></pre></td></tr></table></figure>
-
+          <h1 id="리눅스-프로세스"><a href="#리눅스-프로세스" class="headerlink" title="리눅스 프로세스"></a>리눅스 프로세스</h1><h2 id="프로세스-vs-바이너리"><a href="#프로세스-vs-바이너리" class="headerlink" title="프로세스 vs 바이너리"></a>프로세스 vs 바이너리</h2><p>바이너리 - 코드 이미지 (실행 파일)<br>실행 중인 프로그램을 프로세스라고 한다. </p>
+<h2 id="리눅스는-다양한-프로세스-실행-환경"><a href="#리눅스는-다양한-프로세스-실행-환경" class="headerlink" title="리눅스는 다양한 프로세스 실행 환경"></a>리눅스는 다양한 프로세스 실행 환경</h2><p>유닉스 철학 : 여러 프로그램이 유기적으로 각자의 일을 수행하면서 전체 시스템이 동작하도록 하는 모델</p>
+<h2 id="foreground-process-background-process"><a href="#foreground-process-background-process" class="headerlink" title="foreground process / background process"></a>foreground process / background process</h2><p>foreground process: 쉘 에서 해당 프로세스가 실행되고 있으면 수행 종료 전까지 다른 입력을 하지 못하는 프로세스 </p>
+<p>background process: 사용자 입력과 상관 없이 실행되는 프로세스.<br>쉘(shell) 에서 해당 프로세스 실행시, 맨 뒤에 &amp;를 붙여줌.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">find / -name &#x27;*.py&#x27; &gt; list.txt &amp;</span><br><span class="line">[1] 57</span><br></pre></td></tr></table></figure>
+<p><code>[1]</code>은 작업 번호 57은 pid를 나타냄. </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">kill -9 [pid번호]</span><br><span class="line"></span><br><span class="line">jobs</span><br></pre></td></tr></table></figure>
+<p>kill 명령어를 통해 프로세스를 종료시키고, jobs 명령어를 통해 background process로 실행중인 프로세스를 확인한다. </p>
+<h2 id="foreground-process-제어하기"><a href="#foreground-process-제어하기" class="headerlink" title="foreground process 제어하기"></a>foreground process 제어하기</h2><p>컨트롤 +  z : foreground 프로세스를 실행 중지 상태로 변경</p>
+<p>맨 마지막 컨트롤 + z 로 중지된 프로세스는 bg 명령으로 background로 실행될 수 있다. </p>
+<p>jobs 명령어를 통해 진행 또는 중지된 프로세스를 보여준다. </p>
+<p>컨트롤 + c : 프로세스를 완전히 종료 시킴</p>
+<h3 id="프로세스-상태-확인"><a href="#프로세스-상태-확인" class="headerlink" title="프로세스 상태 확인"></a>프로세스 상태 확인</h3><p><code>ps</code> 프로세스 상태 확인 </p>
+<p>데몬 프로세스(daemon process) : 사용자 모르게 시스템 관리를 위해 실행되는 프로세스로 보통 시스템이 부팅될 때 자동 실행. </p>
+<p>보통 <code>ps aux</code>를 많이 사용한다.</p>
+<p>USER: 소유자 정보</p>
+<p>PID : process id</p>
+<p>%CPU : CPU 사용하고 있는 퍼센트</p>
+<p>%MEM : memory 사용하고 있는 퍼센트 </p>
+<p>VSZ : 가상메모리에서 실제로 쓰고 있는 메모리</p>
+<p>RSS : 페이징 시스템을 사용해서 실제 물리 메모리에서 사용하고 있는 사이즈</p>
+<p>TTY : 어떤 터미널과 연결되 있는가? 하드웨어 리소스 </p>
+<p>STAT : 상태 </p>
+<h3 id="프로세스-죽이기"><a href="#프로세스-죽이기" class="headerlink" title="프로세스 죽이기"></a>프로세스 죽이기</h3><p><code>kill -9 &lt;pid&gt;</code> -9 강제로 죽이기 </p>
 
       
     </div>
@@ -585,6 +422,265 @@
 
 <h2 id="void"><a href="#void" class="headerlink" title="void"></a>void</h2><p>void로 지정된 변수에는 undefined도 할당할 수 없다.<br>void를 리턴하는 함수의 경우 리턴받은 void 변수를 가지고 어떤것도 하지 않겠다는 의미이다. </p>
 <p>명시적으로 void 로 선언해서 리턴 타입을 가지고 아무것도 하지 않겠다는 의미임. </p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/08/30/typeScript/210809-TypeScript/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JayoonKoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="티끌모아 태산">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/08/30/typeScript/210809-TypeScript/" class="post-title-link" itemprop="url">TypeScript</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-08-30 02:32:06" itemprop="dateCreated datePublished" datetime="2021-08-30T02:32:06+09:00">2021-08-30</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/typeScript/" itemprop="url" rel="index"><span itemprop="name">typeScript</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="TypeScript"><a href="#TypeScript" class="headerlink" title="TypeScript"></a>TypeScript</h1><h2 id="TypeScript란-무엇인가"><a href="#TypeScript란-무엇인가" class="headerlink" title="TypeScript란 무엇인가?"></a>TypeScript란 무엇인가?</h2><p>자바 스크립트에 타입을 명시. 확장 한 것 </p>
+<p>코드를 실행 시키기 전에 에러를 잡아줌. </p>
+<p>자바스크립트가 실행되는 어떤 환경에서도 동작함.</p>
+<p>Typed superset of JavaScript</p>
+<p>컴파일해서 plain JavaScript 로 변환함.<br>but, 정통적인 컴파일과는 다름. 타이밍상 컴파일이라 많은 사람들이 Transpile 이라는 용어를 사용함. </p>
+<h2 id="TypeScript-설치-및-설정"><a href="#TypeScript-설치-및-설정" class="headerlink" title="TypeScript 설치 및 설정"></a>TypeScript 설치 및 설정</h2><ul>
+<li><p>node.js 설치</p>
+</li>
+<li><p>크롬 설치</p>
+</li>
+<li><p>타입 스크립트 컴파일러 설치 </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm i typescript -g </span><br><span class="line">tsc source.ts</span><br></pre></td></tr></table></figure>
+<p><code>node_module/.bin/tsc</code> 에 tsc 있음. </p>
+</li>
+<li><p>초기화<br><code>tsc --init</code> 실행하면 어떻게 컴파일 할것인지에 대한 설정 파일 <code>tsconfig.json</code> 생성.<br><code>tscconfig.json</code> 이 있는 폴더에서 tsc 실행하면 해당 폴더에 있는 모든 ts 파일이 설정에 맞게 컴파일 됨. </p>
+</li>
+<li><p>와치 모드로 시작<br>새롭게 파일이 생성되거나 저장될때 마다 tsc 를 실행해 주지 않고 와치 모드로 시작되서 변경 감지 후 자동으로 변환 시작하게 함.<br><code>tsc -w</code></p>
+</li>
+</ul>
+<h3 id="프로젝트에만-설치하기"><a href="#프로젝트에만-설치하기" class="headerlink" title="프로젝트에만 설치하기"></a>프로젝트에만 설치하기</h3><p>글로벌로 설치한 것 지우기<br><code>npm uninstall typescript -g</code></p>
+<p><code>npm init -y</code></p>
+<p><code>npm i typescript -D</code> 개발 라이브러리로 설치 </p>
+<p>글로벌이 아닐때에는 tsc 경로를 명시해줘야함. <code>node_modules/.bin/tsc</code><br><code>npx tsc</code>로 똑같이 사용 가능</p>
+<p>모든 명령어 앞에다 npx 붙여서 사용.</p>
+<p>보통은 package.json 에 script를 수정함.<br><code>&quot;build&quot;: &quot;tsc&quot;</code> npm run build 로 실행 가능. </p>
+<h2 id="First-Type-Annotation"><a href="#First-Type-Annotation" class="headerlink" title="First Type Annotation"></a>First Type Annotation</h2><p>ts 는 처임 초기화 된 변수를 토대로 type를 할당함. 만약 초기화 하지 않았다면 <code>any</code> 가 됨. </p>
+<p>어떤 type인지 명시하는 것을 type annotation 이라고 하고 아래와 같이 사용한다.</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a: <span class="built_in">number</span>;</span><br><span class="line">a = <span class="number">39</span>;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/08/30/typeScript/210813-TypeScript%20Compiler/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JayoonKoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="티끌모아 태산">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/08/30/typeScript/210813-TypeScript%20Compiler/" class="post-title-link" itemprop="url">TypeScript Compiler</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-08-30 02:32:06" itemprop="dateCreated datePublished" datetime="2021-08-30T02:32:06+09:00">2021-08-30</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/typeScript/" itemprop="url" rel="index"><span itemprop="name">typeScript</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="TypeScript-Compiler"><a href="#TypeScript-Compiler" class="headerlink" title="TypeScript Compiler"></a>TypeScript Compiler</h1><h2 id="Compliation-Context"><a href="#Compliation-Context" class="headerlink" title="Compliation Context"></a>Compliation Context</h2><p>논리적인 그룹핑과 어떤 방법으로 컴파일 할것인지에 대한 맥락.<br>보통 <code>tsconfig.json</code> 파일로 관리한다.</p>
+<h2 id="tsconfig-schema"><a href="#tsconfig-schema" class="headerlink" title="tsconfig schema"></a>tsconfig schema</h2><p>최상위 프로퍼티 중 주요한 항목</p>
+<ul>
+<li>compileOnSave</li>
+<li>extends</li>
+<li>compileOptions</li>
+<li>files</li>
+<li>include</li>
+<li>exclude</li>
+<li>references</li>
+</ul>
+<h2 id="compileOnSave"><a href="#compileOnSave" class="headerlink" title="compileOnSave"></a>compileOnSave</h2><ul>
+<li>true/false(default fasle): true 로 설정하면 저장하면 컴파일 해줌.</li>
+<li>누가?<ul>
+<li>Visual Studio 2015 with TypeScript 1.8.4 이상</li>
+<li>tom-thypescript 플러그인</li>
+</ul>
+</li>
+</ul>
+<h2 id="extends"><a href="#extends" class="headerlink" title="extends"></a>extends</h2><p>상속 받을 때 사용함.</p>
+<ul>
+<li>파일 (상대) 경로명 : string</li>
+</ul>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">&quot;compilerOptins&quot;</span>: &#123;</span><br><span class="line">    <span class="attr">&quot;strict&quot;</span>: <span class="literal">true</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">&quot;extends&quot;</span>: <span class="string">&quot;./base.json&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>tsconfig/base</code> 저장소로 이동하면 다양한 base 설정을 받을 수 있다.</p>
+<p><code>npm install --save-dev @tsconfig/deno</code></p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">&quot;extends&quot;</span>: <span class="string">&quot;@tsconfig/deno/tsconfig.json&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="files-include-exclude"><a href="#files-include-exclude" class="headerlink" title="files, include, exclude"></a>files, include, exclude</h2><p>어떤 파일을 컴파일 할것인지 결정함.</p>
+<p>files 가 가장 강한 설정이다. 따라서 exlucde를 통해서 제외 했더라도 files 안에 있으면 컴파일 된다.</p>
+<p>셋다 설정이 없으면 전부 컴파일 하려고 한다.</p>
+<ul>
+<li>files<ul>
+<li>상대 혹은 절대 경로의 리스트 배열이다.</li>
+<li>exclude 보다 쎄다.</li>
+</ul>
+</li>
+<li>include, exclude<ul>
+<li>glob 패턴 (마치 .gitignore)</li>
+<li>include<ul>
+<li>exclude 보다 약하다.</li>
+</ul>
+</li>
+<li>exclude<ul>
+<li>설정 안하면 4가지 (node_modules, bower_components, jspm_packages, &lt;outDir&gt;) 를 dafault로 제외 함.</li>
+<li>&lt;outDir&gt; 은 항상 제외한다. (include에 있어도)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="compileOptions-typeRoots-types"><a href="#compileOptions-typeRoots-types" class="headerlink" title="compileOptions - typeRoots, types"></a>compileOptions - typeRoots, types</h2><p>만약 외부 라이브러리를 사용할 경우 타입 검사를 어떻게 수행할까?</p>
+<p>예를 들어 react를 설치하면 js로 만든 것이기 때문에 오류가 발생한다. 따라서 <code>npm i --save-dev @types/react</code>를 하게 되면 <code>node_modules/@types</code>안에서 파일을 찾아서 오류가 나지 않게 된다.<br>이것이 default 설정인데 typeRoots와 types 를 통해 설정을 변경할 수 있다.</p>
+<p>typeRoots로 @types로 사용할 폴더를 설정한다. 유명하지 않는 라이브러리 같은 경우 @types가 없을 수 있고 내가 작성한 패키지는 내가 따로 만들어야 하는 경우도 있다.</p>
+<p><code>@types</code></p>
+<ul>
+<li>내장 type definition 시스템이다.</li>
+<li>아무 설정을 하지 않으면 <code>node_modules/@types</code> 라는 모든 경로를 찾아서 사용한다.</li>
+<li>typeRoots를 사용하면? -&gt; 배열 안에 들어있는 경로들 아래서만 가져온다.</li>
+<li>types 를 사용하면 -&gt; 배열안에 모듈 혹은 <code>./node_module/@types/</code> 안에 모듈 이름에서 찾아온다. [] 빈 배열을 넣는다는 건 이 시스템을 이용하지 않겠다는 것이다.</li>
+<li>typeRoots와 types를 같이 사용하지는 않는다.</li>
+</ul>
+<h2 id="compileOptions-target과-lib"><a href="#compileOptions-target과-lib" class="headerlink" title="compileOptions - target과 lib"></a>compileOptions - target과 lib</h2><p>target - 자바스크립트 버전을 설정한다. 기본값은 es3이다. 컴파일 할때 해당 버전으로 변경한다.</p>
+<p>lib - lib로 사용할것들을 배열로 넘겨줌. target에 따라 default로 저장되는 lib가 있다.</p>
+<h2 id="compileOptions-outDir-outFil-rootDir"><a href="#compileOptions-outDir-outFil-rootDir" class="headerlink" title="compileOptions -outDir, outFil, rootDir"></a>compileOptions -outDir, outFil, rootDir</h2><ul>
+<li>rootDir : 컴파일 대상이 되는 파일이 있는 폴더</li>
+</ul>
+<p>따로 설정하지 않으면 ts 파일이 있는 가장 최상위 폴더를 rootDir로 설정한다.</p>
+<ul>
+<li>outDir : 컴파일 한 파일이 저장될 폴더</li>
+<li>outFile: 지정된 경우 모든 전역 파일이 지정된 단일 출력 파일로 연결된다.</li>
+</ul>
+<h2 id="compileOptions-strict"><a href="#compileOptions-strict" class="headerlink" title="compileOptions - strict"></a>compileOptions - strict</h2><p>무조건 strict를 true로 설정하는 것이 기본이다.</p>
+<p><code>--noImplicitAny</code> any로 추정되는데 any로 명시하지 않았다면 에러가 발생함.<br><code>suppressImplicitAnyIndexErrors</code> 인덱스 객체도 any로 추론될 경우 에러를 발생시키는 옵션인데 이것은 너무 까다로우니 따로 에러가 되지 않게 하는 설정도 있음.</p>
+<p><code>--noImplictThis</code> this 가 any 타입으로 추정될 경우 . this에 타입을 명시해야 한다고 에러를 발생 시킴, 함수 매개변수에 첫번째에 this를 넣고 타입일 지정해줌. js에서는 오류 이지만 ts에서는 가능함.<br>마치 call /applyu/ bind 와 같이 this를 대체하여 함수 콜을 사용하는 용도. class에서는 오류가 나지 않음 왜냐하면 class 자체로 타입 체크가 가능하기 때문에</p>
+<p><code>--strictNullChecks</code> 이것을 적용히지 않으면 모든 타입은 null 과 undefined가 될 수 있다. 꼭 설정해주어야 함. 한가지 예외는 undefined 에 void 할당이 가능하다.</p>
+<p><code>--strictFunctionTypes</code> 반환 타입은 공변적, 인자 타입은 반 공병적. 그런데 타입스크립트에서 인자 타입은 공변적이면서, 반공변적인게 문제. 함수의 파라미터 타입이 반공변적으로 동작핟조록 변경한다. 반공변 이란 공변에 반대라고 생각하면 된다.</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> Logger&lt;T&gt; = <span class="function">(<span class="params">param: T</span>) =&gt;</span> <span class="built_in">void</span>;</span><br><span class="line"><span class="keyword">let</span> log: Logger&lt;<span class="built_in">string</span> | <span class="built_in">number</span>&gt; = <span class="function">(<span class="params">param</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(param);</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">let</span> logNumber: Logger&lt;<span class="built_in">number</span>&gt; = <span class="function">(<span class="params">param</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(param);</span><br><span class="line">&#125;;</span><br><span class="line">log = logNumber; <span class="comment">// Error</span></span><br><span class="line">logNumber = log; <span class="comment">// OK</span></span><br></pre></td></tr></table></figure>
+
+<p>공변이라고 생각하면 logNumber 가 서브 타입이기대문에 log에 할당하는 것이 가능할 것이다. 하지만 <code>--strictFunctionTypes</code>를 적용하면 파라미터에 대해서 반공변적으로 작동하기 때문에 반대로 작동한다.<br>사실 <code>logNumber</code>는 숫자 밖에 처리하지 못하기 때문에 string 도 처리할 수 있는 <code>log</code>에 할당하는게 맞지 않다.</p>
+<p><code>--stcitPropertyInitialization</code> 정의되지 않은 클래스의 속성이 생성자에서 초기화되었는지 확인한다. 만약 비동기로 생성되는 클래스일 경우에 생성자에 async를 사용하는것이 불가능하기 때문에 에러가 발생한다.<br>이럴때에는 async 함수로 initialize 같은 함수를 만들어 할당해 주고 클래스 내부 변수로 이름 뒤에 <code>!</code>를 붙여주면 된다. <code>private _name!: string;</code></p>
+<p><code>--strictBindCallApply</code> bind, call, apply 에 대한 검사를 엄격히 수행한다.</p>
+<p><code>--alwaysStrict</code> strict 모드로 코드를 분석함.</p>
 
       
     </div>
@@ -854,102 +950,6 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/08/30/typeScript/210824-generic/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JayoonKoo">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="티끌모아 태산">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/08/30/typeScript/210824-generic/" class="post-title-link" itemprop="url">generic</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-08-30 02:32:06" itemprop="dateCreated datePublished" datetime="2021-08-30T02:32:06+09:00">2021-08-30</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/typeScript/" itemprop="url" rel="index"><span itemprop="name">typeScript</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="generic"><a href="#generic" class="headerlink" title="generic"></a>generic</h1><h2 id="generic-과-any-에-다른점"><a href="#generic-과-any-에-다른점" class="headerlink" title="generic 과 any 에 다른점"></a>generic 과 any 에 다른점</h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">helloString</span>(<span class="params">message: <span class="built_in">string</span></span>): <span class="title">string</span> </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> message;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">helloNumber</span>(<span class="params">message: <span class="built_in">number</span></span>): <span class="title">number</span> </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> message;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 타입만 다르고 로직은 같은 함수가 반복된다면 ...</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">hello</span>(<span class="params">message: <span class="built_in">any</span></span>): <span class="title">any</span> </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> message;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 같은 로직이면 문자로 생각하고 싶지만 any가 나옴</span></span><br><span class="line"><span class="comment">// lnegth 같은 메서드를 사용해도 number 가 아니라 any가 나옴..</span></span><br><span class="line"><span class="built_in">console</span>.log(hello(<span class="string">&quot;Mark&quot;</span>));</span><br><span class="line"><span class="comment">// 같은 로직이면 숫자로 생각하고 싶지만..</span></span><br><span class="line"><span class="built_in">console</span>.log(hello(<span class="number">4</span>));</span><br><span class="line"></span><br><span class="line"><span class="comment">// 만약 string을 넣으면 T 가 string이 되는 것. 마치 변수처럼 사용</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">helloGeneric</span>&lt;<span class="title">T</span>&gt;(<span class="params">message: T</span>): <span class="title">T</span> </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> message;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 리턴 타입은 &#x27;Mark&#x27;로 추정함.. 리터럴 타입으로</span></span><br><span class="line"><span class="built_in">console</span>.log(helloGeneric(<span class="string">&quot;Mark&quot;</span>).length);</span><br><span class="line"><span class="comment">// 리턴 타입을 27로 추정함.</span></span><br><span class="line"><span class="built_in">console</span>.log(helloGeneric(<span class="number">27</span>));</span><br><span class="line"><span class="comment">// true로 추정함.</span></span><br><span class="line"><span class="built_in">console</span>.log(helloGeneric(<span class="literal">true</span>));</span><br></pre></td></tr></table></figure>
-
-<p>제너릭 타입을 사용하면 함수 안에서 동적으로 받은 타입을 변수처럼 사용할 수 있다. 이를 활용하여 리턴 타입을 명시 하는지에 기능을 사용할 수 있다.</p>
-<h2 id="generic-basic"><a href="#generic-basic" class="headerlink" title="generic basic"></a>generic basic</h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">helloBasic</span>&lt;<span class="title">T</span>, <span class="title">U</span>&gt;(<span class="params">message: T, coment: U</span>): <span class="title">T</span> </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> message;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 사용법</span></span><br><span class="line"><span class="comment">// T 는 string U 는 27</span></span><br><span class="line">helloBasic&lt;<span class="built_in">string</span>, <span class="built_in">number</span>&gt;(<span class="string">&quot;mark&quot;</span>, <span class="number">27</span>);</span><br><span class="line"><span class="comment">// T 는 27 , U 39</span></span><br><span class="line">helloBasic(<span class="number">27</span>, <span class="number">39</span>);</span><br></pre></td></tr></table></figure>
-
-<p>사용할 때에는 두가지 방법으로 사용 가능하다.</p>
-<ol>
-<li><code>&lt;&gt;</code> 안에 타입 명시 -&gt; 이렇게 하면 매개변수로 주는 타입을 명시한 터입으로 지정해야 한다.</li>
-<li>평범하게 사용, 이렇게 하면 타입스크립트가 추론해서 타입을 정하게 된다. 일반적으로 27과 같은 숫자를 넣으면 number 라고 생각할 수 도 있지만, 타입 스크립트는 타입을 가능한 좁게 가져가기 때문에 타입은 number 가 아니라 27이 된다.</li>
-</ol>
-<h2 id="generics-array-amp-tuple"><a href="#generics-array-amp-tuple" class="headerlink" title="generics array &amp; tuple"></a>generics array &amp; tuple</h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">helloArray</span>&lt;<span class="title">T</span>&gt;(<span class="params">message: T[]</span>): <span class="title">T</span> </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> message[<span class="number">0</span>];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// T는 string으로 추론됨.</span></span><br><span class="line">helloArray([<span class="string">&quot;hello&quot;</span>, <span class="string">&quot;world&quot;</span>]);</span><br><span class="line"><span class="comment">// T는 &lt;string | number&gt; 로 추론함. 유니온 타입이됨.</span></span><br><span class="line"><span class="comment">// string과 number 에서 모두 사용할수 있는 메서드만 사용할 수 있음.</span></span><br><span class="line">helloArray([<span class="string">&quot;Hello&quot;</span>, <span class="number">5</span>]);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">helloTuple</span>&lt;<span class="title">T</span>, <span class="title">K</span>&gt;(<span class="params">message: [T, K]</span>): <span class="title">T</span> </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> message[<span class="number">0</span>];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// string 이 리턴 타입</span></span><br><span class="line">helloTuple([<span class="string">&quot;hello&quot;</span>, <span class="string">&quot;world&quot;</span>]);</span><br><span class="line"><span class="comment">// 리턴 타입이 정확하게 string으로 추정됨.</span></span><br><span class="line">helloTuple([<span class="string">&quot;Hello&quot;</span>, <span class="number">5</span>]);</span><br></pre></td></tr></table></figure>
-
-<p>제너릭에서 배열과 튜플을 활용하는 방법은 다음과 같다. 이때 어떤 타입에 데이터가 인수로 들어올지 알 수 있다면 튜플로 사용하는것이 타입을 더 명시적으로 관리할 수 있다.</p>
-<h2 id="generic-function"><a href="#generic-function" class="headerlink" title="generic function"></a>generic function</h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> helloFunctionGeneric1 = &lt;T&gt;<span class="function">(<span class="params">message: T</span>) =&gt;</span> T;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> helloFuncion1: helloFunctionGeneric1 = &lt;T&gt;(message: T): <span class="function"><span class="params">T</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> message;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">interface</span> helloFunctionGeneric2 &#123;</span><br><span class="line">  &lt;T&gt;(message: T): T;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> helloFunction2: helloFunctionGeneric2 = &lt;T&gt;(message: T): <span class="function"><span class="params">T</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> message;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p>함수에서도 동일하게 generic 을 사용할 수 있다.</p>
-<h2 id="generic-class"><a href="#generic-class" class="headerlink" title="generic class"></a>generic class</h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 클래스 전체에서 T는 유효범위를 갖는다.</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span>&lt;<span class="title">T</span>, <span class="title">K</span>&gt; </span>&#123;</span><br><span class="line">  <span class="keyword">private</span> _name: T;</span><br><span class="line">  <span class="keyword">private</span> _age: K;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">name: T, age: K</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>._name = name;</span><br><span class="line">    <span class="built_in">this</span>._age = age;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> Person(<span class="string">&quot;Mark&quot;</span>, <span class="number">39</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> Person&lt;<span class="built_in">string</span>, <span class="built_in">number</span>&gt;(<span class="string">&quot;koo&quot;</span>, <span class="number">27</span>);</span><br></pre></td></tr></table></figure>
-
-<h2 id="generic-with-extends"><a href="#generic-with-extends" class="headerlink" title="generic with extends"></a>generic with extends</h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">PersonExtends</span>&lt;<span class="title">T</span> <span class="keyword">extends</span> <span class="title">string</span> | <span class="title">number</span>&gt; </span>&#123;</span><br><span class="line">  <span class="keyword">private</span> _name: T;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">name: T</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>._name = name;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> PersonExtends(<span class="string">&quot;Mark&quot;</span>);</span><br><span class="line"><span class="keyword">new</span> PersonExtends(<span class="number">27</span>);</span><br><span class="line"><span class="comment">// new PersonExtends(true);</span></span><br></pre></td></tr></table></figure>
-
-<p>generic 에서 extends 는 일반적인 상속과는 다른 개념으로 사용된다. generic 에서 사용하게 되면 타입을 제한하는 역활을 하게 된다. 따라서 코드에서 <code>new PersonExtends(true)</code>는 에러를 인수로 <code>&lt;string | number &gt;</code> 가 아닌 값을 주었기 때문에 에러를 발생시킨다.</p>
-<h2 id="keyof-amp-type-lookup-system"><a href="#keyof-amp-type-lookup-system" class="headerlink" title="keyof &amp; type lookup system"></a>keyof &amp; type lookup system</h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> IPerson &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="built_in">string</span>;</span><br><span class="line">  age: <span class="built_in">number</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> person: IPerson = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&quot;mark&quot;</span>,</span><br><span class="line">  <span class="attr">age</span>: <span class="number">39</span>,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// key 이름으로 된 유니온 타입이 반환된다.</span></span><br><span class="line"><span class="keyword">type</span> Keys = keyof IPerson;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 리턴 타이에도 문제가 생김...</span></span><br><span class="line"><span class="comment">// IPerson[keyof IPerson]</span></span><br><span class="line"><span class="comment">// =&gt; IPerson[&quot;name&quot; | &quot;age&quot;]</span></span><br><span class="line"><span class="comment">// =&gt; IPerson[&quot;name&quot;] | IPerson[&quot;age&quot;]</span></span><br><span class="line"><span class="comment">// =&gt; string | number</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getProp</span>&lt;<span class="title">T</span>, <span class="title">K</span> <span class="title">extends</span> <span class="title">keyof</span> <span class="title">T</span>&gt;(<span class="params">obj: T, key: K</span>): <span class="title">T</span>[<span class="title">K</span>] </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> obj[key];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// key 가 name 일 때 string</span></span><br><span class="line"><span class="comment">// key 가 age 일 때 number</span></span><br><span class="line">getProp(person, <span class="string">&quot;name&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">setProp</span>&lt;<span class="title">T</span>, <span class="title">K</span> <span class="title">extends</span> <span class="title">keyof</span> <span class="title">T</span>&gt;(<span class="params">obj: T, key: K, value: T[K]</span>): <span class="title">void</span> </span>&#123;</span><br><span class="line">  <span class="comment">// 경우에 따라서 넣어야 하는 타입이 달라지기 때문에</span></span><br><span class="line">  obj[key] = value;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">setProp(person, <span class="string">&quot;name&quot;</span>, <span class="string">&quot;koo&quot;</span>);</span><br><span class="line">setProp(person, <span class="string">&quot;age&quot;</span>, <span class="number">27</span>);</span><br></pre></td></tr></table></figure>
-
-<p><code>keyof</code> 를 사용하면 인터페이스에 key로 구성된 유니온 타입을 반환한다. 어떤 매개변수끼리 혹은 리턴 값 끼리 서로 관련 성이 있어서 타입이 달라지는 경우 <code>keyof</code>와 <code>extends</code>를 활용하여 관계성을 정의할 수 있다.</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/08/30/typeScript/210820-class/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1059,7 +1059,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/08/15/modernJs/210726-instanceof/">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/08/30/typeScript/210824-generic/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -1072,7 +1072,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/08/15/modernJs/210726-instanceof/" class="post-title-link" itemprop="url">instanceof</a>
+          <a href="/2021/08/30/typeScript/210824-generic/" class="post-title-link" itemprop="url">generic</a>
         </h2>
 
         <div class="post-meta-container">
@@ -1083,7 +1083,7 @@
       </span>
       <span class="post-meta-item-text">Posted on</span>
 
-      <time title="Created: 2021-08-15 19:40:25" itemprop="dateCreated datePublished" datetime="2021-08-15T19:40:25+09:00">2021-08-15</time>
+      <time title="Created: 2021-08-30 02:32:06" itemprop="dateCreated datePublished" datetime="2021-08-30T02:32:06+09:00">2021-08-30</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -1091,7 +1091,7 @@
       </span>
       <span class="post-meta-item-text">In</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+          <a href="/categories/typeScript/" itemprop="url" rel="index"><span itemprop="name">typeScript</span></a>
         </span>
     </span>
 
@@ -1105,37 +1105,30 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="instanceof-로-클래스-확인하기"><a href="#instanceof-로-클래스-확인하기" class="headerlink" title="instanceof 로 클래스 확인하기"></a>instanceof 로 클래스 확인하기</h1><p>instanceof 를 사용하면 특정 클래스에 속하는지 확인할 수 있다. </p>
-<p>이를 통해 특적 인스턴스의 상속 관계까지도 확인할 수 있다.</p>
-<p>다양한 곳에서 사용할 수 있는데 이번 챕터에서는 다형적인 함수를 만드는데 사용해 보도록 한다.</p>
-<br/>
+          <h1 id="generic"><a href="#generic" class="headerlink" title="generic"></a>generic</h1><h2 id="generic-과-any-에-다른점"><a href="#generic-과-any-에-다른점" class="headerlink" title="generic 과 any 에 다른점"></a>generic 과 any 에 다른점</h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">helloString</span>(<span class="params">message: <span class="built_in">string</span></span>): <span class="title">string</span> </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> message;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">helloNumber</span>(<span class="params">message: <span class="built_in">number</span></span>): <span class="title">number</span> </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> message;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 타입만 다르고 로직은 같은 함수가 반복된다면 ...</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">hello</span>(<span class="params">message: <span class="built_in">any</span></span>): <span class="title">any</span> </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> message;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 같은 로직이면 문자로 생각하고 싶지만 any가 나옴</span></span><br><span class="line"><span class="comment">// lnegth 같은 메서드를 사용해도 number 가 아니라 any가 나옴..</span></span><br><span class="line"><span class="built_in">console</span>.log(hello(<span class="string">&quot;Mark&quot;</span>));</span><br><span class="line"><span class="comment">// 같은 로직이면 숫자로 생각하고 싶지만..</span></span><br><span class="line"><span class="built_in">console</span>.log(hello(<span class="number">4</span>));</span><br><span class="line"></span><br><span class="line"><span class="comment">// 만약 string을 넣으면 T 가 string이 되는 것. 마치 변수처럼 사용</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">helloGeneric</span>&lt;<span class="title">T</span>&gt;(<span class="params">message: T</span>): <span class="title">T</span> </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> message;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 리턴 타입은 &#x27;Mark&#x27;로 추정함.. 리터럴 타입으로</span></span><br><span class="line"><span class="built_in">console</span>.log(helloGeneric(<span class="string">&quot;Mark&quot;</span>).length);</span><br><span class="line"><span class="comment">// 리턴 타입을 27로 추정함.</span></span><br><span class="line"><span class="built_in">console</span>.log(helloGeneric(<span class="number">27</span>));</span><br><span class="line"><span class="comment">// true로 추정함.</span></span><br><span class="line"><span class="built_in">console</span>.log(helloGeneric(<span class="literal">true</span>));</span><br></pre></td></tr></table></figure>
 
-<h2 id="instanceof-연산자"><a href="#instanceof-연산자" class="headerlink" title="instanceof 연산자"></a>instanceof 연산자</h2><p>기본 사용법</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">obj <span class="keyword">instanceof</span> Class</span><br></pre></td></tr></table></figure>
-<p>obj 가 Class에 속하거나 Class를 상속받는 클래스에 속하면 true를 반환한다.</p>
-<p>instanceof는 보통 프로토타입 체인을 거슬러 올라가며 인스턴스 여부나 상속 여부를 확인한다. </p>
-<p>그런데 정적 메서드 <code>Symbol.hasInstance</code>를 사용하면 직접 확인 로직을 설정할 수 도 있다. </p>
-<p>동작 방식은 다음과 같다. </p>
+<p>제너릭 타입을 사용하면 함수 안에서 동적으로 받은 타입을 변수처럼 사용할 수 있다. 이를 활용하여 리턴 타입을 명시 하는지에 기능을 사용할 수 있다.</p>
+<h2 id="generic-basic"><a href="#generic-basic" class="headerlink" title="generic basic"></a>generic basic</h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">helloBasic</span>&lt;<span class="title">T</span>, <span class="title">U</span>&gt;(<span class="params">message: T, coment: U</span>): <span class="title">T</span> </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> message;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 사용법</span></span><br><span class="line"><span class="comment">// T 는 string U 는 27</span></span><br><span class="line">helloBasic&lt;<span class="built_in">string</span>, <span class="built_in">number</span>&gt;(<span class="string">&quot;mark&quot;</span>, <span class="number">27</span>);</span><br><span class="line"><span class="comment">// T 는 27 , U 39</span></span><br><span class="line">helloBasic(<span class="number">27</span>, <span class="number">39</span>);</span><br></pre></td></tr></table></figure>
+
+<p>사용할 때에는 두가지 방법으로 사용 가능하다.</p>
 <ol>
-<li>Class 안에 Symbol.hasInstance가 구현되어 있으면, obj instanceof Class문이 실행될때 <code>Class[Symbol.hasInstance](obj)</code> 가 실행됨. 호출결과는 true 이거나 false 이어야 한다. </li>
+<li><code>&lt;&gt;</code> 안에 타입 명시 -&gt; 이렇게 하면 매개변수로 주는 타입을 명시한 터입으로 지정해야 한다.</li>
+<li>평범하게 사용, 이렇게 하면 타입스크립트가 추론해서 타입을 정하게 된다. 일반적으로 27과 같은 숫자를 넣으면 number 라고 생각할 수 도 있지만, 타입 스크립트는 타입을 가능한 좁게 가져가기 때문에 타입은 number 가 아니라 27이 된다.</li>
 </ol>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// canEat 프로퍼티가 있으면 animal이라고 판단할 수 있도록</span></span><br><span class="line"><span class="comment">// instanceOf의 로직을 직접 설정합니다.</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Animal</span> </span>&#123;</span><br><span class="line">  <span class="keyword">static</span> [<span class="built_in">Symbol</span>.hasInstance](obj) &#123;</span><br><span class="line">    <span class="keyword">if</span> (obj.canEat) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> obj = &#123; <span class="attr">canEat</span>: <span class="literal">true</span> &#125;;</span><br><span class="line"></span><br><span class="line">alert(obj <span class="keyword">instanceof</span> Animal); <span class="comment">// true, Animal[Symbol.hasInstance](obj)가 호출됨</span></span><br></pre></td></tr></table></figure>
+<h2 id="generics-array-amp-tuple"><a href="#generics-array-amp-tuple" class="headerlink" title="generics array &amp; tuple"></a>generics array &amp; tuple</h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">helloArray</span>&lt;<span class="title">T</span>&gt;(<span class="params">message: T[]</span>): <span class="title">T</span> </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> message[<span class="number">0</span>];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// T는 string으로 추론됨.</span></span><br><span class="line">helloArray([<span class="string">&quot;hello&quot;</span>, <span class="string">&quot;world&quot;</span>]);</span><br><span class="line"><span class="comment">// T는 &lt;string | number&gt; 로 추론함. 유니온 타입이됨.</span></span><br><span class="line"><span class="comment">// string과 number 에서 모두 사용할수 있는 메서드만 사용할 수 있음.</span></span><br><span class="line">helloArray([<span class="string">&quot;Hello&quot;</span>, <span class="number">5</span>]);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">helloTuple</span>&lt;<span class="title">T</span>, <span class="title">K</span>&gt;(<span class="params">message: [T, K]</span>): <span class="title">T</span> </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> message[<span class="number">0</span>];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// string 이 리턴 타입</span></span><br><span class="line">helloTuple([<span class="string">&quot;hello&quot;</span>, <span class="string">&quot;world&quot;</span>]);</span><br><span class="line"><span class="comment">// 리턴 타입이 정확하게 string으로 추정됨.</span></span><br><span class="line">helloTuple([<span class="string">&quot;Hello&quot;</span>, <span class="number">5</span>]);</span><br></pre></td></tr></table></figure>
 
-<ol start="2">
-<li>대부분의 클래스엔 Symbol.hasInstance가 구현되어 있지 않음. 따라서 프로토타입 체인을 거치면서 하나와 일치하면 true를 반환함. </li>
-</ol>
-<br/>
+<p>제너릭에서 배열과 튜플을 활용하는 방법은 다음과 같다. 이때 어떤 타입에 데이터가 인수로 들어올지 알 수 있다면 튜플로 사용하는것이 타입을 더 명시적으로 관리할 수 있다.</p>
+<h2 id="generic-function"><a href="#generic-function" class="headerlink" title="generic function"></a>generic function</h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> helloFunctionGeneric1 = &lt;T&gt;<span class="function">(<span class="params">message: T</span>) =&gt;</span> T;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> helloFuncion1: helloFunctionGeneric1 = &lt;T&gt;(message: T): <span class="function"><span class="params">T</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> message;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">interface</span> helloFunctionGeneric2 &#123;</span><br><span class="line">  &lt;T&gt;(message: T): T;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> helloFunction2: helloFunctionGeneric2 = &lt;T&gt;(message: T): <span class="function"><span class="params">T</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> message;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
-<h2 id="보너스-타입-확인을-위한-Object-prototype-toString"><a href="#보너스-타입-확인을-위한-Object-prototype-toString" class="headerlink" title="보너스: 타입 확인을 위한 Object.prototype.toString"></a>보너스: 타입 확인을 위한 Object.prototype.toString</h2><p>toString 을 사용하면 typeOf 나 instancof의 좋은 대안이 될 수 있다.</p>
-<p>toString 알고리즘은 내부적으로 this를 검사하고 this에 상응하는 결과를 반환한다.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> s = <span class="built_in">Object</span>.prototype.toString;</span><br><span class="line"></span><br><span class="line">alert( s.call(<span class="number">123</span>) ); <span class="comment">// [object Number]</span></span><br><span class="line">alert( s.call(<span class="literal">null</span>) ); <span class="comment">// [object Null]</span></span><br><span class="line">alert( s.call(alert) ); <span class="comment">// [object Function]</span></span><br></pre></td></tr></table></figure>
+<p>함수에서도 동일하게 generic 을 사용할 수 있다.</p>
+<h2 id="generic-class"><a href="#generic-class" class="headerlink" title="generic class"></a>generic class</h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 클래스 전체에서 T는 유효범위를 갖는다.</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span>&lt;<span class="title">T</span>, <span class="title">K</span>&gt; </span>&#123;</span><br><span class="line">  <span class="keyword">private</span> _name: T;</span><br><span class="line">  <span class="keyword">private</span> _age: K;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">name: T, age: K</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>._name = name;</span><br><span class="line">    <span class="built_in">this</span>._age = age;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> Person(<span class="string">&quot;Mark&quot;</span>, <span class="number">39</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> Person&lt;<span class="built_in">string</span>, <span class="built_in">number</span>&gt;(<span class="string">&quot;koo&quot;</span>, <span class="number">27</span>);</span><br></pre></td></tr></table></figure>
 
-<h3 id="Symbol-toStringTag"><a href="#Symbol-toStringTag" class="headerlink" title="Symbol.toStringTag"></a>Symbol.toStringTag</h3><p>특수 객체 프로퍼티 Symbol.toStringTag를 사용하면 toString의 동작ㅇ을 커스터마이징 가능하다.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> user = &#123;</span><br><span class="line">  [<span class="built_in">Symbol</span>.toStringTag]: <span class="string">&quot;User&quot;</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">alert( &#123;&#125;.toString.call(user) ); <span class="comment">// [object User]</span></span><br></pre></td></tr></table></figure>
+<h2 id="generic-with-extends"><a href="#generic-with-extends" class="headerlink" title="generic with extends"></a>generic with extends</h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">PersonExtends</span>&lt;<span class="title">T</span> <span class="keyword">extends</span> <span class="title">string</span> | <span class="title">number</span>&gt; </span>&#123;</span><br><span class="line">  <span class="keyword">private</span> _name: T;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">name: T</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>._name = name;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> PersonExtends(<span class="string">&quot;Mark&quot;</span>);</span><br><span class="line"><span class="keyword">new</span> PersonExtends(<span class="number">27</span>);</span><br><span class="line"><span class="comment">// new PersonExtends(true);</span></span><br></pre></td></tr></table></figure>
 
-<p>객채의 확인 뿐만 아니라 문자열로 받고 싶다면 <code>&#123;&#125;.toString.call</code>를 활용하면 됨.</p>
-<p><a href="js/210726-instanceof/1.js">과제1</a></p>
-<br/>
+<p>generic 에서 extends 는 일반적인 상속과는 다른 개념으로 사용된다. generic 에서 사용하게 되면 타입을 제한하는 역활을 하게 된다. 따라서 코드에서 <code>new PersonExtends(true)</code>는 에러를 인수로 <code>&lt;string | number &gt;</code> 가 아닌 값을 주었기 때문에 에러를 발생시킨다.</p>
+<h2 id="keyof-amp-type-lookup-system"><a href="#keyof-amp-type-lookup-system" class="headerlink" title="keyof &amp; type lookup system"></a>keyof &amp; type lookup system</h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> IPerson &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="built_in">string</span>;</span><br><span class="line">  age: <span class="built_in">number</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> person: IPerson = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&quot;mark&quot;</span>,</span><br><span class="line">  <span class="attr">age</span>: <span class="number">39</span>,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// key 이름으로 된 유니온 타입이 반환된다.</span></span><br><span class="line"><span class="keyword">type</span> Keys = keyof IPerson;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 리턴 타이에도 문제가 생김...</span></span><br><span class="line"><span class="comment">// IPerson[keyof IPerson]</span></span><br><span class="line"><span class="comment">// =&gt; IPerson[&quot;name&quot; | &quot;age&quot;]</span></span><br><span class="line"><span class="comment">// =&gt; IPerson[&quot;name&quot;] | IPerson[&quot;age&quot;]</span></span><br><span class="line"><span class="comment">// =&gt; string | number</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getProp</span>&lt;<span class="title">T</span>, <span class="title">K</span> <span class="title">extends</span> <span class="title">keyof</span> <span class="title">T</span>&gt;(<span class="params">obj: T, key: K</span>): <span class="title">T</span>[<span class="title">K</span>] </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> obj[key];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// key 가 name 일 때 string</span></span><br><span class="line"><span class="comment">// key 가 age 일 때 number</span></span><br><span class="line">getProp(person, <span class="string">&quot;name&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">setProp</span>&lt;<span class="title">T</span>, <span class="title">K</span> <span class="title">extends</span> <span class="title">keyof</span> <span class="title">T</span>&gt;(<span class="params">obj: T, key: K, value: T[K]</span>): <span class="title">void</span> </span>&#123;</span><br><span class="line">  <span class="comment">// 경우에 따라서 넣어야 하는 타입이 달라지기 때문에</span></span><br><span class="line">  obj[key] = value;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">setProp(person, <span class="string">&quot;name&quot;</span>, <span class="string">&quot;koo&quot;</span>);</span><br><span class="line">setProp(person, <span class="string">&quot;age&quot;</span>, <span class="number">27</span>);</span><br></pre></td></tr></table></figure>
+
+<p><code>keyof</code> 를 사용하면 인터페이스에 key로 구성된 유니온 타입을 반환한다. 어떤 매개변수끼리 혹은 리턴 값 끼리 서로 관련 성이 있어서 타입이 달라지는 경우 <code>keyof</code>와 <code>extends</code>를 활용하여 관계성을 정의할 수 있다.</p>
 
       
     </div>

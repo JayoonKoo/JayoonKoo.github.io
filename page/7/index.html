@@ -83,9 +83,9 @@
   <ul class="main-menu menu">
         <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li>
         <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
-        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">13</span></a></li>
-        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">11</span></a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">134</span></a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">14</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">12</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">135</span></a></li>
   </ul>
 </nav>
 
@@ -129,18 +129,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">134</span>
+          <span class="site-state-item-count">135</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-count">12</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-count">14</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -180,6 +180,233 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/10/09/react/official-docs/211008-form/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JayoonKoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="티끌모아 태산">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/10/09/react/official-docs/211008-form/" class="post-title-link" itemprop="url">form</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2021-10-09 21:59:04 / Modified: 21:59:16" itemprop="dateCreated datePublished" datetime="2021-10-09T21:59:04+09:00">2021-10-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/react/" itemprop="url" rel="index"><span itemprop="name">react</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="Forms"><a href="#Forms" class="headerlink" title="Forms"></a>Forms</h1><p>forms 엘리먼트는 자체가 내부 상태를 가지기 때문에 React의 다르 DOM 엘리먼트와 들게 동작한다.</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">label</span>&gt;</span></span><br><span class="line">    Name:</span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;name&quot;</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span> <span class="attr">value</span>=<span class="string">&quot;Submit&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>기본적으로 폼을 제출하면 새로운 페이지로 이동하는 동작을 수행한다. 원한다면 사용하면 되는데 일반적으로는 Javascript를 통해서 제출을 처리하고 사용자가 입력한 값에 접근하는 방법을 사용한다. 이런 방법을 사용하기 위해서는 <code>controlled components</code> 라고 불리는 기술을 사용해야 한다.</p>
+<h2 id="Controlled-Components"><a href="#Controlled-Components" class="headerlink" title="Controlled Components"></a>Controlled Components</h2><p>일반적으로 html 에서 input, textarea, selct와 같은 폼 엘리먼트는 사용자의 입력을 기반으로 자신의 state를 관리하고 업데이트 한다. React서는 setState를 해야 state를 변경할 수 있으므로 사용자의 입력을 철리하려면 관리하는 state를 추가해야 한다.<br>React에 의해 값이 제어되는 입력 폼 엘리먼트를 <code>controlled component</code>라고 한다.</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">NameForm</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">props</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">super</span>(props);</span><br><span class="line">    <span class="built_in">this</span>.state = &#123; <span class="attr">value</span>: <span class="string">&quot;&quot;</span> &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">this</span>.handleChange = <span class="built_in">this</span>.handleChange.bind(<span class="built_in">this</span>);</span><br><span class="line">    <span class="built_in">this</span>.handleSubmit = <span class="built_in">this</span>.handleSubmit.bind(<span class="built_in">this</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">handleChange</span>(<span class="params">event</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.setState(&#123; <span class="attr">value</span>: event.target.value &#125;);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">handleSubmit</span>(<span class="params">event</span>)</span> &#123;</span><br><span class="line">    alert(<span class="string">&quot;A name was submitted: &quot;</span> + <span class="built_in">this</span>.state.value);</span><br><span class="line">    event.preventDefault();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">render</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      <span class="xml"><span class="tag">&lt;<span class="name">form</span> <span class="attr">onSubmit</span>=<span class="string">&#123;this.handleSubmit&#125;</span>&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">label</span>&gt;</span></span></span><br><span class="line"><span class="xml">          Name:</span></span><br><span class="line"><span class="xml">          <span class="tag">&lt;<span class="name">input</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">            <span class="attr">type</span>=<span class="string">&quot;text&quot;</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">            <span class="attr">value</span>=<span class="string">&#123;this.state.value&#125;</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">            <span class="attr">onChange</span>=<span class="string">&#123;this.handleChange&#125;</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">          /&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;/<span class="name">label</span>&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span> <span class="attr">value</span>=<span class="string">&quot;Submit&quot;</span> /&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span></span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>코드를 조금 더 생성해야 하긴 하지만, 다른 이벤트에 의해서 값을 초기화 할 수 도 있고 전달 할 수 있어서 편리하다.</p>
+<h2 id="textarea-태그"><a href="#textarea-태그" class="headerlink" title="textarea 태그"></a>textarea 태그</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">textarea</span>&gt;</span></span><br><span class="line">  Hello there, this is some text in a text area</span><br><span class="line"><span class="tag">&lt;/<span class="name">textarea</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>html 에서는 textarea 테그는 자식 요소로 text를 받아서 자신의 value로 사용한다. react 에서는 value에 어트리뷰트로 추가해여 똑같이 동작 시킬 수 있다.</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">EssayForm</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">props</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">super</span>(props);</span><br><span class="line">    <span class="built_in">this</span>.state = &#123;</span><br><span class="line">      <span class="attr">value</span>: <span class="string">&quot;Please write an essay about your favorite DOM element.&quot;</span>,</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">this</span>.handleChange = <span class="built_in">this</span>.handleChange.bind(<span class="built_in">this</span>);</span><br><span class="line">    <span class="built_in">this</span>.handleSubmit = <span class="built_in">this</span>.handleSubmit.bind(<span class="built_in">this</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">handleChange</span>(<span class="params">event</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.setState(&#123; <span class="attr">value</span>: event.target.value &#125;);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">handleSubmit</span>(<span class="params">event</span>)</span> &#123;</span><br><span class="line">    alert(<span class="string">&quot;An essay was submitted: &quot;</span> + <span class="built_in">this</span>.state.value);</span><br><span class="line">    event.preventDefault();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">render</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      <span class="xml"><span class="tag">&lt;<span class="name">form</span> <span class="attr">onSubmit</span>=<span class="string">&#123;this.handleSubmit&#125;</span>&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">label</span>&gt;</span></span></span><br><span class="line"><span class="xml">          Essay:</span></span><br><span class="line"><span class="xml">          <span class="tag">&lt;<span class="name">textarea</span> <span class="attr">value</span>=<span class="string">&#123;this.state.value&#125;</span> <span class="attr">onChange</span>=<span class="string">&#123;this.handleChange&#125;</span> /&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;/<span class="name">label</span>&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span> <span class="attr">value</span>=<span class="string">&quot;Submit&quot;</span> /&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span></span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="The-select-Tag"><a href="#The-select-Tag" class="headerlink" title="The select Tag"></a>The select Tag</h2><p>html 에서 select는 드롭다운 메뉴를 만든다.</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">select</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">&quot;grapefruit&quot;</span>&gt;</span>Grapefruit<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">&quot;lime&quot;</span>&gt;</span>Lime<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">option</span> <span class="attr">selected</span> <span class="attr">value</span>=<span class="string">&quot;coconut&quot;</span>&gt;</span>Coconut<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">&quot;mango&quot;</span>&gt;</span>Mango<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><code>selected</code> 옵션을 사용하여 초기에 선택되는 값을 정하는데 리엑트에서는 <code>select</code> 태그에 <code>value</code> 옵션을 줌으로써 똑같이 동작시킬 수 있다.</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">FlavorForm</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">props</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">super</span>(props);</span><br><span class="line">    <span class="built_in">this</span>.state = &#123; <span class="attr">value</span>: <span class="string">&quot;coconut&quot;</span> &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">this</span>.handleChange = <span class="built_in">this</span>.handleChange.bind(<span class="built_in">this</span>);</span><br><span class="line">    <span class="built_in">this</span>.handleSubmit = <span class="built_in">this</span>.handleSubmit.bind(<span class="built_in">this</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">handleChange</span>(<span class="params">event</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.setState(&#123; <span class="attr">value</span>: event.target.value &#125;);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">handleSubmit</span>(<span class="params">event</span>)</span> &#123;</span><br><span class="line">    alert(<span class="string">&quot;Your favorite flavor is: &quot;</span> + <span class="built_in">this</span>.state.value);</span><br><span class="line">    event.preventDefault();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">render</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      <span class="xml"><span class="tag">&lt;<span class="name">form</span> <span class="attr">onSubmit</span>=<span class="string">&#123;this.handleSubmit&#125;</span>&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">label</span>&gt;</span></span></span><br><span class="line"><span class="xml">          Pick your favorite flavor:</span></span><br><span class="line"><span class="xml">          <span class="tag">&lt;<span class="name">select</span> <span class="attr">value</span>=<span class="string">&#123;this.state.value&#125;</span> <span class="attr">onChange</span>=<span class="string">&#123;this.handleChange&#125;</span>&gt;</span></span></span><br><span class="line"><span class="xml">            <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">&quot;grapefruit&quot;</span>&gt;</span>Grapefruit<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span></span><br><span class="line"><span class="xml">            <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">&quot;lime&quot;</span>&gt;</span>Lime<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span></span><br><span class="line"><span class="xml">            <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">&quot;coconut&quot;</span>&gt;</span>Coconut<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span></span><br><span class="line"><span class="xml">            <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">&quot;mango&quot;</span>&gt;</span>Mango<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span></span><br><span class="line"><span class="xml">          <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;/<span class="name">label</span>&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span> <span class="attr">value</span>=<span class="string">&quot;Submit&quot;</span> /&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span></span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>select 태그에 multiple 옵션을 허용한다면 value 어트리뷰트에 배열을 전달할 수 잇다.</p>
+</blockquote>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;select multiple=&#123;<span class="literal">true</span>&#125; value=&#123;[<span class="string">&#x27;B&#x27;</span>, <span class="string">&#x27;C&#x27;</span>]&#125;&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="file-input-태그"><a href="#file-input-태그" class="headerlink" title="file input 태그"></a>file input 태그</h2><p>HTML 에서 input 태그에 type 을 file 로 설정하여 파일을 입력 받을 수 있다.<br>값은 읽기 전용 이기때문에 React 에서는 이를 비제어 컴포넌트라고 부른다.</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=<span class="string">&quot;file&quot;</span> /&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="다중-입력-제어하기"><a href="#다중-입력-제어하기" class="headerlink" title="다중 입력 제어하기"></a>다중 입력 제어하기</h2><p>다중 입력을 제어할때 입력 태그에 name 을 주어서 구분 할 수 있다.</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Reservation</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">props</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">super</span>(props);</span><br><span class="line">    <span class="built_in">this</span>.state = &#123;</span><br><span class="line">      <span class="attr">isGoing</span>: <span class="literal">true</span>,</span><br><span class="line">      <span class="attr">numberOfGuests</span>: <span class="number">2</span>,</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">this</span>.handleInputChange = <span class="built_in">this</span>.handleInputChange.bind(<span class="built_in">this</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">handleInputChange</span>(<span class="params">event</span>)</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> target = event.target;</span><br><span class="line">    <span class="keyword">const</span> value = target.type === <span class="string">&quot;checkbox&quot;</span> ? target.checked : target.value;</span><br><span class="line">    <span class="keyword">const</span> name = target.name;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">this</span>.setState(&#123;</span><br><span class="line">      [name]: value,</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">render</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      <span class="xml"><span class="tag">&lt;<span class="name">form</span>&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">label</span>&gt;</span></span></span><br><span class="line"><span class="xml">          Is going:</span></span><br><span class="line"><span class="xml">          <span class="tag">&lt;<span class="name">input</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">            <span class="attr">name</span>=<span class="string">&quot;isGoing&quot;</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">            <span class="attr">type</span>=<span class="string">&quot;checkbox&quot;</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">            <span class="attr">checked</span>=<span class="string">&#123;this.state.isGoing&#125;</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">            <span class="attr">onChange</span>=<span class="string">&#123;this.handleInputChange&#125;</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">          /&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;/<span class="name">label</span>&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">br</span> /&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">label</span>&gt;</span></span></span><br><span class="line"><span class="xml">          Number of guests:</span></span><br><span class="line"><span class="xml">          <span class="tag">&lt;<span class="name">input</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">            <span class="attr">name</span>=<span class="string">&quot;numberOfGuests&quot;</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">            <span class="attr">type</span>=<span class="string">&quot;number&quot;</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">            <span class="attr">value</span>=<span class="string">&#123;this.state.numberOfGuests&#125;</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">            <span class="attr">onChange</span>=<span class="string">&#123;this.handleInputChange&#125;</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">          /&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;/<span class="name">label</span>&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span></span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Controlled-Input-Null-Value"><a href="#Controlled-Input-Null-Value" class="headerlink" title="Controlled Input Null Value"></a>Controlled Input Null Value</h2><p>value props 를 주면은 사용자가 값을 변경할 수 없다. React에서 state로 관리해야 그때부터 변경할 수 있게 된다. 그런데 value prop으로 null 이나 undifiend를 주면 state를 관리하지 않아도 사용자가 변경할 수 있게 된다.</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ReactDOM.render(<span class="xml"><span class="tag">&lt;<span class="name">input</span> <span class="attr">value</span>=<span class="string">&quot;hi&quot;</span> /&gt;</span></span>, mountNode);</span><br><span class="line"></span><br><span class="line"><span class="built_in">setTimeout</span>(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  ReactDOM.render(<span class="xml"><span class="tag">&lt;<span class="name">input</span> <span class="attr">value</span>=<span class="string">&#123;null&#125;</span> /&gt;</span></span>, mountNode);</span><br><span class="line">&#125;, <span class="number">1000</span>);</span><br></pre></td></tr></table></figure>
+
+<h2 id="Alternatives-to-Controlled-Components"><a href="#Alternatives-to-Controlled-Components" class="headerlink" title="Alternatives to Controlled Components"></a>Alternatives to Controlled Components</h2><p>사실 제어 컴포넌트를 사용하느것이 해보면 좀 귀찮은 작업이라는 것을 알게 된다. 또한 다른 앱을 리액트 앱으로 바꾸려 할때에도 이는 정말로 귀찮은 작업으로 다가올 수 있다. 이때 대안으로 사용할 수 있는 비제어 컴포넌트가 있는데 자세한건 홈페이지에서 문서를 찾아 보길 바란다.</p>
+<h2 id="Fully-Fledged-Solutions"><a href="#Fully-Fledged-Solutions" class="headerlink" title="Fully-Fledged Solutions"></a>Fully-Fledged Solutions</h2><p>Formik 이 완벽한 해결을 줄수 있다. 근데 이것도 기본적인 원칙은 위에서 설명한 것과 같기 때문에 기본적인 원칙을 모르면 어렵다. 기본적인 원칙을 공부하길 바란다.</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/10/09/Network/210907-%EB%AC%BC%EB%A6%AC%EA%B3%84%EC%B8%B5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JayoonKoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="티끌모아 태산">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/10/09/Network/210907-%EB%AC%BC%EB%A6%AC%EA%B3%84%EC%B8%B5/" class="post-title-link" itemprop="url">물리계층</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-10-09 21:54:45" itemprop="dateCreated datePublished" datetime="2021-10-09T21:54:45+09:00">2021-10-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/CS/" itemprop="url" rel="index"><span itemprop="name">CS</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="물리-계층"><a href="#물리-계층" class="headerlink" title="물리 계층"></a>물리 계층</h1><p>L1 물리 계층에 대해서 알아본다.</p>
+<h2 id="물리-계층의-역할과-기능"><a href="#물리-계층의-역할과-기능" class="headerlink" title="물리 계층의 역할과 기능"></a>물리 계층의 역할과 기능</h2><p>OSI 7 계층에 1계층으로 하드웨어 영역이다. 데이터 계층의 프레임을 비트로 인코 딩하고 신호로 바꾸어 통신한다. 받은 신호를 통하여 비트로 바꾸고 비트를 프레임으로 바꾸는 역활을 담당한다.</p>
+<h3 id="Signalilng의-종류"><a href="#Signalilng의-종류" class="headerlink" title="Signalilng의 종류"></a>Signalilng의 종류</h3><ul>
+<li>전기 (대표적으로 UTP 케이블이 있다.)</li>
+<li>광 (대표적으로 Fiber 가 있다. )</li>
+<li>전파 (wifi)</li>
+</ul>
+<h3 id="Signaling-전송-방식"><a href="#Signaling-전송-방식" class="headerlink" title="Signaling 전송 방식"></a>Signaling 전송 방식</h3><img src="/images/210907-물리계층/1.png" width="500">
+
+<h2 id="물리-계층-장비와-케이블"><a href="#물리-계층-장비와-케이블" class="headerlink" title="물리 계층 장비와 케이블"></a>물리 계층 장비와 케이블</h2><p>물리 계층의 장비로는 대표적으로 허브와 리피터가 있다.</p>
+<h3 id="허브의-동작-방식"><a href="#허브의-동작-방식" class="headerlink" title="허브의 동작 방식"></a>허브의 동작 방식</h3><p>브로드 케스팅 방식을 사용하여 허브 내에 모든 pc 에게 송신하고 주소에 맞는 pc 만 수신 하는 형식을 사용한다.</p>
+<p>유니 캐스트 방식은 1 : 1 통신을 의마한다.</p>
+<p>멀티 캐스트 방식은 1 : N 통신을 의미한다.</p>
+<h3 id="CSMA-CD"><a href="#CSMA-CD" class="headerlink" title="CSMA/CD"></a>CSMA/CD</h3><ol>
+<li>데이터를 보내기 전에 다른 노드에서 데이터를 보내는 중인지 확인한다.</li>
+<li>보내는 곳이 없다면 전송을 시작한다.</li>
+<li>동시간대 보내게 되면 통신이 중단되고 일정 시간이 흐른 후에 다시 통신을 시작한다.</li>
+</ol>
+<p>이런 방식을 Half Duplex 라고 한다. 흔히 무전기에서 사용하는 방식과 비슷하다.</p>
+<p>Simplex : 는 단방향 통신을 의미한다.</p>
+<p>Full Duplex : 동시 양방향 통신이 가능한 형태로 전화기와 비슷하다고 생각하면 된다.</p>
+<h3 id="성능"><a href="#성능" class="headerlink" title="성능"></a>성능</h3><ul>
+<li>Bandwidth(대역폭) - 주어진 시간대에 네트워크를 통해 이동할 수 있는 정보의 양 ( 도로 넓이 )</li>
+<li>Throughput(처리량) - 단위 시간당 디지털 데이터 전송으로 처리하는 양 (자동차 수 )</li>
+<li>Backplane(최대 처리 량) - 네트워크 장비가 최대로 처리할 수 있는 데이터 용량</li>
+<li>CPS : L4, 초당 커넥션 연결 수</li>
+<li>CC : 최대 수용 가능한 커넥션</li>
+<li>TPS : 초당 트랜잭션 연결 수 ,L&amp;</li>
+</ul>
+<h2 id="UTP-케이블과-wifi"><a href="#UTP-케이블과-wifi" class="headerlink" title="UTP 케이블과 wifi"></a>UTP 케이블과 wifi</h2><h3 id="UTP-케이블이란"><a href="#UTP-케이블이란" class="headerlink" title="UTP 케이블이란?"></a>UTP 케이블이란?</h3><p>주로 근거리 통신망 (LAN) 에 사용되는 케이블로서 자기장을 방지하기 위해 꼬여 있다.</p>
+<h3 id="코드-배열"><a href="#코드-배열" class="headerlink" title="코드 배열"></a>코드 배열</h3><ul>
+<li>8p8c<br>8개의 선 배열에 따라 다이렉트 또는 크로스 케이블로 구성한다. (TIA-568A, TIA-568B)</li>
+</ul>
+<p>같은 기계 끼리는 크로스로 다른 디바이스 끼리는 다이렉트로 연결한다.</p>
+<ul>
+<li>Auto MDI-x<br>노드 별로 크로스냐 다이렉트냐 구분하기 어렵기 때문에 자동으로 정해지도록 할 수 있는 기술</li>
+</ul>
+<h3 id="UTP-카테고리"><a href="#UTP-카테고리" class="headerlink" title="UTP 카테고리"></a>UTP 카테고리</h3><p>UTP 케이블의 전송 가능한 대역폭을 기준으로 분류.<br>cat3~cat6 까지 있음</p>
+<h3 id="WIFI란"><a href="#WIFI란" class="headerlink" title="WIFI란?"></a>WIFI란?</h3><p>비영리 기구인 WIFI Aliance의 상표로 전자기기들이 무선랜에 연결할 수 있게 하는 기술</p>
+<h3 id="무선랜-구성"><a href="#무선랜-구성" class="headerlink" title="무선랜 구성"></a>무선랜 구성</h3><p>인터넷 - ISP - 라우터 - WIPS - AP - 라우터</p>
+<img src="/images/210907-물리계층/2.png" width="500">
+
+<ul>
+<li>WIPS(Wireless IPS) : 보안과 관련된 역할을 한다.</li>
+<li>AP(Access Point) : 무선 허브와 같은 역할을 한다. 무선 랜카드와 연결된다.</li>
+</ul>
+<p>AP 에 반경과 동시 접속 가능 단말기의 개수를 고려하여 설치해야 한다.</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -309,125 +536,6 @@
 </ul>
 <p>인캡슐레이션의 예, 디캠슐레이션은 반대로 하면 된다.</p>
 <img src="/images/210906-네트워크 소개/10.png" width="500">
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/10/09/Network/210907-%EB%AC%BC%EB%A6%AC%EA%B3%84%EC%B8%B5/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JayoonKoo">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="티끌모아 태산">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/10/09/Network/210907-%EB%AC%BC%EB%A6%AC%EA%B3%84%EC%B8%B5/" class="post-title-link" itemprop="url">물리계층</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-10-09 21:54:45" itemprop="dateCreated datePublished" datetime="2021-10-09T21:54:45+09:00">2021-10-09</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/CS/" itemprop="url" rel="index"><span itemprop="name">CS</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="물리-계층"><a href="#물리-계층" class="headerlink" title="물리 계층"></a>물리 계층</h1><p>L1 물리 계층에 대해서 알아본다.</p>
-<h2 id="물리-계층의-역할과-기능"><a href="#물리-계층의-역할과-기능" class="headerlink" title="물리 계층의 역할과 기능"></a>물리 계층의 역할과 기능</h2><p>OSI 7 계층에 1계층으로 하드웨어 영역이다. 데이터 계층의 프레임을 비트로 인코 딩하고 신호로 바꾸어 통신한다. 받은 신호를 통하여 비트로 바꾸고 비트를 프레임으로 바꾸는 역활을 담당한다.</p>
-<h3 id="Signalilng의-종류"><a href="#Signalilng의-종류" class="headerlink" title="Signalilng의 종류"></a>Signalilng의 종류</h3><ul>
-<li>전기 (대표적으로 UTP 케이블이 있다.)</li>
-<li>광 (대표적으로 Fiber 가 있다. )</li>
-<li>전파 (wifi)</li>
-</ul>
-<h3 id="Signaling-전송-방식"><a href="#Signaling-전송-방식" class="headerlink" title="Signaling 전송 방식"></a>Signaling 전송 방식</h3><img src="/images/210907-물리계층/1.png" width="500">
-
-<h2 id="물리-계층-장비와-케이블"><a href="#물리-계층-장비와-케이블" class="headerlink" title="물리 계층 장비와 케이블"></a>물리 계층 장비와 케이블</h2><p>물리 계층의 장비로는 대표적으로 허브와 리피터가 있다.</p>
-<h3 id="허브의-동작-방식"><a href="#허브의-동작-방식" class="headerlink" title="허브의 동작 방식"></a>허브의 동작 방식</h3><p>브로드 케스팅 방식을 사용하여 허브 내에 모든 pc 에게 송신하고 주소에 맞는 pc 만 수신 하는 형식을 사용한다.</p>
-<p>유니 캐스트 방식은 1 : 1 통신을 의마한다.</p>
-<p>멀티 캐스트 방식은 1 : N 통신을 의미한다.</p>
-<h3 id="CSMA-CD"><a href="#CSMA-CD" class="headerlink" title="CSMA/CD"></a>CSMA/CD</h3><ol>
-<li>데이터를 보내기 전에 다른 노드에서 데이터를 보내는 중인지 확인한다.</li>
-<li>보내는 곳이 없다면 전송을 시작한다.</li>
-<li>동시간대 보내게 되면 통신이 중단되고 일정 시간이 흐른 후에 다시 통신을 시작한다.</li>
-</ol>
-<p>이런 방식을 Half Duplex 라고 한다. 흔히 무전기에서 사용하는 방식과 비슷하다.</p>
-<p>Simplex : 는 단방향 통신을 의미한다.</p>
-<p>Full Duplex : 동시 양방향 통신이 가능한 형태로 전화기와 비슷하다고 생각하면 된다.</p>
-<h3 id="성능"><a href="#성능" class="headerlink" title="성능"></a>성능</h3><ul>
-<li>Bandwidth(대역폭) - 주어진 시간대에 네트워크를 통해 이동할 수 있는 정보의 양 ( 도로 넓이 )</li>
-<li>Throughput(처리량) - 단위 시간당 디지털 데이터 전송으로 처리하는 양 (자동차 수 )</li>
-<li>Backplane(최대 처리 량) - 네트워크 장비가 최대로 처리할 수 있는 데이터 용량</li>
-<li>CPS : L4, 초당 커넥션 연결 수</li>
-<li>CC : 최대 수용 가능한 커넥션</li>
-<li>TPS : 초당 트랜잭션 연결 수 ,L&amp;</li>
-</ul>
-<h2 id="UTP-케이블과-wifi"><a href="#UTP-케이블과-wifi" class="headerlink" title="UTP 케이블과 wifi"></a>UTP 케이블과 wifi</h2><h3 id="UTP-케이블이란"><a href="#UTP-케이블이란" class="headerlink" title="UTP 케이블이란?"></a>UTP 케이블이란?</h3><p>주로 근거리 통신망 (LAN) 에 사용되는 케이블로서 자기장을 방지하기 위해 꼬여 있다.</p>
-<h3 id="코드-배열"><a href="#코드-배열" class="headerlink" title="코드 배열"></a>코드 배열</h3><ul>
-<li>8p8c<br>8개의 선 배열에 따라 다이렉트 또는 크로스 케이블로 구성한다. (TIA-568A, TIA-568B)</li>
-</ul>
-<p>같은 기계 끼리는 크로스로 다른 디바이스 끼리는 다이렉트로 연결한다.</p>
-<ul>
-<li>Auto MDI-x<br>노드 별로 크로스냐 다이렉트냐 구분하기 어렵기 때문에 자동으로 정해지도록 할 수 있는 기술</li>
-</ul>
-<h3 id="UTP-카테고리"><a href="#UTP-카테고리" class="headerlink" title="UTP 카테고리"></a>UTP 카테고리</h3><p>UTP 케이블의 전송 가능한 대역폭을 기준으로 분류.<br>cat3~cat6 까지 있음</p>
-<h3 id="WIFI란"><a href="#WIFI란" class="headerlink" title="WIFI란?"></a>WIFI란?</h3><p>비영리 기구인 WIFI Aliance의 상표로 전자기기들이 무선랜에 연결할 수 있게 하는 기술</p>
-<h3 id="무선랜-구성"><a href="#무선랜-구성" class="headerlink" title="무선랜 구성"></a>무선랜 구성</h3><p>인터넷 - ISP - 라우터 - WIPS - AP - 라우터</p>
-<img src="/images/210907-물리계층/2.png" width="500">
-
-<ul>
-<li>WIPS(Wireless IPS) : 보안과 관련된 역할을 한다.</li>
-<li>AP(Access Point) : 무선 허브와 같은 역할을 한다. 무선 랜카드와 연결된다.</li>
-</ul>
-<p>AP 에 반경과 동시 접속 가능 단말기의 개수를 고려하여 설치해야 한다.</p>
 
       
     </div>
@@ -1117,122 +1225,6 @@
 </blockquote>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 프라미스 처리 결과가 담긴 배열을 기다립니다.</span></span><br><span class="line"><span class="keyword">let</span> results = <span class="keyword">await</span> <span class="built_in">Promise</span>.all([</span><br><span class="line">  fetch(url1),</span><br><span class="line">  fetch(url2),</span><br><span class="line">  ...</span><br><span class="line">]);</span><br></pre></td></tr></table></figure>
 
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/09/20/modernJs/210818-async%20%EC%9D%B4%ED%84%B0%EB%A0%88%EC%9D%B4%ED%84%B0%EC%99%80%20%EC%A0%9C%EB%84%88%EB%A0%88%EC%9D%B4%ED%84%B0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JayoonKoo">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="티끌모아 태산">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/09/20/modernJs/210818-async%20%EC%9D%B4%ED%84%B0%EB%A0%88%EC%9D%B4%ED%84%B0%EC%99%80%20%EC%A0%9C%EB%84%88%EB%A0%88%EC%9D%B4%ED%84%B0/" class="post-title-link" itemprop="url">async 이터레이터와 제너레이터</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2021-09-20 21:41:14 / Modified: 21:45:40" itemprop="dateCreated datePublished" datetime="2021-09-20T21:41:14+09:00">2021-09-20</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="async-이터레이터와-제너레이터"><a href="#async-이터레이터와-제너레이터" class="headerlink" title="async 이터레이터와 제너레이터"></a>async 이터레이터와 제너레이터</h1><p>비동기 이터레이터, 제너레이터 사용하여 비동기적으로 들어오는 데이터를 필요에 따라 처리할 수 있다.</p>
-<h2 id="async-이터레이터"><a href="#async-이터레이터" class="headerlink" title="async 이터레이터"></a>async 이터레이터</h2><p>일반 이터러블</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> range = &#123;</span><br><span class="line">  <span class="attr">from</span>: <span class="number">1</span>,</span><br><span class="line">  <span class="attr">to</span>: <span class="number">5</span>,</span><br><span class="line"></span><br><span class="line">  <span class="comment">// for..of 최초 실행 시, Symbol.iterator가 호출됩니다.</span></span><br><span class="line">  [<span class="built_in">Symbol</span>.iterator]() &#123;</span><br><span class="line">    <span class="comment">// Symbol.iterator메서드는 이터레이터 객체를 반환합니다.</span></span><br><span class="line">    <span class="comment">// 이후 for..of는 반환된 이터레이터 객체만을 대상으로 동작하는데,</span></span><br><span class="line">    <span class="comment">// 다음 값은 next()에서 정해집니다.</span></span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      <span class="attr">current</span>: <span class="built_in">this</span>.from,</span><br><span class="line">      <span class="attr">last</span>: <span class="built_in">this</span>.to,</span><br><span class="line"></span><br><span class="line">      <span class="comment">// for..of 반복문에 의해 각 이터레이션마다 next()가 호출됩니다.</span></span><br><span class="line">      <span class="function"><span class="title">next</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">        <span class="comment">// (2)</span></span><br><span class="line">        <span class="comment">//  next()는 객체 형태의 값, &#123;done:.., value :...&#125;를 반환합니다.</span></span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">this</span>.current &lt;= <span class="built_in">this</span>.last) &#123;</span><br><span class="line">          <span class="keyword">return</span> &#123; <span class="attr">done</span>: <span class="literal">false</span>, <span class="attr">value</span>: <span class="built_in">this</span>.current++ &#125;;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          <span class="keyword">return</span> &#123; <span class="attr">done</span>: <span class="literal">true</span> &#125;;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;,</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> value <span class="keyword">of</span> range) &#123;</span><br><span class="line">  alert(value); <span class="comment">// 1, 2, 3, 4, 5</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>이터러블 객체를 비동기적으로 만들기 위한 작업</p>
-<ol>
-<li><code>Symbol.iterator</code> 대신, <code>Symbol.asyncIterator</code>를 사용해야 한다.</li>
-<li><code>next()</code> 는 프라미스를 반환해야 한다.</li>
-<li>비동기 이터러블 객체를 대상으로 하는 반복 작업은 <code>for await (let item of iterable)</code> 반복문을 사용해 처리해야 한다.</li>
-</ol>
-<p>1초마다 비동기적으로 값을 반환하는 이터러블 객체를 만들어 본다.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> range = &#123;</span><br><span class="line">  <span class="attr">from</span>: <span class="number">1</span>,</span><br><span class="line">  <span class="attr">to</span>: <span class="number">5</span>,</span><br><span class="line"></span><br><span class="line">  <span class="comment">// for await..of 최초 실행 시, Symbol.asyncIterator가 호출됩니다.</span></span><br><span class="line">  [<span class="built_in">Symbol</span>.asyncIterator]() &#123;</span><br><span class="line">    <span class="comment">// (1)</span></span><br><span class="line">    <span class="comment">// Symbol.asyncIterator 메서드는 이터레이터 객체를 반환합니다.</span></span><br><span class="line">    <span class="comment">// 이후 for await..of는 반환된 이터레이터 객체만을 대상으로 동작하는데,</span></span><br><span class="line">    <span class="comment">// 다음 값은 next()에서 정해집니다.</span></span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      <span class="attr">current</span>: <span class="built_in">this</span>.from,</span><br><span class="line">      <span class="attr">last</span>: <span class="built_in">this</span>.to,</span><br><span class="line"></span><br><span class="line">      <span class="comment">// for await..of 반복문에 의해 각 이터레이션마다 next()가 호출됩니다.</span></span><br><span class="line">      <span class="keyword">async</span> <span class="function"><span class="title">next</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">        <span class="comment">// (2)</span></span><br><span class="line">        <span class="comment">//  next()는 객체 형태의 값, &#123;done:.., value :...&#125;를 반환합니다.</span></span><br><span class="line">        <span class="comment">// (객체는 async에 의해 자동으로 프라미스로 감싸집니다.)</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 비동기로 무언가를 하기 위해 await를 사용할 수 있습니다.</span></span><br><span class="line">        <span class="keyword">await</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve</span>) =&gt;</span> <span class="built_in">setTimeout</span>(resolve, <span class="number">1000</span>)); <span class="comment">// (3)</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">this</span>.current &lt;= <span class="built_in">this</span>.last) &#123;</span><br><span class="line">          <span class="keyword">return</span> &#123; <span class="attr">done</span>: <span class="literal">false</span>, <span class="attr">value</span>: <span class="built_in">this</span>.current++ &#125;;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          <span class="keyword">return</span> &#123; <span class="attr">done</span>: <span class="literal">true</span> &#125;;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;,</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">(<span class="keyword">async</span> () =&gt; &#123;</span><br><span class="line">  <span class="keyword">for</span> <span class="keyword">await</span> (<span class="keyword">let</span> value <span class="keyword">of</span> range) &#123;</span><br><span class="line">    <span class="comment">// (4)</span></span><br><span class="line">    alert(value); <span class="comment">// 1,2,3,4,5</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
-
-<p>일반 이터레이터와, async 이터레이터에 차이점</p>
-<ol>
-<li>객체를 비동기적으로 반복 가능하도록 하려면, <code>Symbol.asyncIterator</code>메서드가 반드시 구현되어야 함.</li>
-<li><code>Symbol.asyncIterator</code>는 프라미스를 반환하는 <code>next()</code>가 구현된 객체를 반환해야 한다.</li>
-<li><code>next()</code> 는 <code>aync</code>메서드일 필요는 없지만 <code>await</code>를 쓰면 편하기 때문에 편의상 이렇게 사용한다.</li>
-<li>반복 작업을 하려면 <code>for await</code>를 붙인다. 그럼 <code>range[Symbol.asyncIterator] ()</code>가 일회 호출되는데, 그 이후엔 각 값을 대상으로 <code>next()</code>가 호출된다.</li>
-</ol>
-<img src="/images/210818-async%20이터레이터와%20제너레이터/1.png" width="500">
-
-<blockquote>
-<p>전개 문법 <code>...</code>은 동기적으로 동작하지 않는다. 동기 작업이 필요한 이터레이터는 <code>Symbol.asyncIterator</code>가 아닌 <code>Symbol.iterator</code>을 찾기 때문이다.</p>
-</blockquote>
-<h2 id="async-제너레이터"><a href="#async-제너레이터" class="headerlink" title="async 제너레이터"></a>async 제너레이터</h2><p>일반 제너레이터</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span>* <span class="title">generateSequence</span>(<span class="params">start, end</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = start; i &lt;= end; i++) &#123;</span><br><span class="line">    <span class="keyword">yield</span> i;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> value <span class="keyword">of</span> generateSequence(<span class="number">1</span>, <span class="number">5</span>)) &#123;</span><br><span class="line">  alert(value); <span class="comment">// 1, then 2, then 3, then 4, then 5</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><code>async</code>를 붙여주면 비동기적으로 제너레이터를 사용할 수 있다.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span>* <span class="title">generateSequence</span>(<span class="params">start, end</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = start; i &lt;= end; i++) &#123;</span><br><span class="line">    <span class="comment">// await를 사용할 수 있습니다!</span></span><br><span class="line">    <span class="keyword">await</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve</span>) =&gt;</span> <span class="built_in">setTimeout</span>(resolve, <span class="number">1000</span>));</span><br><span class="line"></span><br><span class="line">    <span class="keyword">yield</span> i;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">(<span class="keyword">async</span> () =&gt; &#123;</span><br><span class="line">  <span class="keyword">let</span> generator = generateSequence(<span class="number">1</span>, <span class="number">5</span>);</span><br><span class="line">  <span class="keyword">for</span> <span class="keyword">await</span> (<span class="keyword">let</span> value <span class="keyword">of</span> generator) &#123;</span><br><span class="line">    alert(value); <span class="comment">// 1, 2, 3, 4, 5</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
-
-<p><code>aync</code> 제너레이의 <code>generator.next()</code>의 메서드는 비동기적이 되고 프라미스를 반환한다. 따라서 <code>await</code> 키워드를 사용해서 <code>generator.next()</code>를 사용하도록 한다.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">result = <span class="keyword">await</span> generator.next(); <span class="comment">// result = &#123;value: ..., done: true/false&#125;</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="async-이터러블"><a href="#async-이터러블" class="headerlink" title="async 이터러블"></a>async 이터러블</h2><p>반복 가능한 객체를 만들려면 객체에 <code>Symbol.iterator</code>를 추가해야 한다.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> range = &#123;</span><br><span class="line">  <span class="attr">from</span>: <span class="number">1</span>,</span><br><span class="line">  <span class="attr">to</span>: <span class="number">5</span>,</span><br><span class="line">  [<span class="built_in">Symbol</span>.iterator]() &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="xml">&lt;range를 반복가능하게 만드는 next가 구현된 객체&gt;</span></span><br><span class="line"><span class="xml">  &#125;</span></span><br><span class="line"><span class="xml">&#125;</span></span><br></pre></td></tr></table></figure>
-
-<p>일반적으로 제너레이터를 반환하도록 구현하는 경우가 더 많다.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> range = &#123;</span><br><span class="line">  <span class="attr">from</span>: <span class="number">1</span>,</span><br><span class="line">  <span class="attr">to</span>: <span class="number">5</span>,</span><br><span class="line"></span><br><span class="line">  *[<span class="built_in">Symbol</span>.iterator]() &#123;</span><br><span class="line">    <span class="comment">// [Symbol.iterator]: function*()를 짧게 줄임</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> value = <span class="built_in">this</span>.from; value &lt;= <span class="built_in">this</span>.to; value++) &#123;</span><br><span class="line">      <span class="keyword">yield</span> value;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> value <span class="keyword">of</span> range) &#123;</span><br><span class="line">  alert(value); <span class="comment">// 1, 2, 3, 4, 5</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>지금 이 상태에서 비동기 동작을 축하려면, <code>Symbol.iterator</code>를 <code>async Symbol.asyncIterator</code>로 바꿔야 한다.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> range = &#123;</span><br><span class="line">  <span class="attr">from</span>: <span class="number">1</span>,</span><br><span class="line">  <span class="attr">to</span>: <span class="number">5</span>,</span><br><span class="line"></span><br><span class="line">  <span class="keyword">async</span> *[<span class="built_in">Symbol</span>.asyncIterator]() &#123;</span><br><span class="line">    <span class="comment">// [Symbol.asyncIterator]: async function*()와 동일</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> value = <span class="built_in">this</span>.from; value &lt;= <span class="built_in">this</span>.to; value++) &#123;</span><br><span class="line">      <span class="comment">// 값 사이 사이에 약간의 공백을 줌</span></span><br><span class="line">      <span class="keyword">await</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve</span>) =&gt;</span> <span class="built_in">setTimeout</span>(resolve, <span class="number">1000</span>));</span><br><span class="line"></span><br><span class="line">      <span class="keyword">yield</span> value;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">(<span class="keyword">async</span> () =&gt; &#123;</span><br><span class="line">  <span class="keyword">for</span> <span class="keyword">await</span> (<span class="keyword">let</span> value <span class="keyword">of</span> range) &#123;</span><br><span class="line">    alert(value); <span class="comment">// 1, 2, 3, 4, 5</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
-
-<h2 id="실제-사례"><a href="#실제-사례" class="headerlink" title="실제 사례"></a>실제 사례</h2>
       
     </div>
 

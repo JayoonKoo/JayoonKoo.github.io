@@ -83,9 +83,9 @@
   <ul class="main-menu menu">
         <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li>
         <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
-        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">13</span></a></li>
-        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">11</span></a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">134</span></a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">14</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">12</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">135</span></a></li>
   </ul>
 </nav>
 
@@ -129,18 +129,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">134</span>
+          <span class="site-state-item-count">135</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-count">12</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-count">14</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -180,6 +180,117 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/08/15/modernJs/210809-promise%20API/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JayoonKoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="티끌모아 태산">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/08/15/modernJs/210809-promise%20API/" class="post-title-link" itemprop="url">promise API</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-08-15 19:40:25" itemprop="dateCreated datePublished" datetime="2021-08-15T19:40:25+09:00">2021-08-15</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="프라미스-API"><a href="#프라미스-API" class="headerlink" title="프라미스 API"></a>프라미스 API</h1><p><code>Promise</code> 클래스에는 5가지 정적 메서드가 있다. </p>
+<h2 id="Promise-all"><a href="#Promise-all" class="headerlink" title="Promise.all"></a>Promise.all</h2><p>복수의 <code>Promise</code>를 처리할 때 </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> promise = <span class="built_in">Promise</span>.all([...promises...])</span><br></pre></td></tr></table></figure>
+<p>배열로 넘겨준 promises 가 모두 처리가 끝나면 결과값을 담은 배열을 <code>result</code> 로 하는 새로운 <code>promise</code>를 반환한다. </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Promise</span>.all([</span><br><span class="line">	<span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="params">resolve</span> =&gt;</span> <span class="built_in">setTimeout</span>(<span class="function">()=&gt;</span> resolve(<span class="number">1</span>), <span class="number">3000</span>)),</span><br><span class="line">	<span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="params">resolve</span> =&gt;</span> <span class="built_in">setTimeout</span>(<span class="function">()=&gt;</span> resolve(<span class="number">2</span>), <span class="number">2000</span>)),</span><br><span class="line">	<span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="params">resolve</span> =&gt;</span> <span class="built_in">setTimeout</span>(<span class="function">()=&gt;</span> resolve(<span class="number">3</span>), <span class="number">1000</span>))</span><br><span class="line">]).then(<span class="built_in">console</span>.log);</span><br></pre></td></tr></table></figure>
+<p>프라미스는 3초후에 실행되고 결과값인 <code>result</code> 는 <code>[1,2,3]</code> 이 된다.<br>처리된 순서가 아니라 배열로 넘겨준 순서이다. </p>
+<p><code>fetch</code>에 응용할 수 있다. </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> urls = [</span><br><span class="line">	<span class="string">&#x27;https://api.github.com/users/iliakan&#x27;</span>,</span><br><span class="line">	<span class="string">&#x27;https://api.github.com/users/remy&#x27;</span>,</span><br><span class="line">	<span class="string">&#x27;https://api.github.com/users/jeresig&#x27;</span>,</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"><span class="comment">// fetch를 이용해서 url을 promise로 매핑</span></span><br><span class="line"><span class="keyword">let</span> requests = urls.map(<span class="function"><span class="params">url</span> =&gt;</span> fetch(url));</span><br><span class="line"></span><br><span class="line"><span class="built_in">Promise</span>.all(requests)</span><br><span class="line">	.then(<span class="function"><span class="params">responses</span> =&gt;</span> responses.forEach(</span><br><span class="line">		<span class="function"><span class="params">response</span> =&gt;</span> <span class="built_in">console</span>.log(response.url + response.status)</span><br><span class="line">	));</span><br></pre></td></tr></table></figure>
+
+<p><code>Promise.all</code>에서 넘겨준 배열에서 하나라도 에러가 발생하면 에러가 발생한 시점에서 모든 프로미스가 거부되고 <code>.catch</code>가 실행된다. </p>
+<blockquote>
+<p>Promise.all에 넘겨주는 값이 이터러블 객체가 아니더라도 값을 넘겨줄수 있다. 값을 넘겨주면 넘겨준 값 그대로 반환 된다.<br>이미 값을 구한 프라미스는 그냥 전달해 주기만 하면 된다. </p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Promise</span>.all([</span><br><span class="line">	<span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">		<span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> resolve(<span class="number">1</span>), <span class="number">1000</span>)</span><br><span class="line">	&#125;),</span><br><span class="line">	<span class="number">2</span>, </span><br><span class="line">	<span class="number">3</span></span><br><span class="line">]).then(<span class="built_in">console</span>.log); <span class="comment">// 1, 2, 3 (1초 후 )</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Promise-allSettled"><a href="#Promise-allSettled" class="headerlink" title="Promise.allSettled"></a>Promise.allSettled</h2><blockquote>
+<p>구식 브라우저에서는 폴리필 필요</p>
+</blockquote>
+<p>모든 프라미스가 처리될 때까지 기다린다. </p>
+<ul>
+<li>응답이 성공한 경우 - <code>&#123;status: &quot;fulfilled&quot;, value: result&#125;</code></li>
+<li>에러가 발생한 경우 - <code>&#123;status: &quot;rejected&quot;, reason: error&#125;</code></li>
+</ul>
+<p><code>fetch</code> 로 보낸 여러 요청 중 실패하더라도 성공한 요청은 남아있어야 하는 경우라면</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> urls = [</span><br><span class="line">	<span class="string">&#x27;https://api.github.com/users/jayoonKoo&#x27;</span>,</span><br><span class="line">	<span class="string">&#x27;https://no-such-url&#x27;</span>,</span><br><span class="line">];</span><br><span class="line"></span><br><span class="line"><span class="built_in">Promise</span>.allSettled(urls.map(<span class="function"><span class="params">url</span> =&gt;</span> fetch(url)))</span><br><span class="line">	.then(<span class="function"><span class="params">result</span> =&gt;</span> &#123;</span><br><span class="line">		result.forEach(<span class="function">(<span class="params">result, num</span>) =&gt;</span> &#123;</span><br><span class="line">			<span class="keyword">if</span> (result.status == <span class="string">&quot;fulfilled&quot;</span>) &#123;</span><br><span class="line">				<span class="built_in">console</span>.log(<span class="string">`<span class="subst">$&#123;urls[num]&#125;</span>: <span class="subst">$&#123;result.value.status&#125;</span>`</span>);</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span> (result.status == <span class="string">&quot;rejected&quot;</span>) &#123;</span><br><span class="line">				<span class="built_in">console</span>.log(<span class="string">`<span class="subst">$&#123;urls[num]&#125;</span>: <span class="subst">$&#123;result.reason&#125;</span>`</span>);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;);</span><br><span class="line">	&#125;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="폴리필"><a href="#폴리필" class="headerlink" title="폴리필"></a>폴리필</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(!<span class="built_in">Promise</span>.allSettled) &#123;</span><br><span class="line">	<span class="built_in">Promise</span>.allSettled = <span class="function"><span class="keyword">function</span>(<span class="params">promises</span>) </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="built_in">Promise</span>.all(promises.map(<span class="function"><span class="params">p</span>=&gt;</span> <span class="built_in">Promise</span>.resolve(p).then(<span class="function"><span class="params">value</span> =&gt;</span> (&#123;</span><br><span class="line">			<span class="attr">status</span>: <span class="string">&#x27;fulfilled&#x27;</span>,</span><br><span class="line">			value</span><br><span class="line">		&#125;), <span class="function"><span class="params">reason</span> =&gt;</span> (&#123;</span><br><span class="line">			<span class="attr">status</span>: <span class="string">&#x27;rejected&#x27;</span>,</span><br><span class="line">			reason</span><br><span class="line">		&#125;))));</span><br><span class="line">	&#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Promise-race"><a href="#Promise-race" class="headerlink" title="Promise.race"></a>Promise.race</h2><p>가장 먼저 처리되는 프라미스의 결과(혹은 에러)를 반환한다.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> promise = <span class="built_in">Promise</span>.race(iterable);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Promise</span>.race([</span><br><span class="line">	<span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> resolve(<span class="number">1</span>), <span class="number">1000</span>)),</span><br><span class="line">	<span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> reject(<span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">&quot;애러 발생&quot;</span>)), <span class="number">2000</span>)),</span><br><span class="line">	<span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> resolve(<span class="number">3</span>), <span class="number">3000</span>)),</span><br><span class="line">]).then(<span class="built_in">console</span>.log); <span class="comment">// 1 </span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Promise-resolve-reject"><a href="#Promise-resolve-reject" class="headerlink" title="Promise.resolve/reject"></a>Promise.resolve/reject</h2><p><code>async/awiat</code> 문법이 나온 이후로 잘 사용하지 않음. </p>
+<h3 id="Promise-resolve"><a href="#Promise-resolve" class="headerlink" title="Promise.resolve"></a>Promise.resolve</h3><p>다음과 같음.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> promise = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="params">resolve</span> =&gt;</span> resolve(value));</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> cache = <span class="keyword">new</span> <span class="built_in">Map</span>();</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">loadCached</span>(<span class="params">url</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (cache.has(url)) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">Promise</span>.resolve(cache.get(url)); <span class="comment">// (*)</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> fetch(url)</span><br><span class="line">    .then(<span class="function"><span class="params">response</span> =&gt;</span> response.text())</span><br><span class="line">    .then(<span class="function"><span class="params">text</span> =&gt;</span> &#123;</span><br><span class="line">      cache.set(url,text);</span><br><span class="line">      <span class="keyword">return</span> text;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Promise-reject"><a href="#Promise-reject" class="headerlink" title="Promise.reject"></a>Promise.reject</h3><p>다음과 같음.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> promise = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> reject(error));</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -628,6 +739,147 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/08/06/OS/210723-structure/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JayoonKoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="티끌모아 태산">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/08/06/OS/210723-structure/" class="post-title-link" itemprop="url">structure</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-08-06 22:28:10" itemprop="dateCreated datePublished" datetime="2021-08-06T22:28:10+09:00">2021-08-06</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-09-12 23:50:45" itemprop="dateModified" datetime="2021-09-12T23:50:45+09:00">2021-09-12</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/CS/" itemprop="url" rel="index"><span itemprop="name">CS</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="운영체제-구조"><a href="#운영체제-구조" class="headerlink" title="운영체제 구조"></a>운영체제 구조</h1><h2 id="응용-프로그램-운영체제-컴퓨터-하드웨어의-관계"><a href="#응용-프로그램-운영체제-컴퓨터-하드웨어의-관계" class="headerlink" title="응용 프로그램, 운영체제, 컴퓨터 하드웨어의 관계"></a>응용 프로그램, 운영체제, 컴퓨터 하드웨어의 관계</h2><ul>
+<li>운영체제는 응용 프로그램이 요청하는 메모리를 허가한다.</li>
+<li>운영체제는 응용 프로그램이 요청하는 CPU 시간을 제공한다.</li>
+<li>운영체제는 응용 프로그램이 요청하는 I/O 장치 사용을 허가/ 제어한다.</li>
+</ul>
+<br/>
+
+<h2 id="운영체제는-사용자-인터페이스를-제공"><a href="#운영체제는-사용자-인터페이스를-제공" class="headerlink" title="운영체제는 사용자 인터페이스를 제공"></a>운영체제는 사용자 인터페이스를 제공</h2><p>쉘(shell) : 사용자가 운영체제 기능과 서비스를 조작할 수 있도록 인터페이스를 제공함.</p>
+<p>쉘은 CLI 환경과 GUI 환경이 있음.</p>
+<center><img src="/images/imgs/structure/1.png" width="200"></center>
+
+<p>쉘도 응용 프로그램중에 하나라고 할 수 있다.</p>
+<br/>
+
+<h2 id="운영체제는-응용-프로그램을-위해서도-인터페이스-제공"><a href="#운영체제는-응용-프로그램을-위해서도-인터페이스-제공" class="headerlink" title="운영체제는 응용 프로그램을 위해서도 인터페이스 제공"></a>운영체제는 응용 프로그램을 위해서도 인터페이스 제공</h2><p>AP로 제공함. (Application Programming Interface)</p>
+<p>API는 함수 형태이거나 라이브러리 형태로 제공된다.</p>
+<p>쉘 또한 응용 프로그램중 하나이기 때문에 사용자의 요청이 들어오면 API 를 이욯애서 시스템 리소스에 접근한다고 할 수 있다.</p>
+<p>그래서 다음과 같은 구조가 된다.</p>
+<center><img src="/images/imgs/structure/2.png" width="200"></center>
+
+<h3 id="시스템-콜"><a href="#시스템-콜" class="headerlink" title="시스템 콜"></a>시스템 콜</h3><p>시스테 콜 인터페이스라고도 함.</p>
+<p>운영체제는 운영체제의 각 기능을 사용할 수 있도록 시스템 콜을 제공하는데, API는 이 시스템 콜을 호출하는 방식으로 시스템 리소스에 접근함.</p>
+<p>전체적은 구조는 다음과 같다.</p>
+<center><img src="/images/imgs/structure/3.png" width="200">  </center>
+
+<h3 id="운영체제를-만든다면"><a href="#운영체제를-만든다면" class="headerlink" title="운영체제를 만든다면"></a>운영체제를 만든다면</h3><ol>
+<li>kernel 개발</li>
+<li>시스템 콜 개발</li>
+<li>API 개발</li>
+<li>shell 개발</li>
+<li>응용 프로그램 개발</li>
+</ol>
+<p>&lt;br/ &gt;</p>
+<h2 id="운연체제와-시스템-콜"><a href="#운연체제와-시스템-콜" class="headerlink" title="운연체제와 시스템 콜"></a>운연체제와 시스템 콜</h2><p>시스템 콜의 예</p>
+<ul>
+<li>posix API, Windows API</li>
+</ul>
+<blockquote>
+<p>API: 각 언어별 운영체제 기능 호출 인터페이스 함수<br>시스템 콜: 운영체제 기능을 호출하는 함수</p>
+</blockquote>
+<br/>
+
+<h2 id="CPU-Protection-Rings"><a href="#CPU-Protection-Rings" class="headerlink" title="CPU Protection Rings"></a>CPU Protection Rings</h2><center><img src="/images/imgs/structure/4.png" width="400"></center>
+
+<p>Cpu는 권한모드가 있다.</p>
+<p>일반 모드는 사용자 모드 라고도 하는데 일반적인 명령에 접근할 수 있다. (Application 사용)</p>
+<p>커널 모드는 특별한 명령어 또는 특별한 시스테 자원을 요청할 수 있는 모드이다. (Os가 사용하는)</p>
+<p>그림에서 링으로 권한을 분리하는데 보통의 경우 ring3과 ring0을 사용해 3은 사용자 모드, 0은 커널 모드로 나눈다.</p>
+<h3 id="Kernel이-뭔데"><a href="#Kernel이-뭔데" class="headerlink" title="Kernel이 뭔데?"></a>Kernel이 뭔데?</h3><p>단어로는 씨앗 이라는 뜻이 있다.</p>
+<p>즉 운영체제의 핵심 같은 거라고 할 수 있다.</p>
+<p>shell은 껍데기 라는 뜻이 있고 이 커널을 싸고 있다고 생각하면 된다.</p>
+<h3 id="사용자-영역과-커널-영여의-분류"><a href="#사용자-영역과-커널-영여의-분류" class="headerlink" title="사용자 영역과 커널 영여의 분류"></a>사용자 영역과 커널 영여의 분류</h3><center><img src="/images/imgs/structure/5.png" width="500"></center>
+
+<p>시스테 콜은 커널모드에서 실행된다.</p>
+<p>우리가 작성한 프로그램은 대부분 사용자 모드에서 실행된다.</p>
+<p>커널모드로 실행하려면 반드시 시스템 콜을 거처야함.</p>
+<p>이렇게 함으로써 특정 응용프로그램이나 사용자가 전체 컴퓨터 시스템을 헤치지 못하게 막을 수도 있다.</p>
+<br/>
+
+<h2 id="code-ex1"><a href="#code-ex1" class="headerlink" title="code ex1"></a>code ex1</h2><center><img src="/images/imgs/structure/6.png" width="600"></center>
+
+<p>해당 코드 동작시 처으에는 사용자 모드로 시작했다가 특정 API를 만났을때에는 커널 모드로 전환되고 커널 모드에서 작업 완료시 다시 사용자 모드로 전환된다.</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/08/06/OS/210723-%EC%8A%A4%EC%BC%80%EC%A5%B4%EB%A7%81/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -843,147 +1095,6 @@
 <li>RoundRobin 은 시분할 시스템을 위한 기본 알고리즘 (선점형 스케쥴러)</li>
 </ul>
 <p>보통 여러가지 알고리즘을 섞어서 사용하는것이 일반적임</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/08/06/OS/210723-structure/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JayoonKoo">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="티끌모아 태산">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/08/06/OS/210723-structure/" class="post-title-link" itemprop="url">structure</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-08-06 22:28:10" itemprop="dateCreated datePublished" datetime="2021-08-06T22:28:10+09:00">2021-08-06</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-09-12 23:50:45" itemprop="dateModified" datetime="2021-09-12T23:50:45+09:00">2021-09-12</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/CS/" itemprop="url" rel="index"><span itemprop="name">CS</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="운영체제-구조"><a href="#운영체제-구조" class="headerlink" title="운영체제 구조"></a>운영체제 구조</h1><h2 id="응용-프로그램-운영체제-컴퓨터-하드웨어의-관계"><a href="#응용-프로그램-운영체제-컴퓨터-하드웨어의-관계" class="headerlink" title="응용 프로그램, 운영체제, 컴퓨터 하드웨어의 관계"></a>응용 프로그램, 운영체제, 컴퓨터 하드웨어의 관계</h2><ul>
-<li>운영체제는 응용 프로그램이 요청하는 메모리를 허가한다.</li>
-<li>운영체제는 응용 프로그램이 요청하는 CPU 시간을 제공한다.</li>
-<li>운영체제는 응용 프로그램이 요청하는 I/O 장치 사용을 허가/ 제어한다.</li>
-</ul>
-<br/>
-
-<h2 id="운영체제는-사용자-인터페이스를-제공"><a href="#운영체제는-사용자-인터페이스를-제공" class="headerlink" title="운영체제는 사용자 인터페이스를 제공"></a>운영체제는 사용자 인터페이스를 제공</h2><p>쉘(shell) : 사용자가 운영체제 기능과 서비스를 조작할 수 있도록 인터페이스를 제공함.</p>
-<p>쉘은 CLI 환경과 GUI 환경이 있음.</p>
-<center><img src="/images/imgs/structure/1.png" width="200"></center>
-
-<p>쉘도 응용 프로그램중에 하나라고 할 수 있다.</p>
-<br/>
-
-<h2 id="운영체제는-응용-프로그램을-위해서도-인터페이스-제공"><a href="#운영체제는-응용-프로그램을-위해서도-인터페이스-제공" class="headerlink" title="운영체제는 응용 프로그램을 위해서도 인터페이스 제공"></a>운영체제는 응용 프로그램을 위해서도 인터페이스 제공</h2><p>AP로 제공함. (Application Programming Interface)</p>
-<p>API는 함수 형태이거나 라이브러리 형태로 제공된다.</p>
-<p>쉘 또한 응용 프로그램중 하나이기 때문에 사용자의 요청이 들어오면 API 를 이욯애서 시스템 리소스에 접근한다고 할 수 있다.</p>
-<p>그래서 다음과 같은 구조가 된다.</p>
-<center><img src="/images/imgs/structure/2.png" width="200"></center>
-
-<h3 id="시스템-콜"><a href="#시스템-콜" class="headerlink" title="시스템 콜"></a>시스템 콜</h3><p>시스테 콜 인터페이스라고도 함.</p>
-<p>운영체제는 운영체제의 각 기능을 사용할 수 있도록 시스템 콜을 제공하는데, API는 이 시스템 콜을 호출하는 방식으로 시스템 리소스에 접근함.</p>
-<p>전체적은 구조는 다음과 같다.</p>
-<center><img src="/images/imgs/structure/3.png" width="200">  </center>
-
-<h3 id="운영체제를-만든다면"><a href="#운영체제를-만든다면" class="headerlink" title="운영체제를 만든다면"></a>운영체제를 만든다면</h3><ol>
-<li>kernel 개발</li>
-<li>시스템 콜 개발</li>
-<li>API 개발</li>
-<li>shell 개발</li>
-<li>응용 프로그램 개발</li>
-</ol>
-<p>&lt;br/ &gt;</p>
-<h2 id="운연체제와-시스템-콜"><a href="#운연체제와-시스템-콜" class="headerlink" title="운연체제와 시스템 콜"></a>운연체제와 시스템 콜</h2><p>시스템 콜의 예</p>
-<ul>
-<li>posix API, Windows API</li>
-</ul>
-<blockquote>
-<p>API: 각 언어별 운영체제 기능 호출 인터페이스 함수<br>시스템 콜: 운영체제 기능을 호출하는 함수</p>
-</blockquote>
-<br/>
-
-<h2 id="CPU-Protection-Rings"><a href="#CPU-Protection-Rings" class="headerlink" title="CPU Protection Rings"></a>CPU Protection Rings</h2><center><img src="/images/imgs/structure/4.png" width="400"></center>
-
-<p>Cpu는 권한모드가 있다.</p>
-<p>일반 모드는 사용자 모드 라고도 하는데 일반적인 명령에 접근할 수 있다. (Application 사용)</p>
-<p>커널 모드는 특별한 명령어 또는 특별한 시스테 자원을 요청할 수 있는 모드이다. (Os가 사용하는)</p>
-<p>그림에서 링으로 권한을 분리하는데 보통의 경우 ring3과 ring0을 사용해 3은 사용자 모드, 0은 커널 모드로 나눈다.</p>
-<h3 id="Kernel이-뭔데"><a href="#Kernel이-뭔데" class="headerlink" title="Kernel이 뭔데?"></a>Kernel이 뭔데?</h3><p>단어로는 씨앗 이라는 뜻이 있다.</p>
-<p>즉 운영체제의 핵심 같은 거라고 할 수 있다.</p>
-<p>shell은 껍데기 라는 뜻이 있고 이 커널을 싸고 있다고 생각하면 된다.</p>
-<h3 id="사용자-영역과-커널-영여의-분류"><a href="#사용자-영역과-커널-영여의-분류" class="headerlink" title="사용자 영역과 커널 영여의 분류"></a>사용자 영역과 커널 영여의 분류</h3><center><img src="/images/imgs/structure/5.png" width="500"></center>
-
-<p>시스테 콜은 커널모드에서 실행된다.</p>
-<p>우리가 작성한 프로그램은 대부분 사용자 모드에서 실행된다.</p>
-<p>커널모드로 실행하려면 반드시 시스템 콜을 거처야함.</p>
-<p>이렇게 함으로써 특정 응용프로그램이나 사용자가 전체 컴퓨터 시스템을 헤치지 못하게 막을 수도 있다.</p>
-<br/>
-
-<h2 id="code-ex1"><a href="#code-ex1" class="headerlink" title="code ex1"></a>code ex1</h2><center><img src="/images/imgs/structure/6.png" width="600"></center>
-
-<p>해당 코드 동작시 처으에는 사용자 모드로 시작했다가 특정 API를 만났을때에는 커널 모드로 전환되고 커널 모드에서 작업 완료시 다시 사용자 모드로 전환된다.</p>
 
       
     </div>
@@ -1259,157 +1370,6 @@
 
 <h3 id="인터럽트와-IDT"><a href="#인터럽트와-IDT" class="headerlink" title="인터럽트와 IDT"></a>인터럽트와 IDT</h3><p>인터럽트는 IDT(Interrupt Descriptor Table)이라 불리는 곳에 각각 번호와 실행 코드를 가리키는 주소가 기록되어 있음.</p>
 <p>운영체제가 컴퓨터 부팅시 기록한다.</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/08/06/OS/210730-%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4%EA%B5%AC%EC%A1%B0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JayoonKoo">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="티끌모아 태산">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/08/06/OS/210730-%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4%EA%B5%AC%EC%A1%B0/" class="post-title-link" itemprop="url">프로세스구조</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-08-06 22:28:10" itemprop="dateCreated datePublished" datetime="2021-08-06T22:28:10+09:00">2021-08-06</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-09-12 23:50:45" itemprop="dateModified" datetime="2021-09-12T23:50:45+09:00">2021-09-12</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/CS/" itemprop="url" rel="index"><span itemprop="name">CS</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="프로세스와-컨텍스트-스위칭"><a href="#프로세스와-컨텍스트-스위칭" class="headerlink" title="프로세스와 컨텍스트 스위칭"></a>프로세스와 컨텍스트 스위칭</h1><p>컨텍스트 스위칭이란 스케쥴러가 어떤 프로세스 A를 실행할때 B로 바꿔주는 메커니즘이다. 컨텍스트 스위칭을 이해하기 위해서는 프로세스 구조에 대해서 이해하는 것이 필요하다.</p>
-<br/>
-
-<h2 id="프로세스-구조"><a href="#프로세스-구조" class="headerlink" title="프로세스 구조"></a>프로세스 구조</h2><img src="/images/imgs/210730-프로세스구조/1.png" width="500">
-
-<ul>
-<li><code>code</code> 라는 영역에 컴파일된 소스코드가 위치한다.</li>
-<li><code>data</code> 라는 영역에 변수가 설정된다. (전역 변수)</li>
-<li><code>stack</code> 이라는 영역에 함수에 대한 코드가 설정된다.<ul>
-<li><code>return address</code> 함수가 실행 된 후에 가야 할 주소 이다.</li>
-<li>스택 이라는 자료구조처럼 할당한다음 마지막 할당한 것부터 처리해서 처음 할당한 <code>return address</code> 까지 처리하게 된다.</li>
-</ul>
-</li>
-<li><code>heap</code>에 동적으로 할당한 변수들이 위치하게 된다.</li>
-</ul>
-<br/>
-
-<h2 id="컴퓨터-구조"><a href="#컴퓨터-구조" class="headerlink" title="컴퓨터 구조"></a>컴퓨터 구조</h2><p>PC(Program Counter) + SP(Stack Pointer) 가 어떻게 작동하는지</p>
-<img src="/images/imgs/210730-프로세스구조/2.png">
-
-<ul>
-<li>Program Counter는 초기값이 0000h 이고 1씩 늘어나면서 증가할 것이다.</li>
-<li>EBP 에는 Stack Pointer 가 가리키는 최상단 주소가 적혀 있고, Stack return adress 보다 이 주소가 먼저 적힌다.<ul>
-<li>EBP 가 있음으로 인해서 함수에 문제가 생겼을때 어디서 문제가 생겼는지 확인할 수 있다. EBP 에는 함수가 호출된 최상단을 항상 가르키고 있기 때문에 문제가 생긴 호출이 어디서 발생했는지 알 수 있는 것이다.</li>
-</ul>
-</li>
-</ul>
-<img src="/images/imgs/210730-프로세스구조/3.png">
-
-<p>0003h 에서 함수를 실행시켰을때 stack Pointr는 1000h를 가르키고 있었고 EBP 또한 1000h 일 것이다. 따라서 stack 영역에는 다음과 같이 할당 되게 된다. stack이 점점 쌓임에 따라서 stack Pointer 도 1씩 감소하게 될 것이다. 그리고 그림과 같은 상황에서 stack pointer 는 0FFCh 가 될 것이고, EBP 또한 0FFCh가 된다.</p>
-<p>만약 함수 안에서 또다른 함수가 호출되었다면? 처음 알고리즘과 똑같이 EBP에 값인 0FFCh 가 적힌다. 이 주소를 통해서 만약 문제가 생겼다면 어디서 문제가 생긴건지 알 수 있게 되는 것이다.</p>
-<ul>
-<li>반환 값은 EAX에 들어간다.</li>
-<li>c라는 변수의 값은 EAX를 참조해서 가져간다.</li>
-</ul>
-<img src="/images/imgs/210730-프로세스구조/4.png">
-
-<br/>
-
-<br/>
-
-<h2 id="힙"><a href="#힙" class="headerlink" title="힙"></a>힙</h2><img src="/images/imgs/210730-프로세스구조/5.png" width="400">
-
-<p>malloc 을 통해서 동적으로 생성한 변수 data는 heap 에 위치하게 된다. 지역변수인 *data (data의 주소 int *data) 는 stack 에 위치하게 된다. 힙에다가 공간을 마련한다고 생각하면 된다.</p>
-<br/>
-
-<h2 id="DATA-분리"><a href="#DATA-분리" class="headerlink" title="DATA 분리"></a>DATA 분리</h2><p>전역 변수의 공간인 DATA는 초기화 되지 않는 전역 변수를 위한 공간인 BSS와, 초기값이 있는 전역 변수를 위한 공간인 DATA로 나뉜다.</p>
-<br/>
-
-<h2 id="stack-오버플로우"><a href="#stack-오버플로우" class="headerlink" title="stack 오버플로우?"></a>stack 오버플로우?</h2><img src="/images/imgs/210730-프로세스구조/6.png" width="200">
-
-<p>data 배열의 사이즈로 6으로 정의했기 때문에 스택에 data를 할당함. 그런데 bar의 크기가 6을 넘어가는 크기라면 원래 스택에 data로 정의되어야 할 크기를 넘어서 return adress 가 적혀햘 부분에 덮어씌우기가 될 수 있음. 이것을 악의적으로 이용해서 프로세스를 원하는 주소로 이동시키는 방법을 해커들이 많이 사용했음.</p>
-<br/>
-
-<h2 id="컨텍스트-스위칭"><a href="#컨텍스트-스위칭" class="headerlink" title="컨텍스트 스위칭"></a>컨텍스트 스위칭</h2><p>PC와 SP에 집중해 보자. 컨텍스트 스위칭은 스케쥴러가 실행중인 프로세스를 변경시키는 것이다. 생각해보면 변경하는 프로세스가 어디만큼 진행했는지에 대한 정보를 저장해야지 다음 프로세서로 변경시킬수 있지 않을까?</p>
-<h3 id="PCB-Process-Control-Block"><a href="#PCB-Process-Control-Block" class="headerlink" title="PCB (Process Control Block)"></a>PCB (Process Control Block)</h3><p>프로세슬 변경하기전에 PCB라고 하는 곳에 PC와 SP 정보를 저장한다.<br>그다음 다른 프로세스로 가서 PCB에 정보를 확인하고 PC와 SP 정보를 CPU에 덮어 씌운다.<br>그리고 프로세스를 실행시킨다.</p>
-<p>PCB에는 몇가지 정보가 적혀있음.</p>
-<ol>
-<li>Process ID</li>
-<li>Register값 (PC, SP)</li>
-<li>Schduling Info (Process State)</li>
-<li>Memory Info(메모리 사이즈 limit)</li>
-<li>…</li>
-</ol>
-<h4 id="리눅스-PCB"><a href="#리눅스-PCB" class="headerlink" title="리눅스 PCB"></a>리눅스 PCB</h4><img src="/images/imgs/210730-프로세스구조/7.png" width="400">
-
-<h3 id="개념-정리"><a href="#개념-정리" class="headerlink" title="개념 정리"></a>개념 정리</h3><img src="/images/imgs/210730-프로세스구조/8.png" width="500">
-
-<blockquote>
-<p>디스패치 : ready 상태의 프로세스를 running 상태로 바꾸는 것</p>
-</blockquote>
-<p>컨텍스트 스위칭은 굉장히 짧은 시간에 진행되어야 하기 때문에 어셈블리어로 구현된다.</p>
 
       
     </div>

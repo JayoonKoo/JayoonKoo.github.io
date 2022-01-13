@@ -20,25 +20,28 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"jayoonkoo.github.io","root":"/","images":"/images","scheme":"Muse","version":"8.6.1","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="백엔드-Authentication 인증이란? : you are who you say you are, 다양한 방법으로 인증 가능하다 통상적으로 password, id 로 먼저 회원가입을 진행해서 서버에 id, passwrod 를 저장한다. 클라이언트는 로그인 할때 회원가입한  id, password를 서버에 전송한다. 어떻게 로그인 상태를 유지할 수 있을까?">
 <meta property="og:type" content="article">
-<meta property="og:title" content="티끌모아 태산">
-<meta property="og:url" content="https://jayoonkoo.github.io/2022/01/12/BackEnd/unca/220112-Authentication/index.html">
+<meta property="og:title" content="Authentication">
+<meta property="og:url" content="https://jayoonkoo.github.io/2022/01/13/BackEnd/220112-Authentication/index.html">
 <meta property="og:site_name" content="티끌모아 태산">
+<meta property="og:description" content="백엔드-Authentication 인증이란? : you are who you say you are, 다양한 방법으로 인증 가능하다 통상적으로 password, id 로 먼저 회원가입을 진행해서 서버에 id, passwrod 를 저장한다. 클라이언트는 로그인 할때 회원가입한  id, password를 서버에 전송한다. 어떻게 로그인 상태를 유지할 수 있을까?">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2022-01-12T04:12:02.197Z">
-<meta property="article:modified_time" content="2022-01-12T04:12:02.197Z">
+<meta property="article:published_time" content="2022-01-13T01:42:40.000Z">
+<meta property="article:modified_time" content="2022-01-13T01:46:37.599Z">
 <meta property="article:author" content="JayoonKoo">
+<meta property="article:tag" content="Authentication">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://jayoonkoo.github.io/2022/01/12/BackEnd/unca/220112-Authentication/">
+<link rel="canonical" href="https://jayoonkoo.github.io/2022/01/13/BackEnd/220112-Authentication/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://jayoonkoo.github.io/2022/01/12/BackEnd/unca/220112-Authentication/","path":"2022/01/12/BackEnd/unca/220112-Authentication/","title":""}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://jayoonkoo.github.io/2022/01/13/BackEnd/220112-Authentication/","path":"2022/01/13/BackEnd/220112-Authentication/","title":"Authentication"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title> | 티끌모아 태산</title>
+<title>Authentication | 티끌모아 태산</title>
   
 
 
@@ -85,9 +88,9 @@
   <ul class="main-menu menu">
         <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li>
         <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
-        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">13</span></a></li>
-        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">11</span></a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">134</span></a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">14</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">12</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">135</span></a></li>
   </ul>
 </nav>
 
@@ -105,7 +108,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           Table of Contents
@@ -118,6 +121,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%EB%B0%B1%EC%97%94%EB%93%9C-Authentication"><span class="nav-number">1.</span> <span class="nav-text">백엔드-Authentication</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -131,18 +135,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">134</span>
+          <span class="site-state-item-count">135</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-count">12</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-count">14</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -192,7 +196,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2022/01/12/BackEnd/unca/220112-Authentication/">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2022/01/13/BackEnd/220112-Authentication/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -205,7 +209,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          
+          Authentication
         </h1>
 
         <div class="post-meta-container">
@@ -215,8 +219,18 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
+      
 
-      <time title="Created: 2022-01-12 13:12:02" itemprop="dateCreated datePublished" datetime="2022-01-12T13:12:02+09:00">2022-01-12</time>
+      <time title="Created: 2022-01-13 10:42:40 / Modified: 10:46:37" itemprop="dateCreated datePublished" datetime="2022-01-13T10:42:40+09:00">2022-01-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/BackEnd/" itemprop="url" rel="index"><span itemprop="name">BackEnd</span></a>
+        </span>
     </span>
 
   
@@ -229,7 +243,40 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        
+        <h2 id="백엔드-Authentication"><a href="#백엔드-Authentication" class="headerlink" title="백엔드-Authentication"></a>백엔드-Authentication</h2><ul>
+<li>인증이란? : you are who you say you are, 다양한 방법으로 인증 가능하다 통상적으로 password, id 로<ul>
+<li>먼저 회원가입을 진행해서 서버에 id, passwrod 를 저장한다.</li>
+<li>클라이언트는 로그인 할때 회원가입한  id, password를 서버에 전송한다.</li>
+<li>어떻게 로그인 상태를 유지할 수 있을까?</li>
+</ul>
+</li>
+<li>세션과 쿠기 (서버에서 사용할 수 있는 전통적인 옵션- 어떻게 로그인 상태를 유지할지에 대한 방법)<ol>
+<li>세션 <ul>
+<li>서버에서 확인후 세션을 만든다 (userId, sessiontId, expiration) - Session DB에 저장 or 파일시스템이나 메모리도 될 수 있음</li>
+<li>쿠키에 HTTP Only로 sessiontId 정보를 전달함.</li>
+<li>다음 요청때마다 쿠키 정보를 전달해줌</li>
+<li>장점 : 브라우저에 전달만 하면 되서 간단하고, sessionId 만 전달하면되서 사용자의 정보를 전달하지 않아도 된다. HTTP Only를 사용하면 스크립트로 못읽기 때문에 보안상의 이점도 있다.</li>
+<li>단점 : Stateful 하기 때문에 다양한 서버들이 SettionDb를 읽어야 하고 많은 요청이 들어오게 된다. 내부적으로 네트워킹이 많아짐. 성능 하락</li>
+</ul>
+</li>
+<li>JWT (Json Web Token)<ul>
+<li>다음과 같은 정보를 JSON으로 만들고 토큰화해서 보낸다. header, payload, signature, 모든 정보는 인코딩해서 보내고 서버에서 secrete으로 사용하는 키도 인코딩해서 signature에 포함해서 보낸다.</li>
+<li>로그인 하면, 로그인 정보 + 만료 시간 등등 합쳐서 JWT를 만듦.</li>
+<li>클라이언트는 Header를 이용하여 모든 request마다 JWT를 포함해서 전달해 줌.</li>
+<li>서버는 JWT를 검증한 후에 데이터를 반환함.</li>
+<li>장점 : 서버에 State가 없다. 서버를 확장하거나 분산하기에 용이하다.</li>
+<li>단점 : JWT 자체가 단점이 될 수 있다. → 계속 JWT를 주고 받아야 한다. 만약 영원히 만료되지 않은 JWT를 헤커가 탈취한다면.. 사용할때 보안에 신경써야 한다.</li>
+</ul>
+</li>
+</ol>
+</li>
+<li>bcrypt 란?  : 사용자 정보를 그대로 저장하는 것이 아니라 암호화 해서 저장하기 위해 사용함. → 암호화만 가능한데 (암호화 한것을 비교하는 것), salt 가 없다면 경우의 수로 암호화 해 보면서 유추할 수 있어서 salt를 포함하여 경우의 수를 늘림. 10~12 정도로 설정. 길어지면 cpu 부하 심해짐..</li>
+<li>JWT, 32 시크릿 키로 권고 됨. 한번 발행된 토근은 변경되면 안된다. → 만약 한버이라도 변경 한다면 최종적으로 붙은 signature도 변경되어서 verify시 오류 발생하고 누군가 변경한 토큰인지 확인 가능하다.<ul>
+<li>만료될 수 있도록 만들어야 한다. → option으로 전달함. {expiresIn: 2} 이런식으로 → 2초 후에 만료</li>
+</ul>
+</li>
+</ul>
+
     </div>
 
     
@@ -237,18 +284,21 @@
     
 
     <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Authentication/" rel="tag"># Authentication</a>
+          </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2022/01/11/IOS/220111-%EB%BD%80%EB%AA%A8%EB%8F%84%EB%A1%9C%ED%83%80%EC%9D%B4%EB%B2%84/" rel="prev" title="DispatchSourceTimer, UIView Animation (뽀모도로 타이머)">
-                  <i class="fa fa-chevron-left"></i> DispatchSourceTimer, UIView Animation (뽀모도로 타이머)
+                <a href="/2022/01/13/IOS/220113-Alamofier,%20Cocoapods(%EC%BD%94%EB%A1%9C%EB%82%98%20%ED%98%84%ED%99%A9%EC%95%B1)/" rel="prev" title="Alamofier, Cocoapods(코로나 현황앱)">
+                  <i class="fa fa-chevron-left"></i> Alamofier, Cocoapods(코로나 현황앱)
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2022/01/13/IOS/220113-URLSession(%EB%82%A0%EC%94%A8%EC%95%B1)/" rel="next" title="URLSession(날씨앱)">
-                  URLSession(날씨앱) <i class="fa fa-chevron-right"></i>
+                <a href="/2022/01/13/BackEnd/220113-Oauth2.0/" rel="next" title="Oauth2.0">
+                  Oauth2.0 <i class="fa fa-chevron-right"></i>
                 </a>
             </div>
           </div>

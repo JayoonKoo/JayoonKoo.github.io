@@ -83,9 +83,9 @@
   <ul class="main-menu menu">
         <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li>
         <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
-        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">13</span></a></li>
-        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">11</span></a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">134</span></a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">14</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">12</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">135</span></a></li>
   </ul>
 </nav>
 
@@ -129,18 +129,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">134</span>
+          <span class="site-state-item-count">135</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-count">12</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-count">14</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -180,6 +180,110 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/09/20/modernJs/210907-formData/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JayoonKoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="티끌모아 태산">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/09/20/modernJs/210907-formData/" class="post-title-link" itemprop="url">formData</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2021-09-20 21:41:14 / Modified: 21:45:41" itemprop="dateCreated datePublished" datetime="2021-09-20T21:41:14+09:00">2021-09-20</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="FormData"><a href="#FormData" class="headerlink" title="FormData"></a>FormData</h1><p>HTML에 formData를 나타내는 생성자는 다음과 같다.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> formData = <span class="keyword">new</span> FormData([form]);</span><br></pre></td></tr></table></figure>
+
+<p>이렇게 생성해서 서버에서 보내는 작업을 하면 서버에서 볼 때 일반적인 양식 제출처럼 보인다.</p>
+<h2 id="Sending-a-simple-form"><a href="#Sending-a-simple-form" class="headerlink" title="Sending a simple form"></a>Sending a simple form</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">id</span>=<span class="string">&quot;formElem&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;name&quot;</span> <span class="attr">value</span>=<span class="string">&quot;John&quot;</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;surname&quot;</span> <span class="attr">value</span>=<span class="string">&quot;Smith&quot;</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></span><br><span class="line"><span class="javascript">  formElem.onsubmit = <span class="keyword">async</span> (e) =&gt; &#123;</span></span><br><span class="line"><span class="javascript">    e.preventDefault();</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">    <span class="keyword">let</span> response = <span class="keyword">await</span> fetch(<span class="string">&quot;/article/formdata/post/user&quot;</span>, &#123;</span></span><br><span class="line"><span class="javascript">      <span class="attr">method</span>: <span class="string">&quot;POST&quot;</span>,</span></span><br><span class="line"><span class="javascript">      <span class="attr">body</span>: <span class="keyword">new</span> FormData(formElem),</span></span><br><span class="line"><span class="javascript">    &#125;);</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">    <span class="keyword">let</span> result = <span class="keyword">await</span> response.json();</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">    alert(result.message);</span></span><br><span class="line"><span class="javascript">  &#125;;</span></span><br><span class="line"><span class="javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>서버 코드는 여기에 없다. 서버는 위에 코드에서 보낸 request를 받아서 응답한다.</p>
+<h2 id="FormData-Methods"><a href="#FormData-Methods" class="headerlink" title="FormData Methods"></a>FormData Methods</h2><ul>
+<li><code>formData.append(name, value)</code> - form data에 name과 value를 추가</li>
+<li><code>formData.append(name, blob, fileName)</code> - <code>&lt;input type=&quot;file&quot;&gt;</code> 인 것처럼 추가, 세번째 매개변수인 <code>fileName</code>인 진짜 파일 이름을 넣어줌.</li>
+<li><code>formData.delete(name)</code> - <code>name</code>이란 이름으로 추가된 필드를 제거함</li>
+<li><code>formData.get(name)</code> - <code>name</code>이란 이름으로 추가된 필드에 <code>value</code> 값을 얻음.</li>
+<li><code>formData.had(name)</code> - <code>name</code>이란 이름으로 추가된 필드가 있다면 ,<code>true</code> 반환 아닐 경우 <code>false</code> 반환</li>
+</ul>
+<p>formData는 기술적으로 같은 name에 필드를 추가할 수 있다. 따라서 append를 사용한다. 비슷한 역할을 하는 <code>.set</code> 메서드도 있다. 이 경우 기존에 있던것을 삭제 하고 추가한다.</p>
+<ul>
+<li><code>formData.set(name, value)</code></li>
+<li><code>formData.set(name, blob, fileName)</code></li>
+</ul>
+<p>또한 <code>for..of</code> 를 사용해서 요소를 반복할 수 있다.</p>
+<h2 id="Sending-a-form-with-a-file"><a href="#Sending-a-form-with-a-file" class="headerlink" title="Sending a form with a file"></a>Sending a form with a file</h2><p>form은 <code>Content-Type: multipart/form-data</code>로 보내지고 이것은 파일도 보낼 수 있다.</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">id</span>=<span class="string">&quot;formElem&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;firstName&quot;</span> <span class="attr">value</span>=<span class="string">&quot;John&quot;</span> /&gt;</span></span><br><span class="line">  Picture: <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;file&quot;</span> <span class="attr">name</span>=<span class="string">&quot;picture&quot;</span> <span class="attr">accept</span>=<span class="string">&quot;image/*&quot;</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></span><br><span class="line"><span class="javascript">  formElem.onsubmit = <span class="keyword">async</span> (e) =&gt; &#123;</span></span><br><span class="line"><span class="javascript">    e.preventDefault();</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">    <span class="keyword">let</span> response = <span class="keyword">await</span> fetch(<span class="string">&quot;/article/formdata/post/user-avatar&quot;</span>, &#123;</span></span><br><span class="line"><span class="javascript">      <span class="attr">method</span>: <span class="string">&quot;POST&quot;</span>,</span></span><br><span class="line"><span class="javascript">      <span class="attr">body</span>: <span class="keyword">new</span> FormData(formElem),</span></span><br><span class="line"><span class="javascript">    &#125;);</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">    <span class="keyword">let</span> result = <span class="keyword">await</span> response.json();</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">    alert(result.message);</span></span><br><span class="line"><span class="javascript">  &#125;;</span></span><br><span class="line"><span class="javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Sending-a-form-with-Blob-data"><a href="#Sending-a-form-with-Blob-data" class="headerlink" title="Sending a form with Blob data"></a>Sending a form with Blob data</h2><p>동적으로 생성된 바이너리 데이타 이미지 같은 것을 <code>Blob</code>으로 보낼 수 있다. <code>fetch</code>에 <code>body</code> 파라미터로 넒길 수 있다.<br>그러나 실제로는 이미지를 별도로 보내는 것이 아니라 name 을 추가한 form 으로 보내는 것이 편리한 경우가 많다.</p>
+<p>서버도 form으로 받는게 더 어울린다.</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span> <span class="attr">style</span>=<span class="string">&quot;margin:0&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">canvas</span></span></span><br><span class="line"><span class="tag">    <span class="attr">id</span>=<span class="string">&quot;canvasElem&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">width</span>=<span class="string">&quot;100&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">height</span>=<span class="string">&quot;80&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">style</span>=<span class="string">&quot;border:1px solid&quot;</span></span></span><br><span class="line"><span class="tag">  &gt;</span><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;button&quot;</span> <span class="attr">value</span>=<span class="string">&quot;Submit&quot;</span> <span class="attr">onclick</span>=<span class="string">&quot;submit()&quot;</span> /&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></span><br><span class="line"><span class="javascript">    canvasElem.onmousemove = <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">      <span class="keyword">let</span> ctx = canvasElem.getContext(<span class="string">&quot;2d&quot;</span>);</span></span><br><span class="line"><span class="javascript">      ctx.lineTo(e.clientX, e.clientY);</span></span><br><span class="line"><span class="javascript">      ctx.stroke();</span></span><br><span class="line"><span class="javascript">    &#125;;</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">    <span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">submit</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">      <span class="keyword">let</span> imageBlob = <span class="keyword">await</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve</span>) =&gt;</span></span></span><br><span class="line"><span class="javascript">        canvasElem.toBlob(resolve, <span class="string">&quot;image/png&quot;</span>)</span></span><br><span class="line"><span class="javascript">      );</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">      <span class="keyword">let</span> formData = <span class="keyword">new</span> FormData();</span></span><br><span class="line"><span class="javascript">      formData.append(<span class="string">&quot;firstName&quot;</span>, <span class="string">&quot;John&quot;</span>);</span></span><br><span class="line"><span class="javascript">      formData.append(<span class="string">&quot;image&quot;</span>, imageBlob, <span class="string">&quot;image.png&quot;</span>);</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">      <span class="keyword">let</span> response = <span class="keyword">await</span> fetch(<span class="string">&quot;/article/formdata/post/image-form&quot;</span>, &#123;</span></span><br><span class="line"><span class="javascript">        <span class="attr">method</span>: <span class="string">&quot;POST&quot;</span>,</span></span><br><span class="line"><span class="javascript">        <span class="attr">body</span>: formData,</span></span><br><span class="line"><span class="javascript">      &#125;);</span></span><br><span class="line"><span class="javascript">      <span class="keyword">let</span> result = <span class="keyword">await</span> response.json();</span></span><br><span class="line"><span class="javascript">      alert(result.message);</span></span><br><span class="line"><span class="javascript">    &#125;</span></span><br><span class="line"><span class="javascript">  </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>이미지 blob 데이터를 어떻게 추가했는지 보자.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">formData.append(<span class="string">&quot;image&quot;</span>, imageBlob, <span class="string">&quot;image.png&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>이는 <code>&lt;input type=&quot;file&quot; name=&quot;image&quot;&gt;</code>와 같다.</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -262,6 +366,110 @@
 <li><code>chunksAll</code>에 하나의 결과로 모은다. 아쉽게도 다른 메서드가 없기 때문에 반복문을 사용햇 가각의 chunk를 .set을 통해 복사한다. 하지만 아직도 바이트 어레이이다.</li>
 <li>byte를 string으로 해석할 필요가 있다. <code>TextDecoder</code>은 원하는 딱 이런 작업을 해줌.</li>
 </ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/09/20/modernJs/210909-fetch-abort/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JayoonKoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="티끌모아 태산">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/09/20/modernJs/210909-fetch-abort/" class="post-title-link" itemprop="url">fetch-abort</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2021-09-20 21:41:14 / Modified: 21:45:41" itemprop="dateCreated datePublished" datetime="2021-09-20T21:41:14+09:00">2021-09-20</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="Fetch-Abort"><a href="#Fetch-Abort" class="headerlink" title="Fetch: Abort"></a>Fetch: Abort</h1><p>fetch 는 promise를 반환하고 자바스크립트에서는 fetch를 중단하는 개념이 없다. 이런 목적을 위해 내장된 객체인 <code>AbortController</code>가 있다.<br>이것은 fetch 뿐만 아니라 비동기 작업에서도 사용될 수 있다.</p>
+<h2 id="The-AbortController-object"><a href="#The-AbortController-object" class="headerlink" title="The AbortController object"></a>The AbortController object</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> controller = <span class="keyword">new</span> AbortController();</span><br></pre></td></tr></table></figure>
+
+<p>반환하는 객체는 간단하다.</p>
+<ul>
+<li><code>abort()</code> 메서드를 갖는다.</li>
+<li>이벤트 등록을 위한 <code>signal</code> 프로퍼티를 갖는다.</li>
+</ul>
+<p><code>abort()</code>가 호출되었을 때</p>
+<ul>
+<li><code>controller.signal</code> 은 <code>abort</code> 이벤트를 내보낸다.</li>
+<li><code>controller.signal.aborted</code> 프로퍼티가 <code>true</code>가 된다.</li>
+</ul>
+<p>취소 가능한 작업을 <code>controller.signal</code>에 리스너로 등록한다. <code>controller.abort()</code>를 호출할때 리스너가 트리거 된다.</p>
+<p>fetch를 포함하지 않은 예제는 다음과 같다.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> controller = <span class="keyword">new</span> AbortController();</span><br><span class="line"><span class="keyword">let</span> signal = controller.signal;</span><br><span class="line"></span><br><span class="line"><span class="comment">// teh party that performs a cancelable operation</span></span><br><span class="line"><span class="comment">// gets &quot;signal&quot; object</span></span><br><span class="line"><span class="comment">// and sets the listener to trigger when controller.abort() is called</span></span><br><span class="line">signal.addEventListener(<span class="string">&quot;abort&quot;</span>, <span class="function">() =&gt;</span> alert(<span class="string">&quot;abort!!&quot;</span>));</span><br><span class="line"></span><br><span class="line"><span class="comment">// the other party, that cancels (at any point later)</span></span><br><span class="line">controller.abort(); <span class="comment">// abort!!</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//the event triggers and signal.aborted becomes true</span></span><br><span class="line">alert(signal.aborted); <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+
+<p>코드에서 AbortController 없이 비슷한 작업을 할 수 있지만 fecth 가 AbortController 객체와 함께 작동하고 통합된다는것이 중요하다.</p>
+<h2 id="Using-with-fetch"><a href="#Using-with-fetch" class="headerlink" title="Using with fetch"></a>Using with fetch</h2><p><code>AbortController</code>에 <code>signal</code>프로퍼티를 <code>fetch</code>에 옵션으로 전달해 주면 된다.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> controller = <span class="keyword">new</span> AbortController();</span><br><span class="line">fetch(url, &#123;</span><br><span class="line">  <span class="attr">signal</span>: controller.signal,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>fetch가 중단되면 <code>AbortError</code>를 던진다. <code>try..catch</code>를 통해서 에러를 잡을 수 있다.</p>
+<p>전체 예제</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// abort in 1 second</span></span><br><span class="line"><span class="keyword">let</span> controller = <span class="keyword">new</span> AbofrtController();</span><br><span class="line"><span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> controller.abort(), <span class="number">1000</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">  <span class="keyword">let</span> response = <span class="keyword">await</span> fetch(<span class="string">&quot;/article/fetch-abort/demo/hang&quot;</span>, &#123;</span><br><span class="line">    <span class="attr">signal</span>: controller.signal,</span><br><span class="line">  &#125;);</span><br><span class="line">&#125; <span class="keyword">catch</span> (err) &#123;</span><br><span class="line">  <span class="keyword">if</span> (err.name == <span class="string">&quot;AbortError&quot;</span>) &#123;</span><br><span class="line">    alert(<span class="string">&quot;Aborted!&quot;</span>);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">throw</span> err;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="AbortController-is-scalable"><a href="#AbortController-is-scalable" class="headerlink" title="AbortController is scalable"></a>AbortController is scalable</h2><p><code>AbortController</code>은 확장가능햇 한번에 여러 fetch를 중단시킬 수 있다.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> urls = [...];</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> controller = <span class="keyword">new</span> AbortController();</span><br><span class="line"></span><br><span class="line"><span class="comment">// an array of fetch promises</span></span><br><span class="line"><span class="keyword">let</span> fetchJobs = urls.map(<span class="function"><span class="params">url</span> =&gt;</span> fetch(url, &#123;</span><br><span class="line">	<span class="attr">signal</span>: controller.signal</span><br><span class="line">&#125;));</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> results = <span class="keyword">await</span> <span class="built_in">Promise</span>.all(fetchJobs);</span><br><span class="line"></span><br><span class="line"><span class="comment">// if controller.abort() is called from elsewhere, it aborts all fetches</span></span><br></pre></td></tr></table></figure>
+
+<p>다른 비동기 작업도 <code>fetch</code>와 함께 하나의 <code>AbortController</code>로 멈출 수 있다.</p>
+<p>우린 단지 <code>abort</code> 이벤트를 들으면 된다.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> urls = [...];</span><br><span class="line"><span class="keyword">let</span> controller = <span class="keyword">new</span> AbortController();</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> ourJob = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span>  &#123;</span><br><span class="line">	<span class="comment">// our task</span></span><br><span class="line">	controller.signal.addEventListener(<span class="string">&#x27;abort&#x27;</span>, reject);</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> fetchJobs = urls.map(<span class="function"><span class="params">url</span> =&gt;</span> fetch(url, &#123;</span><br><span class="line">	<span class="attr">signal</span>: controller.signal</span><br><span class="line">&#125;));</span><br><span class="line"></span><br><span class="line"><span class="comment">// Wait for feches and our tast in parallel</span></span><br><span class="line"><span class="keyword">let</span> results = <span class="keyword">await</span> <span class="built_in">Promise</span>.all([...fetchJobs, ourJob]);</span><br><span class="line"></span><br><span class="line"><span class="comment">// if controller.abort() is called from elsewhere, it aborts all fetches and our Job</span></span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -418,110 +626,6 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">200 OK</span><br><span class="line">Access-Control-Allow-Origin: https://javascript.info</span><br><span class="line">Access-Control-Allow-Credentials: true</span><br></pre></td></tr></table></figure>
 
 <p>이때, <code>Access-Contorl-Allow-Origin</code>에 *를 쓸 수 없다. 정확한 오리진 정보만 명시되어야 서버에서 신뢰할 수 있기 때문이다.</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/09/20/modernJs/210909-fetch-abort/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JayoonKoo">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="티끌모아 태산">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/09/20/modernJs/210909-fetch-abort/" class="post-title-link" itemprop="url">fetch-abort</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2021-09-20 21:41:14 / Modified: 21:45:41" itemprop="dateCreated datePublished" datetime="2021-09-20T21:41:14+09:00">2021-09-20</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="Fetch-Abort"><a href="#Fetch-Abort" class="headerlink" title="Fetch: Abort"></a>Fetch: Abort</h1><p>fetch 는 promise를 반환하고 자바스크립트에서는 fetch를 중단하는 개념이 없다. 이런 목적을 위해 내장된 객체인 <code>AbortController</code>가 있다.<br>이것은 fetch 뿐만 아니라 비동기 작업에서도 사용될 수 있다.</p>
-<h2 id="The-AbortController-object"><a href="#The-AbortController-object" class="headerlink" title="The AbortController object"></a>The AbortController object</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> controller = <span class="keyword">new</span> AbortController();</span><br></pre></td></tr></table></figure>
-
-<p>반환하는 객체는 간단하다.</p>
-<ul>
-<li><code>abort()</code> 메서드를 갖는다.</li>
-<li>이벤트 등록을 위한 <code>signal</code> 프로퍼티를 갖는다.</li>
-</ul>
-<p><code>abort()</code>가 호출되었을 때</p>
-<ul>
-<li><code>controller.signal</code> 은 <code>abort</code> 이벤트를 내보낸다.</li>
-<li><code>controller.signal.aborted</code> 프로퍼티가 <code>true</code>가 된다.</li>
-</ul>
-<p>취소 가능한 작업을 <code>controller.signal</code>에 리스너로 등록한다. <code>controller.abort()</code>를 호출할때 리스너가 트리거 된다.</p>
-<p>fetch를 포함하지 않은 예제는 다음과 같다.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> controller = <span class="keyword">new</span> AbortController();</span><br><span class="line"><span class="keyword">let</span> signal = controller.signal;</span><br><span class="line"></span><br><span class="line"><span class="comment">// teh party that performs a cancelable operation</span></span><br><span class="line"><span class="comment">// gets &quot;signal&quot; object</span></span><br><span class="line"><span class="comment">// and sets the listener to trigger when controller.abort() is called</span></span><br><span class="line">signal.addEventListener(<span class="string">&quot;abort&quot;</span>, <span class="function">() =&gt;</span> alert(<span class="string">&quot;abort!!&quot;</span>));</span><br><span class="line"></span><br><span class="line"><span class="comment">// the other party, that cancels (at any point later)</span></span><br><span class="line">controller.abort(); <span class="comment">// abort!!</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//the event triggers and signal.aborted becomes true</span></span><br><span class="line">alert(signal.aborted); <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
-
-<p>코드에서 AbortController 없이 비슷한 작업을 할 수 있지만 fecth 가 AbortController 객체와 함께 작동하고 통합된다는것이 중요하다.</p>
-<h2 id="Using-with-fetch"><a href="#Using-with-fetch" class="headerlink" title="Using with fetch"></a>Using with fetch</h2><p><code>AbortController</code>에 <code>signal</code>프로퍼티를 <code>fetch</code>에 옵션으로 전달해 주면 된다.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> controller = <span class="keyword">new</span> AbortController();</span><br><span class="line">fetch(url, &#123;</span><br><span class="line">  <span class="attr">signal</span>: controller.signal,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<p>fetch가 중단되면 <code>AbortError</code>를 던진다. <code>try..catch</code>를 통해서 에러를 잡을 수 있다.</p>
-<p>전체 예제</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// abort in 1 second</span></span><br><span class="line"><span class="keyword">let</span> controller = <span class="keyword">new</span> AbofrtController();</span><br><span class="line"><span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> controller.abort(), <span class="number">1000</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">  <span class="keyword">let</span> response = <span class="keyword">await</span> fetch(<span class="string">&quot;/article/fetch-abort/demo/hang&quot;</span>, &#123;</span><br><span class="line">    <span class="attr">signal</span>: controller.signal,</span><br><span class="line">  &#125;);</span><br><span class="line">&#125; <span class="keyword">catch</span> (err) &#123;</span><br><span class="line">  <span class="keyword">if</span> (err.name == <span class="string">&quot;AbortError&quot;</span>) &#123;</span><br><span class="line">    alert(<span class="string">&quot;Aborted!&quot;</span>);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">throw</span> err;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="AbortController-is-scalable"><a href="#AbortController-is-scalable" class="headerlink" title="AbortController is scalable"></a>AbortController is scalable</h2><p><code>AbortController</code>은 확장가능햇 한번에 여러 fetch를 중단시킬 수 있다.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> urls = [...];</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> controller = <span class="keyword">new</span> AbortController();</span><br><span class="line"></span><br><span class="line"><span class="comment">// an array of fetch promises</span></span><br><span class="line"><span class="keyword">let</span> fetchJobs = urls.map(<span class="function"><span class="params">url</span> =&gt;</span> fetch(url, &#123;</span><br><span class="line">	<span class="attr">signal</span>: controller.signal</span><br><span class="line">&#125;));</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> results = <span class="keyword">await</span> <span class="built_in">Promise</span>.all(fetchJobs);</span><br><span class="line"></span><br><span class="line"><span class="comment">// if controller.abort() is called from elsewhere, it aborts all fetches</span></span><br></pre></td></tr></table></figure>
-
-<p>다른 비동기 작업도 <code>fetch</code>와 함께 하나의 <code>AbortController</code>로 멈출 수 있다.</p>
-<p>우린 단지 <code>abort</code> 이벤트를 들으면 된다.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> urls = [...];</span><br><span class="line"><span class="keyword">let</span> controller = <span class="keyword">new</span> AbortController();</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> ourJob = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span>  &#123;</span><br><span class="line">	<span class="comment">// our task</span></span><br><span class="line">	controller.signal.addEventListener(<span class="string">&#x27;abort&#x27;</span>, reject);</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> fetchJobs = urls.map(<span class="function"><span class="params">url</span> =&gt;</span> fetch(url, &#123;</span><br><span class="line">	<span class="attr">signal</span>: controller.signal</span><br><span class="line">&#125;));</span><br><span class="line"></span><br><span class="line"><span class="comment">// Wait for feches and our tast in parallel</span></span><br><span class="line"><span class="keyword">let</span> results = <span class="keyword">await</span> <span class="built_in">Promise</span>.all([...fetchJobs, ourJob]);</span><br><span class="line"></span><br><span class="line"><span class="comment">// if controller.abort() is called from elsewhere, it aborts all fetches and our Job</span></span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -1343,98 +1447,6 @@
 <li>init 프로세스를 기반으로 fork() 시스템콜을 사용해서, 신규 프로세스가 생성 된다. </li>
 </ul>
 <h2 id="리눅스와-권한"><a href="#리눅스와-권한" class="headerlink" title="리눅스와 권한"></a>리눅스와 권한</h2><p>운영체제는 사용자 리소스 권한을 관리한다.<br>리눇는 사용자 / 그룹으로 권한을 관리한다.<br>root는 슈퍼 관리자이다.<br>파일마다 소유자, 소유자 그룹, 모든 사용자에 대한 읽고, 쓰고, 실행되는 권한을 관리한다.<br>접근 권한 정보는 inode의 자료구조에 저장된다. </p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/09/12/system-programing/210809-%EB%A6%AC%EB%88%85%EC%8A%A4(%EC%9C%A0%EB%8B%89%EC%8A%A4)%20%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JayoonKoo">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="티끌모아 태산">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/09/12/system-programing/210809-%EB%A6%AC%EB%88%85%EC%8A%A4(%EC%9C%A0%EB%8B%89%EC%8A%A4)%20%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/" class="post-title-link" itemprop="url">리눅스(유닉스) 운영체제</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-09-12 23:46:02" itemprop="dateCreated datePublished" datetime="2021-09-12T23:46:02+09:00">2021-09-12</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/CS/" itemprop="url" rel="index"><span itemprop="name">CS</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="리눅스"><a href="#리눅스" class="headerlink" title="리눅스"></a>리눅스</h1><p>서버에 많이 사용되는 운영체제 </p>
-<p>프로그래밍 할때에도 많이 사용 된다.<br>컴파일 시간이 줄어든다. </p>
-<p>클라우드 컴퓨팅 (AWS) 에도 많이 사용됨</p>
-<p>운영체제, 소프트웨어의 대부 UNIX 계열 운영체제이다.<br>완전 프로그래머 스타일이다. </p>
-<p>plain 하게 프로그래밍 가능하다.<br>ANSI C - C 언어 표준 (표준으로 코딩이 가능하다.)</p>
-<br/>
-
-<h2 id="리눅스의-역사와-배경"><a href="#리눅스의-역사와-배경" class="headerlink" title="리눅스의 역사와 배경"></a>리눅스의 역사와 배경</h2><h3 id="리눅스-시작"><a href="#리눅스-시작" class="headerlink" title="리눅스 시작"></a>리눅스 시작</h3><p>리누스 토발즈가 개발.<br>대학에 있는 UNIX 컴퓨터를 집에서 쓰고 싶었다.<br>다중 사용자, 다중 작업(시분할 시스템, 멀티 태스킹) 을 지원할 수 있도록 만들었다. </p>
-<h3 id="GNU-프로젝트"><a href="#GNU-프로젝트" class="headerlink" title="GNU 프로젝트"></a>GNU 프로젝트</h3><p>GNU = Gnu is Not Unix</p>
-<p>유닉스 운영체제를 여러 회사에서 개발했는데, 소스를 공유하지 않았다.<br>리차드 스톨만이 초기 컴퓨터 개발 공동체의 상호협력적인 문화로 돌아가자고 1985년 GNU 선언문을 발표했다.<br>기술을 공유 되어야 한다고 주장.</p>
-<p>GNU 프로젝트를 지원하기 위해 자유 소프트웨어 재단 설립 GNU 공개 라이선스(GPL) 규약을 제공.<br>이 소스를 사용할수 있지만 해당 기술을 사용했다면 기술은 공유 되어야 한다는 규약.</p>
-<h4 id="GPL-라이선스"><a href="#GPL-라이선스" class="headerlink" title="GPL 라이선스"></a>GPL 라이선스</h4><p>GPL 프로그램은 어떤 형태로든 사용할 수 있지만, 다시 배포하기 위해서 동일한 GPL 라이선스 사용해야 함.</p>
-<h3 id="GNU-Hurd"><a href="#GNU-Hurd" class="headerlink" title="GNU Hurd"></a>GNU Hurd</h3><p>운영체제 커널 개발 시도 - GNU Hurd</p>
-<p>운영체제의 필요한 쉘 응용 프로그램, API, 라이브러리 System Call 개발, 컴파일러 개발</p>
-<img src="images/210809-리눅스(유닉스)%20운영체제/1.png" width="300">
-
-<h3 id="GNU-프로젝트와-리눅스"><a href="#GNU-프로젝트와-리눅스" class="headerlink" title="GNU 프로젝트와 리눅스"></a>GNU 프로젝트와 리눅스</h3><p>GNU Hurd 개발 지연</p>
-<p>리누스 토발즈가 리눅스 커널 소스 오픈 소식 들음. GNU Hurd 를 개발 안해도 되겠네? </p>
-<p>GNU 프로젝트 산출물과 리눅스 커널이 통합 개발 되기 시작. </p>
-<p>GNU/ Linux 라고 부르기를 희망함. 리차드 스톨만이 (GNU 창시자.)</p>
 
       
     </div>
