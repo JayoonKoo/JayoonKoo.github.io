@@ -85,7 +85,7 @@
         <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
         <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">13</span></a></li>
         <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">11</span></a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">131</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">134</span></a></li>
   </ul>
 </nav>
 
@@ -129,7 +129,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">131</span>
+          <span class="site-state-item-count">134</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -180,6 +180,275 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/12/09/TIL/211208/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JayoonKoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="티끌모아 태산">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/12/09/TIL/211208/" class="post-title-link" itemprop="url">211208</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2021-12-09 16:22:05 / Modified: 16:22:25" itemprop="dateCreated datePublished" datetime="2021-12-09T16:22:05+09:00">2021-12-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/TIL/" itemprop="url" rel="index"><span itemprop="name">TIL</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="211208"><a href="#211208" class="headerlink" title="211208"></a>211208</h1><h2 id="백엔드"><a href="#백엔드" class="headerlink" title="백엔드"></a>백엔드</h2><ul>
+<li>404 api 없음</li>
+<li>500 서버 에러</li>
+<li>⇒ 의미가 충분한 status code가 있다면 굳이 json을 보내주지 않아도 괜찮다.</li>
+<li>router를 나눌것.</li>
+</ul>
+<h2 id="프론트엔드"><a href="#프론트엔드" class="headerlink" title="프론트엔드"></a>프론트엔드</h2><ul>
+<li>input에서 제어 컴포넌트로 만들면 계속 해서 함수형 컴포넌트가 호출 되어서 컴포넌트 안에 debounce 가 제대로 작동하지 않는 이슈가 있었음.</li>
+<li>추천 검색어를 선택하면 input 에 value 가 바뀌어야 하는데 state로 관리 하지 못하면 문제가 생김.. 그렇다고 제어 컴포넌트로 만들면 위에 같은 문제..</li>
+<li>예를 들어 asdf 입력하면 asdf * 3번에 요청이 서버로 가는 이슈.. 원래는 asdf → asdf 로 한번에 요청하는 방식 → dom 을 조작해보자 생각함.</li>
+<li>useRef 로 dom 을 다룰수 있을줄 알았는데, 그냥 ref 로 넘겨주는것으로 dom처럼 사용할 수는 없음..</li>
+<li>useRef.current 를 사용해서 documnet.querySelector() 로 componentDidMound 시점에 넘겨주면 실제 Dom 을 조작하듯이 사용할수 있음.</li>
+<li>근데 생각해보니 useEffect 로 input에 변화로 debounce 동작하게 하면 문제 될거 없어보임.. 이렇게 삽질을 합니다</li>
+</ul>
+<h2 id="리액트-디자인-패턴"><a href="#리액트-디자인-패턴" class="headerlink" title="리액트 디자인 패턴"></a>리액트 디자인 패턴</h2><ul>
+<li>디자인 패턴이 필요한 이유 ? 모두가 사용하기 쉬운 API를 재공하고, 재 사용하 위해서, 확장성을 위해서 → 모두가 알고 있는 약속을 통해서</li>
+<li>검증된 패턴을 통해서 낮은 결합도와 재사용성 높은 컴포넌트를 만들 수 있음.</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/12/03/TIL/211202/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JayoonKoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="티끌모아 태산">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/12/03/TIL/211202/" class="post-title-link" itemprop="url">21120</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2021-12-03 23:18:13 / Modified: 23:18:34" itemprop="dateCreated datePublished" datetime="2021-12-03T23:18:13+09:00">2021-12-03</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/TIL/" itemprop="url" rel="index"><span itemprop="name">TIL</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="211202"><a href="#211202" class="headerlink" title="211202"></a>211202</h1><h2 id="DOM"><a href="#DOM" class="headerlink" title="DOM"></a>DOM</h2><ul>
+<li><code>document.elementFromPoint</code> 를 사용해 포인터 아래의 드롭할 수 있는 요소를 감지한다.</li>
+<li><code>Pointer Event</code> 로 touch를 다룰때는 css 속성에 <code>touch-event: none</code> 을 주어야 한다.</li>
+<li>multi-touch surport <code>pointerId</code> <code>isPrimary</code></li>
+<li><code>pressure</code> , <code>width/height</code></li>
+<li><code>cut</code>, <code>copy</code>, <code>paste</code> 같은 이벤트는 <code>event.clipboardData</code> 를 통해서 클립보드에 저장된 데이터를 확인할 수 있다.</li>
+</ul>
+<h2 id="리액트-타입스크립트"><a href="#리액트-타입스크립트" class="headerlink" title="리액트 타입스크립트"></a>리액트 타입스크립트</h2><ul>
+<li>함수의 실행 결과를 타입으로 가져오고 싶을때는 <code>ReturnType&lt;typeof increase&gt;</code> (<code>increase</code> 는 함수) 와 가은 식으로 사용할 수 있다.</li>
+<li><code>typesafe-actions</code> 를 사용하면 리덕스 관련한 작업을 보다 간단하게 할 수 있다.</li>
+</ul>
+<h2 id="알고리즘"><a href="#알고리즘" class="headerlink" title="알고리즘"></a>알고리즘</h2><p>항상 특정한 조건에 따라서 다른 상황으로 바꿔주기 그리디는 정당성을 확인하는것이 중요하다. 먼저 정렬을 하고 정당성을 확인해보는것도 좋은 방법 N이 200000 이고 1초 → 정렬 가능, 그리디 뭐가 있지?</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/12/02/TIL/211201/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JayoonKoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="티끌모아 태산">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/12/02/TIL/211201/" class="post-title-link" itemprop="url">211201</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2021-12-02 13:54:59 / Modified: 13:55:21" itemprop="dateCreated datePublished" datetime="2021-12-02T13:54:59+09:00">2021-12-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/TIL/" itemprop="url" rel="index"><span itemprop="name">TIL</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="211201"><a href="#211201" class="headerlink" title="211201"></a>211201</h1><h2 id="리액트-타입스크립트-사용"><a href="#리액트-타입스크립트-사용" class="headerlink" title="리액트 타입스크립트 사용"></a>리액트 타입스크립트 사용</h2><ul>
+<li>fucntion 키워드를 사용하는 typescirpt 컴포넌트는 children 을 가지지 않는다. (React.FC 를 명시하지 않을 경우) React.FC 로 선언한 컴포넌트는 children을 가진다.</li>
+<li>children 의 타입은 React.ReactNode</li>
+<li>styled Components를 사용할때나 여러가지 상황에서 굳이 React.FC를 선언하면 불편해진다. 명확하게 표시하고 싶을때 사용해도 되지만 굳이 사용하지 않아도 무방하다.</li>
+<li>useReducer 를 사용할땐 Action 타입을 지정해 준다.</li>
+</ul>
+<h2 id="알고리즘"><a href="#알고리즘" class="headerlink" title="알고리즘"></a>알고리즘</h2><ul>
+<li>그리드 알고리즘 : 매순간 최적이라고 생각하는 것을 선택한다. 하지만 반드시 답을 보장하지는 않는다.</li>
+</ul>
+<h2 id="수업"><a href="#수업" class="headerlink" title="수업"></a>수업</h2><p>npm i express-generator ( express 탬플릿을 만들어줌)</p>
+<h2 id="styled-components"><a href="#styled-components" class="headerlink" title="styled components"></a>styled components</h2><ul>
+<li>theme 를 관리하기 위해서 styled compoents 에 ThemeProvider, ThemContext 조합을 사용한다. 이렇게 theme 을 주입하면 모든 컴포넌트에서 props로 theme 변수에 접근할 수 있다.</li>
+<li>useContext 를 사용해 인수로 ThemeContext 를 넘겨주면 컴포넌트 내에서 변수로 사용할 수 도 있다. 여기서 테마를 바꾸는 setTheme 같은 작업을 수행할 수 있다.</li>
+<li>테마 같은 경우는 theme 폴더에 파일별로 관리하되 id 를 주어서 어떤 테마인지 식별할 수 있도록 하면 현제 내 테마 상태가 어떤건지 id로 쉽게 판별할 수 있다.</li>
+</ul>
+<h2 id="backend-express"><a href="#backend-express" class="headerlink" title="backend express"></a>backend express</h2><ul>
+<li>app.use(express.urlencoded({extended:false})) ⇒ html form → body 로 변환 해 주는 것</li>
+<li>cors: 클라이언트와 서버가 다른 도메인에 있다면 원칙적으로는 어떤 데이터도 받을 수 없다. 서버에서 Access-Contorol-Allow-Origin 설정 되어 있어야 함. Access-Contorol-Allow-Methods 로 가능한 메서드 설정해 주어야 함. 이럴 때 사용하는 미들웨어 cors → app.use(cors( { origin: [‘http~’]})) , option으로 origin, optionSuccessStatus, credentials → Access-Contorols-Allow-Credintial 설정</li>
+<li>그 밖에 자주 사용되는 미들웨어 : cookie-parser (req.cookie 로 읽을 수 있도록 함.), morgan (어떤 요청, 얼마나 걸렸는지 로그를 남기고 싶을때) app.use(morgan(‘combined’)) &lt;compbine → 포맷임, 다른건 깃헙에서 찾아보길&gt;, helmet(보안에 필요한 헤더를 추가해줌)</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1090,345 +1359,6 @@
 <figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Dialog</span>(<span class="params">props</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="xml"><span class="tag">&lt;<span class="name">FancyBorder</span> <span class="attr">color</span>=<span class="string">&quot;blue&quot;</span>&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;<span class="name">h1</span> <span class="attr">className</span>=<span class="string">&quot;Dialog-title&quot;</span>&gt;</span>&#123;props.title&#125;<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;<span class="name">p</span> <span class="attr">className</span>=<span class="string">&quot;Dialog-message&quot;</span>&gt;</span>&#123;props.message&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></span><br><span class="line"><span class="xml">      &#123;props.children&#125;</span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;/<span class="name">FancyBorder</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SignUpDialog</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">props</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">super</span>(props);</span><br><span class="line">    <span class="built_in">this</span>.handleChange = <span class="built_in">this</span>.handleChange.bind(<span class="built_in">this</span>);</span><br><span class="line">    <span class="built_in">this</span>.handleSignUp = <span class="built_in">this</span>.handleSignUp.bind(<span class="built_in">this</span>);</span><br><span class="line">    <span class="built_in">this</span>.state = &#123; <span class="attr">login</span>: <span class="string">&quot;&quot;</span> &#125;;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">render</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      <span class="xml"><span class="tag">&lt;<span class="name">Dialog</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">        <span class="attr">title</span>=<span class="string">&quot;Mars Exploration Program&quot;</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">        <span class="attr">message</span>=<span class="string">&quot;How should we refer to you?&quot;</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">      &gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">value</span>=<span class="string">&#123;this.state.login&#125;</span> <span class="attr">onChange</span>=<span class="string">&#123;this.handleChange&#125;</span> /&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;this.handleSignUp&#125;</span>&gt;</span>Sign Me Up!<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;/<span class="name">Dialog</span>&gt;</span></span></span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">handleChange</span>(<span class="params">e</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.setState(&#123; <span class="attr">login</span>: e.target.value &#125;);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">handleSignUp</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    alert(<span class="string">`Welcome aboard, <span class="subst">$&#123;<span class="built_in">this</span>.state.login&#125;</span>!`</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h2 id="상속은"><a href="#상속은" class="headerlink" title="상속은?"></a>상속은?</h2><p>대부분 사용하지 않는다. React에서는 Props로 어떤 값도 전달 가능하기 때문에 모양과 동작을 유연하게 커스터마이징 할 수 있다.<br>또한, JavaScript이기 때문에 모듈로 분리할 수 도 있고 필요할때 import 하기도 가능하다.</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/10/23/react/official-docs/211020-hooks%20%EA%B0%9C%EC%9A%94/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JayoonKoo">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="티끌모아 태산">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/10/23/react/official-docs/211020-hooks%20%EA%B0%9C%EC%9A%94/" class="post-title-link" itemprop="url">hooks 개요</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2021-10-23 22:16:06 / Modified: 22:16:41" itemprop="dateCreated datePublished" datetime="2021-10-23T22:16:06+09:00">2021-10-23</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/react/" itemprop="url" rel="index"><span itemprop="name">react</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="hooks-개요"><a href="#hooks-개요" class="headerlink" title="hooks 개요"></a>hooks 개요</h1><h2 id="Hook-이-뭔가요"><a href="#Hook-이-뭔가요" class="headerlink" title="Hook 이 뭔가요?"></a>Hook 이 뭔가요?</h2><p>Hook은 함수 컴포넌트에서 React state와 생명주기 기능을 연동(Hook Into) 할 수 있게 해주는 함수이다.</p>
-<p>hooks 를 사용하면 class 컴포넌트가 아닌 함수형 컴포넌트로 생명주기 메서드와 동일한 기능을 사용할 수 있다.</p>
-<p>버튼을 클릭하면 count가 1씩 증가형 rendering 하는 컴포넌트이다. 여기서 <code>useState</code>를 hooks 라고 하고 초기값을 입력하여 호출하면 값과 설정해주는 함수가 나온다. <code>setCount</code>와 같은 메서드는 클래스 컴포넌트에 <code>this.setState</code>와 같다고 할 수 있는데 setState 처럼 꼭 객체를 넣을 필요가 없고, 이전 state와 새로운 state를 합치지 않는다는 차이점이 있다.</p>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">App</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> [count, setCount] = React.useState(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="xml"><span class="tag">&lt;&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;<span class="name">p</span>&gt;</span> Conter is &#123;count&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;()</span> =&gt;</span> setCount((prev) =&gt; prev + 1)&#125;&gt;Plus button<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;/&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">ReactDOM.render(<span class="xml"><span class="tag">&lt;<span class="name">App</span> /&gt;</span></span>, <span class="built_in">document</span>.getElementById(<span class="string">&quot;root&quot;</span>));</span><br></pre></td></tr></table></figure>
-
-<h2 id="Effect-Hook"><a href="#Effect-Hook" class="headerlink" title="Effect Hook"></a>Effect Hook</h2><p>컴포넌트 안에서 데이털르 가져오거나 구독하고, DOM을 직접 조작하는 작업을 종종 하게 된다. 이런 작업은 다른 컴포넌트에 영향을 줄 수도 있기 때문에 effect 또는 side effcect 라고 한다.</p>
-<p>Effect Hook, 즉 <code>useEffect</code>는 side effects를 수행할 수 있게 해준다. 클래스 컴포넌트의 <code>componentDidMount</code>, <code>componentDidUpdate</code>, <code>componentWillUnmount</code> 와 같은 목적으로 제공된다.</p>
-<p>다음 예는 동적으로 브라우저에 타이틀을 변경 시킨다.</p>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">App</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> [count, setCount] = React.useState(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">  React.useEffect(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">document</span>.title = <span class="string">`You Clicked <span class="subst">$&#123;count&#125;</span> times`</span>;</span><br><span class="line">  &#125;, [count]);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="xml"><span class="tag">&lt;&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;<span class="name">p</span>&gt;</span> Conter is &#123;count&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;()</span> =&gt;</span> setCount((prev) =&gt; prev + 1)&#125;&gt;Plus button<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;/&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">ReactDOM.render(<span class="xml"><span class="tag">&lt;<span class="name">App</span> /&gt;</span></span>, <span class="built_in">document</span>.getElementById(<span class="string">&quot;root&quot;</span>));</span><br></pre></td></tr></table></figure>
-
-<p>마치 <code>componentDidMount</code>와 <code>componentDidUpdate</code>를 합쳐 놓은것과 같다.</p>
-<p>만약 side effect를 일으키는 작업을 해제 시켜야 한다면 useEffect내에서 함수를 반환하면 된다. <code>componentWillUnmount</code>와 같다.</p>
-<p>useEffect는 useState와 마찬가지로 여러 개를 사용할 수 있고, effect 해제와 같은 로직을 한곳에 작성할 수 있어서 관리하기 슆다.</p>
-<h2 id="Hook-사용-규칙"><a href="#Hook-사용-규칙" class="headerlink" title="Hook 사용 규칙"></a>Hook 사용 규칙</h2><ul>
-<li><p>최상위 에서만 Hook을 호출해야한다. 중첩된 함수에서 hook 실행 금지</p>
-</li>
-<li><p>React 함수 컴포넌트에서만 Hook 을 호출해야 한다. 일반 컴포넌트에서는 Hook 을 호출하면 안된다. 유일하게 허용하는 경우는 costomHook 에서다.</p>
-</li>
-</ul>
-<h2 id="costom-hook"><a href="#costom-hook" class="headerlink" title="costom hook"></a>costom hook</h2><p>커스텀 훅은 컴포넌트 트리에 새 컴포넌트를 추가하지 않고 상태 관련 로직을 재사용할 수 있게 해준다.</p>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React, &#123; useState, useEffect &#125; <span class="keyword">from</span> <span class="string">&quot;react&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">useFriendStatus</span>(<span class="params">friendID</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> [isOnline, setIsOnline] = useState(<span class="literal">null</span>);</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">handleStatusChange</span>(<span class="params">status</span>) </span>&#123;</span><br><span class="line">    setIsOnline(status.isOnline);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  useEffect(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    ChatAPI.subscribeToFriendStatus(friendID, handleStatusChange);</span><br><span class="line">    <span class="keyword">return</span> <span class="function">() =&gt;</span> &#123;</span><br><span class="line">      ChatAPI.unsubscribeFromFriendStatus(friendID, handleStatusChange);</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> isOnline;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>이것을 다른 컴포넌트에서 재사용할 수 있다.</p>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">FriendStatus</span>(<span class="params">props</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> isOnline = useFriendStatus(props.friend.id);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (isOnline === <span class="literal">null</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;Loading...&quot;</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> isOnline ? <span class="string">&quot;Online&quot;</span> : <span class="string">&quot;Offline&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>다른 컴포넌트 :</p>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">FriendListItem</span>(<span class="params">props</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> isOnline = useFriendStatus(props.friend.id);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="xml"><span class="tag">&lt;<span class="name">li</span> <span class="attr">style</span>=<span class="string">&#123;&#123;</span> <span class="attr">color:</span> <span class="attr">isOnline</span> ? &quot;<span class="attr">green</span>&quot; <span class="attr">:</span> &quot;<span class="attr">black</span>&quot; &#125;&#125;&gt;</span>&#123;props.friend.name&#125;<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>Hook 은 state 자체가 아니다. Hook의 호출은 완전히 독립된 state를 가진다.</p>
-<p>custom Hook 은 <code>use</code> 로 시작하고 안에서 <code>Hook</code> 을 호출한 것을 의미한다.</p>
-<h2 id="다른-내장-Hook"><a href="#다른-내장-Hook" class="headerlink" title="다른 내장 Hook"></a>다른 내장 Hook</h2><p>유용하다고 생각될 만한 내장 Hook 들이 몇몇 있다. 몇가지만 소개하면</p>
-<p><code>useContext</code> 는 컴포넌트를 중첩하지 않고도 React context를 구동할 수 있게 해준다.</p>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Example</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> locale = useContext(LocaleContext);</span><br><span class="line">  <span class="keyword">const</span> theme = useContext(ThemeContext);</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><code>useReducer</code> 는 복잡한 컴포넌트들의 state를 reducer로 관리할 수 있게 해준다.</p>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Todos</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> [todos, dispatch] = useReducer(todosReducer);</span><br><span class="line">  <span class="comment">// ...</span></span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/10/23/TEST_CODE/211018-jest%20Matcher/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JayoonKoo">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="티끌모아 태산">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/10/23/TEST_CODE/211018-jest%20Matcher/" class="post-title-link" itemprop="url">jest Matcher</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-10-23 22:14:44" itemprop="dateCreated datePublished" datetime="2021-10-23T22:14:44+09:00">2021-10-23</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/test/" itemprop="url" rel="index"><span itemprop="name">test</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="Jest-Matcher"><a href="#Jest-Matcher" class="headerlink" title="Jest Matcher"></a>Jest Matcher</h1><h2 id="jest란"><a href="#jest란" class="headerlink" title="jest란?"></a>jest란?</h2><p>jest 는 자바스크립트 코드를 테스트 할수 있게 해주는 도구이다. 패키지만 다운받으면 별도의 설정없이 바로 사용할 수 있는것이 특징이다.</p>
-<h2 id="최소한의-설정"><a href="#최소한의-설정" class="headerlink" title="최소한의 설정?"></a>최소한의 설정?</h2><p>패키지 설정 및 스크립트 설정에 관한 부분으로 거의 할게 없다.</p>
-<p><code>npm init -y</code> : npm 초기화</p>
-<p><code>npm i jest -D</code> : 개발 과정에서만 사용할 것이므로 jest를 -D 옵션을 붙여서 설치한다. –save-dev 와 똑같다.</p>
-<p>package.json으로 이동하여 script를 수정한다.</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">&quot;name&quot;</span>: <span class="string">&quot;jest-tutorial&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;version&quot;</span>: <span class="string">&quot;1.0.0&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;description&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;main&quot;</span>: <span class="string">&quot;index.js&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;scripts&quot;</span>: &#123;</span><br><span class="line">    <span class="attr">&quot;test&quot;</span>: <span class="string">&quot;jest&quot;</span> <span class="comment">// test 부분에 jest 추가</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">&quot;keywords&quot;</span>: [],</span><br><span class="line">  <span class="attr">&quot;author&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;license&quot;</span>: <span class="string">&quot;ISC&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;devDependencies&quot;</span>: &#123;</span><br><span class="line">    <span class="attr">&quot;jest&quot;</span>: <span class="string">&quot;^27.3.0&quot;</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><code>npm test</code> : 테스트 코드 실행 가능</p>
-<p>test 코드는 test.js 등의 이름이나. <code>__tests__</code> 폴더 아래 있는 모든 파일을 찾아서 실행한다.</p>
-<h2 id="matcher"><a href="#matcher" class="headerlink" title="matcher"></a>matcher</h2><p>matcher는 테스트에서 예상한 부분과 실제 결과가 맞는지 매칭시키는 함수를 의미한다. jest 다양한 matcher 가 존재하는데 모두다 외울 필요는 없고 필요할때 확인하면 된다.<br>보통 expect().matcher()를 사용하여 검사하는데 맞지 않는경우를 조사하려면 not을 붙혀서 expect().not.matcher()를 사용하면 된다.</p>
-<ul>
-<li>toBe() : 결과가 같은지 확인, 아닌 경우를 판단하려면 expect().not.matcher()를 사용하면 된다.</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">test(<span class="string">&quot;1은 1이야.&quot;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  expect(<span class="number">1</span>).toBe(<span class="number">1</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>toEqaul() : 결과가 같은지 확인, 배열 객체 등의 요소는 재귀적으로 판단해야 하기 때문에 이것을 사용해야 한다.</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">test(<span class="string">&quot;이름과 나이를 전달받아서 객체를 반환해줘&quot;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  expect(fn.makeUser(<span class="string">&quot;mike&quot;</span>, <span class="number">30</span>)).toEqual(&#123;</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&quot;mike&quot;</span>,</span><br><span class="line">    <span class="attr">age</span>: <span class="number">30</span>,</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>toStrictEqual() : 보다 엄격한 검사를 실시한다.</li>
-<li>toBeNull() : Null 값인지 검사</li>
-<li>toBeUndefined() : undefined인지 검사</li>
-<li>toBeDefined</li>
-<li>toBeTruthy : truthy인 값을 리턴하는지 검사.</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">test(<span class="string">&quot;비어있지 않은 문자열은 truly 입니다.&quot;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  expect(fn.add(<span class="string">&quot;koo&quot;</span>, <span class="string">&quot;ja&quot;</span>)).toBeTruthy();</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>toBeFalsy : falsy인 값을 리턴하는지 검사.</li>
-</ul>
-<p>숫자 관련된 matcher도 있다.</p>
-<ul>
-<li>toBeGraterThan() : 큰지 검사</li>
-<li>toBeGraterThanOrEqual() : 크거나 같은지 검사</li>
-<li>toBeLessThan() : 작은지 검사</li>
-<li>toBeLessThanOrEqual() : 작거나 같은지 검사</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">test(<span class="string">&quot;Id 는 10글자 보다 작아야 한다.&quot;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> ID = <span class="string">&quot;ID_KJDB_&quot;</span>;</span><br><span class="line">  expect(ID.length).toBeLessThanOrEqual(<span class="number">10</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<p>근사치를 검사해야하는 경우도 있는데 이럴땐 toBeCloseTo를 사용하면 된다.</p>
-<ul>
-<li>toBeCloseTo : 근사치 검사</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">test(<span class="string">&quot;0.1 더하기 0.2는 0.3 이다.&quot;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  expect(fn.add(<span class="number">0.1</span>, <span class="number">0.2</span>)).toBeCloseTo(<span class="number">0.3</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<p>문자열 관련해서 정규 표현식을 사용할 수 있는데 toMatch를 사용하면 된다.</p>
-<ul>
-<li>toMatch(regex) : 정규표현식과 매칭 되는지</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">test(<span class="string">&quot;Hello World 에 H라는 글자가 있나?&quot;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  expect(<span class="string">&quot;Hello World&quot;</span>).toMatch(<span class="regexp">/H/</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<p>배열 관련된 matcher 도 있다.</p>
-<ul>
-<li>toContain(요소) : 인자로 넘겨준 요소가 매열내의 포함되어 있는지</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">test(<span class="string">&quot;유저 리스트에 Mike가 있는지&quot;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> user = <span class="string">&quot;Mike&quot;</span>;</span><br><span class="line">  <span class="keyword">const</span> users = [<span class="string">&quot;Tom&quot;</span>, <span class="string">&quot;Mike&quot;</span>, <span class="string">&quot;Kai&quot;</span>];</span><br><span class="line">  expect(users).toContain(user);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<p>에러가 발생하는지 여부도 확인할 수 있다.</p>
-<ul>
-<li>toThrow() : 인자를 넘겨주면 특정 에러인지 확인하고 인자를 넘겨주지 않으면 에러를 발생시키는 여부만 확인한다.</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">test(<span class="string">&quot;이거 에러 나나?&quot;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  expect(<span class="function">() =&gt;</span> fn.throwErr()).toThrow();</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// 어떤 내용인지 확인하려면 인수로 전달하면 된다.</span></span><br><span class="line">test(<span class="string">&quot;이거 xx 에러인가? &quot;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  expect(<span class="function">() =&gt;</span> fn.throwErr()).toThrow(<span class="string">&quot;xx&quot;</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/10/23/TEST_CODE/211019-%EB%B9%84%EB%8F%99%EA%B8%B0%20test/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JayoonKoo">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="티끌모아 태산">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/10/23/TEST_CODE/211019-%EB%B9%84%EB%8F%99%EA%B8%B0%20test/" class="post-title-link" itemprop="url">비동기 test</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-10-23 22:14:44" itemprop="dateCreated datePublished" datetime="2021-10-23T22:14:44+09:00">2021-10-23</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/test/" itemprop="url" rel="index"><span itemprop="name">test</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="비동기-코드-테스트"><a href="#비동기-코드-테스트" class="headerlink" title="비동기 코드 테스트"></a>비동기 코드 테스트</h1><p>jest 는 테스트가 끝나면 바로 끝나버림. 콜백 함수를 넘겨주어도 기다리지 않고 끝나기 때문에 제대로 된 테스트를 진행할 수 없다. 이때는 test네 콜백에 인자로 done을 넘겨주면 된다. 이 done이 호출되면 테스트가 끝났다고 명시할 수 있어서 콜백이 끝나는 부분에서 done을 호출하면 제대로된 테스트를 할 수 있다.</p>
-<p>fn :</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> fn = &#123;</span><br><span class="line">  <span class="attr">add</span>: <span class="function">(<span class="params">num1, num2</span>) =&gt;</span> num1 + num2,</span><br><span class="line">  <span class="attr">makeUser</span>: <span class="function">(<span class="params">name, age</span>) =&gt;</span> (&#123; name, age, <span class="attr">gender</span>: <span class="literal">undefined</span> &#125;),</span><br><span class="line">  <span class="attr">throwErr</span>: <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">&quot;xx&quot;</span>);</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">getName</span>: <span class="function">(<span class="params">cb</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> name = <span class="string">&quot;Mike&quot;</span>;</span><br><span class="line">    <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">      cb(name);</span><br><span class="line">    &#125;, <span class="number">3000</span>);</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p>test :</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">test(<span class="string">&quot;3초 후에 받아온 이름은 Mike이다.&quot;</span>, <span class="function">(<span class="params">done</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> cb = <span class="function">(<span class="params">name</span>) =&gt;</span> &#123;</span><br><span class="line">    expect(name).toBe(<span class="string">&quot;Mike&quot;</span>);</span><br><span class="line">    done();</span><br><span class="line">  &#125;;</span><br><span class="line">  fn.getName(cb);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<p>만약 done을 받고 호출하지 않으면 timeout으로 종료 되고 테스트는 실패한다.</p>
-<p>에러를 검사하고 싶으면 try catch를 사용하면 된다.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">test(<span class="string">&quot;서버 에러 비동기 테스트&quot;</span>, <span class="function">(<span class="params">done</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> cb = <span class="function">(<span class="params">name</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">      expect(name).toBe(<span class="string">&quot;Mike&quot;</span>);</span><br><span class="line">      done();</span><br><span class="line">    &#125; <span class="keyword">catch</span> (error) &#123;</span><br><span class="line">      done();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br><span class="line">  fn.getNameError(cb);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<p>promise를 리턴하면 jest는 promise 가 resolve 될때까지 기다려 준다. 단 이때는 return을 명시해 주어야 한다.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">test(<span class="string">&quot;promise test&quot;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> fn.getAge().then(<span class="function">(<span class="params">age</span>) =&gt;</span> expect(age).toBe(<span class="number">30</span>));</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<p>보다 간단하게 사용하기 위한 resolves, rejects matcher 가 있다.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">test(<span class="string">&quot;promise test resolve Matcher&quot;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> expect(fn.getAge()).resolves.toBe(<span class="number">30</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<p>async await 도 사용할 수 있다.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">test(<span class="string">&quot;3초후에 async await test&quot;</span>, <span class="keyword">async</span> () =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> age = <span class="keyword">await</span> fn.getAge();</span><br><span class="line">  expect(age).toBe(<span class="number">30</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<p>마찬가지로 resolves, rejects를 사용할 수 있다.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">test(<span class="string">&quot;3초 후에 resolves 쓰는 패턴&quot;</span>, <span class="keyword">async</span> () =&gt; &#123;</span><br><span class="line">  <span class="keyword">await</span> expect(fn.getAge()).resolves.toBe(<span class="number">30</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 
       
     </div>

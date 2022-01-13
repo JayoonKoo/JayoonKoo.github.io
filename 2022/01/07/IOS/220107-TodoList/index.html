@@ -22,15 +22,15 @@
 <script class="next-config" data-name="main" type="application/json">{"hostname":"jayoonkoo.github.io","root":"/","images":"/images","scheme":"Muse","version":"8.6.1","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
 <meta name="description" content="TodoList활용 기술 UITableView UIAlertController UserDefaults  UITableView데이터를 목록 형태로 보여 줄 수 있는 가장 기본적인 UI 컴포넌트 → UIScrollVIew 를 상속받고 있어서 스크롤 가능하다.  여러개의 Cell을 가지고 있고 하나의 열과 여러 줄의 행을 지니고 있으며, 수직으로만 스크롤 가능하">
 <meta property="og:type" content="article">
-<meta property="og:title" content="TodoList">
+<meta property="og:title" content="UITableView, UIAlertController, UserDefaults (TodoList)">
 <meta property="og:url" content="https://jayoonkoo.github.io/2022/01/07/IOS/220107-TodoList/index.html">
 <meta property="og:site_name" content="티끌모아 태산">
 <meta property="og:description" content="TodoList활용 기술 UITableView UIAlertController UserDefaults  UITableView데이터를 목록 형태로 보여 줄 수 있는 가장 기본적인 UI 컴포넌트 → UIScrollVIew 를 상속받고 있어서 스크롤 가능하다.  여러개의 Cell을 가지고 있고 하나의 열과 여러 줄의 행을 지니고 있으며, 수직으로만 스크롤 가능하">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-01-07T01:09:23.000Z">
-<meta property="article:modified_time" content="2022-01-07T01:09:31.236Z">
+<meta property="article:modified_time" content="2022-01-12T04:05:35.677Z">
 <meta property="article:author" content="JayoonKoo">
-<meta property="article:tag" content="IOS">
+<meta property="article:tag" content="App만들기">
 <meta name="twitter:card" content="summary">
 
 
@@ -38,10 +38,10 @@
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://jayoonkoo.github.io/2022/01/07/IOS/220107-TodoList/","path":"2022/01/07/IOS/220107-TodoList/","title":"TodoList"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://jayoonkoo.github.io/2022/01/07/IOS/220107-TodoList/","path":"2022/01/07/IOS/220107-TodoList/","title":"UITableView, UIAlertController, UserDefaults (TodoList)"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>TodoList | 티끌모아 태산</title>
+<title>UITableView, UIAlertController, UserDefaults (TodoList) | 티끌모아 태산</title>
   
 
 
@@ -90,7 +90,7 @@
         <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
         <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">13</span></a></li>
         <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">11</span></a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">131</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">134</span></a></li>
   </ul>
 </nav>
 
@@ -135,7 +135,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">131</span>
+          <span class="site-state-item-count">134</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -209,7 +209,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          TodoList
+          UITableView, UIAlertController, UserDefaults (TodoList)
         </h1>
 
         <div class="post-meta-container">
@@ -219,10 +219,16 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
-      
 
-      <time title="Created: 2022-01-07 10:09:23 / Modified: 10:09:31" itemprop="dateCreated datePublished" datetime="2022-01-07T10:09:23+09:00">2022-01-07</time>
+      <time title="Created: 2022-01-07 10:09:23" itemprop="dateCreated datePublished" datetime="2022-01-07T10:09:23+09:00">2022-01-07</time>
     </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2022-01-12 13:05:35" itemprop="dateModified" datetime="2022-01-12T13:05:35+09:00">2022-01-12</time>
+      </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-folder"></i>
@@ -274,20 +280,20 @@
 
     <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/IOS/" rel="tag"># IOS</a>
+              <a href="/tags/App%EB%A7%8C%EB%93%A4%EA%B8%B0/" rel="tag"># App만들기</a>
           </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2022/01/06/IOS/220105-LEDBoard/" rel="prev" title="LEDBoard">
-                  <i class="fa fa-chevron-left"></i> LEDBoard
+                <a href="/2022/01/06/IOS/220105-LEDBoard/" rel="prev" title="UINavigationController, ViewController Life Cycle (LEDBoard)">
+                  <i class="fa fa-chevron-left"></i> UINavigationController, ViewController Life Cycle (LEDBoard)
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2022/01/10/IOS/220110-%EC%9D%BC%EA%B8%B0%EC%9E%A5/" rel="next" title="일기장">
-                  일기장 <i class="fa fa-chevron-right"></i>
+                <a href="/2022/01/10/IOS/220110-%EC%9D%BC%EA%B8%B0%EC%9E%A5/" rel="next" title="UITabBarController, UICollectionView, NotificationCenter (일기장)">
+                  UITabBarController, UICollectionView, NotificationCenter (일기장) <i class="fa fa-chevron-right"></i>
                 </a>
             </div>
           </div>

@@ -22,15 +22,15 @@
 <script class="next-config" data-name="main" type="application/json">{"hostname":"jayoonkoo.github.io","root":"/","images":"/images","scheme":"Muse","version":"8.6.1","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
 <meta name="description" content="LED배울 기술  UINavigationController 화면 전환 개념 ViewController Life Cycle 화면간 데이터 전달 하는 방법 에셋 카탈로그  UINavigationController Content View Conroller : 화면을 구성하는 뷰를 직접 구현하고 관련된 이벤트를 처리하는 뷰 컨트롤러 Container View Co">
 <meta property="og:type" content="article">
-<meta property="og:title" content="LEDBoard">
+<meta property="og:title" content="UINavigationController, ViewController Life Cycle (LEDBoard)">
 <meta property="og:url" content="https://jayoonkoo.github.io/2022/01/06/IOS/220105-LEDBoard/index.html">
 <meta property="og:site_name" content="티끌모아 태산">
 <meta property="og:description" content="LED배울 기술  UINavigationController 화면 전환 개념 ViewController Life Cycle 화면간 데이터 전달 하는 방법 에셋 카탈로그  UINavigationController Content View Conroller : 화면을 구성하는 뷰를 직접 구현하고 관련된 이벤트를 처리하는 뷰 컨트롤러 Container View Co">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-01-06T05:38:45.000Z">
-<meta property="article:modified_time" content="2022-01-06T05:38:55.637Z">
+<meta property="article:modified_time" content="2022-01-12T04:06:23.580Z">
 <meta property="article:author" content="JayoonKoo">
-<meta property="article:tag" content="IOS">
+<meta property="article:tag" content="App만들기">
 <meta name="twitter:card" content="summary">
 
 
@@ -38,10 +38,10 @@
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://jayoonkoo.github.io/2022/01/06/IOS/220105-LEDBoard/","path":"2022/01/06/IOS/220105-LEDBoard/","title":"LEDBoard"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://jayoonkoo.github.io/2022/01/06/IOS/220105-LEDBoard/","path":"2022/01/06/IOS/220105-LEDBoard/","title":"UINavigationController, ViewController Life Cycle (LEDBoard)"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>LEDBoard | 티끌모아 태산</title>
+<title>UINavigationController, ViewController Life Cycle (LEDBoard) | 티끌모아 태산</title>
   
 
 
@@ -90,7 +90,7 @@
         <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
         <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">13</span></a></li>
         <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">11</span></a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">131</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">134</span></a></li>
   </ul>
 </nav>
 
@@ -135,7 +135,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">131</span>
+          <span class="site-state-item-count">134</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -209,7 +209,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          LEDBoard
+          UINavigationController, ViewController Life Cycle (LEDBoard)
         </h1>
 
         <div class="post-meta-container">
@@ -219,10 +219,16 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
-      
 
-      <time title="Created: 2022-01-06 14:38:45 / Modified: 14:38:55" itemprop="dateCreated datePublished" datetime="2022-01-06T14:38:45+09:00">2022-01-06</time>
+      <time title="Created: 2022-01-06 14:38:45" itemprop="dateCreated datePublished" datetime="2022-01-06T14:38:45+09:00">2022-01-06</time>
     </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2022-01-12 13:06:23" itemprop="dateModified" datetime="2022-01-12T13:06:23+09:00">2022-01-12</time>
+      </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-folder"></i>
@@ -320,20 +326,20 @@
 
     <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/IOS/" rel="tag"># IOS</a>
+              <a href="/tags/App%EB%A7%8C%EB%93%A4%EA%B8%B0/" rel="tag"># App만들기</a>
           </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2022/01/06/IOS/220105-Calcurator/" rel="prev" title="Calcurator">
-                  <i class="fa fa-chevron-left"></i> Calcurator
+                <a href="/2022/01/06/IOS/220105-Calcurator/" rel="prev" title="UIStackView, IBDesignables, IBInspectable (계산기)">
+                  <i class="fa fa-chevron-left"></i> UIStackView, IBDesignables, IBInspectable (계산기)
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2022/01/07/IOS/220107-TodoList/" rel="next" title="TodoList">
-                  TodoList <i class="fa fa-chevron-right"></i>
+                <a href="/2022/01/07/IOS/220107-TodoList/" rel="next" title="UITableView, UIAlertController, UserDefaults (TodoList)">
+                  UITableView, UIAlertController, UserDefaults (TodoList) <i class="fa fa-chevron-right"></i>
                 </a>
             </div>
           </div>
