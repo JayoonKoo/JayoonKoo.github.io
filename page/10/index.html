@@ -189,6 +189,136 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/09/20/git/210918-3.1-Branches%20in%20a%20Nutshell/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JayoonKoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="티끌모아 태산">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/09/20/git/210918-3.1-Branches%20in%20a%20Nutshell/" class="post-title-link" itemprop="url">3.1-Branches in a Nutshell</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-09-20 21:39:38" itemprop="dateCreated datePublished" datetime="2021-09-20T21:39:38+09:00">2021-09-20</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/git/" itemprop="url" rel="index"><span itemprop="name">git</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="3-1-Branches-in-a-Nutshell"><a href="#3-1-Branches-in-a-Nutshell" class="headerlink" title="3.1 Branches in a Nutshell"></a>3.1 Branches in a Nutshell</h1><h2 id="간단히-말해서"><a href="#간단히-말해서" class="headerlink" title="간단히 말해서 .."></a>간단히 말해서 ..</h2><p>깃은 데이터를 변경 사항에 세트나 다른점으로 저장하지 않고 snapshot으로 저장한다. 커밋을 수행하게 되면 깃은 commit object를 생성한다. 각 파일에 대한 blobs를 생성하고, 파일과 디렉터리 구조를 나타내는 tree 객체를 생성한다. 커밋 객체는 루트 트리와 각 메타 데이터에 대한 포인터를 포함한다.</p>
+<img src="/images/210918-3.1-Branches in a Nutshell/1.png" width="500">
+
+<p>다른 변경사항을 커밋하면 커밋 객체는 그 바로 전에 커밋 객체를 가르키는 포인터를 갖는다.</p>
+<img src="/images/210918-3.1-Branches in a Nutshell/2.png" width="500">
+
+<p>깃의 디폴드 브랜치 이름은 main이다. 처음 커밋을 하면 main 브랜치는 너가 만든 커밋을 가르킨다. 매번 커밋할때마다 main 브랜치는 자동으로 마지막으로 변경한 커밋을 가르키게 된다.</p>
+<img src="/images/210918-3.1-Branches in a Nutshell/3.png" width="500">
+
+<h2 id="새-브랜치-생성"><a href="#새-브랜치-생성" class="headerlink" title="새 브랜치 생성"></a>새 브랜치 생성</h2><p>새로운 브랜치를 생성하면 작업한 마지막 커밋을 가르키는 브랜치가 생성된다.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch testing</span><br></pre></td></tr></table></figure>
+
+<img src="/images/210918-3.1-Branches in a Nutshell/4.png" width="500">
+
+<p>깃은 <code>HEAD</code>라는 포인터를 사용해서 현제 어떤 브랜치에 있는지 가르킨다. 이는 다른 버전관리 시스템과 다른 특징이다. 이것은 로컬 브랜치에서 현제 작업하고 있는 포인터이다. 브랜치를 생성해도 다른 브랜치로 스위칭 되는 것은 아니다.</p>
+<img src="/images/210918-3.1-Branches in a Nutshell/5.png" width="500">
+
+<p><code>git log</code>에 <code>--decorate</code> 옵션을 붙혀서 브랜치가 어떤 커밋을 가르키는지 확인할 수 있다.</p>
+<blockquote>
+<p>git log 는 항상 모든 분기를 표시하지 않는다. 깃은 우리가 관심 있을만한 커밋에 대한 log만 보여주기 때문에 현제 작업하고 있는 브랜치에 대한 log 를 보여준다. 따라서 명시적으로 다른 브랜치에 대한 로그를 보려면 <code>git log testing</code> 같이 입력해야 한다. 또는, <code>git log --all</code> 옵션을 사용한다.</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ git log --oneline --decorate</span><br><span class="line">f30ab (HEAD -&gt; master, testing) Add feature #32 - ability to add new formats to the central interface</span><br><span class="line">34ac2 Fix bug #1328 - stack overflow under certain conditions</span><br><span class="line">98ca9 Initial commit</span><br></pre></td></tr></table></figure>
+
+<h2 id="Switching-Branches"><a href="#Switching-Branches" class="headerlink" title="Switching Branches"></a>Switching Branches</h2><p><code>git checkout</code> 명령어로 존재하는 브랜치로 바꿀 수 있다. 최신 버전에 깃에 경우 <code>git switch</code>를 통해서 바꾼다.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git switch testing</span><br></pre></td></tr></table></figure>
+
+<p>이 명령어는 <code>HEAD</code>를 master 브랜치에서 testing 브랜치로 옮긴다.</p>
+<img src="/images/210918-3.1-Branches in a Nutshell/6.png" width="500">
+
+<p>이제 다른 커밋을 하면</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ vim test.rb</span><br><span class="line">$ git commit -a -m &#x27;made a change&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>master 브랜치와 testing 브랜치가 가르키는 곳이 다르고 현제 작업하고 있는 포인터인 HEAD에 위치도 testing 브랜치에서 변경한 마지막 커밋으로 바뀐다.</p>
+<img src="/images/210918-3.1-Branches in a Nutshell/7.png" width="500">
+
+<p>이제 다시 <code>switch</code> 명령을 통해 브랜치를 master로 바꿔 보자.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git switch master</span><br></pre></td></tr></table></figure>
+
+<img src="/images/210918-3.1-Branches in a Nutshell/8.png" width="500">
+
+<p>이 명령을 입력하면 HEAD를 master 브랜치로 옮기고 파일을 마스터 브랜치가 있는 시점으로 복구한다. 이것은 예전 버전으로 복구 하는 것의 분기를 나눈 것과 같다. 또한 testing 브랜치에서 작업한 내용을 저장하고 있기 때문에 언제든지 작업한 내용으로 이동할 수 있다.</p>
+<blockquote>
+<p>브랜치를 이동하면 워킹 디렉토리에 파일이 변경된다.</p>
+</blockquote>
+<p>커밋을 한번 더 해보자.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ vim test.rb</span><br><span class="line">$ git commit -a -m &#x27;made other changes&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>그러면 다른 작업으로 독립되어 분리된다. 이것은 testing 에서 작업하던것을 임시로 미루고 main에서 작업한 다음 다시 testing 브랜치로 돌아와 작업할 수 있음을 의미한다. 이렇게 작업하고 필요할때 merge 하는 등에 작업을 해서 하나로 합치면 된다.</p>
+<img src="/images/210918-3.1-Branches in a Nutshell/9.png" width="500">
+
+<p><code>git log --oneline --decorate --graph --all</code>를 사용하면 브랜치, 분기, 포인터 history등에 정보를 한눈에 볼 수 있다.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ git log --oneline --decorate --graph --all</span><br><span class="line">* c2b9e (HEAD, master) Made other changes</span><br><span class="line">| * 87ab2 (testing) Made a change</span><br><span class="line">|/</span><br><span class="line">* f30ab Add feature #32 - ability to add new formats to the central interface</span><br><span class="line">* 34ac2 Fix bug #1328 - stack overflow under certain conditions</span><br><span class="line">* 98ca9 initial commit of my project</span><br></pre></td></tr></table></figure>
+
+<p>실제로 Git의 브랜치는 어떤 한 커밋을 가리키는 40글자의 SHA-1 체크섬 파일에 불과하기 때문에 만들기도 쉽고 지우기도 쉽다. 새로 브랜치를 하나 만드는 것은 41바이트 크기의 파일을(40자와 줄 바꿈 문자) 하나 만드는 것에 불과하다.</p>
+<p>부모 정보도 알고 있어서 merge base를 어떤걸로 해서 merge 할지 자돋으로 알기 때문에 머지도 가볍게 잘 된다.많이 생성하고 많이 병합하세요.</p>
+<blockquote>
+<p><code>git checkout -b &lt;newbranchname&gt;</code> 명령어를 사용해서 한번에 생성과 switch 가지 할 수 있다.</p>
+</blockquote>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/09/20/git/210817-Git%EC%9D%98%20%EA%B8%B0%EC%B4%88/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -307,136 +437,6 @@
 <p>외부 명령어를 사용할 때는 <code>!</code>를 붙힌다.</p>
 <p><code>git config --global alias.visual &#39;!gitk&#39;</code></p>
 <p><code>git visual</code>를 입력하면 <code>gitk</code>가 실행된다.</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/09/20/git/210918-3.1-Branches%20in%20a%20Nutshell/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JayoonKoo">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="티끌모아 태산">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/09/20/git/210918-3.1-Branches%20in%20a%20Nutshell/" class="post-title-link" itemprop="url">3.1-Branches in a Nutshell</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-09-20 21:39:38" itemprop="dateCreated datePublished" datetime="2021-09-20T21:39:38+09:00">2021-09-20</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/git/" itemprop="url" rel="index"><span itemprop="name">git</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="3-1-Branches-in-a-Nutshell"><a href="#3-1-Branches-in-a-Nutshell" class="headerlink" title="3.1 Branches in a Nutshell"></a>3.1 Branches in a Nutshell</h1><h2 id="간단히-말해서"><a href="#간단히-말해서" class="headerlink" title="간단히 말해서 .."></a>간단히 말해서 ..</h2><p>깃은 데이터를 변경 사항에 세트나 다른점으로 저장하지 않고 snapshot으로 저장한다. 커밋을 수행하게 되면 깃은 commit object를 생성한다. 각 파일에 대한 blobs를 생성하고, 파일과 디렉터리 구조를 나타내는 tree 객체를 생성한다. 커밋 객체는 루트 트리와 각 메타 데이터에 대한 포인터를 포함한다.</p>
-<img src="/images/210918-3.1-Branches in a Nutshell/1.png" width="500">
-
-<p>다른 변경사항을 커밋하면 커밋 객체는 그 바로 전에 커밋 객체를 가르키는 포인터를 갖는다.</p>
-<img src="/images/210918-3.1-Branches in a Nutshell/2.png" width="500">
-
-<p>깃의 디폴드 브랜치 이름은 main이다. 처음 커밋을 하면 main 브랜치는 너가 만든 커밋을 가르킨다. 매번 커밋할때마다 main 브랜치는 자동으로 마지막으로 변경한 커밋을 가르키게 된다.</p>
-<img src="/images/210918-3.1-Branches in a Nutshell/3.png" width="500">
-
-<h2 id="새-브랜치-생성"><a href="#새-브랜치-생성" class="headerlink" title="새 브랜치 생성"></a>새 브랜치 생성</h2><p>새로운 브랜치를 생성하면 작업한 마지막 커밋을 가르키는 브랜치가 생성된다.</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch testing</span><br></pre></td></tr></table></figure>
-
-<img src="/images/210918-3.1-Branches in a Nutshell/4.png" width="500">
-
-<p>깃은 <code>HEAD</code>라는 포인터를 사용해서 현제 어떤 브랜치에 있는지 가르킨다. 이는 다른 버전관리 시스템과 다른 특징이다. 이것은 로컬 브랜치에서 현제 작업하고 있는 포인터이다. 브랜치를 생성해도 다른 브랜치로 스위칭 되는 것은 아니다.</p>
-<img src="/images/210918-3.1-Branches in a Nutshell/5.png" width="500">
-
-<p><code>git log</code>에 <code>--decorate</code> 옵션을 붙혀서 브랜치가 어떤 커밋을 가르키는지 확인할 수 있다.</p>
-<blockquote>
-<p>git log 는 항상 모든 분기를 표시하지 않는다. 깃은 우리가 관심 있을만한 커밋에 대한 log만 보여주기 때문에 현제 작업하고 있는 브랜치에 대한 log 를 보여준다. 따라서 명시적으로 다른 브랜치에 대한 로그를 보려면 <code>git log testing</code> 같이 입력해야 한다. 또는, <code>git log --all</code> 옵션을 사용한다.</p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ git log --oneline --decorate</span><br><span class="line">f30ab (HEAD -&gt; master, testing) Add feature #32 - ability to add new formats to the central interface</span><br><span class="line">34ac2 Fix bug #1328 - stack overflow under certain conditions</span><br><span class="line">98ca9 Initial commit</span><br></pre></td></tr></table></figure>
-
-<h2 id="Switching-Branches"><a href="#Switching-Branches" class="headerlink" title="Switching Branches"></a>Switching Branches</h2><p><code>git checkout</code> 명령어로 존재하는 브랜치로 바꿀 수 있다. 최신 버전에 깃에 경우 <code>git switch</code>를 통해서 바꾼다.</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git switch testing</span><br></pre></td></tr></table></figure>
-
-<p>이 명령어는 <code>HEAD</code>를 master 브랜치에서 testing 브랜치로 옮긴다.</p>
-<img src="/images/210918-3.1-Branches in a Nutshell/6.png" width="500">
-
-<p>이제 다른 커밋을 하면</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ vim test.rb</span><br><span class="line">$ git commit -a -m &#x27;made a change&#x27;</span><br></pre></td></tr></table></figure>
-
-<p>master 브랜치와 testing 브랜치가 가르키는 곳이 다르고 현제 작업하고 있는 포인터인 HEAD에 위치도 testing 브랜치에서 변경한 마지막 커밋으로 바뀐다.</p>
-<img src="/images/210918-3.1-Branches in a Nutshell/7.png" width="500">
-
-<p>이제 다시 <code>switch</code> 명령을 통해 브랜치를 master로 바꿔 보자.</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git switch master</span><br></pre></td></tr></table></figure>
-
-<img src="/images/210918-3.1-Branches in a Nutshell/8.png" width="500">
-
-<p>이 명령을 입력하면 HEAD를 master 브랜치로 옮기고 파일을 마스터 브랜치가 있는 시점으로 복구한다. 이것은 예전 버전으로 복구 하는 것의 분기를 나눈 것과 같다. 또한 testing 브랜치에서 작업한 내용을 저장하고 있기 때문에 언제든지 작업한 내용으로 이동할 수 있다.</p>
-<blockquote>
-<p>브랜치를 이동하면 워킹 디렉토리에 파일이 변경된다.</p>
-</blockquote>
-<p>커밋을 한번 더 해보자.</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ vim test.rb</span><br><span class="line">$ git commit -a -m &#x27;made other changes&#x27;</span><br></pre></td></tr></table></figure>
-
-<p>그러면 다른 작업으로 독립되어 분리된다. 이것은 testing 에서 작업하던것을 임시로 미루고 main에서 작업한 다음 다시 testing 브랜치로 돌아와 작업할 수 있음을 의미한다. 이렇게 작업하고 필요할때 merge 하는 등에 작업을 해서 하나로 합치면 된다.</p>
-<img src="/images/210918-3.1-Branches in a Nutshell/9.png" width="500">
-
-<p><code>git log --oneline --decorate --graph --all</code>를 사용하면 브랜치, 분기, 포인터 history등에 정보를 한눈에 볼 수 있다.</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ git log --oneline --decorate --graph --all</span><br><span class="line">* c2b9e (HEAD, master) Made other changes</span><br><span class="line">| * 87ab2 (testing) Made a change</span><br><span class="line">|/</span><br><span class="line">* f30ab Add feature #32 - ability to add new formats to the central interface</span><br><span class="line">* 34ac2 Fix bug #1328 - stack overflow under certain conditions</span><br><span class="line">* 98ca9 initial commit of my project</span><br></pre></td></tr></table></figure>
-
-<p>실제로 Git의 브랜치는 어떤 한 커밋을 가리키는 40글자의 SHA-1 체크섬 파일에 불과하기 때문에 만들기도 쉽고 지우기도 쉽다. 새로 브랜치를 하나 만드는 것은 41바이트 크기의 파일을(40자와 줄 바꿈 문자) 하나 만드는 것에 불과하다.</p>
-<p>부모 정보도 알고 있어서 merge base를 어떤걸로 해서 merge 할지 자돋으로 알기 때문에 머지도 가볍게 잘 된다.많이 생성하고 많이 병합하세요.</p>
-<blockquote>
-<p><code>git checkout -b &lt;newbranchname&gt;</code> 명령어를 사용해서 한번에 생성과 switch 가지 할 수 있다.</p>
-</blockquote>
 
       
     </div>
@@ -1114,6 +1114,100 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/09/12/system-programing/210817-%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4%20%EA%B4%80%EB%A6%AC/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JayoonKoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="티끌모아 태산">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/09/12/system-programing/210817-%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4%20%EA%B4%80%EB%A6%AC/" class="post-title-link" itemprop="url">프로세스 관리</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-09-12 23:46:02" itemprop="dateCreated datePublished" datetime="2021-09-12T23:46:02+09:00">2021-09-12</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/CS/" itemprop="url" rel="index"><span itemprop="name">CS</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="프로세스-관리"><a href="#프로세스-관리" class="headerlink" title="프로세스 관리"></a>프로세스 관리</h1><h2 id="프로세스-ID"><a href="#프로세스-ID" class="headerlink" title="프로세스 ID"></a>프로세스 ID</h2><p>각각의 프로세스는 proess id 라고 하는 PID 를 갖는다. </p>
+<ul>
+<li>pid : 해당 시점에 unique한 pid</li>
+<li>최대 값은 2의 15승인 32768( 부호형 16비트 정수값)</li>
+<li>ppid : 부모 프로세스의 pid 값</li>
+</ul>
+<p><code>ps -ef</code>를 통해 pid, ppid 및 프로세스스 정보 확인</p>
+<p><code>vi /etc/passwd</code>를 프로세스와 소유자를 관리함. </p>
+<p>예시</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root:x:0:0:root:/root:/bin/bash</span><br></pre></td></tr></table></figure>
+<ul>
+<li>사용자명 : root</li>
+<li>패스워드 : x (없음)</li>
+<li>사용자 ID : 0</li>
+<li>그룹 ID : 0</li>
+<li>사용자 정보 : root</li>
+<li>홈 디렉토리 : /root</li>
+<li>쉘 환경 : /bin/bash</li>
+</ul>
+<h2 id="pid-및-ppid-확인"><a href="#pid-및-ppid-확인" class="headerlink" title="pid 및 ppid 확인"></a>pid 및 ppid 확인</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sys/types.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;unistd.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;pid=%d\n&quot;</span>, getpid());</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;ppid=%d\n&quot;</span>, getppid());</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ gcc test.c -o test</span><br><span class="line">$ ./test</span><br><span class="line"></span><br><span class="line">pid=22440</span><br><span class="line">ppid=22164</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/09/12/system-programing/210817-%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4%20%EC%83%9D%EC%84%B1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1231,100 +1325,6 @@
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">WIFEXITED</span><span class="params">(status)</span></span>;</span><br></pre></td></tr></table></figure>
 
 <p>자식 프로세스가 정상 종료 시 리턴값은 0 이 아닌 값이 됨.</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/09/12/system-programing/210817-%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4%20%EA%B4%80%EB%A6%AC/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JayoonKoo">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="티끌모아 태산">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/09/12/system-programing/210817-%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4%20%EA%B4%80%EB%A6%AC/" class="post-title-link" itemprop="url">프로세스 관리</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-09-12 23:46:02" itemprop="dateCreated datePublished" datetime="2021-09-12T23:46:02+09:00">2021-09-12</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/CS/" itemprop="url" rel="index"><span itemprop="name">CS</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="프로세스-관리"><a href="#프로세스-관리" class="headerlink" title="프로세스 관리"></a>프로세스 관리</h1><h2 id="프로세스-ID"><a href="#프로세스-ID" class="headerlink" title="프로세스 ID"></a>프로세스 ID</h2><p>각각의 프로세스는 proess id 라고 하는 PID 를 갖는다. </p>
-<ul>
-<li>pid : 해당 시점에 unique한 pid</li>
-<li>최대 값은 2의 15승인 32768( 부호형 16비트 정수값)</li>
-<li>ppid : 부모 프로세스의 pid 값</li>
-</ul>
-<p><code>ps -ef</code>를 통해 pid, ppid 및 프로세스스 정보 확인</p>
-<p><code>vi /etc/passwd</code>를 프로세스와 소유자를 관리함. </p>
-<p>예시</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root:x:0:0:root:/root:/bin/bash</span><br></pre></td></tr></table></figure>
-<ul>
-<li>사용자명 : root</li>
-<li>패스워드 : x (없음)</li>
-<li>사용자 ID : 0</li>
-<li>그룹 ID : 0</li>
-<li>사용자 정보 : root</li>
-<li>홈 디렉토리 : /root</li>
-<li>쉘 환경 : /bin/bash</li>
-</ul>
-<h2 id="pid-및-ppid-확인"><a href="#pid-및-ppid-확인" class="headerlink" title="pid 및 ppid 확인"></a>pid 및 ppid 확인</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sys/types.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;unistd.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;pid=%d\n&quot;</span>, getpid());</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;ppid=%d\n&quot;</span>, getppid());</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ gcc test.c -o test</span><br><span class="line">$ ./test</span><br><span class="line"></span><br><span class="line">pid=22440</span><br><span class="line">ppid=22164</span><br></pre></td></tr></table></figure>
 
       
     </div>

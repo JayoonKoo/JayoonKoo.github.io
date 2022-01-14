@@ -189,6 +189,135 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/08/06/OS/210727-%EC%8A%A4%EC%BC%80%EC%A5%B4%EB%A7%81%EC%83%81%ED%83%9C%EA%B8%B0%EB%B0%98/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JayoonKoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="티끌모아 태산">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/08/06/OS/210727-%EC%8A%A4%EC%BC%80%EC%A5%B4%EB%A7%81%EC%83%81%ED%83%9C%EA%B8%B0%EB%B0%98/" class="post-title-link" itemprop="url">스케쥴링상태기반</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-08-06 22:28:10" itemprop="dateCreated datePublished" datetime="2021-08-06T22:28:10+09:00">2021-08-06</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-09-12 23:50:45" itemprop="dateModified" datetime="2021-09-12T23:50:45+09:00">2021-09-12</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/CS/" itemprop="url" rel="index"><span itemprop="name">CS</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="상태-기반-스케쥴링"><a href="#상태-기반-스케쥴링" class="headerlink" title="상태 기반 스케쥴링"></a>상태 기반 스케쥴링</h1><h2 id="프로세스-상태"><a href="#프로세스-상태" class="headerlink" title="프로세스 상태"></a>프로세스 상태</h2><img src="/images/imgs/210727-스케쥴링상태기반/1.png">
+
+<ul>
+<li>running state: 현재 CPU에서 실행 중인 상태</li>
+<li>ready state : CPU 에서 실행 가능 상태 (실행 대기 상태)</li>
+<li>block state: 특정 이벤트 발생 대기 상태 (파일을 다 읽었다!)</li>
+</ul>
+<p>프로세스 생성과 종료는 짧은 시간 동안 발생.</p>
+<p>종료의 경우 실행하면서 갖고 있던 리소스를 해제하는 과정이라고 생각할 수 있다.</p>
+<br/>
+
+<h2 id="프로세스-상태간-관계"><a href="#프로세스-상태간-관계" class="headerlink" title="프로세스 상태간 관계"></a>프로세스 상태간 관계</h2><img src="/images/imgs/210727-스케쥴링상태기반/2.png">
+
+<ol>
+<li>process 가 특정 특정 cpu 사용아 아닌 다른 작업을 수행해야 하는 상태가 됨. 완료 이벤트를 기다리는 상태</li>
+<li>scheduler 가 실행가능한 프로세스 중에서 하나를 골라서 실행 시킴.</li>
+<li>시분할 시스템과 같은 시스템에서 scheduler가 실행 중인 프로세스를 다른 프로세스에 실행을 위해서 ready 상태로 바꿈.</li>
+<li>block 상태에 있는 프로세스가 작업을 완료 후 (완료 이벤트를 받고) ready 상태로 변화.</li>
+</ol>
+<p>but, 단순한 상태만 가지고서 어떻게 스케쥴링을 하지? ready 상태가 여러개일 때에는 어떤걸 선택해야 할까?</p>
+<br/>
+
+<h2 id="상태별-큐를-만들자"><a href="#상태별-큐를-만들자" class="headerlink" title="상태별 큐를 만들자."></a>상태별 큐를 만들자.</h2><p>큐 : 앞 뒤 로 본다.<br>초기 상태</p>
+<ul>
+<li>ready state queue: 1, 2, 3</li>
+<li>runnig state queue</li>
+<li>block state queue</li>
+</ul>
+<img src="/images/imgs/210727-스케쥴링상태기반/3.png">
+
+<p>cpu가 아무것도 실행되고 있지 않은 상태를 idle 상태라고 한다.</p>
+<p>상태 별 큐를 생각하면서 어떻게 돌아갈지 생각해 보기.</p>
+<p><strong>결과</strong> [1, 2, 3, 1, 3, 2, idle, idle, 3]</p>
+<br/>
+
+<h2 id="선점형과-비선점형-스케쥴러"><a href="#선점형과-비선점형-스케쥴러" class="headerlink" title="선점형과 비선점형 스케쥴러"></a>선점형과 비선점형 스케쥴러</h2><p>선점형 스케쥴러는 프로세스가 끝나거나 block 상태가 되지 않더라도 스케쥴러가 ready 상태로 바꾸고 다른 프로세스를 실행시키는 것이 가능한 스케쥴러이다.</p>
+<p>비선점형 스케쥴러는 프로세스가 block 상태가 되거나 끝나지 않으면 다른 프로세스를 실행 시키는것이 불가능한 스케쥴러이다.</p>
+<p>시분할 시스템을 구현하려면 선점형 스케쥴러를 구현할 수 있어야 했는데, 초기에 운영체제는 선점형 스케쥴러 구현의 어려움이 있었다.</p>
+<h3 id="선점형과-비선점형의-차이"><a href="#선점형과-비선점형의-차이" class="headerlink" title="선점형과 비선점형의 차이"></a>선점형과 비선점형의 차이</h3><p>위에 예시에서 선점형과 비선점형을 나눠서 생각해봄.</p>
+<p>이번엔 시분할을 2칸으로 봄. 왜 이렇게 되는지 생각해 보자.</p>
+<img src="/images/imgs/210727-스케쥴링상태기반/4.png">
+
+<p>비선점형은 시스템 응답시간이 길어짐.</p>
+<br/>
+
+<h2 id="스케쥴러의-구분"><a href="#스케쥴러의-구분" class="headerlink" title="스케쥴러의 구분"></a>스케쥴러의 구분</h2><ul>
+<li>FIFO(FCFS), SJF, Priority-based는 어떤 프로세스를 먼저 실행시킬지에 대한 알고리즘 (비선점형에 가까움)</li>
+<li>RoundRobin 은 시분할 시스템을 위한 기본 알고리즘 (선점형 스케쥴러)</li>
+</ul>
+<p>보통 여러가지 알고리즘을 섞어서 사용하는것이 일반적임</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/08/06/OS/210727-%EC%8A%A4%EC%BC%80%EC%A5%B4%EB%A7%81%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98%EA%B8%B0%EB%B3%B8/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1057,129 +1186,6 @@
 <img src="/images/imgs/210805-virtual-memory/6.png" width="700">
 
 <p>페이지 폴트가 자주 일어나면 이런 작업을 많이 해야 하기 때문에 시간이 올래 걸린다.<br>페이지 폴트가 안 일어나게 하는게 제일 좋은데 그렇게 하려면 앞으로 메모리에 올릴 페이지가 무엇인지 예측하는 방법을 사용해야 한다.<br>이 작업에 여러 알고리즘이 있지만 여전히 어려운 부분이다.</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/08/06/OS/210721-os-basic/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JayoonKoo">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="티끌모아 태산">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/08/06/OS/210721-os-basic/" class="post-title-link" itemprop="url">os-basic</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-08-06 22:28:10" itemprop="dateCreated datePublished" datetime="2021-08-06T22:28:10+09:00">2021-08-06</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-09-12 23:50:45" itemprop="dateModified" datetime="2021-09-12T23:50:45+09:00">2021-09-12</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/CS/" itemprop="url" rel="index"><span itemprop="name">CS</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="운영체제-큰-그림"><a href="#운영체제-큰-그림" class="headerlink" title="운영체제 큰 그림"></a>운영체제 큰 그림</h1><h2 id="운영체제-역할-시스테-자원-System-Resouce-관자자"><a href="#운영체제-역할-시스테-자원-System-Resouce-관자자" class="headerlink" title="운영체제 역할 : 시스테 자원 (System Resouce) 관자자"></a>운영체제 역할 : 시스테 자원 (System Resouce) 관자자</h2><ul>
-<li>Operating System</li>
-<li>System Resouce = Computer 하드웨어<ul>
-<li>CPU, Memory</li>
-<li>I/O Devices</li>
-<li>저장 매체</li>
-</ul>
-</li>
-</ul>
-<blockquote>
-<p>하드웨어는 자체로는 아무것도 할 수 없다.<br>CPU를 얼마만큼 사용할지, 어디 메모리 주소에 저장할지, 마우스 조작은 어떻게 할지, 어떤 폴더에 파일을 저장할지 등에 모든 결정은 운영체제가 한다.</p>
-</blockquote>
-<br/>
-
-<h2 id="대표적인-운영체제"><a href="#대표적인-운영체제" class="headerlink" title="대표적인 운영체제"></a>대표적인 운영체제</h2><ul>
-<li>Windoes OS</li>
-<li>Mac OS</li>
-<li>UNIX</li>
-<li>UNIX 계열 OS</li>
-<li>LINUX</li>
-</ul>
-<br/>
-
-<h2 id="운영체제의-역할-사용자와-컴퓨터-간의-커뮤티케이션-지원"><a href="#운영체제의-역할-사용자와-컴퓨터-간의-커뮤티케이션-지원" class="headerlink" title="운영체제의 역할 : 사용자와 컴퓨터 간의 커뮤티케이션 지원"></a>운영체제의 역할 : 사용자와 컴퓨터 간의 커뮤티케이션 지원</h2><p>운영체제 안의 쉘이라는 소프트웨어가 하드웨어와 사용자간의 커뮤니케이션을 지원한다.</p>
-<br/>
-
-<h2 id="운영체제-역할-컴퓨터-하드웨어와-프로그램을-제어"><a href="#운영체제-역할-컴퓨터-하드웨어와-프로그램을-제어" class="headerlink" title="운영체제 역할 : 컴퓨터 하드웨어와 프로그램을 제어"></a>운영체제 역할 : 컴퓨터 하드웨어와 프로그램을 제어</h2><p>하드웨어 뿐만 아니라 프로그램 까지도 제어하는 역활을 수행한다.</p>
-<br/>
-
-<h2 id="응용-프로그램이란"><a href="#응용-프로그램이란" class="headerlink" title="응용 프로그램이란?"></a>응용 프로그램이란?</h2><p>소프트웨어 = 운영체제, 응용프로그램(엑셀, 파워포인 같은..)</p>
-<p>응용 프로그램 = Application</p>
-<br/>
-
-<h2 id="운영체제와-응용-프로그램간의-관계"><a href="#운영체제와-응용-프로그램간의-관계" class="headerlink" title="운영체제와 응용 프로그램간의 관계"></a>운영체제와 응용 프로그램간의 관계</h2><p>운영체제는 응용 프로그램을 관리한다.</p>
-<ul>
-<li>실행 시킴</li>
-<li>응용 프램간의 권한을 관리한다.</li>
-<li>사용하는 사용자도 관리한다. (로그인…)</li>
-</ul>
-<br/>
-
-<h2 id="컴퓨터-구조"><a href="#컴퓨터-구조" class="headerlink" title="컴퓨터 구조"></a>컴퓨터 구조</h2><p>컴퓨터를 키면? 운영체제는 Memory에 올라감.</p>
-<p>현대의 컴퓨터는 폰노이만 구조를 따르고 있기 때문에</p>
-<p>메모리에 올려놓기 실행.</p>
 
       
     </div>

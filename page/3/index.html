@@ -279,6 +279,115 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/12/21/DevOps/Docker/211221-Docker%20tutorial(3)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JayoonKoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="티끌모아 태산">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/12/21/DevOps/Docker/211221-Docker%20tutorial(3)/" class="post-title-link" itemprop="url">Docker tutorial(3)</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2021-12-21 21:34:27 / Modified: 21:34:44" itemprop="dateCreated datePublished" datetime="2021-12-21T21:34:27+09:00">2021-12-21</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/DevOps/" itemprop="url" rel="index"><span itemprop="name">DevOps</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="Update-the-source-code"><a href="#Update-the-source-code" class="headerlink" title="Update the source code"></a>Update the source code</h1><p>코드를 업데이트하고 적용하는 방법을 알아본다.</p>
+<ol>
+<li>코드를 고친다. </li>
+<li>build 할때 사용했던 명령어를 똑같이 입력한다. </li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker build -t getting-started .</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>업데이트된 코드를 사용해서 새로운 컨테이너를 시작한다.</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker run -db 3000:3000 getting-started</span><br></pre></td></tr></table></figure>
+
+<p>하지만 에러가 발생한다.. (docker: Error response from daemon: driver failed….)</p>
+<p>왜냐하면 이미 3000 번 포트로 전에 컨테이너가 실행중이기 때문이다. 하나의 머신에 특정한 포트는 한게만 실행 실행시킬 수 있다. 오래된 컨테이너를 지워야 한다.</p>
+<h2 id="Replace-the-old-container"><a href="#Replace-the-old-container" class="headerlink" title="Replace the old container"></a>Replace the old container</h2><p>컨테이너를 지우기 위해서는 컨테이너 실행을 중지 시켜야 한다. 두가지 방법이 있는데 편한것을 선택하면 된다. </p>
+<h3 id="Remove-a-container-using-the-CLI"><a href="#Remove-a-container-using-the-CLI" class="headerlink" title="Remove a container using the CLI"></a>Remove a container using the CLI</h3><ol>
+<li>컨테이너의 ID를 얻는다. </li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker ps</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>docker ID 혹은 이름을 사용해서 컨테이너를 멈춘다.</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker stop &lt;the-container-id or name&gt;</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>컨테이너가 멈추면 <code>docker rm</code> 커멘드로 지울 수 있다. </li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker rm &lt;the-container-id or name&gt;</span><br></pre></td></tr></table></figure>
+
+<p>-f 플래그를 이요해서 실행중인 중에도 삭제할 수 있다. <code>docker rm -f &lt;the-continaer-id or name&gt;</code> </p>
+<h3 id="Docker-Dashboard"><a href="#Docker-Dashboard" class="headerlink" title="Docker Dashboard"></a>Docker Dashboard</h3><p>Docker Dashboard에서 실행중인 컨테이널르 확인하고 쓰레기통 아이콘을 누르면 삭제할 수 있다. </p>
+<h3 id="Start-the-updated-app-container"><a href="#Start-the-updated-app-container" class="headerlink" title="Start the updated app container"></a>Start the updated app container</h3><ol>
+<li>앱을 실행시킨다. </li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker run -dp 3000:3000 getting-started</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/12/21/DevOps/Docker/211221-Using%20Node(3)/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -375,115 +484,6 @@
 <h2 id="Connect-a-debugger"><a href="#Connect-a-debugger" class="headerlink" title="Connect a debugger"></a>Connect a debugger</h2><p>크롬 브라우저와 함께 제공되는 디버거를 사용할 수 있다. 크롬을 열고 주소창에 <code>about:inspect</code> 를 입력한다.</p>
 <h2 id="depends-on"><a href="#depends-on" class="headerlink" title="depends_on"></a>depends_on</h2><p>어떤 컨테이너는 다른 컨테이너의 의존해서 실행 순서가 나중이어야 하는 경우가 있다. mysql을 사용하면서 특정 테이블이 생성되기 전에 server에서 접근하면 에러가 발생하는데 이런경우 mysql 컨테이너가 테이블을 만드는 시점보다 server 가 실행되는 시점이 더 빠르기 때문이다. 의존성을 추가하고 싶다면 <code>depends_on</code> 을 사용하여 의존성을 명시해준다. </p>
 <figure class="highlight docker"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">services:</span><br><span class="line">  notes:</span><br><span class="line">    depends_on:</span><br><span class="line">      - mysqldb</span><br><span class="line">    build:</span><br><span class="line">      context: .</span><br><span class="line">    ports:</span><br><span class="line">      - <span class="number">443</span>:<span class="number">8080</span></span><br><span class="line">      - <span class="number">9229</span>:<span class="number">9229</span></span><br><span class="line">    environment:</span><br><span class="line">      - SERVER_PORT=<span class="number">8080</span></span><br><span class="line">      - DB_PORT=<span class="number">3306</span></span><br><span class="line">      - MYSQL_DATABASE=test</span><br><span class="line">      - <span class="keyword">USER</span>=root</span><br><span class="line">      - MYSQL_ROOT_PASSWORD=<span class="number">1</span>q2w3e</span><br><span class="line">      - HOST=mysqldb</span><br><span class="line">    volumes:</span><br><span class="line">      - ./:/app</span><br><span class="line">    command: yarn <span class="keyword">run</span><span class="bash"> debug</span></span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/12/21/DevOps/Docker/211221-Docker%20tutorial(3)/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JayoonKoo">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="티끌모아 태산">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/12/21/DevOps/Docker/211221-Docker%20tutorial(3)/" class="post-title-link" itemprop="url">Docker tutorial(3)</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2021-12-21 21:34:27 / Modified: 21:34:44" itemprop="dateCreated datePublished" datetime="2021-12-21T21:34:27+09:00">2021-12-21</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/DevOps/" itemprop="url" rel="index"><span itemprop="name">DevOps</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="Update-the-source-code"><a href="#Update-the-source-code" class="headerlink" title="Update the source code"></a>Update the source code</h1><p>코드를 업데이트하고 적용하는 방법을 알아본다.</p>
-<ol>
-<li>코드를 고친다. </li>
-<li>build 할때 사용했던 명령어를 똑같이 입력한다. </li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker build -t getting-started .</span><br></pre></td></tr></table></figure>
-
-<ol>
-<li>업데이트된 코드를 사용해서 새로운 컨테이너를 시작한다.</li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker run -db 3000:3000 getting-started</span><br></pre></td></tr></table></figure>
-
-<p>하지만 에러가 발생한다.. (docker: Error response from daemon: driver failed….)</p>
-<p>왜냐하면 이미 3000 번 포트로 전에 컨테이너가 실행중이기 때문이다. 하나의 머신에 특정한 포트는 한게만 실행 실행시킬 수 있다. 오래된 컨테이너를 지워야 한다.</p>
-<h2 id="Replace-the-old-container"><a href="#Replace-the-old-container" class="headerlink" title="Replace the old container"></a>Replace the old container</h2><p>컨테이너를 지우기 위해서는 컨테이너 실행을 중지 시켜야 한다. 두가지 방법이 있는데 편한것을 선택하면 된다. </p>
-<h3 id="Remove-a-container-using-the-CLI"><a href="#Remove-a-container-using-the-CLI" class="headerlink" title="Remove a container using the CLI"></a>Remove a container using the CLI</h3><ol>
-<li>컨테이너의 ID를 얻는다. </li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker ps</span><br></pre></td></tr></table></figure>
-
-<ol>
-<li>docker ID 혹은 이름을 사용해서 컨테이너를 멈춘다.</li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker stop &lt;the-container-id or name&gt;</span><br></pre></td></tr></table></figure>
-
-<ol>
-<li>컨테이너가 멈추면 <code>docker rm</code> 커멘드로 지울 수 있다. </li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker rm &lt;the-container-id or name&gt;</span><br></pre></td></tr></table></figure>
-
-<p>-f 플래그를 이요해서 실행중인 중에도 삭제할 수 있다. <code>docker rm -f &lt;the-continaer-id or name&gt;</code> </p>
-<h3 id="Docker-Dashboard"><a href="#Docker-Dashboard" class="headerlink" title="Docker Dashboard"></a>Docker Dashboard</h3><p>Docker Dashboard에서 실행중인 컨테이널르 확인하고 쓰레기통 아이콘을 누르면 삭제할 수 있다. </p>
-<h3 id="Start-the-updated-app-container"><a href="#Start-the-updated-app-container" class="headerlink" title="Start the updated app container"></a>Start the updated app container</h3><ol>
-<li>앱을 실행시킨다. </li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker run -dp 3000:3000 getting-started</span><br></pre></td></tr></table></figure>
 
       
     </div>

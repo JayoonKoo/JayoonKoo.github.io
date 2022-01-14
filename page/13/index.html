@@ -189,7 +189,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/08/15/modernJs/210730-customEvent/">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/08/15/modernJs/210803-promise/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -202,7 +202,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/08/15/modernJs/210730-customEvent/" class="post-title-link" itemprop="url">customEvent</a>
+          <a href="/2021/08/15/modernJs/210803-promise/" class="post-title-link" itemprop="url">promise</a>
         </h2>
 
         <div class="post-meta-container">
@@ -212,8 +212,9 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
+      
 
-      <time title="Created: 2021-08-15 19:40:25" itemprop="dateCreated datePublished" datetime="2021-08-15T19:40:25+09:00">2021-08-15</time>
+      <time title="Created: 2021-08-15 19:40:25 / Modified: 19:48:18" itemprop="dateCreated datePublished" datetime="2021-08-15T19:40:25+09:00">2021-08-15</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -235,61 +236,76 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="커스텀-이벤트-디스패치"><a href="#커스텀-이벤트-디스패치" class="headerlink" title="커스텀 이벤트 디스패치"></a>커스텀 이벤트 디스패치</h1><h2 id="Event의-생성자"><a href="#Event의-생성자" class="headerlink" title="Event의 생성자"></a>Event의 생성자</h2><p>내장 이벤트 클래스 계층의 꼭대기엔 <code>Event</code> 클래스가 있다.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> event = <span class="keyword">new</span> Event(type[, options]);</span><br></pre></td></tr></table></figure>
+          <h1 id="프라미스"><a href="#프라미스" class="headerlink" title="프라미스"></a>프라미스</h1><p>프라미스를 비유로 설명하면 다음과 같다. </p>
+<ol>
+<li>제작 코드는 시간이 걸리는 일로서 가수가 제작한 코드라고 할 수 있다. </li>
+<li>소비 코드는 제작 코드의 결과를 기다리는 코드로 팬이라고 할 수 있다. </li>
+<li>프라미스는 제작코드와 소비코드를 연결해 주는 특별한 자바스크립트 객체이다. 제작 코드가 완료되면 알려주는 역활을 하며 구독 서비스라고 할 수 있다. </li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> promise = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span>(<span class="params">resolve, reject</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// executor (제작 코드, &#x27;가수&#x27;)</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>executor는 promise 가 생성될때 실행된다. resolve와 reject는 js에서 기본으로 제공해 주는 함수로서 개발자는 excutor 만 신경쓰면 된다. 다만, ecutor에서 resolve든 reject든 하나를 반드시 호출해야 한다. </p>
+<ul>
+<li>resolve(value) - 일이 성공적으로 끝난 경우 </li>
+<li>reject(error) - 에러 발생 시 </li>
+</ul>
+<p><code>new Promise</code> 생성자가 반환하는 <code>promise</code> 객체는 다음과 같은 내부 프로퍼티를 갖습니다. </p>
+<img src="/images/imgs/11-2-1.png" width="500">
 
 <ul>
-<li>type: “click” 같은 내장 이벤트, “my-event” 같은 커스텀 이벤트가 올 수 있음. </li>
-<li>options <ul>
-<li>bubbles: true/false -&gt; true 일 경우 버블링</li>
-<li>cancelable: true/false -&gt; true 인 경우 브라우저 ‘기본동작’ 이 실행되지 않는다. </li>
-<li>아무런 값도 지정하지 않으면 둘다 false 가 됨. </li>
+<li>state - 처음에 pending 이었다가 resolve 가 호출되면 fulfilled, reject가 호출되면 rejected</li>
+<li>result - 처음에 undefined 이었다가 resolve 가 호출되면 value, reject 가 호출되면 error</li>
 </ul>
-</li>
-</ul>
-<br/>
+<p>간단한 예시</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> promise = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span>(<span class="params">resolve, reject</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 프라미스가 만들어지면 executor 함수는 자동으로 실행됩니다.</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// 1초 뒤에 일이 성공적으로 끝났다는 신호가 전달되면서 result는 &#x27;done&#x27;이 됩니다.</span></span><br><span class="line">  <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> resolve(<span class="string">&quot;done&quot;</span>), <span class="number">1000</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<h2 id="dispatchEvent"><a href="#dispatchEvent" class="headerlink" title="dispatchEvent"></a>dispatchEvent</h2><p>이베트 객체를 생성한 다음에는 <code>elem.dispatchEvent(event)</code>를 호출해 요소에 있는 이벤트를 반드시 실행시켜줘야 한다. </p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">&quot;elem&quot;</span> <span class="attr">onclick</span>=<span class="string">&quot;alert(&#x27;클릭!&#x27;);&quot;</span>&gt;</span>자동으로 클릭 되는 버튼<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></span><br><span class="line"><span class="javascript">  <span class="keyword">let</span> event = <span class="keyword">new</span> Event(<span class="string">&quot;click&quot;</span>);</span></span><br><span class="line"><span class="javascript">  elem.dispatchEvent(event);</span></span><br><span class="line"><span class="javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>프로미스 객체의 변화</p>
+<img src="/images/imgs/11-2-2.png" width="500">
+
+<p>반대로 거절한 경우</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> promise = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span>(<span class="params">resolve, reject</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 1초 뒤에 에러와 함께 실행이 종료되었다는 신호를 보냅니다.</span></span><br><span class="line">  <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> reject(<span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">&quot;에러 발생!&quot;</span>)), <span class="number">1000</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>프로미스 객체의 변화</p>
+<img src="/images/imgs/11-2-3.png" width="500">
+
+<p>이행이나 거부된 프로미스를 처리된(settled)된 프라미스라고 한다. 반대로 처리가 안된 프라미스는 pending 상태라고 한다. </p>
 <blockquote>
-<p>event.isTrusted 가 true 이면 사용자 액션을 통해서 만든 이벤트라는 것을 의미. isTrusted 가 false 이면 스크립트를 통해 생성된 이벤트라는 것을 의미</p>
+<ul>
+<li>프라미스는 성공 또는 실패만 합니다. 성공했다가 실패하고 이렇게 할 수 없다. </li>
+<li>reject는 어떤 객체도 인수로 넘겨 줄 수 있지만 Error 객체를 사용할 것을 추천한다. 혹은 Error 객체를 상속 받는 객체를 사용할것.</li>
+<li>state와 resulot는 내부 프로퍼티로 개발자가 직접 접근할 수 없다. then catch finally 를 사용해야 접근 가능</li>
+</ul>
 </blockquote>
-<br/>
+<h2 id="소비자-then-catch-finally"><a href="#소비자-then-catch-finally" class="headerlink" title="소비자: then, catch, finally"></a>소비자: then, catch, finally</h2><p>프라미스는 excutor와 소비함수를 이어주는 역할을 한다. 소비 함수는 then, catch, finally 를 사용하여 등록한다. (구독)</p>
+<h3 id="then"><a href="#then" class="headerlink" title="then"></a>then</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">promise.then(</span><br><span class="line">  <span class="function"><span class="keyword">function</span>(<span class="params">result</span>) </span>&#123; <span class="comment">/* 결과(result)를 다룹니다 */</span> &#125;,</span><br><span class="line">  <span class="function"><span class="keyword">function</span>(<span class="params">error</span>) </span>&#123; <span class="comment">/* 에러(error)를 다룹니다 */</span> &#125;</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
 
-<h2 id="커스텀-이벤트-버블링"><a href="#커스텀-이벤트-버블링" class="headerlink" title="커스텀 이벤트 버블링"></a>커스텀 이벤트 버블링</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h1</span> <span class="attr">id</span>=<span class="string">&quot;elem&quot;</span>&gt;</span>Hello from the script!<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></span><br><span class="line"><span class="javascript">  <span class="comment">// 버블링이 일어나면서 document에서 이벤트가 처리됨</span></span></span><br><span class="line"><span class="javascript">  <span class="built_in">document</span>.addEventListener(<span class="string">&quot;hello&quot;</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>) </span>&#123; <span class="comment">// (1)</span></span></span><br><span class="line"><span class="javascript">    alert(<span class="string">&quot;Hello from &quot;</span> + event.target.tagName); <span class="comment">// Hello from H1</span></span></span><br><span class="line"><span class="javascript">  &#125;);</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">  <span class="comment">// 이벤트(hello)를 만들고 elem에서 이벤트 디스패치</span></span></span><br><span class="line"><span class="javascript">  <span class="keyword">let</span> event = <span class="keyword">new</span> Event(<span class="string">&quot;hello&quot;</span>, &#123;<span class="attr">bubbles</span>: <span class="literal">true</span>&#125;); <span class="comment">// (2)</span></span></span><br><span class="line"><span class="javascript">  elem.dispatchEvent(event);</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">  <span class="comment">// document에 할당된 핸들러가 동작하고 메시지가 얼럿창에 출력됩니다.</span></span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>성공적으로 이행된 프라미스가 어떻게 반응하는지</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> promise = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span>(<span class="params">resolve, reject</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> resolve(<span class="string">&quot;done!&quot;</span>), <span class="number">1000</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// resolve 함수는 .then의 첫 번째 함수(인수)를 실행합니다.</span></span><br><span class="line">promise.then(</span><br><span class="line">  <span class="function"><span class="params">result</span> =&gt;</span> alert(result), <span class="comment">// 1초 후 &quot;done!&quot;을 출력</span></span><br><span class="line">  <span class="function"><span class="params">error</span> =&gt;</span> alert(error) <span class="comment">// 실행되지 않음</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<p>프라미스가 거부된 경우 두번째 함수가 실행된다. </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> promise = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span>(<span class="params">resolve, reject</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> reject(<span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">&quot;에러 발생!&quot;</span>)), <span class="number">1000</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// reject 함수는 .then의 두 번째 함수를 실행합니다.</span></span><br><span class="line">promise.then(</span><br><span class="line">  <span class="function"><span class="params">result</span> =&gt;</span> alert(result), <span class="comment">// 실행되지 않음</span></span><br><span class="line">  <span class="function"><span class="params">error</span> =&gt;</span> alert(error) <span class="comment">// 1초 후 &quot;Error: 에러 발생!&quot;를 출력</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<p>작업이 성공적으로 처리된 경우만 다루고 싶다면 .then 인수로 하나만 전달하면 된다. </p>
+<h3 id="catch"><a href="#catch" class="headerlink" title="catch"></a>catch</h3><p>에러를 처리하고 싶다면 <code>.then(null, errorHandlerFunction)</code>과 같이 사용하면되는데, <code>.catch(errorHandlerFunction)</code> 을 사용해도 동일하게 작동한다. </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> promise = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> reject(<span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">&quot;에러 발생!&quot;</span>)), <span class="number">1000</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// .catch(f)는 promise.then(null, f)과 동일하게 작동합니다</span></span><br><span class="line">promise.catch(alert); <span class="comment">// 1초 뒤 &quot;Error: 에러 발생!&quot; 출력</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="finally"><a href="#finally" class="headerlink" title="finally"></a>finally</h3><p>무조건 실행되는 함수 를 등록한다. <code>.then(f, f)</code>와 유사하다. </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">/* 시간이 걸리는 어떤 일을 수행하고, 그 후 resolve, reject를 호출함 */</span></span><br><span class="line">&#125;)</span><br><span class="line">  <span class="comment">// 성공·실패 여부와 상관없이 프라미스가 처리되면 실행됨</span></span><br><span class="line">  .finally(<span class="function">() =&gt;</span> 로딩 인디케이터 중지)</span><br><span class="line">  .then(<span class="function"><span class="params">result</span> =&gt;</span> result와 err 보여줌 =&gt; error 보여줌)</span><br></pre></td></tr></table></figure>
 
 <ol>
-<li><code>on&lt;event&gt;</code> 는 내장 이벤트에서만 사용 가능 <code>addEventListener</code>를 사용해야 함.</li>
-<li><code>bubbles: true</code>를 명시적으로 써야 버블링 사용 가능</li>
+<li>finally 는 보변적으로 처리되어야 하는 함수를 등록하기 때문에 성공 실패 여부를 모른다. finally 핸들러엔 인수가 없다.</li>
+<li>자동으로 다음 핸들러에 결과와 에러를 전달한다.</li>
 </ol>
-<br/>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> resolve(<span class="string">&quot;결과&quot;</span>), <span class="number">2000</span>)</span><br><span class="line">&#125;)</span><br><span class="line">  .finally(<span class="function">() =&gt;</span> alert(<span class="string">&quot;프라미스가 준비되었습니다.&quot;</span>))</span><br><span class="line">  .then(<span class="function"><span class="params">result</span> =&gt;</span> alert(result)); <span class="comment">// &lt;-- .then에서 result를 다룰 수 있음</span></span><br></pre></td></tr></table></figure>
 
-<h2 id="MouseEvent-KeyboardEvent-등의-다양한-이벤트"><a href="#MouseEvent-KeyboardEvent-등의-다양한-이벤트" class="headerlink" title="MouseEvent, KeyboardEvent 등의 다양한 이벤트"></a>MouseEvent, KeyboardEvent 등의 다양한 이벤트</h2><p>마우스나 키보드와 관련된 이벤트들은 Event 로 생성하는 것이 아니라 관련 생성자로 생성해야 한다. 그래야 해당 이벤트의 전용 프로퍼티를 명시할 수 있다.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> event = <span class="keyword">new</span> MouseEvent(<span class="string">&quot;click&quot;</span>, &#123;</span><br><span class="line">  <span class="attr">bubbles</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="attr">cancelable</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="attr">clientX</span>: <span class="number">100</span>,</span><br><span class="line">  <span class="attr">clientY</span>: <span class="number">100</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">alert(event.clientX); <span class="comment">// 100</span></span><br></pre></td></tr></table></figure>
-<p>그냥 Event 로 생성하면 무시된다. </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> event = <span class="keyword">new</span> Event(<span class="string">&quot;click&quot;</span>, &#123;</span><br><span class="line">  <span class="attr">bubbles</span>: <span class="literal">true</span>, <span class="comment">// Event 생성자에선</span></span><br><span class="line">  <span class="attr">cancelable</span>: <span class="literal">true</span>, <span class="comment">// bubbles와 cancelable 프로퍼티만 동작합니다.</span></span><br><span class="line">  <span class="attr">clientX</span>: <span class="number">100</span>,</span><br><span class="line">  <span class="attr">clientY</span>: <span class="number">100</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">alert(event.clientX); <span class="comment">// undefined, 알 수 없는 프로퍼티이기 때문에 무시됩니다.</span></span><br></pre></td></tr></table></figure>
+<p>finally는 결과를 처리하기 위해서 만들어진게 아니기 때문에 통과해서 다음 으로 전달된다. </p>
+<h2 id="예시-loadScript"><a href="#예시-loadScript" class="headerlink" title="예시 : loadScript"></a>예시 : loadScript</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">loadScript</span>(<span class="params">src, callback</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> script = <span class="built_in">document</span>.createElement(<span class="string">&#x27;script&#x27;</span>);</span><br><span class="line">  script.src = src;</span><br><span class="line"></span><br><span class="line">  script.onload = <span class="function">() =&gt;</span> callback(<span class="literal">null</span>, script);</span><br><span class="line">  script.onerror = <span class="function">() =&gt;</span> callback(<span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">`<span class="subst">$&#123;src&#125;</span>를 불러오는 도중에 에러가 발생함`</span>));</span><br><span class="line"></span><br><span class="line">  <span class="built_in">document</span>.head.append(script);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<br/>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">loadScript</span>(<span class="params">src</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span>(<span class="params">resolve, reject</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> script = <span class="built_in">document</span>.createElement(<span class="string">&#x27;script&#x27;</span>);</span><br><span class="line">    script.src = src;</span><br><span class="line"></span><br><span class="line">    script.onload = <span class="function">() =&gt;</span> resolve(script);</span><br><span class="line">    script.onerror = <span class="function">() =&gt;</span> reject(<span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">`<span class="subst">$&#123;src&#125;</span>를 불러오는 도중에 에러가 발생함`</span>));</span><br><span class="line"></span><br><span class="line">    <span class="built_in">document</span>.head.append(script);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h2 id="커스텀-이벤트"><a href="#커스텀-이벤트" class="headerlink" title="커스텀 이벤트"></a>커스텀 이벤트</h2><p>제대로된 커스텀 이벤트를 만들려면 그냥 Event로 생성하는 것이 아니라 CustomEvent로 생성해야 한다. </p>
-<p>CustomEvent 로 생성하면 두번째 인수로 detail 이라는 프로퍼티를 추가해 커스텀 이벤트에 대한 정보를 명시할 수 있다.</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h1</span> <span class="attr">id</span>=<span class="string">&quot;elem&quot;</span>&gt;</span>이보라님, 환영합니다!<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></span><br><span class="line"><span class="javascript">  <span class="comment">// 추가 정보는 이벤트와 함께 핸들러에 전달됩니다.</span></span></span><br><span class="line"><span class="javascript">  elem.addEventListener(<span class="string">&quot;hello&quot;</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">    alert(event.detail.name);</span></span><br><span class="line"><span class="javascript">  &#125;);</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">  elem.dispatchEvent(<span class="keyword">new</span> CustomEvent(<span class="string">&quot;hello&quot;</span>, &#123;</span></span><br><span class="line"><span class="javascript">    <span class="attr">detail</span>: &#123; <span class="attr">name</span>: <span class="string">&quot;보라&quot;</span> &#125;</span></span><br><span class="line"><span class="javascript">  &#125;));</span></span><br><span class="line"><span class="javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>사용법</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> promise = loadScript(<span class="string">&quot;https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.11/lodash.js&quot;</span>);</span><br><span class="line"></span><br><span class="line">promise.then(</span><br><span class="line">  <span class="function"><span class="params">script</span> =&gt;</span> alert(<span class="string">`<span class="subst">$&#123;script.src&#125;</span>을 불러왔습니다!`</span>),</span><br><span class="line">  <span class="function"><span class="params">error</span> =&gt;</span> alert(<span class="string">`Error: <span class="subst">$&#123;error.message&#125;</span>`</span>)</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line">promise.then(<span class="function"><span class="params">script</span> =&gt;</span> alert(<span class="string">&#x27;또다른 핸들러...&#x27;</span>)); <span class="comment">// 원하는 만큼 등록 가능.</span></span><br></pre></td></tr></table></figure>
 
-<p>사실 Event로 생성해서 추가 프로퍼티를 넘겨주면 되긴 하지만, 이렇게 생성하면 충돌을 피할 수 있고 무엇보다 직접 만든 커스텀 이벤트라는 명시가 된다. </p>
-<br/>
-
-<h2 id="event-preventDefault"><a href="#event-preventDefault" class="headerlink" title="event.preventDefault()"></a>event.preventDefault()</h2><p>커스텀 이벤트에는 기본 동작이 없지만 디스패칭 해주는 코드에 원하는 동작을 넣으면, 커스텀 이벤트에도 기본 동작을 설정해줄 수 있다.</p>
-<p><code>event.preventDefault()</code>를 호출하면 <code>elem.dispatchEvent(event)</code> 호출 시 <code>false</code>를 반환한다. 이를 통해서 해당 이벤트에서 기본동작이 취소 되었음을 알 수 있다. </p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">pre</span> <span class="attr">id</span>=<span class="string">&quot;rabbit&quot;</span>&gt;</span></span><br><span class="line">  |\   /|</span><br><span class="line">   \|_|/</span><br><span class="line">   /. .\</span><br><span class="line">  =\_Y_/=</span><br><span class="line">   &#123;&gt;o&lt;&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">pre</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">onclick</span>=<span class="string">&quot;hide()&quot;</span>&gt;</span>hide()를 호출해 토끼 숨기기<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></span><br><span class="line"><span class="javascript">  <span class="comment">// hide() will be called automatically in 2 seconds</span></span></span><br><span class="line"><span class="javascript">  <span class="function"><span class="keyword">function</span> <span class="title">hide</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">    <span class="keyword">let</span> event = <span class="keyword">new</span> CustomEvent(<span class="string">&quot;hide&quot;</span>, &#123;</span></span><br><span class="line"><span class="javascript">      <span class="attr">cancelable</span>: <span class="literal">true</span> <span class="comment">// cancelable를 true로 설정하지 않으면 preventDefault가 동작하지 않습니다.</span></span></span><br><span class="line"><span class="javascript">    &#125;);</span></span><br><span class="line"><span class="javascript">    <span class="keyword">if</span> (!rabbit.dispatchEvent(event)) &#123;</span></span><br><span class="line"><span class="javascript">      alert(<span class="string">&#x27;기본 동작이 핸들러에 의해 취소되었습니다.&#x27;</span>);</span></span><br><span class="line"><span class="javascript">    &#125; <span class="keyword">else</span> &#123;</span></span><br><span class="line"><span class="javascript">      rabbit.hidden = <span class="literal">true</span>;</span></span><br><span class="line"><span class="javascript">    &#125;</span></span><br><span class="line"><span class="javascript">  &#125;</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">  rabbit.addEventListener(<span class="string">&#x27;hide&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">    <span class="keyword">if</span> (confirm(<span class="string">&quot;preventDefault를 호출하시겠습니까?&quot;</span>)) &#123;</span></span><br><span class="line"><span class="javascript">      event.preventDefault();</span></span><br><span class="line"><span class="javascript">    &#125;</span></span><br><span class="line"><span class="javascript">  &#125;);</span></span><br><span class="line"><span class="javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<br/>
-
-<h2 id="이벤트-안-이벤트"><a href="#이벤트-안-이벤트" class="headerlink" title="이벤트 안 이벤트"></a>이벤트 안 이벤트</h2><p>이벤트는 큐로 처리 된다. 따라서 이벤트가 발생되고 다른 이벤트가 또 발생 되면 먼저 발생한 이벤트가 종료 된 이후에 새롭게 발생한 이벤트가 처리 된다. </p>
-<p>하지만, 이벤트 안에 또 다른 이벤트 실행되는 경우는 다르다. 스텍 처럼 안쪽에 있는 이벤트 가 먼저 실행 된 이후에 바깥에 있는 이벤트가 실행되게 된다.</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">&quot;menu&quot;</span>&gt;</span>메뉴(클릭해주세요)<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></span><br><span class="line"><span class="javascript">  menu.onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">    alert(<span class="number">1</span>);</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">    menu.dispatchEvent(<span class="keyword">new</span> CustomEvent(<span class="string">&quot;menu-open&quot;</span>, &#123;</span></span><br><span class="line"><span class="javascript">      <span class="attr">bubbles</span>: <span class="literal">true</span></span></span><br><span class="line"><span class="javascript">    &#125;));</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">    alert(<span class="number">2</span>);</span></span><br><span class="line"><span class="javascript">  &#125;;</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">  <span class="comment">// 1과 2 사이에 트리거됩니다</span></span></span><br><span class="line"><span class="javascript">  <span class="built_in">document</span>.addEventListener(<span class="string">&#x27;menu-open&#x27;</span>, <span class="function">() =&gt;</span> alert(<span class="string">&#x27;중첩 이벤트&#x27;</span>));</span></span><br><span class="line"><span class="javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>1, 중첩이벤트, 2 마치 동기적으로 처리되는 것처럼.</p>
-<p>때로는 비동기적으로 보이고 싶다면 <code>setTimeout(()=&gt; &#123;&#125;, 0)</code> 사용.</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">&quot;menu&quot;</span>&gt;</span>Menu (click me)<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></span><br><span class="line"><span class="javascript">  menu.onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">    alert(<span class="number">1</span>);</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">    <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> menu.dispatchEvent(<span class="keyword">new</span> CustomEvent(<span class="string">&quot;menu-open&quot;</span>, &#123;</span></span><br><span class="line"><span class="javascript">      <span class="attr">bubbles</span>: <span class="literal">true</span></span></span><br><span class="line"><span class="javascript">    &#125;)));</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">    alert(<span class="number">2</span>);</span></span><br><span class="line"><span class="javascript">  &#125;;</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">  <span class="built_in">document</span>.addEventListener(<span class="string">&#x27;menu-open&#x27;</span>, <span class="function">() =&gt;</span> alert(<span class="string">&#x27;중첩 이벤트&#x27;</span>));</span></span><br><span class="line"><span class="javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -805,6 +821,129 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/08/06/OS/210721-os-basic/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JayoonKoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="티끌모아 태산">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/08/06/OS/210721-os-basic/" class="post-title-link" itemprop="url">os-basic</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-08-06 22:28:10" itemprop="dateCreated datePublished" datetime="2021-08-06T22:28:10+09:00">2021-08-06</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-09-12 23:50:45" itemprop="dateModified" datetime="2021-09-12T23:50:45+09:00">2021-09-12</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/CS/" itemprop="url" rel="index"><span itemprop="name">CS</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="운영체제-큰-그림"><a href="#운영체제-큰-그림" class="headerlink" title="운영체제 큰 그림"></a>운영체제 큰 그림</h1><h2 id="운영체제-역할-시스테-자원-System-Resouce-관자자"><a href="#운영체제-역할-시스테-자원-System-Resouce-관자자" class="headerlink" title="운영체제 역할 : 시스테 자원 (System Resouce) 관자자"></a>운영체제 역할 : 시스테 자원 (System Resouce) 관자자</h2><ul>
+<li>Operating System</li>
+<li>System Resouce = Computer 하드웨어<ul>
+<li>CPU, Memory</li>
+<li>I/O Devices</li>
+<li>저장 매체</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>하드웨어는 자체로는 아무것도 할 수 없다.<br>CPU를 얼마만큼 사용할지, 어디 메모리 주소에 저장할지, 마우스 조작은 어떻게 할지, 어떤 폴더에 파일을 저장할지 등에 모든 결정은 운영체제가 한다.</p>
+</blockquote>
+<br/>
+
+<h2 id="대표적인-운영체제"><a href="#대표적인-운영체제" class="headerlink" title="대표적인 운영체제"></a>대표적인 운영체제</h2><ul>
+<li>Windoes OS</li>
+<li>Mac OS</li>
+<li>UNIX</li>
+<li>UNIX 계열 OS</li>
+<li>LINUX</li>
+</ul>
+<br/>
+
+<h2 id="운영체제의-역할-사용자와-컴퓨터-간의-커뮤티케이션-지원"><a href="#운영체제의-역할-사용자와-컴퓨터-간의-커뮤티케이션-지원" class="headerlink" title="운영체제의 역할 : 사용자와 컴퓨터 간의 커뮤티케이션 지원"></a>운영체제의 역할 : 사용자와 컴퓨터 간의 커뮤티케이션 지원</h2><p>운영체제 안의 쉘이라는 소프트웨어가 하드웨어와 사용자간의 커뮤니케이션을 지원한다.</p>
+<br/>
+
+<h2 id="운영체제-역할-컴퓨터-하드웨어와-프로그램을-제어"><a href="#운영체제-역할-컴퓨터-하드웨어와-프로그램을-제어" class="headerlink" title="운영체제 역할 : 컴퓨터 하드웨어와 프로그램을 제어"></a>운영체제 역할 : 컴퓨터 하드웨어와 프로그램을 제어</h2><p>하드웨어 뿐만 아니라 프로그램 까지도 제어하는 역활을 수행한다.</p>
+<br/>
+
+<h2 id="응용-프로그램이란"><a href="#응용-프로그램이란" class="headerlink" title="응용 프로그램이란?"></a>응용 프로그램이란?</h2><p>소프트웨어 = 운영체제, 응용프로그램(엑셀, 파워포인 같은..)</p>
+<p>응용 프로그램 = Application</p>
+<br/>
+
+<h2 id="운영체제와-응용-프로그램간의-관계"><a href="#운영체제와-응용-프로그램간의-관계" class="headerlink" title="운영체제와 응용 프로그램간의 관계"></a>운영체제와 응용 프로그램간의 관계</h2><p>운영체제는 응용 프로그램을 관리한다.</p>
+<ul>
+<li>실행 시킴</li>
+<li>응용 프램간의 권한을 관리한다.</li>
+<li>사용하는 사용자도 관리한다. (로그인…)</li>
+</ul>
+<br/>
+
+<h2 id="컴퓨터-구조"><a href="#컴퓨터-구조" class="headerlink" title="컴퓨터 구조"></a>컴퓨터 구조</h2><p>컴퓨터를 키면? 운영체제는 Memory에 올라감.</p>
+<p>현대의 컴퓨터는 폰노이만 구조를 따르고 있기 때문에</p>
+<p>메모리에 올려놓기 실행.</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/08/06/OS/210721-os-history/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1172,135 +1311,6 @@
 <h3 id="메모리-계층"><a href="#메모리-계층" class="headerlink" title="메모리 계층"></a>메모리 계층</h3><p>CPU 밖에서 일어나는 프로세스는 속도가 느릴 수 밖에 없다.</p>
 <p>특히나 저장매체에서 진행되는 프로세스는 굉장히 느리다.</p>
 <center><img src="/images/imgs/스케쥴링/3.png" width="300"></center>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/08/06/OS/210727-%EC%8A%A4%EC%BC%80%EC%A5%B4%EB%A7%81%EC%83%81%ED%83%9C%EA%B8%B0%EB%B0%98/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JayoonKoo">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="티끌모아 태산">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/08/06/OS/210727-%EC%8A%A4%EC%BC%80%EC%A5%B4%EB%A7%81%EC%83%81%ED%83%9C%EA%B8%B0%EB%B0%98/" class="post-title-link" itemprop="url">스케쥴링상태기반</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-08-06 22:28:10" itemprop="dateCreated datePublished" datetime="2021-08-06T22:28:10+09:00">2021-08-06</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-09-12 23:50:45" itemprop="dateModified" datetime="2021-09-12T23:50:45+09:00">2021-09-12</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/CS/" itemprop="url" rel="index"><span itemprop="name">CS</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="상태-기반-스케쥴링"><a href="#상태-기반-스케쥴링" class="headerlink" title="상태 기반 스케쥴링"></a>상태 기반 스케쥴링</h1><h2 id="프로세스-상태"><a href="#프로세스-상태" class="headerlink" title="프로세스 상태"></a>프로세스 상태</h2><img src="/images/imgs/210727-스케쥴링상태기반/1.png">
-
-<ul>
-<li>running state: 현재 CPU에서 실행 중인 상태</li>
-<li>ready state : CPU 에서 실행 가능 상태 (실행 대기 상태)</li>
-<li>block state: 특정 이벤트 발생 대기 상태 (파일을 다 읽었다!)</li>
-</ul>
-<p>프로세스 생성과 종료는 짧은 시간 동안 발생.</p>
-<p>종료의 경우 실행하면서 갖고 있던 리소스를 해제하는 과정이라고 생각할 수 있다.</p>
-<br/>
-
-<h2 id="프로세스-상태간-관계"><a href="#프로세스-상태간-관계" class="headerlink" title="프로세스 상태간 관계"></a>프로세스 상태간 관계</h2><img src="/images/imgs/210727-스케쥴링상태기반/2.png">
-
-<ol>
-<li>process 가 특정 특정 cpu 사용아 아닌 다른 작업을 수행해야 하는 상태가 됨. 완료 이벤트를 기다리는 상태</li>
-<li>scheduler 가 실행가능한 프로세스 중에서 하나를 골라서 실행 시킴.</li>
-<li>시분할 시스템과 같은 시스템에서 scheduler가 실행 중인 프로세스를 다른 프로세스에 실행을 위해서 ready 상태로 바꿈.</li>
-<li>block 상태에 있는 프로세스가 작업을 완료 후 (완료 이벤트를 받고) ready 상태로 변화.</li>
-</ol>
-<p>but, 단순한 상태만 가지고서 어떻게 스케쥴링을 하지? ready 상태가 여러개일 때에는 어떤걸 선택해야 할까?</p>
-<br/>
-
-<h2 id="상태별-큐를-만들자"><a href="#상태별-큐를-만들자" class="headerlink" title="상태별 큐를 만들자."></a>상태별 큐를 만들자.</h2><p>큐 : 앞 뒤 로 본다.<br>초기 상태</p>
-<ul>
-<li>ready state queue: 1, 2, 3</li>
-<li>runnig state queue</li>
-<li>block state queue</li>
-</ul>
-<img src="/images/imgs/210727-스케쥴링상태기반/3.png">
-
-<p>cpu가 아무것도 실행되고 있지 않은 상태를 idle 상태라고 한다.</p>
-<p>상태 별 큐를 생각하면서 어떻게 돌아갈지 생각해 보기.</p>
-<p><strong>결과</strong> [1, 2, 3, 1, 3, 2, idle, idle, 3]</p>
-<br/>
-
-<h2 id="선점형과-비선점형-스케쥴러"><a href="#선점형과-비선점형-스케쥴러" class="headerlink" title="선점형과 비선점형 스케쥴러"></a>선점형과 비선점형 스케쥴러</h2><p>선점형 스케쥴러는 프로세스가 끝나거나 block 상태가 되지 않더라도 스케쥴러가 ready 상태로 바꾸고 다른 프로세스를 실행시키는 것이 가능한 스케쥴러이다.</p>
-<p>비선점형 스케쥴러는 프로세스가 block 상태가 되거나 끝나지 않으면 다른 프로세스를 실행 시키는것이 불가능한 스케쥴러이다.</p>
-<p>시분할 시스템을 구현하려면 선점형 스케쥴러를 구현할 수 있어야 했는데, 초기에 운영체제는 선점형 스케쥴러 구현의 어려움이 있었다.</p>
-<h3 id="선점형과-비선점형의-차이"><a href="#선점형과-비선점형의-차이" class="headerlink" title="선점형과 비선점형의 차이"></a>선점형과 비선점형의 차이</h3><p>위에 예시에서 선점형과 비선점형을 나눠서 생각해봄.</p>
-<p>이번엔 시분할을 2칸으로 봄. 왜 이렇게 되는지 생각해 보자.</p>
-<img src="/images/imgs/210727-스케쥴링상태기반/4.png">
-
-<p>비선점형은 시스템 응답시간이 길어짐.</p>
-<br/>
-
-<h2 id="스케쥴러의-구분"><a href="#스케쥴러의-구분" class="headerlink" title="스케쥴러의 구분"></a>스케쥴러의 구분</h2><ul>
-<li>FIFO(FCFS), SJF, Priority-based는 어떤 프로세스를 먼저 실행시킬지에 대한 알고리즘 (비선점형에 가까움)</li>
-<li>RoundRobin 은 시분할 시스템을 위한 기본 알고리즘 (선점형 스케쥴러)</li>
-</ul>
-<p>보통 여러가지 알고리즘을 섞어서 사용하는것이 일반적임</p>
 
       
     </div>
