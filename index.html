@@ -83,9 +83,9 @@
   <ul class="main-menu menu">
         <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li>
         <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
-        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">14</span></a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">15</span></a></li>
         <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">12</span></a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">135</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">138</span></a></li>
   </ul>
 </nav>
 
@@ -129,7 +129,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">135</span>
+          <span class="site-state-item-count">138</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -140,7 +140,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-count">15</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -180,6 +180,278 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2022/01/14/BackEnd/220113-CSRF/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JayoonKoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="티끌모아 태산">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/01/14/BackEnd/220113-CSRF/" class="post-title-link" itemprop="url">CSRF</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2022-01-14 12:21:57 / Modified: 12:22:01" itemprop="dateCreated datePublished" datetime="2022-01-14T12:21:57+09:00">2022-01-14</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/BackEnd/" itemprop="url" rel="index"><span itemprop="name">BackEnd</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="CSRF-어택"><a href="#CSRF-어택" class="headerlink" title="CSRF 어택"></a>CSRF 어택</h1><p>로그인 해서 인증된 사용자가 원하지 않은 특정한 액션을 하도록 유도하는 공격. 이메일이나 이미지를 통해 특정 액션을 취하도록 한다. session riding 이라고도 하며 의미 적으로 로그인 된 사용자에 올라타서 권한을 흭득한 후 특정 잡업을 하도록 하는 것이다. </p>
+<h2 id="공격-순서"><a href="#공격-순서" class="headerlink" title="공격 순서"></a>공격 순서</h2><ol>
+<li>헤커가 웹사이트에 특정 행동을 하는 코드를 숨겨 놓는다.</li>
+<li>이메일이나 채팅을 통해서 희생자에게 해당 웹사이트에 링크를 보낸다. (사이즈가 없는 이미지가 있거나, 눈에는 안보이는 버튼이 있는 형태)</li>
+<li>희생자도 모르는 사이에 리퀘스트가 날라가고 HTTP Only 로 쿠키 정보가 저장되어 인증을 한다면 자동으로 승인된다. </li>
+<li>헤커가 직접 쿠키를 가져갈 수 없지만 희생자에게 특정 액션을 취하게 할 수 있게 된다. </li>
+</ol>
+<h2 id="방어법"><a href="#방어법" class="headerlink" title="방어법"></a>방어법</h2><p>서버로부터 CSRF 토큰을 요청하고, 클라이언트는 CSRF 토큰을 메모리에서 관리될 수 있도록 하여 모든 요청때마나 CSRF 토큰도 같이 보내주도록 한다.</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2022/01/14/IOS/220113-UITabelView/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JayoonKoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="티끌모아 태산">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/01/14/IOS/220113-UITabelView/" class="post-title-link" itemprop="url">UITabelView</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2022-01-14 12:19:20 / Modified: 12:19:24" itemprop="dateCreated datePublished" datetime="2022-01-14T12:19:20+09:00">2022-01-14</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/IOS/" itemprop="url" rel="index"><span itemprop="name">IOS</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="UITableView"><a href="#UITableView" class="headerlink" title="UITableView"></a>UITableView</h1><p>여러 아이템을 리스트 형태로 보여주는 UIView를 의미합니다.</p>
+<h2 id="Recycle-Cell"><a href="#Recycle-Cell" class="headerlink" title="Recycle Cell"></a>Recycle Cell</h2><p>테이블 뷰는 Cell을 재활용 해서 화면에 띄웁니다 .화면에서 볼수 있는 Cell은 한정적이기 때문에 모든 Cell을 사용하는 것이 아닌 재활용하는 정책을 사용하는 것입니다.</p>
+<p>예를 들면 : </p>
+<ul>
+<li>5개의 Cell 을 화면에 표시하고</li>
+<li>스크롤을 해서 맨 위에 1번 Cell이 안보이게 되었고 6번 Cell을 보여줘야 한다면</li>
+<li>1번 Cell을 재활용 해서 6번 Cell을 보여주게 됩니다.</li>
+</ul>
+<h2 id="프로토콜"><a href="#프로토콜" class="headerlink" title="프로토콜"></a>프로토콜</h2><p>화면에 리스트를 보여주기 위해서 몇가지 정보가 필요합니다.</p>
+<ul>
+<li>테이블뷰 셀 몇개?</li>
+<li>테이블 뷰 어떻게 보여주지?</li>
+<li>테이블 뷰 클릭하면 어떡해야하지?</li>
+<li>…</li>
+</ul>
+<p>모든 정보를 명시해야 하는 것은 아니지만 필수적으로 테이블 뷰 셀을 몇개 보여줄지랑 테이블 뷰를 어떻게 보여줄지는 정해야 합니다. 프로토콜을 구현하는 방식으로 기능을 구현할 수 있습니다.</p>
+<h3 id="UITableViewDataSource"><a href="#UITableViewDataSource" class="headerlink" title="UITableViewDataSource"></a>UITableViewDataSource</h3><p>데이터에 관련된 프로토콜로서 테이블뷰의 셀은 몇개인지, 테이블 뷰를 어떻게 보여줄지? 등의 작업을 여기서 정의합니다. </p>
+<h3 id="UITableViewDelegate"><a href="#UITableViewDelegate" class="headerlink" title="UITableViewDelegate"></a>UITableViewDelegate</h3><p>테이블 뷰 동작에 관련된 프로토콜로서 테이블 뷰를 클릭하면 어떡해 작동할지 등의 작업을 여기서 정의합니다.</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2022/01/14/IOS/220113-GCD%20%EA%B8%B0%EC%B4%88/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JayoonKoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="티끌모아 태산">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/01/14/IOS/220113-GCD%20%EA%B8%B0%EC%B4%88/" class="post-title-link" itemprop="url">GCD 기초</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2022-01-14 12:17:35 / Modified: 12:17:39" itemprop="dateCreated datePublished" datetime="2022-01-14T12:17:35+09:00">2022-01-14</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/IOS/" itemprop="url" rel="index"><span itemprop="name">IOS</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="GCD"><a href="#GCD" class="headerlink" title="GCD"></a>GCD</h1><p>Grand Central Patch 의 약자이다.</p>
+<p>어떤 처리해야할 일을 GCD의 넘기면 GCD는 FIFO 정책을 수용하는 queue에 담고 시스템에 의해 안전하게 실행 될 수 있도록 한다.</p>
+<p>GCD 에서 사용하는 큐를 DispatchQueue 라고 한다.</p>
+<h2 id="타입"><a href="#타입" class="headerlink" title="타입"></a>타입</h2><ol>
+<li>Main Queue<ol>
+<li>메인 쓰레드에서 작동하는 큐, UI 작업이나 사용자 언터렉션을 여기서 처리한다.</li>
+</ol>
+</li>
+<li>Global Queue <ol>
+<li>시스템에 의해 관리되는 큐</li>
+<li>QoS(Quality of Service) 에 의해서 처리할 작업의 순서가 정해짐<ol>
+<li>userInteractive : 바로 수행되어야 할 작업, 급한 것</li>
+<li>userInitiated : 사용자의 결과를 기다리는 것, 거의 바로 수행되어야 할 것</li>
+<li>default </li>
+<li>unility : 무거운 작업. 네트워킹이나 파일 불러오기</li>
+<li>background : 사용자에게 당장 인식 될 필요가 없는 작업</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>Custom Queue<ol>
+<li>개발자가 직접 생성한 큐</li>
+</ol>
+</li>
+</ol>
+<h2 id="Sync-amp-Async"><a href="#Sync-amp-Async" class="headerlink" title="Sync &amp; Async"></a>Sync &amp; Async</h2><p>Async : 비동기 실행으로서 앞에 결과가 끝나기도 전에 뒤에 결과가 실행됨. QoS 에 의해 우선순위가 정해짐</p>
+<p>Sync : 동기 실행은 앞에 작업이 끝나야 뒤에 적힌 코드가 실행됨.</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -893,381 +1165,6 @@
 <p><code>alert.addTextField</code> 로 alert에 textFiled 추가하가기</p>
 <p><code>self.present</code> 로 화면에 띄어주기</p>
 <h2 id="UserDefaults"><a href="#UserDefaults" class="headerlink" title="UserDefaults"></a>UserDefaults</h2><p>런타임에 동작하여 기본 저장소에서 정보를 저장하거나 가져오는 기능을 한다. 키 값 형태로 값을 저장하고 싱글톤 패턴으로 구현되어서 앱내의 하나의 인스턴스만 존재한다.</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2022/01/06/IOS/220105-LEDBoard/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JayoonKoo">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="티끌모아 태산">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/01/06/IOS/220105-LEDBoard/" class="post-title-link" itemprop="url">UINavigationController, ViewController Life Cycle (LEDBoard)</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2022-01-06 14:38:45" itemprop="dateCreated datePublished" datetime="2022-01-06T14:38:45+09:00">2022-01-06</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2022-01-12 13:06:23" itemprop="dateModified" datetime="2022-01-12T13:06:23+09:00">2022-01-12</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/IOS/" itemprop="url" rel="index"><span itemprop="name">IOS</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="LED"><a href="#LED" class="headerlink" title="LED"></a>LED</h2><p>배울 기술</p>
-<ul>
-<li>UINavigationController</li>
-<li>화면 전환 개념</li>
-<li>ViewController Life Cycle</li>
-<li>화면간 데이터 전달 하는 방법</li>
-<li>에셋 카탈로그</li>
-</ul>
-<h3 id="UINavigationController"><a href="#UINavigationController" class="headerlink" title="UINavigationController"></a>UINavigationController</h3><ul>
-<li>Content View Conroller : 화면을 구성하는 뷰를 직접 구현하고 관련된 이벤트를 처리하는 뷰 컨트롤러</li>
-<li>Container View Controller : 하나 이상의 Child View Conroller를 가지고 있다. 레이아웃하고, 화면 전환을 담당한다.</li>
-<li>화면 구성과 이벤트 관리는 child view Controller에서 한다.</li>
-<li>대표적으로 Navigation Controller 와 TabBar Controller가 있다.</li>
-</ul>
-<p>계층 구조로 구성된 content를 순차적으로 보여주는 container view controller</p>
-<p>Navigation Stack 을 가짐</p>
-<p>Navigation Bar를 가짐. backItem ,topItem prompt, topItem Title, topItem rightBarButtonItem 등을 구성요소로 가진다.</p>
-<h3 id="화면-전환-개념"><a href="#화면-전환-개념" class="headerlink" title="화면 전환 개념"></a>화면 전환 개념</h3><p>3가지 정도 사용됨.</p>
-<ul>
-<li>View Controller 에서 다른 View Controller를 호출하여 전환하기 (프레젠테이션 방법) → 비동기로 동작함 (화면을 덮고, 걷어내는 개념)</li>
-<li>Navigation Contoller 를 사용하여 화면 전환하기 ( stack 으로 push, pop 하는 방식)</li>
-<li>화면 전환용 객체 세그웨이(Segueway)를 사용하여 화면 전환하기, strory board 이용 화면과 화면 사이에 SegueWay 객체를 둠</li>
-</ul>
-<h3 id="ViewContoller-Life-Cycle"><a href="#ViewContoller-Life-Cycle" class="headerlink" title="ViewContoller Life Cycle"></a>ViewContoller Life Cycle</h3><ul>
-<li>Appearing : 뷰가 화면에 나타나는 중</li>
-<li>Appeard: 뷰가 화면에 나타나는게 완료 된 상태</li>
-<li>Disappearing: 뷰가 화면에서 사라지는 중</li>
-<li>Disappeared: 뷰가 화면에서 사라진 상태</li>
-</ul>
-<p>관련 메서드 </p>
-<p>viewDidLoad()</p>
-<ul>
-<li>뷰 컨트롤러의 모든 뷰들이 메모리에 로드됐을 때 호출(메모리 처음 로드시 한번만 호출)</li>
-<li>보통 딱 한번 호출될 행위들을 이 메소드 안에 정의 함</li>
-<li>초기화나, 네트워크 호출등의 작업</li>
-</ul>
-<p>viewWillAppear()</p>
-<ul>
-<li>뷰가 뷰 계층에 추가 되고, 화면에 보이기 직전에 매 번 호출</li>
-<li>다른 뷰로 이동했다가 다시 오면 다시 호출</li>
-<li>뷰와 관련된 추가적인 초기화 작업을 여기서</li>
-</ul>
-<p>viewDidAppear()</p>
-<ul>
-<li>뷰가 뷰 계층의 추가된 후 호출</li>
-<li>뷰를 나타낼때 필요한 추가 작업을 여기서(애니메이션 시작 작업 등..)</li>
-</ul>
-<p>viewWillDisappear()</p>
-<ul>
-<li>뷰 컨트롤러의 뷰가 뷰 계층에서 사라지기 전에 호출</li>
-<li>작업한 내용을 되돌리거나, 데이터를 저장하는 작업</li>
-</ul>
-<p>viewDidDisappear()</p>
-<ul>
-<li>뷰 컨트롤러의 뷰가 뷰 계층에서 사라진 뒤에 호출</li>
-<li>뷰가 사라지는 것과 관련된 추가 작업</li>
-</ul>
-<h3 id="화면간-데이터를-전달하는-방법"><a href="#화면간-데이터를-전달하는-방법" class="headerlink" title="화면간 데이터를 전달하는 방법"></a>화면간 데이터를 전달하는 방법</h3><ul>
-<li>viewController 프로퍼티를 생성하고 → viewContoroller를 인스턴스화 해서 사용하는 변수에 타입 케스팅을 한 다음 → 프로퍼티를 추가하는 형태로 데이터를 전달 할 수 있다.</li>
-<li>반대로 뒤로 가기 할때나 pop 할때 전달하는 법 : delegate 패턴을 활용한다. (다른 객체에게 자신의 일을 위임하는 형태의 디자인 패턴)</li>
-<li>delegate 변수를 사용할때에는 week 키워드를 사용해서 강한 순환 참조를 막는다. → 데이터를 전달하는 곳에서 delegate 프로토콜을 만들고 전달받을 뷰에서 프로토콜을 준수하게 하면 전달하는 곳에서 메서드가 실행되게 할 수 있다.</li>
-<li>리엑트에서 부모 요소에서 실행할 메서드를 자식에게 props로 전달해서 실행 시키는것과 비슷하다.</li>
-<li>세그웨이를 사용할때에는 prepare 메서드를 사용해서 시스템에 의해서 호출될 수 있도록 해서 전달한다</li>
-</ul>
-<h3 id="에셋-카탈로그"><a href="#에셋-카탈로그" class="headerlink" title="에셋 카탈로그"></a>에셋 카탈로그</h3><p>Assets 폴더 안에 리소스를 추가할 수 있다. 리소스 추가 시에 1x 2x 3x 등의 크기에 이미지를 넣어주어야 하는데 이는 다양한 해상도의 깨지지 않는 이미지를 제공하기 위해서이다.</p>
-<h3 id="기타"><a href="#기타" class="headerlink" title="기타"></a>기타</h3><ul>
-<li>action 함수에서 sender 변수를 이용해서 어떤 인스턴스에서 발생한 액션인지 알 수 있다.</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2022/01/06/IOS/220105-Calcurator/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JayoonKoo">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="티끌모아 태산">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/01/06/IOS/220105-Calcurator/" class="post-title-link" itemprop="url">UIStackView, IBDesignables, IBInspectable (계산기)</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2022-01-06 14:38:44" itemprop="dateCreated datePublished" datetime="2022-01-06T14:38:44+09:00">2022-01-06</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2022-01-12 13:06:55" itemprop="dateModified" datetime="2022-01-12T13:06:55+09:00">2022-01-12</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/IOS/" itemprop="url" rel="index"><span itemprop="name">IOS</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="계산기"><a href="#계산기" class="headerlink" title="계산기"></a>계산기</h2><p>배울 기술</p>
-<ul>
-<li>UIStackView</li>
-<li>IBDesignables</li>
-<li>IBInspectable</li>
-</ul>
-<h3 id="UIStackView"><a href="#UIStackView" class="headerlink" title="UIStackView"></a>UIStackView</h3><p>열 또는 행에 View 들의 묶음을 배치할 수 있는 간소화된 인터페이스</p>
-<ul>
-<li>axis : 방향 결정</li>
-<li>distribution : 어떻게 분배할지<ul>
-<li>Fill : 채우게 ,huging, compresion 값 에따라 달라짐</li>
-<li>Fill Equally : 요소 크기를 같게 채우기</li>
-<li>Fill Proportionally : 비율에 맞게</li>
-<li>Equal Spacing : 각각 간격이 같게</li>
-<li>Eual Centering : 각 서브 뷰들의 센터의 간격을 동일하게</li>
-</ul>
-</li>
-<li>alignment : 주축 반대축에 대하여<ul>
-<li>fill</li>
-<li>leading</li>
-<li>top</li>
-<li>first baseline</li>
-<li>center</li>
-<li>trailing</li>
-<li>bottom</li>
-<li>last baseline</li>
-</ul>
-</li>
-<li>spacing : subview 들의 간격 조정</li>
-</ul>
-<h3 id="IBInspectable-IBDesignables"><a href="#IBInspectable-IBDesignables" class="headerlink" title="IBInspectable, IBDesignables"></a>IBInspectable, IBDesignables</h3><p>UIView안에 요소를 를 상속하는 클래스를 만들어서 코드로 속성에 접근, 변경할 수 있다.</p>
-<p>@IBInspectable 어노테이션을 붙히면 스토리 보드에서도 속성에 값을 변경할 수 있도록 할 수 있다.</p>
-<p>@IBDesignable 어노테이션을 붙혀서 실시간으로 속성값 변화를 스토리보드에서 확인할 수 있다. 남용하게 되면 스토리 보드 열때마다 오래 걸릴수도 있다.</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2022/01/05/IOS/210104-QuoteGenerator/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JayoonKoo">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="티끌모아 태산">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/01/05/IOS/210104-QuoteGenerator/" class="post-title-link" itemprop="url">Storyboard, AutoLayout, UILabel, UIButton (명언 생성)</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2022-01-05 10:45:56" itemprop="dateCreated datePublished" datetime="2022-01-05T10:45:56+09:00">2022-01-05</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2022-01-12 13:07:45" itemprop="dateModified" datetime="2022-01-12T13:07:45+09:00">2022-01-12</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/IOS/" itemprop="url" rel="index"><span itemprop="name">IOS</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="QuoteGenerator"><a href="#QuoteGenerator" class="headerlink" title="QuoteGenerator"></a>QuoteGenerator</h1><p>명언 생성 앱</p>
-<p>배울기술 </p>
-<ul>
-<li>Storyboard</li>
-<li>AutoLayout</li>
-<li>UILabel</li>
-<li>UIButton</li>
-</ul>
-<p>알아야 할 기본 개념</p>
-<ul>
-<li>UIKit</li>
-<li>UIViewController</li>
-<li>AutoLayout</li>
-<li>IBOutlet &amp; IBAction</li>
-</ul>
-<h3 id="UIKit"><a href="#UIKit" class="headerlink" title="UIKit"></a>UIKit</h3><p>Cocoa touch Framework → IOS Application framework (UIKit(사용자 인이벤트 처리등 UI관련), Foundation(자료구조, 네트워크 등등..), CoreDate… etc ) </p>
-<ul>
-<li>사용자 이벤트 처리</li>
-<li>뷰 관련</li>
-<li>MVC 디자인 패턴을 따라 개발하는데 현실 UIKit 에서는 View와 Controller 가 깊게 연결되어 있어서 분리하기 어렵다</li>
-</ul>
-<h3 id="ViewController"><a href="#ViewController" class="headerlink" title="ViewController"></a>ViewController</h3><p>UIView → 화면의 직사각형 영역</p>
-<ul>
-<li>앱의 근간을 이루는 객체로 모든 앱은 최소한 하나 이사의 뷰 컨트롤러를 가지고 있다.</li>
-<li>데이터 변화에 따라 view 업데이트, 상호작용, 리사이징, 다른 뷰 컨트롤러 들과 앱을 구성</li>
-</ul>
-<h3 id="AutoLayout"><a href="#AutoLayout" class="headerlink" title="AutoLayout"></a>AutoLayout</h3><p>제약 조건을 이용해서 뷰의 위치를 지정하는 것  → 다양한 해상도 뷰의 맞게 UI 개발을 하기 위함 </p>
-<h3 id="IBOulet-amp-IBAction"><a href="#IBOulet-amp-IBAction" class="headerlink" title="IBOulet &amp; IBAction"></a>IBOulet &amp; IBAction</h3><p>storyboard 에 생성한 UIObject에 접근하여 컨트롤하기 위해서 변수에 바인딩 한것을 Outliet 변수라고 한다.</p>
-<ul>
-<li>storage 에서 strong, week 은 메모리 회수 정책이다. strong 은 일단 참조가 되어 있다면 메모리를 헤제 하지 않지만, week 은 참조 되어 있더라도 해제 될 수 있다. strong은 메모리 누수 발생 여지가 있다.</li>
-</ul>
-<p>Action 함수는 동작을 정의하는 함수로 UI와 동작을 연결하여 UIVewController 에서 사용할 수 있도록 해준다. </p>
-<p>Argument , Action message 를 이벤트 핸들러인 sender를 설정한다.</p>
-<h3 id="Content-Hugging-Compression-Resistance"><a href="#Content-Hugging-Compression-Resistance" class="headerlink" title="Content Hugging, Compression Resistance"></a>Content Hugging, Compression Resistance</h3><ul>
-<li>Content Hugging : 크기가 늘어나는데 저항하는 성질로서 높을수록 늘어나지 읂는다.</li>
-<li>Compression Resistace : 크기가 줄어드는데 저항하는 성질로서 크기가 높을수록 줄어들지 않는다.</li>
-</ul>
 
       
     </div>

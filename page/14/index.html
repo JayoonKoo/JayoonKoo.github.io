@@ -83,9 +83,9 @@
   <ul class="main-menu menu">
         <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li>
         <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
-        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">14</span></a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">15</span></a></li>
         <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">12</span></a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">135</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">138</span></a></li>
   </ul>
 </nav>
 
@@ -129,7 +129,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">135</span>
+          <span class="site-state-item-count">138</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -140,7 +140,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-count">15</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -180,6 +180,281 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/08/06/OS/210727-%EC%8A%A4%EC%BC%80%EC%A5%B4%EB%A7%81%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98%EA%B8%B0%EB%B3%B8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JayoonKoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="티끌모아 태산">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/08/06/OS/210727-%EC%8A%A4%EC%BC%80%EC%A5%B4%EB%A7%81%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98%EA%B8%B0%EB%B3%B8/" class="post-title-link" itemprop="url">스케쥴링알고리즘기본</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-08-06 22:28:10" itemprop="dateCreated datePublished" datetime="2021-08-06T22:28:10+09:00">2021-08-06</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-09-12 23:50:45" itemprop="dateModified" datetime="2021-09-12T23:50:45+09:00">2021-09-12</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/CS/" itemprop="url" rel="index"><span itemprop="name">CS</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="스케쥴링-알고리즘-기본"><a href="#스케쥴링-알고리즘-기본" class="headerlink" title="스케쥴링 알고리즘 기본"></a>스케쥴링 알고리즘 기본</h1><h2 id="프로세스란"><a href="#프로세스란" class="headerlink" title="프로세스란"></a>프로세스란</h2><p>실행중인 프로그램을 프로세스라고 한다.</p>
+<p>메모리에 올려져서 실행중인 프로그램이라고 보면 된다.</p>
+<p>응용 프로그램은 =! 프로세스</p>
+<p>응용 프로그램은 여러개의 프로세스의 조합이기 때문이다.</p>
+<br/>
+
+<h2 id="스케쥴러와-프로세스"><a href="#스케쥴러와-프로세스" class="headerlink" title="스케쥴러와 프로세스"></a>스케쥴러와 프로세스</h2><p>프로세스 실행을 관리 하는 것을 스케쥴러라고 한다.</p>
+<h3 id="스케쥴링-알고리즘"><a href="#스케쥴링-알고리즘" class="headerlink" title="스케쥴링 알고리즘"></a>스케쥴링 알고리즘</h3><p>어느 순서대로 프로세스를 실행시킬까?</p>
+<p>특정한 목표를 잡고 계획을 세우는 것</p>
+<br/>
+
+<h2 id="FIFO-스케쥴러"><a href="#FIFO-스케쥴러" class="headerlink" title="FIFO 스케쥴러"></a>FIFO 스케쥴러</h2><p>프로세스가 온전히 CPU만 사용하는 작업이라고 가정한다.</p>
+<img src="/images/imgs/210727-스케쥴링알고리즘기본/1.png">
+
+<p>먼저 요청이 들어오면 먼저 실행 시킨다.</p>
+<p>요청은 자료 구조중 큐와 같다.</p>
+<img src="/images/imgs/210727-스케쥴링알고리즘기본/2.png">
+  
+<ol>
+<li>1번 프로세스 실행(1초)</li>
+<li>2번 실행 (3초)</li>
+<li>3번 프로세스 실행(1초)</li>
+</ol>
+<p>가장 간단한 스케쥴러 (배치 처리 시스템)</p>
+<p>FCFS 스케쥴러라고도 불림.</p>
+<br/>
+
+<h2 id="최단-작업-우선-SJF-스케쥴러"><a href="#최단-작업-우선-SJF-스케쥴러" class="headerlink" title="최단 작업 우선(SJF) 스케쥴러"></a>최단 작업 우선(SJF) 스케쥴러</h2><p>Shortest Job First : 가장 프로세스 실행시간이 짧은 것부터 실행함.</p>
+<p>사실 일반적인 상황에서 프로세스 실행시간을 예측하는것은 불가능에 가까움.</p>
+<p>이상적인 스케쥴러라고 할 수 있고 특별한 상황에서 사용함.</p>
+<h3 id="처리-순서-비교"><a href="#처리-순서-비교" class="headerlink" title="처리 순서 비교"></a>처리 순서 비교</h3><img src="/images/imgs/210727-스케쥴링알고리즘기본/3.png">
+
+<br/>  
+<br/>
+
+<h2 id="우선순위-기반-스케쥴러"><a href="#우선순위-기반-스케쥴러" class="headerlink" title="우선순위 기반 스케쥴러"></a>우선순위 기반 스케쥴러</h2><p>Priority-Based : 우선순위에 기반한 스케쥴러</p>
+<p>우선순위는 정적으로 미리 정하는 경우도 있고, 스케쥴러가 상황에 따라 동적으로 정하는 경우도 있다.</p>
+<h3 id="처리-순서-비교-1"><a href="#처리-순서-비교-1" class="headerlink" title="처리 순서 비교"></a>처리 순서 비교</h3><img src="/images/imgs/210727-스케쥴링알고리즘기본/4.png">
+
+<br/>
+<br/>
+
+<h2 id="Round-Robin-스케쥴러"><a href="#Round-Robin-스케쥴러" class="headerlink" title="Round Robin 스케쥴러"></a>Round Robin 스케쥴러</h2><p>시분할 시스템을 적용하여 생각한다.</p>
+<p>Round Robin Read Queue를 가져서 실행할 프로세스를 큐에 넣는다.</p>
+<p>큐에서 요청을 하나 빼고 실행한 프로세스가 아직 끝나지 않았다면 다시 큐에다가 해당 프로세스를 넣는다.</p>
+<p>모든 프로세스가 끝날때까지 반복한다.</p>
+<img src="/images/imgs/210727-스케쥴링알고리즘기본/5.png" width="500">
+
+<h3 id="처리-순서"><a href="#처리-순서" class="headerlink" title="처리 순서"></a>처리 순서</h3><img src="/images/imgs/210727-스케쥴링알고리즘기본/6.png" >
+
+<h4 id="RoundRobin-Ready-Queue"><a href="#RoundRobin-Ready-Queue" class="headerlink" title="RoundRobin Ready Queue"></a>RoundRobin Ready Queue</h4><ul>
+<li>3 2 1 (1번 꺼내서 실행, 1번 끝)</li>
+<li>3 2 (2번 꺼내서 실행 , 2번은 아직 안끝남)</li>
+<li>2 3 (3번 꺼내서 실행 , 3번은 아직 안끝남)</li>
+<li>3 2 (2번 꺼내서 실행, 2번은 아직 안끝남)</li>
+<li>2 3 (3번 꺼내서 실행, 3번 끝)</li>
+<li>2 ( 2번 꺼내서 실행, 2번 끝)</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/08/06/OS/210729-%EC%9D%B8%ED%84%B0%EB%9F%BD%ED%8A%B8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JayoonKoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="티끌모아 태산">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/08/06/OS/210729-%EC%9D%B8%ED%84%B0%EB%9F%BD%ED%8A%B8/" class="post-title-link" itemprop="url">인터럽트</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-08-06 22:28:10" itemprop="dateCreated datePublished" datetime="2021-08-06T22:28:10+09:00">2021-08-06</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-09-12 23:50:45" itemprop="dateModified" datetime="2021-09-12T23:50:45+09:00">2021-09-12</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/CS/" itemprop="url" rel="index"><span itemprop="name">CS</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="인터럽트"><a href="#인터럽트" class="headerlink" title="인터럽트"></a>인터럽트</h1><h2 id="인터럽트란"><a href="#인터럽트란" class="headerlink" title="인터럽트란?"></a>인터럽트란?</h2><p>cpu 는 pc 에서 가르키는 code 를 실행하게 되는데 외부 I/O 나 cpu 외부에서 처리할 작업에 이벤트가 발생하게 되면 cpu 에서 이벤트 발생 여부를 알아야 할 필요가 있다.</p>
+<p>이때 이벤트가 발생했다고 알려주는 것을 인터럽트 라고 하며 어떤 일을 하닥 인터럽트가 발생하면 cpu는 이벤트가 발생했음을 알고 해당 작업을 처리한 후 다시 원래 작업으로 돌아오는 흐름을 가질 수 있다.</p>
+<h3 id="인터럽트가-필요한-이유"><a href="#인터럽트가-필요한-이유" class="headerlink" title="인터럽트가 필요한 이유"></a>인터럽트가 필요한 이유</h3><p>선점형 스케쥴러의 구현에서 프로세스가 실행 중에서 레디 상태로 상태가 변할 수 있어야 한다.</p>
+<p>이때 프로세스가 레디상태로 변하거나 wait가 된다는 신호를 인터럽트를 통해서 발생 시킬 수 있다.</p>
+<p>I/O 에서 작업을 완료 한 후 wait 상태에서 다시 ready 상태가 되기 위해서는 I/O 작업이 끝났다는 신호를 알아야 한다.</p>
+<p>이때에도 인터럽트를 통해서 I/O 처리가 끝났음을 알려준다.</p>
+<p>입출력 하드웨어 등의 예외 상황이 발생했을 때도 CPU 에게 알려주어야 하는데 이때도 인터럽트를 사용해서 알려준다.</p>
+<p>또한 코드 상의서 에러가 발생해서 따로 처리해 주어야 할때에도 에러가 발생했음을 알리느 인터럽트가 발생한다.</p>
+<br/>
+
+<h2 id="인터럽트-종류"><a href="#인터럽트-종류" class="headerlink" title="인터럽트 종류"></a>인터럽트 종류</h2><p>주요 인터럽트</p>
+<ol>
+<li>계산하는 코드에서 0으로 나누느 코드 실행시 (Divide-by-zero interrupt)</li>
+</ol>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#incllude <span class="meta-string">&lt;studio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> data;</span><br><span class="line">	<span class="keyword">int</span> divider = <span class="number">0</span>;</span><br><span class="line">	data = <span class="number">1</span>/divider; <span class="comment">// 이 부분에서 인터럽트 발생</span></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>타이머 인터럽트</li>
+</ol>
+<p>하드웨어로 부터 일정한 주기마다 인터럽트를 운영체제에게 알려줌.</p>
+<p>선점형 스케쥴러를 위해서 필요함.</p>
+<ol start="3">
+<li>입출력(I/O) 인터럽트</li>
+</ol>
+<h3 id="내부-외부-인터럽트"><a href="#내부-외부-인터럽트" class="headerlink" title="내부/외부 인터럽트"></a>내부/외부 인터럽트</h3><ul>
+<li>내부 인터럽트 (소프트 인터럽트)</li>
+</ul>
+<p>주로 프로그램 내부에서 명령 또는 잘못된 데이터 사용시 발생</p>
+<p>0으로 나눴을때, 사용자 모드에서 허용되지 않은 명령 또는 공간 접근시, 계산된 결과가 Overflow/ Underflow 날때</p>
+<ul>
+<li>외부 인터럽트 (하드웨어 인터럽트)</li>
+</ul>
+<p>주로 하드웨어에서 발생되는 이벤트 (프로그램 외부)</p>
+<p>전원이상, 기계문제, I/O, Timer 이벤트</p>
+<br/>
+
+<h2 id="인터럽트-내부-동작"><a href="#인터럽트-내부-동작" class="headerlink" title="인터럽트 내부 동작"></a>인터럽트 내부 동작</h2><p>인터럽트 내부에서 어떻게 동작하는지 알아본다.</p>
+<h3 id="시스템-콜-인터럽트"><a href="#시스템-콜-인터럽트" class="headerlink" title="시스템 콜 인터럽트"></a>시스템 콜 인터럽트</h3><p>시스템 콜을 실행하기 위해서는 강제로 코드에 인터럽트를 넣어서, cpu에게 실행 시켜야 한다.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mov eax, 1</span><br><span class="line">mov ebx, 0</span><br><span class="line">int 0x80</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>eax 레지스터에 시스템 콜 번호를 넣음.</li>
+<li>ebx 레지스테에 시스템 콜에 해당하는 인자값을 넣음.</li>
+<li>소프트웨어 인터럽트를 호출하면서 0x80 을 넘겨줌. (int 는 opcode)</li>
+</ul>
+<p>예에서 0x80이라는 인터럽트는 시스템 콜을 호출하는 인터럽트 번호라는 의미임.</p>
+<ol>
+<li>int opcode 를 통해서 인터럽트 발생한것을 알게 됨.</li>
+<li>CPU는 사용자 모드에서 커널 모드로 바꿈</li>
+<li>IDT(interrupt Descriptor Table) 에서 0x80 에 해당하는 함수를 실행함. 0x80은 system_call()</li>
+<li>system_call() 함수에서 eax 로부터 시스템 콜 번호를 찾아서, 해당 번호에 해당하는 함수로 시스템 콜 이동.</li>
+<li>해당 함수 실행 후 커널모드에서 다시 사용자 모드로 변경. 다시 해당 프로세스에 다음 실행.</li>
+</ol>
+<img src="/images/imgs/210729-인터럽트/1.png" width="400">
+
+<br/>
+
+<h3 id="인터럽트와-IDT"><a href="#인터럽트와-IDT" class="headerlink" title="인터럽트와 IDT"></a>인터럽트와 IDT</h3><p>인터럽트는 IDT(Interrupt Descriptor Table)이라 불리는 곳에 각각 번호와 실행 코드를 가리키는 주소가 기록되어 있음.</p>
+<p>운영체제가 컴퓨터 부팅시 기록한다.</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -782,6 +1057,129 @@
 <img src="/images/imgs/210805-virtual-memory/6.png" width="700">
 
 <p>페이지 폴트가 자주 일어나면 이런 작업을 많이 해야 하기 때문에 시간이 올래 걸린다.<br>페이지 폴트가 안 일어나게 하는게 제일 좋은데 그렇게 하려면 앞으로 메모리에 올릴 페이지가 무엇인지 예측하는 방법을 사용해야 한다.<br>이 작업에 여러 알고리즘이 있지만 여전히 어려운 부분이다.</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/08/06/OS/210721-os-basic/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JayoonKoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="티끌모아 태산">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/08/06/OS/210721-os-basic/" class="post-title-link" itemprop="url">os-basic</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-08-06 22:28:10" itemprop="dateCreated datePublished" datetime="2021-08-06T22:28:10+09:00">2021-08-06</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-09-12 23:50:45" itemprop="dateModified" datetime="2021-09-12T23:50:45+09:00">2021-09-12</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/CS/" itemprop="url" rel="index"><span itemprop="name">CS</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="운영체제-큰-그림"><a href="#운영체제-큰-그림" class="headerlink" title="운영체제 큰 그림"></a>운영체제 큰 그림</h1><h2 id="운영체제-역할-시스테-자원-System-Resouce-관자자"><a href="#운영체제-역할-시스테-자원-System-Resouce-관자자" class="headerlink" title="운영체제 역할 : 시스테 자원 (System Resouce) 관자자"></a>운영체제 역할 : 시스테 자원 (System Resouce) 관자자</h2><ul>
+<li>Operating System</li>
+<li>System Resouce = Computer 하드웨어<ul>
+<li>CPU, Memory</li>
+<li>I/O Devices</li>
+<li>저장 매체</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>하드웨어는 자체로는 아무것도 할 수 없다.<br>CPU를 얼마만큼 사용할지, 어디 메모리 주소에 저장할지, 마우스 조작은 어떻게 할지, 어떤 폴더에 파일을 저장할지 등에 모든 결정은 운영체제가 한다.</p>
+</blockquote>
+<br/>
+
+<h2 id="대표적인-운영체제"><a href="#대표적인-운영체제" class="headerlink" title="대표적인 운영체제"></a>대표적인 운영체제</h2><ul>
+<li>Windoes OS</li>
+<li>Mac OS</li>
+<li>UNIX</li>
+<li>UNIX 계열 OS</li>
+<li>LINUX</li>
+</ul>
+<br/>
+
+<h2 id="운영체제의-역할-사용자와-컴퓨터-간의-커뮤티케이션-지원"><a href="#운영체제의-역할-사용자와-컴퓨터-간의-커뮤티케이션-지원" class="headerlink" title="운영체제의 역할 : 사용자와 컴퓨터 간의 커뮤티케이션 지원"></a>운영체제의 역할 : 사용자와 컴퓨터 간의 커뮤티케이션 지원</h2><p>운영체제 안의 쉘이라는 소프트웨어가 하드웨어와 사용자간의 커뮤니케이션을 지원한다.</p>
+<br/>
+
+<h2 id="운영체제-역할-컴퓨터-하드웨어와-프로그램을-제어"><a href="#운영체제-역할-컴퓨터-하드웨어와-프로그램을-제어" class="headerlink" title="운영체제 역할 : 컴퓨터 하드웨어와 프로그램을 제어"></a>운영체제 역할 : 컴퓨터 하드웨어와 프로그램을 제어</h2><p>하드웨어 뿐만 아니라 프로그램 까지도 제어하는 역활을 수행한다.</p>
+<br/>
+
+<h2 id="응용-프로그램이란"><a href="#응용-프로그램이란" class="headerlink" title="응용 프로그램이란?"></a>응용 프로그램이란?</h2><p>소프트웨어 = 운영체제, 응용프로그램(엑셀, 파워포인 같은..)</p>
+<p>응용 프로그램 = Application</p>
+<br/>
+
+<h2 id="운영체제와-응용-프로그램간의-관계"><a href="#운영체제와-응용-프로그램간의-관계" class="headerlink" title="운영체제와 응용 프로그램간의 관계"></a>운영체제와 응용 프로그램간의 관계</h2><p>운영체제는 응용 프로그램을 관리한다.</p>
+<ul>
+<li>실행 시킴</li>
+<li>응용 프램간의 권한을 관리한다.</li>
+<li>사용하는 사용자도 관리한다. (로그인…)</li>
+</ul>
+<br/>
+
+<h2 id="컴퓨터-구조"><a href="#컴퓨터-구조" class="headerlink" title="컴퓨터 구조"></a>컴퓨터 구조</h2><p>컴퓨터를 키면? 운영체제는 Memory에 올라감.</p>
+<p>현대의 컴퓨터는 폰노이만 구조를 따르고 있기 때문에</p>
+<p>메모리에 올려놓기 실행.</p>
 
       
     </div>
