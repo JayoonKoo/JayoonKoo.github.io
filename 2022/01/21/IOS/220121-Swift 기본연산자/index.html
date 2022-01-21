@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css" integrity="sha256-2H3fkXt6FEmrReK448mDVGKb3WW2ZZw35gI7vqHOE4Y=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"jayoonkoo.github.io","root":"/","images":"/images","scheme":"Muse","version":"8.6.1","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="1. 기본연산자할당 연산자 (Assignment Opertor)값을 초기화 시키거나 변경합니다. 튜플을 이용해 한번에 할당할 수 있습니다.  1let (x,y) &#x3D; (1,2)  C나 Objective-C와 다르게 Swift에서는 할당 연산자가 값을 반환하니 않습니다. 이는 동등 연산 비교를 사용해야 하는 곳에 실수로 할당 연산자를 사용하는 것을 막기 위함입">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Swift 기본연산자">
+<meta property="og:url" content="https://jayoonkoo.github.io/2022/01/21/IOS/220121-Swift%20%EA%B8%B0%EB%B3%B8%EC%97%B0%EC%82%B0%EC%9E%90/index.html">
+<meta property="og:site_name" content="티끌모아 태산">
+<meta property="og:description" content="1. 기본연산자할당 연산자 (Assignment Opertor)값을 초기화 시키거나 변경합니다. 튜플을 이용해 한번에 할당할 수 있습니다.  1let (x,y) &#x3D; (1,2)  C나 Objective-C와 다르게 Swift에서는 할당 연산자가 값을 반환하니 않습니다. 이는 동등 연산 비교를 사용해야 하는 곳에 실수로 할당 연산자를 사용하는 것을 막기 위함입">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-01-21T05:50:05.000Z">
+<meta property="article:modified_time" content="2022-01-21T05:50:42.994Z">
+<meta property="article:author" content="JayoonKoo">
+<meta property="article:tag" content="Swift">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://jayoonkoo.github.io/2022/01/21/IOS/220121-Swift%20%EA%B8%B0%EB%B3%B8%EC%97%B0%EC%82%B0%EC%9E%90/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://jayoonkoo.github.io/2022/01/21/IOS/220121-Swift%20%EA%B8%B0%EB%B3%B8%EC%97%B0%EC%82%B0%EC%9E%90/","path":"2022/01/21/IOS/220121-Swift 기본연산자/","title":"Swift 기본연산자"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Swift 기본연산자 | 티끌모아 태산</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">티끌모아 태산</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">작은 조각 모음</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">16</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">12</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">141</span></a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-%EA%B8%B0%EB%B3%B8%EC%97%B0%EC%82%B0%EC%9E%90"><span class="nav-number">1.</span> <span class="nav-text">1. 기본연산자</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%ED%95%A0%EB%8B%B9-%EC%97%B0%EC%82%B0%EC%9E%90-Assignment-Opertor"><span class="nav-number">1.1.</span> <span class="nav-text">할당 연산자 (Assignment Opertor)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EC%82%AC%EC%B9%99-%EC%97%B0%EC%82%B0%EC%9E%90-Arthmetic-Operators"><span class="nav-number">1.2.</span> <span class="nav-text">사칙 연산자(Arthmetic Operators)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%EB%8B%A8%ED%95%AD-%EC%9D%8C%EC%88%98-%EC%96%91%EC%88%98-%EC%97%B0%EC%82%B0%EC%9E%90"><span class="nav-number">1.2.1.</span> <span class="nav-text">단항 음수, 양수 연산자</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%ED%95%A9%EC%84%B1-%ED%95%A0%EB%8B%B9-%EC%97%B0%EC%82%B0%EC%9E%90-Compound-Assignment-Operaotors"><span class="nav-number">1.3.</span> <span class="nav-text">합성 할당 연산자(Compound Assignment Operaotors)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EB%B9%84%EA%B5%90-%EC%97%B0%EC%82%B0%EC%9E%90-Comparison-Operators"><span class="nav-number">1.4.</span> <span class="nav-text">비교 연산자(Comparison Operators)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EC%83%81%ED%95%A8-%EC%A1%B0%EA%B1%B4-%EC%97%B0%EC%82%B0%EC%9E%90-Ternary-Conditional-Operator"><span class="nav-number">1.5.</span> <span class="nav-text">상함 조건 연산자(Ternary Conditional Operator)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Nill-%EB%B3%91%ED%95%A9-%EC%97%B0%EC%82%B0%EC%9E%90-Nil-Coalescing-Operator"><span class="nav-number">1.6.</span> <span class="nav-text">Nill 병합 연산자(Nil-Coalescing Operator)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EB%B2%94%EC%9C%84-%EC%97%B0%EC%82%B0%EC%9E%90-Range-Operators"><span class="nav-number">1.7.</span> <span class="nav-text">범위 연산자 (Range Operators)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%EB%8B%AB%ED%9E%8C-%EB%B2%94%EC%9C%84-%EC%97%B0%EC%82%B0%EC%9E%90-Closed-Range-Operator"><span class="nav-number">1.7.1.</span> <span class="nav-text">닫힌 범위 연산자(Closed Range Operator)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%EB%B0%98-%EB%8B%AB%ED%9E%98-%EB%B2%94%EC%9C%84-%EC%97%B0%EC%82%B0%EC%9E%90-Half-Open-Range-Operator"><span class="nav-number">1.7.2.</span> <span class="nav-text">반 닫힘 범위 연산자(Half-Open Range Operator)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%EB%8B%A8%EB%B0%A9%ED%96%A5-%EB%B2%94%EC%9C%84-One-Side-Ranges"><span class="nav-number">1.7.3.</span> <span class="nav-text">단방향 범위(One-Side Ranges)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EB%85%BC%EB%A6%AC-%EC%97%B0%EC%82%B0%EC%9E%90-Logical-Operators"><span class="nav-number">1.8.</span> <span class="nav-text">논리 연산자(Logical Operators)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%EB%AA%85%EC%8B%9C%EC%A0%81-%EA%B4%84%ED%98%B8-Explicit-Parentheses"><span class="nav-number">1.8.1.</span> <span class="nav-text">명시적 괄호 (Explicit Parentheses)</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-overview">
+            <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">JayoonKoo</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">141</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/JayoonKoo" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;JayoonKoo" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:rnwkdbs12@gmail.com" title="E-Mail → mailto:rnwkdbs12@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/JayoonKoo" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2022/01/21/IOS/220121-Swift%20%EA%B8%B0%EB%B3%B8%EC%97%B0%EC%82%B0%EC%9E%90/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JayoonKoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="티끌모아 태산">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Swift 기본연산자
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2022-01-21 14:50:05 / Modified: 14:50:42" itemprop="dateCreated datePublished" datetime="2022-01-21T14:50:05+09:00">2022-01-21</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/IOS/" itemprop="url" rel="index"><span itemprop="name">IOS</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="1-기본연산자"><a href="#1-기본연산자" class="headerlink" title="1. 기본연산자"></a>1. 기본연산자</h1><h2 id="할당-연산자-Assignment-Opertor"><a href="#할당-연산자-Assignment-Opertor" class="headerlink" title="할당 연산자 (Assignment Opertor)"></a>할당 연산자 (Assignment Opertor)</h2><p>값을 초기화 시키거나 변경합니다. 튜플을 이용해 한번에 할당할 수 있습니다. </p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> (x,y) <span class="operator">=</span> (<span class="number">1</span>,<span class="number">2</span>)</span><br></pre></td></tr></table></figure>
+
+<p>C나 Objective-C와 다르게 Swift에서는 할당 연산자가 값을 반환하니 않습니다. 이는 동등 연산 비교를 사용해야 하는 곳에 실수로 할당 연산자를 사용하는 것을 막기 위함입니다. </p>
+<h2 id="사칙-연산자-Arthmetic-Operators"><a href="#사칙-연산자-Arthmetic-Operators" class="headerlink" title="사칙 연산자(Arthmetic Operators)"></a>사칙 연산자(Arthmetic Operators)</h2><p>C나 Objective-C와 달리 Swift는 사칙 연산의 값이 오버플로우 되는 것을 허용하지 않습니다. 만약 허용하고 싶다면 어버플로우 연산자를 이용해야 합니다. </p>
+<h3 id="단항-음수-양수-연산자"><a href="#단항-음수-양수-연산자" class="headerlink" title="단항 음수, 양수 연산자"></a>단항 음수, 양수 연산자</h3><p>숫자 값은 <code>-</code> 나 <code>+</code> 로 표현되는 단항 연산자를 통해 부호를 결정할 수 있습니다. </p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> three <span class="operator">=</span> <span class="number">3</span> </span><br><span class="line"><span class="keyword">let</span> minusThree <span class="operator">=</span> <span class="operator">-</span>three</span><br><span class="line"><span class="keyword">let</span> alsoPlusThree <span class="operator">=</span> <span class="operator">+</span>three</span><br></pre></td></tr></table></figure>
+
+<h2 id="합성-할당-연산자-Compound-Assignment-Operaotors"><a href="#합성-할당-연산자-Compound-Assignment-Operaotors" class="headerlink" title="합성 할당 연산자(Compound Assignment Operaotors)"></a>합성 할당 연산자(Compound Assignment Operaotors)</h2><p><code>+=</code> 같이 할당 연산자와 사칙연산 연산자의 조합을 사용 가능합니다. </p>
+<h2 id="비교-연산자-Comparison-Operators"><a href="#비교-연산자-Comparison-Operators" class="headerlink" title="비교 연산자(Comparison Operators)"></a>비교 연산자(Comparison Operators)</h2><p>기본적으로 다른 언어에서 제공되는 비교 연산자를 모두 지원합니다. 추가적으로 Swift는 객체 비교를 위해 식별자 <code>===</code> 과 <code>!==</code> 를 제공합니다. </p>
+<p>같은 타입의 값을 갖는 두 개의 튜플을 비교할 수 있습니다. 튜플의 비교는 왼쪽에서 오른쪽으로 이루어 지고 한번에 한개의 값만 비교한후 결과를 반환합니다. </p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(<span class="number">1</span>, <span class="string">&quot;zebra&quot;</span>) <span class="operator">&lt;</span> (<span class="number">2</span>, <span class="string">&quot;apple&quot;</span>) <span class="comment">// true</span></span><br><span class="line">(<span class="number">3</span>, <span class="string">&quot;apple&quot;</span>) <span class="operator">&lt;</span> (<span class="number">3</span>, <span class="string">&quot;brid)&quot;</span> <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+
+<p>만약 타입이 달라서 비교할수 없는 경우는 에러가 발생합니다. </p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(<span class="string">&quot;blue&quot;</span>, <span class="literal">false</span>) <span class="operator">&lt;</span> (<span class="string">&quot;purple&quot;</span>, <span class="literal">true</span>) <span class="comment">// 에러 , Boolen 값은 &lt; 로 비교할 수 없음.</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="상함-조건-연산자-Ternary-Conditional-Operator"><a href="#상함-조건-연산자-Ternary-Conditional-Operator" class="headerlink" title="상함 조건 연산자(Ternary Conditional Operator)"></a>상함 조건 연산자(Ternary Conditional Operator)</h2><p><code>question ? answer1 : answer2</code> 와 같은 형태로 조건이 참일 경우 answer1 이 조건이 거짓일 경우 answer2 가 실행됩니다. </p>
+<h2 id="Nill-병합-연산자-Nil-Coalescing-Operator"><a href="#Nill-병합-연산자-Nil-Coalescing-Operator" class="headerlink" title="Nill 병합 연산자(Nil-Coalescing Operator)"></a>Nill 병합 연산자(Nil-Coalescing Operator)</h2><p> <code>a ?? b</code> 형태를 갖는 연산자 입니다. 옵셔널  <code>a</code> 를 unwrap 해서 만약 nil 이면 <code>b</code> 를 반환합니다. </p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> defaultColorName <span class="operator">=</span> <span class="string">&quot;red&quot;</span></span><br><span class="line"><span class="keyword">var</span> userDefinedColorName: <span class="type">String</span>?</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> colorNameToUse <span class="operator">=</span> userDefinedColorName <span class="operator">??</span> defaultColorName</span><br></pre></td></tr></table></figure>
+
+<p><code>userDefinedColorName</code> 이 <code>nil</code> 이 되기 때문에 <code>defaultColorName</code> 인 red 가 사용되게 됩니다. </p>
+<h2 id="범위-연산자-Range-Operators"><a href="#범위-연산자-Range-Operators" class="headerlink" title="범위 연산자 (Range Operators)"></a>범위 연산자 (Range Operators)</h2><h3 id="닫힌-범위-연산자-Closed-Range-Operator"><a href="#닫힌-범위-연산자-Closed-Range-Operator" class="headerlink" title="닫힌 범위 연산자(Closed Range Operator)"></a>닫힌 범위 연산자(Closed Range Operator)</h3><p><code>(a..b)</code> 의 형태로 범위의 시작과 끝이 있는 연산자 입니다. 마지막 숫자인 b를 포함합니다.</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> index <span class="keyword">in</span> <span class="number">1</span><span class="operator">...</span><span class="number">5</span> &#123;</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;<span class="subst">\(index)</span> times 5 is <span class="subst">\(index <span class="operator">*</span> <span class="number">5</span>)</span>&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 1 times 5 is 5</span></span><br><span class="line"><span class="comment">// 2 times 5 is 10</span></span><br><span class="line"><span class="comment">// 3 times 5 is 15</span></span><br><span class="line"><span class="comment">// 4 times 5 is 20</span></span><br><span class="line"><span class="comment">// 5 times 5 is 25</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="반-닫힘-범위-연산자-Half-Open-Range-Operator"><a href="#반-닫힘-범위-연산자-Half-Open-Range-Operator" class="headerlink" title="반 닫힘 범위 연산자(Half-Open Range Operator)"></a>반 닫힘 범위 연산자(Half-Open Range Operator)</h3><p><code>(a..&lt;b)</code> 의 형태로 a 부터 b 보다 작을 때까지의 범위를 갖습니다.</p>
+<h3 id="단방향-범위-One-Side-Ranges"><a href="#단방향-범위-One-Side-Ranges" class="headerlink" title="단방향 범위(One-Side Ranges)"></a>단방향 범위(One-Side Ranges)</h3><p><code>[a..]</code> <code>[..a]</code> 의 형태로 범위의 시작 혹은 끝만 지정해 사용하는 범위 연산자 입니다. </p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> names <span class="operator">=</span> [<span class="string">&quot;Anna&quot;</span>, <span class="string">&quot;Alex&quot;</span>, <span class="string">&quot;Brian&quot;</span>, <span class="string">&quot;Jack&quot;</span>]</span><br><span class="line"><span class="keyword">for</span> name <span class="keyword">in</span> names[<span class="number">2</span><span class="operator">...</span>] &#123;</span><br><span class="line">    <span class="built_in">print</span>(name)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// Brian</span></span><br><span class="line"><span class="comment">// Jack</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> name <span class="keyword">in</span> names[<span class="operator">...</span><span class="number">2</span>] &#123;</span><br><span class="line">    <span class="built_in">print</span>(name)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// Anna</span></span><br><span class="line"><span class="comment">// Alex</span></span><br><span class="line"><span class="comment">// Brian</span></span><br></pre></td></tr></table></figure>
+
+<p>마찬가지로 받 단힘 연산자도 사용 가능합니다. 또한, 특정 값을 포함하는지 여부를 확인할 때도 사용 가능합니다.</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> range <span class="operator">=</span> <span class="operator">...</span><span class="number">5</span></span><br><span class="line">range.contains(<span class="number">7</span>)   <span class="comment">// false</span></span><br><span class="line">range.contains(<span class="number">4</span>)   <span class="comment">// true</span></span><br><span class="line">range.contains(<span class="operator">-</span><span class="number">1</span>)  <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="논리-연산자-Logical-Operators"><a href="#논리-연산자-Logical-Operators" class="headerlink" title="논리 연산자(Logical Operators)"></a>논리 연산자(Logical Operators)</h2><p>Swift 에서는 세가지 표준 논리 연산자를 지원합니다. </p>
+<ul>
+<li>논리 부정 NOT (<code>!a</code>)</li>
+<li>논리 곱 AND (<code>a &amp;&amp; b</code>)</li>
+<li>논리 합 OR (<code>a || b</code>)</li>
+</ul>
+<p>Swift의 논리 연산자 &amp;&amp; 와 || 는 왼쪽의 표현을 우선해서 논리 계산을 합니다. </p>
+<h3 id="명시적-괄호-Explicit-Parentheses"><a href="#명시적-괄호-Explicit-Parentheses" class="headerlink" title="명시적 괄호 (Explicit Parentheses)"></a>명시적 괄호 (Explicit Parentheses)</h3><p>논리 연산자의 적용 우선 순위를 연산자에게 맡기지 않고 명시적으로 괄화를 사용해 계산 순서를 정할 수 있습니다.</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (enteredDoorCode <span class="operator">&amp;&amp;</span> passedRetinaScan) <span class="operator">||</span> hasDoorKey <span class="operator">||</span> knowsOverridePassword &#123;</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;Welcome!&quot;</span>)</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;ACCESS DENIED&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// Prints &quot;Welcome!&quot;</span></span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Swift/" rel="tag"># Swift</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/01/14/BackEnd/220113-CSRF/" rel="prev" title="CSRF">
+                  <i class="fa fa-chevron-left"></i> CSRF
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2022/01/21/IOS/220121-MVVM%20%EA%B8%B0%EC%B4%88/" rel="next" title="MVVM 기초">
+                  MVVM 기초 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">JayoonKoo</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

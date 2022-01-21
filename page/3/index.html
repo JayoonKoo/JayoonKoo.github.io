@@ -83,9 +83,9 @@
   <ul class="main-menu menu">
         <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li>
         <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
-        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">15</span></a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">16</span></a></li>
         <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">12</span></a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">138</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">141</span></a></li>
   </ul>
 </nav>
 
@@ -129,7 +129,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">138</span>
+          <span class="site-state-item-count">141</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -140,7 +140,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-count">16</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -180,6 +180,314 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/12/22/DevOps/Docker/211221-Docker%20compose%EB%A1%9C%20%EC%84%9C%EB%B2%84%20%EB%9D%84%EC%9A%B0%EA%B8%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JayoonKoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="티끌모아 태산">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/12/22/DevOps/Docker/211221-Docker%20compose%EB%A1%9C%20%EC%84%9C%EB%B2%84%20%EB%9D%84%EC%9A%B0%EA%B8%B0/" class="post-title-link" itemprop="url">Docker compose로 서버 띄우기</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2021-12-22 20:21:35 / Modified: 20:21:45" itemprop="dateCreated datePublished" datetime="2021-12-22T20:21:35+09:00">2021-12-22</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/DevOps/" itemprop="url" rel="index"><span itemprop="name">DevOps</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="DockerCompose"><a href="#DockerCompose" class="headerlink" title="DockerCompose"></a>DockerCompose</h1><p>docker compose 사용하면 컨테이너간의 의존성을 파일 하나로 관리하면서 실행시킬 수 있다. 이번시간에는 개발 환경을 직접 docker-compose 로 build 해 보도록 한다.<br>사용하는 이미지는 mysql 과 node 환경을 이용하고 서버 프레임 워크로는 Express 를 사용한다. </p>
+<h2 id="docker-compose-dev-yml"><a href="#docker-compose-dev-yml" class="headerlink" title="docker-compose.dev.yml"></a>docker-compose.dev.yml</h2><p>먼저 docker-compose 파일을 생성해준다. 개발 환경임을 명시하기 위해서 dev.yml 파일로 생성한다. docker-compose 파일을 사용하지 않고도 run 명령어로 실행시킬 수 있지만 compose 파일을 사용하면 하나의 파일로 의존성을 관리할 수 있다. </p>
+<figure class="highlight docker"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">version: <span class="string">&#x27;3.8&#x27;</span></span><br><span class="line"></span><br><span class="line">services:</span><br><span class="line">  mysqldb:</span><br><span class="line">    image: mysql</span><br><span class="line">    ports:</span><br><span class="line">      - <span class="number">3306</span>:<span class="number">3306</span></span><br><span class="line">    command: <span class="comment"># 명령어 실행</span></span><br><span class="line">      - --character-set-server=utf8mb4</span><br><span class="line">      - --collation-server=utf8mb4_unicode_ci</span><br><span class="line">    volumes:</span><br><span class="line">      - mysql:/var/lib/mysql</span><br><span class="line">      - mysql_config:/etc/mysql</span><br><span class="line">    environment:</span><br><span class="line">      - MYSQL_ROOT_PASSWORD=<span class="number">1</span>q2w3e</span><br><span class="line">      - MYSQL_DATABASE=test</span><br><span class="line"></span><br><span class="line">  notes:</span><br><span class="line">    depends_on:</span><br><span class="line">      - mysqldb</span><br><span class="line">    build:</span><br><span class="line">      context: .</span><br><span class="line">    working_dir:</span><br><span class="line">      /app</span><br><span class="line">    ports:</span><br><span class="line">      - <span class="number">443</span>:<span class="number">8080</span></span><br><span class="line">      - <span class="number">9229</span>:<span class="number">9229</span></span><br><span class="line">    environment:</span><br><span class="line">      - SERVER_PORT=<span class="number">8080</span></span><br><span class="line">      - DB_PORT=<span class="number">3306</span></span><br><span class="line">      - MYSQL_DATABASE=test</span><br><span class="line">      - <span class="keyword">USER</span>=root</span><br><span class="line">      - MYSQL_ROOT_PASSWORD=<span class="number">1</span>q2w3e</span><br><span class="line">      - HOST=mysqldb</span><br><span class="line">      - CHOKIDAR_USEPOLLING=true</span><br><span class="line">    volumes:</span><br><span class="line">      - ./:/app</span><br><span class="line">    command: </span><br><span class="line">      - bash</span><br><span class="line">      - -c</span><br><span class="line">      - |</span><br><span class="line">        /app/wait-for-it.sh mysqldb:<span class="number">3306</span> -t <span class="number">10</span></span><br><span class="line">        yarn <span class="keyword">run</span><span class="bash"> nodemon-dev</span></span><br><span class="line"></span><br><span class="line">volumes:</span><br><span class="line">  mysql:</span><br><span class="line">  mysql_config:</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>mysqldb로 서비스를 만들었고, notes 서비스에서 HOST를 mysqldb로 환경 변수를 전달하고 있는데 DNS를 지원하기 때문에 compose 된 환경 안에서 이름 그대로 접근할 수 있다. </li>
+<li>notes 에서 build로 context로 현제 폴더를 지정해 주었는데 이렇게 하면 현제 폴더에서 Dockerfile를 참조해서 build를 실행한다. 명시적으로 파일을 지정해 줄 수 도 있다. </li>
+<li>depends_on 을 통해서 의존성을 명시한다. 해당 서버에서 mysql 에 test table을 조회하는데 test table이 만들어지 않은 상태에서 접근하려고 하면 에러가 발생한다. 의존성을 명시해서 먼저 mysqldb 에 build 가 실행된 이후에 notes 에 build 가 실행되도록 한다.</li>
+<li>다만, depends_op은 실행 순서는 보장해 주지만 준비 상태까지는 보장해 주지 않는다. 따라서 wait-for-it.sh 스크립트를 사용했는데 조금 서치해보면 어떻게 설치하는지 알 수 있다. 그냥 사용하면 권한 거부 에러가 발생하기 대문에 wait-for-it.sh 의 실행 권한을 설정하고 build 해야 한다. </li>
+<li>dockerfile로 개발환경을 설정할때에는 현제 로컬에 수정사항을 반영하기 위해서 $(pwd) 같은 것을 사용했었는데 docker-compose 파일을 사용하면 상대 경로를 통해서 수정사항을 반영할 수 있도록 하는게 가능하다. </li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/12/22/TIL/211221-211221%20%EB%A6%AC%EC%95%A1%ED%8A%B8%20%EB%84%A4%EC%9D%B4%ED%8B%B0%EB%B8%8C/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JayoonKoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="티끌모아 태산">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/12/22/TIL/211221-211221%20%EB%A6%AC%EC%95%A1%ED%8A%B8%20%EB%84%A4%EC%9D%B4%ED%8B%B0%EB%B8%8C/" class="post-title-link" itemprop="url">211221 리액트 네이티브</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2021-12-22 20:00:49 / Modified: 20:00:55" itemprop="dateCreated datePublished" datetime="2021-12-22T20:00:49+09:00">2021-12-22</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/TIL/" itemprop="url" rel="index"><span itemprop="name">TIL</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="211221"><a href="#211221" class="headerlink" title="211221"></a>211221</h1><h2 id="리액트-네이티브"><a href="#리액트-네이티브" class="headerlink" title="리액트 네이티브"></a>리액트 네이티브</h2><ul>
+<li>커스텀 버튼에서 primary 버튼과 secondary 버튼을 만드는 방법 &lt;429p&gt;</li>
+<li>React.forwardRef(CusomComponent) 와 같이 선언하고 CustomComponent에서 원하는 컴포넌트에 props 다음으로 받아온 ref 를 proos로 사용하게 설정하면 사용하는 쪽에서 CustomComponent에 ref를 넘겨줌으로써 CustomComponent 내부의 컴포넌트를 참조 할 수 있다.</li>
+<li>스택에 화면을 비워야 한다면? 로그인 했는데 로그인 화면으로 스와이프해서 넘어가는것 방지하는 경우 같은.. reset이라는 메서드가 있는데 번거로움.. 대신에 특정 조건을 만족하면 스택에서 화면을 제거하는 방법으로 구현 가능하고 공식문서에서도 이 방법을 추천함. → rootStack 같은 곳에서 특정 상태를 기반으로(ex. user) 조건부 렌더링으로 스택을 처리하면 됨.</li>
+<li>로그인 정보를 유지하기 위해서 일반적으로는 AsyncStorage를 사용한다.</li>
+<li>RefreshControl 을 사요하면 FlatList 에서 아래로 내리는 스와이프 동작으로 새로고침을 구현할 수 있다. FlatList 에 refreshControl 컴포넌트로 RefreshControl 을 주입하면 된다.</li>
+<li>useNavigationState 함수를 사용해서 내비게이션 상태를 조회할 수 있다.</li>
+<li>Pressable 에 hitSlop을 설정하면 컴포넌트 영역은 그대로 유지하고 터치 가능한 영역만 설정한 숫자 만큼 늘려준다. 숫자도 넣을 수 있고, Rect 타입의 객체를 넣을 수 도 있다.</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/12/21/TIL/211216-211216%20%EB%B0%B1%EC%97%94%EB%93%9C(%EC%9D%B8%EC%A6%9D)%20%EB%A6%AC%EC%95%A1%ED%8A%B8%20%EB%84%A4%EC%9D%B4%ED%8B%B0%EB%B8%8C/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JayoonKoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="티끌모아 태산">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/12/21/TIL/211216-211216%20%EB%B0%B1%EC%97%94%EB%93%9C(%EC%9D%B8%EC%A6%9D)%20%EB%A6%AC%EC%95%A1%ED%8A%B8%20%EB%84%A4%EC%9D%B4%ED%8B%B0%EB%B8%8C/" class="post-title-link" itemprop="url">211216 백엔드(인증) 리액트 네이티브</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2021-12-21 21:39:28 / Modified: 21:39:46" itemprop="dateCreated datePublished" datetime="2021-12-21T21:39:28+09:00">2021-12-21</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/TIL/" itemprop="url" rel="index"><span itemprop="name">TIL</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="211216"><a href="#211216" class="headerlink" title="211216"></a>211216</h1><h2 id="백엔드-Authentication"><a href="#백엔드-Authentication" class="headerlink" title="백엔드-Authentication"></a>백엔드-Authentication</h2><ul>
+<li>인증이란? : you are who you say you are, 다양한 방법으로 인증 가능하다 통상적으로 password, id 로<ul>
+<li>먼저 회원가입을 진행해서 서버에 id, passwrod 를 저장한다.</li>
+<li>클라이언트는 로그인 할때 회원가입한  id, password를 서버에 전송한다.</li>
+<li>어떻게 로그인 상태를 유지할 수 있을까?</li>
+</ul>
+</li>
+<li>세션과 쿠기 (서버에서 사용할 수 있는 전통적인 옵션- 어떻게 로그인 상태를 유지할지에 대한 방법)<ol>
+<li>세션 <ul>
+<li>서버에서 확인후 세션을 만든다 (userId, sessiontId, expiration) - Session DB에 저장 or 파일시스템이나 메모리도 될 수 있음</li>
+<li>쿠키에 HTTP Only로 sessiontId 정보를 전달함.</li>
+<li>다음 요청때마다 쿠키 정보를 전달해줌</li>
+<li>장점 : 브라우저에 전달만 하면 되서 간단하고, sessionId 만 전달하면되서 사용자의 정보를 전달하지 않아도 된다. HTTP Only를 사용하면 스크립트로 못읽기 때문에 보안상의 이점도 있다.</li>
+<li>단점 : Stateful 하기 때문에 다양한 서버들이 SettionDb를 읽어야 하고 많은 요청이 들어오게 된다. 내부적으로 네트워킹이 많아짐. 성능 하락</li>
+</ul>
+</li>
+<li>JWT (Json Web Token)<ul>
+<li>다음과 같은 정보를 JSON으로 만들고 토큰화해서 보낸다. header, payload, signature, 모든 정보는 인코딩해서 보내고 서버에서 secrete으로 사용하는 키도 인코딩해서 signature에 포함해서 보낸다.</li>
+<li>로그인 하면, 로그인 정보 + 만료 시간 등등 합쳐서 JWT를 만듦.</li>
+<li>클라이언트는 Header를 이용하여 모든 request마다 JWT를 포함해서 전달해 줌.</li>
+<li>서버는 JWT를 검증한 후에 데이터를 반환함.</li>
+<li>장점 : 서버에 State가 없다. 서버를 확장하거나 분산하기에 용이하다.</li>
+<li>단점 : JWT 자체가 단점이 될 수 있다. → 계속 JWT를 주고 받아야 한다. 만약 영원히 만료되지 않은 JWT를 헤커가 탈취한다면.. 사용할때 보안에 신경써야 한다.</li>
+</ul>
+</li>
+</ol>
+</li>
+<li>bcrypt 란?  : 사용자 정보를 그대로 저장하는 것이 아니라 암호화 해서 저장하기 위해 사용함. → 암호화만 가능한데 (암호화 한것을 비교하는 것), salt 가 없다면 경우의 수로 암호화 해 보면서 유추할 수 있어서 salt를 포함하여 경우의 수를 늘림. 10~12 정도로 설정. 길어지면 cpu 부하 심해짐..</li>
+<li>JWT, 32 시크릿 키로 권고 됨. 한번 발행된 토근은 변경되면 안된다. → 만약 한버이라도 변경 한다면 최종적으로 붙은 signature도 변경되어서 verify시 오류 발생하고 누군가 변경한 토큰인지 확인 가능하다.<ul>
+<li>만료될 수 있도록 만들어야 한다. → option으로 전달함. {expiresIn: 2} 이런식으로 → 2초 후에 만료</li>
+</ul>
+</li>
+</ul>
+<h2 id="리액트-네이티브"><a href="#리액트-네이티브" class="headerlink" title="리액트 네이티브"></a>리액트 네이티브</h2><ul>
+<li>Platform.OS 로 플랫폼 종류를 알 수 있다.</li>
+<li>KeyboardAvoidingView 에서 behavior Props 로 동작 장식을 정의할 수 있다.<ul>
+<li>padding : 키보드 열렸을때 뷰 하단에 패딩을 설정</li>
+<li>height: 뷰의 높이 자체를 변경</li>
+<li>position:  뷰의 위치를 설정</li>
+</ul>
+</li>
+<li>Platform.select({ios:, android,}) 를 사용해서 플랫폼 별로 옵션을 줄 수 있다.</li>
+<li>터치 했을때 효과 주기<ul>
+<li>TouchableHighlight: 터치했을 대 배경색 변경</li>
+<li>TouchableNativeFeedback: 안드로이드에서 물결 효과 ios에서는 오류</li>
+<li>ToucableOpacity: 투명도 조정</li>
+<li>ToucableWithoutFeedback: 아무 효과도 적용하지 않는다.</li>
+</ul>
+</li>
+<li>keyboard.dismiss() 는 현제 나타난 키보드를 닫는다.</li>
+<li>onSubmitEditing → enter 눌렀을때 이벤트</li>
+<li>returnkeyType=”done” → 키보드 눌렀을대 return 타입을 보여줌.</li>
+<li>FlatList에 ItemSeparatorComponent Props를 지정해서 컴포넌트 사이에 구분선을 설정할 수 있다.</li>
+<li>react-nativevector-icons 를 사용하면 벡터 아이콘을 리액트 네이티브 프로젝트에서 간편하게 컴포넌트처럼 사용할 수 있게 해준다.</li>
+<li>ios/proejctForderName/info.plist → 앱의 이름, 아이콘, 버전 등 앱에서 필요한 설정값을 지니고 있다.</li>
+<li>android/app/build.gradle → 프로젝트의 의존성, 프로그인 및 빌드에 필요한 설정에 대한 정보를 지니고 있다.</li>
+<li>Alert.aler(제목, 내용, 버튼, 옵션) 버튼 부분에 {text, onPress, style} 을 각각 설정해서 버튼 스타일 내용, 눌렀을때 동작등을 정의할수 있다. 안드로이드에서는 버튼 스타일이 적용되지 않아서 따로 만들어야 한다. 설정할 수 있는 style은 다음과 같다.<ul>
+<li>cancel: 취소 기본에 폰트 두껍게</li>
+<li>default: 기본 파란색</li>
+<li>destructive: 파괴적인? 삭제하는 상황에 적합 빨간색이 됨.</li>
+</ul>
+</li>
+<li>옵션으로는 바깥에 눌렀을때 동작이나, 안드로이드에서는 바깥에 눌렀을때 취소 옵션 같은걸 줄 수 있다.</li>
+<li>브라우저에 localStorage 와 비슷한 AsyncStorage 를 사용할 수 있다. API도 비슷한데 다른점이라면 AsyncStorage는 비동기로 동작해서 Promise를 반환한다. <code>yarn add @react-native-community/async-strage</code> 로 설치한다.</li>
+<li>useEffect 에는 cleanup 하는 기능이 있는데 내부 함수가 promise를 반환하면 충돌하기 때문에 내부에서 async 함수를 선언한 후에 호출하는 방법을 사용한다.</li>
+<li>AsyncStorage를 사용할때는 추상화 해서 사용하는 것을 추천한다 → 나중에 다른 스토리지를 사용할때 쉽게 교체할 수 있도록</li>
+<li>android 는 AsyncStorage 로 6MB를 저장할 수 있다 늘리려면 gradle.properties를 수정한다. ios 는 따로 최대 용량이 설정되어 있지 않다.</li>
+<li>AsyncStorage는 데이터가 많아지면 성능이 떨어진다. 또한 정렬이나 인덱싱 기능을 지원하지 않는다. 소규모에서 적합하고 조금 규모가 커지면 대안으로 <code>react-native-sqlite-storage</code> 같은것을 사용하면 된다.</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -930,307 +1238,8 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/12/16/TIL/211215-211215/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JayoonKoo">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="티끌모아 태산">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/12/16/TIL/211215-211215/" class="post-title-link" itemprop="url">211215</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2021-12-16 20:07:09 / Modified: 20:07:16" itemprop="dateCreated datePublished" datetime="2021-12-16T20:07:09+09:00">2021-12-16</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/TIL/" itemprop="url" rel="index"><span itemprop="name">TIL</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="211215"><a href="#211215" class="headerlink" title="211215"></a>211215</h1><h2 id="백엔드"><a href="#백엔드" class="headerlink" title="백엔드"></a>백엔드</h2><ul>
-<li>유효성 검사 어디에서 하는게 좋을까?<ul>
-<li>서버에서 검증을 빨리 하는것이 좋은데 네트워크를 소비하지 않도록 클라이언트에서 검증을 해도 좋다. 하지만 서버에서 검증하는 절차는 필수적이다.</li>
-</ul>
-</li>
-<li>유효성 검사를 위해서 expres-validator 를 이용할 수 있다.</li>
-<li>Sanitization 이란 ? 유효성 검사 후에 해야 하는데 예를 들어 2 글자 이상의 벨리데이션이 있었다면, 공백만 3글자로 입력해도 통과 됨. 이런것도 다 잡아줘야 함 → 이경우에는 맨 처음 trim()을 사용해서 해결 가능. express-validator 다양한 Sanitization 을 관련 API를 제공한다. ⇒ 데이터를 일관성있게 적용될 수 있도록</li>
-<li>validation 관련한 함수는 middleware로 따로 관리한다 controller는 비즈니스 관련 핵심 로직만 관리 할 수 있도록 한다.</li>
-<li>Contract Testing: Client-Server 통신시 test, 나중에 공부해보자.</li>
-</ul>
-<h2 id="프론트"><a href="#프론트" class="headerlink" title="프론트"></a>프론트</h2><ul>
-<li>react-query: server 에 상태를 캐쉬해서 network 비용을 줄일 수 있게 해준다. redux 를 사용하면 client 에 상태는 잘 관리할 수 있지만 server의 상태를 관리하려면 캐쉬등 여러가지 해주어야 할 작업이 있다. 이 책임을 reqct-query 에게 줌으로써 개발자는 다른 것에 집중해서 개발할수 있다.</li>
-<li>데이터를 처음 가져올때는 state를 통해 loading, success, error 와 같은 상태를 사용할 수 있고, 두번째로 가져올 때부터는 server 상태와 동기화 되서 다를때만 가져오고 나마저는 캐쉬된 상태를 사용할수 있게 함으로써 사용자 경험을 높인다.</li>
-<li>전역 state는 어떻게? → ContextAPI를 사용하여 전역 상태를 관리 할 수도 있다. 요즘은 redux 에 비중을 줄이고 context 와 react-query에 조합을 많이 사용하기도 한다.</li>
-</ul>
-<h2 id="리액트-네이티브"><a href="#리액트-네이티브" class="headerlink" title="리액트 네이티브"></a>리액트 네이티브</h2><ul>
-<li>react-native-safe-area-context : safe area 나머지 부분에 여백에 관한 설정을 할수 있는 라이브러리</li>
-<li>안드로이드에 경우 자동으로 서드파티 라이브러를 불러와서 사용할 수 있지만 ios에 경우에는 cocoapods 의 도움을 받아야 네이티브 모듈의 적용할 수 있다. ios 폴더 이동후 pod install 을 실행한다.</li>
-<li>react-native-safe-area-context 의 useSafeAreaInsets() hook을 이용하면  반환 값으로 각 safeArea 구성의 필요한 각 모서리에 공백을 top, bottom, left, right로 받아올 수 있다.</li>
-<li>statusBar 의 barStyle props를 전달할 수 있다. dark-content(어두운 내용), light_content(밝은 내용), default(시스템 기본 설정) → 참고로 안드로이드 ios 공통으로 사용할 수 있다.</li>
-<li>리액트 네이티브에서 스타일링할 때 크기는 모두 dp로 설정한다. (Density-independent Pixel) → 1인치당 픽셀 밀도에 따라 크기가 일관된 UI를 보여줄 수 있는 단위이다.<ul>
-<li>dp = px * 160 / ppi</li>
-<li>px = dp * ppi / 160</li>
-</ul>
-</li>
-<li>시뮬레이터 디바이스를 변경하는 방법 → <code>xcrun simctl list devices</code> 를 통해 실행 가능한 디바이스 목록을 확인할 수 있고, <code>yarn react-native run-ios- simulator=&quot;iPhone 5s</code> 와 같은 방법으로 동작 시킬 수 있다. 안드로이드의 경우에는 Android Virtula Device Manager를 열어서 Create Virtual Device 버튼을 눌러 새 디바이스를 추가하면 된다.</li>
-<li>이미지를 리사이즈 해서 실제 이미지와 크기가 달라질때, resizeMode를 설정할 수 있다.<ul>
-<li>cover: 기본값, 가로 세로 비율을 유지한채로 리사이징, 뷰가 더 작으면 이미지가 잘린다.</li>
-<li>contain: 가로 세로 비율을 유지한 체로 리사이징 하며 무조건 영역에 모두 들어오도록 한다.</li>
-<li>stretch: 뷰의 크기대로 이미지를 리사이징 한다. 비율이 달라진다.</li>
-<li>repeat: 바둑판식으로 이미지를 반복한다.</li>
-<li>center: 이미지를 뷰 중앙에 둔다. contain과 마찬가지 이고, 뷰가 이미지보다 크면 이미지의 크기가 커지지 않고 원본 사이즈를 유지한다.</li>
-</ul>
-</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/12/15/DevOps/Docker/211214-DockerOverview/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JayoonKoo">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="티끌모아 태산">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/12/15/DevOps/Docker/211214-DockerOverview/" class="post-title-link" itemprop="url">DockerOverview</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2021-12-15 21:35:41 / Modified: 21:35:53" itemprop="dateCreated datePublished" datetime="2021-12-15T21:35:41+09:00">2021-12-15</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/DevOps/" itemprop="url" rel="index"><span itemprop="name">DevOps</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="Docker-Overview"><a href="#Docker-Overview" class="headerlink" title="Docker Overview"></a>Docker Overview</h1><h2 id="What-can-I-use-Docker-for"><a href="#What-can-I-use-Docker-for" class="headerlink" title="What can I use Docker for?"></a>What can I use Docker for?</h2><ul>
-<li>CI/CD WorkFlows</li>
-</ul>
-<ol>
-<li>개발한 코드를 도커 컨테이너와 함께 공유한다.</li>
-<li>Docker 를 사용하여 애플리케이션을 테스트 환경으로 푸시하고 자동화 및 수동 테스트를 실행함. </li>
-<li>버그를 발견하면 개발 환경에서 고치고 다시 테스팅과 검증을 위해 제배포 할 수 있다.</li>
-<li>테스트 까지 완료되면, 고객에게 전달하는것은 단지 production 환경으로 이미지를 push 해서 업데이트 하면 끝인 간단한 작업이다. </li>
-</ol>
-<h2 id="Docker-architecture"><a href="#Docker-architecture" class="headerlink" title="Docker architecture"></a>Docker architecture</h2><img src="images/211214-DockerOverview/1.png" width="300">
-
-<ul>
-<li>Docker daemon (<code>dockerd</code>):</li>
-</ul>
-<p>Docker API 요청을 수신하고 이미지, 컨테이너, 네트워크 및 볼륨과 같은 Docker 객체를 관리한다. 다른 daemon 과 통신할 수 도 있다. </p>
-<ul>
-<li>The Docker client (<code>docker</code>):</li>
-</ul>
-<p><code>docker run</code> 과 같은 명령어를 실행하면 Docker client는 <code>dockerd</code> 로 명령을 옮긴다. Docker client는 둘이상의 docker daemon과 통신할 수 있다. </p>
-<ul>
-<li>Docker Desktop :</li>
-</ul>
-<p>Window와 Mac 에서 도커 애플리케이션을 공유할수 있게 해준다. <code>dockerd</code> , <code>docker</code> , Docker Compose, Docker Content Trust.. 같은것을 포함한다. </p>
-<ul>
-<li>Docker registries :</li>
-</ul>
-<p>Docker hub 와 같이 이미지들을 모아 둔 곳, </p>
-<h2 id="Docker-Object"><a href="#Docker-Object" class="headerlink" title="Docker Object"></a>Docker Object</h2><p>docker images, containers, networks, volumes, plugins.. 등등 다양한 오브젝트가 있다. 간단하게 몇게만 살펴본다. </p>
-<ul>
-<li>images :</li>
-</ul>
-<p>컨테이너를 생성 지침이 포함된 읽기 전용 템플릿이다. 이미지를 이용해서 커스텀한 이미지를 만들 수도 있다. Dockerfile 을 만들어서 image를 생성하고 실행하는 스텝을 정의할 수도 있다. Dockerfile의 각 지침은 image layer를 만든다.</p>
-<ul>
-<li>Containers :</li>
-</ul>
-<p>컨테이너는 이미지에 실행가능한 인스턴스이다. 기본적으로 각 컨테이너와 host는 잘 격리 되어 있고, 얼마나 격리 될지 정할 수 도 있다. 만들때 설정한 설정과 이미지들로 컨테이너가 정의 된다.</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/12/15/DevOps/Docker/211018-Docker%20basic/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JayoonKoo">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="티끌모아 태산">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/12/15/DevOps/Docker/211018-Docker%20basic/" class="post-title-link" itemprop="url">Docker basic</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2021-12-15 21:35:12 / Modified: 21:35:29" itemprop="dateCreated datePublished" datetime="2021-12-15T21:35:12+09:00">2021-12-15</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/DevOps/" itemprop="url" rel="index"><span itemprop="name">DevOps</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="Docker"><a href="#Docker" class="headerlink" title="Docker"></a>Docker</h1><p>가상 os를 사용해본 경험이 한번쯤은 있을 것이다. 가상 os는 vm 같은 프로그램을 사용해서 현제 os 위에 새로운 os를 설치하는 것인데 이를 통해서 다른 host os 와는 다른 os를 사용할 수 있게 된다.</p>
-<p>vm ware와 같은 소프트웨어에서는 hostos 위에 hypervisor 를 두어서 그 위에 가상 os를 설치하는 방법을 사용한다. 이때 하드웨어 리소스를 필요한 부분 만큼 떼어 놓고 그 리소스 안에서 os를 사용하게 되는데 성능상에 손실이 있을 수 있다.</p>
-<p>그에 반에 Docker는 Docker engine 을 사용하여 프로세스 수준으로 리소스를 격리할 수 있다.</p>
-<h2 id="Docker를-사용하는-이유"><a href="#Docker를-사용하는-이유" class="headerlink" title="Docker를 사용하는 이유?"></a>Docker를 사용하는 이유?</h2><ol>
-<li>컨테이너 이미지의 용량이 적다.</li>
-<li>배포 속도가 빠르다.</li>
-<li>가상화된 공간을 사용할 때의 성능손실이 적다.</li>
-</ol>
-<h2 id="Docker-설치"><a href="#Docker-설치" class="headerlink" title="Docker 설치"></a>Docker 설치</h2><p><a target="_blank" rel="noopener" href="https://docs.docker.com/engine/install/ubuntu/">설치 docs</a> 우분투에 대한 내용은 여기서 찾아 볼 수 있다. 문서를 보고 다른 os도 따라서 해보면 된다.</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 </div>

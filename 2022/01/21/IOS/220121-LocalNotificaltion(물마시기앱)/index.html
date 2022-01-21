@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css" integrity="sha256-2H3fkXt6FEmrReK448mDVGKb3WW2ZZw35gI7vqHOE4Y=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"jayoonkoo.github.io","root":"/","images":"/images","scheme":"Muse","version":"8.6.1","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="물마시기 알람 앱 만들기Local Notification : 푸시 알림?  앱 내부에서 자체적으로 만든 특정 메세지를 전달하는 것  LocalNotificationUNNotificationRequest  3가지 필수 내용   identifier UNMutableNotificationContent (Content.title, Contetn.body) Trig">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LocalNotificaltion(물마시기앱)">
+<meta property="og:url" content="https://jayoonkoo.github.io/2022/01/21/IOS/220121-LocalNotificaltion(%EB%AC%BC%EB%A7%88%EC%8B%9C%EA%B8%B0%EC%95%B1)/index.html">
+<meta property="og:site_name" content="티끌모아 태산">
+<meta property="og:description" content="물마시기 알람 앱 만들기Local Notification : 푸시 알림?  앱 내부에서 자체적으로 만든 특정 메세지를 전달하는 것  LocalNotificationUNNotificationRequest  3가지 필수 내용   identifier UNMutableNotificationContent (Content.title, Contetn.body) Trig">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-01-21T05:50:05.000Z">
+<meta property="article:modified_time" content="2022-01-21T05:50:42.807Z">
+<meta property="article:author" content="JayoonKoo">
+<meta property="article:tag" content="App만들기">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://jayoonkoo.github.io/2022/01/21/IOS/220121-LocalNotificaltion(%EB%AC%BC%EB%A7%88%EC%8B%9C%EA%B8%B0%EC%95%B1)/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://jayoonkoo.github.io/2022/01/21/IOS/220121-LocalNotificaltion(%EB%AC%BC%EB%A7%88%EC%8B%9C%EA%B8%B0%EC%95%B1)/","path":"2022/01/21/IOS/220121-LocalNotificaltion(물마시기앱)/","title":"LocalNotificaltion(물마시기앱)"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>LocalNotificaltion(물마시기앱) | 티끌모아 태산</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">티끌모아 태산</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">작은 조각 모음</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">16</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">12</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">141</span></a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%EB%AC%BC%EB%A7%88%EC%8B%9C%EA%B8%B0-%EC%95%8C%EB%9E%8C-%EC%95%B1-%EB%A7%8C%EB%93%A4%EA%B8%B0"><span class="nav-number">1.</span> <span class="nav-text">물마시기 알람 앱 만들기</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#LocalNotification"><span class="nav-number">1.1.</span> <span class="nav-text">LocalNotification</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Content-%EC%84%A4%EC%A0%95"><span class="nav-number">1.2.</span> <span class="nav-text">Content 설정</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Trigger"><span class="nav-number">1.3.</span> <span class="nav-text">Trigger</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#request"><span class="nav-number">1.4.</span> <span class="nav-text">request</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EA%B8%B0%ED%83%80"><span class="nav-number">1.5.</span> <span class="nav-text">기타</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-overview">
+            <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">JayoonKoo</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">141</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/JayoonKoo" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;JayoonKoo" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:rnwkdbs12@gmail.com" title="E-Mail → mailto:rnwkdbs12@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/JayoonKoo" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2022/01/21/IOS/220121-LocalNotificaltion(%EB%AC%BC%EB%A7%88%EC%8B%9C%EA%B8%B0%EC%95%B1)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JayoonKoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="티끌모아 태산">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          LocalNotificaltion(물마시기앱)
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2022-01-21 14:50:05 / Modified: 14:50:42" itemprop="dateCreated datePublished" datetime="2022-01-21T14:50:05+09:00">2022-01-21</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/IOS/" itemprop="url" rel="index"><span itemprop="name">IOS</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="물마시기-알람-앱-만들기"><a href="#물마시기-알람-앱-만들기" class="headerlink" title="물마시기 알람 앱 만들기"></a>물마시기 알람 앱 만들기</h1><p>Local Notification : 푸시 알림? </p>
+<p>앱 내부에서 자체적으로 만든 특정 메세지를 전달하는 것 </p>
+<h2 id="LocalNotification"><a href="#LocalNotification" class="headerlink" title="LocalNotification"></a>LocalNotification</h2><p>UNNotificationRequest </p>
+<p>3가지 필수 내용 </p>
+<ol>
+<li>identifier</li>
+<li>UNMutableNotificationContent (Content.title, Contetn.body)</li>
+<li>Trigger<ol>
+<li>UNCalendarNotificationTrigger</li>
+<li>UNTimerIntervalNotificationTrigger 시간 간격당 알림 ( 타이머에 가까움)</li>
+<li>UNLocationNotificationTrigger</li>
+</ol>
+</li>
+</ol>
+<p>UNNotificationCenter 에 보내면 Trigger 타이밍에 알려줌.</p>
+<h2 id="Content-설정"><a href="#Content-설정" class="headerlink" title="Content 설정"></a>Content 설정</h2><ol>
+<li>AppDelegate 에 UNUserNotificationCenterDelegate 를 확장하도록 한다. </li>
+<li>UNUserNotificationCenter 를 생성하고 알람을 허용할지 요청한다. </li>
+</ol>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> NotificationCenter</span><br><span class="line"><span class="keyword">import</span> UserNotifications</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">AppDelegate</span>: <span class="title">UIResponder</span>, <span class="title">UIApplicationDelegate</span> </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> userNotificationCenter: <span class="type">UNUserNotificationCenter</span>?</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">application</span>(<span class="keyword">_</span> <span class="params">application</span>: <span class="type">UIApplication</span>, <span class="params">didFinishLaunchingWithOptions</span> <span class="params">launchOptions</span>: [<span class="type">UIApplication</span>.<span class="params">LaunchOptionsKey</span>: <span class="keyword">Any</span>]<span class="operator">?</span>)</span> -&gt; <span class="type">Bool</span> &#123;</span><br><span class="line">        <span class="comment">// Override point for customization after application launch.</span></span><br><span class="line">        <span class="type">UNUserNotificationCenter</span>.current().delegate <span class="operator">=</span> <span class="keyword">self</span></span><br><span class="line">        </span><br><span class="line">        <span class="keyword">let</span> authrizationOptions <span class="operator">=</span> <span class="type">UNAuthorizationOptions</span>(arrayLiteral: [.alert, .badge, .sound])</span><br><span class="line">        </span><br><span class="line">        userNotificationCenter<span class="operator">?</span>.requestAuthorization(options: authrizationOptions, completionHandler: &#123; <span class="keyword">_</span>, error <span class="keyword">in</span></span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">let</span> error <span class="operator">=</span> error &#123;</span><br><span class="line">                <span class="built_in">print</span>(<span class="string">&quot;Error: <span class="subst">\(error.localizedDescription)</span>&quot;</span>)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line"><span class="comment">// 생략 </span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">extension</span> <span class="title">AppDelegate</span>: <span class="title">UNUserNotificationCenterDelegate</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">userNotificationCenter</span>(<span class="keyword">_</span> <span class="params">center</span>: <span class="type">UNUserNotificationCenter</span>, <span class="params">willPresent</span> <span class="params">notification</span>: <span class="type">UNNotification</span>, <span class="params">withCompletionHandler</span> <span class="params">completionHandler</span>: <span class="keyword">@escaping</span> (<span class="type">UNNotificationPresentationOptions</span>) -&gt; <span class="type">Void</span>)</span> &#123;</span><br><span class="line">        completionHandler([.banner, .list, .badge, .sound])</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">userNotificationCenter</span>(<span class="keyword">_</span> <span class="params">center</span>: <span class="type">UNUserNotificationCenter</span>, <span class="params">didReceive</span> <span class="params">response</span>: <span class="type">UNNotificationResponse</span>, <span class="params">withCompletionHandler</span> <span class="params">completionHandler</span>: <span class="keyword">@escaping</span> () -&gt; <span class="type">Void</span>)</span> &#123;</span><br><span class="line">        completionHandler()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>UserNotficationCenter 에 request 를 보내는 코드를 추가한다. </li>
+</ol>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> UserNotifications</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">extension</span> <span class="title">UNUserNotificationCenter</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">addNotificationRequest</span>(<span class="params">by</span> <span class="params">alert</span>: <span class="type">Alert</span>)</span> &#123;</span><br><span class="line">        <span class="keyword">let</span> content <span class="operator">=</span> <span class="type">UNMutableNotificationContent</span>()</span><br><span class="line">        content.title <span class="operator">=</span> <span class="string">&quot;물 마실 시간이에요.💧&quot;</span></span><br><span class="line">        content.body <span class="operator">=</span> <span class="string">&quot;세계보건기구가 권장하는 하루 물 섭취량은 1.5~2리터 입니다.&quot;</span></span><br><span class="line">        content.sound <span class="operator">=</span> .default</span><br><span class="line">        content.badge <span class="operator">=</span> <span class="number">1</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Trigger"><a href="#Trigger" class="headerlink" title="Trigger"></a>Trigger</h2><p>trigger 를 설정한다. </p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">extension</span> <span class="title">UNUserNotificationCenter</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">addNotificationRequest</span>(<span class="params">by</span> <span class="params">alert</span>: <span class="type">Alert</span>)</span> &#123;</span><br><span class="line">        <span class="keyword">let</span> content <span class="operator">=</span> <span class="type">UNMutableNotificationContent</span>()</span><br><span class="line">        content.title <span class="operator">=</span> <span class="string">&quot;물 마실 시간이에요.💧&quot;</span></span><br><span class="line">        content.body <span class="operator">=</span> <span class="string">&quot;세계보건기구가 권장하는 하루 물 섭취량은 1.5~2리터 입니다.&quot;</span></span><br><span class="line">        content.sound <span class="operator">=</span> .default</span><br><span class="line">        content.badge <span class="operator">=</span> <span class="number">1</span></span><br><span class="line">        </span><br><span class="line">				<span class="comment">// 추가 부분</span></span><br><span class="line">        <span class="keyword">let</span> component <span class="operator">=</span> <span class="type">Calendar</span>.current.dateComponents([.hour, .minute], from: alert.date)</span><br><span class="line">        <span class="keyword">let</span> trigger <span class="operator">=</span> <span class="type">UNCalendarNotificationTrigger</span>(dateMatching: component, repeats: alert.isOn)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="request"><a href="#request" class="headerlink" title="request"></a>request</h2><p>request 를 추가한다.</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">extension</span> <span class="title">UNUserNotificationCenter</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">addNotificationRequest</span>(<span class="params">by</span> <span class="params">alert</span>: <span class="type">Alert</span>)</span> &#123;</span><br><span class="line">        <span class="keyword">let</span> content <span class="operator">=</span> <span class="type">UNMutableNotificationContent</span>()</span><br><span class="line">        content.title <span class="operator">=</span> <span class="string">&quot;물 마실 시간이에요.💧&quot;</span></span><br><span class="line">        content.body <span class="operator">=</span> <span class="string">&quot;세계보건기구가 권장하는 하루 물 섭취량은 1.5~2리터 입니다.&quot;</span></span><br><span class="line">        content.sound <span class="operator">=</span> .default</span><br><span class="line">        content.badge <span class="operator">=</span> <span class="number">1</span></span><br><span class="line">        </span><br><span class="line">        <span class="keyword">let</span> component <span class="operator">=</span> <span class="type">Calendar</span>.current.dateComponents([.hour, .minute], from: alert.date)</span><br><span class="line">        <span class="keyword">let</span> trigger <span class="operator">=</span> <span class="type">UNCalendarNotificationTrigger</span>(dateMatching: component, repeats: alert.isOn)</span><br><span class="line">        </span><br><span class="line">				<span class="comment">// 추가 부분</span></span><br><span class="line">        <span class="keyword">let</span> request <span class="operator">=</span> <span class="type">UNNotificationRequest</span>(identifier: alert.id, content: content, trigger: trigger)</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">self</span>.add(request, withCompletionHandler: <span class="literal">nil</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>이제 알람이 추가되어야 할 부분에 request를 추가하고, 삭제 되어야 할 부분에 remove를 호출한다.</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> UserNotifications</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">AlertListViewController</span>: <span class="title">UITableViewController</span> </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> alerts: [<span class="type">Alert</span>] <span class="operator">=</span> []</span><br><span class="line">		<span class="comment">// userNotificationCenter 추가</span></span><br><span class="line">    <span class="keyword">let</span> userNotificationCenter <span class="operator">=</span> <span class="type">UNUserNotificationCenter</span>.current()</span><br><span class="line">		<span class="comment">// 생략</span></span><br><span class="line">		<span class="keyword">@IBAction</span> <span class="function"><span class="keyword">func</span> <span class="title">addAlertButtonAction</span>(<span class="keyword">_</span> <span class="params">sender</span>: <span class="type">UIBarButtonItem</span>)</span> &#123;</span><br><span class="line">        <span class="keyword">guard</span> <span class="keyword">let</span> addAlertVc <span class="operator">=</span> storyboard<span class="operator">?</span>.instantiateViewController(withIdentifier: <span class="string">&quot;AddAlerViewController&quot;</span>)</span><br><span class="line">                <span class="keyword">as?</span> <span class="type">AddAlerViewController</span> <span class="keyword">else</span> &#123;<span class="keyword">return</span>&#125;</span><br><span class="line">        addAlertVc.pickedDate <span class="operator">=</span> &#123;[<span class="keyword">weak</span> <span class="keyword">self</span>] date <span class="keyword">in</span></span><br><span class="line">            <span class="keyword">guard</span> <span class="keyword">let</span> <span class="keyword">self</span> <span class="operator">=</span> <span class="keyword">self</span> <span class="keyword">else</span> &#123;<span class="keyword">return</span>&#125;</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">var</span> alertList <span class="operator">=</span> <span class="keyword">self</span>.alertList()</span><br><span class="line">            <span class="keyword">let</span> newAlert <span class="operator">=</span> <span class="type">Alert</span>(date: date, isOn: <span class="literal">true</span>)</span><br><span class="line">            </span><br><span class="line">            alertList.append(newAlert)</span><br><span class="line">            alertList.sort &#123; <span class="variable">$0</span>.date <span class="operator">&lt;</span> <span class="variable">$1</span>.date&#125;</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">self</span>.alerts <span class="operator">=</span> alertList</span><br><span class="line">            <span class="type">UserDefaults</span>.standard.set(<span class="keyword">try?</span> <span class="type">PropertyListEncoder</span>().encode(<span class="keyword">self</span>.alerts), forKey: <span class="string">&quot;alerts&quot;</span>)</span><br><span class="line">						<span class="comment">// 알람 추가</span></span><br><span class="line">            <span class="keyword">self</span>.userNotificationCenter.addNotificationRequest(by: newAlert)</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">self</span>.tableView.reloadData()</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">self</span>.present(addAlertVc, animated: <span class="literal">true</span>, completion: <span class="literal">nil</span>)</span><br><span class="line">    &#125;</span><br><span class="line">	<span class="comment">//... 생략</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>알람이 필요 없는 곳에서는 삭제 한다.</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">tableView</span>(<span class="keyword">_</span> <span class="params">tableView</span>: <span class="type">UITableView</span>, <span class="params">commit</span> <span class="params">editingStyle</span>: <span class="type">UITableViewCell</span>.<span class="type">EditingStyle</span>, <span class="params">forRowAt</span> <span class="params">indexPath</span>: <span class="type">IndexPath</span>)</span> &#123;</span><br><span class="line">        <span class="keyword">switch</span> editingStyle &#123;</span><br><span class="line">        <span class="keyword">case</span> .delete:</span><br><span class="line">            <span class="keyword">self</span>.alerts.remove(at: indexPath.row)</span><br><span class="line">            <span class="type">UserDefaults</span>.standard.set(<span class="keyword">try?</span> <span class="type">PropertyListEncoder</span>().encode(<span class="keyword">self</span>.alerts), forKey: <span class="string">&quot;alerts&quot;</span>)</span><br><span class="line">            <span class="comment">// 아직 시작되지 않은 알람을 삭제하는 것이므로 removePendingNotificationRequest 호출</span></span><br><span class="line">            userNotificationCenter.removePendingNotificationRequests(withIdentifiers: [alerts[indexPath.row].id])</span><br><span class="line">            <span class="keyword">self</span>.tableView.reloadData()</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line">        <span class="keyword">default</span>:</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="기타"><a href="#기타" class="headerlink" title="기타"></a>기타</h2><p>cmd + cntl + e : 모든 변수 이름 바꾸기</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/App%EB%A7%8C%EB%93%A4%EA%B8%B0/" rel="tag"># App만들기</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/01/21/IOS/220121-MVVM%20%EA%B8%B0%EC%B4%88/" rel="prev" title="MVVM 기초">
+                  <i class="fa fa-chevron-left"></i> MVVM 기초
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">JayoonKoo</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

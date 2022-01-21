@@ -83,9 +83,9 @@
   <ul class="main-menu menu">
         <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li>
         <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
-        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">15</span></a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">16</span></a></li>
         <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">12</span></a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">138</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">141</span></a></li>
   </ul>
 </nav>
 
@@ -129,7 +129,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">138</span>
+          <span class="site-state-item-count">141</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -140,7 +140,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-count">16</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -180,6 +180,326 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2022/01/21/IOS/220121-LocalNotificaltion(%EB%AC%BC%EB%A7%88%EC%8B%9C%EA%B8%B0%EC%95%B1)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JayoonKoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="티끌모아 태산">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/01/21/IOS/220121-LocalNotificaltion(%EB%AC%BC%EB%A7%88%EC%8B%9C%EA%B8%B0%EC%95%B1)/" class="post-title-link" itemprop="url">LocalNotificaltion(물마시기앱)</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2022-01-21 14:50:05 / Modified: 14:50:42" itemprop="dateCreated datePublished" datetime="2022-01-21T14:50:05+09:00">2022-01-21</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/IOS/" itemprop="url" rel="index"><span itemprop="name">IOS</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="물마시기-알람-앱-만들기"><a href="#물마시기-알람-앱-만들기" class="headerlink" title="물마시기 알람 앱 만들기"></a>물마시기 알람 앱 만들기</h1><p>Local Notification : 푸시 알림? </p>
+<p>앱 내부에서 자체적으로 만든 특정 메세지를 전달하는 것 </p>
+<h2 id="LocalNotification"><a href="#LocalNotification" class="headerlink" title="LocalNotification"></a>LocalNotification</h2><p>UNNotificationRequest </p>
+<p>3가지 필수 내용 </p>
+<ol>
+<li>identifier</li>
+<li>UNMutableNotificationContent (Content.title, Contetn.body)</li>
+<li>Trigger<ol>
+<li>UNCalendarNotificationTrigger</li>
+<li>UNTimerIntervalNotificationTrigger 시간 간격당 알림 ( 타이머에 가까움)</li>
+<li>UNLocationNotificationTrigger</li>
+</ol>
+</li>
+</ol>
+<p>UNNotificationCenter 에 보내면 Trigger 타이밍에 알려줌.</p>
+<h2 id="Content-설정"><a href="#Content-설정" class="headerlink" title="Content 설정"></a>Content 설정</h2><ol>
+<li>AppDelegate 에 UNUserNotificationCenterDelegate 를 확장하도록 한다. </li>
+<li>UNUserNotificationCenter 를 생성하고 알람을 허용할지 요청한다. </li>
+</ol>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> NotificationCenter</span><br><span class="line"><span class="keyword">import</span> UserNotifications</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">AppDelegate</span>: <span class="title">UIResponder</span>, <span class="title">UIApplicationDelegate</span> </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> userNotificationCenter: <span class="type">UNUserNotificationCenter</span>?</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">application</span>(<span class="keyword">_</span> <span class="params">application</span>: <span class="type">UIApplication</span>, <span class="params">didFinishLaunchingWithOptions</span> <span class="params">launchOptions</span>: [<span class="type">UIApplication</span>.<span class="params">LaunchOptionsKey</span>: <span class="keyword">Any</span>]<span class="operator">?</span>)</span> -&gt; <span class="type">Bool</span> &#123;</span><br><span class="line">        <span class="comment">// Override point for customization after application launch.</span></span><br><span class="line">        <span class="type">UNUserNotificationCenter</span>.current().delegate <span class="operator">=</span> <span class="keyword">self</span></span><br><span class="line">        </span><br><span class="line">        <span class="keyword">let</span> authrizationOptions <span class="operator">=</span> <span class="type">UNAuthorizationOptions</span>(arrayLiteral: [.alert, .badge, .sound])</span><br><span class="line">        </span><br><span class="line">        userNotificationCenter<span class="operator">?</span>.requestAuthorization(options: authrizationOptions, completionHandler: &#123; <span class="keyword">_</span>, error <span class="keyword">in</span></span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">let</span> error <span class="operator">=</span> error &#123;</span><br><span class="line">                <span class="built_in">print</span>(<span class="string">&quot;Error: <span class="subst">\(error.localizedDescription)</span>&quot;</span>)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line"><span class="comment">// 생략 </span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">extension</span> <span class="title">AppDelegate</span>: <span class="title">UNUserNotificationCenterDelegate</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">userNotificationCenter</span>(<span class="keyword">_</span> <span class="params">center</span>: <span class="type">UNUserNotificationCenter</span>, <span class="params">willPresent</span> <span class="params">notification</span>: <span class="type">UNNotification</span>, <span class="params">withCompletionHandler</span> <span class="params">completionHandler</span>: <span class="keyword">@escaping</span> (<span class="type">UNNotificationPresentationOptions</span>) -&gt; <span class="type">Void</span>)</span> &#123;</span><br><span class="line">        completionHandler([.banner, .list, .badge, .sound])</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">userNotificationCenter</span>(<span class="keyword">_</span> <span class="params">center</span>: <span class="type">UNUserNotificationCenter</span>, <span class="params">didReceive</span> <span class="params">response</span>: <span class="type">UNNotificationResponse</span>, <span class="params">withCompletionHandler</span> <span class="params">completionHandler</span>: <span class="keyword">@escaping</span> () -&gt; <span class="type">Void</span>)</span> &#123;</span><br><span class="line">        completionHandler()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>UserNotficationCenter 에 request 를 보내는 코드를 추가한다. </li>
+</ol>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> UserNotifications</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">extension</span> <span class="title">UNUserNotificationCenter</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">addNotificationRequest</span>(<span class="params">by</span> <span class="params">alert</span>: <span class="type">Alert</span>)</span> &#123;</span><br><span class="line">        <span class="keyword">let</span> content <span class="operator">=</span> <span class="type">UNMutableNotificationContent</span>()</span><br><span class="line">        content.title <span class="operator">=</span> <span class="string">&quot;물 마실 시간이에요.💧&quot;</span></span><br><span class="line">        content.body <span class="operator">=</span> <span class="string">&quot;세계보건기구가 권장하는 하루 물 섭취량은 1.5~2리터 입니다.&quot;</span></span><br><span class="line">        content.sound <span class="operator">=</span> .default</span><br><span class="line">        content.badge <span class="operator">=</span> <span class="number">1</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Trigger"><a href="#Trigger" class="headerlink" title="Trigger"></a>Trigger</h2><p>trigger 를 설정한다. </p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">extension</span> <span class="title">UNUserNotificationCenter</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">addNotificationRequest</span>(<span class="params">by</span> <span class="params">alert</span>: <span class="type">Alert</span>)</span> &#123;</span><br><span class="line">        <span class="keyword">let</span> content <span class="operator">=</span> <span class="type">UNMutableNotificationContent</span>()</span><br><span class="line">        content.title <span class="operator">=</span> <span class="string">&quot;물 마실 시간이에요.💧&quot;</span></span><br><span class="line">        content.body <span class="operator">=</span> <span class="string">&quot;세계보건기구가 권장하는 하루 물 섭취량은 1.5~2리터 입니다.&quot;</span></span><br><span class="line">        content.sound <span class="operator">=</span> .default</span><br><span class="line">        content.badge <span class="operator">=</span> <span class="number">1</span></span><br><span class="line">        </span><br><span class="line">				<span class="comment">// 추가 부분</span></span><br><span class="line">        <span class="keyword">let</span> component <span class="operator">=</span> <span class="type">Calendar</span>.current.dateComponents([.hour, .minute], from: alert.date)</span><br><span class="line">        <span class="keyword">let</span> trigger <span class="operator">=</span> <span class="type">UNCalendarNotificationTrigger</span>(dateMatching: component, repeats: alert.isOn)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="request"><a href="#request" class="headerlink" title="request"></a>request</h2><p>request 를 추가한다.</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">extension</span> <span class="title">UNUserNotificationCenter</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">addNotificationRequest</span>(<span class="params">by</span> <span class="params">alert</span>: <span class="type">Alert</span>)</span> &#123;</span><br><span class="line">        <span class="keyword">let</span> content <span class="operator">=</span> <span class="type">UNMutableNotificationContent</span>()</span><br><span class="line">        content.title <span class="operator">=</span> <span class="string">&quot;물 마실 시간이에요.💧&quot;</span></span><br><span class="line">        content.body <span class="operator">=</span> <span class="string">&quot;세계보건기구가 권장하는 하루 물 섭취량은 1.5~2리터 입니다.&quot;</span></span><br><span class="line">        content.sound <span class="operator">=</span> .default</span><br><span class="line">        content.badge <span class="operator">=</span> <span class="number">1</span></span><br><span class="line">        </span><br><span class="line">        <span class="keyword">let</span> component <span class="operator">=</span> <span class="type">Calendar</span>.current.dateComponents([.hour, .minute], from: alert.date)</span><br><span class="line">        <span class="keyword">let</span> trigger <span class="operator">=</span> <span class="type">UNCalendarNotificationTrigger</span>(dateMatching: component, repeats: alert.isOn)</span><br><span class="line">        </span><br><span class="line">				<span class="comment">// 추가 부분</span></span><br><span class="line">        <span class="keyword">let</span> request <span class="operator">=</span> <span class="type">UNNotificationRequest</span>(identifier: alert.id, content: content, trigger: trigger)</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">self</span>.add(request, withCompletionHandler: <span class="literal">nil</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>이제 알람이 추가되어야 할 부분에 request를 추가하고, 삭제 되어야 할 부분에 remove를 호출한다.</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> UserNotifications</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">AlertListViewController</span>: <span class="title">UITableViewController</span> </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> alerts: [<span class="type">Alert</span>] <span class="operator">=</span> []</span><br><span class="line">		<span class="comment">// userNotificationCenter 추가</span></span><br><span class="line">    <span class="keyword">let</span> userNotificationCenter <span class="operator">=</span> <span class="type">UNUserNotificationCenter</span>.current()</span><br><span class="line">		<span class="comment">// 생략</span></span><br><span class="line">		<span class="keyword">@IBAction</span> <span class="function"><span class="keyword">func</span> <span class="title">addAlertButtonAction</span>(<span class="keyword">_</span> <span class="params">sender</span>: <span class="type">UIBarButtonItem</span>)</span> &#123;</span><br><span class="line">        <span class="keyword">guard</span> <span class="keyword">let</span> addAlertVc <span class="operator">=</span> storyboard<span class="operator">?</span>.instantiateViewController(withIdentifier: <span class="string">&quot;AddAlerViewController&quot;</span>)</span><br><span class="line">                <span class="keyword">as?</span> <span class="type">AddAlerViewController</span> <span class="keyword">else</span> &#123;<span class="keyword">return</span>&#125;</span><br><span class="line">        addAlertVc.pickedDate <span class="operator">=</span> &#123;[<span class="keyword">weak</span> <span class="keyword">self</span>] date <span class="keyword">in</span></span><br><span class="line">            <span class="keyword">guard</span> <span class="keyword">let</span> <span class="keyword">self</span> <span class="operator">=</span> <span class="keyword">self</span> <span class="keyword">else</span> &#123;<span class="keyword">return</span>&#125;</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">var</span> alertList <span class="operator">=</span> <span class="keyword">self</span>.alertList()</span><br><span class="line">            <span class="keyword">let</span> newAlert <span class="operator">=</span> <span class="type">Alert</span>(date: date, isOn: <span class="literal">true</span>)</span><br><span class="line">            </span><br><span class="line">            alertList.append(newAlert)</span><br><span class="line">            alertList.sort &#123; <span class="variable">$0</span>.date <span class="operator">&lt;</span> <span class="variable">$1</span>.date&#125;</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">self</span>.alerts <span class="operator">=</span> alertList</span><br><span class="line">            <span class="type">UserDefaults</span>.standard.set(<span class="keyword">try?</span> <span class="type">PropertyListEncoder</span>().encode(<span class="keyword">self</span>.alerts), forKey: <span class="string">&quot;alerts&quot;</span>)</span><br><span class="line">						<span class="comment">// 알람 추가</span></span><br><span class="line">            <span class="keyword">self</span>.userNotificationCenter.addNotificationRequest(by: newAlert)</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">self</span>.tableView.reloadData()</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">self</span>.present(addAlertVc, animated: <span class="literal">true</span>, completion: <span class="literal">nil</span>)</span><br><span class="line">    &#125;</span><br><span class="line">	<span class="comment">//... 생략</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>알람이 필요 없는 곳에서는 삭제 한다.</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">tableView</span>(<span class="keyword">_</span> <span class="params">tableView</span>: <span class="type">UITableView</span>, <span class="params">commit</span> <span class="params">editingStyle</span>: <span class="type">UITableViewCell</span>.<span class="type">EditingStyle</span>, <span class="params">forRowAt</span> <span class="params">indexPath</span>: <span class="type">IndexPath</span>)</span> &#123;</span><br><span class="line">        <span class="keyword">switch</span> editingStyle &#123;</span><br><span class="line">        <span class="keyword">case</span> .delete:</span><br><span class="line">            <span class="keyword">self</span>.alerts.remove(at: indexPath.row)</span><br><span class="line">            <span class="type">UserDefaults</span>.standard.set(<span class="keyword">try?</span> <span class="type">PropertyListEncoder</span>().encode(<span class="keyword">self</span>.alerts), forKey: <span class="string">&quot;alerts&quot;</span>)</span><br><span class="line">            <span class="comment">// 아직 시작되지 않은 알람을 삭제하는 것이므로 removePendingNotificationRequest 호출</span></span><br><span class="line">            userNotificationCenter.removePendingNotificationRequests(withIdentifiers: [alerts[indexPath.row].id])</span><br><span class="line">            <span class="keyword">self</span>.tableView.reloadData()</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line">        <span class="keyword">default</span>:</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="기타"><a href="#기타" class="headerlink" title="기타"></a>기타</h2><p>cmd + cntl + e : 모든 변수 이름 바꾸기</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2022/01/21/IOS/220121-MVVM%20%EA%B8%B0%EC%B4%88/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JayoonKoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="티끌모아 태산">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/01/21/IOS/220121-MVVM%20%EA%B8%B0%EC%B4%88/" class="post-title-link" itemprop="url">MVVM 기초</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2022-01-21 14:50:05 / Modified: 14:50:42" itemprop="dateCreated datePublished" datetime="2022-01-21T14:50:05+09:00">2022-01-21</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/IOS/" itemprop="url" rel="index"><span itemprop="name">IOS</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="Design-Pattern"><a href="#Design-Pattern" class="headerlink" title="Design Pattern"></a>Design Pattern</h2><p>어떤 목적을 달성하기 위한 효율적인 패턴. 유지보수하기 쉽게 해준다. 코드 구조에 대한 전략</p>
+<p>디자인 패턴의 목적 : </p>
+<ul>
+<li>기술 부채 최소화</li>
+<li>재사용 및 지속 가능한 코드 만들기</li>
+</ul>
+<p>클린 아키텍처, 디자인 패턴 이라는 용어로 통용 된다. </p>
+<h2 id="MVVM"><a href="#MVVM" class="headerlink" title="MVVM"></a>MVVM</h2><p>Model -View - ViewModel</p>
+<p>과거에는 MVC(Model - View - Controller) 패턴이 많이 사용되었다. </p>
+<h3 id="MVC"><a href="#MVC" class="headerlink" title="MVC"></a>MVC</h3><ul>
+<li>Model : 데이터 (Struct)</li>
+<li>View : UI 요소 (UIView)</li>
+<li>Controller : 중계자 (UIViewController) Model 과 View 사이에 중계자 역할</li>
+</ul>
+<p>중계자인 UVIewConroller 가 비대해지기 시작했다. 결합도가 커지기 시작함. </p>
+<h3 id="MVVM-1"><a href="#MVVM-1" class="headerlink" title="MVVM"></a>MVVM</h3><ul>
+<li>Model : 데이터 (Struct)</li>
+<li>View : UI 요소 UIView, UIViewConroller</li>
+<li>ViewModel : 중계자</li>
+</ul>
+<p>ViewConroller 가 Model 에 직접 접근하지 못한다. ViewModel 이라는 클래스로 Model에 접근할 수 있게 함.</p>
+<p>결국 MVVM 에서 하려는 것은 UIViewConroller 에 비중을 축소 시켜서 책임을 ViewModel 에 위임하고, 결과적으로 결합도를 낮추려는 것이다. → 명확한 책임을 갖게 된다.</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2022/01/21/IOS/220121-Swift%20%EA%B8%B0%EB%B3%B8%EC%97%B0%EC%82%B0%EC%9E%90/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JayoonKoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="티끌모아 태산">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/01/21/IOS/220121-Swift%20%EA%B8%B0%EB%B3%B8%EC%97%B0%EC%82%B0%EC%9E%90/" class="post-title-link" itemprop="url">Swift 기본연산자</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2022-01-21 14:50:05 / Modified: 14:50:42" itemprop="dateCreated datePublished" datetime="2022-01-21T14:50:05+09:00">2022-01-21</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/IOS/" itemprop="url" rel="index"><span itemprop="name">IOS</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="1-기본연산자"><a href="#1-기본연산자" class="headerlink" title="1. 기본연산자"></a>1. 기본연산자</h1><h2 id="할당-연산자-Assignment-Opertor"><a href="#할당-연산자-Assignment-Opertor" class="headerlink" title="할당 연산자 (Assignment Opertor)"></a>할당 연산자 (Assignment Opertor)</h2><p>값을 초기화 시키거나 변경합니다. 튜플을 이용해 한번에 할당할 수 있습니다. </p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> (x,y) <span class="operator">=</span> (<span class="number">1</span>,<span class="number">2</span>)</span><br></pre></td></tr></table></figure>
+
+<p>C나 Objective-C와 다르게 Swift에서는 할당 연산자가 값을 반환하니 않습니다. 이는 동등 연산 비교를 사용해야 하는 곳에 실수로 할당 연산자를 사용하는 것을 막기 위함입니다. </p>
+<h2 id="사칙-연산자-Arthmetic-Operators"><a href="#사칙-연산자-Arthmetic-Operators" class="headerlink" title="사칙 연산자(Arthmetic Operators)"></a>사칙 연산자(Arthmetic Operators)</h2><p>C나 Objective-C와 달리 Swift는 사칙 연산의 값이 오버플로우 되는 것을 허용하지 않습니다. 만약 허용하고 싶다면 어버플로우 연산자를 이용해야 합니다. </p>
+<h3 id="단항-음수-양수-연산자"><a href="#단항-음수-양수-연산자" class="headerlink" title="단항 음수, 양수 연산자"></a>단항 음수, 양수 연산자</h3><p>숫자 값은 <code>-</code> 나 <code>+</code> 로 표현되는 단항 연산자를 통해 부호를 결정할 수 있습니다. </p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> three <span class="operator">=</span> <span class="number">3</span> </span><br><span class="line"><span class="keyword">let</span> minusThree <span class="operator">=</span> <span class="operator">-</span>three</span><br><span class="line"><span class="keyword">let</span> alsoPlusThree <span class="operator">=</span> <span class="operator">+</span>three</span><br></pre></td></tr></table></figure>
+
+<h2 id="합성-할당-연산자-Compound-Assignment-Operaotors"><a href="#합성-할당-연산자-Compound-Assignment-Operaotors" class="headerlink" title="합성 할당 연산자(Compound Assignment Operaotors)"></a>합성 할당 연산자(Compound Assignment Operaotors)</h2><p><code>+=</code> 같이 할당 연산자와 사칙연산 연산자의 조합을 사용 가능합니다. </p>
+<h2 id="비교-연산자-Comparison-Operators"><a href="#비교-연산자-Comparison-Operators" class="headerlink" title="비교 연산자(Comparison Operators)"></a>비교 연산자(Comparison Operators)</h2><p>기본적으로 다른 언어에서 제공되는 비교 연산자를 모두 지원합니다. 추가적으로 Swift는 객체 비교를 위해 식별자 <code>===</code> 과 <code>!==</code> 를 제공합니다. </p>
+<p>같은 타입의 값을 갖는 두 개의 튜플을 비교할 수 있습니다. 튜플의 비교는 왼쪽에서 오른쪽으로 이루어 지고 한번에 한개의 값만 비교한후 결과를 반환합니다. </p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(<span class="number">1</span>, <span class="string">&quot;zebra&quot;</span>) <span class="operator">&lt;</span> (<span class="number">2</span>, <span class="string">&quot;apple&quot;</span>) <span class="comment">// true</span></span><br><span class="line">(<span class="number">3</span>, <span class="string">&quot;apple&quot;</span>) <span class="operator">&lt;</span> (<span class="number">3</span>, <span class="string">&quot;brid)&quot;</span> <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+
+<p>만약 타입이 달라서 비교할수 없는 경우는 에러가 발생합니다. </p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(<span class="string">&quot;blue&quot;</span>, <span class="literal">false</span>) <span class="operator">&lt;</span> (<span class="string">&quot;purple&quot;</span>, <span class="literal">true</span>) <span class="comment">// 에러 , Boolen 값은 &lt; 로 비교할 수 없음.</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="상함-조건-연산자-Ternary-Conditional-Operator"><a href="#상함-조건-연산자-Ternary-Conditional-Operator" class="headerlink" title="상함 조건 연산자(Ternary Conditional Operator)"></a>상함 조건 연산자(Ternary Conditional Operator)</h2><p><code>question ? answer1 : answer2</code> 와 같은 형태로 조건이 참일 경우 answer1 이 조건이 거짓일 경우 answer2 가 실행됩니다. </p>
+<h2 id="Nill-병합-연산자-Nil-Coalescing-Operator"><a href="#Nill-병합-연산자-Nil-Coalescing-Operator" class="headerlink" title="Nill 병합 연산자(Nil-Coalescing Operator)"></a>Nill 병합 연산자(Nil-Coalescing Operator)</h2><p> <code>a ?? b</code> 형태를 갖는 연산자 입니다. 옵셔널  <code>a</code> 를 unwrap 해서 만약 nil 이면 <code>b</code> 를 반환합니다. </p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> defaultColorName <span class="operator">=</span> <span class="string">&quot;red&quot;</span></span><br><span class="line"><span class="keyword">var</span> userDefinedColorName: <span class="type">String</span>?</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> colorNameToUse <span class="operator">=</span> userDefinedColorName <span class="operator">??</span> defaultColorName</span><br></pre></td></tr></table></figure>
+
+<p><code>userDefinedColorName</code> 이 <code>nil</code> 이 되기 때문에 <code>defaultColorName</code> 인 red 가 사용되게 됩니다. </p>
+<h2 id="범위-연산자-Range-Operators"><a href="#범위-연산자-Range-Operators" class="headerlink" title="범위 연산자 (Range Operators)"></a>범위 연산자 (Range Operators)</h2><h3 id="닫힌-범위-연산자-Closed-Range-Operator"><a href="#닫힌-범위-연산자-Closed-Range-Operator" class="headerlink" title="닫힌 범위 연산자(Closed Range Operator)"></a>닫힌 범위 연산자(Closed Range Operator)</h3><p><code>(a..b)</code> 의 형태로 범위의 시작과 끝이 있는 연산자 입니다. 마지막 숫자인 b를 포함합니다.</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> index <span class="keyword">in</span> <span class="number">1</span><span class="operator">...</span><span class="number">5</span> &#123;</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;<span class="subst">\(index)</span> times 5 is <span class="subst">\(index <span class="operator">*</span> <span class="number">5</span>)</span>&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 1 times 5 is 5</span></span><br><span class="line"><span class="comment">// 2 times 5 is 10</span></span><br><span class="line"><span class="comment">// 3 times 5 is 15</span></span><br><span class="line"><span class="comment">// 4 times 5 is 20</span></span><br><span class="line"><span class="comment">// 5 times 5 is 25</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="반-닫힘-범위-연산자-Half-Open-Range-Operator"><a href="#반-닫힘-범위-연산자-Half-Open-Range-Operator" class="headerlink" title="반 닫힘 범위 연산자(Half-Open Range Operator)"></a>반 닫힘 범위 연산자(Half-Open Range Operator)</h3><p><code>(a..&lt;b)</code> 의 형태로 a 부터 b 보다 작을 때까지의 범위를 갖습니다.</p>
+<h3 id="단방향-범위-One-Side-Ranges"><a href="#단방향-범위-One-Side-Ranges" class="headerlink" title="단방향 범위(One-Side Ranges)"></a>단방향 범위(One-Side Ranges)</h3><p><code>[a..]</code> <code>[..a]</code> 의 형태로 범위의 시작 혹은 끝만 지정해 사용하는 범위 연산자 입니다. </p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> names <span class="operator">=</span> [<span class="string">&quot;Anna&quot;</span>, <span class="string">&quot;Alex&quot;</span>, <span class="string">&quot;Brian&quot;</span>, <span class="string">&quot;Jack&quot;</span>]</span><br><span class="line"><span class="keyword">for</span> name <span class="keyword">in</span> names[<span class="number">2</span><span class="operator">...</span>] &#123;</span><br><span class="line">    <span class="built_in">print</span>(name)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// Brian</span></span><br><span class="line"><span class="comment">// Jack</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> name <span class="keyword">in</span> names[<span class="operator">...</span><span class="number">2</span>] &#123;</span><br><span class="line">    <span class="built_in">print</span>(name)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// Anna</span></span><br><span class="line"><span class="comment">// Alex</span></span><br><span class="line"><span class="comment">// Brian</span></span><br></pre></td></tr></table></figure>
+
+<p>마찬가지로 받 단힘 연산자도 사용 가능합니다. 또한, 특정 값을 포함하는지 여부를 확인할 때도 사용 가능합니다.</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> range <span class="operator">=</span> <span class="operator">...</span><span class="number">5</span></span><br><span class="line">range.contains(<span class="number">7</span>)   <span class="comment">// false</span></span><br><span class="line">range.contains(<span class="number">4</span>)   <span class="comment">// true</span></span><br><span class="line">range.contains(<span class="operator">-</span><span class="number">1</span>)  <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="논리-연산자-Logical-Operators"><a href="#논리-연산자-Logical-Operators" class="headerlink" title="논리 연산자(Logical Operators)"></a>논리 연산자(Logical Operators)</h2><p>Swift 에서는 세가지 표준 논리 연산자를 지원합니다. </p>
+<ul>
+<li>논리 부정 NOT (<code>!a</code>)</li>
+<li>논리 곱 AND (<code>a &amp;&amp; b</code>)</li>
+<li>논리 합 OR (<code>a || b</code>)</li>
+</ul>
+<p>Swift의 논리 연산자 &amp;&amp; 와 || 는 왼쪽의 표현을 우선해서 논리 계산을 합니다. </p>
+<h3 id="명시적-괄호-Explicit-Parentheses"><a href="#명시적-괄호-Explicit-Parentheses" class="headerlink" title="명시적 괄호 (Explicit Parentheses)"></a>명시적 괄호 (Explicit Parentheses)</h3><p>논리 연산자의 적용 우선 순위를 연산자에게 맡기지 않고 명시적으로 괄화를 사용해 계산 순서를 정할 수 있습니다.</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (enteredDoorCode <span class="operator">&amp;&amp;</span> passedRetinaScan) <span class="operator">||</span> hasDoorKey <span class="operator">||</span> knowsOverridePassword &#123;</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;Welcome!&quot;</span>)</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;ACCESS DENIED&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// Prints &quot;Welcome!&quot;</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -895,296 +1215,8 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2022/01/11/IOS/220111-%EB%BD%80%EB%AA%A8%EB%8F%84%EB%A1%9C%ED%83%80%EC%9D%B4%EB%B2%84/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JayoonKoo">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="티끌모아 태산">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/01/11/IOS/220111-%EB%BD%80%EB%AA%A8%EB%8F%84%EB%A1%9C%ED%83%80%EC%9D%B4%EB%B2%84/" class="post-title-link" itemprop="url">DispatchSourceTimer, UIView Animation (뽀모도로 타이머)</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2022-01-11 11:24:52" itemprop="dateCreated datePublished" datetime="2022-01-11T11:24:52+09:00">2022-01-11</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2022-01-12 13:05:32" itemprop="dateModified" datetime="2022-01-12T13:05:32+09:00">2022-01-12</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/IOS/" itemprop="url" rel="index"><span itemprop="name">IOS</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="뽀모도로-타이머-만들기"><a href="#뽀모도로-타이머-만들기" class="headerlink" title="뽀모도로 타이머 만들기"></a>뽀모도로 타이머 만들기</h1><h3 id="활용-기술"><a href="#활용-기술" class="headerlink" title="활용 기술"></a>활용 기술</h3><ul>
-<li>DispatchSourceTimer</li>
-<li>UIView Animation</li>
-</ul>
-<h3 id="DispatchSourceTimer"><a href="#DispatchSourceTimer" class="headerlink" title="DispatchSourceTimer"></a>DispatchSourceTimer</h3><p>GCD : Grand Central Dispatch → 작업을 병렬적으로 진행하기 위해 제공하는 API이다. </p>
-<p>DispathcSourceTimer는 GCD API 안에 존재한다. </p>
-<p>uI 관련된 스레드는 main 쓰레드 에서 시작된다. GCD에서 main 쓰레드는 오직 1개만 가진다. 유저가 인터페이스에 접근하면 main 쓰레드에서 알수 있다. </p>
-<p>timer를 선언하고 schedule과 eventHandler 를 정한다.</p>
-<h3 id="UIVewAnimation"><a href="#UIVewAnimation" class="headerlink" title="UIVewAnimation"></a>UIVewAnimation</h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">UIView</span>.animate(withDuration: <span class="number">0.5</span>, delay: <span class="number">0</span>, animations: &#123;</span><br><span class="line">          <span class="keyword">self</span>.imagView.transform <span class="operator">=</span> <span class="type">CGAffineTransform</span>(rotationAngle: .pi)</span><br><span class="line">        &#125;)</span><br></pre></td></tr></table></figure>
-
-<p>UIView 에서 동작할 에니메이션을 설정할 수 있다.</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2022/01/10/IOS/220110-%EC%9D%BC%EA%B8%B0%EC%9E%A5/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JayoonKoo">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="티끌모아 태산">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/01/10/IOS/220110-%EC%9D%BC%EA%B8%B0%EC%9E%A5/" class="post-title-link" itemprop="url">UITabBarController, UICollectionView, NotificationCenter (일기장)</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2022-01-10 12:19:00" itemprop="dateCreated datePublished" datetime="2022-01-10T12:19:00+09:00">2022-01-10</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2022-01-12 13:05:34" itemprop="dateModified" datetime="2022-01-12T13:05:34+09:00">2022-01-12</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/IOS/" itemprop="url" rel="index"><span itemprop="name">IOS</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="일기장-앱"><a href="#일기장-앱" class="headerlink" title="일기장 앱"></a>일기장 앱</h1><ul>
-<li>UITabBarController</li>
-<li>UICollectionView</li>
-<li>NotificationCenter</li>
-</ul>
-<h3 id="UITabBarController"><a href="#UITabBarController" class="headerlink" title="UITabBarController"></a>UITabBarController</h3><p>UITabBar : 앱에서 서로 다른 하우작업, 뷰, 모드 사이의 선택을 할 수 있도록, 탭바에 하나 혹은 하나 이상의 버튼을 보여주는 컨트롤</p>
-<p>UITabBarContoller : 다중 선택 인터페이스를 관리하는 컨테이너 뷰 컨트롤러로, 선택에 따라 어떤 자식 뷰 컨트롤러를 보여줄 것인지가 결정 → UIViewController 를 상속 받아서 커스텀 뷰를 보여줄 수 있다.</p>
-<h3 id="UICollectionView"><a href="#UICollectionView" class="headerlink" title="UICollectionView"></a>UICollectionView</h3><p>데이터 항목의 정렬된 컬렉션을 관리하고 커스텀한 레이아웃을 사용해 표시하는 객체</p>
-<ul>
-<li>Cell : 컬렉션 뷰의 콘텐츠를 표시</li>
-<li>Supplementary View : 섹션에 대한 정보를 표시</li>
-<li>Decoration View : 컬렉션 뷰에 대한 배경을 꾸밀 때 사용</li>
-</ul>
-<p>UICollectionVIewLayout(배치), UICollectionVIewFlowLayout(플로우에 관한것)</p>
-<p>UICollectionViewDataSource : 컬렉션 뷰로 보여지는 콘텐츠들을 관리하는 객체 </p>
-<p>UICollectionViewDelegate : 콘텐츠의 표현, 사용자와의 상호작용과 관련된 것들을 관리하는 객체</p>
-<h3 id="NotificatonCenter"><a href="#NotificatonCenter" class="headerlink" title="NotificatonCenter"></a>NotificatonCenter</h3><p>데이터를 등록하면 NotificationCenter 를 구독하는 화면에서 데이터를 받아서 사용할 수 있다.</p>
-<p>한마디로 이벤트 버스이고 구독하는 화면에서 옵저버를 이용하여 확인한다.</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2022/01/07/IOS/220107-TodoList/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JayoonKoo">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="티끌모아 태산">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/01/07/IOS/220107-TodoList/" class="post-title-link" itemprop="url">UITableView, UIAlertController, UserDefaults (TodoList)</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2022-01-07 10:09:23" itemprop="dateCreated datePublished" datetime="2022-01-07T10:09:23+09:00">2022-01-07</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2022-01-12 13:05:35" itemprop="dateModified" datetime="2022-01-12T13:05:35+09:00">2022-01-12</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/IOS/" itemprop="url" rel="index"><span itemprop="name">IOS</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="TodoList"><a href="#TodoList" class="headerlink" title="TodoList"></a>TodoList</h1><h2 id="활용-기술"><a href="#활용-기술" class="headerlink" title="활용 기술"></a>활용 기술</h2><ul>
-<li>UITableView</li>
-<li>UIAlertController</li>
-<li>UserDefaults</li>
-</ul>
-<h2 id="UITableView"><a href="#UITableView" class="headerlink" title="UITableView"></a>UITableView</h2><p>데이터를 목록 형태로 보여 줄 수 있는 가장 기본적인 UI 컴포넌트 → UIScrollVIew 를 상속받고 있어서 스크롤 가능하다.</p>
-<ul>
-<li>여러개의 Cell을 가지고 있고 하나의 열과 여러 줄의 행을 지니고 있으며, 수직으로만 스크롤 가능하다.</li>
-<li>센션을 이용해 행을 그룹화하여 콘텐츠를 좀 더 쉽게 탐색할 수 있다.</li>
-<li>섹션의 헤더와 푸터에 View를 구성하여 추가적인 정보를 표시할 수 있다.</li>
-</ul>
-<p>Delegate와 DataSource로 구성된다.</p>
-<p>UITableViewDataSource : 테이블 뷰를 생성하고 수정하는데 필요한 정보를 테이블 뷰 객체에 제공, UITabelView 자체에서는 데이터를 관리하지 못한다. </p>
-<p>UITableViewDelegate : 테이블 뷰의 시각적인 부분을 설정하고, 행의 액션 관리, 엑세서리 뷰 지원 그리고 테이블 뷰의 개별 행 편집을 도와줌</p>
-<h2 id="UIAlertController"><a href="#UIAlertController" class="headerlink" title="UIAlertController"></a>UIAlertController</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@IBAction</span> <span class="function"><span class="keyword">func</span> <span class="title">tabBarAddButton</span>(<span class="keyword">_</span> <span class="params">sender</span>: <span class="type">UIBarButtonItem</span>)</span> &#123;</span><br><span class="line">    <span class="keyword">let</span> alert <span class="operator">=</span> <span class="type">UIAlertController</span>(title: <span class="string">&quot;할일 등록&quot;</span>, message: <span class="literal">nil</span>, preferredStyle: .alert)</span><br><span class="line">    <span class="keyword">let</span> registerButton <span class="operator">=</span> <span class="type">UIAlertAction</span>(title: <span class="string">&quot;등록&quot;</span>, style: .default, handler: &#123; [<span class="keyword">weak</span> <span class="keyword">self</span>] <span class="keyword">_</span> <span class="keyword">in</span></span><br><span class="line">      <span class="keyword">guard</span> <span class="keyword">let</span> title <span class="operator">=</span>  alert.textFields<span class="operator">?</span>[<span class="number">0</span>].text <span class="keyword">else</span> &#123; <span class="keyword">return</span> &#125;</span><br><span class="line">      <span class="keyword">let</span> task <span class="operator">=</span> <span class="type">Task</span>(title: title, done: <span class="literal">false</span>)</span><br><span class="line">      <span class="keyword">self</span><span class="operator">?</span>.tasks.append(task)</span><br><span class="line">      <span class="keyword">self</span><span class="operator">?</span>.tableView.reloadData()</span><br><span class="line">    &#125;)</span><br><span class="line">    <span class="keyword">let</span> cancleButton <span class="operator">=</span> <span class="type">UIAlertAction</span>(title: <span class="string">&quot;취소&quot;</span>, style: .cancel, handler: <span class="literal">nil</span>)</span><br><span class="line">    alert.addAction(cancleButton)</span><br><span class="line">    alert.addAction(registerButton)</span><br><span class="line">    alert.addTextField(configurationHandler: &#123;textField <span class="keyword">in</span></span><br><span class="line">      textField.placeholder <span class="operator">=</span> <span class="string">&quot;할 일을 입력해주세요&quot;</span></span><br><span class="line">    &#125;)</span><br><span class="line">    <span class="keyword">self</span>.present(alert, animated: <span class="literal">true</span>, completion: <span class="literal">nil</span>)</span><br><span class="line">    </span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-
-<p><code>UIAlertContoller</code> 로 alert 생성 </p>
-<p><code>UIAlertAction</code> 으로 action button 정의</p>
-<p><code>alert.addAction</code> 으로 action button 추가하기 ,self 사용할떼 강한 순환참조 막기 위해서 weak 선언하기</p>
-<p><code>alert.addTextField</code> 로 alert에 textFiled 추가하가기</p>
-<p><code>self.present</code> 로 화면에 띄어주기</p>
-<h2 id="UserDefaults"><a href="#UserDefaults" class="headerlink" title="UserDefaults"></a>UserDefaults</h2><p>런타임에 동작하여 기본 저장소에서 정보를 저장하거나 가져오는 기능을 한다. 키 값 형태로 값을 저장하고 싱글톤 패턴으로 구현되어서 앱내의 하나의 인스턴스만 존재한다.</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 </div>
