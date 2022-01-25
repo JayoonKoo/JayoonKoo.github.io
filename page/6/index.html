@@ -83,9 +83,9 @@
   <ul class="main-menu menu">
         <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li>
         <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
-        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">16</span></a></li>
-        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">12</span></a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">141</span></a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">17</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">13</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">143</span></a></li>
   </ul>
 </nav>
 
@@ -129,18 +129,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">141</span>
+          <span class="site-state-item-count">143</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-count">13</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-count">17</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -180,6 +180,142 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/10/23/TEST_CODE/211018-jest%20Matcher/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JayoonKoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="티끌모아 태산">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/10/23/TEST_CODE/211018-jest%20Matcher/" class="post-title-link" itemprop="url">jest Matcher</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-10-23 22:14:44" itemprop="dateCreated datePublished" datetime="2021-10-23T22:14:44+09:00">2021-10-23</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/test/" itemprop="url" rel="index"><span itemprop="name">test</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="Jest-Matcher"><a href="#Jest-Matcher" class="headerlink" title="Jest Matcher"></a>Jest Matcher</h1><h2 id="jest란"><a href="#jest란" class="headerlink" title="jest란?"></a>jest란?</h2><p>jest 는 자바스크립트 코드를 테스트 할수 있게 해주는 도구이다. 패키지만 다운받으면 별도의 설정없이 바로 사용할 수 있는것이 특징이다.</p>
+<h2 id="최소한의-설정"><a href="#최소한의-설정" class="headerlink" title="최소한의 설정?"></a>최소한의 설정?</h2><p>패키지 설정 및 스크립트 설정에 관한 부분으로 거의 할게 없다.</p>
+<p><code>npm init -y</code> : npm 초기화</p>
+<p><code>npm i jest -D</code> : 개발 과정에서만 사용할 것이므로 jest를 -D 옵션을 붙여서 설치한다. –save-dev 와 똑같다.</p>
+<p>package.json으로 이동하여 script를 수정한다.</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">&quot;name&quot;</span>: <span class="string">&quot;jest-tutorial&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;version&quot;</span>: <span class="string">&quot;1.0.0&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;description&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;main&quot;</span>: <span class="string">&quot;index.js&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;scripts&quot;</span>: &#123;</span><br><span class="line">    <span class="attr">&quot;test&quot;</span>: <span class="string">&quot;jest&quot;</span> <span class="comment">// test 부분에 jest 추가</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">&quot;keywords&quot;</span>: [],</span><br><span class="line">  <span class="attr">&quot;author&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;license&quot;</span>: <span class="string">&quot;ISC&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;devDependencies&quot;</span>: &#123;</span><br><span class="line">    <span class="attr">&quot;jest&quot;</span>: <span class="string">&quot;^27.3.0&quot;</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>npm test</code> : 테스트 코드 실행 가능</p>
+<p>test 코드는 test.js 등의 이름이나. <code>__tests__</code> 폴더 아래 있는 모든 파일을 찾아서 실행한다.</p>
+<h2 id="matcher"><a href="#matcher" class="headerlink" title="matcher"></a>matcher</h2><p>matcher는 테스트에서 예상한 부분과 실제 결과가 맞는지 매칭시키는 함수를 의미한다. jest 다양한 matcher 가 존재하는데 모두다 외울 필요는 없고 필요할때 확인하면 된다.<br>보통 expect().matcher()를 사용하여 검사하는데 맞지 않는경우를 조사하려면 not을 붙혀서 expect().not.matcher()를 사용하면 된다.</p>
+<ul>
+<li>toBe() : 결과가 같은지 확인, 아닌 경우를 판단하려면 expect().not.matcher()를 사용하면 된다.</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">test(<span class="string">&quot;1은 1이야.&quot;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  expect(<span class="number">1</span>).toBe(<span class="number">1</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>toEqaul() : 결과가 같은지 확인, 배열 객체 등의 요소는 재귀적으로 판단해야 하기 때문에 이것을 사용해야 한다.</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">test(<span class="string">&quot;이름과 나이를 전달받아서 객체를 반환해줘&quot;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  expect(fn.makeUser(<span class="string">&quot;mike&quot;</span>, <span class="number">30</span>)).toEqual(&#123;</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&quot;mike&quot;</span>,</span><br><span class="line">    <span class="attr">age</span>: <span class="number">30</span>,</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>toStrictEqual() : 보다 엄격한 검사를 실시한다.</li>
+<li>toBeNull() : Null 값인지 검사</li>
+<li>toBeUndefined() : undefined인지 검사</li>
+<li>toBeDefined</li>
+<li>toBeTruthy : truthy인 값을 리턴하는지 검사.</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">test(<span class="string">&quot;비어있지 않은 문자열은 truly 입니다.&quot;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  expect(fn.add(<span class="string">&quot;koo&quot;</span>, <span class="string">&quot;ja&quot;</span>)).toBeTruthy();</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>toBeFalsy : falsy인 값을 리턴하는지 검사.</li>
+</ul>
+<p>숫자 관련된 matcher도 있다.</p>
+<ul>
+<li>toBeGraterThan() : 큰지 검사</li>
+<li>toBeGraterThanOrEqual() : 크거나 같은지 검사</li>
+<li>toBeLessThan() : 작은지 검사</li>
+<li>toBeLessThanOrEqual() : 작거나 같은지 검사</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">test(<span class="string">&quot;Id 는 10글자 보다 작아야 한다.&quot;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> ID = <span class="string">&quot;ID_KJDB_&quot;</span>;</span><br><span class="line">  expect(ID.length).toBeLessThanOrEqual(<span class="number">10</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>근사치를 검사해야하는 경우도 있는데 이럴땐 toBeCloseTo를 사용하면 된다.</p>
+<ul>
+<li>toBeCloseTo : 근사치 검사</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">test(<span class="string">&quot;0.1 더하기 0.2는 0.3 이다.&quot;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  expect(fn.add(<span class="number">0.1</span>, <span class="number">0.2</span>)).toBeCloseTo(<span class="number">0.3</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>문자열 관련해서 정규 표현식을 사용할 수 있는데 toMatch를 사용하면 된다.</p>
+<ul>
+<li>toMatch(regex) : 정규표현식과 매칭 되는지</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">test(<span class="string">&quot;Hello World 에 H라는 글자가 있나?&quot;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  expect(<span class="string">&quot;Hello World&quot;</span>).toMatch(<span class="regexp">/H/</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>배열 관련된 matcher 도 있다.</p>
+<ul>
+<li>toContain(요소) : 인자로 넘겨준 요소가 매열내의 포함되어 있는지</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">test(<span class="string">&quot;유저 리스트에 Mike가 있는지&quot;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> user = <span class="string">&quot;Mike&quot;</span>;</span><br><span class="line">  <span class="keyword">const</span> users = [<span class="string">&quot;Tom&quot;</span>, <span class="string">&quot;Mike&quot;</span>, <span class="string">&quot;Kai&quot;</span>];</span><br><span class="line">  expect(users).toContain(user);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>에러가 발생하는지 여부도 확인할 수 있다.</p>
+<ul>
+<li>toThrow() : 인자를 넘겨주면 특정 에러인지 확인하고 인자를 넘겨주지 않으면 에러를 발생시키는 여부만 확인한다.</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">test(<span class="string">&quot;이거 에러 나나?&quot;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  expect(<span class="function">() =&gt;</span> fn.throwErr()).toThrow();</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// 어떤 내용인지 확인하려면 인수로 전달하면 된다.</span></span><br><span class="line">test(<span class="string">&quot;이거 xx 에러인가? &quot;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  expect(<span class="function">() =&gt;</span> fn.throwErr()).toThrow(<span class="string">&quot;xx&quot;</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -398,6 +534,100 @@
 <li>lastCalledWith(10, 20) 마지막으로 받은 인수가 10, 20이면 통과</li>
 </ul>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> fn = <span class="built_in">require</span>(<span class="string">&quot;./fn&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> mock = jest.fn();</span><br><span class="line"></span><br><span class="line">mock(<span class="number">10</span>, <span class="number">20</span>);</span><br><span class="line">mock();</span><br><span class="line">mock(<span class="number">30</span>, <span class="number">40</span>);</span><br><span class="line"></span><br><span class="line">test(<span class="string">&quot;호출됨&quot;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  expect(mock).toBeCalled();</span><br><span class="line">&#125;);</span><br><span class="line">test(<span class="string">&quot;3 번 호출됨&quot;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  expect(mock).toBeCalledTimes(<span class="number">3</span>);</span><br><span class="line">&#125;);</span><br><span class="line">test(<span class="string">&quot;10, 20 인수로 받음&quot;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  expect(mock).toBeCalledWith(<span class="number">10</span>, <span class="number">20</span>);</span><br><span class="line">&#125;);</span><br><span class="line">test(<span class="string">&quot;호출됨&quot;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  expect(mock).lastCalledWith(<span class="number">30</span>, <span class="number">40</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/10/23/TEST_CODE/211019-%EB%B9%84%EB%8F%99%EA%B8%B0%20test/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JayoonKoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="티끌모아 태산">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/10/23/TEST_CODE/211019-%EB%B9%84%EB%8F%99%EA%B8%B0%20test/" class="post-title-link" itemprop="url">비동기 test</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-10-23 22:14:44" itemprop="dateCreated datePublished" datetime="2021-10-23T22:14:44+09:00">2021-10-23</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/test/" itemprop="url" rel="index"><span itemprop="name">test</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="비동기-코드-테스트"><a href="#비동기-코드-테스트" class="headerlink" title="비동기 코드 테스트"></a>비동기 코드 테스트</h1><p>jest 는 테스트가 끝나면 바로 끝나버림. 콜백 함수를 넘겨주어도 기다리지 않고 끝나기 때문에 제대로 된 테스트를 진행할 수 없다. 이때는 test네 콜백에 인자로 done을 넘겨주면 된다. 이 done이 호출되면 테스트가 끝났다고 명시할 수 있어서 콜백이 끝나는 부분에서 done을 호출하면 제대로된 테스트를 할 수 있다.</p>
+<p>fn :</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> fn = &#123;</span><br><span class="line">  <span class="attr">add</span>: <span class="function">(<span class="params">num1, num2</span>) =&gt;</span> num1 + num2,</span><br><span class="line">  <span class="attr">makeUser</span>: <span class="function">(<span class="params">name, age</span>) =&gt;</span> (&#123; name, age, <span class="attr">gender</span>: <span class="literal">undefined</span> &#125;),</span><br><span class="line">  <span class="attr">throwErr</span>: <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">&quot;xx&quot;</span>);</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">getName</span>: <span class="function">(<span class="params">cb</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> name = <span class="string">&quot;Mike&quot;</span>;</span><br><span class="line">    <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">      cb(name);</span><br><span class="line">    &#125;, <span class="number">3000</span>);</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>test :</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">test(<span class="string">&quot;3초 후에 받아온 이름은 Mike이다.&quot;</span>, <span class="function">(<span class="params">done</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> cb = <span class="function">(<span class="params">name</span>) =&gt;</span> &#123;</span><br><span class="line">    expect(name).toBe(<span class="string">&quot;Mike&quot;</span>);</span><br><span class="line">    done();</span><br><span class="line">  &#125;;</span><br><span class="line">  fn.getName(cb);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>만약 done을 받고 호출하지 않으면 timeout으로 종료 되고 테스트는 실패한다.</p>
+<p>에러를 검사하고 싶으면 try catch를 사용하면 된다.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">test(<span class="string">&quot;서버 에러 비동기 테스트&quot;</span>, <span class="function">(<span class="params">done</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> cb = <span class="function">(<span class="params">name</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">      expect(name).toBe(<span class="string">&quot;Mike&quot;</span>);</span><br><span class="line">      done();</span><br><span class="line">    &#125; <span class="keyword">catch</span> (error) &#123;</span><br><span class="line">      done();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br><span class="line">  fn.getNameError(cb);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>promise를 리턴하면 jest는 promise 가 resolve 될때까지 기다려 준다. 단 이때는 return을 명시해 주어야 한다.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">test(<span class="string">&quot;promise test&quot;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> fn.getAge().then(<span class="function">(<span class="params">age</span>) =&gt;</span> expect(age).toBe(<span class="number">30</span>));</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>보다 간단하게 사용하기 위한 resolves, rejects matcher 가 있다.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">test(<span class="string">&quot;promise test resolve Matcher&quot;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> expect(fn.getAge()).resolves.toBe(<span class="number">30</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>async await 도 사용할 수 있다.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">test(<span class="string">&quot;3초후에 async await test&quot;</span>, <span class="keyword">async</span> () =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> age = <span class="keyword">await</span> fn.getAge();</span><br><span class="line">  expect(age).toBe(<span class="number">30</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>마찬가지로 resolves, rejects를 사용할 수 있다.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">test(<span class="string">&quot;3초 후에 resolves 쓰는 패턴&quot;</span>, <span class="keyword">async</span> () =&gt; &#123;</span><br><span class="line">  <span class="keyword">await</span> expect(fn.getAge()).resolves.toBe(<span class="number">30</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -1118,209 +1348,6 @@
 
 <p>충돌을 해결하고 나서 해당 파일을 커밋하면 merge 에 대한 내용을 보여주고 merge된다.</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">Merge branch &#x27;iss53&#x27;</span><br><span class="line"></span><br><span class="line">Conflicts:</span><br><span class="line">    index.html</span><br><span class="line">#</span><br><span class="line"># It looks like you may be committing a merge.</span><br><span class="line"># If this is not correct, please remove the file</span><br><span class="line">#	.git/MERGE_HEAD</span><br><span class="line"># and try again.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># Please enter the commit message for your changes. Lines starting</span><br><span class="line"># with &#x27;#&#x27; will be ignored, and an empty message aborts the commit.</span><br><span class="line"># On branch master</span><br><span class="line"># All conflicts fixed but you are still merging.</span><br><span class="line">#</span><br><span class="line"># Changes to be committed:</span><br><span class="line">#	modified:   index.html</span><br><span class="line">#</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/10/23/git/211023-branching%20workflow/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JayoonKoo">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="티끌모아 태산">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/10/23/git/211023-branching%20workflow/" class="post-title-link" itemprop="url">branching workflow</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2021-10-23 22:05:42 / Modified: 22:06:07" itemprop="dateCreated datePublished" datetime="2021-10-23T22:05:42+09:00">2021-10-23</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/git/" itemprop="url" rel="index"><span itemprop="name">git</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="Branching-Workflows"><a href="#Branching-Workflows" class="headerlink" title="Branching Workflows"></a>Branching Workflows</h1><p>이번에는 브랜치를 이용한 워크 플로우에 대해서 알아본다.</p>
-<h2 id="Long-Running-Branches"><a href="#Long-Running-Branches" class="headerlink" title="Long-Running Branches"></a>Long-Running Branches</h2><p>깃은 장기적으로 브랜치를 열어두고 새로운 브랜치에서 병합하는것이 굉장히 쉬운 편이다. 이를 활용해서 git에서 많이 사용하는 개발 플로우가 있다.</p>
-<p><code>master</code> 브랜치는 배포했거나 배포할 코드로서 안정적인 버전을 유지한다.</p>
-<p><code>develop</code> 브랜치는 개발을 진행하고 있는 브랜치로 안정화가 진행되면 <code>master</code> 브랜치로 병합된다. 또한 기능 개발시 <code>topic</code> 브랜치를 만들어서 개발, 테스트 후 <code>devlop</code> 브랜치로 머지하고 <code>devlop</code> 브랜치에서 안정화 작업을 거친 후 <code>master</code> 브랜치로 머지하는 방법을 사용한다.</p>
-<p>각 브랜치를 하나의 실험실로 생각한다.</p>
-<h2 id="Topic-Branches"><a href="#Topic-Branches" class="headerlink" title="Topic Branches"></a>Topic Branches</h2><p>토픽 브랜치는 어떤 한 가지 주제나 작업을 위해 만든 짧은 호흡에 브랜치이다. git 에서는 브랜치를 만드는 것이 매우 쉬우므로 이렇게 브랜치를 생성 하고 개발하고 머지한다음 삭제한다.</p>
-<p>보통 주제별로 브랜치를 만들고 각각은 독립돼 있기 때문에 매우 쉽게 컨텍스트 사이를 옮겨 다닐 수 있다. 묶음별로 나눠서 일하면 내용별로 검토하기에도, 테스트하기에도 더 편하다. 각 작업을 하루든 한 달이든 유지하다가 <code>master</code> 브랜치에 Merge 할 시점이 되면 순서에 관계없이 그때 Merge 하면 된다.</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/10/23/git/211010-git%20brnaching%20management/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JayoonKoo">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="티끌모아 태산">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/10/23/git/211010-git%20brnaching%20management/" class="post-title-link" itemprop="url">git brnaching management</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2021-10-23 22:05:42 / Modified: 22:06:07" itemprop="dateCreated datePublished" datetime="2021-10-23T22:05:42+09:00">2021-10-23</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/git/" itemprop="url" rel="index"><span itemprop="name">git</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="Branching-management"><a href="#Branching-management" class="headerlink" title="Branching management"></a>Branching management</h1><h2 id="Branch-Management"><a href="#Branch-Management" class="headerlink" title="Branch Management"></a>Branch Management</h2><p><code>git branch</code> 를 인수 없이 실행하면 생성된 branch에 목록을 확인 할 수 있다.</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ git branch</span><br><span class="line">  iss53</span><br><span class="line">* master</span><br><span class="line">  testing</span><br></pre></td></tr></table></figure>
-
-<p>prifix 인 * 는 현제 HEAD 가 가리키고 있는 브랜치를 뜻한다. 만약 지금 상태에서 작업을 진행하고 커밋하면 master 브랜치에 커밋 내역이 담기게 된다.</p>
-<p><code>git branch -v</code> 를 입력하면 각 브랜치 마다 마지막 커밋을 볼 수 있다.</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ git branch -v</span><br><span class="line">  iss53   93b412c Fix javascript issue</span><br><span class="line">* master  7a98805 Merge branch &#x27;iss53&#x27;</span><br><span class="line">  testing 782fd34 Add scott to the author list in the readme</span><br></pre></td></tr></table></figure>
-
-<p><code>--merged</code> 와 <code>--no-merged</code> 옵션을 사용하면 현제 브랜치에 병합된 브랜치나 병합되지 않은 브랜치를 확인할 수 있다. 현제 master 브랜치에서 병합된 브랜치에 목록을 보려면 다음과 같이 하면 된다.</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git branch --merged</span><br><span class="line">  iss53</span><br><span class="line">* master</span><br></pre></td></tr></table></figure>
-
-<p>일반적으로 이때 * 가 안붙은 브랜치는 삭제해도 무관한다. 이미 작업 내역에 통합했기 때문이다.</p>
-<p><code>--no-merged</code> 옵션을 사용함녀 통합되지 않은 브랜치의 목록도 확인할 수 있다.</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git branch --no-merged</span><br><span class="line">  testing</span><br></pre></td></tr></table></figure>
-
-<p>이때 나오는 브랜치는 아직 통합하지 않았기 때문에 <code>-d</code> 옵션으로 삭제할 수 없다. 만약 강제로 삭제하고 싶다면 <code>-D</code> 옵션을 주어야 한다.</p>
-<blockquote>
-<p><code>--no-merged</code> 나 <code>-merged</code>에 옵션을 달았을때 아무런 인수를 주지 않으면 현제 브랜치에 대해서 조사합니다. 따라서 특정한 브랜치에 대해서 조사하고 싶다면 인수로 브랜치 이름을 주어야 합니다.</p>
-</blockquote>
-<h2 id="Changing-a-branch-name"><a href="#Changing-a-branch-name" class="headerlink" title="Changing a branch name"></a>Changing a branch name</h2><blockquote>
-<p>주의 : 다른 사람이 작업중인 브랜치의 이름을 변경하지 마세요.</p>
-</blockquote>
-<p>브랜치 이름을 잘못 지어서 커밋 내역을 유지한 채로 좋은 이름으로 바꾸려면 어떻게 해야 할까? 또한, 리모트 저장소에도 바꾸려면 어떻게 해야 할까?</p>
-<p>로컬에서는 다음과 같은 명령어로 할 수 있다.</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git branch --move bad-branch-name correct-branch-name</span><br></pre></td></tr></table></figure>
-
-<p>원격 저장소에도 변경 내용을 추가하고 싶다면 다음과 같이 입력한다.</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git push --set-stream origin correct-branch-name;</span><br></pre></td></tr></table></figure>
-
-<p>다음으로 원격 저장소에 bad-branch-name 브랜치를 삭제해준다.</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git push origin --delete bad-branch-name</span><br></pre></td></tr></table></figure>
-
-<h2 id="Changing-the-master-branch-name"><a href="#Changing-the-master-branch-name" class="headerlink" title="Changing the master branch name"></a>Changing the master branch name</h2><blockquote>
-<p>경고 : 메인 브랜치 이름을 변경하는 통합 서비스, 도우미 유틸리티, 빌드/릴리스 스크립트가 중단 될 수도 있다. 변경하기전에 반드시 공동작업자와 상의하길 바란다. 만약 변경했다면 철저히 분석해서 스크립트에서 이전 분기 이름에 대한 참조를 변경해야 한다.</p>
-</blockquote>
-<p>로컬에서 이름을 변경하려면 다음과 같이 해야 한다.</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git branch --move master main</span><br></pre></td></tr></table></figure>
-
-<p>원격 저장소에도 적용하려면 다음과 같이 해야 한다.</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git push --set-upstream origin main</span><br></pre></td></tr></table></figure>
-
-<p>하지만 아직 원격 저장소에는 master 브랜치가 남아있고 다른 작업 자들은 기본 브랜치로 master 브랜치를 사용해서 작업 내용을 통합할 것이다. 그렇기 때문에 몇가지 추가 사항이 필요하다.</p>
-<ul>
-<li>이에 의존하는 모든 프로젝트는 코드 및/또는 구성을 업데이트해야 합니다.</li>
-<li>테스트 실행기 구성 파일을 업데이트합니다.</li>
-<li>빌드 및 릴리스 스크립트를 조정합니다.</li>
-<li>리포지토리의 기본 분기, 병합 규칙 및 분기 이름과 일치하는 기타 항목에 대한 리포지토리 호스트의 설정을 리디렉션합니다.</li>
-<li>문서에서 이전 분기에 대한 참조를 업데이트합니다.</li>
-<li>이전 분기를 대상으로 하는 모든 pull 요청을 닫거나 병합합니다.</li>
-</ul>
-<p>모든 작업을 완료 한 후에 원격 저장소에 master 브랜치를 삭제하도록 한다.</p>
 
       
     </div>

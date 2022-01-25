@@ -83,9 +83,9 @@
   <ul class="main-menu menu">
         <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li>
         <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
-        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">16</span></a></li>
-        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">12</span></a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">141</span></a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">17</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">13</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">143</span></a></li>
   </ul>
 </nav>
 
@@ -129,18 +129,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">141</span>
+          <span class="site-state-item-count">143</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-count">13</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-count">17</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -189,7 +189,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2022/01/21/IOS/220121-LocalNotificaltion(%EB%AC%BC%EB%A7%88%EC%8B%9C%EA%B8%B0%EC%95%B1)/">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2022/01/25/DevOps/Docker/220125-Docker,%20TravisCi/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -202,7 +202,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/01/21/IOS/220121-LocalNotificaltion(%EB%AC%BC%EB%A7%88%EC%8B%9C%EA%B8%B0%EC%95%B1)/" class="post-title-link" itemprop="url">LocalNotificaltion(물마시기앱)</a>
+          <a href="/2022/01/25/DevOps/Docker/220125-Docker,%20TravisCi/" class="post-title-link" itemprop="url">Docker, TravisCi</a>
         </h2>
 
         <div class="post-meta-container">
@@ -214,7 +214,7 @@
       <span class="post-meta-item-text">Posted on</span>
       
 
-      <time title="Created: 2022-01-21 14:50:05 / Modified: 14:50:42" itemprop="dateCreated datePublished" datetime="2022-01-21T14:50:05+09:00">2022-01-21</time>
+      <time title="Created: 2022-01-25 12:30:19 / Modified: 12:30:25" itemprop="dateCreated datePublished" datetime="2022-01-25T12:30:19+09:00">2022-01-25</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -222,7 +222,7 @@
       </span>
       <span class="post-meta-item-text">In</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/IOS/" itemprop="url" rel="index"><span itemprop="name">IOS</span></a>
+          <a href="/categories/Docker/" itemprop="url" rel="index"><span itemprop="name">Docker</span></a>
         </span>
     </span>
 
@@ -236,45 +236,168 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="물마시기-알람-앱-만들기"><a href="#물마시기-알람-앱-만들기" class="headerlink" title="물마시기 알람 앱 만들기"></a>물마시기 알람 앱 만들기</h1><p>Local Notification : 푸시 알림? </p>
-<p>앱 내부에서 자체적으로 만든 특정 메세지를 전달하는 것 </p>
-<h2 id="LocalNotification"><a href="#LocalNotification" class="headerlink" title="LocalNotification"></a>LocalNotification</h2><p>UNNotificationRequest </p>
-<p>3가지 필수 내용 </p>
+          <h1 id="Docker"><a href="#Docker" class="headerlink" title="Docker"></a>Docker</h1><ul>
+<li>도커 이미지 안에는 도커를 실행시키는 파일 스냅샷과 명령어가 닮겨 있다. docker run 명령어를 실행하면 파일 스넵샷을 컨테이너로 옮기고 실행 명령어를 통해 실행한다. docker run &lt;이미지&gt; &lt;명령어&gt; 를 통해 뒤에 명령어를 컨테이너가 생성된후 실행 시킬 수 있다.</li>
+<li>Docker에 Container는 C-grop과 네임스페이스를 통해 격리된 환경을 제공하는데, 리눅스에서 가능한 작업이 다른 호스트 os에서도 가능한 이유는 Docker 가 내부적으로 리눅스 vm을 사용하고 리눅스 커널을 공유하는 격리된 컨텐이너를 만들기 때문이다.</li>
+<li>docker Stop 은 SIGTERUM 을 주어서 SIGKILL을 진행하기 전에 완료되지 않은 작업이 있다면 완료한다음 컨테이너를 종료시키고, docker kill 은 SIGTERUM 을 주지 않고 바로 컨테이너를 중지시킨다.</li>
+<li>실행중인 컨테이너에서 명령을 실행시키려면 exec 으로 실행시켜야 한다. <code>docker exec -it &lt;containerID&gt; 명령어</code> 이런식으로 사용하는 -it 는 -i (interactive), -t (terminal) 을 합성한 것으로 명령을 실행하고 바로 나와버리는 것이 아니라 실행한 후에 터미널에서 추가적인 명령을 입력할 수 있도록 해준다.</li>
+<li>쉘의 접속하고 싶다면 <code>docker exect -it &lt;containerId&gt; sh</code> 로 쉘의 접속할 수 있다. sh 는 bash, zsh 등 사용하는 컨테이너에 따라 다양하게 사용 가능하다.</li>
+</ul>
+<h3 id="DockerFile"><a href="#DockerFile" class="headerlink" title="DockerFile"></a>DockerFile</h3><ol>
+<li>baseimage 설정 <code>FROM</code></li>
+<li>워킹 디렉터리를 설정해줌 → 파일 시스템덮어씌워지는것 방지, 관리하기 용이하게 <code>WORKDIR</code></li>
+<li>추가적인 스넵샷 및 shellscript 추가 <code>RUN</code></li>
+<li>리소스 복사 <code>COPY</code></li>
+<li>이미지 시작후 명령어 <code>CMD</code></li>
+</ol>
+<h3 id="이미지가-생성되는-순서"><a href="#이미지가-생성되는-순서" class="headerlink" title="이미지가 생성되는 순서"></a>이미지가 생성되는 순서</h3><p>dockerfile → 이미지 생성 → 임시 컨테이너 생성 → 임시컨테이너로 이미지 생성 → 이미지 생성 완료</p>
+<p>dockerfile → dockerClient → dockerServer → 이미지 생성 </p>
+<h3 id="네트워크-연결하기"><a href="#네트워크-연결하기" class="headerlink" title="네트워크 연결하기"></a>네트워크 연결하기</h3><p><code>docker run -p &lt;로컬 포트&gt;:&lt;컨테이너 포트&gt; &lt;이미지이름&gt;</code> </p>
+<h3 id="백그라운드-실행"><a href="#백그라운드-실행" class="headerlink" title="백그라운드 실행"></a>백그라운드 실행</h3><p><code>docker run -d -p 5000:8000 rnwkdbs12/node</code> </p>
+<p>-d : detach 의 약자로 바로 빠져나온다는 의미 → 즉 백그라운드에서 실행시키고 터미널로 바로 나옴. </p>
+<h3 id="종속성-다시-다운로드-안받게-하려면"><a href="#종속성-다시-다운로드-안받게-하려면" class="headerlink" title="종속성 다시 다운로드 안받게 하려면.."></a>종속성 다시 다운로드 안받게 하려면..</h3><p>npm install 전의 package.json을 따로 copy 하고 npm install 후에 다른 소스 파일을 copy 하도록 하면 된다. </p>
+<h3 id="다시-빌드하지-않으려면"><a href="#다시-빌드하지-않으려면" class="headerlink" title="다시 빌드하지 않으려면"></a>다시 빌드하지 않으려면</h3><p>volumn 을 설정하여 컨테이너가 로컬을 단순히 복사하는 것이 아닌 참조할 수 있도록 해야 한다. </p>
+<p><code>docker run -dp 5000:8000 -v /usr/src/app/node_modules -v /$(pwd):/usr/src/app rnwkdbs12/node</code> 처음 설정한 -v 옵션은 참조하지 않을 경로를 의미하고 두번째로 표시한 -v 테그는 참조할 디렉터리를 현제 로컬의 디렉터리로 매핑한 것을 의마한다. </p>
+<h2 id="Docker-Compose"><a href="#Docker-Compose" class="headerlink" title="Docker Compose"></a>Docker Compose</h2><p>여러개의 컨테이너를 묶어서 실행할 수 있다. </p>
+<p>docker-compose.yml 사용</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">version:</span> <span class="string">&quot;3&quot;</span> </span><br><span class="line"><span class="attr">services:</span> </span><br><span class="line">	<span class="attr">redis-server:</span>  <span class="string">//</span> <span class="string">네트워크에</span> <span class="string">이름이</span> <span class="string">된다.</span></span><br><span class="line">		<span class="attr">image:</span> <span class="string">&quot;redis&quot;</span></span><br><span class="line">	<span class="attr">node-app:</span> <span class="string">//</span> <span class="string">다른</span> <span class="string">컨테이너가</span> <span class="string">된다.</span></span><br><span class="line">		<span class="attr">build:</span> <span class="string">.</span> <span class="string">//</span> <span class="string">현제</span> <span class="string">폴더에서</span> <span class="string">Dcokerfile을</span> <span class="string">찾아서</span> <span class="string">build</span> <span class="string">함</span></span><br><span class="line">		<span class="attr">ports:</span></span><br><span class="line">			<span class="bullet">-</span> <span class="string">&quot;8080:8080&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p><code>docker-compose up</code></p>
+<p><code>docker-compose up --build</code> build 하면서 up</p>
+<p><code>docker-compose up -d</code> background 실행</p>
+<p><code>docker-compose down</code> 실행 종료 </p>
+<h2 id="간단한-앱-배포"><a href="#간단한-앱-배포" class="headerlink" title="간단한 앱 배포"></a>간단한 앱 배포</h2><h3 id="개발-환경"><a href="#개발-환경" class="headerlink" title="개발 환경"></a>개발 환경</h3><p>개발 환경을 위한 Dockerfile 은 명시적으로 <a target="_blank" rel="noopener" href="http://dockerfile.dev/">Dockerfile.dev</a> 를 사용한다.</p>
+<p><code>docker build -f Dockerfile.dev ./</code>   를 통해서 명시적으로 이름을 지정해 주어야 한다. </p>
+<h3 id="Dockercompose-로-간단하가게-구성하기"><a href="#Dockercompose-로-간단하가게-구성하기" class="headerlink" title="Dockercompose 로 간단하가게 구성하기"></a>Dockercompose 로 간단하가게 구성하기</h3><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">version:</span> <span class="string">&#x27;3&#x27;</span></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line">  <span class="attr">react:</span></span><br><span class="line">    <span class="attr">build:</span></span><br><span class="line">      <span class="attr">context:</span> <span class="string">.</span></span><br><span class="line">      <span class="attr">dockerfile:</span> <span class="string">Dockerfile.dev</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">&quot;3000:3000&quot;</span></span><br><span class="line">    <span class="attr">volumes:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">/usr/src/app/node_modules</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">./:/usr/src/app</span></span><br><span class="line">    <span class="attr">stdin_open:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="test"><a href="#test" class="headerlink" title="test"></a>test</h3><p>test 를 위해서는 추가적인 명령어를 붙히면 된다. </p>
+<p><code>docker run -it rnwkdbs12/reactdev yarn run test</code> </p>
+<p>테스트 파일도 실시간으로 변경 사항을 적용하기 위해서는 volumn을 연결해야 한다. </p>
+<p>dockercompose 파일을 추가하여 tests 컨테이너를 추가하면 실행과 동시에 테스트까지 진행할 수 있다. </p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">version:</span> <span class="string">&#x27;3&#x27;</span></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line">  <span class="attr">react:</span></span><br><span class="line">    <span class="attr">build:</span></span><br><span class="line">      <span class="attr">context:</span> <span class="string">.</span></span><br><span class="line">      <span class="attr">dockerfile:</span> <span class="string">Dockerfile.dev</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">&quot;3000:3000&quot;</span></span><br><span class="line">    <span class="attr">volumes:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">/usr/src/app/node_modules</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">./:/usr/src/app</span></span><br><span class="line">    <span class="attr">stdin_open:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">tests:</span></span><br><span class="line">    <span class="attr">build:</span></span><br><span class="line">      <span class="attr">context:</span> <span class="string">.</span></span><br><span class="line">      <span class="attr">dockerfile:</span> <span class="string">Dockerfile.dev</span></span><br><span class="line">    <span class="attr">volumes:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">/usr/src/app/node_modules</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">./:/usr/src/app</span></span><br><span class="line">    <span class="attr">command:</span> [<span class="string">&quot;yarn&quot;</span>, <span class="string">&quot;run&quot;</span>, <span class="string">&quot;test&quot;</span>]</span><br></pre></td></tr></table></figure>
+
+<h3 id="운영을-위한-배포"><a href="#운영을-위한-배포" class="headerlink" title="운영을 위한 배포"></a>운영을 위한 배포</h3><figure class="highlight docker"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">FROM</span> node:alpine as builder</span><br><span class="line"><span class="keyword">WORKDIR</span><span class="bash"> <span class="string">&#x27;/usr/src/app&#x27;</span></span></span><br><span class="line"><span class="keyword">COPY</span><span class="bash"> package.json .</span></span><br><span class="line"><span class="keyword">RUN</span><span class="bash"> yarn install</span></span><br><span class="line"><span class="keyword">COPY</span><span class="bash"> ./ ./</span></span><br><span class="line"><span class="keyword">RUN</span><span class="bash"> yarn run build</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">FROM</span> nginx</span><br><span class="line"><span class="keyword">COPY</span><span class="bash"> --from=builder /usr/src/app/build /usr/share/nginx/html</span></span><br></pre></td></tr></table></figure>
+
+<p>build 후에 nginx 이미지를 설정하여 정적 파일을 옮겨 준다. nginx 에 기본 설정이 <code>/usr/share/nginx/html</code> 로 되어 있기 때문에 build 파일을 옮겨 준 것이다.</p>
+<p>이미지를 실행할때 컨테이너 포트로 80번 포트를 사용하는데 nginx 기본 설정이 80번 포트를 사용하기 때문이다. 이 또한 설정에서 변경 가능하다. </p>
+<h2 id="TravisCI-사용"><a href="#TravisCI-사용" class="headerlink" title="TravisCI 사용"></a>TravisCI 사용</h2><p>travisCI 는 .tavis.yml 파일을 이용해서 설정 파일을 작성한다. </p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">sudo:</span> <span class="string">required</span></span><br><span class="line"></span><br><span class="line"><span class="attr">language:</span> <span class="string">generic</span></span><br><span class="line"></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">docker</span></span><br><span class="line"></span><br><span class="line"><span class="attr">before_install:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">echo</span> <span class="string">&quot;start creating an image with dockerfile&quot;</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">docker</span> <span class="string">build</span> <span class="string">-t</span> <span class="string">rnwkdbs12/reactdev</span> <span class="string">-f</span> <span class="string">Dockerfile.dev</span> <span class="string">.</span></span><br><span class="line"></span><br><span class="line"><span class="attr">script:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">docker</span> <span class="string">run</span> <span class="string">-e</span> <span class="string">CI=true</span> <span class="string">rnwkdbs12/reactdev</span> <span class="string">yarn</span> <span class="string">run</span> <span class="string">test</span> <span class="string">--</span> <span class="string">--coverage</span></span><br><span class="line"></span><br><span class="line"><span class="attr">after_success:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">echo</span> <span class="string">&quot;Test success&quot;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>sudo : 관리자 권한이 필요함</li>
+<li>language : 언어 설정</li>
+<li>services : docker 와 함께 사용함 명시</li>
+<li>before_install : script 실행전 필요한 명령 실행 → docker를 사용함으로 이미지 build v필요</li>
+<li>script : 이미지 실행, test 실행</li>
+<li>after_sucess: 스크립트 실행 후에 실행될 명령.</li>
+</ul>
+<h2 id="AWS-를-이용한-배포"><a href="#AWS-를-이용한-배포" class="headerlink" title="AWS 를 이용한 배포"></a>AWS 를 이용한 배포</h2><p>EC2와 Elastic Beanstalk를 이용하여 서비스를 배포한다. travis 를 통해서 테스트에 성공한 소스를 AWS Elastic Beanstalk에 자동으로 배포하는 부분을 travis 파일에 넣어준다. </p>
+<p>travis CI 에서 가지고 있는 파일을 압축해서 S3에 보낸다. S3 는 Elastic Beanstalk를 생성할때 자동으로 생성된다. </p>
+<h3 id="IAM-사용자-생성"><a href="#IAM-사용자-생성" class="headerlink" title="IAM 사용자 생성"></a>IAM 사용자 생성</h3><p>처음 가입하고 사용하면 Root 계정으로 가입 되어서 모든 리소스에 대한 액세스 권한이 있다. Root 사용자를 사용하는 것은 좋지 않아서 보안을 위해서 IAM 유저를 생성 권한을 부여하는 방식을 사용한다.</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2022/01/25/git/220125-git%20%EC%9E%90%EC%A3%BC%EC%93%B0%EB%8A%94%20%EB%AA%85%EB%A0%B9%EC%96%B4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JayoonKoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="티끌모아 태산">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/01/25/git/220125-git%20%EC%9E%90%EC%A3%BC%EC%93%B0%EB%8A%94%20%EB%AA%85%EB%A0%B9%EC%96%B4/" class="post-title-link" itemprop="url">git 자주쓰는 명령어</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2022-01-25 12:29:35 / Modified: 12:30:28" itemprop="dateCreated datePublished" datetime="2022-01-25T12:29:35+09:00">2022-01-25</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/git/" itemprop="url" rel="index"><span itemprop="name">git</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="reset"><a href="#reset" class="headerlink" title="reset"></a>reset</h2><p><code>HEAD</code> 는 현제 커밋 위치이다. </p>
+<p><code>git reset HEAD~1</code> 로 하나 전 커밋으로 갈 수 있다. ( 커밋한 기록은 사라진다) 커밋한 기록을 보관하고 싶은것이라면 reset을 사용하면 안되고 그래도 사용해야 한다면 원격 저장소에 올려 놓고 reset을 실행해야 한다. </p>
+<p>reset의 3가지 모드 <code>git reset HEAD~1 --&lt;mode (soft, mixed, hard)&gt;</code></p>
 <ol>
-<li>identifier</li>
-<li>UNMutableNotificationContent (Content.title, Contetn.body)</li>
-<li>Trigger<ol>
-<li>UNCalendarNotificationTrigger</li>
-<li>UNTimerIntervalNotificationTrigger 시간 간격당 알림 ( 타이머에 가까움)</li>
-<li>UNLocationNotificationTrigger</li>
+<li>기본 모드인 mixed는 새커밋에서 기존 커밋으로 이동할때 staged 는 하지 않은 상태로 돌아간다.</li>
+<li>soft 는 staged 된 상태로 돌아간다.</li>
+<li>hard 는 수정 내용을 아예 다 버린채 기존 커밋으로 돌아간다.</li>
 </ol>
-</li>
-</ol>
-<p>UNNotificationCenter 에 보내면 Trigger 타이밍에 알려줌.</p>
-<h2 id="Content-설정"><a href="#Content-설정" class="headerlink" title="Content 설정"></a>Content 설정</h2><ol>
-<li>AppDelegate 에 UNUserNotificationCenterDelegate 를 확장하도록 한다. </li>
-<li>UNUserNotificationCenter 를 생성하고 알람을 허용할지 요청한다. </li>
-</ol>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> NotificationCenter</span><br><span class="line"><span class="keyword">import</span> UserNotifications</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">AppDelegate</span>: <span class="title">UIResponder</span>, <span class="title">UIApplicationDelegate</span> </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> userNotificationCenter: <span class="type">UNUserNotificationCenter</span>?</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">application</span>(<span class="keyword">_</span> <span class="params">application</span>: <span class="type">UIApplication</span>, <span class="params">didFinishLaunchingWithOptions</span> <span class="params">launchOptions</span>: [<span class="type">UIApplication</span>.<span class="params">LaunchOptionsKey</span>: <span class="keyword">Any</span>]<span class="operator">?</span>)</span> -&gt; <span class="type">Bool</span> &#123;</span><br><span class="line">        <span class="comment">// Override point for customization after application launch.</span></span><br><span class="line">        <span class="type">UNUserNotificationCenter</span>.current().delegate <span class="operator">=</span> <span class="keyword">self</span></span><br><span class="line">        </span><br><span class="line">        <span class="keyword">let</span> authrizationOptions <span class="operator">=</span> <span class="type">UNAuthorizationOptions</span>(arrayLiteral: [.alert, .badge, .sound])</span><br><span class="line">        </span><br><span class="line">        userNotificationCenter<span class="operator">?</span>.requestAuthorization(options: authrizationOptions, completionHandler: &#123; <span class="keyword">_</span>, error <span class="keyword">in</span></span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">let</span> error <span class="operator">=</span> error &#123;</span><br><span class="line">                <span class="built_in">print</span>(<span class="string">&quot;Error: <span class="subst">\(error.localizedDescription)</span>&quot;</span>)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line"><span class="comment">// 생략 </span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">extension</span> <span class="title">AppDelegate</span>: <span class="title">UNUserNotificationCenterDelegate</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">userNotificationCenter</span>(<span class="keyword">_</span> <span class="params">center</span>: <span class="type">UNUserNotificationCenter</span>, <span class="params">willPresent</span> <span class="params">notification</span>: <span class="type">UNNotification</span>, <span class="params">withCompletionHandler</span> <span class="params">completionHandler</span>: <span class="keyword">@escaping</span> (<span class="type">UNNotificationPresentationOptions</span>) -&gt; <span class="type">Void</span>)</span> &#123;</span><br><span class="line">        completionHandler([.banner, .list, .badge, .sound])</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">userNotificationCenter</span>(<span class="keyword">_</span> <span class="params">center</span>: <span class="type">UNUserNotificationCenter</span>, <span class="params">didReceive</span> <span class="params">response</span>: <span class="type">UNNotificationResponse</span>, <span class="params">withCompletionHandler</span> <span class="params">completionHandler</span>: <span class="keyword">@escaping</span> () -&gt; <span class="type">Void</span>)</span> &#123;</span><br><span class="line">        completionHandler()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ol>
-<li>UserNotficationCenter 에 request 를 보내는 코드를 추가한다. </li>
-</ol>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> UserNotifications</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">extension</span> <span class="title">UNUserNotificationCenter</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">addNotificationRequest</span>(<span class="params">by</span> <span class="params">alert</span>: <span class="type">Alert</span>)</span> &#123;</span><br><span class="line">        <span class="keyword">let</span> content <span class="operator">=</span> <span class="type">UNMutableNotificationContent</span>()</span><br><span class="line">        content.title <span class="operator">=</span> <span class="string">&quot;물 마실 시간이에요.💧&quot;</span></span><br><span class="line">        content.body <span class="operator">=</span> <span class="string">&quot;세계보건기구가 권장하는 하루 물 섭취량은 1.5~2리터 입니다.&quot;</span></span><br><span class="line">        content.sound <span class="operator">=</span> .default</span><br><span class="line">        content.badge <span class="operator">=</span> <span class="number">1</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="Trigger"><a href="#Trigger" class="headerlink" title="Trigger"></a>Trigger</h2><p>trigger 를 설정한다. </p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">extension</span> <span class="title">UNUserNotificationCenter</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">addNotificationRequest</span>(<span class="params">by</span> <span class="params">alert</span>: <span class="type">Alert</span>)</span> &#123;</span><br><span class="line">        <span class="keyword">let</span> content <span class="operator">=</span> <span class="type">UNMutableNotificationContent</span>()</span><br><span class="line">        content.title <span class="operator">=</span> <span class="string">&quot;물 마실 시간이에요.💧&quot;</span></span><br><span class="line">        content.body <span class="operator">=</span> <span class="string">&quot;세계보건기구가 권장하는 하루 물 섭취량은 1.5~2리터 입니다.&quot;</span></span><br><span class="line">        content.sound <span class="operator">=</span> .default</span><br><span class="line">        content.badge <span class="operator">=</span> <span class="number">1</span></span><br><span class="line">        </span><br><span class="line">				<span class="comment">// 추가 부분</span></span><br><span class="line">        <span class="keyword">let</span> component <span class="operator">=</span> <span class="type">Calendar</span>.current.dateComponents([.hour, .minute], from: alert.date)</span><br><span class="line">        <span class="keyword">let</span> trigger <span class="operator">=</span> <span class="type">UNCalendarNotificationTrigger</span>(dateMatching: component, repeats: alert.isOn)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="request"><a href="#request" class="headerlink" title="request"></a>request</h2><p>request 를 추가한다.</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">extension</span> <span class="title">UNUserNotificationCenter</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">addNotificationRequest</span>(<span class="params">by</span> <span class="params">alert</span>: <span class="type">Alert</span>)</span> &#123;</span><br><span class="line">        <span class="keyword">let</span> content <span class="operator">=</span> <span class="type">UNMutableNotificationContent</span>()</span><br><span class="line">        content.title <span class="operator">=</span> <span class="string">&quot;물 마실 시간이에요.💧&quot;</span></span><br><span class="line">        content.body <span class="operator">=</span> <span class="string">&quot;세계보건기구가 권장하는 하루 물 섭취량은 1.5~2리터 입니다.&quot;</span></span><br><span class="line">        content.sound <span class="operator">=</span> .default</span><br><span class="line">        content.badge <span class="operator">=</span> <span class="number">1</span></span><br><span class="line">        </span><br><span class="line">        <span class="keyword">let</span> component <span class="operator">=</span> <span class="type">Calendar</span>.current.dateComponents([.hour, .minute], from: alert.date)</span><br><span class="line">        <span class="keyword">let</span> trigger <span class="operator">=</span> <span class="type">UNCalendarNotificationTrigger</span>(dateMatching: component, repeats: alert.isOn)</span><br><span class="line">        </span><br><span class="line">				<span class="comment">// 추가 부분</span></span><br><span class="line">        <span class="keyword">let</span> request <span class="operator">=</span> <span class="type">UNNotificationRequest</span>(identifier: alert.id, content: content, trigger: trigger)</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">self</span>.add(request, withCompletionHandler: <span class="literal">nil</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>이제 알람이 추가되어야 할 부분에 request를 추가하고, 삭제 되어야 할 부분에 remove를 호출한다.</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> UserNotifications</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">AlertListViewController</span>: <span class="title">UITableViewController</span> </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> alerts: [<span class="type">Alert</span>] <span class="operator">=</span> []</span><br><span class="line">		<span class="comment">// userNotificationCenter 추가</span></span><br><span class="line">    <span class="keyword">let</span> userNotificationCenter <span class="operator">=</span> <span class="type">UNUserNotificationCenter</span>.current()</span><br><span class="line">		<span class="comment">// 생략</span></span><br><span class="line">		<span class="keyword">@IBAction</span> <span class="function"><span class="keyword">func</span> <span class="title">addAlertButtonAction</span>(<span class="keyword">_</span> <span class="params">sender</span>: <span class="type">UIBarButtonItem</span>)</span> &#123;</span><br><span class="line">        <span class="keyword">guard</span> <span class="keyword">let</span> addAlertVc <span class="operator">=</span> storyboard<span class="operator">?</span>.instantiateViewController(withIdentifier: <span class="string">&quot;AddAlerViewController&quot;</span>)</span><br><span class="line">                <span class="keyword">as?</span> <span class="type">AddAlerViewController</span> <span class="keyword">else</span> &#123;<span class="keyword">return</span>&#125;</span><br><span class="line">        addAlertVc.pickedDate <span class="operator">=</span> &#123;[<span class="keyword">weak</span> <span class="keyword">self</span>] date <span class="keyword">in</span></span><br><span class="line">            <span class="keyword">guard</span> <span class="keyword">let</span> <span class="keyword">self</span> <span class="operator">=</span> <span class="keyword">self</span> <span class="keyword">else</span> &#123;<span class="keyword">return</span>&#125;</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">var</span> alertList <span class="operator">=</span> <span class="keyword">self</span>.alertList()</span><br><span class="line">            <span class="keyword">let</span> newAlert <span class="operator">=</span> <span class="type">Alert</span>(date: date, isOn: <span class="literal">true</span>)</span><br><span class="line">            </span><br><span class="line">            alertList.append(newAlert)</span><br><span class="line">            alertList.sort &#123; <span class="variable">$0</span>.date <span class="operator">&lt;</span> <span class="variable">$1</span>.date&#125;</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">self</span>.alerts <span class="operator">=</span> alertList</span><br><span class="line">            <span class="type">UserDefaults</span>.standard.set(<span class="keyword">try?</span> <span class="type">PropertyListEncoder</span>().encode(<span class="keyword">self</span>.alerts), forKey: <span class="string">&quot;alerts&quot;</span>)</span><br><span class="line">						<span class="comment">// 알람 추가</span></span><br><span class="line">            <span class="keyword">self</span>.userNotificationCenter.addNotificationRequest(by: newAlert)</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">self</span>.tableView.reloadData()</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">self</span>.present(addAlertVc, animated: <span class="literal">true</span>, completion: <span class="literal">nil</span>)</span><br><span class="line">    &#125;</span><br><span class="line">	<span class="comment">//... 생략</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>알람이 필요 없는 곳에서는 삭제 한다.</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">tableView</span>(<span class="keyword">_</span> <span class="params">tableView</span>: <span class="type">UITableView</span>, <span class="params">commit</span> <span class="params">editingStyle</span>: <span class="type">UITableViewCell</span>.<span class="type">EditingStyle</span>, <span class="params">forRowAt</span> <span class="params">indexPath</span>: <span class="type">IndexPath</span>)</span> &#123;</span><br><span class="line">        <span class="keyword">switch</span> editingStyle &#123;</span><br><span class="line">        <span class="keyword">case</span> .delete:</span><br><span class="line">            <span class="keyword">self</span>.alerts.remove(at: indexPath.row)</span><br><span class="line">            <span class="type">UserDefaults</span>.standard.set(<span class="keyword">try?</span> <span class="type">PropertyListEncoder</span>().encode(<span class="keyword">self</span>.alerts), forKey: <span class="string">&quot;alerts&quot;</span>)</span><br><span class="line">            <span class="comment">// 아직 시작되지 않은 알람을 삭제하는 것이므로 removePendingNotificationRequest 호출</span></span><br><span class="line">            userNotificationCenter.removePendingNotificationRequests(withIdentifiers: [alerts[indexPath.row].id])</span><br><span class="line">            <span class="keyword">self</span>.tableView.reloadData()</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line">        <span class="keyword">default</span>:</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="기타"><a href="#기타" class="headerlink" title="기타"></a>기타</h2><p>cmd + cntl + e : 모든 변수 이름 바꾸기</p>
+<p>만약 새로운 수정 내용이 있는상태에서 마음에 들지 않아서 수정 내용을 모두 삭제하고 싶다면 HEAD 를 없애고 <code>git reset --hard</code> 하면 된다.</p>
+<p>또는 commit ID 를 통해서 돌아 갈수도 있다. <code>git reset &lt;commitId&gt;</code></p>
+<h2 id="revert"><a href="#revert" class="headerlink" title="revert"></a>revert</h2><p>revert 는 커밋을 되돌리기는 하지만 이 또한 새로운 커밋으로 만든다. <code>git revert HEAD</code> → 새로운 커밋 생성</p>
+<p>왜 사용할까? </p>
+<ul>
+<li>실수한 커밋이 원격 저장소에 올라감</li>
+<li>리셋 하면 원격에 올라간 내용은 되돌릴수 없음.</li>
+<li>revert를 통해서 실수 위에 돌아가는 커밋을 다시 푸시함으로서 해결 가능. (실수 만회 까지 공유할수 있게됨)</li>
+</ul>
+<h2 id="merge"><a href="#merge" class="headerlink" title="merge"></a>merge</h2><p>브랜치에서 다른 브랜치에 내용을 합친다. 메인 브렌치에서 기능 브랜치를 합치려면 <code>git merge &lt;기능 브랜치&gt;</code> 충돌 가능성도 있는데 파일 수정 후 커밋해서 충돌을 해결한다. merge 자체를 중단하고 싶다면 <code>git merge --abort</code> 하면 된다.</p>
+<h2 id="rebase"><a href="#rebase" class="headerlink" title="rebase"></a>rebase</h2><p><code>git rebase &lt;기능 브랜치&gt;</code> 충돌 발생한 파일을 수정후 stage에 올린다. 그후 <code>git rebase --continue</code> 로 다음 작업을 이어 한다. 마찬가지로 중단하고 싶다면 <code>git rebase --abort</code> 로 수정을 중단할 수 있다.</p>
+<p>merge 와 다른점은 메인 브랜치에 에서 분기한 조상 커밋을 기능 브랜치에 마지막 커밋으로 바꿔서 합치기 때문에 분기가 사라지고 fast forward 로 합쳐지는 효과가 있다.</p>
+<h2 id="Cherry-Pick"><a href="#Cherry-Pick" class="headerlink" title="Cherry Pick"></a>Cherry Pick</h2><p>merge나 reabase 를 하면 머지 하려는 브랜치에 최신 커밋 내용을 포함한 내용이 합쳐진다. 만약 머지 하려는 브랜치에 특정 커밋만 합치고 싶다면 cherrypick 을 사용하면 된다. </p>
+<p><code>git cherry-pick &lt;커밋 아이디&gt;</code> 특정 커밋만 합쳐서 새로운 커밋을 생성한다. 합쳐지는 것이 아님.  </p>
+<p>Cherry Pick 관련된 내용은 아니지만</p>
+<p><code>git chekout &lt;commit | branch&gt; &lt;file path&gt;</code> 로 특정 파일만 가져올수 있다.</p>
+<h2 id="tag"><a href="#tag" class="headerlink" title="tag"></a>tag</h2><p>특히 중요한 커밋에 tag를 추가하면 id 가 아니로 tag로 커밋을 식별할 수 있다. </p>
+<p><code>git tag v1.0.0</code> 이제 커밋 아이디가 아니라 태그명을 사용할 수 있다. <code>git resset v1.0.0</code></p>
+<h2 id="stash"><a href="#stash" class="headerlink" title="stash"></a>stash</h2><p>어떤 작업을 하고 있다가 다른 작업을 해야해서 브랜치를 옮겨야 한다면 기존 방법 대로라면 완성 되지 않은 코드를 커밋 해야 한다. stash를 사용하면 커밋하지 않고 작업 내용을 저장할 수 있다. </p>
+<p><code>git stash</code> 현제 작업 중인 내용을 저장한다.</p>
+<p><code>git stash list</code> stash에 목록을 확인한다. </p>
+<p><code>git stash apply</code> stash를 적용해서 stash 한 시점으로 돌아간다.</p>
+<p><code>git stash drop &lt;stash 아이디 혹은 생략 가능(첫번째 삭제)&gt;</code> 로 저장했던 stash 를 삭제할 수 있다.</p>
 
       
     </div>
@@ -483,6 +606,118 @@
 <p>Swift의 논리 연산자 &amp;&amp; 와 || 는 왼쪽의 표현을 우선해서 논리 계산을 합니다. </p>
 <h3 id="명시적-괄호-Explicit-Parentheses"><a href="#명시적-괄호-Explicit-Parentheses" class="headerlink" title="명시적 괄호 (Explicit Parentheses)"></a>명시적 괄호 (Explicit Parentheses)</h3><p>논리 연산자의 적용 우선 순위를 연산자에게 맡기지 않고 명시적으로 괄화를 사용해 계산 순서를 정할 수 있습니다.</p>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (enteredDoorCode <span class="operator">&amp;&amp;</span> passedRetinaScan) <span class="operator">||</span> hasDoorKey <span class="operator">||</span> knowsOverridePassword &#123;</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;Welcome!&quot;</span>)</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;ACCESS DENIED&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// Prints &quot;Welcome!&quot;</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2022/01/21/IOS/220121-LocalNotificaltion(%EB%AC%BC%EB%A7%88%EC%8B%9C%EA%B8%B0%EC%95%B1)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JayoonKoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="티끌모아 태산">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/01/21/IOS/220121-LocalNotificaltion(%EB%AC%BC%EB%A7%88%EC%8B%9C%EA%B8%B0%EC%95%B1)/" class="post-title-link" itemprop="url">LocalNotificaltion(물마시기앱)</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2022-01-21 14:50:05 / Modified: 14:50:42" itemprop="dateCreated datePublished" datetime="2022-01-21T14:50:05+09:00">2022-01-21</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/IOS/" itemprop="url" rel="index"><span itemprop="name">IOS</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="물마시기-알람-앱-만들기"><a href="#물마시기-알람-앱-만들기" class="headerlink" title="물마시기 알람 앱 만들기"></a>물마시기 알람 앱 만들기</h1><p>Local Notification : 푸시 알림? </p>
+<p>앱 내부에서 자체적으로 만든 특정 메세지를 전달하는 것 </p>
+<h2 id="LocalNotification"><a href="#LocalNotification" class="headerlink" title="LocalNotification"></a>LocalNotification</h2><p>UNNotificationRequest </p>
+<p>3가지 필수 내용 </p>
+<ol>
+<li>identifier</li>
+<li>UNMutableNotificationContent (Content.title, Contetn.body)</li>
+<li>Trigger<ol>
+<li>UNCalendarNotificationTrigger</li>
+<li>UNTimerIntervalNotificationTrigger 시간 간격당 알림 ( 타이머에 가까움)</li>
+<li>UNLocationNotificationTrigger</li>
+</ol>
+</li>
+</ol>
+<p>UNNotificationCenter 에 보내면 Trigger 타이밍에 알려줌.</p>
+<h2 id="Content-설정"><a href="#Content-설정" class="headerlink" title="Content 설정"></a>Content 설정</h2><ol>
+<li>AppDelegate 에 UNUserNotificationCenterDelegate 를 확장하도록 한다. </li>
+<li>UNUserNotificationCenter 를 생성하고 알람을 허용할지 요청한다. </li>
+</ol>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> NotificationCenter</span><br><span class="line"><span class="keyword">import</span> UserNotifications</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">AppDelegate</span>: <span class="title">UIResponder</span>, <span class="title">UIApplicationDelegate</span> </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> userNotificationCenter: <span class="type">UNUserNotificationCenter</span>?</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">application</span>(<span class="keyword">_</span> <span class="params">application</span>: <span class="type">UIApplication</span>, <span class="params">didFinishLaunchingWithOptions</span> <span class="params">launchOptions</span>: [<span class="type">UIApplication</span>.<span class="params">LaunchOptionsKey</span>: <span class="keyword">Any</span>]<span class="operator">?</span>)</span> -&gt; <span class="type">Bool</span> &#123;</span><br><span class="line">        <span class="comment">// Override point for customization after application launch.</span></span><br><span class="line">        <span class="type">UNUserNotificationCenter</span>.current().delegate <span class="operator">=</span> <span class="keyword">self</span></span><br><span class="line">        </span><br><span class="line">        <span class="keyword">let</span> authrizationOptions <span class="operator">=</span> <span class="type">UNAuthorizationOptions</span>(arrayLiteral: [.alert, .badge, .sound])</span><br><span class="line">        </span><br><span class="line">        userNotificationCenter<span class="operator">?</span>.requestAuthorization(options: authrizationOptions, completionHandler: &#123; <span class="keyword">_</span>, error <span class="keyword">in</span></span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">let</span> error <span class="operator">=</span> error &#123;</span><br><span class="line">                <span class="built_in">print</span>(<span class="string">&quot;Error: <span class="subst">\(error.localizedDescription)</span>&quot;</span>)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line"><span class="comment">// 생략 </span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">extension</span> <span class="title">AppDelegate</span>: <span class="title">UNUserNotificationCenterDelegate</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">userNotificationCenter</span>(<span class="keyword">_</span> <span class="params">center</span>: <span class="type">UNUserNotificationCenter</span>, <span class="params">willPresent</span> <span class="params">notification</span>: <span class="type">UNNotification</span>, <span class="params">withCompletionHandler</span> <span class="params">completionHandler</span>: <span class="keyword">@escaping</span> (<span class="type">UNNotificationPresentationOptions</span>) -&gt; <span class="type">Void</span>)</span> &#123;</span><br><span class="line">        completionHandler([.banner, .list, .badge, .sound])</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">userNotificationCenter</span>(<span class="keyword">_</span> <span class="params">center</span>: <span class="type">UNUserNotificationCenter</span>, <span class="params">didReceive</span> <span class="params">response</span>: <span class="type">UNNotificationResponse</span>, <span class="params">withCompletionHandler</span> <span class="params">completionHandler</span>: <span class="keyword">@escaping</span> () -&gt; <span class="type">Void</span>)</span> &#123;</span><br><span class="line">        completionHandler()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>UserNotficationCenter 에 request 를 보내는 코드를 추가한다. </li>
+</ol>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> UserNotifications</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">extension</span> <span class="title">UNUserNotificationCenter</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">addNotificationRequest</span>(<span class="params">by</span> <span class="params">alert</span>: <span class="type">Alert</span>)</span> &#123;</span><br><span class="line">        <span class="keyword">let</span> content <span class="operator">=</span> <span class="type">UNMutableNotificationContent</span>()</span><br><span class="line">        content.title <span class="operator">=</span> <span class="string">&quot;물 마실 시간이에요.💧&quot;</span></span><br><span class="line">        content.body <span class="operator">=</span> <span class="string">&quot;세계보건기구가 권장하는 하루 물 섭취량은 1.5~2리터 입니다.&quot;</span></span><br><span class="line">        content.sound <span class="operator">=</span> .default</span><br><span class="line">        content.badge <span class="operator">=</span> <span class="number">1</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Trigger"><a href="#Trigger" class="headerlink" title="Trigger"></a>Trigger</h2><p>trigger 를 설정한다. </p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">extension</span> <span class="title">UNUserNotificationCenter</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">addNotificationRequest</span>(<span class="params">by</span> <span class="params">alert</span>: <span class="type">Alert</span>)</span> &#123;</span><br><span class="line">        <span class="keyword">let</span> content <span class="operator">=</span> <span class="type">UNMutableNotificationContent</span>()</span><br><span class="line">        content.title <span class="operator">=</span> <span class="string">&quot;물 마실 시간이에요.💧&quot;</span></span><br><span class="line">        content.body <span class="operator">=</span> <span class="string">&quot;세계보건기구가 권장하는 하루 물 섭취량은 1.5~2리터 입니다.&quot;</span></span><br><span class="line">        content.sound <span class="operator">=</span> .default</span><br><span class="line">        content.badge <span class="operator">=</span> <span class="number">1</span></span><br><span class="line">        </span><br><span class="line">				<span class="comment">// 추가 부분</span></span><br><span class="line">        <span class="keyword">let</span> component <span class="operator">=</span> <span class="type">Calendar</span>.current.dateComponents([.hour, .minute], from: alert.date)</span><br><span class="line">        <span class="keyword">let</span> trigger <span class="operator">=</span> <span class="type">UNCalendarNotificationTrigger</span>(dateMatching: component, repeats: alert.isOn)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="request"><a href="#request" class="headerlink" title="request"></a>request</h2><p>request 를 추가한다.</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">extension</span> <span class="title">UNUserNotificationCenter</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">addNotificationRequest</span>(<span class="params">by</span> <span class="params">alert</span>: <span class="type">Alert</span>)</span> &#123;</span><br><span class="line">        <span class="keyword">let</span> content <span class="operator">=</span> <span class="type">UNMutableNotificationContent</span>()</span><br><span class="line">        content.title <span class="operator">=</span> <span class="string">&quot;물 마실 시간이에요.💧&quot;</span></span><br><span class="line">        content.body <span class="operator">=</span> <span class="string">&quot;세계보건기구가 권장하는 하루 물 섭취량은 1.5~2리터 입니다.&quot;</span></span><br><span class="line">        content.sound <span class="operator">=</span> .default</span><br><span class="line">        content.badge <span class="operator">=</span> <span class="number">1</span></span><br><span class="line">        </span><br><span class="line">        <span class="keyword">let</span> component <span class="operator">=</span> <span class="type">Calendar</span>.current.dateComponents([.hour, .minute], from: alert.date)</span><br><span class="line">        <span class="keyword">let</span> trigger <span class="operator">=</span> <span class="type">UNCalendarNotificationTrigger</span>(dateMatching: component, repeats: alert.isOn)</span><br><span class="line">        </span><br><span class="line">				<span class="comment">// 추가 부분</span></span><br><span class="line">        <span class="keyword">let</span> request <span class="operator">=</span> <span class="type">UNNotificationRequest</span>(identifier: alert.id, content: content, trigger: trigger)</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">self</span>.add(request, withCompletionHandler: <span class="literal">nil</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>이제 알람이 추가되어야 할 부분에 request를 추가하고, 삭제 되어야 할 부분에 remove를 호출한다.</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> UserNotifications</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">AlertListViewController</span>: <span class="title">UITableViewController</span> </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> alerts: [<span class="type">Alert</span>] <span class="operator">=</span> []</span><br><span class="line">		<span class="comment">// userNotificationCenter 추가</span></span><br><span class="line">    <span class="keyword">let</span> userNotificationCenter <span class="operator">=</span> <span class="type">UNUserNotificationCenter</span>.current()</span><br><span class="line">		<span class="comment">// 생략</span></span><br><span class="line">		<span class="keyword">@IBAction</span> <span class="function"><span class="keyword">func</span> <span class="title">addAlertButtonAction</span>(<span class="keyword">_</span> <span class="params">sender</span>: <span class="type">UIBarButtonItem</span>)</span> &#123;</span><br><span class="line">        <span class="keyword">guard</span> <span class="keyword">let</span> addAlertVc <span class="operator">=</span> storyboard<span class="operator">?</span>.instantiateViewController(withIdentifier: <span class="string">&quot;AddAlerViewController&quot;</span>)</span><br><span class="line">                <span class="keyword">as?</span> <span class="type">AddAlerViewController</span> <span class="keyword">else</span> &#123;<span class="keyword">return</span>&#125;</span><br><span class="line">        addAlertVc.pickedDate <span class="operator">=</span> &#123;[<span class="keyword">weak</span> <span class="keyword">self</span>] date <span class="keyword">in</span></span><br><span class="line">            <span class="keyword">guard</span> <span class="keyword">let</span> <span class="keyword">self</span> <span class="operator">=</span> <span class="keyword">self</span> <span class="keyword">else</span> &#123;<span class="keyword">return</span>&#125;</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">var</span> alertList <span class="operator">=</span> <span class="keyword">self</span>.alertList()</span><br><span class="line">            <span class="keyword">let</span> newAlert <span class="operator">=</span> <span class="type">Alert</span>(date: date, isOn: <span class="literal">true</span>)</span><br><span class="line">            </span><br><span class="line">            alertList.append(newAlert)</span><br><span class="line">            alertList.sort &#123; <span class="variable">$0</span>.date <span class="operator">&lt;</span> <span class="variable">$1</span>.date&#125;</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">self</span>.alerts <span class="operator">=</span> alertList</span><br><span class="line">            <span class="type">UserDefaults</span>.standard.set(<span class="keyword">try?</span> <span class="type">PropertyListEncoder</span>().encode(<span class="keyword">self</span>.alerts), forKey: <span class="string">&quot;alerts&quot;</span>)</span><br><span class="line">						<span class="comment">// 알람 추가</span></span><br><span class="line">            <span class="keyword">self</span>.userNotificationCenter.addNotificationRequest(by: newAlert)</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">self</span>.tableView.reloadData()</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">self</span>.present(addAlertVc, animated: <span class="literal">true</span>, completion: <span class="literal">nil</span>)</span><br><span class="line">    &#125;</span><br><span class="line">	<span class="comment">//... 생략</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>알람이 필요 없는 곳에서는 삭제 한다.</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">tableView</span>(<span class="keyword">_</span> <span class="params">tableView</span>: <span class="type">UITableView</span>, <span class="params">commit</span> <span class="params">editingStyle</span>: <span class="type">UITableViewCell</span>.<span class="type">EditingStyle</span>, <span class="params">forRowAt</span> <span class="params">indexPath</span>: <span class="type">IndexPath</span>)</span> &#123;</span><br><span class="line">        <span class="keyword">switch</span> editingStyle &#123;</span><br><span class="line">        <span class="keyword">case</span> .delete:</span><br><span class="line">            <span class="keyword">self</span>.alerts.remove(at: indexPath.row)</span><br><span class="line">            <span class="type">UserDefaults</span>.standard.set(<span class="keyword">try?</span> <span class="type">PropertyListEncoder</span>().encode(<span class="keyword">self</span>.alerts), forKey: <span class="string">&quot;alerts&quot;</span>)</span><br><span class="line">            <span class="comment">// 아직 시작되지 않은 알람을 삭제하는 것이므로 removePendingNotificationRequest 호출</span></span><br><span class="line">            userNotificationCenter.removePendingNotificationRequests(withIdentifiers: [alerts[indexPath.row].id])</span><br><span class="line">            <span class="keyword">self</span>.tableView.reloadData()</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line">        <span class="keyword">default</span>:</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="기타"><a href="#기타" class="headerlink" title="기타"></a>기타</h2><p>cmd + cntl + e : 모든 변수 이름 바꾸기</p>
 
       
     </div>
@@ -965,238 +1200,6 @@
 </ul>
 </li>
 </ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2022/01/13/IOS/220113-Alamofier,%20Cocoapods(%EC%BD%94%EB%A1%9C%EB%82%98%20%ED%98%84%ED%99%A9%EC%95%B1)/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JayoonKoo">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="티끌모아 태산">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/01/13/IOS/220113-Alamofier,%20Cocoapods(%EC%BD%94%EB%A1%9C%EB%82%98%20%ED%98%84%ED%99%A9%EC%95%B1)/" class="post-title-link" itemprop="url">Alamofier, Cocoapods(코로나 현황앱)</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2022-01-13 10:40:01 / Modified: 10:40:12" itemprop="dateCreated datePublished" datetime="2022-01-13T10:40:01+09:00">2022-01-13</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/IOS/" itemprop="url" rel="index"><span itemprop="name">IOS</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="코로나-현황판-앱-만들기-Alamofier-Cocoapods"><a href="#코로나-현황판-앱-만들기-Alamofier-Cocoapods" class="headerlink" title="코로나 현황판 앱 만들기 Alamofier, Cocoapods"></a>코로나 현황판 앱 만들기 Alamofier, Cocoapods</h2><h3 id="활용-기술"><a href="#활용-기술" class="headerlink" title="활용 기술"></a>활용 기술</h3><ul>
-<li>굿바이 코로나 19API</li>
-<li>Alamofier → HTTP 통신</li>
-<li>Cocoapods → 외부 라이브러리 설치</li>
-</ul>
-<h3 id="Alamofire-을-이용한-HTTP-통신"><a href="#Alamofire-을-이용한-HTTP-통신" class="headerlink" title="Alamofire 을 이용한 HTTP 통신"></a>Alamofire 을 이용한 HTTP 통신</h3><p>Swift 기반의 HTTP 네트워킹 라이브러리.</p>
-<p>왜 사용하는가 ? 코드의 간소화, 가독성 높음, 여러기능을 직접 구축하지 않아도 쉽게 사용할 수 있음. </p>
-<p>Axios 같은 느낌임. </p>
-<h3 id="코로나-19API"><a href="#코로나-19API" class="headerlink" title="코로나 19API"></a>코로나 19API</h3><p><a target="_blank" rel="noopener" href="https://github.com/dhlife09/Corona-19-API?utm_source=keygen-email"><code>https://github.com/dhlife09/Corona-19-API?utm_source=keygen-email</code></a></p>
-<h3 id="Cocoapods"><a href="#Cocoapods" class="headerlink" title="Cocoapods"></a>Cocoapods</h3><ul>
-<li>sudo gem install cocoapods 을 설치하고 프로젝트 파일로 이동한 후에 pod init을 실행한다.</li>
-<li>프로젝트 파일에 Podfile 이 생기고 필요한 라이브러리를 <code>pod &#39;Alamofire&#39;</code> 와 같은 방식으로 추가한다.</li>
-<li><code>pod install</code> 명령어를 통해 라이브러리를 섫치한다.</li>
-<li><code>.xcworkspace</code> 파일을 열어서 설치한 라이브러리를 사용한다.</li>
-</ul>
-<h3 id="기타"><a href="#기타" class="headerlink" title="기타"></a>기타</h3><ul>
-<li>UITabelView 에서 Static Tabel View를 사용하면 이미 Cell에 갯수가 정해지기 때문에 Cell 을 아울랫 변수로 설정해서 값을 관리 할 수 있다.</li>
-<li>비동기 작업을 함수 안에서 수행한다면 이스케이핑 클로저를 사용하여 함수가 반환된 후에도 실행되게 만들어야 한다. 왜냐면 함수가 반환되는 시점과 서버에서 응답을 받아오는 시점이 다르기 때문이다. 따라서 정의하는 클로저 앞에 <code>@escaping</code> 을 붙혀서 이스케이핑 클로저로 선언한다.</li>
-<li>Alamofire 는 URLSession 과 달리 UI 쓰레드에서 동작하기 때문에 따로 DispatchQueue 를 안만들어도 된다.</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2022/01/13/IOS/220113-URLSession(%EB%82%A0%EC%94%A8%EC%95%B1)/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JayoonKoo">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="티끌모아 태산">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/01/13/IOS/220113-URLSession(%EB%82%A0%EC%94%A8%EC%95%B1)/" class="post-title-link" itemprop="url">URLSession(날씨앱)</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2022-01-13 10:40:01 / Modified: 10:40:12" itemprop="dateCreated datePublished" datetime="2022-01-13T10:40:01+09:00">2022-01-13</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/IOS/" itemprop="url" rel="index"><span itemprop="name">IOS</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="날씨앱-만들기"><a href="#날씨앱-만들기" class="headerlink" title="날씨앱 만들기"></a>날씨앱 만들기</h2><h3 id="활용-기술"><a href="#활용-기술" class="headerlink" title="활용 기술"></a>활용 기술</h3><ul>
-<li>Current Weather API</li>
-<li>URLSession → HTTp 통신</li>
-</ul>
-<h3 id="웹-통신과-Protocol"><a href="#웹-통신과-Protocol" class="headerlink" title="웹 통신과 Protocol"></a>웹 통신과 Protocol</h3><p>웹 통신에서 주로 HTTP 프로토콜을 사용한다. (요청과 응답으로 이루어진다)</p>
-<p>계속 연결되지 않고 응답후에 연결을 종료한다.</p>
-<p>header와 body로 패킷이 구성된다. </p>
-<p>HTTP 메서드에 따라 다르게 동작한다. </p>
-<ul>
-<li>GET :서버에 리소스를 요청할때</li>
-<li>POST : 서버의 리소스를 생성할때</li>
-<li>PUT : 서버의 리소스 전체 수정할때</li>
-<li>PATCH: 서버의 리소스 일부를 수정할때</li>
-<li>DELETE : 서버의 리소스를 삭제할때</li>
-<li>HEAD : 서버의 정상 작동 여부를 확인할때</li>
-<li>OPTIONS : 클라이언트가 서버에서 해당 URL 이 어떤 메소드를 지워하는지 확인 할 때</li>
-<li>CONNECT: 클라이언트가 프록시를 통하여 서버와 SSL 통신을 하고자 할때 사용</li>
-<li>TRACE : 클라이언트와 서버간 통신 관리 및 디버깅을 할 때 사용</li>
-</ul>
-<h3 id="URLSession"><a href="#URLSession" class="headerlink" title="URLSession"></a>URLSession</h3><p>특정한 Url을 이용하여 데이터를 다운로드하고 업로드하기 위한 API</p>
-<ul>
-<li>URLSeesionConfiguration - 인터턴스 생성</li>
-<li>URLSessionTask - 인스턴스</li>
-<li>Shared Session URLSession.shared() 공유 세션 싱글톤으로 사용 가능.<ul>
-<li>맞춤 설정 x</li>
-</ul>
-</li>
-<li>기본세션 DafultSession, URLSession(configuration: .default),<ul>
-<li>직접 캐시와 쿠기 인증등을 저장하고 설정할 수 있다.</li>
-<li>순차적으로 데이터를 처리하기 위해 delegate를 지정할 수 있다.</li>
-</ul>
-</li>
-<li>임시 세션 (Ephemeral Session) URLSession(configuration: .ephemeral)<ul>
-<li>캐시 쿠기 사용자 정보 같은 정보를 디스크에 저장하지 않는다.</li>
-<li>메모리에 올려서 연결</li>
-</ul>
-</li>
-<li>백그라운드 세션 (Background Session) URLSession(configuration: .background)<ul>
-<li>앱이 실행되지 않는 동안 백그라운드에서 실행</li>
-</ul>
-</li>
-</ul>
-<p>→ URLSeesionTask 이용하여 각 세션에서 작업을 추가할 수 있다. </p>
-<ul>
-<li>URLSessionDataTask</li>
-<li>URLSessionUploadTask</li>
-<li>URLSessionDownloadTask</li>
-<li>URLSessionStreamTask</li>
-<li>URLSessionWebSocketTask</li>
-</ul>
-<p>라이프 사이클 </p>
-<ol>
-<li>Session Configuration을 결정하고, Session을 생성</li>
-<li>통신할 URL과 Request 객체를 설정</li>
-<li>사용할 Task를 결정하고 그에 맞는 Compeletion Handler나 Delegate 메소드를 작성</li>
-<li>해당 Task를 실행</li>
-<li>Task 완료 후 Compeletion Handler 클로저가 호출됨.</li>
-</ol>
-<h3 id="기타"><a href="#기타" class="headerlink" title="기타"></a>기타</h3><ul>
-<li>Codable 자신을 변환하거나 외부타입으로 변환활수 있는 프로토콜, 외부타입 → JSON 과 같은 형태<ul>
-<li>채택하면 decode incode 모두 가능하다. json.parse json.stringfy 와 비슷한 것</li>
-</ul>
-</li>
-<li>네트워크 작업은 main 쓰레드에서 동작하지 않으므로 네트워크 작업을 완료한 후에 결과를 띄우기 위해서 main 쓰레드에서 추가적인 작업을 해주어야 한다.</li>
-</ul>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">DispatchQueue</span>.main.async &#123;</span><br><span class="line">        <span class="keyword">self</span><span class="operator">?</span>.weatherStackView.isHidden <span class="operator">=</span> <span class="literal">false</span></span><br><span class="line">        <span class="keyword">self</span><span class="operator">?</span>.configureView(weatherInfomation: weatherInformation)</span><br><span class="line">      &#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>

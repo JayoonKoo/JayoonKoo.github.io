@@ -83,9 +83,9 @@
   <ul class="main-menu menu">
         <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li>
         <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
-        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">16</span></a></li>
-        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">12</span></a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">141</span></a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">17</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">13</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">143</span></a></li>
   </ul>
 </nav>
 
@@ -129,18 +129,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">141</span>
+          <span class="site-state-item-count">143</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-count">13</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-count">17</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -180,6 +180,209 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/10/23/git/211010-git%20brnaching%20management/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JayoonKoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="티끌모아 태산">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/10/23/git/211010-git%20brnaching%20management/" class="post-title-link" itemprop="url">git brnaching management</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2021-10-23 22:05:42 / Modified: 22:06:07" itemprop="dateCreated datePublished" datetime="2021-10-23T22:05:42+09:00">2021-10-23</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/git/" itemprop="url" rel="index"><span itemprop="name">git</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="Branching-management"><a href="#Branching-management" class="headerlink" title="Branching management"></a>Branching management</h1><h2 id="Branch-Management"><a href="#Branch-Management" class="headerlink" title="Branch Management"></a>Branch Management</h2><p><code>git branch</code> 를 인수 없이 실행하면 생성된 branch에 목록을 확인 할 수 있다.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ git branch</span><br><span class="line">  iss53</span><br><span class="line">* master</span><br><span class="line">  testing</span><br></pre></td></tr></table></figure>
+
+<p>prifix 인 * 는 현제 HEAD 가 가리키고 있는 브랜치를 뜻한다. 만약 지금 상태에서 작업을 진행하고 커밋하면 master 브랜치에 커밋 내역이 담기게 된다.</p>
+<p><code>git branch -v</code> 를 입력하면 각 브랜치 마다 마지막 커밋을 볼 수 있다.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ git branch -v</span><br><span class="line">  iss53   93b412c Fix javascript issue</span><br><span class="line">* master  7a98805 Merge branch &#x27;iss53&#x27;</span><br><span class="line">  testing 782fd34 Add scott to the author list in the readme</span><br></pre></td></tr></table></figure>
+
+<p><code>--merged</code> 와 <code>--no-merged</code> 옵션을 사용하면 현제 브랜치에 병합된 브랜치나 병합되지 않은 브랜치를 확인할 수 있다. 현제 master 브랜치에서 병합된 브랜치에 목록을 보려면 다음과 같이 하면 된다.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git branch --merged</span><br><span class="line">  iss53</span><br><span class="line">* master</span><br></pre></td></tr></table></figure>
+
+<p>일반적으로 이때 * 가 안붙은 브랜치는 삭제해도 무관한다. 이미 작업 내역에 통합했기 때문이다.</p>
+<p><code>--no-merged</code> 옵션을 사용함녀 통합되지 않은 브랜치의 목록도 확인할 수 있다.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git branch --no-merged</span><br><span class="line">  testing</span><br></pre></td></tr></table></figure>
+
+<p>이때 나오는 브랜치는 아직 통합하지 않았기 때문에 <code>-d</code> 옵션으로 삭제할 수 없다. 만약 강제로 삭제하고 싶다면 <code>-D</code> 옵션을 주어야 한다.</p>
+<blockquote>
+<p><code>--no-merged</code> 나 <code>-merged</code>에 옵션을 달았을때 아무런 인수를 주지 않으면 현제 브랜치에 대해서 조사합니다. 따라서 특정한 브랜치에 대해서 조사하고 싶다면 인수로 브랜치 이름을 주어야 합니다.</p>
+</blockquote>
+<h2 id="Changing-a-branch-name"><a href="#Changing-a-branch-name" class="headerlink" title="Changing a branch name"></a>Changing a branch name</h2><blockquote>
+<p>주의 : 다른 사람이 작업중인 브랜치의 이름을 변경하지 마세요.</p>
+</blockquote>
+<p>브랜치 이름을 잘못 지어서 커밋 내역을 유지한 채로 좋은 이름으로 바꾸려면 어떻게 해야 할까? 또한, 리모트 저장소에도 바꾸려면 어떻게 해야 할까?</p>
+<p>로컬에서는 다음과 같은 명령어로 할 수 있다.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git branch --move bad-branch-name correct-branch-name</span><br></pre></td></tr></table></figure>
+
+<p>원격 저장소에도 변경 내용을 추가하고 싶다면 다음과 같이 입력한다.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git push --set-stream origin correct-branch-name;</span><br></pre></td></tr></table></figure>
+
+<p>다음으로 원격 저장소에 bad-branch-name 브랜치를 삭제해준다.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git push origin --delete bad-branch-name</span><br></pre></td></tr></table></figure>
+
+<h2 id="Changing-the-master-branch-name"><a href="#Changing-the-master-branch-name" class="headerlink" title="Changing the master branch name"></a>Changing the master branch name</h2><blockquote>
+<p>경고 : 메인 브랜치 이름을 변경하는 통합 서비스, 도우미 유틸리티, 빌드/릴리스 스크립트가 중단 될 수도 있다. 변경하기전에 반드시 공동작업자와 상의하길 바란다. 만약 변경했다면 철저히 분석해서 스크립트에서 이전 분기 이름에 대한 참조를 변경해야 한다.</p>
+</blockquote>
+<p>로컬에서 이름을 변경하려면 다음과 같이 해야 한다.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git branch --move master main</span><br></pre></td></tr></table></figure>
+
+<p>원격 저장소에도 적용하려면 다음과 같이 해야 한다.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git push --set-upstream origin main</span><br></pre></td></tr></table></figure>
+
+<p>하지만 아직 원격 저장소에는 master 브랜치가 남아있고 다른 작업 자들은 기본 브랜치로 master 브랜치를 사용해서 작업 내용을 통합할 것이다. 그렇기 때문에 몇가지 추가 사항이 필요하다.</p>
+<ul>
+<li>이에 의존하는 모든 프로젝트는 코드 및/또는 구성을 업데이트해야 합니다.</li>
+<li>테스트 실행기 구성 파일을 업데이트합니다.</li>
+<li>빌드 및 릴리스 스크립트를 조정합니다.</li>
+<li>리포지토리의 기본 분기, 병합 규칙 및 분기 이름과 일치하는 기타 항목에 대한 리포지토리 호스트의 설정을 리디렉션합니다.</li>
+<li>문서에서 이전 분기에 대한 참조를 업데이트합니다.</li>
+<li>이전 분기를 대상으로 하는 모든 pull 요청을 닫거나 병합합니다.</li>
+</ul>
+<p>모든 작업을 완료 한 후에 원격 저장소에 master 브랜치를 삭제하도록 한다.</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/10/23/git/211023-branching%20workflow/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JayoonKoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="티끌모아 태산">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/10/23/git/211023-branching%20workflow/" class="post-title-link" itemprop="url">branching workflow</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2021-10-23 22:05:42 / Modified: 22:06:07" itemprop="dateCreated datePublished" datetime="2021-10-23T22:05:42+09:00">2021-10-23</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/git/" itemprop="url" rel="index"><span itemprop="name">git</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="Branching-Workflows"><a href="#Branching-Workflows" class="headerlink" title="Branching Workflows"></a>Branching Workflows</h1><p>이번에는 브랜치를 이용한 워크 플로우에 대해서 알아본다.</p>
+<h2 id="Long-Running-Branches"><a href="#Long-Running-Branches" class="headerlink" title="Long-Running Branches"></a>Long-Running Branches</h2><p>깃은 장기적으로 브랜치를 열어두고 새로운 브랜치에서 병합하는것이 굉장히 쉬운 편이다. 이를 활용해서 git에서 많이 사용하는 개발 플로우가 있다.</p>
+<p><code>master</code> 브랜치는 배포했거나 배포할 코드로서 안정적인 버전을 유지한다.</p>
+<p><code>develop</code> 브랜치는 개발을 진행하고 있는 브랜치로 안정화가 진행되면 <code>master</code> 브랜치로 병합된다. 또한 기능 개발시 <code>topic</code> 브랜치를 만들어서 개발, 테스트 후 <code>devlop</code> 브랜치로 머지하고 <code>devlop</code> 브랜치에서 안정화 작업을 거친 후 <code>master</code> 브랜치로 머지하는 방법을 사용한다.</p>
+<p>각 브랜치를 하나의 실험실로 생각한다.</p>
+<h2 id="Topic-Branches"><a href="#Topic-Branches" class="headerlink" title="Topic Branches"></a>Topic Branches</h2><p>토픽 브랜치는 어떤 한 가지 주제나 작업을 위해 만든 짧은 호흡에 브랜치이다. git 에서는 브랜치를 만드는 것이 매우 쉬우므로 이렇게 브랜치를 생성 하고 개발하고 머지한다음 삭제한다.</p>
+<p>보통 주제별로 브랜치를 만들고 각각은 독립돼 있기 때문에 매우 쉽게 컨텍스트 사이를 옮겨 다닐 수 있다. 묶음별로 나눠서 일하면 내용별로 검토하기에도, 테스트하기에도 더 편하다. 각 작업을 하루든 한 달이든 유지하다가 <code>master</code> 브랜치에 Merge 할 시점이 되면 순서에 관계없이 그때 Merge 하면 된다.</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1117,210 +1320,6 @@
 </ul>
 <p>인캡슐레이션의 예, 디캠슐레이션은 반대로 하면 된다.</p>
 <img src="/images/210906-네트워크 소개/10.png" width="500">
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/10/09/Network/210907-%EB%AC%BC%EB%A6%AC%EA%B3%84%EC%B8%B5/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JayoonKoo">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="티끌모아 태산">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/10/09/Network/210907-%EB%AC%BC%EB%A6%AC%EA%B3%84%EC%B8%B5/" class="post-title-link" itemprop="url">물리계층</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-10-09 21:54:45" itemprop="dateCreated datePublished" datetime="2021-10-09T21:54:45+09:00">2021-10-09</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/CS/" itemprop="url" rel="index"><span itemprop="name">CS</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="물리-계층"><a href="#물리-계층" class="headerlink" title="물리 계층"></a>물리 계층</h1><p>L1 물리 계층에 대해서 알아본다.</p>
-<h2 id="물리-계층의-역할과-기능"><a href="#물리-계층의-역할과-기능" class="headerlink" title="물리 계층의 역할과 기능"></a>물리 계층의 역할과 기능</h2><p>OSI 7 계층에 1계층으로 하드웨어 영역이다. 데이터 계층의 프레임을 비트로 인코 딩하고 신호로 바꾸어 통신한다. 받은 신호를 통하여 비트로 바꾸고 비트를 프레임으로 바꾸는 역활을 담당한다.</p>
-<h3 id="Signalilng의-종류"><a href="#Signalilng의-종류" class="headerlink" title="Signalilng의 종류"></a>Signalilng의 종류</h3><ul>
-<li>전기 (대표적으로 UTP 케이블이 있다.)</li>
-<li>광 (대표적으로 Fiber 가 있다. )</li>
-<li>전파 (wifi)</li>
-</ul>
-<h3 id="Signaling-전송-방식"><a href="#Signaling-전송-방식" class="headerlink" title="Signaling 전송 방식"></a>Signaling 전송 방식</h3><img src="/images/210907-물리계층/1.png" width="500">
-
-<h2 id="물리-계층-장비와-케이블"><a href="#물리-계층-장비와-케이블" class="headerlink" title="물리 계층 장비와 케이블"></a>물리 계층 장비와 케이블</h2><p>물리 계층의 장비로는 대표적으로 허브와 리피터가 있다.</p>
-<h3 id="허브의-동작-방식"><a href="#허브의-동작-방식" class="headerlink" title="허브의 동작 방식"></a>허브의 동작 방식</h3><p>브로드 케스팅 방식을 사용하여 허브 내에 모든 pc 에게 송신하고 주소에 맞는 pc 만 수신 하는 형식을 사용한다.</p>
-<p>유니 캐스트 방식은 1 : 1 통신을 의마한다.</p>
-<p>멀티 캐스트 방식은 1 : N 통신을 의미한다.</p>
-<h3 id="CSMA-CD"><a href="#CSMA-CD" class="headerlink" title="CSMA/CD"></a>CSMA/CD</h3><ol>
-<li>데이터를 보내기 전에 다른 노드에서 데이터를 보내는 중인지 확인한다.</li>
-<li>보내는 곳이 없다면 전송을 시작한다.</li>
-<li>동시간대 보내게 되면 통신이 중단되고 일정 시간이 흐른 후에 다시 통신을 시작한다.</li>
-</ol>
-<p>이런 방식을 Half Duplex 라고 한다. 흔히 무전기에서 사용하는 방식과 비슷하다.</p>
-<p>Simplex : 는 단방향 통신을 의미한다.</p>
-<p>Full Duplex : 동시 양방향 통신이 가능한 형태로 전화기와 비슷하다고 생각하면 된다.</p>
-<h3 id="성능"><a href="#성능" class="headerlink" title="성능"></a>성능</h3><ul>
-<li>Bandwidth(대역폭) - 주어진 시간대에 네트워크를 통해 이동할 수 있는 정보의 양 ( 도로 넓이 )</li>
-<li>Throughput(처리량) - 단위 시간당 디지털 데이터 전송으로 처리하는 양 (자동차 수 )</li>
-<li>Backplane(최대 처리 량) - 네트워크 장비가 최대로 처리할 수 있는 데이터 용량</li>
-<li>CPS : L4, 초당 커넥션 연결 수</li>
-<li>CC : 최대 수용 가능한 커넥션</li>
-<li>TPS : 초당 트랜잭션 연결 수 ,L&amp;</li>
-</ul>
-<h2 id="UTP-케이블과-wifi"><a href="#UTP-케이블과-wifi" class="headerlink" title="UTP 케이블과 wifi"></a>UTP 케이블과 wifi</h2><h3 id="UTP-케이블이란"><a href="#UTP-케이블이란" class="headerlink" title="UTP 케이블이란?"></a>UTP 케이블이란?</h3><p>주로 근거리 통신망 (LAN) 에 사용되는 케이블로서 자기장을 방지하기 위해 꼬여 있다.</p>
-<h3 id="코드-배열"><a href="#코드-배열" class="headerlink" title="코드 배열"></a>코드 배열</h3><ul>
-<li>8p8c<br>8개의 선 배열에 따라 다이렉트 또는 크로스 케이블로 구성한다. (TIA-568A, TIA-568B)</li>
-</ul>
-<p>같은 기계 끼리는 크로스로 다른 디바이스 끼리는 다이렉트로 연결한다.</p>
-<ul>
-<li>Auto MDI-x<br>노드 별로 크로스냐 다이렉트냐 구분하기 어렵기 때문에 자동으로 정해지도록 할 수 있는 기술</li>
-</ul>
-<h3 id="UTP-카테고리"><a href="#UTP-카테고리" class="headerlink" title="UTP 카테고리"></a>UTP 카테고리</h3><p>UTP 케이블의 전송 가능한 대역폭을 기준으로 분류.<br>cat3~cat6 까지 있음</p>
-<h3 id="WIFI란"><a href="#WIFI란" class="headerlink" title="WIFI란?"></a>WIFI란?</h3><p>비영리 기구인 WIFI Aliance의 상표로 전자기기들이 무선랜에 연결할 수 있게 하는 기술</p>
-<h3 id="무선랜-구성"><a href="#무선랜-구성" class="headerlink" title="무선랜 구성"></a>무선랜 구성</h3><p>인터넷 - ISP - 라우터 - WIPS - AP - 라우터</p>
-<img src="/images/210907-물리계층/2.png" width="500">
-
-<ul>
-<li>WIPS(Wireless IPS) : 보안과 관련된 역할을 한다.</li>
-<li>AP(Access Point) : 무선 허브와 같은 역할을 한다. 무선 랜카드와 연결된다.</li>
-</ul>
-<p>AP 에 반경과 동시 접속 가능 단말기의 개수를 고려하여 설치해야 한다.</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/10/09/Network/210922-%EB%9D%BC%EC%9A%B0%ED%84%B0%EC%99%80%20%EC%84%9C%EB%B8%8C%EB%84%B7%ED%8C%85/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JayoonKoo">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="티끌모아 태산">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/10/09/Network/210922-%EB%9D%BC%EC%9A%B0%ED%84%B0%EC%99%80%20%EC%84%9C%EB%B8%8C%EB%84%B7%ED%8C%85/" class="post-title-link" itemprop="url">라우터와 서브넷팅</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-10-09 21:54:45" itemprop="dateCreated datePublished" datetime="2021-10-09T21:54:45+09:00">2021-10-09</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/CS/" itemprop="url" rel="index"><span itemprop="name">CS</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="라우터와-서브넷팅"><a href="#라우터와-서브넷팅" class="headerlink" title="라우터와 서브넷팅"></a>라우터와 서브넷팅</h1><h2 id="라우터의-이해"><a href="#라우터의-이해" class="headerlink" title="라우터의 이해"></a>라우터의 이해</h2><p>패킷의 경로를 선택하여 전송.</p>
-<p>인터페이스 : 라우터의 접속 가능한 포트로 통신용 관리용으로 구분</p>
-<h2 id="서브넷-마스크"><a href="#서브넷-마스크" class="headerlink" title="서브넷 마스크"></a>서브넷 마스크</h2><p>부분망, 할당된 네트워크 영역을 좀 더 효율적으로 사용하기 위해 서브넷으로 쪼개어 구성</p>
-<p>첫번째 네트워크 주소, 마지막 브로드 캐스트 주소로 사용.</p>
-<p>디폴트 게이트웨이 : 다른 네트워크로 패킷 전송시 거쳐야 하는 거점.</p>
-<p>prefix: 네트워크 영역의 비트 1의 개수를 의미한다.</p>
-<p>계산법 : 서브넷 마스크는 2진수로 1인 부분은 네트워크, 0 인 부분은 호스트가 된다. AND 연산을 수행해서 1이 되는 부분을 서브넷 네트워크라고 보면 된다.</p>
-<h2 id="라우터의-동작-방식"><a href="#라우터의-동작-방식" class="headerlink" title="라우터의 동작 방식"></a>라우터의 동작 방식</h2><h3 id="Static-라우팅"><a href="#Static-라우팅" class="headerlink" title="Static 라우팅"></a>Static 라우팅</h3><p>라우팅 테이블에 목적지 IP주소, 인터페이스 정보를 설정. (수동으로 경로를 라우터에 설정하여 패킷을 처리한다.)</p>
-<p>IP 주소 할당 : 각 서브네팅된 네트워크에 맞추어 IP 설정</p>
-<p>각 PC의 정적 라우팅 테이블 작성 : 각 PC의 경로는 1개, 곧 자신의 대역을 제외하고 전부 인접한 라우터(게이트웨이) 로 경로 설정 보통 디폴트 게이트웨이만 설정</p>
-<h3 id="Hop-amp-TTL"><a href="#Hop-amp-TTL" class="headerlink" title="Hop &amp; TTL"></a>Hop &amp; TTL</h3><p>전세계 네트워크 호스트는 IP 라우팅을 통해서 연결됨.</p>
-<p>Hop: 소스와 목적지 간의 경로, TTL(Time to Live) : 패킷이 폐기되기 전 hop 카운트</p>
-<p>각 라우터는 패킷이 인입되면 TTL 값을 1씩 감소, TTL = 0이 되면 폐기, 부정확한 패킷의 루프를 방지함.</p>
 
       
     </div>
