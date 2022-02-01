@@ -83,9 +83,9 @@
   <ul class="main-menu menu">
         <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li>
         <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
-        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">17</span></a></li>
-        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">13</span></a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">143</span></a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">18</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">14</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">144</span></a></li>
   </ul>
 </nav>
 
@@ -129,18 +129,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">143</span>
+          <span class="site-state-item-count">144</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-count">14</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-count">18</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -180,6 +180,93 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/08/15/modernJs/210811-%ED%94%84%EB%A1%9C%EB%AF%B8%EC%8A%A4%ED%99%94/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JayoonKoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="티끌모아 태산">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/08/15/modernJs/210811-%ED%94%84%EB%A1%9C%EB%AF%B8%EC%8A%A4%ED%99%94/" class="post-title-link" itemprop="url">프로미스화</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-08-15 19:40:25" itemprop="dateCreated datePublished" datetime="2021-08-15T19:40:25+09:00">2021-08-15</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="프로미스화"><a href="#프로미스화" class="headerlink" title="프로미스화"></a>프로미스화</h1><p>콜백을 받은 함수를 프라미스를 반환하는 함수로 바꾸는 것을 ‘프라미스화(promisification)’ 이라고 한다. </p>
+<p>콜백 예시 </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">loadScript</span>(<span class="params">src, callback</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> script = <span class="built_in">document</span>.createElement(<span class="string">&#x27;script&#x27;</span>);</span><br><span class="line">  script.src = src;</span><br><span class="line"></span><br><span class="line">  script.onload = <span class="function">() =&gt;</span> callback(<span class="literal">null</span>, script);</span><br><span class="line">  script.onerror = <span class="function">() =&gt;</span> callback(<span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">`<span class="subst">$&#123;src&#125;</span>를 불러오는 도중에 에러가 발생함`</span>));</span><br><span class="line"></span><br><span class="line">  <span class="built_in">document</span>.head.append(script);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// usage:</span></span><br><span class="line"><span class="comment">// loadScript(&#x27;path/script.js&#x27;, (err, script) =&gt; &#123;...&#125;)</span></span><br></pre></td></tr></table></figure>
+
+<p>이제 이 콜백을 프로미스화 할 것임. 해당 함수는 콜백을 인수로 받지 않고 src만 인수로 받도록 함.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> loadScriptPromise = <span class="function"><span class="keyword">function</span>(<span class="params">src</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">		loadScript(src, <span class="function">(<span class="params">err, script</span>) =&gt;</span> &#123;</span><br><span class="line">			<span class="keyword">if</span> (err) reject(err);</span><br><span class="line">			<span class="keyword">else</span> resolve(script);</span><br><span class="line">		&#125;)</span><br><span class="line">	&#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// usage:</span></span><br><span class="line"><span class="comment">// loadScriptPromise(&#x27;path/script.js&#x27;).then(...)</span></span><br></pre></td></tr></table></figure>
+
+<p><code>loadScriptPromise</code> 는 <code>loadScript</code>에 모든 일을 위임한다. </p>
+<p>그런데 실무에서는 여러 함수를 프라미스화 해야 할 것이다. 래퍼 함수를 만들 도록 한다. 프라미스화를 적용할 함수 f를 받고 래퍼 함수를 반환하는 함수 <code>promisefy(f)</code>를 만든다. </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">promisify</span>(<span class="params">f</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params">...args</span>) </span>&#123; <span class="comment">// 래퍼 함수를 반환함</span></span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123; </span><br><span class="line">			<span class="function"><span class="keyword">function</span> <span class="title">callback</span>(<span class="params">err, result</span>) </span>&#123; <span class="comment">// f에 사용할 커스텀 콜백 </span></span><br><span class="line">				<span class="keyword">if</span> (err) &#123;</span><br><span class="line">					reject(err);</span><br><span class="line">				&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">					resolve(result);</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line"></span><br><span class="line">			args.push(callback); <span class="comment">// 위에서 만든 커스텀 콜백을 함수 f의 인수 끝에 추가함.</span></span><br><span class="line"></span><br><span class="line">			f.call(<span class="built_in">this</span>, ...args); <span class="comment">// 기존 함수를 호출</span></span><br><span class="line">		&#125;);</span><br><span class="line">	&#125;;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 사용법: </span></span><br><span class="line"><span class="keyword">let</span> loadScriptPromise = promisify(loadScript);</span><br><span class="line">loadScriptPromise(...).then(...);</span><br></pre></td></tr></table></figure>
+<p>함수 <code>f</code>가 두 개를 초과하는 인수를 가진 콜백, <code>callback(err, res1, res2, ...)</code> 을 받는 경우?</p>
+<p><code>promisify(f, true)</code> 형태로 호출하면, 프로미스 결과는 콜백의 성공 케이스 (result)를 담은 배열 <code>[res1, res2, ...]</code> 이 된다. </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 콜백의 성공 결과를 담은 배열을 얻게 해주는 promisify(f, true)</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">promisify</span>(<span class="params">f, manyArgs = <span class="literal">false</span></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params">...args</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="function"><span class="keyword">function</span> <span class="title">callback</span>(<span class="params">err, ...results</span>) </span>&#123; <span class="comment">// f에 사용할 커스텀 콜백</span></span><br><span class="line">        <span class="keyword">if</span> (err) &#123;</span><br><span class="line">          reject(err);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          <span class="comment">// manyArgs가 구체적으로 명시되었다면, 콜백의 성공 케이스와 함께 이행 상태가 됩니다.</span></span><br><span class="line">          resolve(manyArgs ? results : results[<span class="number">0</span>]);</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      args.push(callback);</span><br><span class="line"></span><br><span class="line">      f.call(<span class="built_in">this</span>, ...args);</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 사용법:</span></span><br><span class="line">f = promisify(f, <span class="literal">true</span>);</span><br><span class="line">f(...).then(<span class="function"><span class="params">arrayOfResults</span> =&gt;</span> ..., <span class="function"><span class="params">err</span> =&gt;</span> ...)</span><br></pre></td></tr></table></figure>
+
+<p><code>es6-promisify</code> 같은 프라미스화를 도화주는 모듈도 있다.<br>또한, node.js에선 내장 함수 <code>util.promisify</code>를 사용해 프라미스화를 할 수 있다. </p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1323,109 +1410,6 @@
 <p>디스패치 : ready 상태의 프로세스를 running 상태로 바꾸는 것</p>
 </blockquote>
 <p>컨텍스트 스위칭은 굉장히 짧은 시간에 진행되어야 하기 때문에 어셈블리어로 구현된다.</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/08/06/OS/210803-IPC/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JayoonKoo">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="티끌모아 태산">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/08/06/OS/210803-IPC/" class="post-title-link" itemprop="url">IPC</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-08-06 22:28:10" itemprop="dateCreated datePublished" datetime="2021-08-06T22:28:10+09:00">2021-08-06</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-09-12 23:50:45" itemprop="dateModified" datetime="2021-09-12T23:50:45+09:00">2021-09-12</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/CS/" itemprop="url" rel="index"><span itemprop="name">CS</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="IPC"><a href="#IPC" class="headerlink" title="IPC"></a>IPC</h1><p>프로세스가 커널 공간을 공유한다.</p>
-<br/>
-
-<h2 id="파이프"><a href="#파이프" class="headerlink" title="파이프"></a>파이프</h2><p>부모 에서 자식으로 단방향 통신이 가능하다.<br>fork()를 통해서 자식 프로세스를 만들었을때 PID 는 자식 프로세스가 0 부모 프로세스가 0이 아닌 값이다.<br>이를 이용해서 서로 다른 로직을 작성한다.</p>
-<p>fd라는 배열을 이욯새통신한다. 부모 프로세스에서 fd[1] 를에 write를 진행하면 자식 프로세스에서 fd[0]을 통해서 읽을 수 있다. 이때 파이프를 통해서 통신이 이루어지는데 이 파이프가 커널 영역에 존재해서 통신이 가능하게 된다.</p>
-<img src="/images/imgs/210803-IPC/1.png" width="500">
-
-<br/>
-<br/>
-
-<h2 id="메세지-큐"><a href="#메세지-큐" class="headerlink" title="메세지 큐"></a>메세지 큐</h2><p>키 값을 통해 메세지 큐에 접근한다. 다른 프로세스에서 메세지 큐로 전송하면 또 다른 프로세스에서 메세지 큐에 내용을 읽는 방법으로 통신이 일어난다.</p>
-<p>큐에 이기 때문에 FIFO 정책을 따른다.<br>메시지 큐 또한 커널 영역에 있다.</p>
-<h3 id="메시지-큐와-파이프에-차이점"><a href="#메시지-큐와-파이프에-차이점" class="headerlink" title="메시지 큐와 파이프에 차이점"></a>메시지 큐와 파이프에 차이점</h3><p>메시지 큐는 fork 할필요가 없다.<br>또한, 메세지 큐를 두개 사용하면 양방향 통신도 가능하다.</p>
-<br/>
-
-<h2 id="공유-메모리"><a href="#공유-메모리" class="headerlink" title="공유 메모리"></a>공유 메모리</h2><p>메모리에 커널영역에 공유 할수있는 메모리 여역을 할당하고 참조해서 통신하는 방식.<br>마치 변수처럼 공유된 메모리를 사용할 수 있다.</p>
-<br/>
-
-<h2 id="시그널"><a href="#시그널" class="headerlink" title="시그널"></a>시그널</h2><p>프로세스가 프로세스에게 어떤 이벤트가 발생했음을 알려줌.<br>여러가지 시그널이 존재한다.</p>
-<p>기본동작이 없는 시그널에 동작을 정의하고 시그널을 발생 시키는 방식으로 프로세스간 통신을 한다.<br>커널모드에서 사용자모드로 전환시 시그널을 처리한다.</p>
-<br/>
-
-<h2 id="소켓"><a href="#소켓" class="headerlink" title="소켓"></a>소켓</h2><p>네트워크 통신을 위한 기술이다.<br>소켓을 이용해서 다른 컴퓨터와 통신하는 것이 아니라 컴퓨터 내에서 다른 프로세스간에 통시에 이용하면 프로세스간 통신을 할 수 있다.</p>
-<p>소캣을 사용하면 네트워크 디바이스 드라이버 까지 가서 통신을 하게 되는데, 이부분이 커널 영역에 있기 때문에 가능하다.</p>
 
       
     </div>

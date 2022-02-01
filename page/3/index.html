@@ -83,9 +83,9 @@
   <ul class="main-menu menu">
         <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li>
         <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
-        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">17</span></a></li>
-        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">13</span></a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">143</span></a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">18</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">14</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">144</span></a></li>
   </ul>
 </nav>
 
@@ -129,18 +129,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">143</span>
+          <span class="site-state-item-count">144</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-count">14</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-count">18</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -180,6 +180,116 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/12/31/TIL/unca/211230-211230%20Redux%20%EB%B3%B4%EC%95%88/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JayoonKoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="티끌모아 태산">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/12/31/TIL/unca/211230-211230%20Redux%20%EB%B3%B4%EC%95%88/" class="post-title-link" itemprop="url">211230 Redux 보안</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2021-12-31 15:17:11 / Modified: 15:19:35" itemprop="dateCreated datePublished" datetime="2021-12-31T15:17:11+09:00">2021-12-31</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/TIL/" itemprop="url" rel="index"><span itemprop="name">TIL</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="Redux"><a href="#Redux" class="headerlink" title="Redux"></a>Redux</h2><h3 id="Rules-of-Reducers"><a href="#Rules-of-Reducers" class="headerlink" title="Rules of Reducers"></a>Rules of Reducers</h3><ul>
+<li>state와 action을 통해서만 새로운 state가 계산되어야 함</li>
+<li>state는 불변성을 지키면서 업데이트해야함.</li>
+<li>순수 함수 여야 함. random이나, asycLogic 등 side effects를 발생시키지 말아야 함.</li>
+</ul>
+<p>이렇게 해야하는 이유? </p>
+<ul>
+<li>state 와 action만으로 새로운 상태가 나오기 때문에 예측하기 쉽고, test 하기 쉽다.</li>
+<li>그렇지 않다면 어떻게 동작하는지 어떤 결과를 리턴하는지 알 수 없게 된다.</li>
+<li>Redux가 올바르게 동작하지 못하게 하여서 bug를 유발한다.</li>
+</ul>
+<p>Redux Toolkit에 <code>createSlice</code> 는 내부적으로 <code>immer</code> 라이브러리를 사용하여 <code>immutable</code> 하게 업데이트 하는 작업을 편하게 해준다. <code>immer</code> 는 <code>state</code> 를 <code>Proxy</code> 객체로 감싸고 변경사항이 있을대 비교하여 <code>immutable</code> 한 <code>state</code> 를 반환할수 있게 해준다.</p>
+<p>→ 내부적으로 <code>immer</code> 를 사용하는 <code>createSlice</code> 나 <code>createReducer</code> 를 사용하지 않는다면 <code>immutable</code> 하게 객체를 업데이트해야 한다.  </p>
+<h3 id="Writing-Async-Logic-with-Thunks"><a href="#Writing-Async-Logic-with-Thunks" class="headerlink" title="Writing Async Logic with Thunks"></a>Writing Async Logic with Thunks</h3><p><code>RTK</code> 는 내부적으로 <code>redux-thunk</code> 를 포함한다. <code>createAsyncThunk</code> 를 사용하면 Thunk를 쉽게 생성할 수 있다. </p>
+<h2 id="보안"><a href="#보안" class="headerlink" title="보안"></a>보안</h2><ul>
+<li>Local Storage 정보는 XSS Attack 으로 도난 당할 수 있다.</li>
+</ul>
+<h3 id="XSS-Attack-이란"><a href="#XSS-Attack-이란" class="headerlink" title="XSS Attack 이란?"></a>XSS Attack 이란?</h3><p>(Cross-Site Scripting Attack) </p>
+<ul>
+<li>injection 관련 보안 이슈</li>
+<li>사용자가 신뢰하는 웹사이트에 스크립트를 주입해서 정보를 빼내거나 의도치 않은 작업을 하는 것, 웹 어플리케이션, 통상적으로 form 안에 input을 통해서 주입한다.</li>
+<li>헤커가 자바스크립트를 준비해서 웹사이트에 숨겨 놓는다.</li>
+<li>사용자가 이용하다가 숨겨진 스크립트에 의해 쿠키나 localStorage에 정보를 attacker 에게 전달할수 있다.</li>
+<li>민감한 정보를 localStorage에 저장하면 안됨..</li>
+<li>해결 방법<ul>
+<li>메모리 상의 저장 → 브라우저 나가면 로그인 유지 되지 않는다거나 사용자 경험이 떨어짐</li>
+<li>쿠키를 사용하는데, http only 옵션을 넣어줌.→ 브라우저만 쿠키 정보를 읽을 수 있도록 함. 자바스크립트로 읽을 수 없게함. 만료 기간을 설정하면 만료 전까진 쿠키에 유지 됨.<ul>
+<li>모바일 클라이언트엔 적용할 수 없음.</li>
+<li>CSRF attack에는 취약함.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>서버에서는 cors 에 creadentials를 true (Access-Control-Allow-Credentials)로 설정하고 http only로 쿠키를 보내주어야 한다.</li>
+<li>헤더에 cookie로 넣어버리면? 모바일 클라이언트는 문제가 생김, 일단은 그대로 바디로 token을 넘겨주기도 하고, header로 설정하기도 해야 함.</li>
+<li>서버에 auth 부분에서는 Cookie 도 확인하고 Header도 확인해야 함. 모바일 클라이언트도 있기 때문에</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1094,105 +1204,6 @@
 <p>여러 이름을 한꺼번에 넣을 수 도 있다.</p>
 <p>이제 컨테이너의 이름을 랜덤이 아닌 정해진 것으로 설정해 보자. 개발할때 변수에 이름을 짖는것처럼 식별하기 쉽고 읽기 쉽게 정하는 것이 좋다. 이름을 설정하기 위해서는 단순히 —name 플래그를 더해주기만 하면 된다.</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker run -dp 8080:8080 --name naver-api node-docker</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/12/17/DevOps/Docker/211216-Docker%20tutorial(2)/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JayoonKoo">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="티끌모아 태산">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/12/17/DevOps/Docker/211216-Docker%20tutorial(2)/" class="post-title-link" itemprop="url">Docker tutorial(2)</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2021-12-17 13:20:02 / Modified: 13:20:22" itemprop="dateCreated datePublished" datetime="2021-12-17T13:20:02+09:00">2021-12-17</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/DevOps/" itemprop="url" rel="index"><span itemprop="name">DevOps</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="Sample-application"><a href="#Sample-application" class="headerlink" title="Sample application"></a>Sample application</h1><h2 id="Build-the-app’s-Container-image"><a href="#Build-the-app’s-Container-image" class="headerlink" title="Build the app’s Container image"></a>Build the app’s Container image</h2><p>Dockerfile은 컨테이미지를 만드는 구조의 스크립트이다. Dockerfile을 통해서 이미지를 만들어 본다. </p>
-<ol>
-<li>create file named Dockerfile in the same folder as the file <code>package.json</code> with the follwing contents.</li>
-</ol>
-<figure class="highlight docker"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># syntax=docker/dockerfile:1</span></span><br><span class="line"><span class="keyword">FROM</span> node:<span class="number">12</span>-alpine</span><br><span class="line"><span class="keyword">RUN</span><span class="bash"> apk add --no-cache python3 g++ make</span></span><br><span class="line"><span class="keyword">WORKDIR</span><span class="bash"> /app</span></span><br><span class="line"><span class="keyword">COPY</span><span class="bash"> . .</span></span><br><span class="line"><span class="keyword">RUN</span><span class="bash"> yarn install --production</span></span><br><span class="line"><span class="keyword">CMD</span><span class="bash"> [<span class="string">&quot;node&quot;</span>, <span class="string">&quot;src/index.js&quot;</span>]</span></span><br></pre></td></tr></table></figure>
-
-<ol>
-<li>Dockerfile이 있는 폴더로 이동한 후에 build 를 시작</li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker build -t getting-started .</span><br></pre></td></tr></table></figure>
-
-<p>이 커멘드는 Dockerfile 을 사용해서 컨테이너 이미지를 만든다.</p>
-<h2 id="Start-an-app-container"><a href="#Start-an-app-container" class="headerlink" title="Start an app container"></a>Start an app container</h2><ol>
-<li><code>docker run</code> 을 통해 이미지를 실행시킨다. </li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker run -dp 3000:3000 getting-started</span><br></pre></td></tr></table></figure>
-
-<p>다시한번 설명하자면 : </p>
-<ul>
-<li>-d : background 실행</li>
-<li>-p : 포트 매핑 host 3000 번 을 docker image 의 3000번 포트로</li>
-</ul>
-<ol>
-<li><a target="_blank" rel="noopener" href="http://localhost:3000/">localhost:3000</a> 으로 접속하면 내용을 확인할 수 있다.</li>
-</ol>
-<p>Docker Dashboard 에서 continaer 탭을 살펴보면 여러가지 컨테이너가 실행중인 것을 불수 있다. 다음에는 컨테이너를 관리 하는 방법을 살펴본다.</p>
 
       
     </div>

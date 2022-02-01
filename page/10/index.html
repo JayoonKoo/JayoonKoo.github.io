@@ -83,9 +83,9 @@
   <ul class="main-menu menu">
         <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li>
         <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
-        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">17</span></a></li>
-        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">13</span></a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">143</span></a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">18</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">14</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">144</span></a></li>
   </ul>
 </nav>
 
@@ -129,18 +129,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">143</span>
+          <span class="site-state-item-count">144</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-count">14</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-count">18</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -180,6 +180,105 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/09/20/modernJs/210908-fetch-Download-progress/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JayoonKoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="티끌모아 태산">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/09/20/modernJs/210908-fetch-Download-progress/" class="post-title-link" itemprop="url">fetch-Download-progress</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2021-09-20 21:41:14 / Modified: 21:45:41" itemprop="dateCreated datePublished" datetime="2021-09-20T21:41:14+09:00">2021-09-20</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="Fetch-download-progress"><a href="#Fetch-download-progress" class="headerlink" title="Fetch: download progress"></a>Fetch: download progress</h1><p>fetch 를 사용하면 다운로드 과정을 추적할 수 있다. 현재는 업로드를 추적할 수는 없어서 업로드를 추적하려면 <code>WMLHttpRequest</code> 를 사용해야 함.</p>
+<p><code>response.body</code> 속성을 사용해서 접근할 수 있다. <code>ReadableStream</code>이라는 청크 단위로 제공하는 특수 객체를 이요한다.</p>
+<p><code>reponse.text()</code>나 <code>response.json()</code> 와는 다르게 <code>reponse.body</code> 는 전체 과정에을 카운트 할 수 있다.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// instead of reponse.json() and other methods</span></span><br><span class="line"><span class="keyword">const</span> reader = reponse.body.getReader();</span><br><span class="line"></span><br><span class="line"><span class="comment">// infinite loop while the body is downloading</span></span><br><span class="line"><span class="keyword">while</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">  <span class="comment">// done is true for the last chunk</span></span><br><span class="line">  <span class="comment">// value is Uint8Array of the chunk bytes</span></span><br><span class="line">  <span class="keyword">const</span> &#123; done, value &#125; = <span class="keyword">await</span> reader.read();</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (done) &#123;</span><br><span class="line">    <span class="keyword">break</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>await reader.read()</code>에 결과는 다음 두가지 프로퍼티를 가진 결과이다.</p>
+<ul>
+<li>done : 읽기가 모두 완료 됬으면 <code>true</code>, 아니면 <code>false</code></li>
+<li>value : <code>Uint8Array</code> 타입인 <code>Array</code></li>
+</ul>
+<blockquote>
+<p>ReadableStream 은 <code>for awiat ..of</code>도 지원한다, 하지만 아직까지 모든 브라우저에서 지원하는 것이 아니기 때문에 여기서는 while를 사용했다.</p>
+</blockquote>
+<p>진행사항을 로깅하는 전체 예제는 다음과 같다.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// step 1 : start the fecth and obtain a reader</span></span><br><span class="line"><span class="keyword">let</span> response = <span class="keyword">await</span> fetch(</span><br><span class="line">  <span class="string">&quot;https://api.github.com/repos/javascript-tutorial/en.javascript.info/commits?per_page=100&quot;</span></span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> reader = response.body.getReader();</span><br><span class="line"></span><br><span class="line"><span class="comment">// step 2 : get total length</span></span><br><span class="line"><span class="keyword">const</span> contentLength = +response.headers.get(<span class="string">&quot;Content-Length&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// step 3 : read the data</span></span><br><span class="line"><span class="keyword">let</span> recivedLength = <span class="number">0</span>; <span class="comment">// received that many bytes at the momnet</span></span><br><span class="line"><span class="keyword">let</span> chunks = []; <span class="comment">// array of received binary chunks (comprises the body)</span></span><br><span class="line"><span class="keyword">while</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> &#123; done, value &#125; = <span class="keyword">await</span> reader.read();</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (done) &#123;</span><br><span class="line">    <span class="keyword">break</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  chunks.push(value);</span><br><span class="line">  receivedLength += value.length;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`Received <span class="subst">$&#123;receivedLength&#125;</span> of <span class="subst">$&#123;contentLength&#125;</span>`</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// step 4: concatenate chunks into single Uint8Array</span></span><br><span class="line"><span class="keyword">let</span> chunksAll = <span class="keyword">new</span> <span class="built_in">Uint8Array</span>(receivedLength);</span><br><span class="line"><span class="keyword">let</span> position = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> chunk <span class="keyword">of</span> chunks) &#123;</span><br><span class="line">  chunksAll.set(chunk, position);</span><br><span class="line">  position += chunk.length;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// step 5: decode into a string</span></span><br><span class="line"><span class="keyword">let</span> result = <span class="keyword">new</span> TextDecoder(<span class="string">&quot;utf-8&quot;</span>).decode(chunksAll);</span><br><span class="line"></span><br><span class="line"><span class="comment">// We&#x27;re done!</span></span><br><span class="line"><span class="keyword">let</span> commits = <span class="built_in">JSON</span>.parse(result);</span><br><span class="line">alert(commits[<span class="number">0</span>].author.login);</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>“Received 79656 of 0”<br>“Received 437910 of 0”</p>
+</blockquote>
+<ul>
+<li><code>response.json()</code>을 통해 데이터를 읽지 않았다.</li>
+<li><code>Content-Length</code> 헤더를 통해서 <code>response</code>에 길이를 알 수 있다.</li>
+<li><code>chunks</code> 배열에 <code>chunk</code>를 모은다. <code>response</code>는 한번 읽으면 다시 읽을 수 없기 때문이다.</li>
+<li><code>chunksAll</code>에 하나의 결과로 모은다. 아쉽게도 다른 메서드가 없기 때문에 반복문을 사용햇 가각의 chunk를 .set을 통해 복사한다. 하지만 아직도 바이트 어레이이다.</li>
+<li>byte를 string으로 해석할 필요가 있다. <code>TextDecoder</code>은 원하는 딱 이런 작업을 해줌.</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1336,141 +1435,6 @@
 <p>리누스 토발즈가 리눅스 커널 소스 오픈 소식 들음. GNU Hurd 를 개발 안해도 되겠네? </p>
 <p>GNU 프로젝트 산출물과 리눅스 커널이 통합 개발 되기 시작. </p>
 <p>GNU/ Linux 라고 부르기를 희망함. 리차드 스톨만이 (GNU 창시자.)</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/09/12/system-programing/210810-shell/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JayoonKoo">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="티끌모아 태산">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/09/12/system-programing/210810-shell/" class="post-title-link" itemprop="url">shell</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-09-12 23:46:02" itemprop="dateCreated datePublished" datetime="2021-09-12T23:46:02+09:00">2021-09-12</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/CS/" itemprop="url" rel="index"><span itemprop="name">CS</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="shell"><a href="#shell" class="headerlink" title="shell"></a>shell</h1><p>쉘 - 사용자와 컴퓨터 하드웨어 또는 운영체제 간의 인터페이스 </p>
-<h2 id="쉘-종류"><a href="#쉘-종류" class="headerlink" title="쉘 종류"></a>쉘 종류</h2><ul>
-<li>bash</li>
-<li>sh</li>
-<li>csh</li>
-<li>ksh </li>
-</ul>
-<h2 id="다중-사용자-관련-명령어"><a href="#다중-사용자-관련-명령어" class="headerlink" title="다중 사용자 관련 명령어"></a>다중 사용자 관련 명령어</h2><p><code>whoami</code> - 사용자 이름 출력</p>
-<p><code>passwd</code> - 새로운 패스워드 설정<br>(aws 에서 만들었으면 이미 설정된 아이디 사용하므로 패스워드가 없음)<br>root 권한만 사용할 수 있음. </p>
-<p><code>useradd</code>는 사용자 기본 설정 자동으로 하지 않음.</p>
-<p><code>adduser</code>는 사용자 기본 설정을 자동으로 함. (이거 사용해) - root 사용자가 만들 수 있음 </p>
-<p><code>sudo</code> root 권한으로 실행하기<br>(해당 id 가 sudo 를 사용할수 있도록 미리 설정되어야 함.)</p>
-<p><code>su</code> 사용자 변경 </p>
-<pre><code>- `su root`  현재 사용자의 설정 파일을 기반으로 id만 바
-- `su - root` 변경되는 사용자의 환경설정을 기반으로 id도 바뀜 
-</code></pre>
-<h3 id="sudo"><a href="#sudo" class="headerlink" title="sudo"></a>sudo</h3><p><code>/etc/sudoers</code> 설정 파일에서 설정을 해주어야 함.<br>root 권한이어야 읽을 수 있고 수정할 수 있음.<br>새로 생성한 id에 sudo 사용 권한을 주고 싶다면<br><code>dave2        ALL=(ALL:ALL) ALL</code></p>
-<blockquote>
-<ol>
-<li>특정 사용자가 sudo를 사용할 수 있도록 <code>userid        ALL=(ALL)        ALL</code></li>
-<li>특정 그룹에 포함된 모든 사용자가 sudo를 사용할 수 있도록 <code>%group        ALL=(ALL)        ALL</code></li>
-<li>패스워드 생략 설정 <code>%group        ALL=(ALL)        NOPASSWD: ALL</code></li>
-</ol>
-</blockquote>
-<p><code>pwd</code> 현재 디렉토리 위치</p>
-<p><code>cd</code> 디렉토리 이동 <code>cd - </code> 바로 전 디렉토리로 이동 </p>
-<p><code>dir</code> 파일 목록 <code>ls</code> 랑 똑타음 플래그 사용하려면 <code>ls</code> 사용하는게 나음.</p>
-<p>와일드 카드 </p>
-<ul>
-<li><code>*</code> 는 임의 문자열</li>
-<li><code>?</code> 는 문자 하나 </li>
-</ul>
-<p><code>man</code> man 띄고 명령어 입력하면 플래그 정보를 알 수 있음. </p>
-<h3 id="ls와-파일-권한"><a href="#ls와-파일-권한" class="headerlink" title="ls와 파일 권한"></a>ls와 파일 권한</h3><p>리눅스는 파일마다 소유자, 소유자 그룹, 모든 사용대한 읽고, 쓰고, 실행하는 권한을 설정한다.</p>
-<p><code>- rwx rx- r-x</code></p>
-<ul>
-<li>처음 1칸 데이터가 파일이면 -, 폴더면 d</li>
-<li>다음 3칸 소유자의 권한 </li>
-<li>다음 3칸 그룹의 권한 </li>
-<li>다음 3칸 기타 상자의 권한 </li>
-</ul>
-<p>r : 읽고, 카피 (ls 명령어 가능)</p>
-<p>w : 수정 (파일 생성 가능)</p>
-<p>x : 실행 (cd 접근 가능)</p>
-<p><code>chmod</code> : 파일 권한 변경</p>
-<img src="images/210810-shell/1.png" width="400">
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">chmod g+rx test.c</span><br><span class="line">chmod u+rx test.c</span><br><span class="line">chmod ug+rx test.c</span><br><span class="line">chmod u=rwx, g=rw, o=rx test.c</span><br></pre></td></tr></table></figure>
-
-<p>숫자를 사용하는 방법</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">rwx rwx rwx = 777</span><br><span class="line">r-x r-x r-x = 555</span><br><span class="line">r-- --- --- = 400</span><br><span class="line">rwx --- --- = 700</span><br></pre></td></tr></table></figure>
-
-<p><code>chown</code> 소유자 변경</p>
-<p><code>cat</code> 파일 내용 보기 </p>
-<p><code>head</code> 앞부분 보기</p>
-<p><code>tail</code> 끝 부분만 보기 </p>
-<p><code>more</code> 화면에 보일 수 있는 부분만 보고 나머지는 스크롤 하면서 보겠다. </p>
-<p><code>rm</code> remove 에 약자 </p>
-<ul>
-<li>r: 하위 디렉토리를 포함한 모든 파일 삭제 </li>
-<li>f: 강제로 파일이나 디릭토리 삭제 </li>
-</ul>
-<p><code>rm -rf [dir]</code></p>
 
       
     </div>

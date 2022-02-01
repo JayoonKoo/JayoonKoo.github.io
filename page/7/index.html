@@ -83,9 +83,9 @@
   <ul class="main-menu menu">
         <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li>
         <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
-        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">17</span></a></li>
-        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">13</span></a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">143</span></a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">18</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">14</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">144</span></a></li>
   </ul>
 </nav>
 
@@ -129,18 +129,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">143</span>
+          <span class="site-state-item-count">144</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-count">14</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-count">18</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -180,6 +180,134 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/10/23/git/211009-basic%20branching%20and%20merging/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JayoonKoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="티끌모아 태산">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/10/23/git/211009-basic%20branching%20and%20merging/" class="post-title-link" itemprop="url">basic branching and merging</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2021-10-23 22:05:42 / Modified: 22:06:06" itemprop="dateCreated datePublished" datetime="2021-10-23T22:05:42+09:00">2021-10-23</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/git/" itemprop="url" rel="index"><span itemprop="name">git</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="Basic-Branching-and-Merging"><a href="#Basic-Branching-and-Merging" class="headerlink" title="Basic Branching and Merging"></a>Basic Branching and Merging</h1><p>실제 개발 과정에 flow는 다음과 같다.</p>
+<ol>
+<li>웹사이트가 있고 뭔가 작업을 진행중이다.</li>
+<li>새로운 이슈를 처리할 branch를 하나를 생성한다.</li>
+<li>새로 만든 branch에서 작업을 진행한다.</li>
+</ol>
+<p>이때 즁오한 문제가 생겨서 처리해야 할 일이 생긴다. 그러면 아래와 같이 진행한다.</p>
+<ol>
+<li>새로운 이슈를 처리하기 위해 운영 브랜치로 이동한다.</li>
+<li>Hotfix 브랜치를 새로 하나 생성한다.</li>
+<li>Hotfix 에서 문제를 수정하고 테스트를 마친 후 운영 브랜치로 머지한다.</li>
+<li>다시 작업하던 brnahc로 이동하고 마찬가지로 작업 완료, 테스트 진행 후 운영 브랜치로 머지한다.</li>
+</ol>
+<h2 id="브랜치의-기초"><a href="#브랜치의-기초" class="headerlink" title="브랜치의 기초"></a>브랜치의 기초</h2><p>회사 내의 새로운 53번 이슈를 해결해야 한다면 다음과 같이 브랜치를 만들고 동시에 switch 할 수 도 있다. 옵션 플래그는 -b 이다.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout -b iss53</span><br><span class="line">Switched to a new branch &quot;iss53&quot;</span><br></pre></td></tr></table></figure>
+
+<p>이제 iss53 브렌치에서 작업을 진행하고 커밋한다.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ vim index.html</span><br><span class="line">$ git commit -a -m &#x27;added a new footer [issue 53]&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>그러면 main 브렌치보다 커밋을 하나 더한 상태가 된다. 이때 어떤 문제가 생겨서 빨리 해결해야 한다고 가정하자. 이를 해결 하기 위해서 우선은 main 브랜치로 이동하고 HotFix 브랜치를 만들어서 기존에 작업하던 iss53에 영향을 안주고 고칠 수 있다. 먼저 main 브렌치로 옮긴다. 아직 커밋하지 않은 checkout 브랜치와 충돌을 발생시킬수도 있는데 우선은 모두 커밋한 후에 main 브랜치로 이동하도록 한다.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout master</span><br><span class="line">Switched to branch &#x27;master&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>(main 브랜치는 기본 브랜치라는 의미여서 이름은 master 여도 상관 없다. )</p>
+<p>이제 hotfix 브랜치를 생성, 전환하고 작업한후 결과를 커밋한다.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout -b hotfix</span><br><span class="line">Switched to a new branch &#x27;hotfix&#x27;</span><br><span class="line">$ vim index.html</span><br><span class="line">$ git commit -a -m &#x27;fixed the broken email address&#x27;</span><br><span class="line">[hotfix 1fb7853] fixed the broken email address</span><br><span class="line"> 1 file changed, 2 insertions(+)</span><br></pre></td></tr></table></figure>
+
+<p>작업이 완료 되었으면 다시 main 브랜치로 이동하고 hotfix 브랜치를 병합한다.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout master</span><br><span class="line">$ git merge hotfix</span><br><span class="line">Updating f42c576..3a0874c</span><br><span class="line">Fast-forward</span><br><span class="line"> index.html | 2 ++</span><br><span class="line"> 1 file changed, 2 insertions(+)</span><br></pre></td></tr></table></figure>
+
+<p>hotfix 브랜치는 master 브랜치에서 단순히 이동만 시킨 상태가 되기 때문에 이를 fast=-foward라고 한다.</p>
+<p>이제 hotfix 브랜치는 필요 없어졌기 때문에 삭제 하도록 한다. 플래그는 -d 이다.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git branch -d hotfix</span><br><span class="line">Deleted branch hotfix (3a0874c).</span><br></pre></td></tr></table></figure>
+
+<p>그리고 다시 iss53 브랜치로 이동한 후 작업을 환료하도록 한다.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout iss53</span><br><span class="line">Switched to branch &quot;iss53&quot;</span><br><span class="line">$ vim index.html</span><br><span class="line">$ git commit -a -m &#x27;finished the new footer [issue 53]&#x27;</span><br><span class="line">[iss53 ad82d7a] finished the new footer [issue 53]</span><br><span class="line">1 file changed, 1 insertion(+)</span><br></pre></td></tr></table></figure>
+
+<p>작업을 완료하면 main 브랜치로 전환 한 후에 iss53번 브랜치와 병합한다. 그럼 hotfix 내용이 포함된 main 브랜치에 새로운 iss도 처리한 브랜치로 병합할 수 있다.</p>
+<h2 id="Merge-의-기초"><a href="#Merge-의-기초" class="headerlink" title="Merge 의 기초"></a>Merge 의 기초</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout master</span><br><span class="line">Switched to branch &#x27;master&#x27;</span><br><span class="line">$ git merge iss53</span><br><span class="line">Merge made by the &#x27;recursive&#x27; strategy.</span><br><span class="line">index.html |    1 +</span><br><span class="line">1 file changed, 1 insertion(+)</span><br></pre></td></tr></table></figure>
+
+<p>이번에 머지를 진행하면 hotfix 머지했때랑 다른 메세지를 보여준다. 이는 현제 브랜치가 가리키는 커밋이 머지할 브랜치의 조상이 아니므로 fast-foward로 병합하지 못하기 때문이다. 이 경우에 git은 이 둘의 공통 조상이 가리키는 스냅샷과 각각의 스냅샨을 사용한 3-way Merge 실행한다. 각각의 스냅샷을 비교한 후 새로운 커밋을 만들고 그 커밋의 조상이 각각의 브랜치를 바라보게 하는 것이다.</p>
+<h2 id="충돌의-기초"><a href="#충돌의-기초" class="headerlink" title="충돌의 기초"></a>충돌의 기초</h2><p>3-way Merge를 진행할때 충돌이 발생하기도 한다. 충돌은 merge 하려는 브랜치에서 동일한 작업한 브랜치와 동일한 파일에 내용이 달라서 발생한다. 예를 들어 앞서서 hotfix에서 index.html에 대한 작업을 진행했고, iss53에서도 마찬가지로 index.html에 대한 작업을 진행했으면 아래와 같이 충돌이 발생한다.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ git merge iss53</span><br><span class="line">Auto-merging index.html</span><br><span class="line">CONFLICT (content): Merge conflict in index.html</span><br><span class="line">Automatic merge failed; fix conflicts and then commit the result.</span><br></pre></td></tr></table></figure>
+
+<p>git status 명령을 입력하여 어디가 충돌이 발생했는지 알 수 있다.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">$ git status</span><br><span class="line">On branch master</span><br><span class="line">You have unmerged paths.</span><br><span class="line">  (fix conflicts and run &quot;git commit&quot;)</span><br><span class="line"></span><br><span class="line">Unmerged paths:</span><br><span class="line">  (use &quot;git add &lt;file&gt;...&quot; to mark resolution)</span><br><span class="line"></span><br><span class="line">    both modified:      index.html</span><br><span class="line"></span><br><span class="line">no changes added to commit (use &quot;git add&quot; and/or &quot;git commit -a&quot;)</span><br></pre></td></tr></table></figure>
+
+<p>Unmerged path: 에 있는 파일을 확인하면 된다.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD:index.html</span><br><span class="line">&lt;div id=&quot;footer&quot;&gt;contact : email.support@github.com&lt;/div&gt;</span><br><span class="line">=======</span><br><span class="line">&lt;div id=&quot;footer&quot;&gt;</span><br><span class="line"> please contact us at support@github.com</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&gt;&gt;&gt;&gt;&gt;&gt;&gt; iss53:index.html</span><br></pre></td></tr></table></figure>
+
+<p>해당 파일을 열어보면 다음과 같은 표시를 해준다. HEAD 브랜치는 main 브랜치이고 <code>=====</code> 다음에 내용은 iss53에 내요이다. 이럴때는 HEAD에 내용을 선택할지 iss53에 내용을 선택할지, 아니면 다 섞을지, 내용을 삭제할지 , 새로운 내용을 만들지 정한후 수정하면 된다.</p>
+<p>밑에는 새로운 다 지우고 새로운 내용을 추가한 예제이다.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=&quot;footer&quot;&gt;</span><br><span class="line">please contact us at email.support@github.com</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+
+<p>충돌을 해결하고 나서 해당 파일을 커밋하면 merge 에 대한 내용을 보여주고 merge된다.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">Merge branch &#x27;iss53&#x27;</span><br><span class="line"></span><br><span class="line">Conflicts:</span><br><span class="line">    index.html</span><br><span class="line">#</span><br><span class="line"># It looks like you may be committing a merge.</span><br><span class="line"># If this is not correct, please remove the file</span><br><span class="line">#	.git/MERGE_HEAD</span><br><span class="line"># and try again.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># Please enter the commit message for your changes. Lines starting</span><br><span class="line"># with &#x27;#&#x27; will be ignored, and an empty message aborts the commit.</span><br><span class="line"># On branch master</span><br><span class="line"># All conflicts fixed but you are still merging.</span><br><span class="line">#</span><br><span class="line"># Changes to be committed:</span><br><span class="line">#	modified:   index.html</span><br><span class="line">#</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1174,152 +1302,6 @@
 
 <h2 id="Alternatives-to-Controlled-Components"><a href="#Alternatives-to-Controlled-Components" class="headerlink" title="Alternatives to Controlled Components"></a>Alternatives to Controlled Components</h2><p>사실 제어 컴포넌트를 사용하느것이 해보면 좀 귀찮은 작업이라는 것을 알게 된다. 또한 다른 앱을 리액트 앱으로 바꾸려 할때에도 이는 정말로 귀찮은 작업으로 다가올 수 있다. 이때 대안으로 사용할 수 있는 비제어 컴포넌트가 있는데 자세한건 홈페이지에서 문서를 찾아 보길 바란다.</p>
 <h2 id="Fully-Fledged-Solutions"><a href="#Fully-Fledged-Solutions" class="headerlink" title="Fully-Fledged Solutions"></a>Fully-Fledged Solutions</h2><p>Formik 이 완벽한 해결을 줄수 있다. 근데 이것도 기본적인 원칙은 위에서 설명한 것과 같기 때문에 기본적인 원칙을 모르면 어렵다. 기본적인 원칙을 공부하길 바란다.</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/10/09/Network/210906-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC%20%EC%86%8C%EA%B0%9C/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JayoonKoo">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="티끌모아 태산">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/10/09/Network/210906-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC%20%EC%86%8C%EA%B0%9C/" class="post-title-link" itemprop="url">네트워크 소개</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-10-09 21:54:45" itemprop="dateCreated datePublished" datetime="2021-10-09T21:54:45+09:00">2021-10-09</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/CS/" itemprop="url" rel="index"><span itemprop="name">CS</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="네트워크-소개"><a href="#네트워크-소개" class="headerlink" title="네트워크 소개"></a>네트워크 소개</h1><h2 id="네트워크-형태"><a href="#네트워크-형태" class="headerlink" title="네트워크 형태"></a>네트워크 형태</h2><ul>
-<li>LAN(Local Area Network) : 건거리 통신망</li>
-<li>WAN(Wide Area Network) : 정거리 통신망 (ISP) 로 연결</li>
-<li>VPN(Virtual Private Network) : 가상 사설망으로서 공중망을 사설망처럼 암호화해서 사용함.</li>
-</ul>
-<h2 id="네트워크-구조"><a href="#네트워크-구조" class="headerlink" title="네트워크 구조"></a>네트워크 구조</h2><p>규모, 업종, 통신방식과 경로, 토플로지 등등 나누는 기준이 다양하다.</p>
-<h3 id="토플로지"><a href="#토플로지" class="headerlink" title="토플로지"></a>토플로지</h3><ul>
-<li>star : 중앙에 중계서버를 둔 형태</li>
-</ul>
-<img src="/images/210906-네트워크 소개/star.png" width="200">
-
-<ul>
-<li>Ring: 중앙에 중계서버를 두지 않고 근처에 있는것 끼리 연결 - 뎁스가 깊어지는 문제가 있다.</li>
-</ul>
-<img src="/images/210906-네트워크 소개/ring.png" width="200">
-
-<ul>
-<li>Mesh : 서로 간에 연결 - 뎁스가 깊어지지는 않지만 갯수가 많아지면 경우에 수가 증가하는 문제가 있다.</li>
-</ul>
-<img src="/images/210906-네트워크 소개/mesh.png" width="200">
-
-<ul>
-<li>Bus : 데이터 통로 Bus 를 두고 서로 통신하는 형태</li>
-</ul>
-<img src="/images/210906-네트워크 소개/bus.png" width="200">
-
-<ul>
-<li>Tree : 가장 많이 사용하는 형태 tree 구조를 두고 각각의 node에 다양한 형태로 구성할 수 있다.</li>
-</ul>
-<img src="/images/210906-네트워크 소개/tree.png" width="200">
-
-<ul>
-<li>Redundacy : 가용성, 동일한것을 하나 더 두어서 하나가 기능을 못해도 다른 하나가 동작하도록 한 형태</li>
-</ul>
-<img src="/images/210906-네트워크 소개/Redundancy.png" width="200">
-
-<h2 id="홈-네트워크"><a href="#홈-네트워크" class="headerlink" title="홈 네트워크"></a>홈 네트워크</h2><p>인터넷 - ISP(업체) - 모뎀 - 공유기 - 컴퓨터</p>
-<h2 id="기업용-네트워크"><a href="#기업용-네트워크" class="headerlink" title="기업용 네트워크"></a>기업용 네트워크</h2><p>ISP(전용선) - 라우터 - 방화벽 - L3백본 - (L2 스위치 - 서버) or (L4B - 서버 - DMZ(외부로 노출하는 서버))</p>
-<img src="/images/210906-네트워크 소개/기업용.png" width="500">
-
-<h2 id="클라우드-네트워크-AWS-기준"><a href="#클라우드-네트워크-AWS-기준" class="headerlink" title="클라우드 네트워크 - AWS 기준"></a>클라우드 네트워크 - AWS 기준</h2><p>인터넷 - Route53(AWS에서는 DNS를 제공하는 역할) - IGW(AWS에서는 라우터와 비슷한 역할을 한다.) - VPN (L2, L3를 논리적으로 묶은것)</p>
-<img src="/images/210906-네트워크 소개/AWS.png" width="500">
-
-<ul>
-<li>ELB : 각각의 서버로 분산해 준다.</li>
-<li>Auto Scaling : 사용하는양에 자동으로 용량 산정해서 제공해 주는 서비스</li>
-<li>SG : 일종의 방홤벽</li>
-<li>EC2 : 각각의 서버라고 보면 됨.</li>
-</ul>
-<h2 id="OSI-7-Layer"><a href="#OSI-7-Layer" class="headerlink" title="OSI 7 Layer"></a>OSI 7 Layer</h2><h3 id="정의"><a href="#정의" class="headerlink" title="정의"></a>정의</h3><p>네트워크 프로토콜과 통신을 7계층으로 표현</p>
-<h3 id="목적"><a href="#목적" class="headerlink" title="목적"></a>목적</h3><p>벤더(엄체)간 표준을 정해서 접근하기 쉽게 함.</p>
-<h3 id="OSI-7-Layer-모델"><a href="#OSI-7-Layer-모델" class="headerlink" title="OSI 7 Layer 모델"></a>OSI 7 Layer 모델</h3><img src="/images/210906-네트워크 소개/7.png" width="200">
-
-<ul>
-<li>아래부터 1 -&gt; 7 layer로 나뉨</li>
-<li>1 계층 (Physical) - 장치와 통신 매체 사이의 비정형 데이터의 전송을 담당 (물리적 기계)</li>
-<li>2 계층 (Data Link) - 동일 네트워크 내에서 데이터 전송, 링크를 통해서 연결을 설정하고 관리 함. 물리계층에서 발생할 수 있는 오류를 감지하고 수정</li>
-<li>3 계층 (Network) - 다른 데트워크로 데이터 전송, IP 주소로 통신 <code>IP</code>, IP 통신과 라우팅 (L3 스위치, 라우터)</li>
-<li>4 계층 (Transport) - 호스트 간의 데이터 전송, 완벽한 데이터 전송 보장, 포트 제어 <code>TCP/UDP</code></li>
-<li>5 계층 (Session) - 로컬 및 원격 애플리케이션 간의 IP / Port 연결을 관리 (Session Table로 관리 )</li>
-<li>6 계층 (Presentation) - 사용자 프로그램과 네트워크 형신간에 데이터를 변환하여 표현고ㅓㅏ 독립성을 제공</li>
-<li>7 계층 (Application) - 사용자와 가장 밀접한 소프트웨어 이메일 서비스, HTTP, FTP 등 …</li>
-</ul>
-<h2 id="TCP-IP-suit-비교와-캡슐화"><a href="#TCP-IP-suit-비교와-캡슐화" class="headerlink" title="TCP-IP suit 비교와 캡슐화"></a>TCP-IP suit 비교와 캡슐화</h2><h3 id="TCP-IP"><a href="#TCP-IP" class="headerlink" title="TCP/ IP?"></a>TCP/ IP?</h3><p>네트 워크 프로토콜의 모음 패킷 통신 방식 (IP), 전송조절 프로토콜 (TCP)</p>
-<h3 id="4계층-모델"><a href="#4계층-모델" class="headerlink" title="4계층 모델"></a>4계층 모델</h3><img src="/images/210906-네트워크 소개/8.png" width="500">
-
-<h3 id="OSI-7Layer와-비교"><a href="#OSI-7Layer와-비교" class="headerlink" title="OSI 7Layer와 비교"></a>OSI 7Layer와 비교</h3><img src="/images/210906-네트워크 소개/9.png" width="500">
-
-<h3 id="캠슐화"><a href="#캠슐화" class="headerlink" title="캠슐화"></a>캠슐화</h3><ul>
-<li>인캡슐레이션 : 7계층 부터 1계층 까지 내려가면서 통신의 필요한 header 붙혀서 캡술화 하는 과정</li>
-<li>디캡슐레이션 : 1계층 부터 7계층 까지 올라가면서 통신의 필요한 header를 확인하고 데이터에서 header를 제거하는 과정</li>
-</ul>
-<p>인캡슐레이션의 예, 디캠슐레이션은 반대로 하면 된다.</p>
-<img src="/images/210906-네트워크 소개/10.png" width="500">
 
       
     </div>

@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css" integrity="sha256-2H3fkXt6FEmrReK448mDVGKb3WW2ZZw35gI7vqHOE4Y=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"jayoonkoo.github.io","root":"/","images":"/images","scheme":"Muse","version":"8.6.1","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="2. 의미 있는 이름클린 코드를 읽고 공부한 내용을 타입스크립트로 정리해본 내용입니다. 개인적으로 공부한 내용이라 틀린점도 있을 수 있습니다.  의도를 분명히 밝혀라변수나 함수 그리고 클래스의 이름은 다음과 같은 굵직한 질문에 모두 답해야 한다. 존재 이유는? 수행 기능은? 사용 방법은? 따로 주석이 필요하다면 의도를 분명히 드러내지 못햇다는 말이다.  c">
+<meta property="og:type" content="article">
+<meta property="og:title" content="220201 의미 있는 이름">
+<meta property="og:url" content="https://jayoonkoo.github.io/2022/02/01/cleanCode/220201-220201%20%EC%9D%98%EB%AF%B8%20%EC%9E%88%EB%8A%94%20%EC%9D%B4%EB%A6%84/index.html">
+<meta property="og:site_name" content="티끌모아 태산">
+<meta property="og:description" content="2. 의미 있는 이름클린 코드를 읽고 공부한 내용을 타입스크립트로 정리해본 내용입니다. 개인적으로 공부한 내용이라 틀린점도 있을 수 있습니다.  의도를 분명히 밝혀라변수나 함수 그리고 클래스의 이름은 다음과 같은 굵직한 질문에 모두 답해야 한다. 존재 이유는? 수행 기능은? 사용 방법은? 따로 주석이 필요하다면 의도를 분명히 드러내지 못햇다는 말이다.  c">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-02-01T07:07:55.000Z">
+<meta property="article:modified_time" content="2022-02-01T07:08:03.199Z">
+<meta property="article:author" content="JayoonKoo">
+<meta property="article:tag" content="cleanCode">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://jayoonkoo.github.io/2022/02/01/cleanCode/220201-220201%20%EC%9D%98%EB%AF%B8%20%EC%9E%88%EB%8A%94%20%EC%9D%B4%EB%A6%84/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://jayoonkoo.github.io/2022/02/01/cleanCode/220201-220201%20%EC%9D%98%EB%AF%B8%20%EC%9E%88%EB%8A%94%20%EC%9D%B4%EB%A6%84/","path":"2022/02/01/cleanCode/220201-220201 의미 있는 이름/","title":"220201 의미 있는 이름"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>220201 의미 있는 이름 | 티끌모아 태산</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">티끌모아 태산</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">작은 조각 모음</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">18</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">14</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">144</span></a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#2-%EC%9D%98%EB%AF%B8-%EC%9E%88%EB%8A%94-%EC%9D%B4%EB%A6%84"><span class="nav-number">1.</span> <span class="nav-text">2. 의미 있는 이름</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%EC%9D%98%EB%8F%84%EB%A5%BC-%EB%B6%84%EB%AA%85%ED%9E%88-%EB%B0%9D%ED%98%80%EB%9D%BC"><span class="nav-number">1.1.</span> <span class="nav-text">의도를 분명히 밝혀라</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EA%B7%B8%EB%A6%87%EB%90%9C-%EC%A0%95%EB%B3%B4%EB%A5%BC-%ED%94%BC%ED%95%98%EB%9D%BC"><span class="nav-number">1.2.</span> <span class="nav-text">그릇된 정보를 피하라</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EC%9D%98%EB%AF%B8-%EC%9E%88%EA%B2%8C-%EA%B5%AC%EB%B6%84%ED%95%98%EB%9D%BC"><span class="nav-number">1.3.</span> <span class="nav-text">의미 있게 구분하라</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EB%B0%9C%EC%9D%8C%ED%95%98%EA%B8%B0-%EC%89%AC%EC%9A%B4-%EC%9D%B4%EB%A6%84%EC%9D%84-%EC%82%AC%EC%9A%A9%ED%95%98%EB%9D%BC"><span class="nav-number">1.4.</span> <span class="nav-text">발음하기 쉬운 이름을 사용하라</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EA%B2%80%EC%83%89%ED%95%98%EA%B8%B0-%EC%89%AC%EC%9A%B4-%EC%9D%B4%EB%A6%84%EC%9D%84-%EC%82%AC%EC%9A%A9%ED%95%98%EB%9D%BC"><span class="nav-number">1.5.</span> <span class="nav-text">검색하기 쉬운 이름을 사용하라</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EC%9D%B8%EC%BD%94%EB%94%A9%EC%9D%84-%ED%94%BC%ED%95%98%EB%9D%BC"><span class="nav-number">1.6.</span> <span class="nav-text">인코딩을 피하라</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%ED%97%9D%EA%B0%80%EB%A6%AC%EC%8B%9D-%ED%91%9C%EA%B8%B0%EB%B2%95"><span class="nav-number">1.6.1.</span> <span class="nav-text">헝가리식 표기법</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%EB%A9%A4%EB%B2%84-%EB%B3%80%EC%88%98-%EC%A0%91%EB%91%90%EC%96%B4"><span class="nav-number">1.6.2.</span> <span class="nav-text">멤버 변수 접두어</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%EC%9D%B8%ED%84%B0%ED%8E%98%EC%9D%B4%EC%8A%A4-%ED%81%B4%EB%9E%98%EC%8A%A4%EC%99%80-%EA%B5%AC%ED%98%84-%ED%81%B4%EB%9E%98%EC%8A%A4"><span class="nav-number">1.6.3.</span> <span class="nav-text">인터페이스 클래스와 구현 클래스</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EC%9E%90%EC%8B%A0%EC%9D%98-%EA%B8%B0%EC%96%B5%EB%A0%A5%EC%9D%84-%EC%9E%90%EB%9E%91%ED%95%98%EC%A7%80-%EB%A7%88%EB%9D%BC"><span class="nav-number">1.7.</span> <span class="nav-text">자신의 기억력을 자랑하지 마라.</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%ED%81%B4%EB%9E%98%EC%8A%A4-%EC%9D%B4%EB%A6%84"><span class="nav-number">1.8.</span> <span class="nav-text">클래스 이름</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EB%A9%94%EC%84%9C%EB%93%9C-%EC%9D%B4%EB%A6%84"><span class="nav-number">1.9.</span> <span class="nav-text">메서드 이름</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EA%B8%B0%EB%B0%9C%ED%95%9C-%EC%9D%B4%EB%A6%84%EC%9D%80-%ED%94%BC%ED%95%98%EB%9D%BC"><span class="nav-number">1.10.</span> <span class="nav-text">기발한 이름은 피하라</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%ED%95%9C-%EA%B0%9C%EB%85%90%EC%97%90-%ED%95%9C-%EB%8B%A8%EC%96%B4%EB%A5%BC-%EC%82%AC%EC%9A%A9%ED%95%98%EB%9D%BC"><span class="nav-number">1.11.</span> <span class="nav-text">한 개념에 한 단어를 사용하라</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EB%A7%90%EC%9E%A5%EB%82%9C%EC%9D%84-%ED%95%98%EC%A7%80-%EB%A7%88%EB%9D%BC"><span class="nav-number">1.12.</span> <span class="nav-text">말장난을 하지 마라</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%ED%95%B4%EB%B2%95-%EC%98%81%EC%97%AD%EC%97%90%EC%84%9C-%EA%B0%80%EC%A0%B8%EC%98%A8-%EC%9D%B4%EB%A6%84%EC%9D%84-%EC%82%AC%EC%9A%A9%ED%95%98%EB%9D%BC"><span class="nav-number">1.13.</span> <span class="nav-text">해법 영역에서 가져온 이름을 사용하라</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EB%AC%B8%EC%A0%9C-%EC%98%81%EC%97%AD%EC%97%90%EC%84%9C-%EA%B0%80%EC%A0%B8%EC%98%A8-%EC%9D%B4%EB%A6%84%EC%9D%84-%EC%82%AC%EC%9A%A9%ED%95%98%EB%9D%BC"><span class="nav-number">1.14.</span> <span class="nav-text">문제 영역에서 가져온 이름을 사용하라</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EC%9D%98%EB%AF%B8-%EC%9E%88%EB%8A%94-%EB%A7%A5%EB%9D%BD%EC%9D%84-%EC%B6%94%EA%B0%80%ED%95%98%EB%9D%BC"><span class="nav-number">1.15.</span> <span class="nav-text">의미 있는 맥락을 추가하라</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EB%B6%88%ED%95%84%EC%9A%94%ED%95%9C-%EB%A7%A5%EB%9D%BD%EC%9D%84-%EC%97%86%EC%95%A0%EB%9D%BC"><span class="nav-number">1.16.</span> <span class="nav-text">불필요한 맥락을 없애라</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-overview">
+            <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">JayoonKoo</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">144</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">18</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/JayoonKoo" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;JayoonKoo" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:rnwkdbs12@gmail.com" title="E-Mail → mailto:rnwkdbs12@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/JayoonKoo" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2022/02/01/cleanCode/220201-220201%20%EC%9D%98%EB%AF%B8%20%EC%9E%88%EB%8A%94%20%EC%9D%B4%EB%A6%84/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JayoonKoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="티끌모아 태산">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          220201 의미 있는 이름
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2022-02-01 16:07:55 / Modified: 16:08:03" itemprop="dateCreated datePublished" datetime="2022-02-01T16:07:55+09:00">2022-02-01</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/cleanCode/" itemprop="url" rel="index"><span itemprop="name">cleanCode</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="2-의미-있는-이름"><a href="#2-의미-있는-이름" class="headerlink" title="2. 의미 있는 이름"></a>2. 의미 있는 이름</h1><p>클린 코드를 읽고 공부한 내용을 타입스크립트로 정리해본 내용입니다. 개인적으로 공부한 내용이라 틀린점도 있을 수 있습니다. </p>
+<h2 id="의도를-분명히-밝혀라"><a href="#의도를-분명히-밝혀라" class="headerlink" title="의도를 분명히 밝혀라"></a>의도를 분명히 밝혀라</h2><p>변수나 함수 그리고 클래스의 이름은 다음과 같은 굵직한 질문에 모두 답해야 한다. 존재 이유는? 수행 기능은? 사용 방법은? 따로 주석이 필요하다면 의도를 분명히 드러내지 못햇다는 말이다. </p>
+<p><code>const d: number</code> ❌</p>
+<p><code>const daysSinceCreation: number</code> ✅</p>
+<p>코드의 함축되어 있는 정보를 독자로 하여금 이해할 수 있도록 명시적으로 이름을 지어야 한다. </p>
+<p>좋지 않은 예시 : ❌</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">function getThem() &#123;</span><br><span class="line">	const list1: number[] = []</span><br><span class="line">	for (let x of theList) &#123;</span><br><span class="line">		if (x[0] === 4) &#123;</span><br><span class="line">			list1.push(x)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	return list1</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>드러나지 않은 함축적인 정보는 다음과 같다.</p>
+<ol>
+<li>theList에 무엇이 들어있는가?</li>
+<li>theList 에서 0 번째 값이 어째서 중요한가?</li>
+<li>값 4는 무슨 의미인가?</li>
+<li>함수가 반환하는 리스트 list1을 어떻게 사용하는가? </li>
+</ol>
+<p>만약 해당 함수가 지뢰찾기에서 깃발이 꽂힌 상태에 cell를 반환하는 함수라고 생각한다면 함축적인 의미를 이름을 통해서 명시적으로 드러낼 수 있다. </p>
+<p>좋은 예시 : ✅</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">export interface Cell &#123;</span><br><span class="line">  isFlagged: () =&gt; boolean;</span><br><span class="line">  data: number[];</span><br><span class="line">&#125;</span><br><span class="line">const FLAGGED_STATE = 4;</span><br><span class="line">class CellImpl implements Cell &#123;</span><br><span class="line">  data: number[] = [0];</span><br><span class="line">  constructor(flaggedState: number) &#123;</span><br><span class="line">    this.data[0] = flaggedState;</span><br><span class="line">  &#125;</span><br><span class="line">  isFlagged = () =&gt; &#123;</span><br><span class="line">    return this.data[0] === FLAGGED_STATE;</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const gameBoard: Cell[] = [new CellImpl(FLAGGED_STATE)];</span><br><span class="line">function getFlaggedCells() &#123;</span><br><span class="line">  const flaggedCells: Cell[] = [];</span><br><span class="line">  for (let cell of gameBoard) &#123;</span><br><span class="line">    if (cell.isFlagged()) &#123;</span><br><span class="line">      flaggedCells.push(cell);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  return flaggedCells;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>theLIst 가 gameBoard 로 무엇이 들어가 있느지 알수 있게 되었다.</li>
+<li>theList 에 0번째 값은 칸 상태, 값 4는 깃발이 꽂힌 상태라는 의미인데 <code>cell.isFlagged()</code> 로 명확하게 표현할 수 있게 되었다.</li>
+<li>함수가 반환하는 리스트 list1 은 깃발이 꽂힌 상태에 cell 이라는 flaggedCells 이름으로 명확해진다.</li>
+</ol>
+<h2 id="그릇된-정보를-피하라"><a href="#그릇된-정보를-피하라" class="headerlink" title="그릇된 정보를 피하라"></a>그릇된 정보를 피하라</h2><p>이름으로 잘못된 정보를 주어서는 안된다. </p>
+<ol>
+<li>널리쓰이는 의미가 있는 단어를 다른 의미로 사용하지 말것</li>
+<li>특수한 의미에 단어를 의미에 맞게 사용할것 (List 를 사용할 경우 List인 경우에만 사용할것 아니라면 accountGroup 이나 accounts 가 낫다)</li>
+<li>서로 흡사한 이름을 사용하지 말것 </li>
+<li>유사한 개념은 유사한 표기법을 사용할것 (일관성 유지)</li>
+</ol>
+<h2 id="의미-있게-구분하라"><a href="#의미-있게-구분하라" class="headerlink" title="의미 있게 구분하라"></a>의미 있게 구분하라</h2><p>이름이 달라야 한다면 의미도 달라져야 한다. (a1, a2) 와 같은 구분에 변수는 아무런 의미도 전달하지 못한다.</p>
+<p>불용어를 남용 하지 말아야 한다. ProudctInfo 나 ProductData 에서 Info 나 Data 는 명확한 구분이 되지 못하고 영어에서 a, an, the와 같이 사용될 뿐이다. 접두어를 사용하지 말란 의미가 아니라 접두어를 사용하여 구분하는 의미가 있어야 한다는 것이다. </p>
+<p>NameString 과 Name 은 차이가 없다. Customer 와 CustomerObject 도 마찬가지이다. </p>
+<p>읽는 사람이 차이를 알도록 이름을 지어야 한다. </p>
+<h2 id="발음하기-쉬운-이름을-사용하라"><a href="#발음하기-쉬운-이름을-사용하라" class="headerlink" title="발음하기 쉬운 이름을 사용하라"></a>발음하기 쉬운 이름을 사용하라</h2><p>발음하기 쉬운 단어를 사용해야 지적인 대화가 가능해집니다.</p>
+<p>좋지 않은 예시 : ❌</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">class DtaRcrd102 &#123;</span><br><span class="line">  private genymdhms: Date;</span><br><span class="line">  private modymdhms: Date;</span><br><span class="line">  private readonly pszqint = &#x27;102&#x27;;</span><br><span class="line">  // ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>발음하기 쉬운 단어를 사용한 좋은 예시 : ✅</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">class Customer &#123;</span><br><span class="line">  private generationTimestamp: Date;</span><br><span class="line">  private modificationTimestamp: Date;</span><br><span class="line">  private readonly recordId = &#x27;102&#x27;;</span><br><span class="line">  // ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="검색하기-쉬운-이름을-사용하라"><a href="#검색하기-쉬운-이름을-사용하라" class="headerlink" title="검색하기 쉬운 이름을 사용하라"></a>검색하기 쉬운 이름을 사용하라</h2><p>긴 이름이 짧은 이름보다 좋다. 검색하기 쉬운 이름이 상수보다 좋다. 이름 길이는 범위 크기에 비례해야 한다. </p>
+<p>좋지 않은 예시 : ❌</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">let s = 0;</span><br><span class="line">const t: number[] = [];</span><br><span class="line">for (let j = 0; j &lt; 34; j++) &#123;</span><br><span class="line">  s += (t[j] * 4) / 5;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>좋은 예시 : ✅</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">const NUMBER_OF_TASKS = 34;</span><br><span class="line">const realDaysPerIdealDay = 4;</span><br><span class="line">const WORK_DAYS_PER_WEEK = 5;</span><br><span class="line">let sum = 0;</span><br><span class="line">const taskEstimate: number[] = [];</span><br><span class="line">for (let j = 0; j &lt; NUMBER_OF_TASKS; j++) &#123;</span><br><span class="line">  const realTaskDays = taskEstimate[j] * realDaysPerIdealDay;</span><br><span class="line">  const realTaskWeeks = realTaskDays / WORK_DAYS_PER_WEEK;</span><br><span class="line">  sum += realTaskWeeks;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>WORK_DAYS_PER_WEEK</code> 을 단순히 5라고 하였을때 문제가 생겨 변경해야 한다면 5로 검색하기는 쉽지 않을 것이다. 그러나 <code>WORK_DAYS_PER_WEEK</code> 으로 명시했을 경우 쉽게 검색할 수 있다. </p>
+<h2 id="인코딩을-피하라"><a href="#인코딩을-피하라" class="headerlink" title="인코딩을 피하라"></a>인코딩을 피하라</h2><p>인코딩한 이름은 발음하기 어려우며 오타가 생기기도 쉽다. </p>
+<h3 id="헝가리식-표기법"><a href="#헝가리식-표기법" class="headerlink" title="헝가리식 표기법"></a>헝가리식 표기법</h3><p>과거에는 타입을 컴파일러가 검사하지 못했기 때문에 접두어에 짧은 문자를 더해서 타입을 표현하곤 했다. 요즘에 언어들은 컴파일러가 타입을 강제하고 기억하고 있기 때문에 이렇게 하는것이 오히려 방해가 되기도 한다. 또한 타입에 변환을 어렵게 한다. phoneNumber 를 string으로 타입을 바꾸어도 여전히 이름은 phoneNumber 이기 때문에 타입을 오해하기도 쉽다. </p>
+<h3 id="멤버-변수-접두어"><a href="#멤버-변수-접두어" class="headerlink" title="멤버 변수 접두어"></a>멤버 변수 접두어</h3><p>멤버 변수에 <code>m_</code> 와 같은 접두어를 붙힐 필요도 없다. </p>
+<h3 id="인터페이스-클래스와-구현-클래스"><a href="#인터페이스-클래스와-구현-클래스" class="headerlink" title="인터페이스 클래스와 구현 클래스"></a>인터페이스 클래스와 구현 클래스</h3><p>인터페이스와 구현 클래스를 구분하기 위해 인코딩이 필요하기도 하다. 과거에는 인터페이스에 <code>IShapeFactory</code> , 구현 클래스에 <code>ShapeFactory</code> 와 같은 방식으로 <code>I</code> 를 붙히기도 했는데 과도한 정보를 주는 느낌도 있어서 인터페이스를 <code>ShapeFactory</code> 와 같이 쓰고 구현체를 <code>ShapeFactoryImpl</code> 과 같이 사용하는것을 추천한다.</p>
+<h2 id="자신의-기억력을-자랑하지-마라"><a href="#자신의-기억력을-자랑하지-마라" class="headerlink" title="자신의 기억력을 자랑하지 마라."></a>자신의 기억력을 자랑하지 마라.</h2><p>변수 이름을 자신이 아는 이름으로 변환해야 한다면 그 변수 이름은 바람직하지 못하다. </p>
+<p>문자 하나만 사용하는것도 루프와 같이 짧은 범위 내에서 사용하는것을 제외하면 바람직하지 못하다. 나중에 무슨 의미였는지 기억하기 어렵다. </p>
+<p>기억하기 쉬운 명로함이 최고임을 기억해라 </p>
+<h2 id="클래스-이름"><a href="#클래스-이름" class="headerlink" title="클래스 이름"></a>클래스 이름</h2><p>클래스 이름이나 객체 이름은 명사나 명사구가 적절하다. Customer, AddressParser 은 좋은 예이다. Manager, Precessor, Data, Info 등과 같은 단어는 피하고 동사는 사용하지 않는다.</p>
+<h2 id="메서드-이름"><a href="#메서드-이름" class="headerlink" title="메서드 이름"></a>메서드 이름</h2><p>메서드 이름은 동사나 동사구가 적합하다. postPayment, deletePage, save 등은 적합하다. </p>
+<h2 id="기발한-이름은-피하라"><a href="#기발한-이름은-피하라" class="headerlink" title="기발한 이름은 피하라"></a>기발한 이름은 피하라</h2><p>재미난 이름보다는 명로한 이름을 선택하라</p>
+<h2 id="한-개념에-한-단어를-사용하라"><a href="#한-개념에-한-단어를-사용하라" class="headerlink" title="한 개념에 한 단어를 사용하라"></a>한 개념에 한 단어를 사용하라</h2><p>추상적인 개념 하나에 단어 하나를 선택해 이를 고수한다. 예를 들어 똑같은 메서드를 클래스마다 fetch, retrieve, get 으로 제각각 부르면 혼란스럽다. 메서드 이름은 독자적이고 일관적이어야 한다. </p>
+<p>이름이 다르면 독자는 당연히 클래스도 다르고 타입도 다르다고 생각한다. 예를들어 DeviceManager와 ProtocolController이 근본적으로 하는일이 똑같다면 하나로 통일시켜야 한다. </p>
+<h2 id="말장난을-하지-마라"><a href="#말장난을-하지-마라" class="headerlink" title="말장난을 하지 마라"></a>말장난을 하지 마라</h2><p>한 단어를 두가지 목적으로 사용하지 말아야 한다. </p>
+<p>맥락이 같다면 중복하여 사용해도 되지만 맥락이 다르다면 다른 단어를 사용해야 한다. 예를들어 클래스에 add 라는 메서드를 추가한다고 생각해 보자 어떤 매개변수 두개를 받아서 두개를 조합해 새로운 값을 반환하는 맥락이라면 여러 클래스에서 add 라는 이름에 메서드를 동일하게 사용해도 된다. 그런데 어떤 클래스에서는 어떤 값을 받아서 리스트에 더하는 메서드를 추가한다고 생각해보자. 이럴 경우 add 라는 단어를 사용하는것이 적합할까? 이럴 경우는 앞에서와 맥락이 다르므로 다른 메서드 이름을 사용해야 한다. 이 경우 insert 나 append 가 적합해 보인다. </p>
+<h2 id="해법-영역에서-가져온-이름을-사용하라"><a href="#해법-영역에서-가져온-이름을-사용하라" class="headerlink" title="해법 영역에서 가져온 이름을 사용하라"></a>해법 영역에서 가져온 이름을 사용하라</h2><p>코드를 읽는 사람도 프로그래머 임을 기억해라. 프로그래머에게 익숙학 기술 개념은 아주 많으며 해당 개념 용어를 사용하는 것은 이해 관점에서도 아주 바람직하다. VISITOR 패턴에 친숙한 프로그래머는 AccountVisitor 라는 이름을 금방 이해할 것이다. </p>
+<h2 id="문제-영역에서-가져온-이름을-사용하라"><a href="#문제-영역에서-가져온-이름을-사용하라" class="headerlink" title="문제 영역에서 가져온 이름을 사용하라"></a>문제 영역에서 가져온 이름을 사용하라</h2><p>적절한 프로그래머 용어가 없다면 문제 영역에서 이름을 가져온다. </p>
+<h2 id="의미-있는-맥락을-추가하라"><a href="#의미-있는-맥락을-추가하라" class="headerlink" title="의미 있는 맥락을 추가하라"></a>의미 있는 맥락을 추가하라</h2><p>클래스, 함수, 이름 공간에 넣어 맥락을 부여한다. 모든 방법이 실패하면 마지막 수단으로 접두어를 붙인다. 예를 들어서 firstName, lastName, street, state, zipcode .. 와 같은 변수를 사용한다면 주소라는 사실을 금방 알아챈다. 하지만 state 라는 변수 하나만 매개변수로 사용한다면 주소에 일부분이라고 생각할 수 있을까? 좀 더 큰 구조(주소) 에 속한다는 것을 명시하기 위해서 addr 이라는 접두어를 사용할 수 있다. addrFirstName, addrState…</p>
+<p>또는, 맥락에 맞는 클래스를 생성하는것이 더 도움이 된다. 예를 들어 밑에 나오는 코드에서 num, verb, pluraModifier 는 통계 추측에 사용되는 변수이다. 단순히 사용되기만 한다면 어디에 사용되는 변수인지 코드를 다 읽지 않고서는 예측하기 힘들다. 이때 GuessStaticMessage 라는 클래스를 만들어 해당 변수를 멤버변수로 포함시킨다면 맥락을 더해서 어디에 사용되는 변수인지 명확히 표현할 수 있다. </p>
+<p>좋지 않은 예시 : ❌</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">function printGuessStatistics(candidate: string, count: number) &#123;</span><br><span class="line">  let num: string;</span><br><span class="line">  let verb: string;</span><br><span class="line">  let pluralModifier: string;</span><br><span class="line"></span><br><span class="line">  if (count === 0) &#123;</span><br><span class="line">    num = &#x27;no&#x27;;</span><br><span class="line">    verb = &#x27;are&#x27;;</span><br><span class="line">    pluralModifier = &#x27;s&#x27;;</span><br><span class="line">  &#125; else if (count === 1) &#123;</span><br><span class="line">    num = &#x27;1&#x27;;</span><br><span class="line">    verb = &#x27;is&#x27;;</span><br><span class="line">    pluralModifier = &#x27;&#x27;;</span><br><span class="line">  &#125; else &#123;</span><br><span class="line">    num = String(count);</span><br><span class="line">    verb = &#x27;are&#x27;;</span><br><span class="line">    pluralModifier = &#x27;s&#x27;;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  const guessMessage = `There $&#123;verb&#125; $&#123;num&#125; $&#123;candidate&#125;$&#123;pluralModifier&#125;`;</span><br><span class="line">  console.log(guessMessage);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>좋은 예시 : ✅</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">class GuessStatisticsMessage &#123;</span><br><span class="line">  private num: string = &#x27;&#x27;;</span><br><span class="line">  private verb: string = &#x27;&#x27;;</span><br><span class="line">  private pluralModifier: string = &#x27;&#x27;;</span><br><span class="line"></span><br><span class="line">  make(candidate: string, count: number) &#123;</span><br><span class="line">    this.createPluralDependentMessageParts(count);</span><br><span class="line">    return `There $&#123;this.verb&#125; $&#123;this.num&#125; $&#123;candidate&#125;$&#123;this.pluralModifier&#125;`;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  private createPluralDependentMessageParts(count: number) &#123;</span><br><span class="line">    if (count === 0) &#123;</span><br><span class="line">      this.thereAreNoLetters();</span><br><span class="line">    &#125; else if (count === 1) &#123;</span><br><span class="line">      this.thereIsOneLetter();</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">      this.thereAreManyLetters(count);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  private thereAreManyLetters(count: number) &#123;</span><br><span class="line">    this.num = String(count);</span><br><span class="line">    this.verb = &#x27;are&#x27;;</span><br><span class="line">    this.pluralModifier = &#x27;s&#x27;;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  private thereIsOneLetter() &#123;</span><br><span class="line">    this.num = &#x27;1&#x27;;</span><br><span class="line">    this.verb = &#x27;is&#x27;;</span><br><span class="line">    this.pluralModifier = &#x27;&#x27;;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  private thereAreNoLetters() &#123;</span><br><span class="line">    this.num = &#x27;no&#x27;;</span><br><span class="line">    this.verb = &#x27;are&#x27;;</span><br><span class="line">    this.pluralModifier = &#x27;s&#x27;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>num, verb, pluralModifier 가 GuessStatisticMessage 클래스 안에 있으므로 맥락상 통계 메세지를 만드는데 사용되는 멤버 변수란 것을 알게 된다. </p>
+<h2 id="불필요한-맥락을-없애라"><a href="#불필요한-맥락을-없애라" class="headerlink" title="불필요한 맥락을 없애라"></a>불필요한 맥락을 없애라</h2><p>불필요한 맥락은 없애야 한다. 예를들어 고급 휘발유 충전소 라는 애플리케이션을 짠다고 했을때, 모든 클래스에 GSD 접두어를 붙히는 것은 바람직하지 못하다. </p>
+<p>일반적으로 의미가 분명하다면 짧은 이름이 긴 이름보다 좋다. accountAddress 와 customerAddress 는 Address 클래스 인스턴스로는 적합하나 클래스 이름으로는 부적합하다.</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/cleanCode/" rel="tag"># cleanCode</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/01/25/DevOps/Docker/220125-Docker,%20TravisCi/" rel="prev" title="Docker, TravisCi">
+                  <i class="fa fa-chevron-left"></i> Docker, TravisCi
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">JayoonKoo</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

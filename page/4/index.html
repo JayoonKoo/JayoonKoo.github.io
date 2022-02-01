@@ -83,9 +83,9 @@
   <ul class="main-menu menu">
         <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li>
         <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
-        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">17</span></a></li>
-        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">13</span></a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">143</span></a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">18</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">14</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">144</span></a></li>
   </ul>
 </nav>
 
@@ -129,18 +129,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">143</span>
+          <span class="site-state-item-count">144</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-count">14</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-count">18</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -180,6 +180,105 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/12/17/DevOps/Docker/211216-Docker%20tutorial(2)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JayoonKoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="티끌모아 태산">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/12/17/DevOps/Docker/211216-Docker%20tutorial(2)/" class="post-title-link" itemprop="url">Docker tutorial(2)</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2021-12-17 13:20:02 / Modified: 13:20:22" itemprop="dateCreated datePublished" datetime="2021-12-17T13:20:02+09:00">2021-12-17</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/DevOps/" itemprop="url" rel="index"><span itemprop="name">DevOps</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="Sample-application"><a href="#Sample-application" class="headerlink" title="Sample application"></a>Sample application</h1><h2 id="Build-the-app’s-Container-image"><a href="#Build-the-app’s-Container-image" class="headerlink" title="Build the app’s Container image"></a>Build the app’s Container image</h2><p>Dockerfile은 컨테이미지를 만드는 구조의 스크립트이다. Dockerfile을 통해서 이미지를 만들어 본다. </p>
+<ol>
+<li>create file named Dockerfile in the same folder as the file <code>package.json</code> with the follwing contents.</li>
+</ol>
+<figure class="highlight docker"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># syntax=docker/dockerfile:1</span></span><br><span class="line"><span class="keyword">FROM</span> node:<span class="number">12</span>-alpine</span><br><span class="line"><span class="keyword">RUN</span><span class="bash"> apk add --no-cache python3 g++ make</span></span><br><span class="line"><span class="keyword">WORKDIR</span><span class="bash"> /app</span></span><br><span class="line"><span class="keyword">COPY</span><span class="bash"> . .</span></span><br><span class="line"><span class="keyword">RUN</span><span class="bash"> yarn install --production</span></span><br><span class="line"><span class="keyword">CMD</span><span class="bash"> [<span class="string">&quot;node&quot;</span>, <span class="string">&quot;src/index.js&quot;</span>]</span></span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>Dockerfile이 있는 폴더로 이동한 후에 build 를 시작</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker build -t getting-started .</span><br></pre></td></tr></table></figure>
+
+<p>이 커멘드는 Dockerfile 을 사용해서 컨테이너 이미지를 만든다.</p>
+<h2 id="Start-an-app-container"><a href="#Start-an-app-container" class="headerlink" title="Start an app container"></a>Start an app container</h2><ol>
+<li><code>docker run</code> 을 통해 이미지를 실행시킨다. </li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker run -dp 3000:3000 getting-started</span><br></pre></td></tr></table></figure>
+
+<p>다시한번 설명하자면 : </p>
+<ul>
+<li>-d : background 실행</li>
+<li>-p : 포트 매핑 host 3000 번 을 docker image 의 3000번 포트로</li>
+</ul>
+<ol>
+<li><a target="_blank" rel="noopener" href="http://localhost:3000/">localhost:3000</a> 으로 접속하면 내용을 확인할 수 있다.</li>
+</ol>
+<p>Docker Dashboard 에서 continaer 탭을 살펴보면 여러가지 컨테이너가 실행중인 것을 불수 있다. 다음에는 컨테이너를 관리 하는 방법을 살펴본다.</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1074,97 +1173,6 @@
 <li>countByRange</li>
 <li>파라메트릭 서치 → 이진탐색이 아닌거 같지만 이진탐색인걸 찾아야 함. (예 혹은 아니오로 )</li>
 </ol>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/12/09/TIL/211208/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JayoonKoo">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="티끌모아 태산">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/12/09/TIL/211208/" class="post-title-link" itemprop="url">211208</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2021-12-09 16:22:05 / Modified: 16:22:25" itemprop="dateCreated datePublished" datetime="2021-12-09T16:22:05+09:00">2021-12-09</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/TIL/" itemprop="url" rel="index"><span itemprop="name">TIL</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="211208"><a href="#211208" class="headerlink" title="211208"></a>211208</h1><h2 id="백엔드"><a href="#백엔드" class="headerlink" title="백엔드"></a>백엔드</h2><ul>
-<li>404 api 없음</li>
-<li>500 서버 에러</li>
-<li>⇒ 의미가 충분한 status code가 있다면 굳이 json을 보내주지 않아도 괜찮다.</li>
-<li>router를 나눌것.</li>
-</ul>
-<h2 id="프론트엔드"><a href="#프론트엔드" class="headerlink" title="프론트엔드"></a>프론트엔드</h2><ul>
-<li>input에서 제어 컴포넌트로 만들면 계속 해서 함수형 컴포넌트가 호출 되어서 컴포넌트 안에 debounce 가 제대로 작동하지 않는 이슈가 있었음.</li>
-<li>추천 검색어를 선택하면 input 에 value 가 바뀌어야 하는데 state로 관리 하지 못하면 문제가 생김.. 그렇다고 제어 컴포넌트로 만들면 위에 같은 문제..</li>
-<li>예를 들어 asdf 입력하면 asdf * 3번에 요청이 서버로 가는 이슈.. 원래는 asdf → asdf 로 한번에 요청하는 방식 → dom 을 조작해보자 생각함.</li>
-<li>useRef 로 dom 을 다룰수 있을줄 알았는데, 그냥 ref 로 넘겨주는것으로 dom처럼 사용할 수는 없음..</li>
-<li>useRef.current 를 사용해서 documnet.querySelector() 로 componentDidMound 시점에 넘겨주면 실제 Dom 을 조작하듯이 사용할수 있음.</li>
-<li>근데 생각해보니 useEffect 로 input에 변화로 debounce 동작하게 하면 문제 될거 없어보임.. 이렇게 삽질을 합니다</li>
-</ul>
-<h2 id="리액트-디자인-패턴"><a href="#리액트-디자인-패턴" class="headerlink" title="리액트 디자인 패턴"></a>리액트 디자인 패턴</h2><ul>
-<li>디자인 패턴이 필요한 이유 ? 모두가 사용하기 쉬운 API를 재공하고, 재 사용하 위해서, 확장성을 위해서 → 모두가 알고 있는 약속을 통해서</li>
-<li>검증된 패턴을 통해서 낮은 결합도와 재사용성 높은 컴포넌트를 만들 수 있음.</li>
-</ul>
 
       
     </div>

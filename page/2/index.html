@@ -83,9 +83,9 @@
   <ul class="main-menu menu">
         <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li>
         <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
-        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">17</span></a></li>
-        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">13</span></a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">143</span></a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">18</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">14</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">144</span></a></li>
   </ul>
 </nav>
 
@@ -129,18 +129,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">143</span>
+          <span class="site-state-item-count">144</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-count">14</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-count">18</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -180,6 +180,112 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2022/01/13/BackEnd/220112-Authentication/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JayoonKoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="티끌모아 태산">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/01/13/BackEnd/220112-Authentication/" class="post-title-link" itemprop="url">Authentication</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2022-01-13 10:42:40 / Modified: 10:46:37" itemprop="dateCreated datePublished" datetime="2022-01-13T10:42:40+09:00">2022-01-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/BackEnd/" itemprop="url" rel="index"><span itemprop="name">BackEnd</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="백엔드-Authentication"><a href="#백엔드-Authentication" class="headerlink" title="백엔드-Authentication"></a>백엔드-Authentication</h2><ul>
+<li>인증이란? : you are who you say you are, 다양한 방법으로 인증 가능하다 통상적으로 password, id 로<ul>
+<li>먼저 회원가입을 진행해서 서버에 id, passwrod 를 저장한다.</li>
+<li>클라이언트는 로그인 할때 회원가입한  id, password를 서버에 전송한다.</li>
+<li>어떻게 로그인 상태를 유지할 수 있을까?</li>
+</ul>
+</li>
+<li>세션과 쿠기 (서버에서 사용할 수 있는 전통적인 옵션- 어떻게 로그인 상태를 유지할지에 대한 방법)<ol>
+<li>세션 <ul>
+<li>서버에서 확인후 세션을 만든다 (userId, sessiontId, expiration) - Session DB에 저장 or 파일시스템이나 메모리도 될 수 있음</li>
+<li>쿠키에 HTTP Only로 sessiontId 정보를 전달함.</li>
+<li>다음 요청때마다 쿠키 정보를 전달해줌</li>
+<li>장점 : 브라우저에 전달만 하면 되서 간단하고, sessionId 만 전달하면되서 사용자의 정보를 전달하지 않아도 된다. HTTP Only를 사용하면 스크립트로 못읽기 때문에 보안상의 이점도 있다.</li>
+<li>단점 : Stateful 하기 때문에 다양한 서버들이 SettionDb를 읽어야 하고 많은 요청이 들어오게 된다. 내부적으로 네트워킹이 많아짐. 성능 하락</li>
+</ul>
+</li>
+<li>JWT (Json Web Token)<ul>
+<li>다음과 같은 정보를 JSON으로 만들고 토큰화해서 보낸다. header, payload, signature, 모든 정보는 인코딩해서 보내고 서버에서 secrete으로 사용하는 키도 인코딩해서 signature에 포함해서 보낸다.</li>
+<li>로그인 하면, 로그인 정보 + 만료 시간 등등 합쳐서 JWT를 만듦.</li>
+<li>클라이언트는 Header를 이용하여 모든 request마다 JWT를 포함해서 전달해 줌.</li>
+<li>서버는 JWT를 검증한 후에 데이터를 반환함.</li>
+<li>장점 : 서버에 State가 없다. 서버를 확장하거나 분산하기에 용이하다.</li>
+<li>단점 : JWT 자체가 단점이 될 수 있다. → 계속 JWT를 주고 받아야 한다. 만약 영원히 만료되지 않은 JWT를 헤커가 탈취한다면.. 사용할때 보안에 신경써야 한다.</li>
+</ul>
+</li>
+</ol>
+</li>
+<li>bcrypt 란?  : 사용자 정보를 그대로 저장하는 것이 아니라 암호화 해서 저장하기 위해 사용함. → 암호화만 가능한데 (암호화 한것을 비교하는 것), salt 가 없다면 경우의 수로 암호화 해 보면서 유추할 수 있어서 salt를 포함하여 경우의 수를 늘림. 10~12 정도로 설정. 길어지면 cpu 부하 심해짐..</li>
+<li>JWT, 32 시크릿 키로 권고 됨. 한번 발행된 토근은 변경되면 안된다. → 만약 한버이라도 변경 한다면 최종적으로 붙은 signature도 변경되어서 verify시 오류 발생하고 누군가 변경한 토큰인지 확인 가능하다.<ul>
+<li>만료될 수 있도록 만들어야 한다. → option으로 전달함. {expiresIn: 2} 이런식으로 → 2초 후에 만료</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1141,116 +1247,6 @@
 
 <h2 id="Use-the-query-in-a-component"><a href="#Use-the-query-in-a-component" class="headerlink" title="Use the query in a component"></a>Use the query in a component</h2><p><code>useGetPokemonByNameQuery</code> 를 사용하여 데이터의 상태와 데이터를 가져온다. <code>isLoading</code> , <code>isFetching</code> , <code>isSuccess</code> , <code>isError</code> 와 같은 데이터 상태에 bool 도 제공한다.</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">import * as React from &#x27;react&#x27;</span><br><span class="line">import &#123; useGetPokemonByNameQuery &#125; from &#x27;./services/pokemon&#x27;</span><br><span class="line"></span><br><span class="line">export default function App() &#123;</span><br><span class="line">  // Using a query hook automatically fetches data and returns query values</span><br><span class="line">  const &#123; data, error, isLoading &#125; = useGetPokemonByNameQuery(&#x27;bulbasaur&#x27;)</span><br><span class="line">  // Individual hooks are also accessible under the generated endpoints:</span><br><span class="line">  // const &#123; data, error, isLoading &#125; = pokemonApi.endpoints.getPokemonByName.useQuery(&#x27;bulbasaur&#x27;)</span><br><span class="line"></span><br><span class="line">  return (</span><br><span class="line">    &lt;div className=&quot;App&quot;&gt;</span><br><span class="line">      &#123;error ? (</span><br><span class="line">        &lt;&gt;Oh no, there was an error&lt;/&gt;</span><br><span class="line">      ) : isLoading ? (</span><br><span class="line">        &lt;&gt;Loading...&lt;/&gt;</span><br><span class="line">      ) : data ? (</span><br><span class="line">        &lt;&gt;</span><br><span class="line">          &lt;h3&gt;&#123;data.species.name&#125;&lt;/h3&gt;</span><br><span class="line">          &lt;img src=&#123;data.sprites.front_shiny&#125; alt=&#123;data.species.name&#125; /&gt;</span><br><span class="line">        &lt;/&gt;</span><br><span class="line">      ) : null&#125;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  )</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/12/31/TIL/unca/211230-211230%20Redux%20%EB%B3%B4%EC%95%88/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JayoonKoo">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="티끌모아 태산">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/12/31/TIL/unca/211230-211230%20Redux%20%EB%B3%B4%EC%95%88/" class="post-title-link" itemprop="url">211230 Redux 보안</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2021-12-31 15:17:11 / Modified: 15:19:35" itemprop="dateCreated datePublished" datetime="2021-12-31T15:17:11+09:00">2021-12-31</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/TIL/" itemprop="url" rel="index"><span itemprop="name">TIL</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="Redux"><a href="#Redux" class="headerlink" title="Redux"></a>Redux</h2><h3 id="Rules-of-Reducers"><a href="#Rules-of-Reducers" class="headerlink" title="Rules of Reducers"></a>Rules of Reducers</h3><ul>
-<li>state와 action을 통해서만 새로운 state가 계산되어야 함</li>
-<li>state는 불변성을 지키면서 업데이트해야함.</li>
-<li>순수 함수 여야 함. random이나, asycLogic 등 side effects를 발생시키지 말아야 함.</li>
-</ul>
-<p>이렇게 해야하는 이유? </p>
-<ul>
-<li>state 와 action만으로 새로운 상태가 나오기 때문에 예측하기 쉽고, test 하기 쉽다.</li>
-<li>그렇지 않다면 어떻게 동작하는지 어떤 결과를 리턴하는지 알 수 없게 된다.</li>
-<li>Redux가 올바르게 동작하지 못하게 하여서 bug를 유발한다.</li>
-</ul>
-<p>Redux Toolkit에 <code>createSlice</code> 는 내부적으로 <code>immer</code> 라이브러리를 사용하여 <code>immutable</code> 하게 업데이트 하는 작업을 편하게 해준다. <code>immer</code> 는 <code>state</code> 를 <code>Proxy</code> 객체로 감싸고 변경사항이 있을대 비교하여 <code>immutable</code> 한 <code>state</code> 를 반환할수 있게 해준다.</p>
-<p>→ 내부적으로 <code>immer</code> 를 사용하는 <code>createSlice</code> 나 <code>createReducer</code> 를 사용하지 않는다면 <code>immutable</code> 하게 객체를 업데이트해야 한다.  </p>
-<h3 id="Writing-Async-Logic-with-Thunks"><a href="#Writing-Async-Logic-with-Thunks" class="headerlink" title="Writing Async Logic with Thunks"></a>Writing Async Logic with Thunks</h3><p><code>RTK</code> 는 내부적으로 <code>redux-thunk</code> 를 포함한다. <code>createAsyncThunk</code> 를 사용하면 Thunk를 쉽게 생성할 수 있다. </p>
-<h2 id="보안"><a href="#보안" class="headerlink" title="보안"></a>보안</h2><ul>
-<li>Local Storage 정보는 XSS Attack 으로 도난 당할 수 있다.</li>
-</ul>
-<h3 id="XSS-Attack-이란"><a href="#XSS-Attack-이란" class="headerlink" title="XSS Attack 이란?"></a>XSS Attack 이란?</h3><p>(Cross-Site Scripting Attack) </p>
-<ul>
-<li>injection 관련 보안 이슈</li>
-<li>사용자가 신뢰하는 웹사이트에 스크립트를 주입해서 정보를 빼내거나 의도치 않은 작업을 하는 것, 웹 어플리케이션, 통상적으로 form 안에 input을 통해서 주입한다.</li>
-<li>헤커가 자바스크립트를 준비해서 웹사이트에 숨겨 놓는다.</li>
-<li>사용자가 이용하다가 숨겨진 스크립트에 의해 쿠키나 localStorage에 정보를 attacker 에게 전달할수 있다.</li>
-<li>민감한 정보를 localStorage에 저장하면 안됨..</li>
-<li>해결 방법<ul>
-<li>메모리 상의 저장 → 브라우저 나가면 로그인 유지 되지 않는다거나 사용자 경험이 떨어짐</li>
-<li>쿠키를 사용하는데, http only 옵션을 넣어줌.→ 브라우저만 쿠키 정보를 읽을 수 있도록 함. 자바스크립트로 읽을 수 없게함. 만료 기간을 설정하면 만료 전까진 쿠키에 유지 됨.<ul>
-<li>모바일 클라이언트엔 적용할 수 없음.</li>
-<li>CSRF attack에는 취약함.</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>서버에서는 cors 에 creadentials를 true (Access-Control-Allow-Credentials)로 설정하고 http only로 쿠키를 보내주어야 한다.</li>
-<li>헤더에 cookie로 넣어버리면? 모바일 클라이언트는 문제가 생김, 일단은 그대로 바디로 token을 넘겨주기도 하고, header로 설정하기도 해야 함.</li>
-<li>서버에 auth 부분에서는 Cookie 도 확인하고 Header도 확인해야 함. 모바일 클라이언트도 있기 때문에</li>
-</ul>
 
       
     </div>
