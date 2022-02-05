@@ -288,100 +288,6 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/12/16/DevOps/Docker/211215-Docker%20tutorial(1)/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JayoonKoo">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="티끌모아 태산">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/12/16/DevOps/Docker/211215-Docker%20tutorial(1)/" class="post-title-link" itemprop="url">Docker tutorial(1)</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2021-12-16 20:11:58 / Modified: 20:13:10" itemprop="dateCreated datePublished" datetime="2021-12-16T20:11:58+09:00">2021-12-16</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/DevOps/" itemprop="url" rel="index"><span itemprop="name">DevOps</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="Getting-Started"><a href="#Getting-Started" class="headerlink" title="Getting Started"></a>Getting Started</h1><h2 id="배우는-것"><a href="#배우는-것" class="headerlink" title="배우는 것"></a>배우는 것</h2><ul>
-<li>이미지를 컨테이너로 빌드 및 실행</li>
-<li>Docker hub를 통해서 이미지 공유</li>
-<li>여러개의 컨테이너를 포함하는 Docker applications 배포</li>
-<li>Docker Compose 를 통한 applications 실행</li>
-</ul>
-<h2 id="Start"><a href="#Start" class="headerlink" title="Start"></a>Start</h2><p><code>docker run -d -p 80:80 docker/getting-started</code> </p>
-<ul>
-<li>docker/getting-started 를 실행시킴. 로컬에 없으면 registry에서 pull 한다음 실행하는 것과 동일</li>
-<li>-d : backgroudn 로 실행시킴</li>
-<li>-p 80:80 : host 에 80 포트를 컨테이너의 80포트로 매핑함.</li>
-</ul>
-<p>⇒ db로 flag를 줄일수 있음.</p>
-<h2 id="What-is-a-container"><a href="#What-is-a-container" class="headerlink" title="What is a container?"></a>What is a container?</h2><p>간단히 말하면, 호스트 머신과 분리된 sandboxed process 이다. </p>
-<ul>
-<li>실행 가능한 이미지의 인스턴스이다. create, start, stop, move or delete를 Docker API나 CLI를 사용해서 할 수 있다.</li>
-<li>로컬이나 클라우드 가상 머신 어디든지 실행 가능하다.</li>
-<li>어떤 os 든지 실행 가능하다.</li>
-<li>컨테이너는 서로 격리되어 있으며 자체 소프트웨어, 바이너리 및 구성을 실행한다.</li>
-</ul>
-<h2 id="What-is-a-container-image"><a href="#What-is-a-container-image" class="headerlink" title="What is a container image?"></a>What is a container image?</h2><p>컨테이널르 실행할때 격리된 파일 시스템을 사용하고 이미미지는 컨테이너의 파일 시스템을 포함한다. 또한 컨테이너를 실행시키는데 필요한 어떤 설정이다. 의존성, 바이너리, 스크립트 등도 포함한다.</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/12/16/DevOps/Docker/211215-Using%20Node(1)%3CBuildImage%3E/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -487,6 +393,100 @@
 <h2 id="Dockerfile"><a href="#Dockerfile" class="headerlink" title="Dockerfile"></a>Dockerfile</h2><figure class="highlight docker"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># syntax=docker/dockerfile:1</span></span><br><span class="line"><span class="keyword">FROM</span> node:<span class="number">14.16</span>.<span class="number">0</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">COPY</span><span class="bash"> [<span class="string">&quot;package.json&quot;</span>, <span class="string">&quot;yarn.lock&quot;</span>, <span class="string">&quot;./&quot;</span>]</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">RUN</span><span class="bash"> yarn install </span></span><br><span class="line"></span><br><span class="line"><span class="keyword">COPY</span><span class="bash"> . .</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">CMD</span><span class="bash"> [<span class="string">&quot;yarn&quot;</span>, <span class="string">&quot;start&quot;</span>]</span></span><br></pre></td></tr></table></figure>
 
 <p>NODE_ENV 는 따로 설정 안해서 뺐음</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/12/16/DevOps/Docker/211215-Docker%20tutorial(1)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JayoonKoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="티끌모아 태산">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/12/16/DevOps/Docker/211215-Docker%20tutorial(1)/" class="post-title-link" itemprop="url">Docker tutorial(1)</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2021-12-16 20:11:58 / Modified: 20:13:10" itemprop="dateCreated datePublished" datetime="2021-12-16T20:11:58+09:00">2021-12-16</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/DevOps/" itemprop="url" rel="index"><span itemprop="name">DevOps</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="Getting-Started"><a href="#Getting-Started" class="headerlink" title="Getting Started"></a>Getting Started</h1><h2 id="배우는-것"><a href="#배우는-것" class="headerlink" title="배우는 것"></a>배우는 것</h2><ul>
+<li>이미지를 컨테이너로 빌드 및 실행</li>
+<li>Docker hub를 통해서 이미지 공유</li>
+<li>여러개의 컨테이너를 포함하는 Docker applications 배포</li>
+<li>Docker Compose 를 통한 applications 실행</li>
+</ul>
+<h2 id="Start"><a href="#Start" class="headerlink" title="Start"></a>Start</h2><p><code>docker run -d -p 80:80 docker/getting-started</code> </p>
+<ul>
+<li>docker/getting-started 를 실행시킴. 로컬에 없으면 registry에서 pull 한다음 실행하는 것과 동일</li>
+<li>-d : backgroudn 로 실행시킴</li>
+<li>-p 80:80 : host 에 80 포트를 컨테이너의 80포트로 매핑함.</li>
+</ul>
+<p>⇒ db로 flag를 줄일수 있음.</p>
+<h2 id="What-is-a-container"><a href="#What-is-a-container" class="headerlink" title="What is a container?"></a>What is a container?</h2><p>간단히 말하면, 호스트 머신과 분리된 sandboxed process 이다. </p>
+<ul>
+<li>실행 가능한 이미지의 인스턴스이다. create, start, stop, move or delete를 Docker API나 CLI를 사용해서 할 수 있다.</li>
+<li>로컬이나 클라우드 가상 머신 어디든지 실행 가능하다.</li>
+<li>어떤 os 든지 실행 가능하다.</li>
+<li>컨테이너는 서로 격리되어 있으며 자체 소프트웨어, 바이너리 및 구성을 실행한다.</li>
+</ul>
+<h2 id="What-is-a-container-image"><a href="#What-is-a-container-image" class="headerlink" title="What is a container image?"></a>What is a container image?</h2><p>컨테이널르 실행할때 격리된 파일 시스템을 사용하고 이미미지는 컨테이너의 파일 시스템을 포함한다. 또한 컨테이너를 실행시키는데 필요한 어떤 설정이다. 의존성, 바이너리, 스크립트 등도 포함한다.</p>
 
       
     </div>
@@ -1103,7 +1103,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/12/09/TIL/211208/">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/12/09/TIL/211207/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -1116,7 +1116,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/12/09/TIL/211208/" class="post-title-link" itemprop="url">211208</a>
+          <a href="/2021/12/09/TIL/211207/" class="post-title-link" itemprop="url">211207</a>
         </h2>
 
         <div class="post-meta-container">
@@ -1150,24 +1150,29 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="211208"><a href="#211208" class="headerlink" title="211208"></a>211208</h1><h2 id="백엔드"><a href="#백엔드" class="headerlink" title="백엔드"></a>백엔드</h2><ul>
-<li>404 api 없음</li>
-<li>500 서버 에러</li>
-<li>⇒ 의미가 충분한 status code가 있다면 굳이 json을 보내주지 않아도 괜찮다.</li>
-<li>router를 나눌것.</li>
-</ul>
-<h2 id="프론트엔드"><a href="#프론트엔드" class="headerlink" title="프론트엔드"></a>프론트엔드</h2><ul>
-<li>input에서 제어 컴포넌트로 만들면 계속 해서 함수형 컴포넌트가 호출 되어서 컴포넌트 안에 debounce 가 제대로 작동하지 않는 이슈가 있었음.</li>
-<li>추천 검색어를 선택하면 input 에 value 가 바뀌어야 하는데 state로 관리 하지 못하면 문제가 생김.. 그렇다고 제어 컴포넌트로 만들면 위에 같은 문제..</li>
-<li>예를 들어 asdf 입력하면 asdf * 3번에 요청이 서버로 가는 이슈.. 원래는 asdf → asdf 로 한번에 요청하는 방식 → dom 을 조작해보자 생각함.</li>
-<li>useRef 로 dom 을 다룰수 있을줄 알았는데, 그냥 ref 로 넘겨주는것으로 dom처럼 사용할 수는 없음..</li>
-<li>useRef.current 를 사용해서 documnet.querySelector() 로 componentDidMound 시점에 넘겨주면 실제 Dom 을 조작하듯이 사용할수 있음.</li>
-<li>근데 생각해보니 useEffect 로 input에 변화로 debounce 동작하게 하면 문제 될거 없어보임.. 이렇게 삽질을 합니다</li>
-</ul>
-<h2 id="리액트-디자인-패턴"><a href="#리액트-디자인-패턴" class="headerlink" title="리액트 디자인 패턴"></a>리액트 디자인 패턴</h2><ul>
-<li>디자인 패턴이 필요한 이유 ? 모두가 사용하기 쉬운 API를 재공하고, 재 사용하 위해서, 확장성을 위해서 → 모두가 알고 있는 약속을 통해서</li>
-<li>검증된 패턴을 통해서 낮은 결합도와 재사용성 높은 컴포넌트를 만들 수 있음.</li>
-</ul>
+          <h1 id="211207"><a href="#211207" class="headerlink" title="211207"></a>211207</h1><h2 id="알고리즘"><a href="#알고리즘" class="headerlink" title="알고리즘"></a>알고리즘</h2><p>이진탐색 템플릿</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="function"><span class="title">binarySearch</span>(<span class="params">arr, target, start, end</span>)</span> &#123;</span><br><span class="line"><span class="keyword">if</span> (start &gt; end) <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line"><span class="keyword">let</span> mid = <span class="built_in">parseInt</span>((start + end) / <span class="number">2</span>);</span><br><span class="line"><span class="keyword">if</span> (arr[mid] == target) <span class="keyword">return</span> mid</span><br><span class="line"><span class="keyword">else</span> <span class="keyword">if</span> (arr[mid] &gt; target) <span class="keyword">return</span> binarySearch(arr, target, start, mid -<span class="number">1</span>);</span><br><span class="line"><span class="keyword">else</span> <span class="keyword">return</span> binarySearch(arr, target, mid + <span class="number">1</span>, end);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>반복문으로 왠만하면 반복문이 빠름</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">binarySearch</span>(<span class="params">arr, tareget, start, end</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">while</span> (start &lt;= end) &#123;</span><br><span class="line">    <span class="keyword">let</span> mid = <span class="built_in">parseInt</span>((start + end) / <span class="number">2</span>);</span><br><span class="line">    <span class="keyword">if</span> (arr[mid] == target) <span class="keyword">return</span> mid;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (arr[mid] &gt; target) end = mid - <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">else</span> start = mid + <span class="number">1</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>lowerBound(a, x) 하한선 → 정렬된 데이터가 있을때 정렬을 유지하면서 배열 a 에 x를 가장 왼쪽에 넣을 인덱스 반환</p>
+<p>upperBound(a, x) 상한선 → 정렬 유지하면서 배열 a 에 가장 오른쪽에 넣을 인덱스 반환</p>
+<p>lowerBound:</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">lowerBound</span>(<span class="params">arr, target, start, end</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">while</span>(start &lt; end) &#123;</span><br><span class="line">		<span class="keyword">let</span> mid = <span class="built_in">parseInt</span>((start + end / <span class="number">2</span>);</span><br><span class="line">		<span class="keyword">if</span> (arr[mid] &gt;= target) end = mid;</span><br><span class="line">		<span class="keyword">else</span> start = mid + <span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> end</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>uppserBound :</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">lowerBound</span>(<span class="params">arr, target, start, end</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">while</span>(start &lt; end) &#123;</span><br><span class="line">		<span class="keyword">let</span> mid = <span class="built_in">parseInt</span>((start + end / <span class="number">2</span>);</span><br><span class="line">		<span class="keyword">if</span> (arr[mid] &gt; target) end = mid;</span><br><span class="line">		<span class="keyword">else</span> start = mid + <span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> end</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>countByRange : 같이 사용하는 것</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">countByRange</span>(<span class="params">arr, leftValue, rightValue</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> rightIndex = upperBound(arr, rightValue, <span class="number">0</span>, arr.length);</span><br><span class="line">  <span class="keyword">let</span> leftIndex = lowerBound(arr, leftValue, <span class="number">0</span>, arr.length);</span><br><span class="line">  <span class="keyword">return</span> rightIndex - leftIndex;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>보통 3가지중 하나</p>
+<ol>
+<li>단순 이진 탐색</li>
+<li>countByRange</li>
+<li>파라메트릭 서치 → 이진탐색이 아닌거 같지만 이진탐색인걸 찾아야 함. (예 혹은 아니오로 )</li>
+</ol>
 
       
     </div>
