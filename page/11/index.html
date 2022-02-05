@@ -189,6 +189,93 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/09/12/system-programing/210812-%EB%A6%AC%EB%8B%A4%EC%9D%B4%EB%A0%89%EC%85%98%EA%B3%BC%20%ED%8C%8C%EC%9D%B4%ED%94%84/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JayoonKoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="티끌모아 태산">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/09/12/system-programing/210812-%EB%A6%AC%EB%8B%A4%EC%9D%B4%EB%A0%89%EC%85%98%EA%B3%BC%20%ED%8C%8C%EC%9D%B4%ED%94%84/" class="post-title-link" itemprop="url">리다이렉션과 파이프</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-09-12 23:46:02" itemprop="dateCreated datePublished" datetime="2021-09-12T23:46:02+09:00">2021-09-12</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/CS/" itemprop="url" rel="index"><span itemprop="name">CS</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="리다이렉션과-파이프"><a href="#리다이렉션과-파이프" class="headerlink" title="리다이렉션과 파이프"></a>리다이렉션과 파이프</h1><h2 id="Stansdard-Stream-표준-입출력"><a href="#Stansdard-Stream-표준-입출력" class="headerlink" title="Stansdard Stream(표준 입출력)"></a>Stansdard Stream(표준 입출력)</h2><p>command로 실행되는 프로세스는 세가지 스트림을 가지고 있다. </p>
+<ul>
+<li>표준 입력 스트립(Standard Input Stream) - stdin</li>
+<li>표준 출력 스트립(Standard Output Stream) - stdout</li>
+<li>오츄 출력 스트림 (Standard Error Stream) - stderr</li>
+</ul>
+<p>모든 스트림은 일반적인 plain text로 consol에 출력하도록 되어 있음. </p>
+<h2 id="리다이렉션-redirection"><a href="#리다이렉션-redirection" class="headerlink" title="리다이렉션(redirection)"></a>리다이렉션(redirection)</h2><p>표준 스트림 흐름을 바궈준다.<br>주로 표준 출력을 화면이 아닌 파일로 할때 사용한다.<br>혹은 파일에 있는 내용을 응용 프로그램에 입력으로 바꿔 줄때 사용하기도 한다. </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ls &gt; files.txt</span><br><span class="line">head &lt; files.txt</span><br><span class="line">head &lt; files.txt &gt; files2.txt</span><br></pre></td></tr></table></figure>
+<p>head &lt; files.txt 원래는 이게 화면에 출력 되어야 하지만 뒤에 &gt; files2.txt 가 있기 때문에 리다이렉션 되어서 files2.txt 에 해당 내용이 적힌다. </p>
+<p><code>ls &gt;&gt; files.txt</code> 기존에 파일이 있으면 append 되어서 추가된다. </p>
+<h2 id="파이프-pipe"><a href="#파이프-pipe" class="headerlink" title="파이프 (pipe)"></a>파이프 (pipe)</h2><p>두 프로세스 사이에서 한 프로세스의 출력 스트림을 또다른 프로세스의 입력 스트림으로 사용하는 기능.<br>기호로 <code>|</code>를 사용한다. </p>
+<p>유닉스의 철학 : 프로세스를 간단하게 만듦. </p>
+<p><code>ls | grep files.txt</code> : grep 은 입력으로 들어온 데이터 중에서 인수로 받은 텍스트를 찾는 명령어이다.<br>파일 리스트에서 특정한 파일만 찾을때 사용한다. </p>
+<h3 id="grep-flag"><a href="#grep-flag" class="headerlink" title="grep flag"></a>grep flag</h3><img src="images/210812-리다이렉션과%20파이프/1.png" width="700">
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/09/12/system-programing/210810-shell/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -298,93 +385,6 @@
 <li>f: 강제로 파일이나 디릭토리 삭제 </li>
 </ul>
 <p><code>rm -rf [dir]</code></p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/09/12/system-programing/210812-%EB%A6%AC%EB%8B%A4%EC%9D%B4%EB%A0%89%EC%85%98%EA%B3%BC%20%ED%8C%8C%EC%9D%B4%ED%94%84/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JayoonKoo">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="티끌모아 태산">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/09/12/system-programing/210812-%EB%A6%AC%EB%8B%A4%EC%9D%B4%EB%A0%89%EC%85%98%EA%B3%BC%20%ED%8C%8C%EC%9D%B4%ED%94%84/" class="post-title-link" itemprop="url">리다이렉션과 파이프</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-09-12 23:46:02" itemprop="dateCreated datePublished" datetime="2021-09-12T23:46:02+09:00">2021-09-12</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/CS/" itemprop="url" rel="index"><span itemprop="name">CS</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="리다이렉션과-파이프"><a href="#리다이렉션과-파이프" class="headerlink" title="리다이렉션과 파이프"></a>리다이렉션과 파이프</h1><h2 id="Stansdard-Stream-표준-입출력"><a href="#Stansdard-Stream-표준-입출력" class="headerlink" title="Stansdard Stream(표준 입출력)"></a>Stansdard Stream(표준 입출력)</h2><p>command로 실행되는 프로세스는 세가지 스트림을 가지고 있다. </p>
-<ul>
-<li>표준 입력 스트립(Standard Input Stream) - stdin</li>
-<li>표준 출력 스트립(Standard Output Stream) - stdout</li>
-<li>오츄 출력 스트림 (Standard Error Stream) - stderr</li>
-</ul>
-<p>모든 스트림은 일반적인 plain text로 consol에 출력하도록 되어 있음. </p>
-<h2 id="리다이렉션-redirection"><a href="#리다이렉션-redirection" class="headerlink" title="리다이렉션(redirection)"></a>리다이렉션(redirection)</h2><p>표준 스트림 흐름을 바궈준다.<br>주로 표준 출력을 화면이 아닌 파일로 할때 사용한다.<br>혹은 파일에 있는 내용을 응용 프로그램에 입력으로 바꿔 줄때 사용하기도 한다. </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ls &gt; files.txt</span><br><span class="line">head &lt; files.txt</span><br><span class="line">head &lt; files.txt &gt; files2.txt</span><br></pre></td></tr></table></figure>
-<p>head &lt; files.txt 원래는 이게 화면에 출력 되어야 하지만 뒤에 &gt; files2.txt 가 있기 때문에 리다이렉션 되어서 files2.txt 에 해당 내용이 적힌다. </p>
-<p><code>ls &gt;&gt; files.txt</code> 기존에 파일이 있으면 append 되어서 추가된다. </p>
-<h2 id="파이프-pipe"><a href="#파이프-pipe" class="headerlink" title="파이프 (pipe)"></a>파이프 (pipe)</h2><p>두 프로세스 사이에서 한 프로세스의 출력 스트림을 또다른 프로세스의 입력 스트림으로 사용하는 기능.<br>기호로 <code>|</code>를 사용한다. </p>
-<p>유닉스의 철학 : 프로세스를 간단하게 만듦. </p>
-<p><code>ls | grep files.txt</code> : grep 은 입력으로 들어온 데이터 중에서 인수로 받은 텍스트를 찾는 명령어이다.<br>파일 리스트에서 특정한 파일만 찾을때 사용한다. </p>
-<h3 id="grep-flag"><a href="#grep-flag" class="headerlink" title="grep flag"></a>grep flag</h3><img src="images/210812-리다이렉션과%20파이프/1.png" width="700">
 
       
     </div>

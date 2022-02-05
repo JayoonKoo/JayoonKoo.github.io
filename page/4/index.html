@@ -1103,7 +1103,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/12/09/TIL/211207/">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/12/09/TIL/211208/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -1116,7 +1116,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/12/09/TIL/211207/" class="post-title-link" itemprop="url">211207</a>
+          <a href="/2021/12/09/TIL/211208/" class="post-title-link" itemprop="url">211208</a>
         </h2>
 
         <div class="post-meta-container">
@@ -1150,29 +1150,24 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="211207"><a href="#211207" class="headerlink" title="211207"></a>211207</h1><h2 id="알고리즘"><a href="#알고리즘" class="headerlink" title="알고리즘"></a>알고리즘</h2><p>이진탐색 템플릿</p>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="function"><span class="title">binarySearch</span>(<span class="params">arr, target, start, end</span>)</span> &#123;</span><br><span class="line"><span class="keyword">if</span> (start &gt; end) <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line"><span class="keyword">let</span> mid = <span class="built_in">parseInt</span>((start + end) / <span class="number">2</span>);</span><br><span class="line"><span class="keyword">if</span> (arr[mid] == target) <span class="keyword">return</span> mid</span><br><span class="line"><span class="keyword">else</span> <span class="keyword">if</span> (arr[mid] &gt; target) <span class="keyword">return</span> binarySearch(arr, target, start, mid -<span class="number">1</span>);</span><br><span class="line"><span class="keyword">else</span> <span class="keyword">return</span> binarySearch(arr, target, mid + <span class="number">1</span>, end);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>반복문으로 왠만하면 반복문이 빠름</p>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">binarySearch</span>(<span class="params">arr, tareget, start, end</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">while</span> (start &lt;= end) &#123;</span><br><span class="line">    <span class="keyword">let</span> mid = <span class="built_in">parseInt</span>((start + end) / <span class="number">2</span>);</span><br><span class="line">    <span class="keyword">if</span> (arr[mid] == target) <span class="keyword">return</span> mid;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (arr[mid] &gt; target) end = mid - <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">else</span> start = mid + <span class="number">1</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>lowerBound(a, x) 하한선 → 정렬된 데이터가 있을때 정렬을 유지하면서 배열 a 에 x를 가장 왼쪽에 넣을 인덱스 반환</p>
-<p>upperBound(a, x) 상한선 → 정렬 유지하면서 배열 a 에 가장 오른쪽에 넣을 인덱스 반환</p>
-<p>lowerBound:</p>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">lowerBound</span>(<span class="params">arr, target, start, end</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">while</span>(start &lt; end) &#123;</span><br><span class="line">		<span class="keyword">let</span> mid = <span class="built_in">parseInt</span>((start + end / <span class="number">2</span>);</span><br><span class="line">		<span class="keyword">if</span> (arr[mid] &gt;= target) end = mid;</span><br><span class="line">		<span class="keyword">else</span> start = mid + <span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> end</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>uppserBound :</p>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">lowerBound</span>(<span class="params">arr, target, start, end</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">while</span>(start &lt; end) &#123;</span><br><span class="line">		<span class="keyword">let</span> mid = <span class="built_in">parseInt</span>((start + end / <span class="number">2</span>);</span><br><span class="line">		<span class="keyword">if</span> (arr[mid] &gt; target) end = mid;</span><br><span class="line">		<span class="keyword">else</span> start = mid + <span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> end</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>countByRange : 같이 사용하는 것</p>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">countByRange</span>(<span class="params">arr, leftValue, rightValue</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> rightIndex = upperBound(arr, rightValue, <span class="number">0</span>, arr.length);</span><br><span class="line">  <span class="keyword">let</span> leftIndex = lowerBound(arr, leftValue, <span class="number">0</span>, arr.length);</span><br><span class="line">  <span class="keyword">return</span> rightIndex - leftIndex;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>보통 3가지중 하나</p>
-<ol>
-<li>단순 이진 탐색</li>
-<li>countByRange</li>
-<li>파라메트릭 서치 → 이진탐색이 아닌거 같지만 이진탐색인걸 찾아야 함. (예 혹은 아니오로 )</li>
-</ol>
+          <h1 id="211208"><a href="#211208" class="headerlink" title="211208"></a>211208</h1><h2 id="백엔드"><a href="#백엔드" class="headerlink" title="백엔드"></a>백엔드</h2><ul>
+<li>404 api 없음</li>
+<li>500 서버 에러</li>
+<li>⇒ 의미가 충분한 status code가 있다면 굳이 json을 보내주지 않아도 괜찮다.</li>
+<li>router를 나눌것.</li>
+</ul>
+<h2 id="프론트엔드"><a href="#프론트엔드" class="headerlink" title="프론트엔드"></a>프론트엔드</h2><ul>
+<li>input에서 제어 컴포넌트로 만들면 계속 해서 함수형 컴포넌트가 호출 되어서 컴포넌트 안에 debounce 가 제대로 작동하지 않는 이슈가 있었음.</li>
+<li>추천 검색어를 선택하면 input 에 value 가 바뀌어야 하는데 state로 관리 하지 못하면 문제가 생김.. 그렇다고 제어 컴포넌트로 만들면 위에 같은 문제..</li>
+<li>예를 들어 asdf 입력하면 asdf * 3번에 요청이 서버로 가는 이슈.. 원래는 asdf → asdf 로 한번에 요청하는 방식 → dom 을 조작해보자 생각함.</li>
+<li>useRef 로 dom 을 다룰수 있을줄 알았는데, 그냥 ref 로 넘겨주는것으로 dom처럼 사용할 수는 없음..</li>
+<li>useRef.current 를 사용해서 documnet.querySelector() 로 componentDidMound 시점에 넘겨주면 실제 Dom 을 조작하듯이 사용할수 있음.</li>
+<li>근데 생각해보니 useEffect 로 input에 변화로 debounce 동작하게 하면 문제 될거 없어보임.. 이렇게 삽질을 합니다</li>
+</ul>
+<h2 id="리액트-디자인-패턴"><a href="#리액트-디자인-패턴" class="headerlink" title="리액트 디자인 패턴"></a>리액트 디자인 패턴</h2><ul>
+<li>디자인 패턴이 필요한 이유 ? 모두가 사용하기 쉬운 API를 재공하고, 재 사용하 위해서, 확장성을 위해서 → 모두가 알고 있는 약속을 통해서</li>
+<li>검증된 패턴을 통해서 낮은 결합도와 재사용성 높은 컴포넌트를 만들 수 있음.</li>
+</ul>
 
       
     </div>
