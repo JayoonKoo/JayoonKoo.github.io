@@ -85,7 +85,7 @@
         <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
         <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">18</span></a></li>
         <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">14</span></a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">144</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">145</span></a></li>
   </ul>
 </nav>
 
@@ -129,7 +129,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">144</span>
+          <span class="site-state-item-count">145</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -180,6 +180,93 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/10/23/react/official-docs/211014-%ED%95%A9%EC%84%B1%20vs%20%EC%83%81%EC%86%8D/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JayoonKoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="티끌모아 태산">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/10/23/react/official-docs/211014-%ED%95%A9%EC%84%B1%20vs%20%EC%83%81%EC%86%8D/" class="post-title-link" itemprop="url">합성 vs 상속</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2021-10-23 22:16:06 / Modified: 22:16:41" itemprop="dateCreated datePublished" datetime="2021-10-23T22:16:06+09:00">2021-10-23</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/react/" itemprop="url" rel="index"><span itemprop="name">react</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="합성-Composition-vs-상속-Inheritance"><a href="#합성-Composition-vs-상속-Inheritance" class="headerlink" title="합성 (Composition) vs 상속 (Inheritance)"></a>합성 (Composition) vs 상속 (Inheritance)</h1><blockquote>
+<p>React는 강력한 합성 모델을 가지고 있으며, 상속 대신 합성을 사용하여 컴포넌트 간에 코드를 재사용한다.</p>
+</blockquote>
+<h2 id="컴포넌트에서-다른-컴포넌트-담기"><a href="#컴포넌트에서-다른-컴포넌트-담기" class="headerlink" title="컴포넌트에서 다른 컴포넌트 담기"></a>컴포넌트에서 다른 컴포넌트 담기</h2><p>props children으로 컴포넌트를 전달해서 컴포넌트를 랜더링 할 수 있다.</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">FancyBorder</span>(<span class="params">props</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">&#123;</span>&quot;<span class="attr">FancyBorder</span> <span class="attr">FancyBorder-</span>&quot; + <span class="attr">props.color</span>&#125;&gt;</span></span></span><br><span class="line"><span class="xml">      &#123;props.children&#125;</span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">WelcomeDialog</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="xml"><span class="tag">&lt;<span class="name">FancyBorder</span> <span class="attr">color</span>=<span class="string">&quot;blue&quot;</span>&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;<span class="name">h1</span> <span class="attr">className</span>=<span class="string">&quot;Dialog-title&quot;</span>&gt;</span>Welcome<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;<span class="name">p</span> <span class="attr">className</span>=<span class="string">&quot;Dialog-message&quot;</span>&gt;</span>Thank you for visiting our spacecraft!<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;/<span class="name">FancyBorder</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="특수화"><a href="#특수화" class="headerlink" title="특수화"></a>특수화</h2><p>일반적인 컴포넌트에서 특수한 경우에 컴포넌트를 뽑아 낼 수 있다. 예를 들어서 Dialog 컴포넌트는 일반적인 컴포넌트라고 할 수 있고 WelcomeDialog는 특수한 컴포넌트라고 할 수 있다.</p>
+<p>이런 컴포넌트를 그릴 때에도 합성을 사용할 수 있는데, 구체적인 컴포넌트에서 일반적인 컴포넌트를 담아서 그리는 것이다.</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Dialog</span>(<span class="params">props</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="xml"><span class="tag">&lt;<span class="name">FancyBorder</span> <span class="attr">color</span>=<span class="string">&quot;blue&quot;</span>&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;<span class="name">h1</span> <span class="attr">className</span>=<span class="string">&quot;Dialog-title&quot;</span>&gt;</span>&#123;props.title&#125;<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;<span class="name">p</span> <span class="attr">className</span>=<span class="string">&quot;Dialog-message&quot;</span>&gt;</span>&#123;props.message&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;/<span class="name">FancyBorder</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">WelcomeDialog</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="xml"><span class="tag">&lt;<span class="name">Dialog</span> <span class="attr">title</span>=<span class="string">&quot;Welcome&quot;</span> <span class="attr">message</span>=<span class="string">&quot;Thank you for visiting our spacecraft!&quot;</span> /&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">ReactDOM.render(<span class="xml"><span class="tag">&lt;<span class="name">WelcomeDialog</span> /&gt;</span></span>, <span class="built_in">document</span>.getElementById(<span class="string">&quot;root&quot;</span>));</span><br></pre></td></tr></table></figure>
+
+<p>마찬가지로 클래스 컴포넌트에서도 합성을 사용할 수 있다.</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Dialog</span>(<span class="params">props</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="xml"><span class="tag">&lt;<span class="name">FancyBorder</span> <span class="attr">color</span>=<span class="string">&quot;blue&quot;</span>&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;<span class="name">h1</span> <span class="attr">className</span>=<span class="string">&quot;Dialog-title&quot;</span>&gt;</span>&#123;props.title&#125;<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;<span class="name">p</span> <span class="attr">className</span>=<span class="string">&quot;Dialog-message&quot;</span>&gt;</span>&#123;props.message&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></span><br><span class="line"><span class="xml">      &#123;props.children&#125;</span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;/<span class="name">FancyBorder</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SignUpDialog</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">props</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">super</span>(props);</span><br><span class="line">    <span class="built_in">this</span>.handleChange = <span class="built_in">this</span>.handleChange.bind(<span class="built_in">this</span>);</span><br><span class="line">    <span class="built_in">this</span>.handleSignUp = <span class="built_in">this</span>.handleSignUp.bind(<span class="built_in">this</span>);</span><br><span class="line">    <span class="built_in">this</span>.state = &#123; <span class="attr">login</span>: <span class="string">&quot;&quot;</span> &#125;;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">render</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      <span class="xml"><span class="tag">&lt;<span class="name">Dialog</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">        <span class="attr">title</span>=<span class="string">&quot;Mars Exploration Program&quot;</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">        <span class="attr">message</span>=<span class="string">&quot;How should we refer to you?&quot;</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">      &gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">value</span>=<span class="string">&#123;this.state.login&#125;</span> <span class="attr">onChange</span>=<span class="string">&#123;this.handleChange&#125;</span> /&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;this.handleSignUp&#125;</span>&gt;</span>Sign Me Up!<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;/<span class="name">Dialog</span>&gt;</span></span></span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">handleChange</span>(<span class="params">e</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.setState(&#123; <span class="attr">login</span>: e.target.value &#125;);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">handleSignUp</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    alert(<span class="string">`Welcome aboard, <span class="subst">$&#123;<span class="built_in">this</span>.state.login&#125;</span>!`</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="상속은"><a href="#상속은" class="headerlink" title="상속은?"></a>상속은?</h2><p>대부분 사용하지 않는다. React에서는 Props로 어떤 값도 전달 가능하기 때문에 모양과 동작을 유연하게 커스터마이징 할 수 있다.<br>또한, JavaScript이기 때문에 모듈로 분리할 수 도 있고 필요할때 import 하기도 가능하다.</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -763,6 +850,109 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/10/23/DB/SQLD/211012-%ED%85%8C%EC%9D%B4%EB%B8%94%20%EC%84%A4%EA%B3%84/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JayoonKoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="티끌모아 태산">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/10/23/DB/SQLD/211012-%ED%85%8C%EC%9D%B4%EB%B8%94%20%EC%84%A4%EA%B3%84/" class="post-title-link" itemprop="url">테이블 설계</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2021-10-23 22:07:35 / Modified: 22:09:58" itemprop="dateCreated datePublished" datetime="2021-10-23T22:07:35+09:00">2021-10-23</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/DB/" itemprop="url" rel="index"><span itemprop="name">DB</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="테이블-설계"><a href="#테이블-설계" class="headerlink" title="테이블 설계"></a>테이블 설계</h1><h2 id="테이블-설계의-기초"><a href="#테이블-설계의-기초" class="headerlink" title="테이블 설계의 기초"></a>테이블 설계의 기초</h2><p>테이블이란 ? 데이터를 관리 및 저장하는 장소, 효율적인 관리 및 적절한 조작이 매우 종요하고 실생활에서 광범위학게 사용되는 2차원 표와 유사하다.</p>
+<h2 id="테이블-설계-규칙"><a href="#테이블-설계-규칙" class="headerlink" title="테이블 설계 규칙"></a>테이블 설계 규칙</h2><h3 id="집합을-나누는-방법"><a href="#집합을-나누는-방법" class="headerlink" title="집합을 나누는 방법"></a>집합을 나누는 방법</h3><p>집합을 나누는 방법에 따라 한개 혹은 여러개의 테이블이 될 수 있다.</p>
+<p>예를 들어서 회원 테이블을 관리하고 있었는데, 새로운 기준이 적용 되어서 회원을 일반 회원과 프리미엄 회원 테이블로 나누는 경우가 이에 해당한다.</p>
+<h3 id="데이터-베이스-vs-자바"><a href="#데이터-베이스-vs-자바" class="headerlink" title="데이터 베이스 vs 자바"></a>데이터 베이스 vs 자바</h3><p>데이터 베이스는 자바와 비교 될때가 많다.</p>
+<p>데이터베이스에서 테이블은 자바에 클래스와 비교되고, 열은 클래스의 속성과 비교된다. 또한, 행은 자바에서 인스턴스와 비교되기도 한다.</p>
+<h3 id="기본키"><a href="#기본키" class="headerlink" title="기본키"></a>기본키</h3><p>기본키는 특정 집합에서 특정 행을 유일하게 식별할 수 있는 속성의 집합이다. 예를 들면, 학번, 카드발급번호, 주민등록번호 등이 있다.</p>
+<p>따라서 중복된 식별을 없에기 위해서 기본키는 중복 되면 안된다. 또한, 한번 정해지면 가급적 변경하지 않도록 한다.</p>
+<p>기본키는 Null 값이 허용 되지 않는데, 업무 상의 이유로 기본키가 없는 테이블이 운영되는 곳이 간혹 있다.</p>
+<h2 id="정규형"><a href="#정규형" class="headerlink" title="정규형"></a>정규형</h2><p>테이블을 제대로 된 형태로 만들자고 하는 것인데, 테이블을 쪼갤 수 있는 부분까지 쪼개는 것을 의미한다.</p>
+<h3 id="제-1-정규형-1NF-위반"><a href="#제-1-정규형-1NF-위반" class="headerlink" title="제 1 정규형(1NF) 위반"></a>제 1 정규형(1NF) 위반</h3><p>테이블의 셀에 여러 개의 값을 포함하지 않는다.</p>
+<p>예를 들어 회원 테이블에서 연락처를 컬럼을 전화번호, 이메일로 같이 관리하는 경우가 1 정규형 위반에 해당한다.</p>
+<p>1 정규형 해소를 위해서는 기존에 회원 테이블에서 연락처를 분리해서 회원 연락처 테이블을 만들고 연락처 구분 컬럼을 만들어 핸드폰인지 이메일인지 구분해서 저장해야 한다.</p>
+<h3 id="함수-종속성"><a href="#함수-종속성" class="headerlink" title="함수 종속성 ?"></a>함수 종속성 ?</h3><p>테이블은 함수오 같다. -&gt; 기본키의 값을 입력하면 특정 출력 값이 나오는 구조이기 때문이다.</p>
+<p>예를 들어 환율 테이블에 경우 어떤 통화인지 기본키를 입력하면 환율이 나오는 방식으로 생각할 수 있는다. 어떤 값에 의해 값이 리턴되는 형식에 함수와 같다고 할 수 있다.</p>
+<h3 id="제-2-정규형-2NF-위반"><a href="#제-2-정규형-2NF-위반" class="headerlink" title="제 2 정규형(2NF) 위반"></a>제 2 정규형(2NF) 위반</h3><p>부분 함수 종속성을 허용하지 않음..</p>
+<p>부분 함수 종속이란 기본키를 구성하는 열의 일부에만 함수 종속이 존재 하는 것을 의미하는데, 예를들어서 주문 테이블은 고객 아이디와 주문번호를 복합키로 사용해서 주문을 구별한다. 주문 일자에 경우 고객 아이디와 주문번호를 통해서 주문 일자가 나오는게 맞는데 고객명과 고객등급은 복합키가 아닌 고객 아이디만 사용해도 알 수 있다. 이 경우 제 2 정규형 위반이라고 한다.</p>
+<img src="/images/211012-테이블 설계/1.png" width="500">
+
+<p>해소 하기 위해서는 고객 주문 테이블에서 고객명과 고객등급 컬럼을 삭제하고 고객 테이블을 따로 만들어서 부분 함수 종속을 제거해야 한다.</p>
+<h3 id="제-3-정규형-3NF-위반"><a href="#제-3-정규형-3NF-위반" class="headerlink" title="제 3 정규형(3NF) 위반"></a>제 3 정규형(3NF) 위반</h3><p>기본 키를 제외한 일반 컬럼끼리 함수 종속이 발생한 경우에 위반했다고 한다.</p>
+<p>예를 들어서 고객 테이블에 경우 고객 아이디를 통해서 고객 명과 나이가 판단되는 것은 맞지만 일반 컬럼인 직업코드와 직업명은 서로간에 함수 종속이 발생했다. 이경우 제 3 정규형 위반이라고 하고 해소 하기 위해서 고객 테이블에서 직업 명 컬럼을 삭제하고 직업테이블을 새로 만들어서 직업 코드 별 직업명을 확인하도록 한다.</p>
+<img src="/images/211012-테이블 설계/2.png" width="500">
+
+<h3 id="4-5-정규형"><a href="#4-5-정규형" class="headerlink" title="4, 5 정규형"></a>4, 5 정규형</h3><p>일반적으로 거의 쓰이지 않아서 따로 찾아볼것.. 3 정규형 까지는 확실히 알도록 하자.</p>
+<h2 id="ER-다이어-그램"><a href="#ER-다이어-그램" class="headerlink" title="ER 다이어 그램"></a>ER 다이어 그램</h2><p>데이터 모델링 문야에서 개체-관계 모델이란 구조화된 데이터에 대한 일련이ㅡ 표현이다. 개체-관계 모델리을 하는 것을 ERM(Entity-Relationship Modelling)이라 하고 이에 대한 산출 물을 ERD(Entity-Relationship Diagram) 이라고 한다.</p>
+<h3 id="Barker-표기법"><a href="#Barker-표기법" class="headerlink" title="Barker 표기법"></a>Barker 표기법</h3><p>ERD를 표시하는 기법 중 하나이고 요즘은 이걸 많이 사용한다.</p>
+<img src="/images/211012-테이블 설계/3.png" width="900">
+
+<h3 id="릴레이션십"><a href="#릴레이션십" class="headerlink" title="릴레이션십"></a>릴레이션십</h3><p>엔티티와 엔티티 간의 관계를 의미한다. 엔티티 간의 관계성을 표시한다.</p>
+<img src="/images/211012-테이블 설계/4.png" width="900">
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/10/23/DB/SQLD/211008-5.SQL%20%EA%B8%B0%EB%B3%B8/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1110,225 +1300,6 @@
 <h2 id="실행-계획은-어떻게-세워지는"><a href="#실행-계획은-어떻게-세워지는" class="headerlink" title="실행 계획은 어떻게 세워지는"></a>실행 계획은 어떻게 세워지는</h2><h3 id="인덱스"><a href="#인덱스" class="headerlink" title="인덱스"></a>인덱스</h3><p>지정한 컬럼을 기준으로 메모리 영역에 일종의 목차를 생성하는것, 조회 할때는 좋은 성능을 보이만, insert, update, delete 등의 작업을 해야 할때에는 인덱스 테이블까지 변경해하는 상황이 발생하면서 오히려 성능이 안좋을 수 있다.</p>
 <p>``SQL<br>CREATE INDEX IDX_TB_EXECUTION_TEST_01 ON TB_EXECUTION_TEST(CUSTOMER_ID);</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">인덱스는 B-Tree를 사용하여 테이블을 조회한다. 반면에, 인데스가 없는 조회 조건은 모든 요소를 비교하면서 조회하게 된다. 이를 Table Full Scan 이라고 한다.</span><br><span class="line"></span><br><span class="line">반면에 인덱스를 사용하면 B-Tree를 이용하여 Range Scan 을 하게 된다.</span><br><span class="line"></span><br><span class="line">먼저 branch 노드에서 커르고 리픝 노드에서 수평적으로 검사하여 디스크에 접근 하는 것이다.</span><br><span class="line"></span><br><span class="line">인덱스를 사용할 컬럼은 카디너리티가 높은 컬럼을 사용해야 한다. 카디널리티는 Distint 명령을 수행했을때 숫자 라고 생각하면 쉽게 생각 할 수 있는데, 성별보다 주민등록 번호가 카디너리티가 높다는 것은 여기에 기인하여 생각할 수 있다.</span><br><span class="line">여러 컬럼으로 인덱스를 사용할때에는 카디너리티가 높은 순에서 낮은 순서로 사용해야 한다.</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/10/23/DB/SQLD/211012-%ED%85%8C%EC%9D%B4%EB%B8%94%20%EC%84%A4%EA%B3%84/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JayoonKoo">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="티끌모아 태산">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/10/23/DB/SQLD/211012-%ED%85%8C%EC%9D%B4%EB%B8%94%20%EC%84%A4%EA%B3%84/" class="post-title-link" itemprop="url">테이블 설계</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2021-10-23 22:07:35 / Modified: 22:09:58" itemprop="dateCreated datePublished" datetime="2021-10-23T22:07:35+09:00">2021-10-23</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/DB/" itemprop="url" rel="index"><span itemprop="name">DB</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="테이블-설계"><a href="#테이블-설계" class="headerlink" title="테이블 설계"></a>테이블 설계</h1><h2 id="테이블-설계의-기초"><a href="#테이블-설계의-기초" class="headerlink" title="테이블 설계의 기초"></a>테이블 설계의 기초</h2><p>테이블이란 ? 데이터를 관리 및 저장하는 장소, 효율적인 관리 및 적절한 조작이 매우 종요하고 실생활에서 광범위학게 사용되는 2차원 표와 유사하다.</p>
-<h2 id="테이블-설계-규칙"><a href="#테이블-설계-규칙" class="headerlink" title="테이블 설계 규칙"></a>테이블 설계 규칙</h2><h3 id="집합을-나누는-방법"><a href="#집합을-나누는-방법" class="headerlink" title="집합을 나누는 방법"></a>집합을 나누는 방법</h3><p>집합을 나누는 방법에 따라 한개 혹은 여러개의 테이블이 될 수 있다.</p>
-<p>예를 들어서 회원 테이블을 관리하고 있었는데, 새로운 기준이 적용 되어서 회원을 일반 회원과 프리미엄 회원 테이블로 나누는 경우가 이에 해당한다.</p>
-<h3 id="데이터-베이스-vs-자바"><a href="#데이터-베이스-vs-자바" class="headerlink" title="데이터 베이스 vs 자바"></a>데이터 베이스 vs 자바</h3><p>데이터 베이스는 자바와 비교 될때가 많다.</p>
-<p>데이터베이스에서 테이블은 자바에 클래스와 비교되고, 열은 클래스의 속성과 비교된다. 또한, 행은 자바에서 인스턴스와 비교되기도 한다.</p>
-<h3 id="기본키"><a href="#기본키" class="headerlink" title="기본키"></a>기본키</h3><p>기본키는 특정 집합에서 특정 행을 유일하게 식별할 수 있는 속성의 집합이다. 예를 들면, 학번, 카드발급번호, 주민등록번호 등이 있다.</p>
-<p>따라서 중복된 식별을 없에기 위해서 기본키는 중복 되면 안된다. 또한, 한번 정해지면 가급적 변경하지 않도록 한다.</p>
-<p>기본키는 Null 값이 허용 되지 않는데, 업무 상의 이유로 기본키가 없는 테이블이 운영되는 곳이 간혹 있다.</p>
-<h2 id="정규형"><a href="#정규형" class="headerlink" title="정규형"></a>정규형</h2><p>테이블을 제대로 된 형태로 만들자고 하는 것인데, 테이블을 쪼갤 수 있는 부분까지 쪼개는 것을 의미한다.</p>
-<h3 id="제-1-정규형-1NF-위반"><a href="#제-1-정규형-1NF-위반" class="headerlink" title="제 1 정규형(1NF) 위반"></a>제 1 정규형(1NF) 위반</h3><p>테이블의 셀에 여러 개의 값을 포함하지 않는다.</p>
-<p>예를 들어 회원 테이블에서 연락처를 컬럼을 전화번호, 이메일로 같이 관리하는 경우가 1 정규형 위반에 해당한다.</p>
-<p>1 정규형 해소를 위해서는 기존에 회원 테이블에서 연락처를 분리해서 회원 연락처 테이블을 만들고 연락처 구분 컬럼을 만들어 핸드폰인지 이메일인지 구분해서 저장해야 한다.</p>
-<h3 id="함수-종속성"><a href="#함수-종속성" class="headerlink" title="함수 종속성 ?"></a>함수 종속성 ?</h3><p>테이블은 함수오 같다. -&gt; 기본키의 값을 입력하면 특정 출력 값이 나오는 구조이기 때문이다.</p>
-<p>예를 들어 환율 테이블에 경우 어떤 통화인지 기본키를 입력하면 환율이 나오는 방식으로 생각할 수 있는다. 어떤 값에 의해 값이 리턴되는 형식에 함수와 같다고 할 수 있다.</p>
-<h3 id="제-2-정규형-2NF-위반"><a href="#제-2-정규형-2NF-위반" class="headerlink" title="제 2 정규형(2NF) 위반"></a>제 2 정규형(2NF) 위반</h3><p>부분 함수 종속성을 허용하지 않음..</p>
-<p>부분 함수 종속이란 기본키를 구성하는 열의 일부에만 함수 종속이 존재 하는 것을 의미하는데, 예를들어서 주문 테이블은 고객 아이디와 주문번호를 복합키로 사용해서 주문을 구별한다. 주문 일자에 경우 고객 아이디와 주문번호를 통해서 주문 일자가 나오는게 맞는데 고객명과 고객등급은 복합키가 아닌 고객 아이디만 사용해도 알 수 있다. 이 경우 제 2 정규형 위반이라고 한다.</p>
-<img src="/images/211012-테이블 설계/1.png" width="500">
-
-<p>해소 하기 위해서는 고객 주문 테이블에서 고객명과 고객등급 컬럼을 삭제하고 고객 테이블을 따로 만들어서 부분 함수 종속을 제거해야 한다.</p>
-<h3 id="제-3-정규형-3NF-위반"><a href="#제-3-정규형-3NF-위반" class="headerlink" title="제 3 정규형(3NF) 위반"></a>제 3 정규형(3NF) 위반</h3><p>기본 키를 제외한 일반 컬럼끼리 함수 종속이 발생한 경우에 위반했다고 한다.</p>
-<p>예를 들어서 고객 테이블에 경우 고객 아이디를 통해서 고객 명과 나이가 판단되는 것은 맞지만 일반 컬럼인 직업코드와 직업명은 서로간에 함수 종속이 발생했다. 이경우 제 3 정규형 위반이라고 하고 해소 하기 위해서 고객 테이블에서 직업 명 컬럼을 삭제하고 직업테이블을 새로 만들어서 직업 코드 별 직업명을 확인하도록 한다.</p>
-<img src="/images/211012-테이블 설계/2.png" width="500">
-
-<h3 id="4-5-정규형"><a href="#4-5-정규형" class="headerlink" title="4, 5 정규형"></a>4, 5 정규형</h3><p>일반적으로 거의 쓰이지 않아서 따로 찾아볼것.. 3 정규형 까지는 확실히 알도록 하자.</p>
-<h2 id="ER-다이어-그램"><a href="#ER-다이어-그램" class="headerlink" title="ER 다이어 그램"></a>ER 다이어 그램</h2><p>데이터 모델링 문야에서 개체-관계 모델이란 구조화된 데이터에 대한 일련이ㅡ 표현이다. 개체-관계 모델리을 하는 것을 ERM(Entity-Relationship Modelling)이라 하고 이에 대한 산출 물을 ERD(Entity-Relationship Diagram) 이라고 한다.</p>
-<h3 id="Barker-표기법"><a href="#Barker-표기법" class="headerlink" title="Barker 표기법"></a>Barker 표기법</h3><p>ERD를 표시하는 기법 중 하나이고 요즘은 이걸 많이 사용한다.</p>
-<img src="/images/211012-테이블 설계/3.png" width="900">
-
-<h3 id="릴레이션십"><a href="#릴레이션십" class="headerlink" title="릴레이션십"></a>릴레이션십</h3><p>엔티티와 엔티티 간의 관계를 의미한다. 엔티티 간의 관계성을 표시한다.</p>
-<img src="/images/211012-테이블 설계/4.png" width="900">
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/10/23/DB/SQLD/211014-%EB%B0%B1%EC%97%85%20%EB%B0%8F%20%EB%B3%B5%EA%B5%AC/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JayoonKoo">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="티끌모아 태산">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/10/23/DB/SQLD/211014-%EB%B0%B1%EC%97%85%20%EB%B0%8F%20%EB%B3%B5%EA%B5%AC/" class="post-title-link" itemprop="url">백업 및 복구</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2021-10-23 22:07:35 / Modified: 22:09:58" itemprop="dateCreated datePublished" datetime="2021-10-23T22:07:35+09:00">2021-10-23</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/DB/" itemprop="url" rel="index"><span itemprop="name">DB</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="백업-및-복구"><a href="#백업-및-복구" class="headerlink" title="백업 및 복구"></a>백업 및 복구</h1><h2 id="지속성과-성능이-양립하는-구조"><a href="#지속성과-성능이-양립하는-구조" class="headerlink" title="지속성과 성능이 양립하는 구조"></a>지속성과 성능이 양립하는 구조</h2><h3 id="로그-선행-기법"><a href="#로그-선행-기법" class="headerlink" title="로그 선행 기법"></a>로그 선행 기법</h3><p>WAL(Write-ahead logging)이라고 부르면, 시스템에서 모든 수정은 적용 이전에 로그에 기록된다. 예를 들어서 특정 프고그램이 진행되는 동안 정전이 일어났다고 가정해보자. 다시 시작할 때 프로그램은 어느 작업이 수행을 성공적으로 마쳤는지, 실패했는지 등의 정보를 알고 있어야 한다. 로그 선행 기법을 사용한다면 프로그램은 이러한 로그를 검사하여 예기치 않은 정전 시 해야 할 일과 실제 했던 일을 비교하게 된다.</p>
-<h3 id="데이터베이스-버퍼"><a href="#데이터베이스-버퍼" class="headerlink" title="데이터베이스 버퍼"></a>데이터베이스 버퍼</h3><p>데이터 파일로의 입력을 데이터 베이스 버퍼를 경유해서 하도록 한다. (성능 양립을 위해서 )</p>
-<p>순서 :</p>
-<ol>
-<li>갱신 대상의 데이터 포함한 블록이 버퍼풀에 있는지 확인</li>
-<li>없을 경우 데이터 파일로부터 해당 블록을 읽어 들임.</li>
-<li>버퍼 풀 내의 해당 블록을 갱신 수행</li>
-<li>갱신 내용이 Commit 과 함께 로그에 기록</li>
-<li>갱신 되었지만 데이터 파일에 쓰이지 않은 블록은 Dirty 블록이 됨.</li>
-<li>갱신된 데이터 블록은 나중에 정리되어 데이터 파일에 적용됨(체크 포인트)</li>
-<li>체크포인트 이전 로그 파일은 불필요 하게 됨</li>
-<li>갱신과 더불어 위 순서 반복</li>
-</ol>
-<h3 id="Crash-복구-흐름"><a href="#Crash-복구-흐름" class="headerlink" title="Crash 복구 흐름"></a>Crash 복구 흐름</h3><p>Crash 가 발생하면</p>
-<ul>
-<li>WAL : 마지막으로 Commit 된 트랜잭션의 갱신 정보 가짐</li>
-<li>데이터베이스 버퍼 : Crash 로 내용이 전부 소실</li>
-<li>데이터베이스 파일 : 최후 체크포인트까지의 갱신 정보 가짐.</li>
-</ul>
-<p>-&gt; 데이터 베이스 파일을 Crash 전 최신 Commit 상태로 수정함.</p>
-<h2 id="백업-및-복구-1"><a href="#백업-및-복구-1" class="headerlink" title="백업 및 복구"></a>백업 및 복구</h2><h3 id="백업의-3가지-관점"><a href="#백업의-3가지-관점" class="headerlink" title="백업의 3가지 관점"></a>백업의 3가지 관점</h3><ol>
-<li>핫 백업과 콜드 백업</li>
-<li>논리 백업과 물리 백업</li>
-<li>풀 백업과 부분(증분/차등) 백업</li>
-</ol>
-<h3 id="핫백업과-콜드-백업"><a href="#핫백업과-콜드-백업" class="headerlink" title="핫백업과 콜드 백업"></a>핫백업과 콜드 백업</h3><p>핫 백엄 : 온라인 백엄/ 데이터 베이스 기능 이용, 데이터 베이스를 정지 하지 않고 백업 데이터를 얻음</p>
-<p>콜드 백업 : 오프라인 백업 / OS 기능 이용, 서버를 내림고 데이터 베이스도 종료 시키고 OS 명령으로 복사</p>
-<h3 id="논리-백업과-물리-백업"><a href="#논리-백업과-물리-백업" class="headerlink" title="논리 백업과 물리 백업"></a>논리 백업과 물리 백업</h3><p>논리 백업 : SQL 기반 텍스트 형식으로 백업 데이터 기록</p>
-<ul>
-<li>장점 : 이식성 우수, 편집가능, 이기종 간의 DB 이행 유리</li>
-<li>단점 : 물리 백업보다 느림, 용량이 큼</li>
-</ul>
-<p>물리 백업 : 데이터 영역을 그대로 덤프 하는 이미지로 바이너리 형식 기록</p>
-<ul>
-<li>장점 : 최소 크기로 데이터 얻음, 백업 및 복원의 속도가 빠름</li>
-<li>단점 : 일부 데이터의 내용 수정은 불가능, 호완성이 좋지 않음.</li>
-</ul>
-<h3 id="풀-백업꽈-부분-백업"><a href="#풀-백업꽈-부분-백업" class="headerlink" title="풀 백업꽈 부분 백업"></a>풀 백업꽈 부분 백업</h3><p>풀백업(전체 백업) : 데이터 베이스 전체 데이터를 매일 백업</p>
-<p>부분 백업 : 풀 백업 이후 갱신된 데이터를 백업</p>
-<ul>
-<li>차등 백업</li>
-<li>증분 백업</li>
-</ul>
 
       
     </div>

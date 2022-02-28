@@ -85,7 +85,7 @@
         <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
         <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">18</span></a></li>
         <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">14</span></a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">144</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">145</span></a></li>
   </ul>
 </nav>
 
@@ -129,7 +129,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">144</span>
+          <span class="site-state-item-count">145</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -180,6 +180,102 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/12/09/TIL/211207/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JayoonKoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="티끌모아 태산">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/12/09/TIL/211207/" class="post-title-link" itemprop="url">211207</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2021-12-09 16:22:05 / Modified: 16:22:25" itemprop="dateCreated datePublished" datetime="2021-12-09T16:22:05+09:00">2021-12-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/TIL/" itemprop="url" rel="index"><span itemprop="name">TIL</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="211207"><a href="#211207" class="headerlink" title="211207"></a>211207</h1><h2 id="알고리즘"><a href="#알고리즘" class="headerlink" title="알고리즘"></a>알고리즘</h2><p>이진탐색 템플릿</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="function"><span class="title">binarySearch</span>(<span class="params">arr, target, start, end</span>)</span> &#123;</span><br><span class="line"><span class="keyword">if</span> (start &gt; end) <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line"><span class="keyword">let</span> mid = <span class="built_in">parseInt</span>((start + end) / <span class="number">2</span>);</span><br><span class="line"><span class="keyword">if</span> (arr[mid] == target) <span class="keyword">return</span> mid</span><br><span class="line"><span class="keyword">else</span> <span class="keyword">if</span> (arr[mid] &gt; target) <span class="keyword">return</span> binarySearch(arr, target, start, mid -<span class="number">1</span>);</span><br><span class="line"><span class="keyword">else</span> <span class="keyword">return</span> binarySearch(arr, target, mid + <span class="number">1</span>, end);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>반복문으로 왠만하면 반복문이 빠름</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">binarySearch</span>(<span class="params">arr, tareget, start, end</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">while</span> (start &lt;= end) &#123;</span><br><span class="line">    <span class="keyword">let</span> mid = <span class="built_in">parseInt</span>((start + end) / <span class="number">2</span>);</span><br><span class="line">    <span class="keyword">if</span> (arr[mid] == target) <span class="keyword">return</span> mid;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (arr[mid] &gt; target) end = mid - <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">else</span> start = mid + <span class="number">1</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>lowerBound(a, x) 하한선 → 정렬된 데이터가 있을때 정렬을 유지하면서 배열 a 에 x를 가장 왼쪽에 넣을 인덱스 반환</p>
+<p>upperBound(a, x) 상한선 → 정렬 유지하면서 배열 a 에 가장 오른쪽에 넣을 인덱스 반환</p>
+<p>lowerBound:</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">lowerBound</span>(<span class="params">arr, target, start, end</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">while</span>(start &lt; end) &#123;</span><br><span class="line">		<span class="keyword">let</span> mid = <span class="built_in">parseInt</span>((start + end / <span class="number">2</span>);</span><br><span class="line">		<span class="keyword">if</span> (arr[mid] &gt;= target) end = mid;</span><br><span class="line">		<span class="keyword">else</span> start = mid + <span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> end</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>uppserBound :</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">lowerBound</span>(<span class="params">arr, target, start, end</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">while</span>(start &lt; end) &#123;</span><br><span class="line">		<span class="keyword">let</span> mid = <span class="built_in">parseInt</span>((start + end / <span class="number">2</span>);</span><br><span class="line">		<span class="keyword">if</span> (arr[mid] &gt; target) end = mid;</span><br><span class="line">		<span class="keyword">else</span> start = mid + <span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> end</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>countByRange : 같이 사용하는 것</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">countByRange</span>(<span class="params">arr, leftValue, rightValue</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> rightIndex = upperBound(arr, rightValue, <span class="number">0</span>, arr.length);</span><br><span class="line">  <span class="keyword">let</span> leftIndex = lowerBound(arr, leftValue, <span class="number">0</span>, arr.length);</span><br><span class="line">  <span class="keyword">return</span> rightIndex - leftIndex;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>보통 3가지중 하나</p>
+<ol>
+<li>단순 이진 탐색</li>
+<li>countByRange</li>
+<li>파라메트릭 서치 → 이진탐색이 아닌거 같지만 이진탐색인걸 찾아야 함. (예 혹은 아니오로 )</li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1273,93 +1369,6 @@
 <h2 id="5단계-역방향-데이터-흐름-추가하기"><a href="#5단계-역방향-데이터-흐름-추가하기" class="headerlink" title="5단계: 역방향 데이터 흐름 추가하기"></a>5단계: 역방향 데이터 흐름 추가하기</h2><p>우리가 만든 <code>FilterableProductTable</code> 에서 아직 <code>SeacrBar</code>에 setState를 콜백으로 주지 않았기 때문에 폼을 입력해도 데이터가 변하지 않게 된다. 하위 컴포넌트인 <code>SearchBar</code>에서 상위 컴포넌트인 <code>FilterableProductTable</code>에 state를 변경하기 위해서는 콜백으로 setState를 주고 하위 컴포넌트에서 호출하면된다.</p>
 <p>이렇게 역방향 데이터 흐름을 추가할 수 있다.</p>
 <h2 id="이게-전부임"><a href="#이게-전부임" class="headerlink" title="이게 전부임.."></a>이게 전부임..</h2>
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/10/23/react/official-docs/211014-%ED%95%A9%EC%84%B1%20vs%20%EC%83%81%EC%86%8D/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JayoonKoo">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="티끌모아 태산">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/10/23/react/official-docs/211014-%ED%95%A9%EC%84%B1%20vs%20%EC%83%81%EC%86%8D/" class="post-title-link" itemprop="url">합성 vs 상속</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2021-10-23 22:16:06 / Modified: 22:16:41" itemprop="dateCreated datePublished" datetime="2021-10-23T22:16:06+09:00">2021-10-23</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/react/" itemprop="url" rel="index"><span itemprop="name">react</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="합성-Composition-vs-상속-Inheritance"><a href="#합성-Composition-vs-상속-Inheritance" class="headerlink" title="합성 (Composition) vs 상속 (Inheritance)"></a>합성 (Composition) vs 상속 (Inheritance)</h1><blockquote>
-<p>React는 강력한 합성 모델을 가지고 있으며, 상속 대신 합성을 사용하여 컴포넌트 간에 코드를 재사용한다.</p>
-</blockquote>
-<h2 id="컴포넌트에서-다른-컴포넌트-담기"><a href="#컴포넌트에서-다른-컴포넌트-담기" class="headerlink" title="컴포넌트에서 다른 컴포넌트 담기"></a>컴포넌트에서 다른 컴포넌트 담기</h2><p>props children으로 컴포넌트를 전달해서 컴포넌트를 랜더링 할 수 있다.</p>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">FancyBorder</span>(<span class="params">props</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">&#123;</span>&quot;<span class="attr">FancyBorder</span> <span class="attr">FancyBorder-</span>&quot; + <span class="attr">props.color</span>&#125;&gt;</span></span></span><br><span class="line"><span class="xml">      &#123;props.children&#125;</span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">WelcomeDialog</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="xml"><span class="tag">&lt;<span class="name">FancyBorder</span> <span class="attr">color</span>=<span class="string">&quot;blue&quot;</span>&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;<span class="name">h1</span> <span class="attr">className</span>=<span class="string">&quot;Dialog-title&quot;</span>&gt;</span>Welcome<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;<span class="name">p</span> <span class="attr">className</span>=<span class="string">&quot;Dialog-message&quot;</span>&gt;</span>Thank you for visiting our spacecraft!<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;/<span class="name">FancyBorder</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="특수화"><a href="#특수화" class="headerlink" title="특수화"></a>특수화</h2><p>일반적인 컴포넌트에서 특수한 경우에 컴포넌트를 뽑아 낼 수 있다. 예를 들어서 Dialog 컴포넌트는 일반적인 컴포넌트라고 할 수 있고 WelcomeDialog는 특수한 컴포넌트라고 할 수 있다.</p>
-<p>이런 컴포넌트를 그릴 때에도 합성을 사용할 수 있는데, 구체적인 컴포넌트에서 일반적인 컴포넌트를 담아서 그리는 것이다.</p>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Dialog</span>(<span class="params">props</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="xml"><span class="tag">&lt;<span class="name">FancyBorder</span> <span class="attr">color</span>=<span class="string">&quot;blue&quot;</span>&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;<span class="name">h1</span> <span class="attr">className</span>=<span class="string">&quot;Dialog-title&quot;</span>&gt;</span>&#123;props.title&#125;<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;<span class="name">p</span> <span class="attr">className</span>=<span class="string">&quot;Dialog-message&quot;</span>&gt;</span>&#123;props.message&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;/<span class="name">FancyBorder</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">WelcomeDialog</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="xml"><span class="tag">&lt;<span class="name">Dialog</span> <span class="attr">title</span>=<span class="string">&quot;Welcome&quot;</span> <span class="attr">message</span>=<span class="string">&quot;Thank you for visiting our spacecraft!&quot;</span> /&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">ReactDOM.render(<span class="xml"><span class="tag">&lt;<span class="name">WelcomeDialog</span> /&gt;</span></span>, <span class="built_in">document</span>.getElementById(<span class="string">&quot;root&quot;</span>));</span><br></pre></td></tr></table></figure>
-
-<p>마찬가지로 클래스 컴포넌트에서도 합성을 사용할 수 있다.</p>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Dialog</span>(<span class="params">props</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="xml"><span class="tag">&lt;<span class="name">FancyBorder</span> <span class="attr">color</span>=<span class="string">&quot;blue&quot;</span>&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;<span class="name">h1</span> <span class="attr">className</span>=<span class="string">&quot;Dialog-title&quot;</span>&gt;</span>&#123;props.title&#125;<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;<span class="name">p</span> <span class="attr">className</span>=<span class="string">&quot;Dialog-message&quot;</span>&gt;</span>&#123;props.message&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></span><br><span class="line"><span class="xml">      &#123;props.children&#125;</span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;/<span class="name">FancyBorder</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SignUpDialog</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">props</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">super</span>(props);</span><br><span class="line">    <span class="built_in">this</span>.handleChange = <span class="built_in">this</span>.handleChange.bind(<span class="built_in">this</span>);</span><br><span class="line">    <span class="built_in">this</span>.handleSignUp = <span class="built_in">this</span>.handleSignUp.bind(<span class="built_in">this</span>);</span><br><span class="line">    <span class="built_in">this</span>.state = &#123; <span class="attr">login</span>: <span class="string">&quot;&quot;</span> &#125;;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">render</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      <span class="xml"><span class="tag">&lt;<span class="name">Dialog</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">        <span class="attr">title</span>=<span class="string">&quot;Mars Exploration Program&quot;</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">        <span class="attr">message</span>=<span class="string">&quot;How should we refer to you?&quot;</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">      &gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">value</span>=<span class="string">&#123;this.state.login&#125;</span> <span class="attr">onChange</span>=<span class="string">&#123;this.handleChange&#125;</span> /&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;this.handleSignUp&#125;</span>&gt;</span>Sign Me Up!<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;/<span class="name">Dialog</span>&gt;</span></span></span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">handleChange</span>(<span class="params">e</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.setState(&#123; <span class="attr">login</span>: e.target.value &#125;);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">handleSignUp</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    alert(<span class="string">`Welcome aboard, <span class="subst">$&#123;<span class="built_in">this</span>.state.login&#125;</span>!`</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="상속은"><a href="#상속은" class="headerlink" title="상속은?"></a>상속은?</h2><p>대부분 사용하지 않는다. React에서는 Props로 어떤 값도 전달 가능하기 때문에 모양과 동작을 유연하게 커스터마이징 할 수 있다.<br>또한, JavaScript이기 때문에 모듈로 분리할 수 도 있고 필요할때 import 하기도 가능하다.</p>
-
       
     </div>
 

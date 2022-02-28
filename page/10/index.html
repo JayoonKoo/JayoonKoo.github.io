@@ -85,7 +85,7 @@
         <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
         <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">18</span></a></li>
         <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">14</span></a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">144</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">145</span></a></li>
   </ul>
 </nav>
 
@@ -129,7 +129,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">144</span>
+          <span class="site-state-item-count">145</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -180,6 +180,110 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/09/20/modernJs/210907-formData/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JayoonKoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="티끌모아 태산">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/09/20/modernJs/210907-formData/" class="post-title-link" itemprop="url">formData</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2021-09-20 21:41:14 / Modified: 21:45:41" itemprop="dateCreated datePublished" datetime="2021-09-20T21:41:14+09:00">2021-09-20</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="FormData"><a href="#FormData" class="headerlink" title="FormData"></a>FormData</h1><p>HTML에 formData를 나타내는 생성자는 다음과 같다.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> formData = <span class="keyword">new</span> FormData([form]);</span><br></pre></td></tr></table></figure>
+
+<p>이렇게 생성해서 서버에서 보내는 작업을 하면 서버에서 볼 때 일반적인 양식 제출처럼 보인다.</p>
+<h2 id="Sending-a-simple-form"><a href="#Sending-a-simple-form" class="headerlink" title="Sending a simple form"></a>Sending a simple form</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">id</span>=<span class="string">&quot;formElem&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;name&quot;</span> <span class="attr">value</span>=<span class="string">&quot;John&quot;</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;surname&quot;</span> <span class="attr">value</span>=<span class="string">&quot;Smith&quot;</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></span><br><span class="line"><span class="javascript">  formElem.onsubmit = <span class="keyword">async</span> (e) =&gt; &#123;</span></span><br><span class="line"><span class="javascript">    e.preventDefault();</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">    <span class="keyword">let</span> response = <span class="keyword">await</span> fetch(<span class="string">&quot;/article/formdata/post/user&quot;</span>, &#123;</span></span><br><span class="line"><span class="javascript">      <span class="attr">method</span>: <span class="string">&quot;POST&quot;</span>,</span></span><br><span class="line"><span class="javascript">      <span class="attr">body</span>: <span class="keyword">new</span> FormData(formElem),</span></span><br><span class="line"><span class="javascript">    &#125;);</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">    <span class="keyword">let</span> result = <span class="keyword">await</span> response.json();</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">    alert(result.message);</span></span><br><span class="line"><span class="javascript">  &#125;;</span></span><br><span class="line"><span class="javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>서버 코드는 여기에 없다. 서버는 위에 코드에서 보낸 request를 받아서 응답한다.</p>
+<h2 id="FormData-Methods"><a href="#FormData-Methods" class="headerlink" title="FormData Methods"></a>FormData Methods</h2><ul>
+<li><code>formData.append(name, value)</code> - form data에 name과 value를 추가</li>
+<li><code>formData.append(name, blob, fileName)</code> - <code>&lt;input type=&quot;file&quot;&gt;</code> 인 것처럼 추가, 세번째 매개변수인 <code>fileName</code>인 진짜 파일 이름을 넣어줌.</li>
+<li><code>formData.delete(name)</code> - <code>name</code>이란 이름으로 추가된 필드를 제거함</li>
+<li><code>formData.get(name)</code> - <code>name</code>이란 이름으로 추가된 필드에 <code>value</code> 값을 얻음.</li>
+<li><code>formData.had(name)</code> - <code>name</code>이란 이름으로 추가된 필드가 있다면 ,<code>true</code> 반환 아닐 경우 <code>false</code> 반환</li>
+</ul>
+<p>formData는 기술적으로 같은 name에 필드를 추가할 수 있다. 따라서 append를 사용한다. 비슷한 역할을 하는 <code>.set</code> 메서드도 있다. 이 경우 기존에 있던것을 삭제 하고 추가한다.</p>
+<ul>
+<li><code>formData.set(name, value)</code></li>
+<li><code>formData.set(name, blob, fileName)</code></li>
+</ul>
+<p>또한 <code>for..of</code> 를 사용해서 요소를 반복할 수 있다.</p>
+<h2 id="Sending-a-form-with-a-file"><a href="#Sending-a-form-with-a-file" class="headerlink" title="Sending a form with a file"></a>Sending a form with a file</h2><p>form은 <code>Content-Type: multipart/form-data</code>로 보내지고 이것은 파일도 보낼 수 있다.</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">id</span>=<span class="string">&quot;formElem&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;firstName&quot;</span> <span class="attr">value</span>=<span class="string">&quot;John&quot;</span> /&gt;</span></span><br><span class="line">  Picture: <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;file&quot;</span> <span class="attr">name</span>=<span class="string">&quot;picture&quot;</span> <span class="attr">accept</span>=<span class="string">&quot;image/*&quot;</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></span><br><span class="line"><span class="javascript">  formElem.onsubmit = <span class="keyword">async</span> (e) =&gt; &#123;</span></span><br><span class="line"><span class="javascript">    e.preventDefault();</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">    <span class="keyword">let</span> response = <span class="keyword">await</span> fetch(<span class="string">&quot;/article/formdata/post/user-avatar&quot;</span>, &#123;</span></span><br><span class="line"><span class="javascript">      <span class="attr">method</span>: <span class="string">&quot;POST&quot;</span>,</span></span><br><span class="line"><span class="javascript">      <span class="attr">body</span>: <span class="keyword">new</span> FormData(formElem),</span></span><br><span class="line"><span class="javascript">    &#125;);</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">    <span class="keyword">let</span> result = <span class="keyword">await</span> response.json();</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">    alert(result.message);</span></span><br><span class="line"><span class="javascript">  &#125;;</span></span><br><span class="line"><span class="javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Sending-a-form-with-Blob-data"><a href="#Sending-a-form-with-Blob-data" class="headerlink" title="Sending a form with Blob data"></a>Sending a form with Blob data</h2><p>동적으로 생성된 바이너리 데이타 이미지 같은 것을 <code>Blob</code>으로 보낼 수 있다. <code>fetch</code>에 <code>body</code> 파라미터로 넒길 수 있다.<br>그러나 실제로는 이미지를 별도로 보내는 것이 아니라 name 을 추가한 form 으로 보내는 것이 편리한 경우가 많다.</p>
+<p>서버도 form으로 받는게 더 어울린다.</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span> <span class="attr">style</span>=<span class="string">&quot;margin:0&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">canvas</span></span></span><br><span class="line"><span class="tag">    <span class="attr">id</span>=<span class="string">&quot;canvasElem&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">width</span>=<span class="string">&quot;100&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">height</span>=<span class="string">&quot;80&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">style</span>=<span class="string">&quot;border:1px solid&quot;</span></span></span><br><span class="line"><span class="tag">  &gt;</span><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;button&quot;</span> <span class="attr">value</span>=<span class="string">&quot;Submit&quot;</span> <span class="attr">onclick</span>=<span class="string">&quot;submit()&quot;</span> /&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></span><br><span class="line"><span class="javascript">    canvasElem.onmousemove = <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">      <span class="keyword">let</span> ctx = canvasElem.getContext(<span class="string">&quot;2d&quot;</span>);</span></span><br><span class="line"><span class="javascript">      ctx.lineTo(e.clientX, e.clientY);</span></span><br><span class="line"><span class="javascript">      ctx.stroke();</span></span><br><span class="line"><span class="javascript">    &#125;;</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">    <span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">submit</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">      <span class="keyword">let</span> imageBlob = <span class="keyword">await</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve</span>) =&gt;</span></span></span><br><span class="line"><span class="javascript">        canvasElem.toBlob(resolve, <span class="string">&quot;image/png&quot;</span>)</span></span><br><span class="line"><span class="javascript">      );</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">      <span class="keyword">let</span> formData = <span class="keyword">new</span> FormData();</span></span><br><span class="line"><span class="javascript">      formData.append(<span class="string">&quot;firstName&quot;</span>, <span class="string">&quot;John&quot;</span>);</span></span><br><span class="line"><span class="javascript">      formData.append(<span class="string">&quot;image&quot;</span>, imageBlob, <span class="string">&quot;image.png&quot;</span>);</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">      <span class="keyword">let</span> response = <span class="keyword">await</span> fetch(<span class="string">&quot;/article/formdata/post/image-form&quot;</span>, &#123;</span></span><br><span class="line"><span class="javascript">        <span class="attr">method</span>: <span class="string">&quot;POST&quot;</span>,</span></span><br><span class="line"><span class="javascript">        <span class="attr">body</span>: formData,</span></span><br><span class="line"><span class="javascript">      &#125;);</span></span><br><span class="line"><span class="javascript">      <span class="keyword">let</span> result = <span class="keyword">await</span> response.json();</span></span><br><span class="line"><span class="javascript">      alert(result.message);</span></span><br><span class="line"><span class="javascript">    &#125;</span></span><br><span class="line"><span class="javascript">  </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>이미지 blob 데이터를 어떻게 추가했는지 보자.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">formData.append(<span class="string">&quot;image&quot;</span>, imageBlob, <span class="string">&quot;image.png&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>이는 <code>&lt;input type=&quot;file&quot; name=&quot;image&quot;&gt;</code>와 같다.</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -682,6 +786,142 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/09/20/git/210721-git-basic/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JayoonKoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="티끌모아 태산">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/09/20/git/210721-git-basic/" class="post-title-link" itemprop="url">git-basic</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-09-20 21:39:38" itemprop="dateCreated datePublished" datetime="2021-09-20T21:39:38+09:00">2021-09-20</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/git/" itemprop="url" rel="index"><span itemprop="name">git</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="git-basic"><a href="#git-basic" class="headerlink" title="git basic"></a>git basic</h1><ul>
+<li>리눅스에 대해서 간략히 공부했다.</li>
+<li>git의 대한 기본적인 설정방법과 사용법을 알아보고 리뷰어와 조를 이루어 풀리퀘스트를 요청화는 과정을 연습해 보았다.</li>
+</ul>
+<h2 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h2><p>리눅스는 unix 기반에 오픈소스 운영체제로서 수많은 배포 버전이 있다. 헬싱키 대학생이던 리누스 토발즈가 앤디 타넨 비우의 MINX를 개조한 Linux를 배포했다.</p>
+<h3 id="Kernel"><a href="#Kernel" class="headerlink" title="Kernel"></a>Kernel</h3><p>커널은 하드웨어와 응용 프로그램을 이어주는 운영체제의 핵심 소프트 웨어이다.</p>
+<h3 id="Shell"><a href="#Shell" class="headerlink" title="Shell"></a>Shell</h3><p>쉘은 운영체제의 커널과 사용자를 이어주는 소프트웨어로서 사용자가 Kernel를 제어하기 위해 새용한다.</p>
+<h2 id="git-object"><a href="#git-object" class="headerlink" title="git object"></a>git object</h2><p>git에는 3가지의 객체가 있다.</p>
+<ol>
+<li>Blob: 파일 하나의 대한 정보로서 사진으로 비유하자면 사진 파일 자체인 .jpg 파일이 될 수 있다.</li>
+<li>Tree: Blob 이나 subtree 의 메타데이터로서 사진으로 비유하자면 찍히 날짜에 대한 정보라던지, 저장된 위치 같은 정보가 될 수 있다.</li>
+<li>Commit: 커밋 순간의 스냅샷으로서 버전으로 저장하려고 압축한 파일들과 같다.</li>
+</ol>
+<h2 id="git-저장소"><a href="#git-저장소" class="headerlink" title="git 저장소"></a>git 저장소</h2><p>git repo 에는 크게 Local 저장소와 remote 저장소가 있다. 흔히 사용하는 github과 같은 서비스가 remote 저장소라고 할 수 있다.</p>
+<p>Local 저장소는 크게 3가지 상태로 나눌 수 있다.</p>
+<ol>
+<li>Working Directory : 지금 작업하고 있는 폴더이다. <code>git init</code>을 통해 git repo를 만들거나 clone 받은 폴더가 될 수 있다.</li>
+<li>staging area : <code>git add</code> 를 통해 추가한 파일들에 상태를 말한다. 아직 커밋을 하기 전 상태이며 add를 해야지 git 에서 버전을 추적할 수 있다.</li>
+<li>localrepo : <code>git commit</code>을 수행해서 버전이 등록한 파일들에 상태이다. <code>git push</code>를 통해 remote 저장소로 파일을 올리거나 <code>git pull</code>을 통해 받아올 수 있다.</li>
+</ol>
+<img src="/images/img/git-process.png" width="500">
+
+<h2 id="configure"><a href="#configure" class="headerlink" title="configure"></a>configure</h2><p>깃을 사용하기전 환경 설정으로 해주면 좋을 것들을 알아본다.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ git config --global user.name &quot;당신의유저네임&quot;</span><br><span class="line">$ git config --global user.email &quot;당신의메일주소&quot;</span><br><span class="line">$ git config --global core.editor &quot;vim&quot;</span><br><span class="line">$ git config --global core.pager &quot;cat&quot;</span><br><span class="line">$ git config --global init.defaultBranch &quot;main&quot;</span><br></pre></td></tr></table></figure>
+
+<p>commit 을 입력할 editor을 vim으로 설정하는 설정과 default branch를 main으로 바꾸는 설정이 포함되어 있다. 필수적인 사항은 아니다.</p>
+<p>만약 환경변수 설정을 내리고 싶다면 <code>--unset</code> 플래그를 추가하면된다.</p>
+<p><code>git config --global --unset core.editor</code></p>
+<h2 id="Commit-Convention"><a href="#Commit-Convention" class="headerlink" title="Commit Convention"></a>Commit Convention</h2><p>commit을 한번에 알기쉽게 하기위해서 보편적으로 사용하는 규칙들이 있다.</p>
+<ul>
+<li>feat: features (기능 개발에 대한 커밋)</li>
+<li>docs: documentations (문서 작업에 대한 커밋)</li>
+<li>conf: configurations (환경 변수 설정에 대한 커밋 ex)node pakage)</li>
+<li>test: test (test 코드에 대한 수정 생성에 대한 커밋)</li>
+<li>fix: bug-fix (버그를 고치거나 에러를 고친 커밋)</li>
+<li>refactor: refactoring (같은 기능을 하나 보기 좋고 효율적인 코드로 대체했을때)</li>
+<li>ci: Continuous Integration</li>
+<li>build: Build</li>
+<li>perf: Performance</li>
+</ul>
+<p>이 외에도 제목은 50자 이내로 간결하게 작성하고 내용은 되도록 상세히 작성하도록 한다.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">feat: add back button</span><br><span class="line"></span><br><span class="line">add back button using &lt;buuton&gt; tag</span><br><span class="line"></span><br><span class="line">TODO</span><br><span class="line">- create page</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="작업의-단위"><a href="#작업의-단위" class="headerlink" title="작업의 단위"></a>작업의 단위</h2><p>commit 작업의 단위는 어떻게 될까?</p>
+<p>commit 을 하는 단위는 어떤 동작을 기준으로 한다고 보면된다. JS에서 예를 들자면 어떤 함수를 만들고 동작까지 확인했다면 그때를 commit 기점으로 생각하면된다.</p>
+<p>작업 최소 단위로 생각하고 세세하게 작성하도록 한다.</p>
+<h2 id="staging-area가-있는-이유"><a href="#staging-area가-있는-이유" class="headerlink" title="staging area가 있는 이유?"></a>staging area가 있는 이유?</h2><p>만약 staging area 가 없다면 어떻게 될까?</p>
+<p>우리는 모든 파일에 변경에 커밋을 한번에 날려야할 것이다. 만약 문서화 작업에대한 변경과 기능 추가에 대한 변경이 존재한다면 이를 한꺼번에 커밋해야 되는 것이다.</p>
+<p>stging area 가 있기 때문에 하나의 파일을 올려두고 staging area 에 있는 파일을 commit 대상으로 삼을 수 있다.</p>
+<h2 id="pull-request-실습"><a href="#pull-request-실습" class="headerlink" title="pull request 실습"></a>pull request 실습</h2><p>github repo &gt; Settings &gt; Mnage access &gt; Invate a collaborator 를 통해 코드 리뷰어를 초대한다.</p>
+<p>새로운 브렌치를 만들어 기능을 만든다.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ git branch [new branch name]</span><br><span class="line">$ git checkout [new branch name]</span><br><span class="line">$ git add [수정한 파일]</span><br><span class="line">$ git commit</span><br><span class="line">$ git push -u origin [new branch name]</span><br></pre></td></tr></table></figure>
+
+<p>새로운 브랜치를 로컬에서 생성했다면 remote repo 에는 새로운 브랜치가 없을 것이다. -u 플래그를 통해 새로운 브랜치를 remote repo 에 생성하면서 push 할 수 있다.</p>
+<p>github 저장소로 이동하여 pull request를 요청한다.</p>
+<p>이제 코드 리뷰어가 코드를 보고 수정할 것을 요청할 것이다. 그럼 다시 로컬 저장소로 돌아와서 파일을 수정하고 push 하는 과정까지 진행하면된다.</p>
+<p>코드리뷰어가 확인하고 문제가 없다 판단하면 승인을 해줄 것이다. 그럼 merge 를 클릭하여 remote repo 에 브랜치를 머지하면된다.</p>
+<p>로컬 저장소에는 아직 머지 되지 않은 상태 이기 때문에 머지명령어를 입력한다.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout main</span><br><span class="line">$ git fecth origin main</span><br><span class="line">$ git merge FETCH_HEAD</span><br></pre></td></tr></table></figure>
+
+<p>사실 <code>git pull origin main</code> 을 통해서도 동일한 과정을 진행할 수 있다. 내부적으로 보자면 git pull을 통한 머지가 위에 코드블럭에서 설명한 것을 똑같이 수행한다.</p>
+<p>차이점은 fetch를 통해 이시적으로 받아올 수 있기 때문에 변경사항을 확인하면서 머지할 수 있다는 것이다. 복잡한 코드를 머지해야 할때나 다시한번 확인이 필요할 경우가 있을 수 있으니 fetch를 사용하도록 하자.</p>
+<h2 id="다음에-배울-것"><a href="#다음에-배울-것" class="headerlink" title="다음에 배울 것"></a>다음에 배울 것</h2><p>branch 를 더 배울 예정이다.</p>
+<p>풀 리퀘스트하는 과정을 더 연습해서 익숙해 지도록 해야 겠다.</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/09/20/git/210728-git-branch/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -975,142 +1215,6 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/09/20/git/210721-git-basic/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JayoonKoo">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="티끌모아 태산">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/09/20/git/210721-git-basic/" class="post-title-link" itemprop="url">git-basic</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-09-20 21:39:38" itemprop="dateCreated datePublished" datetime="2021-09-20T21:39:38+09:00">2021-09-20</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/git/" itemprop="url" rel="index"><span itemprop="name">git</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="git-basic"><a href="#git-basic" class="headerlink" title="git basic"></a>git basic</h1><ul>
-<li>리눅스에 대해서 간략히 공부했다.</li>
-<li>git의 대한 기본적인 설정방법과 사용법을 알아보고 리뷰어와 조를 이루어 풀리퀘스트를 요청화는 과정을 연습해 보았다.</li>
-</ul>
-<h2 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h2><p>리눅스는 unix 기반에 오픈소스 운영체제로서 수많은 배포 버전이 있다. 헬싱키 대학생이던 리누스 토발즈가 앤디 타넨 비우의 MINX를 개조한 Linux를 배포했다.</p>
-<h3 id="Kernel"><a href="#Kernel" class="headerlink" title="Kernel"></a>Kernel</h3><p>커널은 하드웨어와 응용 프로그램을 이어주는 운영체제의 핵심 소프트 웨어이다.</p>
-<h3 id="Shell"><a href="#Shell" class="headerlink" title="Shell"></a>Shell</h3><p>쉘은 운영체제의 커널과 사용자를 이어주는 소프트웨어로서 사용자가 Kernel를 제어하기 위해 새용한다.</p>
-<h2 id="git-object"><a href="#git-object" class="headerlink" title="git object"></a>git object</h2><p>git에는 3가지의 객체가 있다.</p>
-<ol>
-<li>Blob: 파일 하나의 대한 정보로서 사진으로 비유하자면 사진 파일 자체인 .jpg 파일이 될 수 있다.</li>
-<li>Tree: Blob 이나 subtree 의 메타데이터로서 사진으로 비유하자면 찍히 날짜에 대한 정보라던지, 저장된 위치 같은 정보가 될 수 있다.</li>
-<li>Commit: 커밋 순간의 스냅샷으로서 버전으로 저장하려고 압축한 파일들과 같다.</li>
-</ol>
-<h2 id="git-저장소"><a href="#git-저장소" class="headerlink" title="git 저장소"></a>git 저장소</h2><p>git repo 에는 크게 Local 저장소와 remote 저장소가 있다. 흔히 사용하는 github과 같은 서비스가 remote 저장소라고 할 수 있다.</p>
-<p>Local 저장소는 크게 3가지 상태로 나눌 수 있다.</p>
-<ol>
-<li>Working Directory : 지금 작업하고 있는 폴더이다. <code>git init</code>을 통해 git repo를 만들거나 clone 받은 폴더가 될 수 있다.</li>
-<li>staging area : <code>git add</code> 를 통해 추가한 파일들에 상태를 말한다. 아직 커밋을 하기 전 상태이며 add를 해야지 git 에서 버전을 추적할 수 있다.</li>
-<li>localrepo : <code>git commit</code>을 수행해서 버전이 등록한 파일들에 상태이다. <code>git push</code>를 통해 remote 저장소로 파일을 올리거나 <code>git pull</code>을 통해 받아올 수 있다.</li>
-</ol>
-<img src="/images/img/git-process.png" width="500">
-
-<h2 id="configure"><a href="#configure" class="headerlink" title="configure"></a>configure</h2><p>깃을 사용하기전 환경 설정으로 해주면 좋을 것들을 알아본다.</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ git config --global user.name &quot;당신의유저네임&quot;</span><br><span class="line">$ git config --global user.email &quot;당신의메일주소&quot;</span><br><span class="line">$ git config --global core.editor &quot;vim&quot;</span><br><span class="line">$ git config --global core.pager &quot;cat&quot;</span><br><span class="line">$ git config --global init.defaultBranch &quot;main&quot;</span><br></pre></td></tr></table></figure>
-
-<p>commit 을 입력할 editor을 vim으로 설정하는 설정과 default branch를 main으로 바꾸는 설정이 포함되어 있다. 필수적인 사항은 아니다.</p>
-<p>만약 환경변수 설정을 내리고 싶다면 <code>--unset</code> 플래그를 추가하면된다.</p>
-<p><code>git config --global --unset core.editor</code></p>
-<h2 id="Commit-Convention"><a href="#Commit-Convention" class="headerlink" title="Commit Convention"></a>Commit Convention</h2><p>commit을 한번에 알기쉽게 하기위해서 보편적으로 사용하는 규칙들이 있다.</p>
-<ul>
-<li>feat: features (기능 개발에 대한 커밋)</li>
-<li>docs: documentations (문서 작업에 대한 커밋)</li>
-<li>conf: configurations (환경 변수 설정에 대한 커밋 ex)node pakage)</li>
-<li>test: test (test 코드에 대한 수정 생성에 대한 커밋)</li>
-<li>fix: bug-fix (버그를 고치거나 에러를 고친 커밋)</li>
-<li>refactor: refactoring (같은 기능을 하나 보기 좋고 효율적인 코드로 대체했을때)</li>
-<li>ci: Continuous Integration</li>
-<li>build: Build</li>
-<li>perf: Performance</li>
-</ul>
-<p>이 외에도 제목은 50자 이내로 간결하게 작성하고 내용은 되도록 상세히 작성하도록 한다.</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">feat: add back button</span><br><span class="line"></span><br><span class="line">add back button using &lt;buuton&gt; tag</span><br><span class="line"></span><br><span class="line">TODO</span><br><span class="line">- create page</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h2 id="작업의-단위"><a href="#작업의-단위" class="headerlink" title="작업의 단위"></a>작업의 단위</h2><p>commit 작업의 단위는 어떻게 될까?</p>
-<p>commit 을 하는 단위는 어떤 동작을 기준으로 한다고 보면된다. JS에서 예를 들자면 어떤 함수를 만들고 동작까지 확인했다면 그때를 commit 기점으로 생각하면된다.</p>
-<p>작업 최소 단위로 생각하고 세세하게 작성하도록 한다.</p>
-<h2 id="staging-area가-있는-이유"><a href="#staging-area가-있는-이유" class="headerlink" title="staging area가 있는 이유?"></a>staging area가 있는 이유?</h2><p>만약 staging area 가 없다면 어떻게 될까?</p>
-<p>우리는 모든 파일에 변경에 커밋을 한번에 날려야할 것이다. 만약 문서화 작업에대한 변경과 기능 추가에 대한 변경이 존재한다면 이를 한꺼번에 커밋해야 되는 것이다.</p>
-<p>stging area 가 있기 때문에 하나의 파일을 올려두고 staging area 에 있는 파일을 commit 대상으로 삼을 수 있다.</p>
-<h2 id="pull-request-실습"><a href="#pull-request-실습" class="headerlink" title="pull request 실습"></a>pull request 실습</h2><p>github repo &gt; Settings &gt; Mnage access &gt; Invate a collaborator 를 통해 코드 리뷰어를 초대한다.</p>
-<p>새로운 브렌치를 만들어 기능을 만든다.</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ git branch [new branch name]</span><br><span class="line">$ git checkout [new branch name]</span><br><span class="line">$ git add [수정한 파일]</span><br><span class="line">$ git commit</span><br><span class="line">$ git push -u origin [new branch name]</span><br></pre></td></tr></table></figure>
-
-<p>새로운 브랜치를 로컬에서 생성했다면 remote repo 에는 새로운 브랜치가 없을 것이다. -u 플래그를 통해 새로운 브랜치를 remote repo 에 생성하면서 push 할 수 있다.</p>
-<p>github 저장소로 이동하여 pull request를 요청한다.</p>
-<p>이제 코드 리뷰어가 코드를 보고 수정할 것을 요청할 것이다. 그럼 다시 로컬 저장소로 돌아와서 파일을 수정하고 push 하는 과정까지 진행하면된다.</p>
-<p>코드리뷰어가 확인하고 문제가 없다 판단하면 승인을 해줄 것이다. 그럼 merge 를 클릭하여 remote repo 에 브랜치를 머지하면된다.</p>
-<p>로컬 저장소에는 아직 머지 되지 않은 상태 이기 때문에 머지명령어를 입력한다.</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout main</span><br><span class="line">$ git fecth origin main</span><br><span class="line">$ git merge FETCH_HEAD</span><br></pre></td></tr></table></figure>
-
-<p>사실 <code>git pull origin main</code> 을 통해서도 동일한 과정을 진행할 수 있다. 내부적으로 보자면 git pull을 통한 머지가 위에 코드블럭에서 설명한 것을 똑같이 수행한다.</p>
-<p>차이점은 fetch를 통해 이시적으로 받아올 수 있기 때문에 변경사항을 확인하면서 머지할 수 있다는 것이다. 복잡한 코드를 머지해야 할때나 다시한번 확인이 필요할 경우가 있을 수 있으니 fetch를 사용하도록 하자.</p>
-<h2 id="다음에-배울-것"><a href="#다음에-배울-것" class="headerlink" title="다음에 배울 것"></a>다음에 배울 것</h2><p>branch 를 더 배울 예정이다.</p>
-<p>풀 리퀘스트하는 과정을 더 연습해서 익숙해 지도록 해야 겠다.</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/09/20/git/210918-3.1-Branches%20in%20a%20Nutshell/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1343,98 +1447,6 @@
 <li>init 프로세스를 기반으로 fork() 시스템콜을 사용해서, 신규 프로세스가 생성 된다. </li>
 </ul>
 <h2 id="리눅스와-권한"><a href="#리눅스와-권한" class="headerlink" title="리눅스와 권한"></a>리눅스와 권한</h2><p>운영체제는 사용자 리소스 권한을 관리한다.<br>리눇는 사용자 / 그룹으로 권한을 관리한다.<br>root는 슈퍼 관리자이다.<br>파일마다 소유자, 소유자 그룹, 모든 사용자에 대한 읽고, 쓰고, 실행되는 권한을 관리한다.<br>접근 권한 정보는 inode의 자료구조에 저장된다. </p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/09/12/system-programing/210809-%EB%A6%AC%EB%88%85%EC%8A%A4(%EC%9C%A0%EB%8B%89%EC%8A%A4)%20%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JayoonKoo">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="티끌모아 태산">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/09/12/system-programing/210809-%EB%A6%AC%EB%88%85%EC%8A%A4(%EC%9C%A0%EB%8B%89%EC%8A%A4)%20%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/" class="post-title-link" itemprop="url">리눅스(유닉스) 운영체제</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-09-12 23:46:02" itemprop="dateCreated datePublished" datetime="2021-09-12T23:46:02+09:00">2021-09-12</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/CS/" itemprop="url" rel="index"><span itemprop="name">CS</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="리눅스"><a href="#리눅스" class="headerlink" title="리눅스"></a>리눅스</h1><p>서버에 많이 사용되는 운영체제 </p>
-<p>프로그래밍 할때에도 많이 사용 된다.<br>컴파일 시간이 줄어든다. </p>
-<p>클라우드 컴퓨팅 (AWS) 에도 많이 사용됨</p>
-<p>운영체제, 소프트웨어의 대부 UNIX 계열 운영체제이다.<br>완전 프로그래머 스타일이다. </p>
-<p>plain 하게 프로그래밍 가능하다.<br>ANSI C - C 언어 표준 (표준으로 코딩이 가능하다.)</p>
-<br/>
-
-<h2 id="리눅스의-역사와-배경"><a href="#리눅스의-역사와-배경" class="headerlink" title="리눅스의 역사와 배경"></a>리눅스의 역사와 배경</h2><h3 id="리눅스-시작"><a href="#리눅스-시작" class="headerlink" title="리눅스 시작"></a>리눅스 시작</h3><p>리누스 토발즈가 개발.<br>대학에 있는 UNIX 컴퓨터를 집에서 쓰고 싶었다.<br>다중 사용자, 다중 작업(시분할 시스템, 멀티 태스킹) 을 지원할 수 있도록 만들었다. </p>
-<h3 id="GNU-프로젝트"><a href="#GNU-프로젝트" class="headerlink" title="GNU 프로젝트"></a>GNU 프로젝트</h3><p>GNU = Gnu is Not Unix</p>
-<p>유닉스 운영체제를 여러 회사에서 개발했는데, 소스를 공유하지 않았다.<br>리차드 스톨만이 초기 컴퓨터 개발 공동체의 상호협력적인 문화로 돌아가자고 1985년 GNU 선언문을 발표했다.<br>기술을 공유 되어야 한다고 주장.</p>
-<p>GNU 프로젝트를 지원하기 위해 자유 소프트웨어 재단 설립 GNU 공개 라이선스(GPL) 규약을 제공.<br>이 소스를 사용할수 있지만 해당 기술을 사용했다면 기술은 공유 되어야 한다는 규약.</p>
-<h4 id="GPL-라이선스"><a href="#GPL-라이선스" class="headerlink" title="GPL 라이선스"></a>GPL 라이선스</h4><p>GPL 프로그램은 어떤 형태로든 사용할 수 있지만, 다시 배포하기 위해서 동일한 GPL 라이선스 사용해야 함.</p>
-<h3 id="GNU-Hurd"><a href="#GNU-Hurd" class="headerlink" title="GNU Hurd"></a>GNU Hurd</h3><p>운영체제 커널 개발 시도 - GNU Hurd</p>
-<p>운영체제의 필요한 쉘 응용 프로그램, API, 라이브러리 System Call 개발, 컴파일러 개발</p>
-<img src="images/210809-리눅스(유닉스)%20운영체제/1.png" width="300">
-
-<h3 id="GNU-프로젝트와-리눅스"><a href="#GNU-프로젝트와-리눅스" class="headerlink" title="GNU 프로젝트와 리눅스"></a>GNU 프로젝트와 리눅스</h3><p>GNU Hurd 개발 지연</p>
-<p>리누스 토발즈가 리눅스 커널 소스 오픈 소식 들음. GNU Hurd 를 개발 안해도 되겠네? </p>
-<p>GNU 프로젝트 산출물과 리눅스 커널이 통합 개발 되기 시작. </p>
-<p>GNU/ Linux 라고 부르기를 희망함. 리차드 스톨만이 (GNU 창시자.)</p>
 
       
     </div>
