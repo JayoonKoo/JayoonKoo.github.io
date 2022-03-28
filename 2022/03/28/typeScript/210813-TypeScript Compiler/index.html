@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css" integrity="sha256-2H3fkXt6FEmrReK448mDVGKb3WW2ZZw35gI7vqHOE4Y=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"jayoonkoo.github.io","root":"/","images":"/images","scheme":"Muse","version":"8.6.1","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="TypeScript CompilerCompliation Context논리적인 그룹핑과 어떤 방법으로 컴파일 할것인지에 대한 맥락.보통 tsconfig.json 파일로 관리한다. tsconfig schema최상위 프로퍼티 중 주요한 항목  compileOnSave extends compileOptions files include exclude referenc">
+<meta property="og:type" content="article">
+<meta property="og:title" content="TypeScript Compiler">
+<meta property="og:url" content="https://jayoonkoo.github.io/2022/03/28/typeScript/210813-TypeScript%20Compiler/index.html">
+<meta property="og:site_name" content="티끌모아 태산">
+<meta property="og:description" content="TypeScript CompilerCompliation Context논리적인 그룹핑과 어떤 방법으로 컴파일 할것인지에 대한 맥락.보통 tsconfig.json 파일로 관리한다. tsconfig schema최상위 프로퍼티 중 주요한 항목  compileOnSave extends compileOptions files include exclude referenc">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-03-28T03:06:36.000Z">
+<meta property="article:modified_time" content="2022-03-28T03:07:18.623Z">
+<meta property="article:author" content="JayoonKoo">
+<meta property="article:tag" content="utils">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://jayoonkoo.github.io/2022/03/28/typeScript/210813-TypeScript%20Compiler/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://jayoonkoo.github.io/2022/03/28/typeScript/210813-TypeScript%20Compiler/","path":"2022/03/28/typeScript/210813-TypeScript Compiler/","title":"TypeScript Compiler"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>TypeScript Compiler | 티끌모아 태산</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">티끌모아 태산</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">작은 조각 모음</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">20</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">16</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">153</span></a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#TypeScript-Compiler"><span class="nav-number">1.</span> <span class="nav-text">TypeScript Compiler</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Compliation-Context"><span class="nav-number">1.1.</span> <span class="nav-text">Compliation Context</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tsconfig-schema"><span class="nav-number">1.2.</span> <span class="nav-text">tsconfig schema</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#compileOnSave"><span class="nav-number">1.3.</span> <span class="nav-text">compileOnSave</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#extends"><span class="nav-number">1.4.</span> <span class="nav-text">extends</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#files-include-exclude"><span class="nav-number">1.5.</span> <span class="nav-text">files, include, exclude</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#compileOptions-typeRoots-types"><span class="nav-number">1.6.</span> <span class="nav-text">compileOptions - typeRoots, types</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#compileOptions-target%EA%B3%BC-lib"><span class="nav-number">1.7.</span> <span class="nav-text">compileOptions - target과 lib</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#compileOptions-outDir-outFil-rootDir"><span class="nav-number">1.8.</span> <span class="nav-text">compileOptions -outDir, outFil, rootDir</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#compileOptions-strict"><span class="nav-number">1.9.</span> <span class="nav-text">compileOptions - strict</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-overview">
+            <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">JayoonKoo</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">153</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/JayoonKoo" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;JayoonKoo" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:rnwkdbs12@gmail.com" title="E-Mail → mailto:rnwkdbs12@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/JayoonKoo" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2022/03/28/typeScript/210813-TypeScript%20Compiler/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JayoonKoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="티끌모아 태산">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          TypeScript Compiler
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2022-03-28 12:06:36 / Modified: 12:07:18" itemprop="dateCreated datePublished" datetime="2022-03-28T12:06:36+09:00">2022-03-28</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/typeScript/" itemprop="url" rel="index"><span itemprop="name">typeScript</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="TypeScript-Compiler"><a href="#TypeScript-Compiler" class="headerlink" title="TypeScript Compiler"></a>TypeScript Compiler</h1><h2 id="Compliation-Context"><a href="#Compliation-Context" class="headerlink" title="Compliation Context"></a>Compliation Context</h2><p>논리적인 그룹핑과 어떤 방법으로 컴파일 할것인지에 대한 맥락.<br>보통 <code>tsconfig.json</code> 파일로 관리한다.</p>
+<h2 id="tsconfig-schema"><a href="#tsconfig-schema" class="headerlink" title="tsconfig schema"></a>tsconfig schema</h2><p>최상위 프로퍼티 중 주요한 항목</p>
+<ul>
+<li>compileOnSave</li>
+<li>extends</li>
+<li>compileOptions</li>
+<li>files</li>
+<li>include</li>
+<li>exclude</li>
+<li>references</li>
+</ul>
+<h2 id="compileOnSave"><a href="#compileOnSave" class="headerlink" title="compileOnSave"></a>compileOnSave</h2><ul>
+<li>true/false(default fasle): true 로 설정하면 저장하면 컴파일 해줌.</li>
+<li>누가?<ul>
+<li>Visual Studio 2015 with TypeScript 1.8.4 이상</li>
+<li>tom-thypescript 플러그인</li>
+</ul>
+</li>
+</ul>
+<h2 id="extends"><a href="#extends" class="headerlink" title="extends"></a>extends</h2><p>상속 받을 때 사용함.</p>
+<ul>
+<li>파일 (상대) 경로명 : string</li>
+</ul>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">&quot;compilerOptins&quot;</span>: &#123;</span><br><span class="line">    <span class="attr">&quot;strict&quot;</span>: <span class="literal">true</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">&quot;extends&quot;</span>: <span class="string">&quot;./base.json&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>tsconfig/base</code> 저장소로 이동하면 다양한 base 설정을 받을 수 있다.</p>
+<p><code>npm install --save-dev @tsconfig/deno</code></p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">&quot;extends&quot;</span>: <span class="string">&quot;@tsconfig/deno/tsconfig.json&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="files-include-exclude"><a href="#files-include-exclude" class="headerlink" title="files, include, exclude"></a>files, include, exclude</h2><p>어떤 파일을 컴파일 할것인지 결정함.</p>
+<p>files 가 가장 강한 설정이다. 따라서 exlucde를 통해서 제외 했더라도 files 안에 있으면 컴파일 된다.</p>
+<p>셋다 설정이 없으면 전부 컴파일 하려고 한다.</p>
+<ul>
+<li>files<ul>
+<li>상대 혹은 절대 경로의 리스트 배열이다.</li>
+<li>exclude 보다 쎄다.</li>
+</ul>
+</li>
+<li>include, exclude<ul>
+<li>glob 패턴 (마치 .gitignore)</li>
+<li>include<ul>
+<li>exclude 보다 약하다.</li>
+</ul>
+</li>
+<li>exclude<ul>
+<li>설정 안하면 4가지 (node_modules, bower_components, jspm_packages, &lt;outDir&gt;) 를 dafault로 제외 함.</li>
+<li>&lt;outDir&gt; 은 항상 제외한다. (include에 있어도)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="compileOptions-typeRoots-types"><a href="#compileOptions-typeRoots-types" class="headerlink" title="compileOptions - typeRoots, types"></a>compileOptions - typeRoots, types</h2><p>만약 외부 라이브러리를 사용할 경우 타입 검사를 어떻게 수행할까?</p>
+<p>예를 들어 react를 설치하면 js로 만든 것이기 때문에 오류가 발생한다. 따라서 <code>npm i --save-dev @types/react</code>를 하게 되면 <code>node_modules/@types</code>안에서 파일을 찾아서 오류가 나지 않게 된다.<br>이것이 default 설정인데 typeRoots와 types 를 통해 설정을 변경할 수 있다.</p>
+<p>typeRoots로 @types로 사용할 폴더를 설정한다. 유명하지 않는 라이브러리 같은 경우 @types가 없을 수 있고 내가 작성한 패키지는 내가 따로 만들어야 하는 경우도 있다.</p>
+<p><code>@types</code></p>
+<ul>
+<li>내장 type definition 시스템이다.</li>
+<li>아무 설정을 하지 않으면 <code>node_modules/@types</code> 라는 모든 경로를 찾아서 사용한다.</li>
+<li>typeRoots를 사용하면? -&gt; 배열 안에 들어있는 경로들 아래서만 가져온다.</li>
+<li>types 를 사용하면 -&gt; 배열안에 모듈 혹은 <code>./node_module/@types/</code> 안에 모듈 이름에서 찾아온다. [] 빈 배열을 넣는다는 건 이 시스템을 이용하지 않겠다는 것이다.</li>
+<li>typeRoots와 types를 같이 사용하지는 않는다.</li>
+</ul>
+<h2 id="compileOptions-target과-lib"><a href="#compileOptions-target과-lib" class="headerlink" title="compileOptions - target과 lib"></a>compileOptions - target과 lib</h2><p>target - 자바스크립트 버전을 설정한다. 기본값은 es3이다. 컴파일 할때 해당 버전으로 변경한다.</p>
+<p>lib - lib로 사용할것들을 배열로 넘겨줌. target에 따라 default로 저장되는 lib가 있다.</p>
+<h2 id="compileOptions-outDir-outFil-rootDir"><a href="#compileOptions-outDir-outFil-rootDir" class="headerlink" title="compileOptions -outDir, outFil, rootDir"></a>compileOptions -outDir, outFil, rootDir</h2><ul>
+<li>rootDir : 컴파일 대상이 되는 파일이 있는 폴더</li>
+</ul>
+<p>따로 설정하지 않으면 ts 파일이 있는 가장 최상위 폴더를 rootDir로 설정한다.</p>
+<ul>
+<li>outDir : 컴파일 한 파일이 저장될 폴더</li>
+<li>outFile: 지정된 경우 모든 전역 파일이 지정된 단일 출력 파일로 연결된다.</li>
+</ul>
+<h2 id="compileOptions-strict"><a href="#compileOptions-strict" class="headerlink" title="compileOptions - strict"></a>compileOptions - strict</h2><p>무조건 strict를 true로 설정하는 것이 기본이다.</p>
+<p><code>--noImplicitAny</code> any로 추정되는데 any로 명시하지 않았다면 에러가 발생함.<br><code>suppressImplicitAnyIndexErrors</code> 인덱스 객체도 any로 추론될 경우 에러를 발생시키는 옵션인데 이것은 너무 까다로우니 따로 에러가 되지 않게 하는 설정도 있음.</p>
+<p><code>--noImplictThis</code> this 가 any 타입으로 추정될 경우 . this에 타입을 명시해야 한다고 에러를 발생 시킴, 함수 매개변수에 첫번째에 this를 넣고 타입일 지정해줌. js에서는 오류 이지만 ts에서는 가능함.<br>마치 call /applyu/ bind 와 같이 this를 대체하여 함수 콜을 사용하는 용도. class에서는 오류가 나지 않음 왜냐하면 class 자체로 타입 체크가 가능하기 때문에</p>
+<p><code>--strictNullChecks</code> 이것을 적용히지 않으면 모든 타입은 null 과 undefined가 될 수 있다. 꼭 설정해주어야 함. 한가지 예외는 undefined 에 void 할당이 가능하다.</p>
+<p><code>--strictFunctionTypes</code> 반환 타입은 공변적, 인자 타입은 반 공병적. 그런데 타입스크립트에서 인자 타입은 공변적이면서, 반공변적인게 문제. 함수의 파라미터 타입이 반공변적으로 동작핟조록 변경한다. 반공변 이란 공변에 반대라고 생각하면 된다.</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> Logger&lt;T&gt; = <span class="function">(<span class="params">param: T</span>) =&gt;</span> <span class="built_in">void</span>;</span><br><span class="line"><span class="keyword">let</span> log: Logger&lt;<span class="built_in">string</span> | <span class="built_in">number</span>&gt; = <span class="function">(<span class="params">param</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(param);</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">let</span> logNumber: Logger&lt;<span class="built_in">number</span>&gt; = <span class="function">(<span class="params">param</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(param);</span><br><span class="line">&#125;;</span><br><span class="line">log = logNumber; <span class="comment">// Error</span></span><br><span class="line">logNumber = log; <span class="comment">// OK</span></span><br></pre></td></tr></table></figure>
+
+<p>공변이라고 생각하면 logNumber 가 서브 타입이기대문에 log에 할당하는 것이 가능할 것이다. 하지만 <code>--strictFunctionTypes</code>를 적용하면 파라미터에 대해서 반공변적으로 작동하기 때문에 반대로 작동한다.<br>사실 <code>logNumber</code>는 숫자 밖에 처리하지 못하기 때문에 string 도 처리할 수 있는 <code>log</code>에 할당하는게 맞지 않다.</p>
+<p><code>--stcitPropertyInitialization</code> 정의되지 않은 클래스의 속성이 생성자에서 초기화되었는지 확인한다. 만약 비동기로 생성되는 클래스일 경우에 생성자에 async를 사용하는것이 불가능하기 때문에 에러가 발생한다.<br>이럴때에는 async 함수로 initialize 같은 함수를 만들어 할당해 주고 클래스 내부 변수로 이름 뒤에 <code>!</code>를 붙여주면 된다. <code>private _name!: string;</code></p>
+<p><code>--strictBindCallApply</code> bind, call, apply 에 대한 검사를 엄격히 수행한다.</p>
+<p><code>--alwaysStrict</code> strict 모드로 코드를 분석함.</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/utils/" rel="tag"># utils</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/03/28/typeScript/210813-type%20system/" rel="prev" title="type system">
+                  <i class="fa fa-chevron-left"></i> type system
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2022/03/28/typeScript/210809-TypeScript/" rel="next" title="TypeScript">
+                  TypeScript <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">JayoonKoo</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

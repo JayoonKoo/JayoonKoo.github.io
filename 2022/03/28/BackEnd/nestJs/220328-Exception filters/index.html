@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css" integrity="sha256-2H3fkXt6FEmrReK448mDVGKb3WW2ZZw35gI7vqHOE4Y=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"jayoonkoo.github.io","root":"/","images":"/images","scheme":"Muse","version":"8.6.1","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="Exception filtersNest 에는 애플리케이션 전체에서 처리되지 않은 모든 예외를 처리하는 레이어가 내장되어 있다. 처리 되지 않은 예외가 여기에서 잡힌다.  기본적으로 이 작업은 HttpException 유형의 예외를 처리하는 내장 전역 예외 필터에 의해 수행된다. 예외가 인식되지 않는 경우(HttpException 도 아니고, HttpExce">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Exception filters">
+<meta property="og:url" content="https://jayoonkoo.github.io/2022/03/28/BackEnd/nestJs/220328-Exception%20filters/index.html">
+<meta property="og:site_name" content="티끌모아 태산">
+<meta property="og:description" content="Exception filtersNest 에는 애플리케이션 전체에서 처리되지 않은 모든 예외를 처리하는 레이어가 내장되어 있다. 처리 되지 않은 예외가 여기에서 잡힌다.  기본적으로 이 작업은 HttpException 유형의 예외를 처리하는 내장 전역 예외 필터에 의해 수행된다. 예외가 인식되지 않는 경우(HttpException 도 아니고, HttpExce">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-03-28T02:53:37.000Z">
+<meta property="article:modified_time" content="2022-03-28T02:53:46.432Z">
+<meta property="article:author" content="JayoonKoo">
+<meta property="article:tag" content="nest">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://jayoonkoo.github.io/2022/03/28/BackEnd/nestJs/220328-Exception%20filters/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://jayoonkoo.github.io/2022/03/28/BackEnd/nestJs/220328-Exception%20filters/","path":"2022/03/28/BackEnd/nestJs/220328-Exception filters/","title":"Exception filters"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Exception filters | 티끌모아 태산</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">티끌모아 태산</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">작은 조각 모음</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">20</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">16</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">153</span></a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Exception-filters"><span class="nav-number">1.</span> <span class="nav-text">Exception filters</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Throwing-standard-exceptions"><span class="nav-number">1.1.</span> <span class="nav-text">Throwing standard exceptions</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Custom-exceptions"><span class="nav-number">1.2.</span> <span class="nav-text">Custom exceptions</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Built-in-HTTP-exceptions"><span class="nav-number">1.3.</span> <span class="nav-text">Built-in HTTP exceptions</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Exception-filters-1"><span class="nav-number">1.4.</span> <span class="nav-text">Exception filters</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-overview">
+            <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">JayoonKoo</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">153</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/JayoonKoo" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;JayoonKoo" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:rnwkdbs12@gmail.com" title="E-Mail → mailto:rnwkdbs12@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/JayoonKoo" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2022/03/28/BackEnd/nestJs/220328-Exception%20filters/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JayoonKoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="티끌모아 태산">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Exception filters
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2022-03-28 11:53:37 / Modified: 11:53:46" itemprop="dateCreated datePublished" datetime="2022-03-28T11:53:37+09:00">2022-03-28</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Backend/" itemprop="url" rel="index"><span itemprop="name">Backend</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="Exception-filters"><a href="#Exception-filters" class="headerlink" title="Exception filters"></a>Exception filters</h1><p>Nest 에는 애플리케이션 전체에서 처리되지 않은 모든 예외를 처리하는 레이어가 내장되어 있다. 처리 되지 않은 예외가 여기에서 잡힌다. </p>
+<p>기본적으로 이 작업은 HttpException 유형의 예외를 처리하는 내장 전역 예외 필터에 의해 수행된다.</p>
+<p>예외가 인식되지 않는 경우(HttpException 도 아니고, HttpException에서 상속한 클래스도 아님) 기본 제공 예외 필터는 다음과 같은 기본 JSON 응답을 새성한다. </p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">&quot;statusCode&quot;</span>: <span class="number">500</span>,</span><br><span class="line">  <span class="attr">&quot;message&quot;</span>: <span class="string">&quot;Internal server error&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>http-erros 라이브러를 사용한다. 기본적으로 statusCode와 message 가 채워져서 응답으로 보내진다. </p>
+<h2 id="Throwing-standard-exceptions"><a href="#Throwing-standard-exceptions" class="headerlink" title="Throwing standard exceptions"></a>Throwing standard exceptions</h2><p>Nest 는 HttpException class 를 내장해서 사용한다. 컨틀롤러에서 에러를 발생시키는 예시 코드를 만들어 보자.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@Get()</span><br><span class="line">async findAll() &#123;</span><br><span class="line">  throw new HttpException(&#x27;Forbidden&#x27;, HttpStatus.FORBIDDEN);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>클라이언트가 해당 엔드포인트를 호출하면 다음 json을 반환한다. </p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">&quot;statusCode&quot;</span>: <span class="number">403</span>,</span><br><span class="line">  <span class="attr">&quot;message&quot;</span>: <span class="string">&quot;Forbidden&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>HttpException 은 response 와 status 를 받는데 response 는 string이나 객체가 올 수 있고, status 는 HTTP status code 를 사용한다. response에 객체를 넘겨주면, serialize 해서 반환해 준다. </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">@Get()</span><br><span class="line">async findAll() &#123;</span><br><span class="line">  throw new HttpException(&#123;</span><br><span class="line">    status: HttpStatus.FORBIDDEN,</span><br><span class="line">    error: &#x27;This is a custom message&#x27;,</span><br><span class="line">  &#125;, HttpStatus.FORBIDDEN);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>반환하는 JSON : </p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">&quot;status&quot;</span>: <span class="number">403</span>,</span><br><span class="line">  <span class="attr">&quot;error&quot;</span>: <span class="string">&quot;This is a custom message&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Custom-exceptions"><a href="#Custom-exceptions" class="headerlink" title="Custom exceptions"></a>Custom exceptions</h2><p>대부분의 경우 custom exceptions를 사용할 일이 없지만 사용하고 싶다면 HttpException을 상속하는 예외 클래스를 커스텀 할 수 있다. </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">export class ForbiddenException extends HttpException &#123;</span><br><span class="line">  constructor() &#123;</span><br><span class="line">    super(&#x27;Forbidden&#x27;, HttpStatus.FORBIDDEN);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>HttpException 을 상속하였기 때문에 동일하게 동작하여 동일하게 사용할 수 있다. </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@Get()</span><br><span class="line">async findAll() &#123;</span><br><span class="line">  throw new ForbiddenException();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Built-in-HTTP-exceptions"><a href="#Built-in-HTTP-exceptions" class="headerlink" title="Built-in HTTP exceptions"></a>Built-in HTTP exceptions</h2><p>Nest는 기본 ThhpException에서 상속되는 일련의 표준 예외를 제공한다. </p>
+<h2 id="Exception-filters-1"><a href="#Exception-filters-1" class="headerlink" title="Exception filters"></a>Exception filters</h2><p>Exception filters 는 에러에대한 컨트롤을 위해서 디자인되었다. 다음은 HttpException 인스턴스 예외를 포착하고 이데 대응하는 사용자 응답을 구현하는 예외 필터를 만들어 본다. </p>
+<p>이를 위해서는 Request와 Response가 필요하고 Request에서 url 을 가져와 logging을 만들고 Response.json() 메서드를 사용하여 응답되는 데이터를 직접 제어해 본다.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">import &#123; ExceptionFilter, Catch, ArgumentsHost, HttpException &#125; from &#x27;@nestjs/common&#x27;;</span><br><span class="line">import &#123; Request, Response &#125; from &#x27;express&#x27;;</span><br><span class="line"></span><br><span class="line">@Catch(HttpException)</span><br><span class="line">export class HttpExceptionFilter implements ExceptionFilter &#123;</span><br><span class="line">  catch(exception: HttpException, host: ArgumentsHost) &#123;</span><br><span class="line">    const ctx = host.switchToHttp();</span><br><span class="line">    const response = ctx.getResponse&lt;Response&gt;();</span><br><span class="line">    const request = ctx.getRequest&lt;Request&gt;();</span><br><span class="line">    const status = exception.getStatus();</span><br><span class="line"></span><br><span class="line">    response</span><br><span class="line">      .status(status)</span><br><span class="line">      .json(&#123;</span><br><span class="line">        statusCode: status,</span><br><span class="line">        timestamp: new Date().toISOString(),</span><br><span class="line">        path: request.url,</span><br><span class="line">      &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>모든 예외 필터는 ExceptionFilter<T> 제너릭으로 구현해야 한다. catch에 exception type으로 제너링 타입을 사용한다. <code>catch(exception: T, host: ArgumetnHost)</code></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/nest/" rel="tag"># nest</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/03/28/BackEnd/nestJs/220328-Interceptors/" rel="prev" title="Interceptors">
+                  <i class="fa fa-chevron-left"></i> Interceptors
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2022/03/28/Material%20Designe/220328-Layout/" rel="next" title="Layout">
+                  Layout <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">JayoonKoo</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>
