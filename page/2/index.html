@@ -189,7 +189,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2022/03/28/BackEnd/nestJs/220328-Interceptors/">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2022/03/28/BackEnd/220328-Guards/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -202,7 +202,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/03/28/BackEnd/nestJs/220328-Interceptors/" class="post-title-link" itemprop="url">Interceptors</a>
+          <a href="/2022/03/28/BackEnd/220328-Guards/" class="post-title-link" itemprop="url">Guards</a>
         </h2>
 
         <div class="post-meta-container">
@@ -214,7 +214,120 @@
       <span class="post-meta-item-text">Posted on</span>
       
 
-      <time title="Created: 2022-03-28 11:53:37 / Modified: 11:53:46" itemprop="dateCreated datePublished" datetime="2022-03-28T11:53:37+09:00">2022-03-28</time>
+      <time title="Created: 2022-03-28 11:53:37 / Modified: 12:12:43" itemprop="dateCreated datePublished" datetime="2022-03-28T11:53:37+09:00">2022-03-28</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Backend/" itemprop="url" rel="index"><span itemprop="name">Backend</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="Guards"><a href="#Guards" class="headerlink" title="Guards"></a>Guards</h1><p>Guard 는 CanActivate 인터페이스를 구현하는 @Injectable() 데코레이터가 달린 클래스이다. </p>
+<p>Guard 는 request 가 실행 가능한지 여부를 판단한다. 흔히 이것을 authorization이라고 부르며 Express 에서는 대부분 midlleware 에서 처리하여 특정 컨트롤러와 강하게 연결되는것을 막았다. </p>
+<p>그러나 middleware 에 가장 큰 문제는 next 이후에  어떤 함수가 실행되는지 모른다는 것에 있다. Guard 는 ExecutionContext 를 알수 있고 request/response 싸이클에 선언적으로 사용할 수 있어서 코드를 더 읽기좋고 선언적으로 만들어 준다. </p>
+<p>Guard 는 각 미들웨어 이후에 실행되지만 인터셉터나 파이프 이전에 실행된다. </p>
+<h2 id="Authorization-Guard"><a href="#Authorization-Guard" class="headerlink" title="Authorization Guard"></a>Authorization Guard</h2><p>Authorization 은 Guard 에 가장 좋은 예이다. AuthGuard 는 request 에서 토큰을 추출하고 판단한 후 다음 과정을 진행할지 판단하게 할 수 있다. </p>
+<p>auth.guard.ts : </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">import &#123; Injectable, CanActivate, ExecutionContext &#125; from &#x27;@nestjs/common&#x27;;</span><br><span class="line">import &#123; Observable &#125; from &#x27;rxjs&#x27;;</span><br><span class="line"></span><br><span class="line">@Injectable()</span><br><span class="line">export class AuthGuard implements CanActivate &#123;</span><br><span class="line">  canActivate(</span><br><span class="line">    context: ExecutionContext,</span><br><span class="line">  ): boolean | Promise&lt;boolean&gt; | Observable&lt;boolean&gt; &#123;</span><br><span class="line">    const request = context.switchToHttp().getRequest();</span><br><span class="line">    return validateRequest(request);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Guard 는 canActivate() 를 구현하고 request를 넘길지 여부를 boolean 으로 반환한다. 또한, Promise , Observable를 반환할 수 있기 때문에 동기적으로나 비동기 적으로나 반환하는것이 가능하다. </p>
+<h2 id="Execution-context"><a href="#Execution-context" class="headerlink" title="Execution context"></a>Execution context</h2><p>canActivate 는 ExecutionContext 인스턴스를 받고 ExecutionContext 는 ArgumetnsHost 를 상속한다. context 변수를 통하여 request 를 얻을 수 있다. </p>
+<h2 id="Role-based-authentication"><a href="#Role-based-authentication" class="headerlink" title="Role-based authentication"></a>Role-based authentication</h2><p>특정 권한을 가진 유저만 허용하는 Guard 를 만들어 보자. 지금은 template 로서 모든 권한을 허용하고 추후에 기능을 추가하면서 role 기반 authentication 을 만들어 본다. </p>
+<p>roles.guard.ts : </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">import &#123; Injectable, CanActivate, ExecutionContext &#125; from &#x27;@nestjs/common&#x27;;</span><br><span class="line">import &#123; Observable &#125; from &#x27;rxjs&#x27;;</span><br><span class="line"></span><br><span class="line">@Injectable()</span><br><span class="line">export class RolesGuard implements CanActivate &#123;</span><br><span class="line">  canActivate(</span><br><span class="line">    context: ExecutionContext,</span><br><span class="line">  ): boolean | Promise&lt;boolean&gt; | Observable&lt;boolean&gt; &#123;</span><br><span class="line">    return true;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Binding-guards"><a href="#Binding-guards" class="headerlink" title="Binding guards"></a>Binding guards</h2><p>guard 는 exception filter 와 마찬가지로 controller-scoped, method-scoped, global-scoped 모두 가능하다. 다음은 @UseGuards() 데코레이터를 이용하여 controller-scoped 로 사용한 예제이다. 해당 데코레이터는 단일 인수나 쉼표로 구분하여 인수를 받을 수 있다. </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">@Controller(&#x27;cats&#x27;)</span><br><span class="line">@UseGuards(RolesGuard)</span><br><span class="line">export class CatsController &#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>내부 인스턴스를 전달할 수도 있다. </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">@Controller(&#x27;cats&#x27;)</span><br><span class="line">@UseGuards(new RolesGuards())</span><br><span class="line">export class CatsController &#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>만약 method-scoped 로 사용하고 싶다면 UseGuards 데코레이터를 메서드 레벨에서 사용한다. 글로벌로 사용하고 싶다면 nest application 인스턴스에  useGlobalGuards() 메서드를 사용한다. </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">const app = await NestFactory.create(AppModule);</span><br><span class="line">app.useGlobalGuards(new RolesGuard());</span><br></pre></td></tr></table></figure>
+
+<p>의존성 주입 측면에서 모듈 밖에서 useGlobalGuards() 메서드에 의해서 등록되므로 의존성을 주입할 수 없다. 이런 문제를 해결하기 위해서 module 주입해서 사용할 수 있다. </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">@Module(&#123;</span><br><span class="line">	providers: [</span><br><span class="line">		&#123;</span><br><span class="line">			provide: APP_GUARD,</span><br><span class="line">			useClass: RolesGuard,</span><br><span class="line">		&#125;,</span><br><span class="line">	],</span><br><span class="line">&#125;)</span><br><span class="line">export class AppModule&#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Setting-roles-per-handler"><a href="#Setting-roles-per-handler" class="headerlink" title="Setting roles per handler"></a>Setting roles per handler</h2><p>위에서 작성한 roleguard 는 지금 어떤 권한도 확인하지 않고 있다. 권한을 확인하는 가장 좋은 방법은 metadata를 활용하는 것이다. nest 는 custom meataData 를 첨부하는 @SetMetadata() 데코레이터를 제공한다. </p>
+<p>cats.controller.ts : </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">@Post()</span><br><span class="line">@SetMetadata(&#x27;roles&#x27;, [&#x27;admin&#x27;])</span><br><span class="line">async create(@Body() createCatDto: CreateCatDto) &#123;</span><br><span class="line">	this.catService.create(createCatDto);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>이것이 작동하는 동안 경로에서 직접 @SetMetadata() 를 사용하는 것은 좋은 습관이 아니다. 대신 custom decorator 를 사용하도록 한다. </p>
+<p>roles.decorators.ts : </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">import &#123; SetMetadata &#125; from &#x27;@nestjs/common&#x27;;</span><br><span class="line"></span><br><span class="line">export const Roles = (...roles: string[]) =&gt; SetMetadata(&#x27;roles&#x27;, roles);</span><br></pre></td></tr></table></figure>
+
+<p>이렇게 하면 읽기 쉽고 타입을 알 수 있는 custom decorator 가 만들어 진다. 사용은 다음과 같이 한다. </p>
+<p>cats.controller.ts : </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">@Post()</span><br><span class="line">@Roles(&#x27;admin&#x27;)</span><br><span class="line">async create(@Body() createCatDto:CreateCatDto) &#123;</span><br><span class="line">	this.catService.create(createCatDto);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Putting-in-all-together"><a href="#Putting-in-all-together" class="headerlink" title="Putting in all together"></a>Putting in all together</h2><p>Guard 에 적용해보자. 먼저 권한 정보를 알아야하는데 우리는 metadata 를 통해서 권한정보를 첨부했다. 권한 정보에 접근 하기 위해서는 Reflector hleper class 를 사용한다. </p>
+<p>roles.guard.ts :</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2022/03/28/BackEnd/220328-Interceptors/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JayoonKoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="티끌모아 태산">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/03/28/BackEnd/220328-Interceptors/" class="post-title-link" itemprop="url">Interceptors</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2022-03-28 11:53:37 / Modified: 12:12:43" itemprop="dateCreated datePublished" datetime="2022-03-28T11:53:37+09:00">2022-03-28</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -314,7 +427,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2022/03/28/BackEnd/nestJs/220328-Guards/">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2022/03/28/BackEnd/220328-Middleware/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -327,7 +440,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/03/28/BackEnd/nestJs/220328-Guards/" class="post-title-link" itemprop="url">Guards</a>
+          <a href="/2022/03/28/BackEnd/220328-Middleware/" class="post-title-link" itemprop="url">Middleware</a>
         </h2>
 
         <div class="post-meta-container">
@@ -339,120 +452,7 @@
       <span class="post-meta-item-text">Posted on</span>
       
 
-      <time title="Created: 2022-03-28 11:53:37 / Modified: 11:53:46" itemprop="dateCreated datePublished" datetime="2022-03-28T11:53:37+09:00">2022-03-28</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Backend/" itemprop="url" rel="index"><span itemprop="name">Backend</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="Guards"><a href="#Guards" class="headerlink" title="Guards"></a>Guards</h1><p>Guard 는 CanActivate 인터페이스를 구현하는 @Injectable() 데코레이터가 달린 클래스이다. </p>
-<p>Guard 는 request 가 실행 가능한지 여부를 판단한다. 흔히 이것을 authorization이라고 부르며 Express 에서는 대부분 midlleware 에서 처리하여 특정 컨트롤러와 강하게 연결되는것을 막았다. </p>
-<p>그러나 middleware 에 가장 큰 문제는 next 이후에  어떤 함수가 실행되는지 모른다는 것에 있다. Guard 는 ExecutionContext 를 알수 있고 request/response 싸이클에 선언적으로 사용할 수 있어서 코드를 더 읽기좋고 선언적으로 만들어 준다. </p>
-<p>Guard 는 각 미들웨어 이후에 실행되지만 인터셉터나 파이프 이전에 실행된다. </p>
-<h2 id="Authorization-Guard"><a href="#Authorization-Guard" class="headerlink" title="Authorization Guard"></a>Authorization Guard</h2><p>Authorization 은 Guard 에 가장 좋은 예이다. AuthGuard 는 request 에서 토큰을 추출하고 판단한 후 다음 과정을 진행할지 판단하게 할 수 있다. </p>
-<p>auth.guard.ts : </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">import &#123; Injectable, CanActivate, ExecutionContext &#125; from &#x27;@nestjs/common&#x27;;</span><br><span class="line">import &#123; Observable &#125; from &#x27;rxjs&#x27;;</span><br><span class="line"></span><br><span class="line">@Injectable()</span><br><span class="line">export class AuthGuard implements CanActivate &#123;</span><br><span class="line">  canActivate(</span><br><span class="line">    context: ExecutionContext,</span><br><span class="line">  ): boolean | Promise&lt;boolean&gt; | Observable&lt;boolean&gt; &#123;</span><br><span class="line">    const request = context.switchToHttp().getRequest();</span><br><span class="line">    return validateRequest(request);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>Guard 는 canActivate() 를 구현하고 request를 넘길지 여부를 boolean 으로 반환한다. 또한, Promise , Observable를 반환할 수 있기 때문에 동기적으로나 비동기 적으로나 반환하는것이 가능하다. </p>
-<h2 id="Execution-context"><a href="#Execution-context" class="headerlink" title="Execution context"></a>Execution context</h2><p>canActivate 는 ExecutionContext 인스턴스를 받고 ExecutionContext 는 ArgumetnsHost 를 상속한다. context 변수를 통하여 request 를 얻을 수 있다. </p>
-<h2 id="Role-based-authentication"><a href="#Role-based-authentication" class="headerlink" title="Role-based authentication"></a>Role-based authentication</h2><p>특정 권한을 가진 유저만 허용하는 Guard 를 만들어 보자. 지금은 template 로서 모든 권한을 허용하고 추후에 기능을 추가하면서 role 기반 authentication 을 만들어 본다. </p>
-<p>roles.guard.ts : </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">import &#123; Injectable, CanActivate, ExecutionContext &#125; from &#x27;@nestjs/common&#x27;;</span><br><span class="line">import &#123; Observable &#125; from &#x27;rxjs&#x27;;</span><br><span class="line"></span><br><span class="line">@Injectable()</span><br><span class="line">export class RolesGuard implements CanActivate &#123;</span><br><span class="line">  canActivate(</span><br><span class="line">    context: ExecutionContext,</span><br><span class="line">  ): boolean | Promise&lt;boolean&gt; | Observable&lt;boolean&gt; &#123;</span><br><span class="line">    return true;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="Binding-guards"><a href="#Binding-guards" class="headerlink" title="Binding guards"></a>Binding guards</h2><p>guard 는 exception filter 와 마찬가지로 controller-scoped, method-scoped, global-scoped 모두 가능하다. 다음은 @UseGuards() 데코레이터를 이용하여 controller-scoped 로 사용한 예제이다. 해당 데코레이터는 단일 인수나 쉼표로 구분하여 인수를 받을 수 있다. </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">@Controller(&#x27;cats&#x27;)</span><br><span class="line">@UseGuards(RolesGuard)</span><br><span class="line">export class CatsController &#123;&#125;</span><br></pre></td></tr></table></figure>
-
-<p>내부 인스턴스를 전달할 수도 있다. </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">@Controller(&#x27;cats&#x27;)</span><br><span class="line">@UseGuards(new RolesGuards())</span><br><span class="line">export class CatsController &#123;&#125;</span><br></pre></td></tr></table></figure>
-
-<p>만약 method-scoped 로 사용하고 싶다면 UseGuards 데코레이터를 메서드 레벨에서 사용한다. 글로벌로 사용하고 싶다면 nest application 인스턴스에  useGlobalGuards() 메서드를 사용한다. </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">const app = await NestFactory.create(AppModule);</span><br><span class="line">app.useGlobalGuards(new RolesGuard());</span><br></pre></td></tr></table></figure>
-
-<p>의존성 주입 측면에서 모듈 밖에서 useGlobalGuards() 메서드에 의해서 등록되므로 의존성을 주입할 수 없다. 이런 문제를 해결하기 위해서 module 주입해서 사용할 수 있다. </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">@Module(&#123;</span><br><span class="line">	providers: [</span><br><span class="line">		&#123;</span><br><span class="line">			provide: APP_GUARD,</span><br><span class="line">			useClass: RolesGuard,</span><br><span class="line">		&#125;,</span><br><span class="line">	],</span><br><span class="line">&#125;)</span><br><span class="line">export class AppModule&#123;&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="Setting-roles-per-handler"><a href="#Setting-roles-per-handler" class="headerlink" title="Setting roles per handler"></a>Setting roles per handler</h2><p>위에서 작성한 roleguard 는 지금 어떤 권한도 확인하지 않고 있다. 권한을 확인하는 가장 좋은 방법은 metadata를 활용하는 것이다. nest 는 custom meataData 를 첨부하는 @SetMetadata() 데코레이터를 제공한다. </p>
-<p>cats.controller.ts : </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">@Post()</span><br><span class="line">@SetMetadata(&#x27;roles&#x27;, [&#x27;admin&#x27;])</span><br><span class="line">async create(@Body() createCatDto: CreateCatDto) &#123;</span><br><span class="line">	this.catService.create(createCatDto);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>이것이 작동하는 동안 경로에서 직접 @SetMetadata() 를 사용하는 것은 좋은 습관이 아니다. 대신 custom decorator 를 사용하도록 한다. </p>
-<p>roles.decorators.ts : </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">import &#123; SetMetadata &#125; from &#x27;@nestjs/common&#x27;;</span><br><span class="line"></span><br><span class="line">export const Roles = (...roles: string[]) =&gt; SetMetadata(&#x27;roles&#x27;, roles);</span><br></pre></td></tr></table></figure>
-
-<p>이렇게 하면 읽기 쉽고 타입을 알 수 있는 custom decorator 가 만들어 진다. 사용은 다음과 같이 한다. </p>
-<p>cats.controller.ts : </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">@Post()</span><br><span class="line">@Roles(&#x27;admin&#x27;)</span><br><span class="line">async create(@Body() createCatDto:CreateCatDto) &#123;</span><br><span class="line">	this.catService.create(createCatDto);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="Putting-in-all-together"><a href="#Putting-in-all-together" class="headerlink" title="Putting in all together"></a>Putting in all together</h2><p>Guard 에 적용해보자. 먼저 권한 정보를 알아야하는데 우리는 metadata 를 통해서 권한정보를 첨부했다. 권한 정보에 접근 하기 위해서는 Reflector hleper class 를 사용한다. </p>
-<p>roles.guard.ts :</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2022/03/28/BackEnd/nestJs/220328-Middleware/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JayoonKoo">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="티끌모아 태산">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/03/28/BackEnd/nestJs/220328-Middleware/" class="post-title-link" itemprop="url">Middleware</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2022-03-28 11:53:37 / Modified: 11:53:46" itemprop="dateCreated datePublished" datetime="2022-03-28T11:53:37+09:00">2022-03-28</time>
+      <time title="Created: 2022-03-28 11:53:37 / Modified: 12:12:43" itemprop="dateCreated datePublished" datetime="2022-03-28T11:53:37+09:00">2022-03-28</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -530,7 +530,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2022/03/28/BackEnd/nestJs/220328-Modules/">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2022/03/28/BackEnd/220328-Modules/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -543,7 +543,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/03/28/BackEnd/nestJs/220328-Modules/" class="post-title-link" itemprop="url">Modules</a>
+          <a href="/2022/03/28/BackEnd/220328-Modules/" class="post-title-link" itemprop="url">Modules</a>
         </h2>
 
         <div class="post-meta-container">
@@ -555,7 +555,7 @@
       <span class="post-meta-item-text">Posted on</span>
       
 
-      <time title="Created: 2022-03-28 11:53:37 / Modified: 11:53:46" itemprop="dateCreated datePublished" datetime="2022-03-28T11:53:37+09:00">2022-03-28</time>
+      <time title="Created: 2022-03-28 11:53:37 / Modified: 12:12:43" itemprop="dateCreated datePublished" datetime="2022-03-28T11:53:37+09:00">2022-03-28</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -631,7 +631,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2022/03/28/BackEnd/nestJs/220328-Providers/">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2022/03/28/BackEnd/220328-Providers/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -644,7 +644,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/03/28/BackEnd/nestJs/220328-Providers/" class="post-title-link" itemprop="url">Providers</a>
+          <a href="/2022/03/28/BackEnd/220328-Providers/" class="post-title-link" itemprop="url">Providers</a>
         </h2>
 
         <div class="post-meta-container">
@@ -656,7 +656,7 @@
       <span class="post-meta-item-text">Posted on</span>
       
 
-      <time title="Created: 2022-03-28 11:53:37 / Modified: 11:53:46" itemprop="dateCreated datePublished" datetime="2022-03-28T11:53:37+09:00">2022-03-28</time>
+      <time title="Created: 2022-03-28 11:53:37 / Modified: 12:12:43" itemprop="dateCreated datePublished" datetime="2022-03-28T11:53:37+09:00">2022-03-28</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -1261,7 +1261,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2022/01/21/IOS/220121-LocalNotificaltion(%EB%AC%BC%EB%A7%88%EC%8B%9C%EA%B8%B0%EC%95%B1)/">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2022/01/21/IOS/220121-MVVM%20%EA%B8%B0%EC%B4%88/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -1274,7 +1274,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/01/21/IOS/220121-LocalNotificaltion(%EB%AC%BC%EB%A7%88%EC%8B%9C%EA%B8%B0%EC%95%B1)/" class="post-title-link" itemprop="url">LocalNotificaltion(물마시기앱)</a>
+          <a href="/2022/01/21/IOS/220121-MVVM%20%EA%B8%B0%EC%B4%88/" class="post-title-link" itemprop="url">MVVM 기초</a>
         </h2>
 
         <div class="post-meta-container">
@@ -1308,45 +1308,28 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="물마시기-알람-앱-만들기"><a href="#물마시기-알람-앱-만들기" class="headerlink" title="물마시기 알람 앱 만들기"></a>물마시기 알람 앱 만들기</h1><p>Local Notification : 푸시 알림? </p>
-<p>앱 내부에서 자체적으로 만든 특정 메세지를 전달하는 것 </p>
-<h2 id="LocalNotification"><a href="#LocalNotification" class="headerlink" title="LocalNotification"></a>LocalNotification</h2><p>UNNotificationRequest </p>
-<p>3가지 필수 내용 </p>
-<ol>
-<li>identifier</li>
-<li>UNMutableNotificationContent (Content.title, Contetn.body)</li>
-<li>Trigger<ol>
-<li>UNCalendarNotificationTrigger</li>
-<li>UNTimerIntervalNotificationTrigger 시간 간격당 알림 ( 타이머에 가까움)</li>
-<li>UNLocationNotificationTrigger</li>
-</ol>
-</li>
-</ol>
-<p>UNNotificationCenter 에 보내면 Trigger 타이밍에 알려줌.</p>
-<h2 id="Content-설정"><a href="#Content-설정" class="headerlink" title="Content 설정"></a>Content 설정</h2><ol>
-<li>AppDelegate 에 UNUserNotificationCenterDelegate 를 확장하도록 한다. </li>
-<li>UNUserNotificationCenter 를 생성하고 알람을 허용할지 요청한다. </li>
-</ol>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> NotificationCenter</span><br><span class="line"><span class="keyword">import</span> UserNotifications</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">AppDelegate</span>: <span class="title">UIResponder</span>, <span class="title">UIApplicationDelegate</span> </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> userNotificationCenter: <span class="type">UNUserNotificationCenter</span>?</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">application</span>(<span class="keyword">_</span> <span class="params">application</span>: <span class="type">UIApplication</span>, <span class="params">didFinishLaunchingWithOptions</span> <span class="params">launchOptions</span>: [<span class="type">UIApplication</span>.<span class="params">LaunchOptionsKey</span>: <span class="keyword">Any</span>]<span class="operator">?</span>)</span> -&gt; <span class="type">Bool</span> &#123;</span><br><span class="line">        <span class="comment">// Override point for customization after application launch.</span></span><br><span class="line">        <span class="type">UNUserNotificationCenter</span>.current().delegate <span class="operator">=</span> <span class="keyword">self</span></span><br><span class="line">        </span><br><span class="line">        <span class="keyword">let</span> authrizationOptions <span class="operator">=</span> <span class="type">UNAuthorizationOptions</span>(arrayLiteral: [.alert, .badge, .sound])</span><br><span class="line">        </span><br><span class="line">        userNotificationCenter<span class="operator">?</span>.requestAuthorization(options: authrizationOptions, completionHandler: &#123; <span class="keyword">_</span>, error <span class="keyword">in</span></span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">let</span> error <span class="operator">=</span> error &#123;</span><br><span class="line">                <span class="built_in">print</span>(<span class="string">&quot;Error: <span class="subst">\(error.localizedDescription)</span>&quot;</span>)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line"><span class="comment">// 생략 </span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">extension</span> <span class="title">AppDelegate</span>: <span class="title">UNUserNotificationCenterDelegate</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">userNotificationCenter</span>(<span class="keyword">_</span> <span class="params">center</span>: <span class="type">UNUserNotificationCenter</span>, <span class="params">willPresent</span> <span class="params">notification</span>: <span class="type">UNNotification</span>, <span class="params">withCompletionHandler</span> <span class="params">completionHandler</span>: <span class="keyword">@escaping</span> (<span class="type">UNNotificationPresentationOptions</span>) -&gt; <span class="type">Void</span>)</span> &#123;</span><br><span class="line">        completionHandler([.banner, .list, .badge, .sound])</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">userNotificationCenter</span>(<span class="keyword">_</span> <span class="params">center</span>: <span class="type">UNUserNotificationCenter</span>, <span class="params">didReceive</span> <span class="params">response</span>: <span class="type">UNNotificationResponse</span>, <span class="params">withCompletionHandler</span> <span class="params">completionHandler</span>: <span class="keyword">@escaping</span> () -&gt; <span class="type">Void</span>)</span> &#123;</span><br><span class="line">        completionHandler()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ol>
-<li>UserNotficationCenter 에 request 를 보내는 코드를 추가한다. </li>
-</ol>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> UserNotifications</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">extension</span> <span class="title">UNUserNotificationCenter</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">addNotificationRequest</span>(<span class="params">by</span> <span class="params">alert</span>: <span class="type">Alert</span>)</span> &#123;</span><br><span class="line">        <span class="keyword">let</span> content <span class="operator">=</span> <span class="type">UNMutableNotificationContent</span>()</span><br><span class="line">        content.title <span class="operator">=</span> <span class="string">&quot;물 마실 시간이에요.💧&quot;</span></span><br><span class="line">        content.body <span class="operator">=</span> <span class="string">&quot;세계보건기구가 권장하는 하루 물 섭취량은 1.5~2리터 입니다.&quot;</span></span><br><span class="line">        content.sound <span class="operator">=</span> .default</span><br><span class="line">        content.badge <span class="operator">=</span> <span class="number">1</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="Trigger"><a href="#Trigger" class="headerlink" title="Trigger"></a>Trigger</h2><p>trigger 를 설정한다. </p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">extension</span> <span class="title">UNUserNotificationCenter</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">addNotificationRequest</span>(<span class="params">by</span> <span class="params">alert</span>: <span class="type">Alert</span>)</span> &#123;</span><br><span class="line">        <span class="keyword">let</span> content <span class="operator">=</span> <span class="type">UNMutableNotificationContent</span>()</span><br><span class="line">        content.title <span class="operator">=</span> <span class="string">&quot;물 마실 시간이에요.💧&quot;</span></span><br><span class="line">        content.body <span class="operator">=</span> <span class="string">&quot;세계보건기구가 권장하는 하루 물 섭취량은 1.5~2리터 입니다.&quot;</span></span><br><span class="line">        content.sound <span class="operator">=</span> .default</span><br><span class="line">        content.badge <span class="operator">=</span> <span class="number">1</span></span><br><span class="line">        </span><br><span class="line">				<span class="comment">// 추가 부분</span></span><br><span class="line">        <span class="keyword">let</span> component <span class="operator">=</span> <span class="type">Calendar</span>.current.dateComponents([.hour, .minute], from: alert.date)</span><br><span class="line">        <span class="keyword">let</span> trigger <span class="operator">=</span> <span class="type">UNCalendarNotificationTrigger</span>(dateMatching: component, repeats: alert.isOn)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="request"><a href="#request" class="headerlink" title="request"></a>request</h2><p>request 를 추가한다.</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">extension</span> <span class="title">UNUserNotificationCenter</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">addNotificationRequest</span>(<span class="params">by</span> <span class="params">alert</span>: <span class="type">Alert</span>)</span> &#123;</span><br><span class="line">        <span class="keyword">let</span> content <span class="operator">=</span> <span class="type">UNMutableNotificationContent</span>()</span><br><span class="line">        content.title <span class="operator">=</span> <span class="string">&quot;물 마실 시간이에요.💧&quot;</span></span><br><span class="line">        content.body <span class="operator">=</span> <span class="string">&quot;세계보건기구가 권장하는 하루 물 섭취량은 1.5~2리터 입니다.&quot;</span></span><br><span class="line">        content.sound <span class="operator">=</span> .default</span><br><span class="line">        content.badge <span class="operator">=</span> <span class="number">1</span></span><br><span class="line">        </span><br><span class="line">        <span class="keyword">let</span> component <span class="operator">=</span> <span class="type">Calendar</span>.current.dateComponents([.hour, .minute], from: alert.date)</span><br><span class="line">        <span class="keyword">let</span> trigger <span class="operator">=</span> <span class="type">UNCalendarNotificationTrigger</span>(dateMatching: component, repeats: alert.isOn)</span><br><span class="line">        </span><br><span class="line">				<span class="comment">// 추가 부분</span></span><br><span class="line">        <span class="keyword">let</span> request <span class="operator">=</span> <span class="type">UNNotificationRequest</span>(identifier: alert.id, content: content, trigger: trigger)</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">self</span>.add(request, withCompletionHandler: <span class="literal">nil</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>이제 알람이 추가되어야 할 부분에 request를 추가하고, 삭제 되어야 할 부분에 remove를 호출한다.</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> UserNotifications</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">AlertListViewController</span>: <span class="title">UITableViewController</span> </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> alerts: [<span class="type">Alert</span>] <span class="operator">=</span> []</span><br><span class="line">		<span class="comment">// userNotificationCenter 추가</span></span><br><span class="line">    <span class="keyword">let</span> userNotificationCenter <span class="operator">=</span> <span class="type">UNUserNotificationCenter</span>.current()</span><br><span class="line">		<span class="comment">// 생략</span></span><br><span class="line">		<span class="keyword">@IBAction</span> <span class="function"><span class="keyword">func</span> <span class="title">addAlertButtonAction</span>(<span class="keyword">_</span> <span class="params">sender</span>: <span class="type">UIBarButtonItem</span>)</span> &#123;</span><br><span class="line">        <span class="keyword">guard</span> <span class="keyword">let</span> addAlertVc <span class="operator">=</span> storyboard<span class="operator">?</span>.instantiateViewController(withIdentifier: <span class="string">&quot;AddAlerViewController&quot;</span>)</span><br><span class="line">                <span class="keyword">as?</span> <span class="type">AddAlerViewController</span> <span class="keyword">else</span> &#123;<span class="keyword">return</span>&#125;</span><br><span class="line">        addAlertVc.pickedDate <span class="operator">=</span> &#123;[<span class="keyword">weak</span> <span class="keyword">self</span>] date <span class="keyword">in</span></span><br><span class="line">            <span class="keyword">guard</span> <span class="keyword">let</span> <span class="keyword">self</span> <span class="operator">=</span> <span class="keyword">self</span> <span class="keyword">else</span> &#123;<span class="keyword">return</span>&#125;</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">var</span> alertList <span class="operator">=</span> <span class="keyword">self</span>.alertList()</span><br><span class="line">            <span class="keyword">let</span> newAlert <span class="operator">=</span> <span class="type">Alert</span>(date: date, isOn: <span class="literal">true</span>)</span><br><span class="line">            </span><br><span class="line">            alertList.append(newAlert)</span><br><span class="line">            alertList.sort &#123; <span class="variable">$0</span>.date <span class="operator">&lt;</span> <span class="variable">$1</span>.date&#125;</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">self</span>.alerts <span class="operator">=</span> alertList</span><br><span class="line">            <span class="type">UserDefaults</span>.standard.set(<span class="keyword">try?</span> <span class="type">PropertyListEncoder</span>().encode(<span class="keyword">self</span>.alerts), forKey: <span class="string">&quot;alerts&quot;</span>)</span><br><span class="line">						<span class="comment">// 알람 추가</span></span><br><span class="line">            <span class="keyword">self</span>.userNotificationCenter.addNotificationRequest(by: newAlert)</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">self</span>.tableView.reloadData()</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">self</span>.present(addAlertVc, animated: <span class="literal">true</span>, completion: <span class="literal">nil</span>)</span><br><span class="line">    &#125;</span><br><span class="line">	<span class="comment">//... 생략</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>알람이 필요 없는 곳에서는 삭제 한다.</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">tableView</span>(<span class="keyword">_</span> <span class="params">tableView</span>: <span class="type">UITableView</span>, <span class="params">commit</span> <span class="params">editingStyle</span>: <span class="type">UITableViewCell</span>.<span class="type">EditingStyle</span>, <span class="params">forRowAt</span> <span class="params">indexPath</span>: <span class="type">IndexPath</span>)</span> &#123;</span><br><span class="line">        <span class="keyword">switch</span> editingStyle &#123;</span><br><span class="line">        <span class="keyword">case</span> .delete:</span><br><span class="line">            <span class="keyword">self</span>.alerts.remove(at: indexPath.row)</span><br><span class="line">            <span class="type">UserDefaults</span>.standard.set(<span class="keyword">try?</span> <span class="type">PropertyListEncoder</span>().encode(<span class="keyword">self</span>.alerts), forKey: <span class="string">&quot;alerts&quot;</span>)</span><br><span class="line">            <span class="comment">// 아직 시작되지 않은 알람을 삭제하는 것이므로 removePendingNotificationRequest 호출</span></span><br><span class="line">            userNotificationCenter.removePendingNotificationRequests(withIdentifiers: [alerts[indexPath.row].id])</span><br><span class="line">            <span class="keyword">self</span>.tableView.reloadData()</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line">        <span class="keyword">default</span>:</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="기타"><a href="#기타" class="headerlink" title="기타"></a>기타</h2><p>cmd + cntl + e : 모든 변수 이름 바꾸기</p>
+          <h2 id="Design-Pattern"><a href="#Design-Pattern" class="headerlink" title="Design Pattern"></a>Design Pattern</h2><p>어떤 목적을 달성하기 위한 효율적인 패턴. 유지보수하기 쉽게 해준다. 코드 구조에 대한 전략</p>
+<p>디자인 패턴의 목적 : </p>
+<ul>
+<li>기술 부채 최소화</li>
+<li>재사용 및 지속 가능한 코드 만들기</li>
+</ul>
+<p>클린 아키텍처, 디자인 패턴 이라는 용어로 통용 된다. </p>
+<h2 id="MVVM"><a href="#MVVM" class="headerlink" title="MVVM"></a>MVVM</h2><p>Model -View - ViewModel</p>
+<p>과거에는 MVC(Model - View - Controller) 패턴이 많이 사용되었다. </p>
+<h3 id="MVC"><a href="#MVC" class="headerlink" title="MVC"></a>MVC</h3><ul>
+<li>Model : 데이터 (Struct)</li>
+<li>View : UI 요소 (UIView)</li>
+<li>Controller : 중계자 (UIViewController) Model 과 View 사이에 중계자 역할</li>
+</ul>
+<p>중계자인 UVIewConroller 가 비대해지기 시작했다. 결합도가 커지기 시작함. </p>
+<h3 id="MVVM-1"><a href="#MVVM-1" class="headerlink" title="MVVM"></a>MVVM</h3><ul>
+<li>Model : 데이터 (Struct)</li>
+<li>View : UI 요소 UIView, UIViewConroller</li>
+<li>ViewModel : 중계자</li>
+</ul>
+<p>ViewConroller 가 Model 에 직접 접근하지 못한다. ViewModel 이라는 클래스로 Model에 접근할 수 있게 함.</p>
+<p>결국 MVVM 에서 하려는 것은 UIViewConroller 에 비중을 축소 시켜서 책임을 ViewModel 에 위임하고, 결과적으로 결합도를 낮추려는 것이다. → 명확한 책임을 갖게 된다.</p>
 
       
     </div>

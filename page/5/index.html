@@ -937,100 +937,6 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/12/16/DevOps/Docker/211215-Docker%20tutorial(1)/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JayoonKoo">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="티끌모아 태산">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/12/16/DevOps/Docker/211215-Docker%20tutorial(1)/" class="post-title-link" itemprop="url">Docker tutorial(1)</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2021-12-16 20:11:58 / Modified: 20:13:10" itemprop="dateCreated datePublished" datetime="2021-12-16T20:11:58+09:00">2021-12-16</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/DevOps/" itemprop="url" rel="index"><span itemprop="name">DevOps</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="Getting-Started"><a href="#Getting-Started" class="headerlink" title="Getting Started"></a>Getting Started</h1><h2 id="배우는-것"><a href="#배우는-것" class="headerlink" title="배우는 것"></a>배우는 것</h2><ul>
-<li>이미지를 컨테이너로 빌드 및 실행</li>
-<li>Docker hub를 통해서 이미지 공유</li>
-<li>여러개의 컨테이너를 포함하는 Docker applications 배포</li>
-<li>Docker Compose 를 통한 applications 실행</li>
-</ul>
-<h2 id="Start"><a href="#Start" class="headerlink" title="Start"></a>Start</h2><p><code>docker run -d -p 80:80 docker/getting-started</code> </p>
-<ul>
-<li>docker/getting-started 를 실행시킴. 로컬에 없으면 registry에서 pull 한다음 실행하는 것과 동일</li>
-<li>-d : backgroudn 로 실행시킴</li>
-<li>-p 80:80 : host 에 80 포트를 컨테이너의 80포트로 매핑함.</li>
-</ul>
-<p>⇒ db로 flag를 줄일수 있음.</p>
-<h2 id="What-is-a-container"><a href="#What-is-a-container" class="headerlink" title="What is a container?"></a>What is a container?</h2><p>간단히 말하면, 호스트 머신과 분리된 sandboxed process 이다. </p>
-<ul>
-<li>실행 가능한 이미지의 인스턴스이다. create, start, stop, move or delete를 Docker API나 CLI를 사용해서 할 수 있다.</li>
-<li>로컬이나 클라우드 가상 머신 어디든지 실행 가능하다.</li>
-<li>어떤 os 든지 실행 가능하다.</li>
-<li>컨테이너는 서로 격리되어 있으며 자체 소프트웨어, 바이너리 및 구성을 실행한다.</li>
-</ul>
-<h2 id="What-is-a-container-image"><a href="#What-is-a-container-image" class="headerlink" title="What is a container image?"></a>What is a container image?</h2><p>컨테이널르 실행할때 격리된 파일 시스템을 사용하고 이미미지는 컨테이너의 파일 시스템을 포함한다. 또한 컨테이너를 실행시키는데 필요한 어떤 설정이다. 의존성, 바이너리, 스크립트 등도 포함한다.</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/12/16/DevOps/Docker/211215-Using%20Node(1)%3CBuildImage%3E/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1136,6 +1042,100 @@
 <h2 id="Dockerfile"><a href="#Dockerfile" class="headerlink" title="Dockerfile"></a>Dockerfile</h2><figure class="highlight docker"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># syntax=docker/dockerfile:1</span></span><br><span class="line"><span class="keyword">FROM</span> node:<span class="number">14.16</span>.<span class="number">0</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">COPY</span><span class="bash"> [<span class="string">&quot;package.json&quot;</span>, <span class="string">&quot;yarn.lock&quot;</span>, <span class="string">&quot;./&quot;</span>]</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">RUN</span><span class="bash"> yarn install </span></span><br><span class="line"></span><br><span class="line"><span class="keyword">COPY</span><span class="bash"> . .</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">CMD</span><span class="bash"> [<span class="string">&quot;yarn&quot;</span>, <span class="string">&quot;start&quot;</span>]</span></span><br></pre></td></tr></table></figure>
 
 <p>NODE_ENV 는 따로 설정 안해서 뺐음</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/12/16/DevOps/Docker/211215-Docker%20tutorial(1)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JayoonKoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="티끌모아 태산">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/12/16/DevOps/Docker/211215-Docker%20tutorial(1)/" class="post-title-link" itemprop="url">Docker tutorial(1)</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2021-12-16 20:11:58 / Modified: 20:13:10" itemprop="dateCreated datePublished" datetime="2021-12-16T20:11:58+09:00">2021-12-16</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/DevOps/" itemprop="url" rel="index"><span itemprop="name">DevOps</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="Getting-Started"><a href="#Getting-Started" class="headerlink" title="Getting Started"></a>Getting Started</h1><h2 id="배우는-것"><a href="#배우는-것" class="headerlink" title="배우는 것"></a>배우는 것</h2><ul>
+<li>이미지를 컨테이너로 빌드 및 실행</li>
+<li>Docker hub를 통해서 이미지 공유</li>
+<li>여러개의 컨테이너를 포함하는 Docker applications 배포</li>
+<li>Docker Compose 를 통한 applications 실행</li>
+</ul>
+<h2 id="Start"><a href="#Start" class="headerlink" title="Start"></a>Start</h2><p><code>docker run -d -p 80:80 docker/getting-started</code> </p>
+<ul>
+<li>docker/getting-started 를 실행시킴. 로컬에 없으면 registry에서 pull 한다음 실행하는 것과 동일</li>
+<li>-d : backgroudn 로 실행시킴</li>
+<li>-p 80:80 : host 에 80 포트를 컨테이너의 80포트로 매핑함.</li>
+</ul>
+<p>⇒ db로 flag를 줄일수 있음.</p>
+<h2 id="What-is-a-container"><a href="#What-is-a-container" class="headerlink" title="What is a container?"></a>What is a container?</h2><p>간단히 말하면, 호스트 머신과 분리된 sandboxed process 이다. </p>
+<ul>
+<li>실행 가능한 이미지의 인스턴스이다. create, start, stop, move or delete를 Docker API나 CLI를 사용해서 할 수 있다.</li>
+<li>로컬이나 클라우드 가상 머신 어디든지 실행 가능하다.</li>
+<li>어떤 os 든지 실행 가능하다.</li>
+<li>컨테이너는 서로 격리되어 있으며 자체 소프트웨어, 바이너리 및 구성을 실행한다.</li>
+</ul>
+<h2 id="What-is-a-container-image"><a href="#What-is-a-container-image" class="headerlink" title="What is a container image?"></a>What is a container image?</h2><p>컨테이널르 실행할때 격리된 파일 시스템을 사용하고 이미미지는 컨테이너의 파일 시스템을 포함한다. 또한 컨테이너를 실행시키는데 필요한 어떤 설정이다. 의존성, 바이너리, 스크립트 등도 포함한다.</p>
 
       
     </div>
