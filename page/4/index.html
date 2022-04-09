@@ -83,9 +83,9 @@
   <ul class="main-menu menu">
         <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li>
         <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
-        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">20</span></a></li>
-        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">16</span></a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">153</span></a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">21</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">17</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">154</span></a></li>
   </ul>
 </nav>
 
@@ -129,18 +129,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">153</span>
+          <span class="site-state-item-count">154</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-count">17</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-count">21</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -180,6 +180,96 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2022/01/11/IOS/220111-%EB%BD%80%EB%AA%A8%EB%8F%84%EB%A1%9C%ED%83%80%EC%9D%B4%EB%B2%84/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JayoonKoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="티끌모아 태산">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/01/11/IOS/220111-%EB%BD%80%EB%AA%A8%EB%8F%84%EB%A1%9C%ED%83%80%EC%9D%B4%EB%B2%84/" class="post-title-link" itemprop="url">DispatchSourceTimer, UIView Animation (뽀모도로 타이머)</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-01-11 11:24:52" itemprop="dateCreated datePublished" datetime="2022-01-11T11:24:52+09:00">2022-01-11</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2022-01-12 13:05:32" itemprop="dateModified" datetime="2022-01-12T13:05:32+09:00">2022-01-12</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/IOS/" itemprop="url" rel="index"><span itemprop="name">IOS</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="뽀모도로-타이머-만들기"><a href="#뽀모도로-타이머-만들기" class="headerlink" title="뽀모도로 타이머 만들기"></a>뽀모도로 타이머 만들기</h1><h3 id="활용-기술"><a href="#활용-기술" class="headerlink" title="활용 기술"></a>활용 기술</h3><ul>
+<li>DispatchSourceTimer</li>
+<li>UIView Animation</li>
+</ul>
+<h3 id="DispatchSourceTimer"><a href="#DispatchSourceTimer" class="headerlink" title="DispatchSourceTimer"></a>DispatchSourceTimer</h3><p>GCD : Grand Central Dispatch → 작업을 병렬적으로 진행하기 위해 제공하는 API이다. </p>
+<p>DispathcSourceTimer는 GCD API 안에 존재한다. </p>
+<p>uI 관련된 스레드는 main 쓰레드 에서 시작된다. GCD에서 main 쓰레드는 오직 1개만 가진다. 유저가 인터페이스에 접근하면 main 쓰레드에서 알수 있다. </p>
+<p>timer를 선언하고 schedule과 eventHandler 를 정한다.</p>
+<h3 id="UIVewAnimation"><a href="#UIVewAnimation" class="headerlink" title="UIVewAnimation"></a>UIVewAnimation</h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">UIView</span>.animate(withDuration: <span class="number">0.5</span>, delay: <span class="number">0</span>, animations: &#123;</span><br><span class="line">          <span class="keyword">self</span>.imagView.transform <span class="operator">=</span> <span class="type">CGAffineTransform</span>(rotationAngle: .pi)</span><br><span class="line">        &#125;)</span><br></pre></td></tr></table></figure>
+
+<p>UIView 에서 동작할 에니메이션을 설정할 수 있다.</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1127,90 +1217,6 @@
 
 <p>똑같이 build 한다</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker build -t node-docker --target <span class="built_in">test</span> .</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/12/22/DevOps/Docker/211221-Docker%20compose%EB%A1%9C%20%EC%84%9C%EB%B2%84%20%EB%9D%84%EC%9A%B0%EA%B8%B0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JayoonKoo">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="티끌모아 태산">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/12/22/DevOps/Docker/211221-Docker%20compose%EB%A1%9C%20%EC%84%9C%EB%B2%84%20%EB%9D%84%EC%9A%B0%EA%B8%B0/" class="post-title-link" itemprop="url">Docker compose로 서버 띄우기</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2021-12-22 20:21:35 / Modified: 20:21:45" itemprop="dateCreated datePublished" datetime="2021-12-22T20:21:35+09:00">2021-12-22</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/DevOps/" itemprop="url" rel="index"><span itemprop="name">DevOps</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="DockerCompose"><a href="#DockerCompose" class="headerlink" title="DockerCompose"></a>DockerCompose</h1><p>docker compose 사용하면 컨테이너간의 의존성을 파일 하나로 관리하면서 실행시킬 수 있다. 이번시간에는 개발 환경을 직접 docker-compose 로 build 해 보도록 한다.<br>사용하는 이미지는 mysql 과 node 환경을 이용하고 서버 프레임 워크로는 Express 를 사용한다. </p>
-<h2 id="docker-compose-dev-yml"><a href="#docker-compose-dev-yml" class="headerlink" title="docker-compose.dev.yml"></a>docker-compose.dev.yml</h2><p>먼저 docker-compose 파일을 생성해준다. 개발 환경임을 명시하기 위해서 dev.yml 파일로 생성한다. docker-compose 파일을 사용하지 않고도 run 명령어로 실행시킬 수 있지만 compose 파일을 사용하면 하나의 파일로 의존성을 관리할 수 있다. </p>
-<figure class="highlight docker"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">version: <span class="string">&#x27;3.8&#x27;</span></span><br><span class="line"></span><br><span class="line">services:</span><br><span class="line">  mysqldb:</span><br><span class="line">    image: mysql</span><br><span class="line">    ports:</span><br><span class="line">      - <span class="number">3306</span>:<span class="number">3306</span></span><br><span class="line">    command: <span class="comment"># 명령어 실행</span></span><br><span class="line">      - --character-set-server=utf8mb4</span><br><span class="line">      - --collation-server=utf8mb4_unicode_ci</span><br><span class="line">    volumes:</span><br><span class="line">      - mysql:/var/lib/mysql</span><br><span class="line">      - mysql_config:/etc/mysql</span><br><span class="line">    environment:</span><br><span class="line">      - MYSQL_ROOT_PASSWORD=<span class="number">1</span>q2w3e</span><br><span class="line">      - MYSQL_DATABASE=test</span><br><span class="line"></span><br><span class="line">  notes:</span><br><span class="line">    depends_on:</span><br><span class="line">      - mysqldb</span><br><span class="line">    build:</span><br><span class="line">      context: .</span><br><span class="line">    working_dir:</span><br><span class="line">      /app</span><br><span class="line">    ports:</span><br><span class="line">      - <span class="number">443</span>:<span class="number">8080</span></span><br><span class="line">      - <span class="number">9229</span>:<span class="number">9229</span></span><br><span class="line">    environment:</span><br><span class="line">      - SERVER_PORT=<span class="number">8080</span></span><br><span class="line">      - DB_PORT=<span class="number">3306</span></span><br><span class="line">      - MYSQL_DATABASE=test</span><br><span class="line">      - <span class="keyword">USER</span>=root</span><br><span class="line">      - MYSQL_ROOT_PASSWORD=<span class="number">1</span>q2w3e</span><br><span class="line">      - HOST=mysqldb</span><br><span class="line">      - CHOKIDAR_USEPOLLING=true</span><br><span class="line">    volumes:</span><br><span class="line">      - ./:/app</span><br><span class="line">    command: </span><br><span class="line">      - bash</span><br><span class="line">      - -c</span><br><span class="line">      - |</span><br><span class="line">        /app/wait-for-it.sh mysqldb:<span class="number">3306</span> -t <span class="number">10</span></span><br><span class="line">        yarn <span class="keyword">run</span><span class="bash"> nodemon-dev</span></span><br><span class="line"></span><br><span class="line">volumes:</span><br><span class="line">  mysql:</span><br><span class="line">  mysql_config:</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>mysqldb로 서비스를 만들었고, notes 서비스에서 HOST를 mysqldb로 환경 변수를 전달하고 있는데 DNS를 지원하기 때문에 compose 된 환경 안에서 이름 그대로 접근할 수 있다. </li>
-<li>notes 에서 build로 context로 현제 폴더를 지정해 주었는데 이렇게 하면 현제 폴더에서 Dockerfile를 참조해서 build를 실행한다. 명시적으로 파일을 지정해 줄 수 도 있다. </li>
-<li>depends_on 을 통해서 의존성을 명시한다. 해당 서버에서 mysql 에 test table을 조회하는데 test table이 만들어지 않은 상태에서 접근하려고 하면 에러가 발생한다. 의존성을 명시해서 먼저 mysqldb 에 build 가 실행된 이후에 notes 에 build 가 실행되도록 한다.</li>
-<li>다만, depends_op은 실행 순서는 보장해 주지만 준비 상태까지는 보장해 주지 않는다. 따라서 wait-for-it.sh 스크립트를 사용했는데 조금 서치해보면 어떻게 설치하는지 알 수 있다. 그냥 사용하면 권한 거부 에러가 발생하기 대문에 wait-for-it.sh 의 실행 권한을 설정하고 build 해야 한다. </li>
-<li>dockerfile로 개발환경을 설정할때에는 현제 로컬에 수정사항을 반영하기 위해서 $(pwd) 같은 것을 사용했었는데 docker-compose 파일을 사용하면 상대 경로를 통해서 수정사항을 반영할 수 있도록 하는게 가능하다. </li>
-</ul>
 
       
     </div>

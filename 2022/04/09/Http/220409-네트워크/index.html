@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css" integrity="sha256-2H3fkXt6FEmrReK448mDVGKb3WW2ZZw35gI7vqHOE4Y=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"jayoonkoo.github.io","root":"/","images":"/images","scheme":"Muse","version":"8.6.1","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="인터넷 네트워크HTTP 학습을 위한 사전 기본 학습 IP인터넷 프로토콜  지정한 IP 주소에 데이터 전달 패킷 이라는 단위로 데이터 전달  IP 패킷 정보출발지 IP, 목적지 IP, 기타 … 요청할때랑 응답할때는 다른 노드로 연결될 수 도 있다. IP 프로토콜의 한계비연결성  패킷을 받을 대상이 없거나 서비스 불능 상태여도 패킷 전송, 보낸 사람은 모름..">
+<meta property="og:type" content="article">
+<meta property="og:title" content="네트워크">
+<meta property="og:url" content="https://jayoonkoo.github.io/2022/04/09/Http/220409-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC/index.html">
+<meta property="og:site_name" content="티끌모아 태산">
+<meta property="og:description" content="인터넷 네트워크HTTP 학습을 위한 사전 기본 학습 IP인터넷 프로토콜  지정한 IP 주소에 데이터 전달 패킷 이라는 단위로 데이터 전달  IP 패킷 정보출발지 IP, 목적지 IP, 기타 … 요청할때랑 응답할때는 다른 노드로 연결될 수 도 있다. IP 프로토콜의 한계비연결성  패킷을 받을 대상이 없거나 서비스 불능 상태여도 패킷 전송, 보낸 사람은 모름..">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-04-09T11:23:13.000Z">
+<meta property="article:modified_time" content="2022-04-09T11:23:13.782Z">
+<meta property="article:author" content="JayoonKoo">
+<meta property="article:tag" content="http">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://jayoonkoo.github.io/2022/04/09/Http/220409-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://jayoonkoo.github.io/2022/04/09/Http/220409-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC/","path":"2022/04/09/Http/220409-네트워크/","title":"네트워크"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>네트워크 | 티끌모아 태산</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">티끌모아 태산</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">작은 조각 모음</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">21</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">17</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">154</span></a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%EC%9D%B8%ED%84%B0%EB%84%B7-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC"><span class="nav-number">1.</span> <span class="nav-text">인터넷 네트워크</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#IP"><span class="nav-number">1.1.</span> <span class="nav-text">IP</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#IP-%ED%8C%A8%ED%82%B7-%EC%A0%95%EB%B3%B4"><span class="nav-number">1.1.1.</span> <span class="nav-text">IP 패킷 정보</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#IP-%ED%94%84%EB%A1%9C%ED%86%A0%EC%BD%9C%EC%9D%98-%ED%95%9C%EA%B3%84"><span class="nav-number">1.1.2.</span> <span class="nav-text">IP 프로토콜의 한계</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TCP-UDP"><span class="nav-number">1.2.</span> <span class="nav-text">TCP UDP</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%EC%9D%B8%ED%84%B0%EB%84%B7-%ED%94%84%EB%A1%9C%ED%86%A0%EC%BD%9C-%EC%8A%A4%ED%83%9D%EC%9D%98-4%EA%B3%84%EC%B8%B5"><span class="nav-number">1.2.1.</span> <span class="nav-text">인터넷 프로토콜 스택의 4계층</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TCP-IP-%ED%8C%A8%ED%82%B7-%EC%A0%95%EB%B3%B4"><span class="nav-number">1.2.2.</span> <span class="nav-text">TCP&#x2F;IP 패킷 정보</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TCP-%ED%8A%B9%EC%A7%95"><span class="nav-number">1.2.3.</span> <span class="nav-text">TCP 특징</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#UDP-%ED%8A%B9%EC%A7%95"><span class="nav-number">1.2.4.</span> <span class="nav-text">UDP 특징</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PORT"><span class="nav-number">1.3.</span> <span class="nav-text">PORT</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DNS"><span class="nav-number">1.4.</span> <span class="nav-text">DNS</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-overview">
+            <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">JayoonKoo</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">154</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">21</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/JayoonKoo" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;JayoonKoo" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:rnwkdbs12@gmail.com" title="E-Mail → mailto:rnwkdbs12@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/JayoonKoo" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2022/04/09/Http/220409-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JayoonKoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="티끌모아 태산">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          네트워크
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-04-09 20:23:13" itemprop="dateCreated datePublished" datetime="2022-04-09T20:23:13+09:00">2022-04-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/http/" itemprop="url" rel="index"><span itemprop="name">http</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="인터넷-네트워크"><a href="#인터넷-네트워크" class="headerlink" title="인터넷 네트워크"></a>인터넷 네트워크</h1><p>HTTP 학습을 위한 사전 기본 학습</p>
+<h2 id="IP"><a href="#IP" class="headerlink" title="IP"></a>IP</h2><p>인터넷 프로토콜</p>
+<ul>
+<li>지정한 IP 주소에 데이터 전달</li>
+<li>패킷 이라는 단위로 데이터 전달</li>
+</ul>
+<h3 id="IP-패킷-정보"><a href="#IP-패킷-정보" class="headerlink" title="IP 패킷 정보"></a>IP 패킷 정보</h3><p>출발지 IP, 목적지 IP, 기타 …</p>
+<p>요청할때랑 응답할때는 다른 노드로 연결될 수 도 있다.</p>
+<h3 id="IP-프로토콜의-한계"><a href="#IP-프로토콜의-한계" class="headerlink" title="IP 프로토콜의 한계"></a>IP 프로토콜의 한계</h3><p>비연결성</p>
+<ul>
+<li>패킷을 받을 대상이 없거나 서비스 불능 상태여도 패킷 전송, 보낸 사람은 모름..</li>
+</ul>
+<p>비 신뢰성</p>
+<ul>
+<li>중간에 패킷이 사라지면?</li>
+<li>패킷이 순서대로 안오면?</li>
+</ul>
+<p>프로그램 구분</p>
+<ul>
+<li>같은 IP 를 사용하는 서버에서 통신하는 애플리케이션이 둘 이상이면?</li>
+</ul>
+<p>⇒ 이런 문제를 해결하는 것이 TCP UDP 이다</p>
+<h2 id="TCP-UDP"><a href="#TCP-UDP" class="headerlink" title="TCP UDP"></a>TCP UDP</h2><h3 id="인터넷-프로토콜-스택의-4계층"><a href="#인터넷-프로토콜-스택의-4계층" class="headerlink" title="인터넷 프로토콜 스택의 4계층"></a>인터넷 프로토콜 스택의 4계층</h3><ul>
+<li>애플리케이션 계층 - HTTP, FTP</li>
+<li>전송 계층 - TCP, UDP</li>
+<li>인터넷 계층 - IP</li>
+<li>네트워크 인터페이스 계층</li>
+</ul>
+<h3 id="TCP-IP-패킷-정보"><a href="#TCP-IP-패킷-정보" class="headerlink" title="TCP/IP 패킷 정보"></a>TCP/IP 패킷 정보</h3><p>출발지 PORT, 목적지 PORT, 전송제어, 순서, 검증정보</p>
+<h3 id="TCP-특징"><a href="#TCP-특징" class="headerlink" title="TCP 특징"></a>TCP 특징</h3><p>전송 제어 프로토콜(Transmission Control Protocol)</p>
+<ul>
+<li>연결 지향 - TCP 3 way handshake ( syn → syn + ack → ack) - 가상연결 (논리적으로만, 물리적 연결은 모름)</li>
+<li>데이터 전달 보증 ( 데이터를 전달하면 서버에서 받았다는 응답을 보내줌)</li>
+<li>순서 보증 - 클라이언트에서 보낸 순서대로 서버가 받지 못하면 잘못된 순서부터 다시보내라고 서버에서 응답함</li>
+<li>신뢰할 수 있는 프로토콜</li>
+</ul>
+<h3 id="UDP-특징"><a href="#UDP-특징" class="headerlink" title="UDP 특징"></a>UDP 특징</h3><ul>
+<li>기능이 거의 없음.</li>
+<li>IP 랑 거의 똑같음</li>
+<li>PORT 가 추가됨! → 하나의 IP 에서 여러 application이 다른 PORT 를 배정 받음.</li>
+<li>체크섬 (메세지 검증 데이터) 정도 추가됨.</li>
+<li>장점 : 데이터 전달 및 순서가 보장되지 않지만, 단순하고 빠름</li>
+</ul>
+<h2 id="PORT"><a href="#PORT" class="headerlink" title="PORT"></a>PORT</h2><p>하나의 IP 에서 둘 이상을 연결하라면 → PORT 를 사용해서 분리함.</p>
+<h2 id="DNS"><a href="#DNS" class="headerlink" title="DNS"></a>DNS</h2><p>IP 는 외우기 어렵고 변경 될 수 있다 Domain Name System → 전화번호부 같은 서버를 제공</p>
+<p>도메인 명으로 DNS 서버에에 요청 IP 주소 응답 받음 실제로 IP 주소로 요청</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/http/" rel="tag"># http</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/03/28/typeScript/220328-Typescript%20utils/" rel="prev" title="Typescript utils">
+                  <i class="fa fa-chevron-left"></i> Typescript utils
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">JayoonKoo</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

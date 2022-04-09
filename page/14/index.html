@@ -83,9 +83,9 @@
   <ul class="main-menu menu">
         <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li>
         <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
-        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">20</span></a></li>
-        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">16</span></a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">153</span></a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">21</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">17</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">154</span></a></li>
   </ul>
 </nav>
 
@@ -129,18 +129,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">153</span>
+          <span class="site-state-item-count">154</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-count">17</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-count">21</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -180,6 +180,165 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/08/15/modernJs/210727-try..catch/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JayoonKoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="티끌모아 태산">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/08/15/modernJs/210727-try..catch/" class="post-title-link" itemprop="url">try..catch</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2021-08-15 19:40:25 / Modified: 19:48:45" itemprop="dateCreated datePublished" datetime="2021-08-15T19:40:25+09:00">2021-08-15</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="try-catch-와-에러-핸들링"><a href="#try-catch-와-에러-핸들링" class="headerlink" title="try .. catch 와 에러 핸들링"></a>try .. catch 와 에러 핸들링</h1><p>에러가 발생하면 스크립트가 죽는다. </p>
+<p>try catch 를 사용하면 에러를 잡아서 합당한 무언가를 할 수 있게 된다. </p>
+<h2 id="try-catch-문법"><a href="#try-catch-문법" class="headerlink" title="try..catch 문법"></a>try..catch 문법</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 코드...</span></span><br><span class="line"></span><br><span class="line">&#125; <span class="keyword">catch</span> (err) &#123;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 에러 핸들링</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol>
+<li>먼저 try 실행</li>
+<li>에러가 없다면 try 마지막 줄까지 실행되고 catch 블럭은 건너 뜀 </li>
+<li>에러가 있다면 catch 블럭이 실행되고, error 의 정보를 담은 err(이름 바뀔 수 있음.) 객체를 포함한 코드 블럭을 실행한다. </li>
+</ol>
+<img src="/images/imgs/10-1-1.png" width="400">
+
+<blockquote>
+<ul>
+<li>try .. catch 는 런타임 에러에서만 동작함.</li>
+<li>try .. catch 는 동기적으로 동작함. </li>
+</ul>
+</blockquote>
+<br/>
+
+<h2 id="에러-객체"><a href="#에러-객체" class="headerlink" title="에러 객체"></a>에러 객체</h2><p>에러가 발생하면 에러 상세 내용이 담긴 에러 객체를 생성하고 catch 블럭에 인수로 넘겨준다.</p>
+<h3 id="주요-프로퍼티"><a href="#주요-프로퍼티" class="headerlink" title="주요 프로퍼티"></a>주요 프로퍼티</h3><ul>
+<li>name : 에러 이름</li>
+<li>message : 에러 상세 내용을 담고 있는 문자 메세지</li>
+<li>stack : 현제 호출 스택, 에러가 어디서 발생했는지에 대한 정보 </li>
+</ul>
+<br/>
+
+<h2 id="선택적-catch-바인딩"><a href="#선택적-catch-바인딩" class="headerlink" title="선택적 catch 바인딩"></a>선택적 catch 바인딩</h2><p>자세한 정보가 필요 없으면 catch 블럭에서 인수로 error 객체를 생략할 수 있다.</p>
+<br/>
+
+<h2 id="try-catch-사용하기"><a href="#try-catch-사용하기" class="headerlink" title="try .. catch 사용하기"></a>try .. catch 사용하기</h2><p>JSON.parse를 통해 예시를 들어봄.</p>
+<p>잘못된 json 형식이 들어오면 JSON.parse 호출시 스크립트가 죽음.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> json = <span class="string">&quot;&#123; bad json &#125;&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">let</span> user = <span class="built_in">JSON</span>.parse(json); <span class="comment">// &lt;-- 여기서 에러가 발생하므로</span></span><br><span class="line">  alert( user.name ); <span class="comment">// 이 코드는 동작하지 않습니다.</span></span><br><span class="line"></span><br><span class="line">&#125; <span class="keyword">catch</span> (e) &#123;</span><br><span class="line">  <span class="comment">// 에러가 발생하면 제어 흐름이 catch 문으로 넘어옵니다.</span></span><br><span class="line">  alert( <span class="string">&quot;데이터에 에러가 있어 재요청을 시도합니다.&quot;</span> );</span><br><span class="line">  alert( e.name );</span><br><span class="line">  alert( e.message );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<br/>
+
+<h2 id="직접-에러-만들어서-던지기"><a href="#직접-에러-만들어서-던지기" class="headerlink" title="직접 에러 만들어서 던지기"></a>직접 에러 만들어서 던지기</h2><p>문법적으로 잘못되진 않았지만 예상한 동작은 아니여서 error를 던지고 싶을땐 어떻게 해야 할까?</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> json = <span class="string">&#x27;&#123; &quot;age&quot;: 30 &#125;&#x27;</span>; <span class="comment">// 불완전한 데이터</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">let</span> user = <span class="built_in">JSON</span>.parse(json); <span class="comment">// &lt;-- 에러 없음</span></span><br><span class="line">  alert( user.name ); <span class="comment">// 이름이 없습니다!</span></span><br><span class="line"></span><br><span class="line">&#125; <span class="keyword">catch</span> (e) &#123;</span><br><span class="line">  alert( <span class="string">&quot;실행되지 않습니다.&quot;</span> );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>name 을 찾으면 undefined 가 아니라 error 를 던졌으면 좋겠다고 생각할 수 있다.</p>
+<h3 id="throw-연산자"><a href="#throw-연산자" class="headerlink" title="throw 연산자"></a>throw 연산자</h3><p>에러를 생성함. 기본 문법</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">throw</span> <span class="xml"><span class="tag">&lt;<span class="name">error</span> <span class="attr">object</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+<p>어떤 객체도 사용할 수 있지만 객체 안에 name 과 message 프로퍼티를 추가하기를 권장함. </p>
+<p>자바스크립트에 표준 에러 관련 생성자가 존재함. </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> error = <span class="keyword">new</span> <span class="built_in">Error</span>(message);</span><br><span class="line"><span class="comment">// or</span></span><br><span class="line"><span class="keyword">let</span> error = <span class="keyword">new</span> <span class="built_in">SyntaxError</span>(message);</span><br><span class="line"><span class="keyword">let</span> error = <span class="keyword">new</span> <span class="built_in">ReferenceError</span>(message);</span><br><span class="line"><span class="comment">// ...</span></span><br></pre></td></tr></table></figure>
+
+<p>name 프로퍼티가 없을때 에러 생성하기</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> json = <span class="string">&#x27;&#123; &quot;age&quot;: 30 &#125;&#x27;</span>; <span class="comment">// 불완전한 데이터</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">let</span> user = <span class="built_in">JSON</span>.parse(json); <span class="comment">// &lt;-- 에러 없음</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (!user.name) &#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">SyntaxError</span>(<span class="string">&quot;불완전한 데이터: 이름 없음&quot;</span>); <span class="comment">// (*)</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  alert( user.name );</span><br><span class="line"></span><br><span class="line">&#125; <span class="keyword">catch</span>(e) &#123;</span><br><span class="line">  alert( <span class="string">&quot;JSON Error: &quot;</span> + e.message ); <span class="comment">// JSON Error: 불완전한 데이터: 이름 없음</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<br/>
+
+<h2 id="에러-다시-던지기"><a href="#에러-다시-던지기" class="headerlink" title="에러 다시 던지기"></a>에러 다시 던지기</h2><p>위에 같은 구조는 error를 종류에 맞게 처리하기 보다는 한꺼번에 처리하는 구조임. </p>
+<p>이런 문제를 피하기 위해서는 다시 던지기 기술을 사용해야 함(rethrowing)</p>
+<p>catch는 알고 있는 에러만 처리하고 나머지는 다시 던저야 함.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> json = <span class="string">&#x27;&#123; &quot;age&quot;: 30 &#125;&#x27;</span>; <span class="comment">// 불완전한 데이터</span></span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">let</span> user = <span class="built_in">JSON</span>.parse(json);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (!user.name) &#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">SyntaxError</span>(<span class="string">&quot;불완전한 데이터: 이름 없음&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  blabla(); <span class="comment">// 예상치 못한 에러</span></span><br><span class="line"></span><br><span class="line">  alert( user.name );</span><br><span class="line"></span><br><span class="line">&#125; <span class="keyword">catch</span>(e) &#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (e <span class="keyword">instanceof</span> <span class="built_in">SyntaxError</span>) &#123;</span><br><span class="line">    alert( <span class="string">&quot;JSON Error: &quot;</span> + e.message );</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">throw</span> e; <span class="comment">// 에러 다시 던지기 (*)</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>던져진 에러에 대한 catch 도 해줘야 함.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">readData</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> json = <span class="string">&#x27;&#123; &quot;age&quot;: 30 &#125;&#x27;</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">    blabla(); <span class="comment">// 에러!</span></span><br><span class="line">  &#125; <span class="keyword">catch</span> (e) &#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">    <span class="keyword">if</span> (!(e <span class="keyword">instanceof</span> <span class="built_in">SyntaxError</span>)) &#123;</span><br><span class="line">      <span class="keyword">throw</span> e; <span class="comment">// 알 수 없는 에러 다시 던지기</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">  readData();</span><br><span class="line">&#125; <span class="keyword">catch</span> (e) &#123;</span><br><span class="line">  alert( <span class="string">&quot;External catch got: &quot;</span> + e ); <span class="comment">// 에러를 잡음</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<br/>
+
+<h2 id="try…catch…finally"><a href="#try…catch…finally" class="headerlink" title="try…catch…finally"></a>try…catch…finally</h2><p>finally 는 에러가 있든 없든 마지막에는 꼭 실행되는 코드 블럭이다. </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">  alert( <span class="string">&#x27;try 블록 시작&#x27;</span> );</span><br><span class="line">  <span class="keyword">if</span> (confirm(<span class="string">&#x27;에러를 만드시겠습니까?&#x27;</span>)) 이상한_코드();</span><br><span class="line">&#125; <span class="keyword">catch</span> (e) &#123;</span><br><span class="line">  alert( <span class="string">&#x27;catch&#x27;</span> );</span><br><span class="line">&#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">  alert( <span class="string">&#x27;finally&#x27;</span> );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>에러를 만들겠다고 하면 catch 절이 실행 된다음 finally 블럭이 실행됨.</p>
+<p>에러를 안만들겠다고 하면 try 절만 실행되고 finally 블럭이 실행됨. </p>
+<blockquote>
+<ul>
+<li>try.. catch.. finally 안의 변수는 지역 변수이다.</li>
+<li>finally와 return ( try catch 절에서 return 하면 에러 발생 여부 상관 없이 fianlly 가 실행됨. finally 는 try catch 코드 블럭을 벗언나면 무조건 실행되는 코드 블럭임. </li>
+</ul>
+</blockquote>
+<br/>
+
+<h2 id="전역-catch"><a href="#전역-catch" class="headerlink" title="전역 catch"></a>전역 catch</h2><p>코어 자바스크립트가 아님.</p>
+<p>try catch 밖에서 발생한 에러는 어떻게 처리해야 할까?</p>
+<p>호스트 마다 다르지만 이런 에러를 처리하는 것은 중요한 일이기 때문에 지원하고 있다. </p>
+<p>Node.js 에서는 <code>process.on(&quot;uncaughtException&quot;)</code> 브라우저 환경에서는 <code>window.onerror</code></p>
+<p>문법</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.onerror = <span class="function"><span class="keyword">function</span>(<span class="params">message, url, line, col, error</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>message : 에러 메세지</li>
+<li>url : 에러가 발생한 스크립트의 url </li>
+<li>line, col : 에러가 발생한 곳의 줄과 열 번호 </li>
+<li>error : 에러 객체</li>
+</ul>
+<p>window.onerror를 사용해서 죽어버린 스크립트를 복구하기에는 문제가 있음.</p>
+<p>개발자에게 어디서 에러가 났는지 알려주는 목적으로 많이 사용함. </p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1093,93 +1252,6 @@
 
 <h2 id="executor-안에서-비동기적으로-발생한-에러"><a href="#executor-안에서-비동기적으로-발생한-에러" class="headerlink" title="executor 안에서 비동기적으로 발생한 에러"></a>executor 안에서 비동기적으로 발생한 에러</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span>(<span class="params">resolve, reject</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">&quot;에러 발생!&quot;</span>);</span><br><span class="line">  &#125;, <span class="number">1000</span>);</span><br><span class="line">&#125;).catch(alert);</span><br></pre></td></tr></table></figure>
 <p>위 코드에서 암시적 <code>try..catch</code>로 인해 <code>catch</code>에서 에러가 처리될거 같지만, 실제로는 setTimout에 의해서 비동기적으로 처리되는 부분에서 에러가 발생했으므로 catch에서 에러가 처리되지 않는다. </p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/08/15/modernJs/210811-%ED%94%84%EB%A1%9C%EB%AF%B8%EC%8A%A4%ED%99%94/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JayoonKoo">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="티끌모아 태산">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/08/15/modernJs/210811-%ED%94%84%EB%A1%9C%EB%AF%B8%EC%8A%A4%ED%99%94/" class="post-title-link" itemprop="url">프로미스화</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-08-15 19:40:25" itemprop="dateCreated datePublished" datetime="2021-08-15T19:40:25+09:00">2021-08-15</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="프로미스화"><a href="#프로미스화" class="headerlink" title="프로미스화"></a>프로미스화</h1><p>콜백을 받은 함수를 프라미스를 반환하는 함수로 바꾸는 것을 ‘프라미스화(promisification)’ 이라고 한다. </p>
-<p>콜백 예시 </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">loadScript</span>(<span class="params">src, callback</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> script = <span class="built_in">document</span>.createElement(<span class="string">&#x27;script&#x27;</span>);</span><br><span class="line">  script.src = src;</span><br><span class="line"></span><br><span class="line">  script.onload = <span class="function">() =&gt;</span> callback(<span class="literal">null</span>, script);</span><br><span class="line">  script.onerror = <span class="function">() =&gt;</span> callback(<span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">`<span class="subst">$&#123;src&#125;</span>를 불러오는 도중에 에러가 발생함`</span>));</span><br><span class="line"></span><br><span class="line">  <span class="built_in">document</span>.head.append(script);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// usage:</span></span><br><span class="line"><span class="comment">// loadScript(&#x27;path/script.js&#x27;, (err, script) =&gt; &#123;...&#125;)</span></span><br></pre></td></tr></table></figure>
-
-<p>이제 이 콜백을 프로미스화 할 것임. 해당 함수는 콜백을 인수로 받지 않고 src만 인수로 받도록 함.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> loadScriptPromise = <span class="function"><span class="keyword">function</span>(<span class="params">src</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">		loadScript(src, <span class="function">(<span class="params">err, script</span>) =&gt;</span> &#123;</span><br><span class="line">			<span class="keyword">if</span> (err) reject(err);</span><br><span class="line">			<span class="keyword">else</span> resolve(script);</span><br><span class="line">		&#125;)</span><br><span class="line">	&#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// usage:</span></span><br><span class="line"><span class="comment">// loadScriptPromise(&#x27;path/script.js&#x27;).then(...)</span></span><br></pre></td></tr></table></figure>
-
-<p><code>loadScriptPromise</code> 는 <code>loadScript</code>에 모든 일을 위임한다. </p>
-<p>그런데 실무에서는 여러 함수를 프라미스화 해야 할 것이다. 래퍼 함수를 만들 도록 한다. 프라미스화를 적용할 함수 f를 받고 래퍼 함수를 반환하는 함수 <code>promisefy(f)</code>를 만든다. </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">promisify</span>(<span class="params">f</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params">...args</span>) </span>&#123; <span class="comment">// 래퍼 함수를 반환함</span></span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123; </span><br><span class="line">			<span class="function"><span class="keyword">function</span> <span class="title">callback</span>(<span class="params">err, result</span>) </span>&#123; <span class="comment">// f에 사용할 커스텀 콜백 </span></span><br><span class="line">				<span class="keyword">if</span> (err) &#123;</span><br><span class="line">					reject(err);</span><br><span class="line">				&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">					resolve(result);</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line"></span><br><span class="line">			args.push(callback); <span class="comment">// 위에서 만든 커스텀 콜백을 함수 f의 인수 끝에 추가함.</span></span><br><span class="line"></span><br><span class="line">			f.call(<span class="built_in">this</span>, ...args); <span class="comment">// 기존 함수를 호출</span></span><br><span class="line">		&#125;);</span><br><span class="line">	&#125;;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 사용법: </span></span><br><span class="line"><span class="keyword">let</span> loadScriptPromise = promisify(loadScript);</span><br><span class="line">loadScriptPromise(...).then(...);</span><br></pre></td></tr></table></figure>
-<p>함수 <code>f</code>가 두 개를 초과하는 인수를 가진 콜백, <code>callback(err, res1, res2, ...)</code> 을 받는 경우?</p>
-<p><code>promisify(f, true)</code> 형태로 호출하면, 프로미스 결과는 콜백의 성공 케이스 (result)를 담은 배열 <code>[res1, res2, ...]</code> 이 된다. </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 콜백의 성공 결과를 담은 배열을 얻게 해주는 promisify(f, true)</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">promisify</span>(<span class="params">f, manyArgs = <span class="literal">false</span></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params">...args</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="function"><span class="keyword">function</span> <span class="title">callback</span>(<span class="params">err, ...results</span>) </span>&#123; <span class="comment">// f에 사용할 커스텀 콜백</span></span><br><span class="line">        <span class="keyword">if</span> (err) &#123;</span><br><span class="line">          reject(err);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          <span class="comment">// manyArgs가 구체적으로 명시되었다면, 콜백의 성공 케이스와 함께 이행 상태가 됩니다.</span></span><br><span class="line">          resolve(manyArgs ? results : results[<span class="number">0</span>]);</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      args.push(callback);</span><br><span class="line"></span><br><span class="line">      f.call(<span class="built_in">this</span>, ...args);</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 사용법:</span></span><br><span class="line">f = promisify(f, <span class="literal">true</span>);</span><br><span class="line">f(...).then(<span class="function"><span class="params">arrayOfResults</span> =&gt;</span> ..., <span class="function"><span class="params">err</span> =&gt;</span> ...)</span><br></pre></td></tr></table></figure>
-
-<p><code>es6-promisify</code> 같은 프라미스화를 도화주는 모듈도 있다.<br>또한, node.js에선 내장 함수 <code>util.promisify</code>를 사용해 프라미스화를 할 수 있다. </p>
 
       
     </div>
