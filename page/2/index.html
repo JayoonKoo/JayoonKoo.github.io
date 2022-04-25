@@ -85,7 +85,7 @@
         <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
         <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">21</span></a></li>
         <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">17</span></a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">154</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">156</span></a></li>
   </ul>
 </nav>
 
@@ -129,7 +129,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">154</span>
+          <span class="site-state-item-count">156</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -180,6 +180,220 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2022/03/28/typeScript/210824-generic/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JayoonKoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="티끌모아 태산">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/03/28/typeScript/210824-generic/" class="post-title-link" itemprop="url">generic</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2022-03-28 12:06:36 / Modified: 12:07:33" itemprop="dateCreated datePublished" datetime="2022-03-28T12:06:36+09:00">2022-03-28</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/typeScript/" itemprop="url" rel="index"><span itemprop="name">typeScript</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="generic"><a href="#generic" class="headerlink" title="generic"></a>generic</h1><h2 id="generic-과-any-에-다른점"><a href="#generic-과-any-에-다른점" class="headerlink" title="generic 과 any 에 다른점"></a>generic 과 any 에 다른점</h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">helloString</span>(<span class="params">message: <span class="built_in">string</span></span>): <span class="title">string</span> </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> message;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">helloNumber</span>(<span class="params">message: <span class="built_in">number</span></span>): <span class="title">number</span> </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> message;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 타입만 다르고 로직은 같은 함수가 반복된다면 ...</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">hello</span>(<span class="params">message: <span class="built_in">any</span></span>): <span class="title">any</span> </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> message;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 같은 로직이면 문자로 생각하고 싶지만 any가 나옴</span></span><br><span class="line"><span class="comment">// lnegth 같은 메서드를 사용해도 number 가 아니라 any가 나옴..</span></span><br><span class="line"><span class="built_in">console</span>.log(hello(<span class="string">&quot;Mark&quot;</span>));</span><br><span class="line"><span class="comment">// 같은 로직이면 숫자로 생각하고 싶지만..</span></span><br><span class="line"><span class="built_in">console</span>.log(hello(<span class="number">4</span>));</span><br><span class="line"></span><br><span class="line"><span class="comment">// 만약 string을 넣으면 T 가 string이 되는 것. 마치 변수처럼 사용</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">helloGeneric</span>&lt;<span class="title">T</span>&gt;(<span class="params">message: T</span>): <span class="title">T</span> </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> message;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 리턴 타입은 &#x27;Mark&#x27;로 추정함.. 리터럴 타입으로</span></span><br><span class="line"><span class="built_in">console</span>.log(helloGeneric(<span class="string">&quot;Mark&quot;</span>).length);</span><br><span class="line"><span class="comment">// 리턴 타입을 27로 추정함.</span></span><br><span class="line"><span class="built_in">console</span>.log(helloGeneric(<span class="number">27</span>));</span><br><span class="line"><span class="comment">// true로 추정함.</span></span><br><span class="line"><span class="built_in">console</span>.log(helloGeneric(<span class="literal">true</span>));</span><br></pre></td></tr></table></figure>
+
+<p>제너릭 타입을 사용하면 함수 안에서 동적으로 받은 타입을 변수처럼 사용할 수 있다. 이를 활용하여 리턴 타입을 명시 하는지에 기능을 사용할 수 있다.</p>
+<h2 id="generic-basic"><a href="#generic-basic" class="headerlink" title="generic basic"></a>generic basic</h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">helloBasic</span>&lt;<span class="title">T</span>, <span class="title">U</span>&gt;(<span class="params">message: T, coment: U</span>): <span class="title">T</span> </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> message;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 사용법</span></span><br><span class="line"><span class="comment">// T 는 string U 는 27</span></span><br><span class="line">helloBasic&lt;<span class="built_in">string</span>, <span class="built_in">number</span>&gt;(<span class="string">&quot;mark&quot;</span>, <span class="number">27</span>);</span><br><span class="line"><span class="comment">// T 는 27 , U 39</span></span><br><span class="line">helloBasic(<span class="number">27</span>, <span class="number">39</span>);</span><br></pre></td></tr></table></figure>
+
+<p>사용할 때에는 두가지 방법으로 사용 가능하다.</p>
+<ol>
+<li><code>&lt;&gt;</code> 안에 타입 명시 -&gt; 이렇게 하면 매개변수로 주는 타입을 명시한 터입으로 지정해야 한다.</li>
+<li>평범하게 사용, 이렇게 하면 타입스크립트가 추론해서 타입을 정하게 된다. 일반적으로 27과 같은 숫자를 넣으면 number 라고 생각할 수 도 있지만, 타입 스크립트는 타입을 가능한 좁게 가져가기 때문에 타입은 number 가 아니라 27이 된다.</li>
+</ol>
+<h2 id="generics-array-amp-tuple"><a href="#generics-array-amp-tuple" class="headerlink" title="generics array &amp; tuple"></a>generics array &amp; tuple</h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">helloArray</span>&lt;<span class="title">T</span>&gt;(<span class="params">message: T[]</span>): <span class="title">T</span> </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> message[<span class="number">0</span>];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// T는 string으로 추론됨.</span></span><br><span class="line">helloArray([<span class="string">&quot;hello&quot;</span>, <span class="string">&quot;world&quot;</span>]);</span><br><span class="line"><span class="comment">// T는 &lt;string | number&gt; 로 추론함. 유니온 타입이됨.</span></span><br><span class="line"><span class="comment">// string과 number 에서 모두 사용할수 있는 메서드만 사용할 수 있음.</span></span><br><span class="line">helloArray([<span class="string">&quot;Hello&quot;</span>, <span class="number">5</span>]);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">helloTuple</span>&lt;<span class="title">T</span>, <span class="title">K</span>&gt;(<span class="params">message: [T, K]</span>): <span class="title">T</span> </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> message[<span class="number">0</span>];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// string 이 리턴 타입</span></span><br><span class="line">helloTuple([<span class="string">&quot;hello&quot;</span>, <span class="string">&quot;world&quot;</span>]);</span><br><span class="line"><span class="comment">// 리턴 타입이 정확하게 string으로 추정됨.</span></span><br><span class="line">helloTuple([<span class="string">&quot;Hello&quot;</span>, <span class="number">5</span>]);</span><br></pre></td></tr></table></figure>
+
+<p>제너릭에서 배열과 튜플을 활용하는 방법은 다음과 같다. 이때 어떤 타입에 데이터가 인수로 들어올지 알 수 있다면 튜플로 사용하는것이 타입을 더 명시적으로 관리할 수 있다.</p>
+<h2 id="generic-function"><a href="#generic-function" class="headerlink" title="generic function"></a>generic function</h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> helloFunctionGeneric1 = &lt;T&gt;<span class="function">(<span class="params">message: T</span>) =&gt;</span> T;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> helloFuncion1: helloFunctionGeneric1 = &lt;T&gt;(message: T): <span class="function"><span class="params">T</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> message;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">interface</span> helloFunctionGeneric2 &#123;</span><br><span class="line">  &lt;T&gt;(message: T): T;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> helloFunction2: helloFunctionGeneric2 = &lt;T&gt;(message: T): <span class="function"><span class="params">T</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> message;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>함수에서도 동일하게 generic 을 사용할 수 있다.</p>
+<h2 id="generic-class"><a href="#generic-class" class="headerlink" title="generic class"></a>generic class</h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 클래스 전체에서 T는 유효범위를 갖는다.</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span>&lt;<span class="title">T</span>, <span class="title">K</span>&gt; </span>&#123;</span><br><span class="line">  <span class="keyword">private</span> _name: T;</span><br><span class="line">  <span class="keyword">private</span> _age: K;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">name: T, age: K</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>._name = name;</span><br><span class="line">    <span class="built_in">this</span>._age = age;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> Person(<span class="string">&quot;Mark&quot;</span>, <span class="number">39</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> Person&lt;<span class="built_in">string</span>, <span class="built_in">number</span>&gt;(<span class="string">&quot;koo&quot;</span>, <span class="number">27</span>);</span><br></pre></td></tr></table></figure>
+
+<h2 id="generic-with-extends"><a href="#generic-with-extends" class="headerlink" title="generic with extends"></a>generic with extends</h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">PersonExtends</span>&lt;<span class="title">T</span> <span class="keyword">extends</span> <span class="title">string</span> | <span class="title">number</span>&gt; </span>&#123;</span><br><span class="line">  <span class="keyword">private</span> _name: T;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">name: T</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>._name = name;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> PersonExtends(<span class="string">&quot;Mark&quot;</span>);</span><br><span class="line"><span class="keyword">new</span> PersonExtends(<span class="number">27</span>);</span><br><span class="line"><span class="comment">// new PersonExtends(true);</span></span><br></pre></td></tr></table></figure>
+
+<p>generic 에서 extends 는 일반적인 상속과는 다른 개념으로 사용된다. generic 에서 사용하게 되면 타입을 제한하는 역활을 하게 된다. 따라서 코드에서 <code>new PersonExtends(true)</code>는 에러를 인수로 <code>&lt;string | number &gt;</code> 가 아닌 값을 주었기 때문에 에러를 발생시킨다.</p>
+<h2 id="keyof-amp-type-lookup-system"><a href="#keyof-amp-type-lookup-system" class="headerlink" title="keyof &amp; type lookup system"></a>keyof &amp; type lookup system</h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> IPerson &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="built_in">string</span>;</span><br><span class="line">  age: <span class="built_in">number</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> person: IPerson = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&quot;mark&quot;</span>,</span><br><span class="line">  <span class="attr">age</span>: <span class="number">39</span>,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// key 이름으로 된 유니온 타입이 반환된다.</span></span><br><span class="line"><span class="keyword">type</span> Keys = keyof IPerson;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 리턴 타이에도 문제가 생김...</span></span><br><span class="line"><span class="comment">// IPerson[keyof IPerson]</span></span><br><span class="line"><span class="comment">// =&gt; IPerson[&quot;name&quot; | &quot;age&quot;]</span></span><br><span class="line"><span class="comment">// =&gt; IPerson[&quot;name&quot;] | IPerson[&quot;age&quot;]</span></span><br><span class="line"><span class="comment">// =&gt; string | number</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getProp</span>&lt;<span class="title">T</span>, <span class="title">K</span> <span class="title">extends</span> <span class="title">keyof</span> <span class="title">T</span>&gt;(<span class="params">obj: T, key: K</span>): <span class="title">T</span>[<span class="title">K</span>] </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> obj[key];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// key 가 name 일 때 string</span></span><br><span class="line"><span class="comment">// key 가 age 일 때 number</span></span><br><span class="line">getProp(person, <span class="string">&quot;name&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">setProp</span>&lt;<span class="title">T</span>, <span class="title">K</span> <span class="title">extends</span> <span class="title">keyof</span> <span class="title">T</span>&gt;(<span class="params">obj: T, key: K, value: T[K]</span>): <span class="title">void</span> </span>&#123;</span><br><span class="line">  <span class="comment">// 경우에 따라서 넣어야 하는 타입이 달라지기 때문에</span></span><br><span class="line">  obj[key] = value;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">setProp(person, <span class="string">&quot;name&quot;</span>, <span class="string">&quot;koo&quot;</span>);</span><br><span class="line">setProp(person, <span class="string">&quot;age&quot;</span>, <span class="number">27</span>);</span><br></pre></td></tr></table></figure>
+
+<p><code>keyof</code> 를 사용하면 인터페이스에 key로 구성된 유니온 타입을 반환한다. 어떤 매개변수끼리 혹은 리턴 값 끼리 서로 관련 성이 있어서 타입이 달라지는 경우 <code>keyof</code>와 <code>extends</code>를 활용하여 관계성을 정의할 수 있다.</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2022/03/28/Material%20Designe/220328-Layout/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JayoonKoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="티끌모아 태산">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/03/28/Material%20Designe/220328-Layout/" class="post-title-link" itemprop="url">Layout</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2022-03-28 12:05:45 / Modified: 12:07:59" itemprop="dateCreated datePublished" datetime="2022-03-28T12:05:45+09:00">2022-03-28</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/MaterialDesigne/" itemprop="url" rel="index"><span itemprop="name">MaterialDesigne</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="layout"><a href="#layout" class="headerlink" title="layout"></a>layout</h1><p>플랫폼, 환경 및 화면 크기 전반에 걸쳐 일관성을 유지하기 위한 균일한 요소와 간격에 대해서..</p>
+<h2 id="Principles"><a href="#Principles" class="headerlink" title="Principles"></a>Principles</h2><ul>
+<li>예측 가능성. 일관된 UI 영역 및 공간 구성으로 직관적이고 예측 가능으한 레이웃이여야 한다.</li>
+<li>일관성</li>
+<li>반응성</li>
+</ul>
+<h2 id="Layout-anatomy"><a href="#Layout-anatomy" class="headerlink" title="Layout anatomy"></a>Layout anatomy</h2><p>레이아웃은 유사한 기능ㅇ을 공유하는 요서와 구성 요서로 구성된다. 레이아웃 영역은 또한 작은 컨테이너를 그룹화 한다.</p>
+<p>큰 화면 레이아웃에는 세 가지 주요 영역이 있다. </p>
+<img src="images/220328_Layout/1.png" widht="400" />
+
+<ol>
+<li>App bars</li>
+<li>Navigation</li>
+<li>Body</li>
+</ol>
+<p>반응형을 구현할때는 작은 화면에서 큰 화면으로 만들어 가면서 다양한 form factors 에 적용해 나가는 것이 좋다. </p>
+<h3 id="Body-region"><a href="#Body-region" class="headerlink" title="Body region"></a>Body region</h3><p>Body 영역은 대부분의 컨텐트를 표시하는데 사용된다. 일반적으로 목록, 카드, 버튼 및 이미지와 같은 구성 요소를 포함한다.</p>
+<p>Body 영역은 세가지 매개변수에 대한 확장 가능한 값을 갖는다.</p>
+<ol>
+<li>Vertical and horizontal dimensions</li>
+<li>Number of Columns</li>
+<li>Margins</li>
+</ol>
+<h3 id="Responsive-column-grid"><a href="#Responsive-column-grid" class="headerlink" title="Responsive column grid"></a>Responsive column grid</h3><p>화면 크기에 따른 break point</p>
+<img src="images/220328_Layout/2.png" widht="400" />
+
+<h3 id="Navigation-region"><a href="#Navigation-region" class="headerlink" title="Navigation region"></a>Navigation region</h3><p>네비게이션 서랍이나 목록을 표시하는 영역이다. 네비게이션 영역의 넓이는 확장되었을때는 256dp 접었을때는 72dp (rail)를 유지한다. margin 이 48dp 보다 적은 화면 사이즈에서는 body navigation 영역을 보여주기 위해서 body 영역이 줄어들 수 있다. (600~904dp 사이에 영역)</p>
+<img src="images/220328_Layout/3.png" widht="400" />
+
+<p>만약 화면 사이즈가 600dp 보다 작다면 modal 를 사용한다. </p>
+<img src="images/220328_Layout/4.png" widht="400" />
+
+<h3 id="App-bar"><a href="#App-bar" class="headerlink" title="App bar"></a>App bar</h3><p>앱바는 사용자가 기본 작업을 수행하거나 본문 영역의 요소에 대해 작업을 수행하는 데 도움이 되는 구성 요소 및 작업을 표시하고 그룹화하는 데 사용된다. </p>
+<h2 id="Composition"><a href="#Composition" class="headerlink" title="Composition"></a>Composition</h2><h3 id="Visual-grouping"><a href="#Visual-grouping" class="headerlink" title="Visual grouping"></a>Visual grouping</h3><p>유사한 콘텐츠 또는 기능을 가진 레이아웃의 요소는 그룹화하여 다른 요소와 분리한다. </p>
+<img src="images/220328_Layout/5.png" widht="400" />
+
+<p>글자 영역에 빈공간을 사용하여 다른 요소와 분리한다.</p>
+<h3 id="Containment"><a href="#Containment" class="headerlink" title="Containment"></a>Containment</h3><p>관련된 요소끼리 가깝게 배치하고 관련 되지 않는 요소 끼리는 넓게 배치하여 두 그룹을 분리 할 수 있고, 선을 이용하여 분리할 수도 있다. </p>
+<img src="images/220328_Layout/6.png" widht="400" />
+
+<p>텍스트를 포함하는 컨텐츠는 사이즈가 쉽게 변해야 하며, 읽기 쉬운 상태로 남아있어야 한다. </p>
+<h3 id="Scaling-with-text"><a href="#Scaling-with-text" class="headerlink" title="Scaling with text"></a>Scaling with text</h3><p>한줄에 40-60 글자가 있는 것이 이상적이다. 텍스트를 포함된 요소는 가독성을 유지하면서 요소 크기에 맞춰 크기를 조정해야 한고 한줄에 너무 길게 확장되지 않도록 해야한다. </p>
+<p>가독성을 높이려면 line height 를 조정하는것이 좋다. </p>
+<h2 id="Material-measurements"><a href="#Material-measurements" class="headerlink" title="Material measurements"></a>Material measurements</h2><p>시각적 균형을 이루도록 하기 위해 대부분의 간격과 레이아웃 모두에 8dp로 정렬한다. 구성 요소의 크기는 8dp 단위로 조정되어 각 화면에서 일관된 시각적 리듬을 보장한다. 또한 아이콘, 텍스트와 같은 더 작은 요소는 4dp 기준으로 정렬할 수 있다.</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -530,6 +744,107 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2022/03/28/BackEnd/220328-Modules/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JayoonKoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="티끌모아 태산">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/03/28/BackEnd/220328-Modules/" class="post-title-link" itemprop="url">Modules</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2022-03-28 11:53:37 / Modified: 12:12:43" itemprop="dateCreated datePublished" datetime="2022-03-28T11:53:37+09:00">2022-03-28</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Backend/" itemprop="url" rel="index"><span itemprop="name">Backend</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="Moudles"><a href="#Moudles" class="headerlink" title="Moudles"></a>Moudles</h1><p>@Module() 데코레이터는 어플리케이션 구성에 필요한 metadate를 공급한다.</p>
+<p>애플리케이션은 최소 한개 이상의 모듈이 존재햐아 하고 구성 요소를 구성하는 효과적인 방법으로 모듈을 사용한다. 아주 작은 애플리케이션이 아닌 일반적인 애플리케이션은 여러가지 모듈을 가진다. </p>
+<p>모듈은 provider 를 캡슐화 한다. 즉 현제 모듈의 일부도 아니고 가져온 모듈에서 내보낸 것도 아닌 provider 를 주입하는것은 불가능하다.</p>
+<h2 id="Feature-modules"><a href="#Feature-modules" class="headerlink" title="Feature modules"></a>Feature modules</h2><p>생성한 controller와 service 는 어떤 기능에 연관되 있기 때문에 하나의 모듈로 만들어서 관리하는 것이 좋다. netst g module &lt;이름&gt; 으로 모듈을 생성할 수 있다. </p>
+<h2 id="Shared-modules"><a href="#Shared-modules" class="headerlink" title="Shared modules"></a>Shared modules</h2><p>nest 에서 모듈은 기본적으로 singletons 이다. 따라서 같은 인스턴스를 다양한 모듈에서 공유할 수 있다. 여러 다른 모듈 간의 특정 모듈에 속해 있는 서비스를 공유하고 싶다면 @Module 데코레이터에서 exports 하여 특정 서비스를 내보내야 한다. </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">import &#123; Module &#125; from &#x27;@nestjs/common&#x27;;</span><br><span class="line">import &#123; CatsController &#125; from &#x27;./cats.controller&#x27;;</span><br><span class="line">import &#123; CatsService &#125; from &#x27;./cats.service&#x27;;</span><br><span class="line"></span><br><span class="line">@Module(&#123;</span><br><span class="line">  controllers: [CatsController],</span><br><span class="line">  providers: [CatsService],</span><br><span class="line">  exports: [CatsService]</span><br><span class="line">&#125;)</span><br><span class="line">export class CatsModule &#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>CatService 를 내보내서 다른 모듈에서 같은 인스턴스를 사용하도록 한다. </p>
+<h2 id="Module-re-exporting"><a href="#Module-re-exporting" class="headerlink" title="Module re-exporting"></a>Module re-exporting</h2><p>특정 모듈을 임포트하고 다시 내보낼수도 있다. CommonModule은 CoreModule로 가져오거나 CoreModule에서 내보내어 이 모듈을 가져오는 다른 모듈에서 사용할 수 있다. </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">@Module(&#123;</span><br><span class="line">  imports: [CommonModule],</span><br><span class="line">  exports: [CommonModule],</span><br><span class="line">&#125;)</span><br><span class="line">export class CoreModule &#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Dependency-injection"><a href="#Dependency-injection" class="headerlink" title="Dependency injection"></a>Dependency injection</h2><p>모듈은 Provider 도 주입할 수 있다. (구성 하기 위한 목적으로 )</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">import &#123; Module &#125; from &#x27;@nestjs/common&#x27;;</span><br><span class="line">import &#123; CatsController &#125; from &#x27;./cats.controller&#x27;;</span><br><span class="line">import &#123; CatsService &#125; from &#x27;./cats.service&#x27;;</span><br><span class="line"></span><br><span class="line">@Module(&#123;</span><br><span class="line">  controllers: [CatsController],</span><br><span class="line">  providers: [CatsService],</span><br><span class="line">&#125;)</span><br><span class="line">export class CatsModule &#123;</span><br><span class="line">  constructor(private catsService: CatsService) &#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>그러나 순환 참조가 될수 있기 때문에 모듈 자체를 Porivder로 주입하는 것은 불가능하다. </p>
+<h2 id="Global-modules"><a href="#Global-modules" class="headerlink" title="Global modules"></a>Global modules</h2><p>모든 곳에서 import 하는 같은 모듈을 계속 import 하는 것은 바보같은 짓이다. 그러나 nest 에서는 Provider를 캡슐화 하기 때문에 Provider 를 가져오지 않고는 다른 곳에서 사용할 수 없다. </p>
+<p>어느 곳에서나 접근 가능한 Provider 집합을 제공하려는 경우, @Global 데코레이터를 사용하여 사용해야 한다. </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">import &#123; Module, Global &#125; from &#x27;@nestjs/common&#x27;;</span><br><span class="line">import &#123; CatsController &#125; from &#x27;./cats.controller&#x27;;</span><br><span class="line">import &#123; CatsService &#125; from &#x27;./cats.service&#x27;;</span><br><span class="line"></span><br><span class="line">@Global()</span><br><span class="line">@Module(&#123;</span><br><span class="line">  controllers: [CatsController],</span><br><span class="line">  providers: [CatsService],</span><br><span class="line">  exports: [CatsService],</span><br><span class="line">&#125;)</span><br><span class="line">export class CatsModule &#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>이렇게 하면 모듈을 global-scope 에 있도록 만들 수 있다. 전역 모듈은 일반적으로 루트 또는 코어 모듈에서 한번만 등록해야 한다. 이렇게 등록한 모듈 내에 있는 Provider 는 어떠한 다른 모듈에서 import 모듈에 등록할 필요 없이 inject 할 수 있다. </p>
+<h2 id="Dynamic-modules"><a href="#Dynamic-modules" class="headerlink" title="Dynamic modules"></a>Dynamic modules</h2><p>Nest 에서는 쉽게 등록 가능한 모듈을 동적으로 만들 수 있고, Provider를 구성할 수 있다. </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">import &#123; Module, DynamicModule &#125; from &#x27;@nestjs/common&#x27;;</span><br><span class="line">import &#123; createDatabaseProviders &#125; from &#x27;./database.providers&#x27;;</span><br><span class="line">import &#123; Connection &#125; from &#x27;./connection.provider&#x27;;</span><br><span class="line"></span><br><span class="line">@Module(&#123;</span><br><span class="line">  providers: [Connection],</span><br><span class="line">&#125;)</span><br><span class="line">export class DatabaseModule &#123;</span><br><span class="line">  static forRoot(entities = [], options?): DynamicModule &#123;</span><br><span class="line">    const providers = createDatabaseProviders(options, entities);</span><br><span class="line">    return &#123;</span><br><span class="line">      module: DatabaseModule,</span><br><span class="line">      providers: providers,</span><br><span class="line">      exports: providers,</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>forRoot 메서드는 동기식 또는 비동기식으로 모듈을 반환할 수 있다. </p>
+<p>DatabaseModule 는 다음과 같은 방법으로 import 될 수  있다. </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">import &#123; Module &#125; from &#x27;@nestjs/common&#x27;;</span><br><span class="line">import &#123; DatabaseModule &#125; from &#x27;./database/database.module&#x27;;</span><br><span class="line">import &#123; User &#125; from &#x27;./users/entities/user.entity&#x27;;</span><br><span class="line"></span><br><span class="line">@Module(&#123;</span><br><span class="line">  imports: [DatabaseModule.forRoot([User])],</span><br><span class="line">&#125;)</span><br><span class="line">export class AppModule &#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>동적 모듈을 다시 내보내려면 내보내기 배열에서 forRoot() 메서드 호출을 생략 할 수도 있다.</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2022/03/28/BackEnd/220328-Middleware/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -607,107 +922,6 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">const app = await NestFactory.create(AppModule);</span><br><span class="line">app.use(logger);</span><br><span class="line">await app.listen(3000);</span><br></pre></td></tr></table></figure>
 
 <p>글로벌 미들웨어에서 DI 컨테이너에 액세스하는것은 불가능하다. app.use() 를 사용할때 functional middleware 를 사용하거나, AppModule 내에서 .forRoutes(’*’) 와 함께 사용할 수 있다.</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2022/03/28/BackEnd/220328-Modules/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JayoonKoo">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="티끌모아 태산">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/03/28/BackEnd/220328-Modules/" class="post-title-link" itemprop="url">Modules</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2022-03-28 11:53:37 / Modified: 12:12:43" itemprop="dateCreated datePublished" datetime="2022-03-28T11:53:37+09:00">2022-03-28</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Backend/" itemprop="url" rel="index"><span itemprop="name">Backend</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="Moudles"><a href="#Moudles" class="headerlink" title="Moudles"></a>Moudles</h1><p>@Module() 데코레이터는 어플리케이션 구성에 필요한 metadate를 공급한다.</p>
-<p>애플리케이션은 최소 한개 이상의 모듈이 존재햐아 하고 구성 요소를 구성하는 효과적인 방법으로 모듈을 사용한다. 아주 작은 애플리케이션이 아닌 일반적인 애플리케이션은 여러가지 모듈을 가진다. </p>
-<p>모듈은 provider 를 캡슐화 한다. 즉 현제 모듈의 일부도 아니고 가져온 모듈에서 내보낸 것도 아닌 provider 를 주입하는것은 불가능하다.</p>
-<h2 id="Feature-modules"><a href="#Feature-modules" class="headerlink" title="Feature modules"></a>Feature modules</h2><p>생성한 controller와 service 는 어떤 기능에 연관되 있기 때문에 하나의 모듈로 만들어서 관리하는 것이 좋다. netst g module &lt;이름&gt; 으로 모듈을 생성할 수 있다. </p>
-<h2 id="Shared-modules"><a href="#Shared-modules" class="headerlink" title="Shared modules"></a>Shared modules</h2><p>nest 에서 모듈은 기본적으로 singletons 이다. 따라서 같은 인스턴스를 다양한 모듈에서 공유할 수 있다. 여러 다른 모듈 간의 특정 모듈에 속해 있는 서비스를 공유하고 싶다면 @Module 데코레이터에서 exports 하여 특정 서비스를 내보내야 한다. </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">import &#123; Module &#125; from &#x27;@nestjs/common&#x27;;</span><br><span class="line">import &#123; CatsController &#125; from &#x27;./cats.controller&#x27;;</span><br><span class="line">import &#123; CatsService &#125; from &#x27;./cats.service&#x27;;</span><br><span class="line"></span><br><span class="line">@Module(&#123;</span><br><span class="line">  controllers: [CatsController],</span><br><span class="line">  providers: [CatsService],</span><br><span class="line">  exports: [CatsService]</span><br><span class="line">&#125;)</span><br><span class="line">export class CatsModule &#123;&#125;</span><br></pre></td></tr></table></figure>
-
-<p>CatService 를 내보내서 다른 모듈에서 같은 인스턴스를 사용하도록 한다. </p>
-<h2 id="Module-re-exporting"><a href="#Module-re-exporting" class="headerlink" title="Module re-exporting"></a>Module re-exporting</h2><p>특정 모듈을 임포트하고 다시 내보낼수도 있다. CommonModule은 CoreModule로 가져오거나 CoreModule에서 내보내어 이 모듈을 가져오는 다른 모듈에서 사용할 수 있다. </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">@Module(&#123;</span><br><span class="line">  imports: [CommonModule],</span><br><span class="line">  exports: [CommonModule],</span><br><span class="line">&#125;)</span><br><span class="line">export class CoreModule &#123;&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="Dependency-injection"><a href="#Dependency-injection" class="headerlink" title="Dependency injection"></a>Dependency injection</h2><p>모듈은 Provider 도 주입할 수 있다. (구성 하기 위한 목적으로 )</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">import &#123; Module &#125; from &#x27;@nestjs/common&#x27;;</span><br><span class="line">import &#123; CatsController &#125; from &#x27;./cats.controller&#x27;;</span><br><span class="line">import &#123; CatsService &#125; from &#x27;./cats.service&#x27;;</span><br><span class="line"></span><br><span class="line">@Module(&#123;</span><br><span class="line">  controllers: [CatsController],</span><br><span class="line">  providers: [CatsService],</span><br><span class="line">&#125;)</span><br><span class="line">export class CatsModule &#123;</span><br><span class="line">  constructor(private catsService: CatsService) &#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>그러나 순환 참조가 될수 있기 때문에 모듈 자체를 Porivder로 주입하는 것은 불가능하다. </p>
-<h2 id="Global-modules"><a href="#Global-modules" class="headerlink" title="Global modules"></a>Global modules</h2><p>모든 곳에서 import 하는 같은 모듈을 계속 import 하는 것은 바보같은 짓이다. 그러나 nest 에서는 Provider를 캡슐화 하기 때문에 Provider 를 가져오지 않고는 다른 곳에서 사용할 수 없다. </p>
-<p>어느 곳에서나 접근 가능한 Provider 집합을 제공하려는 경우, @Global 데코레이터를 사용하여 사용해야 한다. </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">import &#123; Module, Global &#125; from &#x27;@nestjs/common&#x27;;</span><br><span class="line">import &#123; CatsController &#125; from &#x27;./cats.controller&#x27;;</span><br><span class="line">import &#123; CatsService &#125; from &#x27;./cats.service&#x27;;</span><br><span class="line"></span><br><span class="line">@Global()</span><br><span class="line">@Module(&#123;</span><br><span class="line">  controllers: [CatsController],</span><br><span class="line">  providers: [CatsService],</span><br><span class="line">  exports: [CatsService],</span><br><span class="line">&#125;)</span><br><span class="line">export class CatsModule &#123;&#125;</span><br></pre></td></tr></table></figure>
-
-<p>이렇게 하면 모듈을 global-scope 에 있도록 만들 수 있다. 전역 모듈은 일반적으로 루트 또는 코어 모듈에서 한번만 등록해야 한다. 이렇게 등록한 모듈 내에 있는 Provider 는 어떠한 다른 모듈에서 import 모듈에 등록할 필요 없이 inject 할 수 있다. </p>
-<h2 id="Dynamic-modules"><a href="#Dynamic-modules" class="headerlink" title="Dynamic modules"></a>Dynamic modules</h2><p>Nest 에서는 쉽게 등록 가능한 모듈을 동적으로 만들 수 있고, Provider를 구성할 수 있다. </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">import &#123; Module, DynamicModule &#125; from &#x27;@nestjs/common&#x27;;</span><br><span class="line">import &#123; createDatabaseProviders &#125; from &#x27;./database.providers&#x27;;</span><br><span class="line">import &#123; Connection &#125; from &#x27;./connection.provider&#x27;;</span><br><span class="line"></span><br><span class="line">@Module(&#123;</span><br><span class="line">  providers: [Connection],</span><br><span class="line">&#125;)</span><br><span class="line">export class DatabaseModule &#123;</span><br><span class="line">  static forRoot(entities = [], options?): DynamicModule &#123;</span><br><span class="line">    const providers = createDatabaseProviders(options, entities);</span><br><span class="line">    return &#123;</span><br><span class="line">      module: DatabaseModule,</span><br><span class="line">      providers: providers,</span><br><span class="line">      exports: providers,</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>forRoot 메서드는 동기식 또는 비동기식으로 모듈을 반환할 수 있다. </p>
-<p>DatabaseModule 는 다음과 같은 방법으로 import 될 수  있다. </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">import &#123; Module &#125; from &#x27;@nestjs/common&#x27;;</span><br><span class="line">import &#123; DatabaseModule &#125; from &#x27;./database/database.module&#x27;;</span><br><span class="line">import &#123; User &#125; from &#x27;./users/entities/user.entity&#x27;;</span><br><span class="line"></span><br><span class="line">@Module(&#123;</span><br><span class="line">  imports: [DatabaseModule.forRoot([User])],</span><br><span class="line">&#125;)</span><br><span class="line">export class AppModule &#123;&#125;</span><br></pre></td></tr></table></figure>
-
-<p>동적 모듈을 다시 내보내려면 내보내기 배열에서 forRoot() 메서드 호출을 생략 할 수도 있다.</p>
 
       
     </div>
@@ -1103,241 +1317,6 @@
 <p>num, verb, pluralModifier 가 GuessStatisticMessage 클래스 안에 있으므로 맥락상 통계 메세지를 만드는데 사용되는 멤버 변수란 것을 알게 된다. </p>
 <h2 id="불필요한-맥락을-없애라"><a href="#불필요한-맥락을-없애라" class="headerlink" title="불필요한 맥락을 없애라"></a>불필요한 맥락을 없애라</h2><p>불필요한 맥락은 없애야 한다. 예를들어 고급 휘발유 충전소 라는 애플리케이션을 짠다고 했을때, 모든 클래스에 GSD 접두어를 붙히는 것은 바람직하지 못하다. </p>
 <p>일반적으로 의미가 분명하다면 짧은 이름이 긴 이름보다 좋다. accountAddress 와 customerAddress 는 Address 클래스 인스턴스로는 적합하나 클래스 이름으로는 부적합하다.</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2022/01/25/DevOps/Docker/220125-Docker,%20TravisCi/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JayoonKoo">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="티끌모아 태산">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/01/25/DevOps/Docker/220125-Docker,%20TravisCi/" class="post-title-link" itemprop="url">Docker, TravisCi</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2022-01-25 12:30:19 / Modified: 12:30:25" itemprop="dateCreated datePublished" datetime="2022-01-25T12:30:19+09:00">2022-01-25</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Docker/" itemprop="url" rel="index"><span itemprop="name">Docker</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="Docker"><a href="#Docker" class="headerlink" title="Docker"></a>Docker</h1><ul>
-<li>도커 이미지 안에는 도커를 실행시키는 파일 스냅샷과 명령어가 닮겨 있다. docker run 명령어를 실행하면 파일 스넵샷을 컨테이너로 옮기고 실행 명령어를 통해 실행한다. docker run &lt;이미지&gt; &lt;명령어&gt; 를 통해 뒤에 명령어를 컨테이너가 생성된후 실행 시킬 수 있다.</li>
-<li>Docker에 Container는 C-grop과 네임스페이스를 통해 격리된 환경을 제공하는데, 리눅스에서 가능한 작업이 다른 호스트 os에서도 가능한 이유는 Docker 가 내부적으로 리눅스 vm을 사용하고 리눅스 커널을 공유하는 격리된 컨텐이너를 만들기 때문이다.</li>
-<li>docker Stop 은 SIGTERUM 을 주어서 SIGKILL을 진행하기 전에 완료되지 않은 작업이 있다면 완료한다음 컨테이너를 종료시키고, docker kill 은 SIGTERUM 을 주지 않고 바로 컨테이너를 중지시킨다.</li>
-<li>실행중인 컨테이너에서 명령을 실행시키려면 exec 으로 실행시켜야 한다. <code>docker exec -it &lt;containerID&gt; 명령어</code> 이런식으로 사용하는 -it 는 -i (interactive), -t (terminal) 을 합성한 것으로 명령을 실행하고 바로 나와버리는 것이 아니라 실행한 후에 터미널에서 추가적인 명령을 입력할 수 있도록 해준다.</li>
-<li>쉘의 접속하고 싶다면 <code>docker exect -it &lt;containerId&gt; sh</code> 로 쉘의 접속할 수 있다. sh 는 bash, zsh 등 사용하는 컨테이너에 따라 다양하게 사용 가능하다.</li>
-</ul>
-<h3 id="DockerFile"><a href="#DockerFile" class="headerlink" title="DockerFile"></a>DockerFile</h3><ol>
-<li>baseimage 설정 <code>FROM</code></li>
-<li>워킹 디렉터리를 설정해줌 → 파일 시스템덮어씌워지는것 방지, 관리하기 용이하게 <code>WORKDIR</code></li>
-<li>추가적인 스넵샷 및 shellscript 추가 <code>RUN</code></li>
-<li>리소스 복사 <code>COPY</code></li>
-<li>이미지 시작후 명령어 <code>CMD</code></li>
-</ol>
-<h3 id="이미지가-생성되는-순서"><a href="#이미지가-생성되는-순서" class="headerlink" title="이미지가 생성되는 순서"></a>이미지가 생성되는 순서</h3><p>dockerfile → 이미지 생성 → 임시 컨테이너 생성 → 임시컨테이너로 이미지 생성 → 이미지 생성 완료</p>
-<p>dockerfile → dockerClient → dockerServer → 이미지 생성 </p>
-<h3 id="네트워크-연결하기"><a href="#네트워크-연결하기" class="headerlink" title="네트워크 연결하기"></a>네트워크 연결하기</h3><p><code>docker run -p &lt;로컬 포트&gt;:&lt;컨테이너 포트&gt; &lt;이미지이름&gt;</code> </p>
-<h3 id="백그라운드-실행"><a href="#백그라운드-실행" class="headerlink" title="백그라운드 실행"></a>백그라운드 실행</h3><p><code>docker run -d -p 5000:8000 rnwkdbs12/node</code> </p>
-<p>-d : detach 의 약자로 바로 빠져나온다는 의미 → 즉 백그라운드에서 실행시키고 터미널로 바로 나옴. </p>
-<h3 id="종속성-다시-다운로드-안받게-하려면"><a href="#종속성-다시-다운로드-안받게-하려면" class="headerlink" title="종속성 다시 다운로드 안받게 하려면.."></a>종속성 다시 다운로드 안받게 하려면..</h3><p>npm install 전의 package.json을 따로 copy 하고 npm install 후에 다른 소스 파일을 copy 하도록 하면 된다. </p>
-<h3 id="다시-빌드하지-않으려면"><a href="#다시-빌드하지-않으려면" class="headerlink" title="다시 빌드하지 않으려면"></a>다시 빌드하지 않으려면</h3><p>volumn 을 설정하여 컨테이너가 로컬을 단순히 복사하는 것이 아닌 참조할 수 있도록 해야 한다. </p>
-<p><code>docker run -dp 5000:8000 -v /usr/src/app/node_modules -v /$(pwd):/usr/src/app rnwkdbs12/node</code> 처음 설정한 -v 옵션은 참조하지 않을 경로를 의미하고 두번째로 표시한 -v 테그는 참조할 디렉터리를 현제 로컬의 디렉터리로 매핑한 것을 의마한다. </p>
-<h2 id="Docker-Compose"><a href="#Docker-Compose" class="headerlink" title="Docker Compose"></a>Docker Compose</h2><p>여러개의 컨테이너를 묶어서 실행할 수 있다. </p>
-<p>docker-compose.yml 사용</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">version:</span> <span class="string">&quot;3&quot;</span> </span><br><span class="line"><span class="attr">services:</span> </span><br><span class="line">	<span class="attr">redis-server:</span>  <span class="string">//</span> <span class="string">네트워크에</span> <span class="string">이름이</span> <span class="string">된다.</span></span><br><span class="line">		<span class="attr">image:</span> <span class="string">&quot;redis&quot;</span></span><br><span class="line">	<span class="attr">node-app:</span> <span class="string">//</span> <span class="string">다른</span> <span class="string">컨테이너가</span> <span class="string">된다.</span></span><br><span class="line">		<span class="attr">build:</span> <span class="string">.</span> <span class="string">//</span> <span class="string">현제</span> <span class="string">폴더에서</span> <span class="string">Dcokerfile을</span> <span class="string">찾아서</span> <span class="string">build</span> <span class="string">함</span></span><br><span class="line">		<span class="attr">ports:</span></span><br><span class="line">			<span class="bullet">-</span> <span class="string">&quot;8080:8080&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p><code>docker-compose up</code></p>
-<p><code>docker-compose up --build</code> build 하면서 up</p>
-<p><code>docker-compose up -d</code> background 실행</p>
-<p><code>docker-compose down</code> 실행 종료 </p>
-<h2 id="간단한-앱-배포"><a href="#간단한-앱-배포" class="headerlink" title="간단한 앱 배포"></a>간단한 앱 배포</h2><h3 id="개발-환경"><a href="#개발-환경" class="headerlink" title="개발 환경"></a>개발 환경</h3><p>개발 환경을 위한 Dockerfile 은 명시적으로 <a target="_blank" rel="noopener" href="http://dockerfile.dev/">Dockerfile.dev</a> 를 사용한다.</p>
-<p><code>docker build -f Dockerfile.dev ./</code>   를 통해서 명시적으로 이름을 지정해 주어야 한다. </p>
-<h3 id="Dockercompose-로-간단하가게-구성하기"><a href="#Dockercompose-로-간단하가게-구성하기" class="headerlink" title="Dockercompose 로 간단하가게 구성하기"></a>Dockercompose 로 간단하가게 구성하기</h3><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">version:</span> <span class="string">&#x27;3&#x27;</span></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line">  <span class="attr">react:</span></span><br><span class="line">    <span class="attr">build:</span></span><br><span class="line">      <span class="attr">context:</span> <span class="string">.</span></span><br><span class="line">      <span class="attr">dockerfile:</span> <span class="string">Dockerfile.dev</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">&quot;3000:3000&quot;</span></span><br><span class="line">    <span class="attr">volumes:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">/usr/src/app/node_modules</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">./:/usr/src/app</span></span><br><span class="line">    <span class="attr">stdin_open:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="test"><a href="#test" class="headerlink" title="test"></a>test</h3><p>test 를 위해서는 추가적인 명령어를 붙히면 된다. </p>
-<p><code>docker run -it rnwkdbs12/reactdev yarn run test</code> </p>
-<p>테스트 파일도 실시간으로 변경 사항을 적용하기 위해서는 volumn을 연결해야 한다. </p>
-<p>dockercompose 파일을 추가하여 tests 컨테이너를 추가하면 실행과 동시에 테스트까지 진행할 수 있다. </p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">version:</span> <span class="string">&#x27;3&#x27;</span></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line">  <span class="attr">react:</span></span><br><span class="line">    <span class="attr">build:</span></span><br><span class="line">      <span class="attr">context:</span> <span class="string">.</span></span><br><span class="line">      <span class="attr">dockerfile:</span> <span class="string">Dockerfile.dev</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">&quot;3000:3000&quot;</span></span><br><span class="line">    <span class="attr">volumes:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">/usr/src/app/node_modules</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">./:/usr/src/app</span></span><br><span class="line">    <span class="attr">stdin_open:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">tests:</span></span><br><span class="line">    <span class="attr">build:</span></span><br><span class="line">      <span class="attr">context:</span> <span class="string">.</span></span><br><span class="line">      <span class="attr">dockerfile:</span> <span class="string">Dockerfile.dev</span></span><br><span class="line">    <span class="attr">volumes:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">/usr/src/app/node_modules</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">./:/usr/src/app</span></span><br><span class="line">    <span class="attr">command:</span> [<span class="string">&quot;yarn&quot;</span>, <span class="string">&quot;run&quot;</span>, <span class="string">&quot;test&quot;</span>]</span><br></pre></td></tr></table></figure>
-
-<h3 id="운영을-위한-배포"><a href="#운영을-위한-배포" class="headerlink" title="운영을 위한 배포"></a>운영을 위한 배포</h3><figure class="highlight docker"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">FROM</span> node:alpine as builder</span><br><span class="line"><span class="keyword">WORKDIR</span><span class="bash"> <span class="string">&#x27;/usr/src/app&#x27;</span></span></span><br><span class="line"><span class="keyword">COPY</span><span class="bash"> package.json .</span></span><br><span class="line"><span class="keyword">RUN</span><span class="bash"> yarn install</span></span><br><span class="line"><span class="keyword">COPY</span><span class="bash"> ./ ./</span></span><br><span class="line"><span class="keyword">RUN</span><span class="bash"> yarn run build</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">FROM</span> nginx</span><br><span class="line"><span class="keyword">COPY</span><span class="bash"> --from=builder /usr/src/app/build /usr/share/nginx/html</span></span><br></pre></td></tr></table></figure>
-
-<p>build 후에 nginx 이미지를 설정하여 정적 파일을 옮겨 준다. nginx 에 기본 설정이 <code>/usr/share/nginx/html</code> 로 되어 있기 때문에 build 파일을 옮겨 준 것이다.</p>
-<p>이미지를 실행할때 컨테이너 포트로 80번 포트를 사용하는데 nginx 기본 설정이 80번 포트를 사용하기 때문이다. 이 또한 설정에서 변경 가능하다. </p>
-<h2 id="TravisCI-사용"><a href="#TravisCI-사용" class="headerlink" title="TravisCI 사용"></a>TravisCI 사용</h2><p>travisCI 는 .tavis.yml 파일을 이용해서 설정 파일을 작성한다. </p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">sudo:</span> <span class="string">required</span></span><br><span class="line"></span><br><span class="line"><span class="attr">language:</span> <span class="string">generic</span></span><br><span class="line"></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">docker</span></span><br><span class="line"></span><br><span class="line"><span class="attr">before_install:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">echo</span> <span class="string">&quot;start creating an image with dockerfile&quot;</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">docker</span> <span class="string">build</span> <span class="string">-t</span> <span class="string">rnwkdbs12/reactdev</span> <span class="string">-f</span> <span class="string">Dockerfile.dev</span> <span class="string">.</span></span><br><span class="line"></span><br><span class="line"><span class="attr">script:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">docker</span> <span class="string">run</span> <span class="string">-e</span> <span class="string">CI=true</span> <span class="string">rnwkdbs12/reactdev</span> <span class="string">yarn</span> <span class="string">run</span> <span class="string">test</span> <span class="string">--</span> <span class="string">--coverage</span></span><br><span class="line"></span><br><span class="line"><span class="attr">after_success:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">echo</span> <span class="string">&quot;Test success&quot;</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>sudo : 관리자 권한이 필요함</li>
-<li>language : 언어 설정</li>
-<li>services : docker 와 함께 사용함 명시</li>
-<li>before_install : script 실행전 필요한 명령 실행 → docker를 사용함으로 이미지 build v필요</li>
-<li>script : 이미지 실행, test 실행</li>
-<li>after_sucess: 스크립트 실행 후에 실행될 명령.</li>
-</ul>
-<h2 id="AWS-를-이용한-배포"><a href="#AWS-를-이용한-배포" class="headerlink" title="AWS 를 이용한 배포"></a>AWS 를 이용한 배포</h2><p>EC2와 Elastic Beanstalk를 이용하여 서비스를 배포한다. travis 를 통해서 테스트에 성공한 소스를 AWS Elastic Beanstalk에 자동으로 배포하는 부분을 travis 파일에 넣어준다. </p>
-<p>travis CI 에서 가지고 있는 파일을 압축해서 S3에 보낸다. S3 는 Elastic Beanstalk를 생성할때 자동으로 생성된다. </p>
-<h3 id="IAM-사용자-생성"><a href="#IAM-사용자-생성" class="headerlink" title="IAM 사용자 생성"></a>IAM 사용자 생성</h3><p>처음 가입하고 사용하면 Root 계정으로 가입 되어서 모든 리소스에 대한 액세스 권한이 있다. Root 사용자를 사용하는 것은 좋지 않아서 보안을 위해서 IAM 유저를 생성 권한을 부여하는 방식을 사용한다.</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2022/01/25/git/220125-git%20%EC%9E%90%EC%A3%BC%EC%93%B0%EB%8A%94%20%EB%AA%85%EB%A0%B9%EC%96%B4/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JayoonKoo">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="티끌모아 태산">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/01/25/git/220125-git%20%EC%9E%90%EC%A3%BC%EC%93%B0%EB%8A%94%20%EB%AA%85%EB%A0%B9%EC%96%B4/" class="post-title-link" itemprop="url">git 자주쓰는 명령어</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2022-01-25 12:29:35 / Modified: 12:30:28" itemprop="dateCreated datePublished" datetime="2022-01-25T12:29:35+09:00">2022-01-25</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/git/" itemprop="url" rel="index"><span itemprop="name">git</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="reset"><a href="#reset" class="headerlink" title="reset"></a>reset</h2><p><code>HEAD</code> 는 현제 커밋 위치이다. </p>
-<p><code>git reset HEAD~1</code> 로 하나 전 커밋으로 갈 수 있다. ( 커밋한 기록은 사라진다) 커밋한 기록을 보관하고 싶은것이라면 reset을 사용하면 안되고 그래도 사용해야 한다면 원격 저장소에 올려 놓고 reset을 실행해야 한다. </p>
-<p>reset의 3가지 모드 <code>git reset HEAD~1 --&lt;mode (soft, mixed, hard)&gt;</code></p>
-<ol>
-<li>기본 모드인 mixed는 새커밋에서 기존 커밋으로 이동할때 staged 는 하지 않은 상태로 돌아간다.</li>
-<li>soft 는 staged 된 상태로 돌아간다.</li>
-<li>hard 는 수정 내용을 아예 다 버린채 기존 커밋으로 돌아간다.</li>
-</ol>
-<p>만약 새로운 수정 내용이 있는상태에서 마음에 들지 않아서 수정 내용을 모두 삭제하고 싶다면 HEAD 를 없애고 <code>git reset --hard</code> 하면 된다.</p>
-<p>또는 commit ID 를 통해서 돌아 갈수도 있다. <code>git reset &lt;commitId&gt;</code></p>
-<h2 id="revert"><a href="#revert" class="headerlink" title="revert"></a>revert</h2><p>revert 는 커밋을 되돌리기는 하지만 이 또한 새로운 커밋으로 만든다. <code>git revert HEAD</code> → 새로운 커밋 생성</p>
-<p>왜 사용할까? </p>
-<ul>
-<li>실수한 커밋이 원격 저장소에 올라감</li>
-<li>리셋 하면 원격에 올라간 내용은 되돌릴수 없음.</li>
-<li>revert를 통해서 실수 위에 돌아가는 커밋을 다시 푸시함으로서 해결 가능. (실수 만회 까지 공유할수 있게됨)</li>
-</ul>
-<h2 id="merge"><a href="#merge" class="headerlink" title="merge"></a>merge</h2><p>브랜치에서 다른 브랜치에 내용을 합친다. 메인 브렌치에서 기능 브랜치를 합치려면 <code>git merge &lt;기능 브랜치&gt;</code> 충돌 가능성도 있는데 파일 수정 후 커밋해서 충돌을 해결한다. merge 자체를 중단하고 싶다면 <code>git merge --abort</code> 하면 된다.</p>
-<h2 id="rebase"><a href="#rebase" class="headerlink" title="rebase"></a>rebase</h2><p><code>git rebase &lt;기능 브랜치&gt;</code> 충돌 발생한 파일을 수정후 stage에 올린다. 그후 <code>git rebase --continue</code> 로 다음 작업을 이어 한다. 마찬가지로 중단하고 싶다면 <code>git rebase --abort</code> 로 수정을 중단할 수 있다.</p>
-<p>merge 와 다른점은 메인 브랜치에 에서 분기한 조상 커밋을 기능 브랜치에 마지막 커밋으로 바꿔서 합치기 때문에 분기가 사라지고 fast forward 로 합쳐지는 효과가 있다.</p>
-<h2 id="Cherry-Pick"><a href="#Cherry-Pick" class="headerlink" title="Cherry Pick"></a>Cherry Pick</h2><p>merge나 reabase 를 하면 머지 하려는 브랜치에 최신 커밋 내용을 포함한 내용이 합쳐진다. 만약 머지 하려는 브랜치에 특정 커밋만 합치고 싶다면 cherrypick 을 사용하면 된다. </p>
-<p><code>git cherry-pick &lt;커밋 아이디&gt;</code> 특정 커밋만 합쳐서 새로운 커밋을 생성한다. 합쳐지는 것이 아님.  </p>
-<p>Cherry Pick 관련된 내용은 아니지만</p>
-<p><code>git chekout &lt;commit | branch&gt; &lt;file path&gt;</code> 로 특정 파일만 가져올수 있다.</p>
-<h2 id="tag"><a href="#tag" class="headerlink" title="tag"></a>tag</h2><p>특히 중요한 커밋에 tag를 추가하면 id 가 아니로 tag로 커밋을 식별할 수 있다. </p>
-<p><code>git tag v1.0.0</code> 이제 커밋 아이디가 아니라 태그명을 사용할 수 있다. <code>git resset v1.0.0</code></p>
-<h2 id="stash"><a href="#stash" class="headerlink" title="stash"></a>stash</h2><p>어떤 작업을 하고 있다가 다른 작업을 해야해서 브랜치를 옮겨야 한다면 기존 방법 대로라면 완성 되지 않은 코드를 커밋 해야 한다. stash를 사용하면 커밋하지 않고 작업 내용을 저장할 수 있다. </p>
-<p><code>git stash</code> 현제 작업 중인 내용을 저장한다.</p>
-<p><code>git stash list</code> stash에 목록을 확인한다. </p>
-<p><code>git stash apply</code> stash를 적용해서 stash 한 시점으로 돌아간다.</p>
-<p><code>git stash drop &lt;stash 아이디 혹은 생략 가능(첫번째 삭제)&gt;</code> 로 저장했던 stash 를 삭제할 수 있다.</p>
 
       
     </div>

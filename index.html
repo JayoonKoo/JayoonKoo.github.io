@@ -85,7 +85,7 @@
         <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
         <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">21</span></a></li>
         <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">17</span></a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">154</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">156</span></a></li>
   </ul>
 </nav>
 
@@ -129,7 +129,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">154</span>
+          <span class="site-state-item-count">156</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -189,7 +189,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2022/04/09/Http/220409-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC/">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2022/04/25/Http/220425-URI%EC%99%80%20%EC%9B%B9%20%EB%B8%8C%EB%9D%BC%EC%9A%B0%EC%A0%80%20%EC%9A%94%EC%B2%AD/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -202,7 +202,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/04/09/Http/220409-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC/" class="post-title-link" itemprop="url">네트워크</a>
+          <a href="/2022/04/25/Http/220425-URI%EC%99%80%20%EC%9B%B9%20%EB%B8%8C%EB%9D%BC%EC%9A%B0%EC%A0%80%20%EC%9A%94%EC%B2%AD/" class="post-title-link" itemprop="url">URI와 웹 브라우저 요청</a>
         </h2>
 
         <div class="post-meta-container">
@@ -213,7 +213,182 @@
       </span>
       <span class="post-meta-item-text">Posted on</span>
 
-      <time title="Created: 2022-04-09 20:23:13" itemprop="dateCreated datePublished" datetime="2022-04-09T20:23:13+09:00">2022-04-09</time>
+      <time title="Created: 2022-04-25 23:57:38" itemprop="dateCreated datePublished" datetime="2022-04-25T23:57:38+09:00">2022-04-25</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/http/" itemprop="url" rel="index"><span itemprop="name">http</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="URI-와-웹-브라우저-요청-흐름"><a href="#URI-와-웹-브라우저-요청-흐름" class="headerlink" title="URI 와 웹 브라우저 요청 흐름"></a>URI 와 웹 브라우저 요청 흐름</h1><p>URI는 로케이터 이름 또는 둘다 추가로 분류될 수 있다</p>
+<p>url은 로케이션만 위치를 지정</p>
+<p>urn 은 이름만, 이름을 지정 이름만으로 실제 리소스를 찾을 수 있는 방법이 보편화 되지 않음</p>
+<h2 id="url"><a href="#url" class="headerlink" title="url"></a>url</h2><ul>
+<li>프로토콜 (스키마) http(80) https(443)</li>
+<li>유저 인포 유알엘에 사용자 정보를 포함해서 인증 - 거의 사용 x</li>
+<li>호스트명</li>
+<li>포트번호</li>
+<li>패스 - 계층적 구조</li>
+<li>쿼리 파라미터 - 키 밸류에 형태로</li>
+<li>프래그먼트 html내부 북마크 # 서버로 전송하는 정보 아님</li>
+</ul>
+<h2 id="웹브라우저-요청-흐름"><a href="#웹브라우저-요청-흐름" class="headerlink" title="웹브라우저 요청 흐름"></a>웹브라우저 요청 흐름</h2><ul>
+<li>dns 조회 - ip</li>
+<li>포트 - 프로토콜 별로 생략가능한것 있음</li>
+<li>http 요청 메시지 생성</li>
+<li>메시지 전송 1. 웹브라우저가 http메시지 생성 2. socket 라이브러리를 통해 전달 TCP / IP 연결 3. 데이터 전달 4. 패킷 생성, HTTP메시지 포함</li>
+</ul>
+<p>http 응답 메시지 서버에서 생성 받아서 렌더링 등등의 작업</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2022/04/25/Http/220425-http%EA%B8%B0%EB%B3%B8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JayoonKoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="티끌모아 태산">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/04/25/Http/220425-http%EA%B8%B0%EB%B3%B8/" class="post-title-link" itemprop="url">http기본</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-04-25 23:57:38" itemprop="dateCreated datePublished" datetime="2022-04-25T23:57:38+09:00">2022-04-25</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/http/" itemprop="url" rel="index"><span itemprop="name">http</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="http기본"><a href="#http기본" class="headerlink" title="http기본"></a>http기본</h1><p>원래는 html 을 보낼 용도로 설례된 프로토콜 이였으니 지금은 모든것을 http 를 통해서 전달함</p>
+<p>서버간의 데이터도 http를 사용 특수한 경우에만 직접 tcp 연결</p>
+<p>http1.1 가장 많이 사용되는 버전</p>
+<h2 id="특징"><a href="#특징" class="headerlink" title="특징"></a>특징</h2><ul>
+<li>클라이언트 서버 구조</li>
+<li>무상태 스태이스리트 , 비연결성</li>
+<li>http 메시지</li>
+<li>단순함 , 확장 가능</li>
+</ul>
+<p>클라이언트 서버 구조</p>
+<p>요청 응답 구조, 클라이언트는 요청을 보내고 응답을 대기함, 서버가 요청에 대한 결과를 만들어서 응답</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2022/04/25/Http/220409-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JayoonKoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="티끌모아 태산">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/04/25/Http/220409-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC/" class="post-title-link" itemprop="url">네트워크</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2022-04-25 23:57:25 / Modified: 23:57:31" itemprop="dateCreated datePublished" datetime="2022-04-25T23:57:25+09:00">2022-04-25</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -1181,220 +1356,6 @@
 <h2 id="abstract"><a href="#abstract" class="headerlink" title="abstract"></a>abstract</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">// new 불가 , 상속후 완전하게 만든다음에 사용 가능.</span><br><span class="line">abstract class AbstractPerson &#123;</span><br><span class="line">  protected _name: string = &quot;Mark&quot;;</span><br><span class="line"></span><br><span class="line">  // 구현 하지 않음 // 클래스의  abstract 붙여야 함.</span><br><span class="line">  abstract setName(name: string): void;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class Person extends AbstractPerson &#123;</span><br><span class="line">  setName(name: string): void &#123;</span><br><span class="line">    this._name = name;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const p = new Person();</span><br><span class="line">p.setName(&quot;Koo&quot;);</span><br></pre></td></tr></table></figure>
 
 <p>완전하지 않은 클래스로서 외형만 만든다고 생각하면된다. 완전하지 않기 때문에 <code>new</code>로 생성할 수 없다. 추상 클래스를 상속 받는 자식 클래스에서는 <code>abstract</code>로 작성한 완전하지 않은 메서드를 완전히 구현해야 <code>new</code>로 생성할 수 있다.</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2022/03/28/typeScript/210824-generic/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JayoonKoo">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="티끌모아 태산">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/03/28/typeScript/210824-generic/" class="post-title-link" itemprop="url">generic</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2022-03-28 12:06:36 / Modified: 12:07:33" itemprop="dateCreated datePublished" datetime="2022-03-28T12:06:36+09:00">2022-03-28</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/typeScript/" itemprop="url" rel="index"><span itemprop="name">typeScript</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="generic"><a href="#generic" class="headerlink" title="generic"></a>generic</h1><h2 id="generic-과-any-에-다른점"><a href="#generic-과-any-에-다른점" class="headerlink" title="generic 과 any 에 다른점"></a>generic 과 any 에 다른점</h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">helloString</span>(<span class="params">message: <span class="built_in">string</span></span>): <span class="title">string</span> </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> message;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">helloNumber</span>(<span class="params">message: <span class="built_in">number</span></span>): <span class="title">number</span> </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> message;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 타입만 다르고 로직은 같은 함수가 반복된다면 ...</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">hello</span>(<span class="params">message: <span class="built_in">any</span></span>): <span class="title">any</span> </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> message;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 같은 로직이면 문자로 생각하고 싶지만 any가 나옴</span></span><br><span class="line"><span class="comment">// lnegth 같은 메서드를 사용해도 number 가 아니라 any가 나옴..</span></span><br><span class="line"><span class="built_in">console</span>.log(hello(<span class="string">&quot;Mark&quot;</span>));</span><br><span class="line"><span class="comment">// 같은 로직이면 숫자로 생각하고 싶지만..</span></span><br><span class="line"><span class="built_in">console</span>.log(hello(<span class="number">4</span>));</span><br><span class="line"></span><br><span class="line"><span class="comment">// 만약 string을 넣으면 T 가 string이 되는 것. 마치 변수처럼 사용</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">helloGeneric</span>&lt;<span class="title">T</span>&gt;(<span class="params">message: T</span>): <span class="title">T</span> </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> message;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 리턴 타입은 &#x27;Mark&#x27;로 추정함.. 리터럴 타입으로</span></span><br><span class="line"><span class="built_in">console</span>.log(helloGeneric(<span class="string">&quot;Mark&quot;</span>).length);</span><br><span class="line"><span class="comment">// 리턴 타입을 27로 추정함.</span></span><br><span class="line"><span class="built_in">console</span>.log(helloGeneric(<span class="number">27</span>));</span><br><span class="line"><span class="comment">// true로 추정함.</span></span><br><span class="line"><span class="built_in">console</span>.log(helloGeneric(<span class="literal">true</span>));</span><br></pre></td></tr></table></figure>
-
-<p>제너릭 타입을 사용하면 함수 안에서 동적으로 받은 타입을 변수처럼 사용할 수 있다. 이를 활용하여 리턴 타입을 명시 하는지에 기능을 사용할 수 있다.</p>
-<h2 id="generic-basic"><a href="#generic-basic" class="headerlink" title="generic basic"></a>generic basic</h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">helloBasic</span>&lt;<span class="title">T</span>, <span class="title">U</span>&gt;(<span class="params">message: T, coment: U</span>): <span class="title">T</span> </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> message;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 사용법</span></span><br><span class="line"><span class="comment">// T 는 string U 는 27</span></span><br><span class="line">helloBasic&lt;<span class="built_in">string</span>, <span class="built_in">number</span>&gt;(<span class="string">&quot;mark&quot;</span>, <span class="number">27</span>);</span><br><span class="line"><span class="comment">// T 는 27 , U 39</span></span><br><span class="line">helloBasic(<span class="number">27</span>, <span class="number">39</span>);</span><br></pre></td></tr></table></figure>
-
-<p>사용할 때에는 두가지 방법으로 사용 가능하다.</p>
-<ol>
-<li><code>&lt;&gt;</code> 안에 타입 명시 -&gt; 이렇게 하면 매개변수로 주는 타입을 명시한 터입으로 지정해야 한다.</li>
-<li>평범하게 사용, 이렇게 하면 타입스크립트가 추론해서 타입을 정하게 된다. 일반적으로 27과 같은 숫자를 넣으면 number 라고 생각할 수 도 있지만, 타입 스크립트는 타입을 가능한 좁게 가져가기 때문에 타입은 number 가 아니라 27이 된다.</li>
-</ol>
-<h2 id="generics-array-amp-tuple"><a href="#generics-array-amp-tuple" class="headerlink" title="generics array &amp; tuple"></a>generics array &amp; tuple</h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">helloArray</span>&lt;<span class="title">T</span>&gt;(<span class="params">message: T[]</span>): <span class="title">T</span> </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> message[<span class="number">0</span>];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// T는 string으로 추론됨.</span></span><br><span class="line">helloArray([<span class="string">&quot;hello&quot;</span>, <span class="string">&quot;world&quot;</span>]);</span><br><span class="line"><span class="comment">// T는 &lt;string | number&gt; 로 추론함. 유니온 타입이됨.</span></span><br><span class="line"><span class="comment">// string과 number 에서 모두 사용할수 있는 메서드만 사용할 수 있음.</span></span><br><span class="line">helloArray([<span class="string">&quot;Hello&quot;</span>, <span class="number">5</span>]);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">helloTuple</span>&lt;<span class="title">T</span>, <span class="title">K</span>&gt;(<span class="params">message: [T, K]</span>): <span class="title">T</span> </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> message[<span class="number">0</span>];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// string 이 리턴 타입</span></span><br><span class="line">helloTuple([<span class="string">&quot;hello&quot;</span>, <span class="string">&quot;world&quot;</span>]);</span><br><span class="line"><span class="comment">// 리턴 타입이 정확하게 string으로 추정됨.</span></span><br><span class="line">helloTuple([<span class="string">&quot;Hello&quot;</span>, <span class="number">5</span>]);</span><br></pre></td></tr></table></figure>
-
-<p>제너릭에서 배열과 튜플을 활용하는 방법은 다음과 같다. 이때 어떤 타입에 데이터가 인수로 들어올지 알 수 있다면 튜플로 사용하는것이 타입을 더 명시적으로 관리할 수 있다.</p>
-<h2 id="generic-function"><a href="#generic-function" class="headerlink" title="generic function"></a>generic function</h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> helloFunctionGeneric1 = &lt;T&gt;<span class="function">(<span class="params">message: T</span>) =&gt;</span> T;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> helloFuncion1: helloFunctionGeneric1 = &lt;T&gt;(message: T): <span class="function"><span class="params">T</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> message;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">interface</span> helloFunctionGeneric2 &#123;</span><br><span class="line">  &lt;T&gt;(message: T): T;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> helloFunction2: helloFunctionGeneric2 = &lt;T&gt;(message: T): <span class="function"><span class="params">T</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> message;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p>함수에서도 동일하게 generic 을 사용할 수 있다.</p>
-<h2 id="generic-class"><a href="#generic-class" class="headerlink" title="generic class"></a>generic class</h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 클래스 전체에서 T는 유효범위를 갖는다.</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span>&lt;<span class="title">T</span>, <span class="title">K</span>&gt; </span>&#123;</span><br><span class="line">  <span class="keyword">private</span> _name: T;</span><br><span class="line">  <span class="keyword">private</span> _age: K;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">name: T, age: K</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>._name = name;</span><br><span class="line">    <span class="built_in">this</span>._age = age;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> Person(<span class="string">&quot;Mark&quot;</span>, <span class="number">39</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> Person&lt;<span class="built_in">string</span>, <span class="built_in">number</span>&gt;(<span class="string">&quot;koo&quot;</span>, <span class="number">27</span>);</span><br></pre></td></tr></table></figure>
-
-<h2 id="generic-with-extends"><a href="#generic-with-extends" class="headerlink" title="generic with extends"></a>generic with extends</h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">PersonExtends</span>&lt;<span class="title">T</span> <span class="keyword">extends</span> <span class="title">string</span> | <span class="title">number</span>&gt; </span>&#123;</span><br><span class="line">  <span class="keyword">private</span> _name: T;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">name: T</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>._name = name;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> PersonExtends(<span class="string">&quot;Mark&quot;</span>);</span><br><span class="line"><span class="keyword">new</span> PersonExtends(<span class="number">27</span>);</span><br><span class="line"><span class="comment">// new PersonExtends(true);</span></span><br></pre></td></tr></table></figure>
-
-<p>generic 에서 extends 는 일반적인 상속과는 다른 개념으로 사용된다. generic 에서 사용하게 되면 타입을 제한하는 역활을 하게 된다. 따라서 코드에서 <code>new PersonExtends(true)</code>는 에러를 인수로 <code>&lt;string | number &gt;</code> 가 아닌 값을 주었기 때문에 에러를 발생시킨다.</p>
-<h2 id="keyof-amp-type-lookup-system"><a href="#keyof-amp-type-lookup-system" class="headerlink" title="keyof &amp; type lookup system"></a>keyof &amp; type lookup system</h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> IPerson &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="built_in">string</span>;</span><br><span class="line">  age: <span class="built_in">number</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> person: IPerson = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&quot;mark&quot;</span>,</span><br><span class="line">  <span class="attr">age</span>: <span class="number">39</span>,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// key 이름으로 된 유니온 타입이 반환된다.</span></span><br><span class="line"><span class="keyword">type</span> Keys = keyof IPerson;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 리턴 타이에도 문제가 생김...</span></span><br><span class="line"><span class="comment">// IPerson[keyof IPerson]</span></span><br><span class="line"><span class="comment">// =&gt; IPerson[&quot;name&quot; | &quot;age&quot;]</span></span><br><span class="line"><span class="comment">// =&gt; IPerson[&quot;name&quot;] | IPerson[&quot;age&quot;]</span></span><br><span class="line"><span class="comment">// =&gt; string | number</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getProp</span>&lt;<span class="title">T</span>, <span class="title">K</span> <span class="title">extends</span> <span class="title">keyof</span> <span class="title">T</span>&gt;(<span class="params">obj: T, key: K</span>): <span class="title">T</span>[<span class="title">K</span>] </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> obj[key];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// key 가 name 일 때 string</span></span><br><span class="line"><span class="comment">// key 가 age 일 때 number</span></span><br><span class="line">getProp(person, <span class="string">&quot;name&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">setProp</span>&lt;<span class="title">T</span>, <span class="title">K</span> <span class="title">extends</span> <span class="title">keyof</span> <span class="title">T</span>&gt;(<span class="params">obj: T, key: K, value: T[K]</span>): <span class="title">void</span> </span>&#123;</span><br><span class="line">  <span class="comment">// 경우에 따라서 넣어야 하는 타입이 달라지기 때문에</span></span><br><span class="line">  obj[key] = value;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">setProp(person, <span class="string">&quot;name&quot;</span>, <span class="string">&quot;koo&quot;</span>);</span><br><span class="line">setProp(person, <span class="string">&quot;age&quot;</span>, <span class="number">27</span>);</span><br></pre></td></tr></table></figure>
-
-<p><code>keyof</code> 를 사용하면 인터페이스에 key로 구성된 유니온 타입을 반환한다. 어떤 매개변수끼리 혹은 리턴 값 끼리 서로 관련 성이 있어서 타입이 달라지는 경우 <code>keyof</code>와 <code>extends</code>를 활용하여 관계성을 정의할 수 있다.</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2022/03/28/Material%20Designe/220328-Layout/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JayoonKoo">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="티끌모아 태산">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/03/28/Material%20Designe/220328-Layout/" class="post-title-link" itemprop="url">Layout</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2022-03-28 12:05:45 / Modified: 12:07:59" itemprop="dateCreated datePublished" datetime="2022-03-28T12:05:45+09:00">2022-03-28</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/MaterialDesigne/" itemprop="url" rel="index"><span itemprop="name">MaterialDesigne</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="layout"><a href="#layout" class="headerlink" title="layout"></a>layout</h1><p>플랫폼, 환경 및 화면 크기 전반에 걸쳐 일관성을 유지하기 위한 균일한 요소와 간격에 대해서..</p>
-<h2 id="Principles"><a href="#Principles" class="headerlink" title="Principles"></a>Principles</h2><ul>
-<li>예측 가능성. 일관된 UI 영역 및 공간 구성으로 직관적이고 예측 가능으한 레이웃이여야 한다.</li>
-<li>일관성</li>
-<li>반응성</li>
-</ul>
-<h2 id="Layout-anatomy"><a href="#Layout-anatomy" class="headerlink" title="Layout anatomy"></a>Layout anatomy</h2><p>레이아웃은 유사한 기능ㅇ을 공유하는 요서와 구성 요서로 구성된다. 레이아웃 영역은 또한 작은 컨테이너를 그룹화 한다.</p>
-<p>큰 화면 레이아웃에는 세 가지 주요 영역이 있다. </p>
-<img src="images/220328_Layout/1.png" widht="400" />
-
-<ol>
-<li>App bars</li>
-<li>Navigation</li>
-<li>Body</li>
-</ol>
-<p>반응형을 구현할때는 작은 화면에서 큰 화면으로 만들어 가면서 다양한 form factors 에 적용해 나가는 것이 좋다. </p>
-<h3 id="Body-region"><a href="#Body-region" class="headerlink" title="Body region"></a>Body region</h3><p>Body 영역은 대부분의 컨텐트를 표시하는데 사용된다. 일반적으로 목록, 카드, 버튼 및 이미지와 같은 구성 요소를 포함한다.</p>
-<p>Body 영역은 세가지 매개변수에 대한 확장 가능한 값을 갖는다.</p>
-<ol>
-<li>Vertical and horizontal dimensions</li>
-<li>Number of Columns</li>
-<li>Margins</li>
-</ol>
-<h3 id="Responsive-column-grid"><a href="#Responsive-column-grid" class="headerlink" title="Responsive column grid"></a>Responsive column grid</h3><p>화면 크기에 따른 break point</p>
-<img src="images/220328_Layout/2.png" widht="400" />
-
-<h3 id="Navigation-region"><a href="#Navigation-region" class="headerlink" title="Navigation region"></a>Navigation region</h3><p>네비게이션 서랍이나 목록을 표시하는 영역이다. 네비게이션 영역의 넓이는 확장되었을때는 256dp 접었을때는 72dp (rail)를 유지한다. margin 이 48dp 보다 적은 화면 사이즈에서는 body navigation 영역을 보여주기 위해서 body 영역이 줄어들 수 있다. (600~904dp 사이에 영역)</p>
-<img src="images/220328_Layout/3.png" widht="400" />
-
-<p>만약 화면 사이즈가 600dp 보다 작다면 modal 를 사용한다. </p>
-<img src="images/220328_Layout/4.png" widht="400" />
-
-<h3 id="App-bar"><a href="#App-bar" class="headerlink" title="App bar"></a>App bar</h3><p>앱바는 사용자가 기본 작업을 수행하거나 본문 영역의 요소에 대해 작업을 수행하는 데 도움이 되는 구성 요소 및 작업을 표시하고 그룹화하는 데 사용된다. </p>
-<h2 id="Composition"><a href="#Composition" class="headerlink" title="Composition"></a>Composition</h2><h3 id="Visual-grouping"><a href="#Visual-grouping" class="headerlink" title="Visual grouping"></a>Visual grouping</h3><p>유사한 콘텐츠 또는 기능을 가진 레이아웃의 요소는 그룹화하여 다른 요소와 분리한다. </p>
-<img src="images/220328_Layout/5.png" widht="400" />
-
-<p>글자 영역에 빈공간을 사용하여 다른 요소와 분리한다.</p>
-<h3 id="Containment"><a href="#Containment" class="headerlink" title="Containment"></a>Containment</h3><p>관련된 요소끼리 가깝게 배치하고 관련 되지 않는 요소 끼리는 넓게 배치하여 두 그룹을 분리 할 수 있고, 선을 이용하여 분리할 수도 있다. </p>
-<img src="images/220328_Layout/6.png" widht="400" />
-
-<p>텍스트를 포함하는 컨텐츠는 사이즈가 쉽게 변해야 하며, 읽기 쉬운 상태로 남아있어야 한다. </p>
-<h3 id="Scaling-with-text"><a href="#Scaling-with-text" class="headerlink" title="Scaling with text"></a>Scaling with text</h3><p>한줄에 40-60 글자가 있는 것이 이상적이다. 텍스트를 포함된 요소는 가독성을 유지하면서 요소 크기에 맞춰 크기를 조정해야 한고 한줄에 너무 길게 확장되지 않도록 해야한다. </p>
-<p>가독성을 높이려면 line height 를 조정하는것이 좋다. </p>
-<h2 id="Material-measurements"><a href="#Material-measurements" class="headerlink" title="Material measurements"></a>Material measurements</h2><p>시각적 균형을 이루도록 하기 위해 대부분의 간격과 레이아웃 모두에 8dp로 정렬한다. 구성 요소의 크기는 8dp 단위로 조정되어 각 화면에서 일관된 시각적 리듬을 보장한다. 또한 아이콘, 텍스트와 같은 더 작은 요소는 4dp 기준으로 정렬할 수 있다.</p>
 
       
     </div>
