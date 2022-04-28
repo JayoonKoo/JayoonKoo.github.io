@@ -189,7 +189,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/10/09/Network/210906-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC%20%EC%86%8C%EA%B0%9C/">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/10/09/Network/210907-%EB%AC%BC%EB%A6%AC%EA%B3%84%EC%B8%B5/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -202,7 +202,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/10/09/Network/210906-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC%20%EC%86%8C%EA%B0%9C/" class="post-title-link" itemprop="url">네트워크 소개</a>
+          <a href="/2021/10/09/Network/210907-%EB%AC%BC%EB%A6%AC%EA%B3%84%EC%B8%B5/" class="post-title-link" itemprop="url">물리계층</a>
         </h2>
 
         <div class="post-meta-container">
@@ -235,80 +235,53 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="네트워크-소개"><a href="#네트워크-소개" class="headerlink" title="네트워크 소개"></a>네트워크 소개</h1><h2 id="네트워크-형태"><a href="#네트워크-형태" class="headerlink" title="네트워크 형태"></a>네트워크 형태</h2><ul>
-<li>LAN(Local Area Network) : 건거리 통신망</li>
-<li>WAN(Wide Area Network) : 정거리 통신망 (ISP) 로 연결</li>
-<li>VPN(Virtual Private Network) : 가상 사설망으로서 공중망을 사설망처럼 암호화해서 사용함.</li>
+          <h1 id="물리-계층"><a href="#물리-계층" class="headerlink" title="물리 계층"></a>물리 계층</h1><p>L1 물리 계층에 대해서 알아본다.</p>
+<h2 id="물리-계층의-역할과-기능"><a href="#물리-계층의-역할과-기능" class="headerlink" title="물리 계층의 역할과 기능"></a>물리 계층의 역할과 기능</h2><p>OSI 7 계층에 1계층으로 하드웨어 영역이다. 데이터 계층의 프레임을 비트로 인코 딩하고 신호로 바꾸어 통신한다. 받은 신호를 통하여 비트로 바꾸고 비트를 프레임으로 바꾸는 역활을 담당한다.</p>
+<h3 id="Signalilng의-종류"><a href="#Signalilng의-종류" class="headerlink" title="Signalilng의 종류"></a>Signalilng의 종류</h3><ul>
+<li>전기 (대표적으로 UTP 케이블이 있다.)</li>
+<li>광 (대표적으로 Fiber 가 있다. )</li>
+<li>전파 (wifi)</li>
 </ul>
-<h2 id="네트워크-구조"><a href="#네트워크-구조" class="headerlink" title="네트워크 구조"></a>네트워크 구조</h2><p>규모, 업종, 통신방식과 경로, 토플로지 등등 나누는 기준이 다양하다.</p>
-<h3 id="토플로지"><a href="#토플로지" class="headerlink" title="토플로지"></a>토플로지</h3><ul>
-<li>star : 중앙에 중계서버를 둔 형태</li>
+<h3 id="Signaling-전송-방식"><a href="#Signaling-전송-방식" class="headerlink" title="Signaling 전송 방식"></a>Signaling 전송 방식</h3><img src="/images/210907-물리계층/1.png" width="500">
+
+<h2 id="물리-계층-장비와-케이블"><a href="#물리-계층-장비와-케이블" class="headerlink" title="물리 계층 장비와 케이블"></a>물리 계층 장비와 케이블</h2><p>물리 계층의 장비로는 대표적으로 허브와 리피터가 있다.</p>
+<h3 id="허브의-동작-방식"><a href="#허브의-동작-방식" class="headerlink" title="허브의 동작 방식"></a>허브의 동작 방식</h3><p>브로드 케스팅 방식을 사용하여 허브 내에 모든 pc 에게 송신하고 주소에 맞는 pc 만 수신 하는 형식을 사용한다.</p>
+<p>유니 캐스트 방식은 1 : 1 통신을 의마한다.</p>
+<p>멀티 캐스트 방식은 1 : N 통신을 의미한다.</p>
+<h3 id="CSMA-CD"><a href="#CSMA-CD" class="headerlink" title="CSMA/CD"></a>CSMA/CD</h3><ol>
+<li>데이터를 보내기 전에 다른 노드에서 데이터를 보내는 중인지 확인한다.</li>
+<li>보내는 곳이 없다면 전송을 시작한다.</li>
+<li>동시간대 보내게 되면 통신이 중단되고 일정 시간이 흐른 후에 다시 통신을 시작한다.</li>
+</ol>
+<p>이런 방식을 Half Duplex 라고 한다. 흔히 무전기에서 사용하는 방식과 비슷하다.</p>
+<p>Simplex : 는 단방향 통신을 의미한다.</p>
+<p>Full Duplex : 동시 양방향 통신이 가능한 형태로 전화기와 비슷하다고 생각하면 된다.</p>
+<h3 id="성능"><a href="#성능" class="headerlink" title="성능"></a>성능</h3><ul>
+<li>Bandwidth(대역폭) - 주어진 시간대에 네트워크를 통해 이동할 수 있는 정보의 양 ( 도로 넓이 )</li>
+<li>Throughput(처리량) - 단위 시간당 디지털 데이터 전송으로 처리하는 양 (자동차 수 )</li>
+<li>Backplane(최대 처리 량) - 네트워크 장비가 최대로 처리할 수 있는 데이터 용량</li>
+<li>CPS : L4, 초당 커넥션 연결 수</li>
+<li>CC : 최대 수용 가능한 커넥션</li>
+<li>TPS : 초당 트랜잭션 연결 수 ,L&amp;</li>
 </ul>
-<img src="/images/210906-네트워크 소개/star.png" width="200">
+<h2 id="UTP-케이블과-wifi"><a href="#UTP-케이블과-wifi" class="headerlink" title="UTP 케이블과 wifi"></a>UTP 케이블과 wifi</h2><h3 id="UTP-케이블이란"><a href="#UTP-케이블이란" class="headerlink" title="UTP 케이블이란?"></a>UTP 케이블이란?</h3><p>주로 근거리 통신망 (LAN) 에 사용되는 케이블로서 자기장을 방지하기 위해 꼬여 있다.</p>
+<h3 id="코드-배열"><a href="#코드-배열" class="headerlink" title="코드 배열"></a>코드 배열</h3><ul>
+<li>8p8c<br>8개의 선 배열에 따라 다이렉트 또는 크로스 케이블로 구성한다. (TIA-568A, TIA-568B)</li>
+</ul>
+<p>같은 기계 끼리는 크로스로 다른 디바이스 끼리는 다이렉트로 연결한다.</p>
+<ul>
+<li>Auto MDI-x<br>노드 별로 크로스냐 다이렉트냐 구분하기 어렵기 때문에 자동으로 정해지도록 할 수 있는 기술</li>
+</ul>
+<h3 id="UTP-카테고리"><a href="#UTP-카테고리" class="headerlink" title="UTP 카테고리"></a>UTP 카테고리</h3><p>UTP 케이블의 전송 가능한 대역폭을 기준으로 분류.<br>cat3~cat6 까지 있음</p>
+<h3 id="WIFI란"><a href="#WIFI란" class="headerlink" title="WIFI란?"></a>WIFI란?</h3><p>비영리 기구인 WIFI Aliance의 상표로 전자기기들이 무선랜에 연결할 수 있게 하는 기술</p>
+<h3 id="무선랜-구성"><a href="#무선랜-구성" class="headerlink" title="무선랜 구성"></a>무선랜 구성</h3><p>인터넷 - ISP - 라우터 - WIPS - AP - 라우터</p>
+<img src="/images/210907-물리계층/2.png" width="500">
 
 <ul>
-<li>Ring: 중앙에 중계서버를 두지 않고 근처에 있는것 끼리 연결 - 뎁스가 깊어지는 문제가 있다.</li>
+<li>WIPS(Wireless IPS) : 보안과 관련된 역할을 한다.</li>
+<li>AP(Access Point) : 무선 허브와 같은 역할을 한다. 무선 랜카드와 연결된다.</li>
 </ul>
-<img src="/images/210906-네트워크 소개/ring.png" width="200">
-
-<ul>
-<li>Mesh : 서로 간에 연결 - 뎁스가 깊어지지는 않지만 갯수가 많아지면 경우에 수가 증가하는 문제가 있다.</li>
-</ul>
-<img src="/images/210906-네트워크 소개/mesh.png" width="200">
-
-<ul>
-<li>Bus : 데이터 통로 Bus 를 두고 서로 통신하는 형태</li>
-</ul>
-<img src="/images/210906-네트워크 소개/bus.png" width="200">
-
-<ul>
-<li>Tree : 가장 많이 사용하는 형태 tree 구조를 두고 각각의 node에 다양한 형태로 구성할 수 있다.</li>
-</ul>
-<img src="/images/210906-네트워크 소개/tree.png" width="200">
-
-<ul>
-<li>Redundacy : 가용성, 동일한것을 하나 더 두어서 하나가 기능을 못해도 다른 하나가 동작하도록 한 형태</li>
-</ul>
-<img src="/images/210906-네트워크 소개/Redundancy.png" width="200">
-
-<h2 id="홈-네트워크"><a href="#홈-네트워크" class="headerlink" title="홈 네트워크"></a>홈 네트워크</h2><p>인터넷 - ISP(업체) - 모뎀 - 공유기 - 컴퓨터</p>
-<h2 id="기업용-네트워크"><a href="#기업용-네트워크" class="headerlink" title="기업용 네트워크"></a>기업용 네트워크</h2><p>ISP(전용선) - 라우터 - 방화벽 - L3백본 - (L2 스위치 - 서버) or (L4B - 서버 - DMZ(외부로 노출하는 서버))</p>
-<img src="/images/210906-네트워크 소개/기업용.png" width="500">
-
-<h2 id="클라우드-네트워크-AWS-기준"><a href="#클라우드-네트워크-AWS-기준" class="headerlink" title="클라우드 네트워크 - AWS 기준"></a>클라우드 네트워크 - AWS 기준</h2><p>인터넷 - Route53(AWS에서는 DNS를 제공하는 역할) - IGW(AWS에서는 라우터와 비슷한 역할을 한다.) - VPN (L2, L3를 논리적으로 묶은것)</p>
-<img src="/images/210906-네트워크 소개/AWS.png" width="500">
-
-<ul>
-<li>ELB : 각각의 서버로 분산해 준다.</li>
-<li>Auto Scaling : 사용하는양에 자동으로 용량 산정해서 제공해 주는 서비스</li>
-<li>SG : 일종의 방홤벽</li>
-<li>EC2 : 각각의 서버라고 보면 됨.</li>
-</ul>
-<h2 id="OSI-7-Layer"><a href="#OSI-7-Layer" class="headerlink" title="OSI 7 Layer"></a>OSI 7 Layer</h2><h3 id="정의"><a href="#정의" class="headerlink" title="정의"></a>정의</h3><p>네트워크 프로토콜과 통신을 7계층으로 표현</p>
-<h3 id="목적"><a href="#목적" class="headerlink" title="목적"></a>목적</h3><p>벤더(엄체)간 표준을 정해서 접근하기 쉽게 함.</p>
-<h3 id="OSI-7-Layer-모델"><a href="#OSI-7-Layer-모델" class="headerlink" title="OSI 7 Layer 모델"></a>OSI 7 Layer 모델</h3><img src="/images/210906-네트워크 소개/7.png" width="200">
-
-<ul>
-<li>아래부터 1 -&gt; 7 layer로 나뉨</li>
-<li>1 계층 (Physical) - 장치와 통신 매체 사이의 비정형 데이터의 전송을 담당 (물리적 기계)</li>
-<li>2 계층 (Data Link) - 동일 네트워크 내에서 데이터 전송, 링크를 통해서 연결을 설정하고 관리 함. 물리계층에서 발생할 수 있는 오류를 감지하고 수정</li>
-<li>3 계층 (Network) - 다른 데트워크로 데이터 전송, IP 주소로 통신 <code>IP</code>, IP 통신과 라우팅 (L3 스위치, 라우터)</li>
-<li>4 계층 (Transport) - 호스트 간의 데이터 전송, 완벽한 데이터 전송 보장, 포트 제어 <code>TCP/UDP</code></li>
-<li>5 계층 (Session) - 로컬 및 원격 애플리케이션 간의 IP / Port 연결을 관리 (Session Table로 관리 )</li>
-<li>6 계층 (Presentation) - 사용자 프로그램과 네트워크 형신간에 데이터를 변환하여 표현고ㅓㅏ 독립성을 제공</li>
-<li>7 계층 (Application) - 사용자와 가장 밀접한 소프트웨어 이메일 서비스, HTTP, FTP 등 …</li>
-</ul>
-<h2 id="TCP-IP-suit-비교와-캡슐화"><a href="#TCP-IP-suit-비교와-캡슐화" class="headerlink" title="TCP-IP suit 비교와 캡슐화"></a>TCP-IP suit 비교와 캡슐화</h2><h3 id="TCP-IP"><a href="#TCP-IP" class="headerlink" title="TCP/ IP?"></a>TCP/ IP?</h3><p>네트 워크 프로토콜의 모음 패킷 통신 방식 (IP), 전송조절 프로토콜 (TCP)</p>
-<h3 id="4계층-모델"><a href="#4계층-모델" class="headerlink" title="4계층 모델"></a>4계층 모델</h3><img src="/images/210906-네트워크 소개/8.png" width="500">
-
-<h3 id="OSI-7Layer와-비교"><a href="#OSI-7Layer와-비교" class="headerlink" title="OSI 7Layer와 비교"></a>OSI 7Layer와 비교</h3><img src="/images/210906-네트워크 소개/9.png" width="500">
-
-<h3 id="캠슐화"><a href="#캠슐화" class="headerlink" title="캠슐화"></a>캠슐화</h3><ul>
-<li>인캡슐레이션 : 7계층 부터 1계층 까지 내려가면서 통신의 필요한 header 붙혀서 캡술화 하는 과정</li>
-<li>디캡슐레이션 : 1계층 부터 7계층 까지 올라가면서 통신의 필요한 header를 확인하고 데이터에서 header를 제거하는 과정</li>
-</ul>
-<p>인캡슐레이션의 예, 디캠슐레이션은 반대로 하면 된다.</p>
-<img src="/images/210906-네트워크 소개/10.png" width="500">
+<p>AP 에 반경과 동시 접속 가능 단말기의 개수를 고려하여 설치해야 한다.</p>
 
       
     </div>
@@ -504,6 +477,111 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/10/09/Network/210924-DHCP/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JayoonKoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="티끌모아 태산">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/10/09/Network/210924-DHCP/" class="post-title-link" itemprop="url">DHCP</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-10-09 21:54:45" itemprop="dateCreated datePublished" datetime="2021-10-09T21:54:45+09:00">2021-10-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/CS/" itemprop="url" rel="index"><span itemprop="name">CS</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="DHCP"><a href="#DHCP" class="headerlink" title="DHCP"></a>DHCP</h1><p>Dynamic Host Contorl Protocol 로서 동적으로 IP를 할당하는 프로토콜이다. 흔히 인터넷을 연결하면 자동으로 IP 할당옵션이 이에 해당하는데 필요한 경우 고정 IP를 설정하는등의 작업을 하기도 한다.</p>
+<p>DHCP를 사용하는 다음과 같다.</p>
+<ol>
+<li>요청에 의한 IP 할당으로 효율성 극대화</li>
+<li>잘못된 IP 설정으로 인한 장애 예방</li>
+<li>IP 변경이 잦은 호스트의 관리</li>
+</ol>
+<h2 id="DHCP-메세지-포맷-설명"><a href="#DHCP-메세지-포맷-설명" class="headerlink" title="DHCP 메세지 포맷 설명"></a>DHCP 메세지 포맷 설명</h2><ul>
+<li>OpCode: 1 Request, 2 Reply</li>
+<li>Hardware Type: 1, Ethernet</li>
+<li>Hardware address length: 6, Mac address</li>
+<li>Hop count: 0 에서 시작, 네트워크 이동시 증가</li>
+<li>Transaction Id: 클라이언트가 선택하는 랜덤 수, 요청과 응답 매칭</li>
+<li>Seconds: IP 할당 후 경과한 초의 수</li>
+<li>Flags: 서버 응답에 의해서 0 unicast 또는 1 broadcast 응답 구분 값</li>
+<li>Client IP: 최조 0.0.0.0 , Your IP: 할당될 IP, Options: DHCP 메세지 타임 포함</li>
+</ul>
+<h2 id="DHCP-동작-과정"><a href="#DHCP-동작-과정" class="headerlink" title="DHCP 동작 과정"></a>DHCP 동작 과정</h2><h3 id="IP-할당"><a href="#IP-할당" class="headerlink" title="IP 할당"></a>IP 할당</h3><p>네트워크 구성이 GateWay - Switch- DHCP Server - PC 로 구성되어 있다고 본다.</p>
+<ol>
+<li>DHCPDISCOVER : PC는 DHCP Server를 발견한다.</li>
+<li>DHCPOFFER: DHCP Server는 PC에게 IP를 제안한다.</li>
+<li>DHCPREQUEST : PC는 제안 받은 IP할당을 요청한다.</li>
+<li>DHCPACK: DHCP Server는 요청을 수락한다.</li>
+</ol>
+<h3 id="IP-갱신"><a href="#IP-갱신" class="headerlink" title="IP 갱신"></a>IP 갱신</h3><p>지정된 IP 갱신 타임을 토래하면 갱신을 요청한다.</p>
+<ol>
+<li>DHCPREQUEST: PC 는 기존 IP 재 할당을 요청한다.</li>
+<li>DHCPACK: DHCP Server는 IP 확인 후 요청을 수락한다.</li>
+</ol>
+<h3 id="IP-해제"><a href="#IP-해제" class="headerlink" title="IP 해제"></a>IP 해제</h3><p>사용중인 PC가 전원이 off 되는 경우</p>
+<ol>
+<li>DHCPRELEASE: PC 는 더이상 IP 할당이 필요없음을 알린다.</li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/10/09/Network/211008-%EC%95%A0%ED%94%8C%EB%A6%AC%EC%BC%80%EC%9D%B4%EC%85%98%20%EC%84%9C%EB%B9%84%EC%8A%A4/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -588,111 +666,6 @@
 
 <p>메일 서버 : MTA(Mail Transfer Agent) - 메일 전송<br>메일 클라이언트 : MUA(Mail User Agent) - 메일 송수신 프로그램<br>MDA(Mail Delivery Agent) : MTA가 수신한 메일을 수신한 우편함에 기록<br>MRA(Mail Retrieval Agent) : 리모트 서버의 우편함에서 사용자에게 메일을 가져오는 프로그램</p>
 <img src="/images/211008-애플리케이션 서비스/4.png" width="500">
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/10/09/Network/210924-DHCP/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JayoonKoo">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="티끌모아 태산">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/10/09/Network/210924-DHCP/" class="post-title-link" itemprop="url">DHCP</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-10-09 21:54:45" itemprop="dateCreated datePublished" datetime="2021-10-09T21:54:45+09:00">2021-10-09</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/CS/" itemprop="url" rel="index"><span itemprop="name">CS</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="DHCP"><a href="#DHCP" class="headerlink" title="DHCP"></a>DHCP</h1><p>Dynamic Host Contorl Protocol 로서 동적으로 IP를 할당하는 프로토콜이다. 흔히 인터넷을 연결하면 자동으로 IP 할당옵션이 이에 해당하는데 필요한 경우 고정 IP를 설정하는등의 작업을 하기도 한다.</p>
-<p>DHCP를 사용하는 다음과 같다.</p>
-<ol>
-<li>요청에 의한 IP 할당으로 효율성 극대화</li>
-<li>잘못된 IP 설정으로 인한 장애 예방</li>
-<li>IP 변경이 잦은 호스트의 관리</li>
-</ol>
-<h2 id="DHCP-메세지-포맷-설명"><a href="#DHCP-메세지-포맷-설명" class="headerlink" title="DHCP 메세지 포맷 설명"></a>DHCP 메세지 포맷 설명</h2><ul>
-<li>OpCode: 1 Request, 2 Reply</li>
-<li>Hardware Type: 1, Ethernet</li>
-<li>Hardware address length: 6, Mac address</li>
-<li>Hop count: 0 에서 시작, 네트워크 이동시 증가</li>
-<li>Transaction Id: 클라이언트가 선택하는 랜덤 수, 요청과 응답 매칭</li>
-<li>Seconds: IP 할당 후 경과한 초의 수</li>
-<li>Flags: 서버 응답에 의해서 0 unicast 또는 1 broadcast 응답 구분 값</li>
-<li>Client IP: 최조 0.0.0.0 , Your IP: 할당될 IP, Options: DHCP 메세지 타임 포함</li>
-</ul>
-<h2 id="DHCP-동작-과정"><a href="#DHCP-동작-과정" class="headerlink" title="DHCP 동작 과정"></a>DHCP 동작 과정</h2><h3 id="IP-할당"><a href="#IP-할당" class="headerlink" title="IP 할당"></a>IP 할당</h3><p>네트워크 구성이 GateWay - Switch- DHCP Server - PC 로 구성되어 있다고 본다.</p>
-<ol>
-<li>DHCPDISCOVER : PC는 DHCP Server를 발견한다.</li>
-<li>DHCPOFFER: DHCP Server는 PC에게 IP를 제안한다.</li>
-<li>DHCPREQUEST : PC는 제안 받은 IP할당을 요청한다.</li>
-<li>DHCPACK: DHCP Server는 요청을 수락한다.</li>
-</ol>
-<h3 id="IP-갱신"><a href="#IP-갱신" class="headerlink" title="IP 갱신"></a>IP 갱신</h3><p>지정된 IP 갱신 타임을 토래하면 갱신을 요청한다.</p>
-<ol>
-<li>DHCPREQUEST: PC 는 기존 IP 재 할당을 요청한다.</li>
-<li>DHCPACK: DHCP Server는 IP 확인 후 요청을 수락한다.</li>
-</ol>
-<h3 id="IP-해제"><a href="#IP-해제" class="headerlink" title="IP 해제"></a>IP 해제</h3><p>사용중인 PC가 전원이 off 되는 경우</p>
-<ol>
-<li>DHCPRELEASE: PC 는 더이상 IP 할당이 필요없음을 알린다.</li>
-</ol>
 
       
     </div>

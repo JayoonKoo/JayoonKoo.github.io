@@ -744,107 +744,6 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2022/03/28/BackEnd/220328-Modules/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JayoonKoo">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="티끌모아 태산">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/03/28/BackEnd/220328-Modules/" class="post-title-link" itemprop="url">Modules</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2022-03-28 11:53:37 / Modified: 12:12:43" itemprop="dateCreated datePublished" datetime="2022-03-28T11:53:37+09:00">2022-03-28</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Backend/" itemprop="url" rel="index"><span itemprop="name">Backend</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="Moudles"><a href="#Moudles" class="headerlink" title="Moudles"></a>Moudles</h1><p>@Module() 데코레이터는 어플리케이션 구성에 필요한 metadate를 공급한다.</p>
-<p>애플리케이션은 최소 한개 이상의 모듈이 존재햐아 하고 구성 요소를 구성하는 효과적인 방법으로 모듈을 사용한다. 아주 작은 애플리케이션이 아닌 일반적인 애플리케이션은 여러가지 모듈을 가진다. </p>
-<p>모듈은 provider 를 캡슐화 한다. 즉 현제 모듈의 일부도 아니고 가져온 모듈에서 내보낸 것도 아닌 provider 를 주입하는것은 불가능하다.</p>
-<h2 id="Feature-modules"><a href="#Feature-modules" class="headerlink" title="Feature modules"></a>Feature modules</h2><p>생성한 controller와 service 는 어떤 기능에 연관되 있기 때문에 하나의 모듈로 만들어서 관리하는 것이 좋다. netst g module &lt;이름&gt; 으로 모듈을 생성할 수 있다. </p>
-<h2 id="Shared-modules"><a href="#Shared-modules" class="headerlink" title="Shared modules"></a>Shared modules</h2><p>nest 에서 모듈은 기본적으로 singletons 이다. 따라서 같은 인스턴스를 다양한 모듈에서 공유할 수 있다. 여러 다른 모듈 간의 특정 모듈에 속해 있는 서비스를 공유하고 싶다면 @Module 데코레이터에서 exports 하여 특정 서비스를 내보내야 한다. </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">import &#123; Module &#125; from &#x27;@nestjs/common&#x27;;</span><br><span class="line">import &#123; CatsController &#125; from &#x27;./cats.controller&#x27;;</span><br><span class="line">import &#123; CatsService &#125; from &#x27;./cats.service&#x27;;</span><br><span class="line"></span><br><span class="line">@Module(&#123;</span><br><span class="line">  controllers: [CatsController],</span><br><span class="line">  providers: [CatsService],</span><br><span class="line">  exports: [CatsService]</span><br><span class="line">&#125;)</span><br><span class="line">export class CatsModule &#123;&#125;</span><br></pre></td></tr></table></figure>
-
-<p>CatService 를 내보내서 다른 모듈에서 같은 인스턴스를 사용하도록 한다. </p>
-<h2 id="Module-re-exporting"><a href="#Module-re-exporting" class="headerlink" title="Module re-exporting"></a>Module re-exporting</h2><p>특정 모듈을 임포트하고 다시 내보낼수도 있다. CommonModule은 CoreModule로 가져오거나 CoreModule에서 내보내어 이 모듈을 가져오는 다른 모듈에서 사용할 수 있다. </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">@Module(&#123;</span><br><span class="line">  imports: [CommonModule],</span><br><span class="line">  exports: [CommonModule],</span><br><span class="line">&#125;)</span><br><span class="line">export class CoreModule &#123;&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="Dependency-injection"><a href="#Dependency-injection" class="headerlink" title="Dependency injection"></a>Dependency injection</h2><p>모듈은 Provider 도 주입할 수 있다. (구성 하기 위한 목적으로 )</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">import &#123; Module &#125; from &#x27;@nestjs/common&#x27;;</span><br><span class="line">import &#123; CatsController &#125; from &#x27;./cats.controller&#x27;;</span><br><span class="line">import &#123; CatsService &#125; from &#x27;./cats.service&#x27;;</span><br><span class="line"></span><br><span class="line">@Module(&#123;</span><br><span class="line">  controllers: [CatsController],</span><br><span class="line">  providers: [CatsService],</span><br><span class="line">&#125;)</span><br><span class="line">export class CatsModule &#123;</span><br><span class="line">  constructor(private catsService: CatsService) &#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>그러나 순환 참조가 될수 있기 때문에 모듈 자체를 Porivder로 주입하는 것은 불가능하다. </p>
-<h2 id="Global-modules"><a href="#Global-modules" class="headerlink" title="Global modules"></a>Global modules</h2><p>모든 곳에서 import 하는 같은 모듈을 계속 import 하는 것은 바보같은 짓이다. 그러나 nest 에서는 Provider를 캡슐화 하기 때문에 Provider 를 가져오지 않고는 다른 곳에서 사용할 수 없다. </p>
-<p>어느 곳에서나 접근 가능한 Provider 집합을 제공하려는 경우, @Global 데코레이터를 사용하여 사용해야 한다. </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">import &#123; Module, Global &#125; from &#x27;@nestjs/common&#x27;;</span><br><span class="line">import &#123; CatsController &#125; from &#x27;./cats.controller&#x27;;</span><br><span class="line">import &#123; CatsService &#125; from &#x27;./cats.service&#x27;;</span><br><span class="line"></span><br><span class="line">@Global()</span><br><span class="line">@Module(&#123;</span><br><span class="line">  controllers: [CatsController],</span><br><span class="line">  providers: [CatsService],</span><br><span class="line">  exports: [CatsService],</span><br><span class="line">&#125;)</span><br><span class="line">export class CatsModule &#123;&#125;</span><br></pre></td></tr></table></figure>
-
-<p>이렇게 하면 모듈을 global-scope 에 있도록 만들 수 있다. 전역 모듈은 일반적으로 루트 또는 코어 모듈에서 한번만 등록해야 한다. 이렇게 등록한 모듈 내에 있는 Provider 는 어떠한 다른 모듈에서 import 모듈에 등록할 필요 없이 inject 할 수 있다. </p>
-<h2 id="Dynamic-modules"><a href="#Dynamic-modules" class="headerlink" title="Dynamic modules"></a>Dynamic modules</h2><p>Nest 에서는 쉽게 등록 가능한 모듈을 동적으로 만들 수 있고, Provider를 구성할 수 있다. </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">import &#123; Module, DynamicModule &#125; from &#x27;@nestjs/common&#x27;;</span><br><span class="line">import &#123; createDatabaseProviders &#125; from &#x27;./database.providers&#x27;;</span><br><span class="line">import &#123; Connection &#125; from &#x27;./connection.provider&#x27;;</span><br><span class="line"></span><br><span class="line">@Module(&#123;</span><br><span class="line">  providers: [Connection],</span><br><span class="line">&#125;)</span><br><span class="line">export class DatabaseModule &#123;</span><br><span class="line">  static forRoot(entities = [], options?): DynamicModule &#123;</span><br><span class="line">    const providers = createDatabaseProviders(options, entities);</span><br><span class="line">    return &#123;</span><br><span class="line">      module: DatabaseModule,</span><br><span class="line">      providers: providers,</span><br><span class="line">      exports: providers,</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>forRoot 메서드는 동기식 또는 비동기식으로 모듈을 반환할 수 있다. </p>
-<p>DatabaseModule 는 다음과 같은 방법으로 import 될 수  있다. </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">import &#123; Module &#125; from &#x27;@nestjs/common&#x27;;</span><br><span class="line">import &#123; DatabaseModule &#125; from &#x27;./database/database.module&#x27;;</span><br><span class="line">import &#123; User &#125; from &#x27;./users/entities/user.entity&#x27;;</span><br><span class="line"></span><br><span class="line">@Module(&#123;</span><br><span class="line">  imports: [DatabaseModule.forRoot([User])],</span><br><span class="line">&#125;)</span><br><span class="line">export class AppModule &#123;&#125;</span><br></pre></td></tr></table></figure>
-
-<p>동적 모듈을 다시 내보내려면 내보내기 배열에서 forRoot() 메서드 호출을 생략 할 수도 있다.</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2022/03/28/BackEnd/220328-Middleware/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -922,6 +821,107 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">const app = await NestFactory.create(AppModule);</span><br><span class="line">app.use(logger);</span><br><span class="line">await app.listen(3000);</span><br></pre></td></tr></table></figure>
 
 <p>글로벌 미들웨어에서 DI 컨테이너에 액세스하는것은 불가능하다. app.use() 를 사용할때 functional middleware 를 사용하거나, AppModule 내에서 .forRoutes(’*’) 와 함께 사용할 수 있다.</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2022/03/28/BackEnd/220328-Modules/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JayoonKoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="티끌모아 태산">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/03/28/BackEnd/220328-Modules/" class="post-title-link" itemprop="url">Modules</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2022-03-28 11:53:37 / Modified: 12:12:43" itemprop="dateCreated datePublished" datetime="2022-03-28T11:53:37+09:00">2022-03-28</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Backend/" itemprop="url" rel="index"><span itemprop="name">Backend</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="Moudles"><a href="#Moudles" class="headerlink" title="Moudles"></a>Moudles</h1><p>@Module() 데코레이터는 어플리케이션 구성에 필요한 metadate를 공급한다.</p>
+<p>애플리케이션은 최소 한개 이상의 모듈이 존재햐아 하고 구성 요소를 구성하는 효과적인 방법으로 모듈을 사용한다. 아주 작은 애플리케이션이 아닌 일반적인 애플리케이션은 여러가지 모듈을 가진다. </p>
+<p>모듈은 provider 를 캡슐화 한다. 즉 현제 모듈의 일부도 아니고 가져온 모듈에서 내보낸 것도 아닌 provider 를 주입하는것은 불가능하다.</p>
+<h2 id="Feature-modules"><a href="#Feature-modules" class="headerlink" title="Feature modules"></a>Feature modules</h2><p>생성한 controller와 service 는 어떤 기능에 연관되 있기 때문에 하나의 모듈로 만들어서 관리하는 것이 좋다. netst g module &lt;이름&gt; 으로 모듈을 생성할 수 있다. </p>
+<h2 id="Shared-modules"><a href="#Shared-modules" class="headerlink" title="Shared modules"></a>Shared modules</h2><p>nest 에서 모듈은 기본적으로 singletons 이다. 따라서 같은 인스턴스를 다양한 모듈에서 공유할 수 있다. 여러 다른 모듈 간의 특정 모듈에 속해 있는 서비스를 공유하고 싶다면 @Module 데코레이터에서 exports 하여 특정 서비스를 내보내야 한다. </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">import &#123; Module &#125; from &#x27;@nestjs/common&#x27;;</span><br><span class="line">import &#123; CatsController &#125; from &#x27;./cats.controller&#x27;;</span><br><span class="line">import &#123; CatsService &#125; from &#x27;./cats.service&#x27;;</span><br><span class="line"></span><br><span class="line">@Module(&#123;</span><br><span class="line">  controllers: [CatsController],</span><br><span class="line">  providers: [CatsService],</span><br><span class="line">  exports: [CatsService]</span><br><span class="line">&#125;)</span><br><span class="line">export class CatsModule &#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>CatService 를 내보내서 다른 모듈에서 같은 인스턴스를 사용하도록 한다. </p>
+<h2 id="Module-re-exporting"><a href="#Module-re-exporting" class="headerlink" title="Module re-exporting"></a>Module re-exporting</h2><p>특정 모듈을 임포트하고 다시 내보낼수도 있다. CommonModule은 CoreModule로 가져오거나 CoreModule에서 내보내어 이 모듈을 가져오는 다른 모듈에서 사용할 수 있다. </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">@Module(&#123;</span><br><span class="line">  imports: [CommonModule],</span><br><span class="line">  exports: [CommonModule],</span><br><span class="line">&#125;)</span><br><span class="line">export class CoreModule &#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Dependency-injection"><a href="#Dependency-injection" class="headerlink" title="Dependency injection"></a>Dependency injection</h2><p>모듈은 Provider 도 주입할 수 있다. (구성 하기 위한 목적으로 )</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">import &#123; Module &#125; from &#x27;@nestjs/common&#x27;;</span><br><span class="line">import &#123; CatsController &#125; from &#x27;./cats.controller&#x27;;</span><br><span class="line">import &#123; CatsService &#125; from &#x27;./cats.service&#x27;;</span><br><span class="line"></span><br><span class="line">@Module(&#123;</span><br><span class="line">  controllers: [CatsController],</span><br><span class="line">  providers: [CatsService],</span><br><span class="line">&#125;)</span><br><span class="line">export class CatsModule &#123;</span><br><span class="line">  constructor(private catsService: CatsService) &#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>그러나 순환 참조가 될수 있기 때문에 모듈 자체를 Porivder로 주입하는 것은 불가능하다. </p>
+<h2 id="Global-modules"><a href="#Global-modules" class="headerlink" title="Global modules"></a>Global modules</h2><p>모든 곳에서 import 하는 같은 모듈을 계속 import 하는 것은 바보같은 짓이다. 그러나 nest 에서는 Provider를 캡슐화 하기 때문에 Provider 를 가져오지 않고는 다른 곳에서 사용할 수 없다. </p>
+<p>어느 곳에서나 접근 가능한 Provider 집합을 제공하려는 경우, @Global 데코레이터를 사용하여 사용해야 한다. </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">import &#123; Module, Global &#125; from &#x27;@nestjs/common&#x27;;</span><br><span class="line">import &#123; CatsController &#125; from &#x27;./cats.controller&#x27;;</span><br><span class="line">import &#123; CatsService &#125; from &#x27;./cats.service&#x27;;</span><br><span class="line"></span><br><span class="line">@Global()</span><br><span class="line">@Module(&#123;</span><br><span class="line">  controllers: [CatsController],</span><br><span class="line">  providers: [CatsService],</span><br><span class="line">  exports: [CatsService],</span><br><span class="line">&#125;)</span><br><span class="line">export class CatsModule &#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>이렇게 하면 모듈을 global-scope 에 있도록 만들 수 있다. 전역 모듈은 일반적으로 루트 또는 코어 모듈에서 한번만 등록해야 한다. 이렇게 등록한 모듈 내에 있는 Provider 는 어떠한 다른 모듈에서 import 모듈에 등록할 필요 없이 inject 할 수 있다. </p>
+<h2 id="Dynamic-modules"><a href="#Dynamic-modules" class="headerlink" title="Dynamic modules"></a>Dynamic modules</h2><p>Nest 에서는 쉽게 등록 가능한 모듈을 동적으로 만들 수 있고, Provider를 구성할 수 있다. </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">import &#123; Module, DynamicModule &#125; from &#x27;@nestjs/common&#x27;;</span><br><span class="line">import &#123; createDatabaseProviders &#125; from &#x27;./database.providers&#x27;;</span><br><span class="line">import &#123; Connection &#125; from &#x27;./connection.provider&#x27;;</span><br><span class="line"></span><br><span class="line">@Module(&#123;</span><br><span class="line">  providers: [Connection],</span><br><span class="line">&#125;)</span><br><span class="line">export class DatabaseModule &#123;</span><br><span class="line">  static forRoot(entities = [], options?): DynamicModule &#123;</span><br><span class="line">    const providers = createDatabaseProviders(options, entities);</span><br><span class="line">    return &#123;</span><br><span class="line">      module: DatabaseModule,</span><br><span class="line">      providers: providers,</span><br><span class="line">      exports: providers,</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>forRoot 메서드는 동기식 또는 비동기식으로 모듈을 반환할 수 있다. </p>
+<p>DatabaseModule 는 다음과 같은 방법으로 import 될 수  있다. </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">import &#123; Module &#125; from &#x27;@nestjs/common&#x27;;</span><br><span class="line">import &#123; DatabaseModule &#125; from &#x27;./database/database.module&#x27;;</span><br><span class="line">import &#123; User &#125; from &#x27;./users/entities/user.entity&#x27;;</span><br><span class="line"></span><br><span class="line">@Module(&#123;</span><br><span class="line">  imports: [DatabaseModule.forRoot([User])],</span><br><span class="line">&#125;)</span><br><span class="line">export class AppModule &#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>동적 모듈을 다시 내보내려면 내보내기 배열에서 forRoot() 메서드 호출을 생략 할 수도 있다.</p>
 
       
     </div>

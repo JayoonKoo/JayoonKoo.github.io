@@ -28,7 +28,7 @@
 <meta property="og:description" content="http기본원래는 html 을 보낼 용도로 설례된 프로토콜 이였으니 지금은 모든것을 http 를 통해서 전달함 서버간의 데이터도 http를 사용 특수한 경우에만 직접 tcp 연결 http1.1 가장 많이 사용되는 버전 특징 클라이언트 서버 구조 무상태 스태이스리트 , 비연결성 http 메시지 단순함 , 확장 가능  클라이언트 서버 구조 요청 응답 구조, 클">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-04-25T14:57:38.000Z">
-<meta property="article:modified_time" content="2022-04-25T14:57:38.724Z">
+<meta property="article:modified_time" content="2022-04-28T14:49:29.121Z">
 <meta property="article:author" content="JayoonKoo">
 <meta property="article:tag" content="http">
 <meta name="twitter:card" content="summary">
@@ -121,7 +121,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#http%EA%B8%B0%EB%B3%B8"><span class="nav-number">1.</span> <span class="nav-text">http기본</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%ED%8A%B9%EC%A7%95"><span class="nav-number">1.1.</span> <span class="nav-text">특징</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#http%EA%B8%B0%EB%B3%B8"><span class="nav-number">1.</span> <span class="nav-text">http기본</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%ED%8A%B9%EC%A7%95"><span class="nav-number">1.1.</span> <span class="nav-text">특징</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EB%AC%B4%EC%83%81%ED%83%9C-%ED%94%84%EB%A1%9C%ED%86%A0%EC%BD%9C-stateless"><span class="nav-number">1.2.</span> <span class="nav-text">무상태 프로토콜(stateless)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%ED%95%9C%EA%B3%84"><span class="nav-number">1.3.</span> <span class="nav-text">한계</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EB%B9%84%EC%97%B0%EA%B2%B0%EC%84%B1"><span class="nav-number">1.4.</span> <span class="nav-text">비연결성</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%ED%95%9C%EA%B3%84-1"><span class="nav-number">1.5.</span> <span class="nav-text">한계</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -222,6 +222,13 @@
 
       <time title="Created: 2022-04-25 23:57:38" itemprop="dateCreated datePublished" datetime="2022-04-25T23:57:38+09:00">2022-04-25</time>
     </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2022-04-28 23:49:29" itemprop="dateModified" datetime="2022-04-28T23:49:29+09:00">2022-04-28</time>
+      </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-folder"></i>
@@ -253,6 +260,10 @@
 </ul>
 <p>클라이언트 서버 구조</p>
 <p>요청 응답 구조, 클라이언트는 요청을 보내고 응답을 대기함, 서버가 요청에 대한 결과를 만들어서 응답</p>
+<h2 id="무상태-프로토콜-stateless"><a href="#무상태-프로토콜-stateless" class="headerlink" title="무상태 프로토콜(stateless)"></a>무상태 프로토콜(stateless)</h2><p>서버가 클라이언트에 이전상태를 저장하지 않음<br>-&gt; 상태를 저장하지 않기 때문에 서버를 바뀌어도 장애 없이 교체 가능 (확장성이 높아진다.)</p>
+<h2 id="한계"><a href="#한계" class="headerlink" title="한계"></a>한계</h2><p>상태를 유지해야 하는 경우도 있다. (예를들면 로그인 같은 겨웅)<br>무상태 이기 때문에 한번한번 요청에 너무 많은 정보를 포함시켜 요청하기도 한다.</p>
+<h2 id="비연결성"><a href="#비연결성" class="headerlink" title="비연결성"></a>비연결성</h2><p>http 는 연결을 유지하는 모델이 아니여서 한번 요청과 응답 후에는 연결을 끊어버리는 특징이 있다.</p>
+<h2 id="한계-1"><a href="#한계-1" class="headerlink" title="한계"></a>한계</h2><p>매번 새로 연결을 맺는 과정을 해야 함. (3 way handshake). 자바스크립트 css 이미지등 많은 자원을 계속 다운로드 해야 함. 요즘은 http 지속연결 persistent connection 으로 어느정도 연결을 유지함.</p>
 
     </div>
 
