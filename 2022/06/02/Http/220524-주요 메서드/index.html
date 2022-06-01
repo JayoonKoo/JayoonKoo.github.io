@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css" integrity="sha256-2H3fkXt6FEmrReK448mDVGKb3WW2ZZw35gI7vqHOE4Y=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"jayoonkoo.github.io","root":"/","images":"/images","scheme":"Muse","version":"8.6.1","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="메서드HTTP 메서드에 메서드에 종류와 주요 특징, 사용예시를 정리한다; 주요 메서드   메서드 동작    GET 리소스 조회   POST 요청 데이터 처리, 주로 등록에 사용   PUT 리소스 대체, 해당 리소스가 없으면 생성   PATCH 리소스 부분 변경   DELETE 리소스 삭제   기타 메서드   메서드 동작    HEAD GET 과 동일하지만,">
+<meta property="og:type" content="article">
+<meta property="og:title" content="주요 메서드">
+<meta property="og:url" content="https://jayoonkoo.github.io/2022/06/02/Http/220524-%EC%A3%BC%EC%9A%94%20%EB%A9%94%EC%84%9C%EB%93%9C/index.html">
+<meta property="og:site_name" content="티끌모아 태산">
+<meta property="og:description" content="메서드HTTP 메서드에 메서드에 종류와 주요 특징, 사용예시를 정리한다; 주요 메서드   메서드 동작    GET 리소스 조회   POST 요청 데이터 처리, 주로 등록에 사용   PUT 리소스 대체, 해당 리소스가 없으면 생성   PATCH 리소스 부분 변경   DELETE 리소스 삭제   기타 메서드   메서드 동작    HEAD GET 과 동일하지만,">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-06-01T15:47:38.000Z">
+<meta property="article:modified_time" content="2022-06-01T15:47:38.974Z">
+<meta property="article:author" content="JayoonKoo">
+<meta property="article:tag" content="http">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://jayoonkoo.github.io/2022/06/02/Http/220524-%EC%A3%BC%EC%9A%94%20%EB%A9%94%EC%84%9C%EB%93%9C/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://jayoonkoo.github.io/2022/06/02/Http/220524-%EC%A3%BC%EC%9A%94%20%EB%A9%94%EC%84%9C%EB%93%9C/","path":"2022/06/02/Http/220524-주요 메서드/","title":"주요 메서드"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>주요 메서드 | 티끌모아 태산</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">티끌모아 태산</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">작은 조각 모음</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">21</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">17</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">158</span></a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%EB%A9%94%EC%84%9C%EB%93%9C"><span class="nav-number">1.</span> <span class="nav-text">메서드</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%EC%A3%BC%EC%9A%94-%EB%A9%94%EC%84%9C%EB%93%9C"><span class="nav-number">1.1.</span> <span class="nav-text">주요 메서드</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EA%B8%B0%ED%83%80-%EB%A9%94%EC%84%9C%EB%93%9C"><span class="nav-number">1.2.</span> <span class="nav-text">기타 메서드</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Methods"><span class="nav-number">1.3.</span> <span class="nav-text">Methods</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-GET"><span class="nav-number">1.3.1.</span> <span class="nav-text">1. GET</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-POST"><span class="nav-number">1.3.2.</span> <span class="nav-text">2. POST</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%EC%A3%BC%EC%9A%94-%EC%93%B0%EC%9E%84"><span class="nav-number">1.3.2.1.</span> <span class="nav-text">주요 쓰임</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-PUT"><span class="nav-number">1.3.3.</span> <span class="nav-text">3. PUT</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%EB%A6%AC%EC%86%8C%EC%8A%A4%EB%A5%BC-%EB%8C%80%EC%B2%B4"><span class="nav-number">1.3.3.1.</span> <span class="nav-text">리소스를 대체</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%EC%A4%91%EC%9A%94-%ED%81%B4%EB%9D%BC%EC%9D%B4%EC%96%B8%ED%8A%B8%EA%B0%80-%EB%A6%AC%EC%86%8C%EC%8A%A4-%EC%A0%84%EC%B2%B4%EB%A5%BC-%EC%95%8C%EC%95%84%EC%84%9C-%EC%8B%9D%EB%B3%84%ED%95%A8"><span class="nav-number">1.3.3.2.</span> <span class="nav-text">중요! 클라이언트가 리소스 전체를 알아서 식별함</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-PATCH"><span class="nav-number">1.3.4.</span> <span class="nav-text">4. PATCH</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%EB%A6%AC%EC%86%8C%EC%8A%A4-%EB%B6%80%EB%B6%84-%EB%B3%80%EA%B2%BD"><span class="nav-number">1.3.4.1.</span> <span class="nav-text">리소스 부분 변경</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-DELETE"><span class="nav-number">1.3.5.</span> <span class="nav-text">5. DELETE</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTP-%EB%A9%94%EC%84%9C%EB%93%9C-%EC%86%8D%EC%84%B1"><span class="nav-number">1.4.</span> <span class="nav-text">HTTP 메서드 속성</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%EC%95%88%EC%A0%84-Safe-Methods"><span class="nav-number">1.4.1.</span> <span class="nav-text">안전(Safe Methods)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%EB%A9%B1%EB%93%B1-Idempotent"><span class="nav-number">1.4.2.</span> <span class="nav-text">멱등(Idempotent)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%ED%99%9C%EC%9A%A9"><span class="nav-number">1.4.2.1.</span> <span class="nav-text">활용</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%EC%BA%90%EC%8B%9C-%EA%B0%80%EB%8A%A5-Cacheable"><span class="nav-number">1.4.3.</span> <span class="nav-text">캐시 가능 (Cacheable)</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-overview">
+            <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">JayoonKoo</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">158</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">21</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/JayoonKoo" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;JayoonKoo" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:rnwkdbs12@gmail.com" title="E-Mail → mailto:rnwkdbs12@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/JayoonKoo" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2022/06/02/Http/220524-%EC%A3%BC%EC%9A%94%20%EB%A9%94%EC%84%9C%EB%93%9C/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JayoonKoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="티끌모아 태산">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          주요 메서드
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-06-02 00:47:38" itemprop="dateCreated datePublished" datetime="2022-06-02T00:47:38+09:00">2022-06-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/http/" itemprop="url" rel="index"><span itemprop="name">http</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="메서드"><a href="#메서드" class="headerlink" title="메서드"></a>메서드</h1><p>HTTP 메서드에 메서드에 종류와 주요 특징, 사용예시를 정리한다;</p>
+<h2 id="주요-메서드"><a href="#주요-메서드" class="headerlink" title="주요 메서드"></a>주요 메서드</h2><table>
+<thead>
+<tr>
+<th>메서드</th>
+<th>동작</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>GET</td>
+<td>리소스 조회</td>
+</tr>
+<tr>
+<td>POST</td>
+<td>요청 데이터 처리, 주로 등록에 사용</td>
+</tr>
+<tr>
+<td>PUT</td>
+<td>리소스 대체, 해당 리소스가 없으면 생성</td>
+</tr>
+<tr>
+<td>PATCH</td>
+<td>리소스 부분 변경</td>
+</tr>
+<tr>
+<td>DELETE</td>
+<td>리소스 삭제</td>
+</tr>
+</tbody></table>
+<h2 id="기타-메서드"><a href="#기타-메서드" class="headerlink" title="기타 메서드"></a>기타 메서드</h2><table>
+<thead>
+<tr>
+<th>메서드</th>
+<th>동작</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>HEAD</td>
+<td>GET 과 동일하지만, 메시지 부분을 제외한, 헤더와 상태 정보만</td>
+</tr>
+<tr>
+<td>OPTIONS</td>
+<td>대상 리소스에 대한 통신 가능 메서드 정보</td>
+</tr>
+<tr>
+<td>CONNECT</td>
+<td>대상 자원으로 식별되는 서버에 대한 터널을 설정</td>
+</tr>
+<tr>
+<td>TRACE</td>
+<td>대상 리소스에 대한 경로를 추적</td>
+</tr>
+</tbody></table>
+<h2 id="Methods"><a href="#Methods" class="headerlink" title="Methods"></a>Methods</h2><p>메서드에 대한 상세 설명</p>
+<h3 id="1-GET"><a href="#1-GET" class="headerlink" title="1. GET"></a>1. GET</h3><ul>
+<li>리소스 조회</li>
+<li>서버에 저달하고 싶은 데이터 query 를 통해서 전달 (<a target="_blank" rel="noopener" href="http://expamle.com/?name=koo&amp;age=25">http://expamle.com?name=koo&amp;age=25</a>)</li>
+<li>메시지 바디를 사용해서 데이터를 전달할 수 있지만, 지원하지 않는 곳이 많아서 권장하지 않음. (최신 스펙에서는 막지 않음)</li>
+</ul>
+<h3 id="2-POST"><a href="#2-POST" class="headerlink" title="2. POST"></a>2. POST</h3><p>body 에 데이터를 넣어서 서버에게 특정 프로세스를 처리하게 하는 메서드, 보통은 신규 리소스를 등록하는 일을 한다.</p>
+<h4 id="주요-쓰임"><a href="#주요-쓰임" class="headerlink" title="주요 쓰임"></a>주요 쓰임</h4><ol>
+<li>새 리소스 생성</li>
+<li>요청 데이터 처리(프로세스)<ul>
+<li>배달 시작 같은 프로세스의 시작 같은 의미에서도</li>
+<li>post 결과로 새로운 리소스가 생성되지 않을 수 도 있음.</li>
+<li>컨트롤 URI (POST /orders/(orderId)/start-delevery) 실무에서는 리소스 가지고만 URI 를 설계하기는 불가하기 때문에 컨트롤 url 를 만들기도 함.</li>
+</ul>
+</li>
+<li>다른 메서드로 처리하기 애매한 경우<ul>
+<li>JSON 으로 조회 데이터를 넘겨야 하는데, GET 메서드를 사용하기 어려운 경우</li>
+<li>POST 에 바디 넣어서 보냄</li>
+</ul>
+</li>
+</ol>
+<p>하지만, 조회 데이터는 되도록이면 GET 을 쓰는게 낳음. 캐싱 하는등의 작업을 할 수 있기 때문에</p>
+<h3 id="3-PUT"><a href="#3-PUT" class="headerlink" title="3. PUT"></a>3. PUT</h3><h4 id="리소스를-대체"><a href="#리소스를-대체" class="headerlink" title="리소스를 대체"></a>리소스를 대체</h4><ul>
+<li>리소스가 있으면 완전히 대체</li>
+<li>리소스가 없으면 생성</li>
+<li>쉽게 이야기해서 덮어버림.</li>
+</ul>
+<h4 id="중요-클라이언트가-리소스-전체를-알아서-식별함"><a href="#중요-클라이언트가-리소스-전체를-알아서-식별함" class="headerlink" title="중요! 클라이언트가 리소스 전체를 알아서 식별함"></a>중요! 클라이언트가 리소스 전체를 알아서 식별함</h4><p>post 는 리소스를 전체를 몰라도 생성하거나 프로스를 처리할 수 있음.</p>
+<ul>
+<li>ex) post /members</li>
+</ul>
+<p>put 은 리소스 전체를 식별해야 함.</p>
+<ul>
+<li>ex ) put /members/100</li>
+</ul>
+<h3 id="4-PATCH"><a href="#4-PATCH" class="headerlink" title="4. PATCH"></a>4. PATCH</h3><h4 id="리소스-부분-변경"><a href="#리소스-부분-변경" class="headerlink" title="리소스 부분 변경"></a>리소스 부분 변경</h4><p>POST 도 똑같은 작업을 할 수 있다. 만약 PATCH 가 지원 안되는 서버에 경우 POST 를 사용해서 처리하면 된다.</p>
+<h3 id="5-DELETE"><a href="#5-DELETE" class="headerlink" title="5. DELETE"></a>5. DELETE</h3><p>리소스를 제거한다.</p>
+<br />
+
+<h2 id="HTTP-메서드-속성"><a href="#HTTP-메서드-속성" class="headerlink" title="HTTP 메서드 속성"></a>HTTP 메서드 속성</h2><ul>
+<li>안전(Safe Methods)</li>
+<li>멱등(Idempotent Methods)</li>
+<li>캐시 가능(Cacheable Methods)</li>
+</ul>
+<h3 id="안전-Safe-Methods"><a href="#안전-Safe-Methods" class="headerlink" title="안전(Safe Methods)"></a>안전(Safe Methods)</h3><p>호출해도 리소스를 변경하지 않는 메서드를 안전한 메서드라고 한다.</p>
+<p>Ex) → GET, HEAD</p>
+<h3 id="멱등-Idempotent"><a href="#멱등-Idempotent" class="headerlink" title="멱등(Idempotent)"></a>멱등(Idempotent)</h3><p>여러번 호출해도 항상 결과가 같은 메서드를 멱등하다고 한다.</p>
+<ul>
+<li>GET: 여러번 조호하든 결과가 같다.</li>
+<li>PUT: 결과를 대체하기 때문에 최종 결과는 같다. 덮어씌기 때문에</li>
+<li>DELETE: 결과를 삭제한다. 여려번 해도 결과는 같다.</li>
+<li>POST: 멱등이 아니다! 두번 호출하면 같은 결과가 두면 발생함.</li>
+</ul>
+<h4 id="활용"><a href="#활용" class="headerlink" title="활용"></a>활용</h4><ul>
+<li>자동 복구 매커니즘</li>
+<li>서버가 TIMEOUT 등으로 정상 응답을 못주었을때, 클라이언트가 같은 요청을 다시 해도 되는가? 에 판단 근거가 됨.</li>
+</ul>
+<p>Q ) 만약 재요청 중간에 다른 곳에서 리소스를 변경해 버리면?</p>
+<ul>
+<li>멱등은 외부 요인으로 중간에 리소스가 변경되는 것 까지는 고려하지 않는다.</li>
+</ul>
+<h3 id="캐시-가능-Cacheable"><a href="#캐시-가능-Cacheable" class="headerlink" title="캐시 가능 (Cacheable)"></a>캐시 가능 (Cacheable)</h3><ul>
+<li>응답 결과 리소스를 캐시해서 사용해도 되는가?</li>
+<li>GET, HEAD, POST, PATCH 캐시 가능</li>
+<li>실제로는 GET, HEAD 정도만 캐시로 사용 (키가 같아야 하는데)<ul>
+<li>POST, PATCH 는 본문 내용까지 캐시 키로 고려해야 하는데 구현이 쉽지 않음.</li>
+</ul>
+</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/http/" rel="tag"># http</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/05/24/DesignPattern/unca/factory%20pattern/" rel="prev" title="">
+                  <i class="fa fa-chevron-left"></i> 
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">JayoonKoo</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

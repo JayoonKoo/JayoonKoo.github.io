@@ -85,7 +85,7 @@
         <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
         <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">21</span></a></li>
         <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">17</span></a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">156</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">158</span></a></li>
   </ul>
 </nav>
 
@@ -129,7 +129,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">156</span>
+          <span class="site-state-item-count">158</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -180,6 +180,272 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/08/06/OS/210727-%EC%8A%A4%EC%BC%80%EC%A5%B4%EB%A7%81%EC%83%81%ED%83%9C%EA%B8%B0%EB%B0%98/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JayoonKoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="티끌모아 태산">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/08/06/OS/210727-%EC%8A%A4%EC%BC%80%EC%A5%B4%EB%A7%81%EC%83%81%ED%83%9C%EA%B8%B0%EB%B0%98/" class="post-title-link" itemprop="url">스케쥴링상태기반</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-08-06 22:28:10" itemprop="dateCreated datePublished" datetime="2021-08-06T22:28:10+09:00">2021-08-06</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-09-12 23:50:45" itemprop="dateModified" datetime="2021-09-12T23:50:45+09:00">2021-09-12</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/CS/" itemprop="url" rel="index"><span itemprop="name">CS</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="상태-기반-스케쥴링"><a href="#상태-기반-스케쥴링" class="headerlink" title="상태 기반 스케쥴링"></a>상태 기반 스케쥴링</h1><h2 id="프로세스-상태"><a href="#프로세스-상태" class="headerlink" title="프로세스 상태"></a>프로세스 상태</h2><img src="/images/imgs/210727-스케쥴링상태기반/1.png">
+
+<ul>
+<li>running state: 현재 CPU에서 실행 중인 상태</li>
+<li>ready state : CPU 에서 실행 가능 상태 (실행 대기 상태)</li>
+<li>block state: 특정 이벤트 발생 대기 상태 (파일을 다 읽었다!)</li>
+</ul>
+<p>프로세스 생성과 종료는 짧은 시간 동안 발생.</p>
+<p>종료의 경우 실행하면서 갖고 있던 리소스를 해제하는 과정이라고 생각할 수 있다.</p>
+<br/>
+
+<h2 id="프로세스-상태간-관계"><a href="#프로세스-상태간-관계" class="headerlink" title="프로세스 상태간 관계"></a>프로세스 상태간 관계</h2><img src="/images/imgs/210727-스케쥴링상태기반/2.png">
+
+<ol>
+<li>process 가 특정 특정 cpu 사용아 아닌 다른 작업을 수행해야 하는 상태가 됨. 완료 이벤트를 기다리는 상태</li>
+<li>scheduler 가 실행가능한 프로세스 중에서 하나를 골라서 실행 시킴.</li>
+<li>시분할 시스템과 같은 시스템에서 scheduler가 실행 중인 프로세스를 다른 프로세스에 실행을 위해서 ready 상태로 바꿈.</li>
+<li>block 상태에 있는 프로세스가 작업을 완료 후 (완료 이벤트를 받고) ready 상태로 변화.</li>
+</ol>
+<p>but, 단순한 상태만 가지고서 어떻게 스케쥴링을 하지? ready 상태가 여러개일 때에는 어떤걸 선택해야 할까?</p>
+<br/>
+
+<h2 id="상태별-큐를-만들자"><a href="#상태별-큐를-만들자" class="headerlink" title="상태별 큐를 만들자."></a>상태별 큐를 만들자.</h2><p>큐 : 앞 뒤 로 본다.<br>초기 상태</p>
+<ul>
+<li>ready state queue: 1, 2, 3</li>
+<li>runnig state queue</li>
+<li>block state queue</li>
+</ul>
+<img src="/images/imgs/210727-스케쥴링상태기반/3.png">
+
+<p>cpu가 아무것도 실행되고 있지 않은 상태를 idle 상태라고 한다.</p>
+<p>상태 별 큐를 생각하면서 어떻게 돌아갈지 생각해 보기.</p>
+<p><strong>결과</strong> [1, 2, 3, 1, 3, 2, idle, idle, 3]</p>
+<br/>
+
+<h2 id="선점형과-비선점형-스케쥴러"><a href="#선점형과-비선점형-스케쥴러" class="headerlink" title="선점형과 비선점형 스케쥴러"></a>선점형과 비선점형 스케쥴러</h2><p>선점형 스케쥴러는 프로세스가 끝나거나 block 상태가 되지 않더라도 스케쥴러가 ready 상태로 바꾸고 다른 프로세스를 실행시키는 것이 가능한 스케쥴러이다.</p>
+<p>비선점형 스케쥴러는 프로세스가 block 상태가 되거나 끝나지 않으면 다른 프로세스를 실행 시키는것이 불가능한 스케쥴러이다.</p>
+<p>시분할 시스템을 구현하려면 선점형 스케쥴러를 구현할 수 있어야 했는데, 초기에 운영체제는 선점형 스케쥴러 구현의 어려움이 있었다.</p>
+<h3 id="선점형과-비선점형의-차이"><a href="#선점형과-비선점형의-차이" class="headerlink" title="선점형과 비선점형의 차이"></a>선점형과 비선점형의 차이</h3><p>위에 예시에서 선점형과 비선점형을 나눠서 생각해봄.</p>
+<p>이번엔 시분할을 2칸으로 봄. 왜 이렇게 되는지 생각해 보자.</p>
+<img src="/images/imgs/210727-스케쥴링상태기반/4.png">
+
+<p>비선점형은 시스템 응답시간이 길어짐.</p>
+<br/>
+
+<h2 id="스케쥴러의-구분"><a href="#스케쥴러의-구분" class="headerlink" title="스케쥴러의 구분"></a>스케쥴러의 구분</h2><ul>
+<li>FIFO(FCFS), SJF, Priority-based는 어떤 프로세스를 먼저 실행시킬지에 대한 알고리즘 (비선점형에 가까움)</li>
+<li>RoundRobin 은 시분할 시스템을 위한 기본 알고리즘 (선점형 스케쥴러)</li>
+</ul>
+<p>보통 여러가지 알고리즘을 섞어서 사용하는것이 일반적임</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/08/06/OS/210727-%EC%8A%A4%EC%BC%80%EC%A5%B4%EB%A7%81%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98%EA%B8%B0%EB%B3%B8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JayoonKoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="티끌모아 태산">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/08/06/OS/210727-%EC%8A%A4%EC%BC%80%EC%A5%B4%EB%A7%81%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98%EA%B8%B0%EB%B3%B8/" class="post-title-link" itemprop="url">스케쥴링알고리즘기본</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-08-06 22:28:10" itemprop="dateCreated datePublished" datetime="2021-08-06T22:28:10+09:00">2021-08-06</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-09-12 23:50:45" itemprop="dateModified" datetime="2021-09-12T23:50:45+09:00">2021-09-12</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/CS/" itemprop="url" rel="index"><span itemprop="name">CS</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="스케쥴링-알고리즘-기본"><a href="#스케쥴링-알고리즘-기본" class="headerlink" title="스케쥴링 알고리즘 기본"></a>스케쥴링 알고리즘 기본</h1><h2 id="프로세스란"><a href="#프로세스란" class="headerlink" title="프로세스란"></a>프로세스란</h2><p>실행중인 프로그램을 프로세스라고 한다.</p>
+<p>메모리에 올려져서 실행중인 프로그램이라고 보면 된다.</p>
+<p>응용 프로그램은 =! 프로세스</p>
+<p>응용 프로그램은 여러개의 프로세스의 조합이기 때문이다.</p>
+<br/>
+
+<h2 id="스케쥴러와-프로세스"><a href="#스케쥴러와-프로세스" class="headerlink" title="스케쥴러와 프로세스"></a>스케쥴러와 프로세스</h2><p>프로세스 실행을 관리 하는 것을 스케쥴러라고 한다.</p>
+<h3 id="스케쥴링-알고리즘"><a href="#스케쥴링-알고리즘" class="headerlink" title="스케쥴링 알고리즘"></a>스케쥴링 알고리즘</h3><p>어느 순서대로 프로세스를 실행시킬까?</p>
+<p>특정한 목표를 잡고 계획을 세우는 것</p>
+<br/>
+
+<h2 id="FIFO-스케쥴러"><a href="#FIFO-스케쥴러" class="headerlink" title="FIFO 스케쥴러"></a>FIFO 스케쥴러</h2><p>프로세스가 온전히 CPU만 사용하는 작업이라고 가정한다.</p>
+<img src="/images/imgs/210727-스케쥴링알고리즘기본/1.png">
+
+<p>먼저 요청이 들어오면 먼저 실행 시킨다.</p>
+<p>요청은 자료 구조중 큐와 같다.</p>
+<img src="/images/imgs/210727-스케쥴링알고리즘기본/2.png">
+  
+<ol>
+<li>1번 프로세스 실행(1초)</li>
+<li>2번 실행 (3초)</li>
+<li>3번 프로세스 실행(1초)</li>
+</ol>
+<p>가장 간단한 스케쥴러 (배치 처리 시스템)</p>
+<p>FCFS 스케쥴러라고도 불림.</p>
+<br/>
+
+<h2 id="최단-작업-우선-SJF-스케쥴러"><a href="#최단-작업-우선-SJF-스케쥴러" class="headerlink" title="최단 작업 우선(SJF) 스케쥴러"></a>최단 작업 우선(SJF) 스케쥴러</h2><p>Shortest Job First : 가장 프로세스 실행시간이 짧은 것부터 실행함.</p>
+<p>사실 일반적인 상황에서 프로세스 실행시간을 예측하는것은 불가능에 가까움.</p>
+<p>이상적인 스케쥴러라고 할 수 있고 특별한 상황에서 사용함.</p>
+<h3 id="처리-순서-비교"><a href="#처리-순서-비교" class="headerlink" title="처리 순서 비교"></a>처리 순서 비교</h3><img src="/images/imgs/210727-스케쥴링알고리즘기본/3.png">
+
+<br/>  
+<br/>
+
+<h2 id="우선순위-기반-스케쥴러"><a href="#우선순위-기반-스케쥴러" class="headerlink" title="우선순위 기반 스케쥴러"></a>우선순위 기반 스케쥴러</h2><p>Priority-Based : 우선순위에 기반한 스케쥴러</p>
+<p>우선순위는 정적으로 미리 정하는 경우도 있고, 스케쥴러가 상황에 따라 동적으로 정하는 경우도 있다.</p>
+<h3 id="처리-순서-비교-1"><a href="#처리-순서-비교-1" class="headerlink" title="처리 순서 비교"></a>처리 순서 비교</h3><img src="/images/imgs/210727-스케쥴링알고리즘기본/4.png">
+
+<br/>
+<br/>
+
+<h2 id="Round-Robin-스케쥴러"><a href="#Round-Robin-스케쥴러" class="headerlink" title="Round Robin 스케쥴러"></a>Round Robin 스케쥴러</h2><p>시분할 시스템을 적용하여 생각한다.</p>
+<p>Round Robin Read Queue를 가져서 실행할 프로세스를 큐에 넣는다.</p>
+<p>큐에서 요청을 하나 빼고 실행한 프로세스가 아직 끝나지 않았다면 다시 큐에다가 해당 프로세스를 넣는다.</p>
+<p>모든 프로세스가 끝날때까지 반복한다.</p>
+<img src="/images/imgs/210727-스케쥴링알고리즘기본/5.png" width="500">
+
+<h3 id="처리-순서"><a href="#처리-순서" class="headerlink" title="처리 순서"></a>처리 순서</h3><img src="/images/imgs/210727-스케쥴링알고리즘기본/6.png" >
+
+<h4 id="RoundRobin-Ready-Queue"><a href="#RoundRobin-Ready-Queue" class="headerlink" title="RoundRobin Ready Queue"></a>RoundRobin Ready Queue</h4><ul>
+<li>3 2 1 (1번 꺼내서 실행, 1번 끝)</li>
+<li>3 2 (2번 꺼내서 실행 , 2번은 아직 안끝남)</li>
+<li>2 3 (3번 꺼내서 실행 , 3번은 아직 안끝남)</li>
+<li>3 2 (2번 꺼내서 실행, 2번은 아직 안끝남)</li>
+<li>2 3 (3번 꺼내서 실행, 3번 끝)</li>
+<li>2 ( 2번 꺼내서 실행, 2번 끝)</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 

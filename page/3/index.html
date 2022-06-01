@@ -85,7 +85,7 @@
         <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
         <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">21</span></a></li>
         <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">17</span></a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">156</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">158</span></a></li>
   </ul>
 </nav>
 
@@ -129,7 +129,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">156</span>
+          <span class="site-state-item-count">158</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -180,6 +180,318 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2022/02/28/cleanCode/229228-%ED%95%A8%EC%88%98/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JayoonKoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="티끌모아 태산">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/02/28/cleanCode/229228-%ED%95%A8%EC%88%98/" class="post-title-link" itemprop="url">함수</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2022-02-28 09:08:03 / Modified: 09:08:07" itemprop="dateCreated datePublished" datetime="2022-02-28T09:08:03+09:00">2022-02-28</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/cleanCode/" itemprop="url" rel="index"><span itemprop="name">cleanCode</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>함수를 잘 만드는법을 살펴본다. 함수에 어떤 속성을 부여해야 처음 읽는 사람이 프로그램 내부를 직관적으로 파악할 수 있을까? </p>
+<h2 id="작게-만들어라"><a href="#작게-만들어라" class="headerlink" title="작게 만들어라"></a>작게 만들어라</h2><p>작은 함수가 좋다. 각 함수는 명백히 하나의 이야기를 표현해야 한다. </p>
+<h3 id="블록과-들여쓰기"><a href="#블록과-들여쓰기" class="headerlink" title="블록과 들여쓰기"></a>블록과 들여쓰기</h3><p>블록 구조를 갖는 코드는 한줄 이어야 한다. 중첩 구조가 생길만큼 함수가 커져서는 안된다. 들여쓰기 수준을 1단이나 2단 정도로 유지한다. </p>
+<h2 id="한가지만-해라"><a href="#한가지만-해라" class="headerlink" title="한가지만 해라"></a>한가지만 해라</h2><p>함수는 한 가지를 해야 한다. 그 한 가지를 잘 해야 한다. 그 한 가지만을 해야 한다. 함수를 판단할때 지정된 함수 이름 아래에서 추상화 수준을 판단한다. </p>
+<p>함수를 만드는 이유는 큰 개념을 여러 단계로 나눠 수행하기 위해서이다. 추상화 수준이 둘 이상이라면 더 축소 가능할 수 있다. 따라서 한 가지만 하는지 판단하는 방법이 하나 더 있다. 단순히 다른 표현이 아니라 의미 있는 이름으로 다른 함수를 추출할 수 있다면 그 함수는 여러 작업을 하는 셈이다. </p>
+<h2 id="함수당-추상화-수준은-하나로"><a href="#함수당-추상화-수준은-하나로" class="headerlink" title="함수당 추상화 수준은 하나로"></a>함수당 추상화 수준은 하나로</h2><p>함수가 확실히 한 가지 작업만 하려면 함수 내 모든 문장의 추상화 수준이 동일해야 한다. 한 함수 내의 추상화 수준을 섞으면 코드를 읽는 사람이 근본 개념인지 세부사항인지 구분하기 어려워 진다. 이렇게 뒤섞기 시작하면 점점더 엉망이 된다. </p>
+<h3 id="위에서-아래로-코드-읽기-내려가기-규칙"><a href="#위에서-아래로-코드-읽기-내려가기-규칙" class="headerlink" title="위에서 아래로 코드 읽기 : 내려가기 규칙"></a>위에서 아래로 코드 읽기 : 내려가기 규칙</h3><p>프로그램을 위에서 아래로 읽으면서 함수 추상화 수준이 한다계씩 낮아지게 작성해야 한다. TO 문단을 읽듯이 프로그램이 읽혀야 한다는 것인데 각 TO 문단은 이어지는 아래 단계의 TO 문단(~ 하려면) 을 참고한다. </p>
+<p>ex ) </p>
+<ul>
+<li>TO 설정 페이지와 해제 페이지를 포함하려면, 설정 페이지를 포함하고, 테스트 페이지 내용을 포함하고, 해제 페이지를 포함한다.<ul>
+<li>TO 설정 페이지를 포함하려면 , 슈트이면 슈트 설정 페이지를 포함한 후 일반 설정 페이지를 포함한다.</li>
+<li>TO 슈트 설정 페이지를 포함하려면, 부모 계층에서 “SuiteSetUp” 페이지를 찾아 include 문과 페이지 경로를 추가한다.</li>
+<li>TO 부모 계층을 검색하려면 …</li>
+</ul>
+</li>
+</ul>
+<p>위에서 아래로 TO 문단을 읽어내려 가듯이 코드를 구현하면 추상화 수준을 일관되게 유지하기 쉬워진다. </p>
+<h2 id="Switch-문"><a href="#Switch-문" class="headerlink" title="Switch 문"></a>Switch 문</h2><p>Switch 문은 기본적으로 N가지를 처리하기 때문에 한가지 일만 하기 어렵다. 하지만 Switch 문을 사용하지 않을 수 도 없다. 하지만 각 switch 문을 저차원 클래스에 숨기고 절대 반복하지 않은 방법이 있다. </p>
+<p>직원 유형에 따라 다른 값을 계산해 반환하는 함수이다. 좋지 않은 예시 : ❌</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">function calculatePay(employee: Employee) &#123;</span><br><span class="line">  switch (employee.type) &#123;</span><br><span class="line">    case &#x27;COMMISSIONED&#x27;:</span><br><span class="line">      return calculateCommissionedPay(employee);</span><br><span class="line">    case &#x27;HOURLY&#x27;:</span><br><span class="line">      return calculateHourlyPay(employee);</span><br><span class="line">    case &#x27;SALARIED&#x27;:</span><br><span class="line">      return calculateSalariedPay(employee);</span><br><span class="line">    default:</span><br><span class="line">      throw new Error(employee.type);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>다음과 같은 문제가 있다.</p>
+<ol>
+<li>함수가 길다. 새 직원 유형을 추가하면 더 길어진다.</li>
+<li>한가지 작업만 수행하지 않는다.</li>
+<li>SRP(Single Responsibility Principle) 단일 책임 원칙을 위반한다. </li>
+<li>OCP(Open Closed Principle): 개방 폐쇄 원칙을 위반한다. ( 소프트웨어 개체는 확장에 대해 열려 있어야 하고, 수정에 대해서는 닫혀 있어야 한다.) → 새 직원을 추가할때마다 코드를 변경해야 하기 때문이다. </li>
+<li>가장 큰 문제는 위 함수와 구조가 동일한 함수가 무한정 존재한다는 사실이다. </li>
+</ol>
+<p>이문제를 해결하기 위해 switch 을 추상 팩토리(ABSTRACT FACTORY) 에 숨긴다. Switch 문을 통해 적절한 Employee 파생 클래스의 인스턴스를 생성한다. 여러가지 함수는 Employee 인터페이스를 거쳐 호출되게 한다. 그러면 다형성으로 인해 실제 파생 클래스의 함수가 실행된다.</p>
+<p>좋은 예 : ✅</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">abstract class Employee &#123;</span><br><span class="line">  abstract isPayday(): boolean;</span><br><span class="line">  abstract calculatePay(): Money;</span><br><span class="line">  abstract deleverPay(pay: Money): void;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">interface EmployeeFactory &#123;</span><br><span class="line">  makeEmployee(record: EmployeeRecord): Employee;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class EmployeeFactoryImpl implements EmployeeFactory &#123;</span><br><span class="line">  makeEmployee(record: EmployeeRecord): Employee &#123;</span><br><span class="line">    switch (record.type) &#123;</span><br><span class="line">      case &#x27;COMMISSIONED&#x27;:</span><br><span class="line">        return new CommissionedEmployee(record);</span><br><span class="line">      case &#x27;HOURLY&#x27;:</span><br><span class="line">        return new HourlEmployee(record);</span><br><span class="line">      case &#x27;SALARIED&#x27;:</span><br><span class="line">        return new SalariedEmployy(record);</span><br><span class="line">      default:</span><br><span class="line">        throw new Error(record.type);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Siwtch 문을 다형적 객체를 생성하는 코드로 숨겨 버린다. </p>
+<h2 id="서술적인-이름을-사용하라"><a href="#서술적인-이름을-사용하라" class="headerlink" title="서술적인 이름을 사용하라!"></a>서술적인 이름을 사용하라!</h2><p>길고 서술적인 이름이 길고 서술적인 주석보다 좋다. 함수 이름만 보고 동작을 예측할수 있다면 좋은 코드라고 할수 있다. 단 이름을 붙일 때는 일관성이 있어야 한다. 모듈 내에서 함수 이름은 같은 문구, 명사 동사를 사용한다. includeSetupAndTeardownPages, IncludeSetupPages, includeSuiteSetuppage, includeSetupPage 등은 좋은 예이다. </p>
+<h2 id="함수-인수"><a href="#함수-인수" class="headerlink" title="함수 인수"></a>함수 인수</h2><p>함수의 인수는 적을수록 좋다. 보통 2개 정도까진 괜찮고, 4개 이상부터는 특별한 이유가 필요하다. 인수가 있는것보다 인수가 없는것이 코드를 읽는사람이 이해하기 쉽다. 인수가 많아지면 테스트도 어렵다. 2개이상의 인수를 받는 함수를 테스트 하는것은 테스트를 어렵게 만든다. 최선은 입력 인수가 없는 경우이며, 차선은 입력 인수가 1개뿐인 경우이다. </p>
+<h3 id="많이-쓰는-단항-형식"><a href="#많이-쓰는-단항-형식" class="headerlink" title="많이 쓰는 단항 형식"></a>많이 쓰는 단항 형식</h3><p>함수에 인수 1개를 넘기는 가장 흔한 경우는 두가지이다. </p>
+<ol>
+<li>인수에 질문을 던지는 경우이다. <code>fileExists(&quot;myfile&quot;): boolean</code> </li>
+<li>인수를 뭔가로 변환해 결과를 반환하는 경우 <code>parseInt(&quot;2&quot;): number</code></li>
+</ol>
+<p>이 두경우는 독자가 당여하게 받아들인다. </p>
+<h3 id="플래그-인수"><a href="#플래그-인수" class="headerlink" title="플래그 인수"></a>플래그 인수</h3><p>플래그 인수는 좋지 않다. 플래그 인수에 따라서 동작이 달라진 다는 의미가 함수에서 두가지를 한다는 의미이기 때문이다. 함수를 분리하는 것이 좋다. </p>
+<p>redux 관련해서 작성했던 좋지 않은 예 : ❌</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"> export function fetchThunk&lt;T, I extends &#123;[key: string]: InitialState&lt;T&gt;&#125;&gt;(</span><br><span class="line">  fetch: AsyncThunk&lt;T, string, &#123;&#125;&gt;,</span><br><span class="line">  key: keyof I,</span><br><span class="line">  keep: boolean, // flag 인수</span><br><span class="line">  handler?: (state: I, action: PayloadAction&lt;T&gt;) =&gt; void, // handler fulfilled 이후에 </span><br><span class="line">) &#123;</span><br><span class="line">  return &#123;</span><br><span class="line">    [fetch.pending.type]: (state: I) =&gt; &#123;</span><br><span class="line">      state[key].loading = true;</span><br><span class="line">      state[key].data = keep ? state[key].data : null; // flag 인수에 사용</span><br><span class="line">      state[key].error = null;</span><br><span class="line">    &#125;,</span><br><span class="line">    [fetch.fulfilled.type]: (state: I, action: PayloadAction&lt;T&gt;) =&gt; &#123;</span><br><span class="line">      state[key].loading = false;</span><br><span class="line">      state[key].data = action.payload;</span><br><span class="line">      handler &amp;&amp; handler(state, action);</span><br><span class="line">    &#125;,</span><br><span class="line">    [fetch.rejected.type]: (</span><br><span class="line">      state: I,</span><br><span class="line">      action: ReturnType&lt;typeof fetch.rejected&gt;,</span><br><span class="line">    ) =&gt; &#123;</span><br><span class="line">      state[key].loading = false;</span><br><span class="line">      state[key].error = action.error;</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>keep : 이라는 flag 인수를 두어서 데이터를 유지할지 선택하였다.함수를 분리하고 이름도 더 길게 서술하도록 한다. </p>
+<p>handler 를 받아서 fulfilled 이후에 실행할 함수를 콜백으로 받았는데 이또한  handler가 있는 함수와 핸들러가 없는 함수로 분리한다. </p>
+<p>좋은 예 : ✅</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br></pre></td><td class="code"><pre><span class="line">export function fetchDataKeepingPrev&lt;T, I extends &#123;[key: string]: InitialState&lt;T&gt;&#125;&gt;(</span><br><span class="line">  fetch: AsyncThunk&lt;T, string, &#123;&#125;&gt;,</span><br><span class="line">  key: keyof I,</span><br><span class="line">) &#123;</span><br><span class="line">  return &#123;</span><br><span class="line">    [fetch.pending.type]: (state: I) =&gt; &#123;</span><br><span class="line">      state[key].loading = true;</span><br><span class="line">      state[key].data = state[key].data // data kepp</span><br><span class="line">      state[key].error = null;</span><br><span class="line">    &#125;,</span><br><span class="line">    [fetch.fulfilled.type]: (state: I, action: PayloadAction&lt;T&gt;) =&gt; &#123;</span><br><span class="line">      state[key].loading = false;</span><br><span class="line">      state[key].data = action.payload;</span><br><span class="line">    &#125;,</span><br><span class="line">    [fetch.rejected.type]: (</span><br><span class="line">      state: I,</span><br><span class="line">      action: ReturnType&lt;typeof fetch.rejected&gt;,</span><br><span class="line">    ) =&gt; &#123;</span><br><span class="line">      state[key].loading = false;</span><br><span class="line">      state[key].error = action.error;</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">export function fetchData&lt;T, I extends &#123;[key: string]: InitialState&lt;T&gt;&#125;&gt;(</span><br><span class="line">  fetch: AsyncThunk&lt;T, string, &#123;&#125;&gt;,</span><br><span class="line">  key: keyof I,</span><br><span class="line">) &#123;</span><br><span class="line">  return &#123;</span><br><span class="line">    [fetch.pending.type]: (state: I) =&gt; &#123;</span><br><span class="line">      state[key].loading = true;</span><br><span class="line">      state[key].data = null // null </span><br><span class="line">      state[key].error = null;</span><br><span class="line">    &#125;,</span><br><span class="line">    [fetch.fulfilled.type]: (state: I, action: PayloadAction&lt;T&gt;) =&gt; &#123;</span><br><span class="line">      state[key].loading = false;</span><br><span class="line">      state[key].data = action.payload;</span><br><span class="line">    &#125;,</span><br><span class="line">    [fetch.rejected.type]: (</span><br><span class="line">      state: I,</span><br><span class="line">      action: ReturnType&lt;typeof fetch.rejected&gt;,</span><br><span class="line">    ) =&gt; &#123;</span><br><span class="line">      state[key].loading = false;</span><br><span class="line">      state[key].error = action.error;</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">export function fetchDataKeepingPrevWithHandler&lt;T, I extends &#123;[key: string]: InitialState&lt;T&gt;&#125;&gt;(</span><br><span class="line">  fetch: AsyncThunk&lt;T, string, &#123;&#125;&gt;,</span><br><span class="line">  key: keyof I,</span><br><span class="line">	handler?: (state: I, action: PayloadAction&lt;T&gt;) =&gt; void,</span><br><span class="line">) &#123;</span><br><span class="line">  return &#123;</span><br><span class="line">    [fetch.pending.type]: (state: I) =&gt; &#123;</span><br><span class="line">      state[key].loading = true;</span><br><span class="line">      state[key].data = state[key].data // data kepp</span><br><span class="line">      state[key].error = null;</span><br><span class="line">    &#125;,</span><br><span class="line">    [fetch.fulfilled.type]: (state: I, action: PayloadAction&lt;T&gt;) =&gt; &#123;</span><br><span class="line">      state[key].loading = false;</span><br><span class="line">      state[key].data = action.payload;</span><br><span class="line">    &#125;,</span><br><span class="line">    [fetch.rejected.type]: (</span><br><span class="line">      state: I,</span><br><span class="line">      action: ReturnType&lt;typeof fetch.rejected&gt;,</span><br><span class="line">    ) =&gt; &#123;</span><br><span class="line">      state[key].loading = false;</span><br><span class="line">      state[key].error = action.error;</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">export function fetchDataWithHandler&lt;T, I extends &#123;[key: string]: InitialState&lt;T&gt;&#125;&gt;(</span><br><span class="line">  fetch: AsyncThunk&lt;T, string, &#123;&#125;&gt;,</span><br><span class="line">  key: keyof I,</span><br><span class="line">	handler?: (state: I, action: PayloadAction&lt;T&gt;) =&gt; void,</span><br><span class="line">) &#123;</span><br><span class="line">  return &#123;</span><br><span class="line">    [fetch.pending.type]: (state: I) =&gt; &#123;</span><br><span class="line">      state[key].loading = true;</span><br><span class="line">      state[key].data = null // null</span><br><span class="line">      state[key].error = null;</span><br><span class="line">    &#125;,</span><br><span class="line">    [fetch.fulfilled.type]: (state: I, action: PayloadAction&lt;T&gt;) =&gt; &#123;</span><br><span class="line">      state[key].loading = false;</span><br><span class="line">      state[key].data = action.payload;</span><br><span class="line">    &#125;,</span><br><span class="line">    [fetch.rejected.type]: (</span><br><span class="line">      state: I,</span><br><span class="line">      action: ReturnType&lt;typeof fetch.rejected&gt;,</span><br><span class="line">    ) =&gt; &#123;</span><br><span class="line">      state[key].loading = false;</span><br><span class="line">      state[key].error = action.error;</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>그런데 이렇게 작성하니 인수를 줄이기 위해서 중복된 함수가 너무 많아진 느낌이다. 함수를 작성하는 쪽에 수고로움과 사용하는 쪽에서에 편리함 중에 선택해야 하는 문제 같다. </p>
+<p>추가적으로 인수를 더 줄이기 위해서 FetchThunkData 라는 클래스를 만들어 key, fetch, keep 정도는 생성자에서 받아올 수 있을거 같다. 이렇게 하면 인스턴스에 이름으로 데이터를 유지할지를 명시하면 사용하는쪽에서 헷갈리지도 않고 함수도 중복되게 적지 않아도 될거 같다. </p>
+<p>개인적으로 생각한 예 : ❇️ <code>FetchThunkData</code> class</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">type FetchThunkDataConstructor&lt;T, S&gt; = &#123;</span><br><span class="line">  fetch: AsyncThunk&lt;T, string, &#123;&#125;&gt;;</span><br><span class="line">  keep: boolean;</span><br><span class="line">  key: string;</span><br><span class="line">  handler?: (state: S, action: PayloadAction&lt;T&gt;) =&gt; void;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">export class FetchThunkData&lt;T, S extends &#123;[key: string]: InitialState&lt;T&gt;&#125;&gt; &#123;</span><br><span class="line">  private fetch: AsyncThunk&lt;T, string, &#123;&#125;&gt;;</span><br><span class="line">  private keep: boolean;</span><br><span class="line">  private key: string;</span><br><span class="line">  private handler?: (state: S, action: PayloadAction&lt;T&gt;) =&gt; void;</span><br><span class="line"></span><br><span class="line">  constructor(&#123;fetch, keep, key, handler&#125;: FetchThunkDataConstructor&lt;T, S&gt;) &#123;</span><br><span class="line">    this.fetch = fetch;</span><br><span class="line">    this.keep = keep;</span><br><span class="line">    this.key = key;</span><br><span class="line">    this.handler = handler;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  private pendingReducer = (state: S) =&gt; &#123;</span><br><span class="line">    state[this.key].data = this.keep ? state[this.key].data : null;</span><br><span class="line">    state[this.key].loading = true;</span><br><span class="line">    state[this.key].error = null;</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  private fuflledReducer = (state: S, action: PayloadAction&lt;T&gt;) =&gt; &#123;</span><br><span class="line">    state[this.key].loading = false;</span><br><span class="line">    state[this.key].data = action.payload;</span><br><span class="line">    this.handler &amp;&amp; this.handler(state, action);</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  private rejectedReducer = (</span><br><span class="line">    state: S,</span><br><span class="line">    action: ReturnType&lt;typeof this.fetch.rejected&gt;,</span><br><span class="line">  ) =&gt; &#123;</span><br><span class="line">    state[this.key].loading = false;</span><br><span class="line">    state[this.key].error = action.error;</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  getFetchThunkReducer() &#123;</span><br><span class="line">    return &#123;</span><br><span class="line">      [this.fetch.pending.type]: this.pendingReducer,</span><br><span class="line">      [this.fetch.fulfilled.type]: this.fuflledReducer,</span><br><span class="line">      [this.fetch.rejected.type]: this.rejectedReducer,</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>사용하는 부분 : </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">const fetchThunkKeepDataNoHandler = new FetchThunkData(&#123;</span><br><span class="line">  fetch: fetchChallenges,</span><br><span class="line">  keep: true,</span><br><span class="line">  key: &#x27;challenges&#x27;,</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">const challengesSlice = createSlice(&#123;</span><br><span class="line">  name: &#x27;challenges&#x27;,</span><br><span class="line">  initialState,</span><br><span class="line">  reducers: &#123;&#125;,</span><br><span class="line">  extraReducers: fetchThunkKeepDataNoHandler.getFetchThunkReducer(),</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p><code>fetchThunkKeepDataNoHandler</code> 라른 인스턴스에 이름이 있기 때문에 data를 유지하하고 handler 가 없는 reducer를 반환함을 알 수 있다. </p>
+<p>또한, 생성자에서 필요한 인수를 받았기 때문에 <code>getFetchThunkReducer</code> 에서는 인수를 받지 않아도 된다. </p>
+<h3 id="이항-함수"><a href="#이항-함수" class="headerlink" title="이항 함수"></a>이항 함수</h3><p>이항 함수는 함수에 인자로 2개를 받는 함수이다. 2개의 인수가 한개의 값을 표현하기에 적합하거나, 자연적인 순서가 있는것이 아니라면 인자로 2개를 받는것은 1개를 받는것보다 이해하기 어렵다 (자연스러운 경우 ? <code>new Point(x, y)</code> 같은 경우, 인자 2개가 하나의 표인트를 표현하는것과 순서도 자연스럽다)</p>
+<p>인수가 2개인 경우가 반드시 나쁜 경우는 아니지만 줄일수 있도록 해야한다. 예를들어서 <code>writeField(outpurStream, name)</code> 인자에 순서를 기억하기 어렵기 때문에 <code>writeField(name)</code> 으로 줄이면 좋다. 이럴 경우에는 <code>OutputStream</code> 이라는 클래스를 만들고 멤버 변수로 <code>outputStrem</code> 을 갖고, <code>writeField(name)</code> 메서드를 구현하여 <code>outputStream.writeField(name)</code> 같이 호출할 수 있다. </p>
+<h3 id="삼항-함수"><a href="#삼항-함수" class="headerlink" title="삼항 함수"></a>삼항 함수</h3><p>인수가 3개인 함수는 인수가 2개인 함수보다 훨씬 더 이해하기 어렵다. 삼항 함수를 만들 때는 신중히 고려해야 한다.</p>
+<h3 id="인수-객체"><a href="#인수-객체" class="headerlink" title="인수 객체"></a>인수 객체</h3><p>인수가 2-3 개 필요하다면 일부로 독자적인 클래스 변수로 선언할 가능성을 짚어봐야 한다. </p>
+<p>좋지 않은 예 : ❌</p>
+<p><code>makeCircle(x: number, y: number, radius: number)</code></p>
+<p>좋은 예 : ✅</p>
+<p><code>makeCircle(center: Point, radius: number)</code></p>
+<p>인수로 객체를 넘기는 것이 눈속임 이라 생각할 수 있지만, 객체에는 이름을 담기 때문에 결국엔 어떤 개념을 전달하게 된다.그것이 코드를 읽는 사람들에게 이해하는데 더 큰 도움을 준다. </p>
+<p>자바스크립트에서 함수에 인수로 객체를 받으면 인수에 개념을 전달할수 있게됨으로 인수를 객체로 전달하도록 하는것이 좋다.</p>
+<h3 id="인수-목록"><a href="#인수-목록" class="headerlink" title="인수 목록"></a>인수 목록</h3><p>때로는 인수 개수가 가변적인 함수도 필요하다. 가변적인 인수를 갖는 함수는 사실상 2개의 인수를 받는 이항함수로 생각할 수 있다. <code>function sumFunction(arg1, ...argList)</code> </p>
+<h3 id="동사와-키워드"><a href="#동사와-키워드" class="headerlink" title="동사와 키워드"></a>동사와 키워드</h3><p>함수의 의도나 인수의 순서와 의도를 제대로 표현하려면 좋은 함수 이름이 필요하다. <code>write(name)</code> 함수는 곧바로 이해가 되는데 이름이 무엇이든 쓴다는 뜻으로 생각할 수 있기 때문이다. 더 나은 이름으로는 <code>wirteField(name)</code> 과 같이 사용할 수 있다. </p>
+<p>또는, 함수 이름에 키워드를 추가하는 방식을 사용할 수 있다. 이렇게 하면 인수에 순서를 기억할 필요 없이 함수에 이름으로 알 수 있게 된다. </p>
+<h2 id="부수-효과를-일으키지-마라"><a href="#부수-효과를-일으키지-마라" class="headerlink" title="부수 효과를 일으키지 마라."></a>부수 효과를 일으키지 마라.</h2><p>함수에서 부수효과가 일어나면 한가이 일을 하겠다고 한 함수가 사실은 그렇지 못한 것이 된다. </p>
+<p>안 좋은 예시 : ❌</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">class UserValidator &#123;</span><br><span class="line">  private cryptographer: Cryptographer;</span><br><span class="line"></span><br><span class="line">  constructor(cryptographer: Cryptographer) &#123;</span><br><span class="line">    this.cryptographer = cryptographer;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  checkPassword(userName: string, password: string): boolean &#123;</span><br><span class="line">    const user: User = UserGatewayImpl.findByName(userName);</span><br><span class="line">    if (user !== null) &#123;</span><br><span class="line">      const codePhrase = user.getPhraseEncodedByPassword();</span><br><span class="line">      const phrase = this.cryptographer.decrypt(codePhrase, password);</span><br><span class="line">      if (phrase === &#x27;Valid Password&#x27;) &#123;</span><br><span class="line">        Session.initialize();</span><br><span class="line">        return true;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return false;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>checkPassword</code> 가 패스워드를 확인해서 boolean 값을 반환한다고 생각하지만 실제로 안에서는 세션을 초기화 하는 일까지 하고 있는 것이다. 이럴경우 이름을 <code>checkPasswordAndSessionIntialize</code> 라고 바꾸는 것이 좋다. 그래도 합수가 한가지 일을 하게 한다는 원칙은 어긋나지만</p>
+<h3 id="부수효과-피하기"><a href="#부수효과-피하기" class="headerlink" title="부수효과 피하기"></a>부수효과 피하기</h3><p>사이드 이펙트를 일으키지 않기 위해서는 객체를 그대로 사용하는 것이 아니라 객체를 복사해서 새로운 객체를 만들고 변경하는 방법을 사용해야 한다. 또한 전역 변수를 변경시켜 전역 변수를 사용하는 다른 함수에 영향을 주면 안된다.</p>
+<h3 id="명령과-조회를-분리하라"><a href="#명령과-조회를-분리하라" class="headerlink" title="명령과 조회를 분리하라"></a>명령과 조회를 분리하라</h3><p>함수는 뭔가를 수행하거 답하거나 둘 중 하나만 해야한다. 둘다 하면 혼란을 초래한다.</p>
+<p>좋지 않은 예시 : ❌</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">function set(attribute: string, value: string): boolean &#123;</span><br><span class="line">  //...</span><br><span class="line">	return true</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">if (set(&#x27;name&#x27;, &#x27;koo&#x27;)) &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>작성한 함수는 객체에 속성에 지정한 value 로 설정하면 true 를 실패하면 false를 반환하는 함수이다. 그러나 if 문 안에 들어가면 해석이 다양해진다. 개발자는 동사로서 설정하라고 판단하고 함수를 작성했지만 사용하는 쪽에서는 설정되어 있다면으로 해석할 수 있다. 함수 선언부를 확인하고 나서야 객체에 설정하는 함수구나 생각하기 쉽상이다. 따라서 설정 되어 있다면을 함수로 따로 분리하는 것이 현명하다. </p>
+<p>좋은 예시 :  ✅</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">if (attrubuteExist(&#x27;name&#x27;)) &#123;</span><br><span class="line">  setAttribute(&#x27;name&#x27;, &#x27;koo&#x27;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>값을 설정하는 함수, 반환하는 함수를 분리하면 읽는 쪽에서 코드를 더 쉽게 이해할 수 있다.</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2022/02/01/cleanCode/220201-220201%20%EC%9D%98%EB%AF%B8%20%EC%9E%88%EB%8A%94%20%EC%9D%B4%EB%A6%84/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JayoonKoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="티끌모아 태산">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/02/01/cleanCode/220201-220201%20%EC%9D%98%EB%AF%B8%20%EC%9E%88%EB%8A%94%20%EC%9D%B4%EB%A6%84/" class="post-title-link" itemprop="url">220201 의미 있는 이름</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2022-02-01 16:07:55 / Modified: 16:08:03" itemprop="dateCreated datePublished" datetime="2022-02-01T16:07:55+09:00">2022-02-01</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/cleanCode/" itemprop="url" rel="index"><span itemprop="name">cleanCode</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="2-의미-있는-이름"><a href="#2-의미-있는-이름" class="headerlink" title="2. 의미 있는 이름"></a>2. 의미 있는 이름</h1><p>클린 코드를 읽고 공부한 내용을 타입스크립트로 정리해본 내용입니다. 개인적으로 공부한 내용이라 틀린점도 있을 수 있습니다. </p>
+<h2 id="의도를-분명히-밝혀라"><a href="#의도를-분명히-밝혀라" class="headerlink" title="의도를 분명히 밝혀라"></a>의도를 분명히 밝혀라</h2><p>변수나 함수 그리고 클래스의 이름은 다음과 같은 굵직한 질문에 모두 답해야 한다. 존재 이유는? 수행 기능은? 사용 방법은? 따로 주석이 필요하다면 의도를 분명히 드러내지 못햇다는 말이다. </p>
+<p><code>const d: number</code> ❌</p>
+<p><code>const daysSinceCreation: number</code> ✅</p>
+<p>코드의 함축되어 있는 정보를 독자로 하여금 이해할 수 있도록 명시적으로 이름을 지어야 한다. </p>
+<p>좋지 않은 예시 : ❌</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">function getThem() &#123;</span><br><span class="line">	const list1: number[] = []</span><br><span class="line">	for (let x of theList) &#123;</span><br><span class="line">		if (x[0] === 4) &#123;</span><br><span class="line">			list1.push(x)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	return list1</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>드러나지 않은 함축적인 정보는 다음과 같다.</p>
+<ol>
+<li>theList에 무엇이 들어있는가?</li>
+<li>theList 에서 0 번째 값이 어째서 중요한가?</li>
+<li>값 4는 무슨 의미인가?</li>
+<li>함수가 반환하는 리스트 list1을 어떻게 사용하는가? </li>
+</ol>
+<p>만약 해당 함수가 지뢰찾기에서 깃발이 꽂힌 상태에 cell를 반환하는 함수라고 생각한다면 함축적인 의미를 이름을 통해서 명시적으로 드러낼 수 있다. </p>
+<p>좋은 예시 : ✅</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">export interface Cell &#123;</span><br><span class="line">  isFlagged: () =&gt; boolean;</span><br><span class="line">  data: number[];</span><br><span class="line">&#125;</span><br><span class="line">const FLAGGED_STATE = 4;</span><br><span class="line">class CellImpl implements Cell &#123;</span><br><span class="line">  data: number[] = [0];</span><br><span class="line">  constructor(flaggedState: number) &#123;</span><br><span class="line">    this.data[0] = flaggedState;</span><br><span class="line">  &#125;</span><br><span class="line">  isFlagged = () =&gt; &#123;</span><br><span class="line">    return this.data[0] === FLAGGED_STATE;</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const gameBoard: Cell[] = [new CellImpl(FLAGGED_STATE)];</span><br><span class="line">function getFlaggedCells() &#123;</span><br><span class="line">  const flaggedCells: Cell[] = [];</span><br><span class="line">  for (let cell of gameBoard) &#123;</span><br><span class="line">    if (cell.isFlagged()) &#123;</span><br><span class="line">      flaggedCells.push(cell);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  return flaggedCells;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>theLIst 가 gameBoard 로 무엇이 들어가 있느지 알수 있게 되었다.</li>
+<li>theList 에 0번째 값은 칸 상태, 값 4는 깃발이 꽂힌 상태라는 의미인데 <code>cell.isFlagged()</code> 로 명확하게 표현할 수 있게 되었다.</li>
+<li>함수가 반환하는 리스트 list1 은 깃발이 꽂힌 상태에 cell 이라는 flaggedCells 이름으로 명확해진다.</li>
+</ol>
+<h2 id="그릇된-정보를-피하라"><a href="#그릇된-정보를-피하라" class="headerlink" title="그릇된 정보를 피하라"></a>그릇된 정보를 피하라</h2><p>이름으로 잘못된 정보를 주어서는 안된다. </p>
+<ol>
+<li>널리쓰이는 의미가 있는 단어를 다른 의미로 사용하지 말것</li>
+<li>특수한 의미에 단어를 의미에 맞게 사용할것 (List 를 사용할 경우 List인 경우에만 사용할것 아니라면 accountGroup 이나 accounts 가 낫다)</li>
+<li>서로 흡사한 이름을 사용하지 말것 </li>
+<li>유사한 개념은 유사한 표기법을 사용할것 (일관성 유지)</li>
+</ol>
+<h2 id="의미-있게-구분하라"><a href="#의미-있게-구분하라" class="headerlink" title="의미 있게 구분하라"></a>의미 있게 구분하라</h2><p>이름이 달라야 한다면 의미도 달라져야 한다. (a1, a2) 와 같은 구분에 변수는 아무런 의미도 전달하지 못한다.</p>
+<p>불용어를 남용 하지 말아야 한다. ProudctInfo 나 ProductData 에서 Info 나 Data 는 명확한 구분이 되지 못하고 영어에서 a, an, the와 같이 사용될 뿐이다. 접두어를 사용하지 말란 의미가 아니라 접두어를 사용하여 구분하는 의미가 있어야 한다는 것이다. </p>
+<p>NameString 과 Name 은 차이가 없다. Customer 와 CustomerObject 도 마찬가지이다. </p>
+<p>읽는 사람이 차이를 알도록 이름을 지어야 한다. </p>
+<h2 id="발음하기-쉬운-이름을-사용하라"><a href="#발음하기-쉬운-이름을-사용하라" class="headerlink" title="발음하기 쉬운 이름을 사용하라"></a>발음하기 쉬운 이름을 사용하라</h2><p>발음하기 쉬운 단어를 사용해야 지적인 대화가 가능해집니다.</p>
+<p>좋지 않은 예시 : ❌</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">class DtaRcrd102 &#123;</span><br><span class="line">  private genymdhms: Date;</span><br><span class="line">  private modymdhms: Date;</span><br><span class="line">  private readonly pszqint = &#x27;102&#x27;;</span><br><span class="line">  // ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>발음하기 쉬운 단어를 사용한 좋은 예시 : ✅</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">class Customer &#123;</span><br><span class="line">  private generationTimestamp: Date;</span><br><span class="line">  private modificationTimestamp: Date;</span><br><span class="line">  private readonly recordId = &#x27;102&#x27;;</span><br><span class="line">  // ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="검색하기-쉬운-이름을-사용하라"><a href="#검색하기-쉬운-이름을-사용하라" class="headerlink" title="검색하기 쉬운 이름을 사용하라"></a>검색하기 쉬운 이름을 사용하라</h2><p>긴 이름이 짧은 이름보다 좋다. 검색하기 쉬운 이름이 상수보다 좋다. 이름 길이는 범위 크기에 비례해야 한다. </p>
+<p>좋지 않은 예시 : ❌</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">let s = 0;</span><br><span class="line">const t: number[] = [];</span><br><span class="line">for (let j = 0; j &lt; 34; j++) &#123;</span><br><span class="line">  s += (t[j] * 4) / 5;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>좋은 예시 : ✅</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">const NUMBER_OF_TASKS = 34;</span><br><span class="line">const realDaysPerIdealDay = 4;</span><br><span class="line">const WORK_DAYS_PER_WEEK = 5;</span><br><span class="line">let sum = 0;</span><br><span class="line">const taskEstimate: number[] = [];</span><br><span class="line">for (let j = 0; j &lt; NUMBER_OF_TASKS; j++) &#123;</span><br><span class="line">  const realTaskDays = taskEstimate[j] * realDaysPerIdealDay;</span><br><span class="line">  const realTaskWeeks = realTaskDays / WORK_DAYS_PER_WEEK;</span><br><span class="line">  sum += realTaskWeeks;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>WORK_DAYS_PER_WEEK</code> 을 단순히 5라고 하였을때 문제가 생겨 변경해야 한다면 5로 검색하기는 쉽지 않을 것이다. 그러나 <code>WORK_DAYS_PER_WEEK</code> 으로 명시했을 경우 쉽게 검색할 수 있다. </p>
+<h2 id="인코딩을-피하라"><a href="#인코딩을-피하라" class="headerlink" title="인코딩을 피하라"></a>인코딩을 피하라</h2><p>인코딩한 이름은 발음하기 어려우며 오타가 생기기도 쉽다. </p>
+<h3 id="헝가리식-표기법"><a href="#헝가리식-표기법" class="headerlink" title="헝가리식 표기법"></a>헝가리식 표기법</h3><p>과거에는 타입을 컴파일러가 검사하지 못했기 때문에 접두어에 짧은 문자를 더해서 타입을 표현하곤 했다. 요즘에 언어들은 컴파일러가 타입을 강제하고 기억하고 있기 때문에 이렇게 하는것이 오히려 방해가 되기도 한다. 또한 타입에 변환을 어렵게 한다. phoneNumber 를 string으로 타입을 바꾸어도 여전히 이름은 phoneNumber 이기 때문에 타입을 오해하기도 쉽다. </p>
+<h3 id="멤버-변수-접두어"><a href="#멤버-변수-접두어" class="headerlink" title="멤버 변수 접두어"></a>멤버 변수 접두어</h3><p>멤버 변수에 <code>m_</code> 와 같은 접두어를 붙힐 필요도 없다. </p>
+<h3 id="인터페이스-클래스와-구현-클래스"><a href="#인터페이스-클래스와-구현-클래스" class="headerlink" title="인터페이스 클래스와 구현 클래스"></a>인터페이스 클래스와 구현 클래스</h3><p>인터페이스와 구현 클래스를 구분하기 위해 인코딩이 필요하기도 하다. 과거에는 인터페이스에 <code>IShapeFactory</code> , 구현 클래스에 <code>ShapeFactory</code> 와 같은 방식으로 <code>I</code> 를 붙히기도 했는데 과도한 정보를 주는 느낌도 있어서 인터페이스를 <code>ShapeFactory</code> 와 같이 쓰고 구현체를 <code>ShapeFactoryImpl</code> 과 같이 사용하는것을 추천한다.</p>
+<h2 id="자신의-기억력을-자랑하지-마라"><a href="#자신의-기억력을-자랑하지-마라" class="headerlink" title="자신의 기억력을 자랑하지 마라."></a>자신의 기억력을 자랑하지 마라.</h2><p>변수 이름을 자신이 아는 이름으로 변환해야 한다면 그 변수 이름은 바람직하지 못하다. </p>
+<p>문자 하나만 사용하는것도 루프와 같이 짧은 범위 내에서 사용하는것을 제외하면 바람직하지 못하다. 나중에 무슨 의미였는지 기억하기 어렵다. </p>
+<p>기억하기 쉬운 명로함이 최고임을 기억해라 </p>
+<h2 id="클래스-이름"><a href="#클래스-이름" class="headerlink" title="클래스 이름"></a>클래스 이름</h2><p>클래스 이름이나 객체 이름은 명사나 명사구가 적절하다. Customer, AddressParser 은 좋은 예이다. Manager, Precessor, Data, Info 등과 같은 단어는 피하고 동사는 사용하지 않는다.</p>
+<h2 id="메서드-이름"><a href="#메서드-이름" class="headerlink" title="메서드 이름"></a>메서드 이름</h2><p>메서드 이름은 동사나 동사구가 적합하다. postPayment, deletePage, save 등은 적합하다. </p>
+<h2 id="기발한-이름은-피하라"><a href="#기발한-이름은-피하라" class="headerlink" title="기발한 이름은 피하라"></a>기발한 이름은 피하라</h2><p>재미난 이름보다는 명로한 이름을 선택하라</p>
+<h2 id="한-개념에-한-단어를-사용하라"><a href="#한-개념에-한-단어를-사용하라" class="headerlink" title="한 개념에 한 단어를 사용하라"></a>한 개념에 한 단어를 사용하라</h2><p>추상적인 개념 하나에 단어 하나를 선택해 이를 고수한다. 예를 들어 똑같은 메서드를 클래스마다 fetch, retrieve, get 으로 제각각 부르면 혼란스럽다. 메서드 이름은 독자적이고 일관적이어야 한다. </p>
+<p>이름이 다르면 독자는 당연히 클래스도 다르고 타입도 다르다고 생각한다. 예를들어 DeviceManager와 ProtocolController이 근본적으로 하는일이 똑같다면 하나로 통일시켜야 한다. </p>
+<h2 id="말장난을-하지-마라"><a href="#말장난을-하지-마라" class="headerlink" title="말장난을 하지 마라"></a>말장난을 하지 마라</h2><p>한 단어를 두가지 목적으로 사용하지 말아야 한다. </p>
+<p>맥락이 같다면 중복하여 사용해도 되지만 맥락이 다르다면 다른 단어를 사용해야 한다. 예를들어 클래스에 add 라는 메서드를 추가한다고 생각해 보자 어떤 매개변수 두개를 받아서 두개를 조합해 새로운 값을 반환하는 맥락이라면 여러 클래스에서 add 라는 이름에 메서드를 동일하게 사용해도 된다. 그런데 어떤 클래스에서는 어떤 값을 받아서 리스트에 더하는 메서드를 추가한다고 생각해보자. 이럴 경우 add 라는 단어를 사용하는것이 적합할까? 이럴 경우는 앞에서와 맥락이 다르므로 다른 메서드 이름을 사용해야 한다. 이 경우 insert 나 append 가 적합해 보인다. </p>
+<h2 id="해법-영역에서-가져온-이름을-사용하라"><a href="#해법-영역에서-가져온-이름을-사용하라" class="headerlink" title="해법 영역에서 가져온 이름을 사용하라"></a>해법 영역에서 가져온 이름을 사용하라</h2><p>코드를 읽는 사람도 프로그래머 임을 기억해라. 프로그래머에게 익숙학 기술 개념은 아주 많으며 해당 개념 용어를 사용하는 것은 이해 관점에서도 아주 바람직하다. VISITOR 패턴에 친숙한 프로그래머는 AccountVisitor 라는 이름을 금방 이해할 것이다. </p>
+<h2 id="문제-영역에서-가져온-이름을-사용하라"><a href="#문제-영역에서-가져온-이름을-사용하라" class="headerlink" title="문제 영역에서 가져온 이름을 사용하라"></a>문제 영역에서 가져온 이름을 사용하라</h2><p>적절한 프로그래머 용어가 없다면 문제 영역에서 이름을 가져온다. </p>
+<h2 id="의미-있는-맥락을-추가하라"><a href="#의미-있는-맥락을-추가하라" class="headerlink" title="의미 있는 맥락을 추가하라"></a>의미 있는 맥락을 추가하라</h2><p>클래스, 함수, 이름 공간에 넣어 맥락을 부여한다. 모든 방법이 실패하면 마지막 수단으로 접두어를 붙인다. 예를 들어서 firstName, lastName, street, state, zipcode .. 와 같은 변수를 사용한다면 주소라는 사실을 금방 알아챈다. 하지만 state 라는 변수 하나만 매개변수로 사용한다면 주소에 일부분이라고 생각할 수 있을까? 좀 더 큰 구조(주소) 에 속한다는 것을 명시하기 위해서 addr 이라는 접두어를 사용할 수 있다. addrFirstName, addrState…</p>
+<p>또는, 맥락에 맞는 클래스를 생성하는것이 더 도움이 된다. 예를 들어 밑에 나오는 코드에서 num, verb, pluraModifier 는 통계 추측에 사용되는 변수이다. 단순히 사용되기만 한다면 어디에 사용되는 변수인지 코드를 다 읽지 않고서는 예측하기 힘들다. 이때 GuessStaticMessage 라는 클래스를 만들어 해당 변수를 멤버변수로 포함시킨다면 맥락을 더해서 어디에 사용되는 변수인지 명확히 표현할 수 있다. </p>
+<p>좋지 않은 예시 : ❌</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">function printGuessStatistics(candidate: string, count: number) &#123;</span><br><span class="line">  let num: string;</span><br><span class="line">  let verb: string;</span><br><span class="line">  let pluralModifier: string;</span><br><span class="line"></span><br><span class="line">  if (count === 0) &#123;</span><br><span class="line">    num = &#x27;no&#x27;;</span><br><span class="line">    verb = &#x27;are&#x27;;</span><br><span class="line">    pluralModifier = &#x27;s&#x27;;</span><br><span class="line">  &#125; else if (count === 1) &#123;</span><br><span class="line">    num = &#x27;1&#x27;;</span><br><span class="line">    verb = &#x27;is&#x27;;</span><br><span class="line">    pluralModifier = &#x27;&#x27;;</span><br><span class="line">  &#125; else &#123;</span><br><span class="line">    num = String(count);</span><br><span class="line">    verb = &#x27;are&#x27;;</span><br><span class="line">    pluralModifier = &#x27;s&#x27;;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  const guessMessage = `There $&#123;verb&#125; $&#123;num&#125; $&#123;candidate&#125;$&#123;pluralModifier&#125;`;</span><br><span class="line">  console.log(guessMessage);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>좋은 예시 : ✅</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">class GuessStatisticsMessage &#123;</span><br><span class="line">  private num: string = &#x27;&#x27;;</span><br><span class="line">  private verb: string = &#x27;&#x27;;</span><br><span class="line">  private pluralModifier: string = &#x27;&#x27;;</span><br><span class="line"></span><br><span class="line">  make(candidate: string, count: number) &#123;</span><br><span class="line">    this.createPluralDependentMessageParts(count);</span><br><span class="line">    return `There $&#123;this.verb&#125; $&#123;this.num&#125; $&#123;candidate&#125;$&#123;this.pluralModifier&#125;`;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  private createPluralDependentMessageParts(count: number) &#123;</span><br><span class="line">    if (count === 0) &#123;</span><br><span class="line">      this.thereAreNoLetters();</span><br><span class="line">    &#125; else if (count === 1) &#123;</span><br><span class="line">      this.thereIsOneLetter();</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">      this.thereAreManyLetters(count);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  private thereAreManyLetters(count: number) &#123;</span><br><span class="line">    this.num = String(count);</span><br><span class="line">    this.verb = &#x27;are&#x27;;</span><br><span class="line">    this.pluralModifier = &#x27;s&#x27;;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  private thereIsOneLetter() &#123;</span><br><span class="line">    this.num = &#x27;1&#x27;;</span><br><span class="line">    this.verb = &#x27;is&#x27;;</span><br><span class="line">    this.pluralModifier = &#x27;&#x27;;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  private thereAreNoLetters() &#123;</span><br><span class="line">    this.num = &#x27;no&#x27;;</span><br><span class="line">    this.verb = &#x27;are&#x27;;</span><br><span class="line">    this.pluralModifier = &#x27;s&#x27;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>num, verb, pluralModifier 가 GuessStatisticMessage 클래스 안에 있으므로 맥락상 통계 메세지를 만드는데 사용되는 멤버 변수란 것을 알게 된다. </p>
+<h2 id="불필요한-맥락을-없애라"><a href="#불필요한-맥락을-없애라" class="headerlink" title="불필요한 맥락을 없애라"></a>불필요한 맥락을 없애라</h2><p>불필요한 맥락은 없애야 한다. 예를들어 고급 휘발유 충전소 라는 애플리케이션을 짠다고 했을때, 모든 클래스에 GSD 접두어를 붙히는 것은 바람직하지 못하다. </p>
+<p>일반적으로 의미가 분명하다면 짧은 이름이 긴 이름보다 좋다. accountAddress 와 customerAddress 는 Address 클래스 인스턴스로는 적합하나 클래스 이름으로는 부적합하다.</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -990,216 +1302,6 @@
 </ol>
 <h2 id="Sync-amp-Async"><a href="#Sync-amp-Async" class="headerlink" title="Sync &amp; Async"></a>Sync &amp; Async</h2><p>Async : 비동기 실행으로서 앞에 결과가 끝나기도 전에 뒤에 결과가 실행됨. QoS 에 의해 우선순위가 정해짐</p>
 <p>Sync : 동기 실행은 앞에 작업이 끝나야 뒤에 적힌 코드가 실행됨.</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2022/01/13/BackEnd/220113-Oauth2.0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JayoonKoo">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="티끌모아 태산">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/01/13/BackEnd/220113-Oauth2.0/" class="post-title-link" itemprop="url">Oauth2.0</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2022-01-13 10:46:40 / Modified: 10:46:52" itemprop="dateCreated datePublished" datetime="2022-01-13T10:46:40+09:00">2022-01-13</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/BackEnd/" itemprop="url" rel="index"><span itemprop="name">BackEnd</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="OAuth2-0"><a href="#OAuth2-0" class="headerlink" title="OAuth2.0"></a>OAuth2.0</h1><h2 id="용어-정리"><a href="#용어-정리" class="headerlink" title="용어 정리"></a>용어 정리</h2><ul>
-<li>client: 사용하는 앱, 만들고 있는 서비스를 의미한다.</li>
-<li>Resource Owner : 리소스를 가지고 있는 오너로서 사용자의 해당한다.</li>
-<li>Resource Server: 사용자의 정보를 가져올 Server를 의미한다. gihub, facebook, google 등이 될 수 있다.</li>
-<li>Client ID: 클라이언트를 식별할 수 있는 아이디이다.</li>
-<li>Client Secret : 클라아인트 비밀번호이다. 절대로 외부에 노출되면 안되는 정보이다.</li>
-<li>Authorized redirect URLs : Resrouce Server가 권한을 부여하는 과정에서 Authorized Code를 전달해 주는데 전달할 주소이다.</li>
-</ul>
-<h2 id="등록"><a href="#등록" class="headerlink" title="등록"></a>등록</h2><p>OAuth를 제공하는 Resource Server 에서 프로젝트를 만들어서 Client ID, Client Secret, Authrozied redirect URLs 설정한다.</p>
-<p>클라이언트에서 환경 변수 등으로 Client ID, Client Secret 을 저장한다. </p>
-<h2 id="Resource-Owner-승인"><a href="#Resource-Owner-승인" class="headerlink" title="Resource Owner 승인"></a>Resource Owner 승인</h2><ul>
-<li>Resource Server를 통해 로그인할 수 있는 화면을 구성하거나 API를 구현한다.</li>
-<li>Resource Server로 요청을 보내면 되는데, <code>[https://resource.server/?client_id=1&amp;scope=&lt;기능들&gt;&amp;&amp;redirect_uir=&lt;RedirectURI&gt;](https://resource.server/?client_id=1&amp;scope=&lt;기능들&gt;&amp;&amp;redirect_uir=&lt;RedirectURI&gt;)</code>  이런 형태의 요청을 보내면 된다.</li>
-<li>Resource Server 에서 요청을 받으면 client_id 를 확인하고 등록된 아이디가 있다면 요청받은 redirect URL 과 등록된 redirect URL 이 맞는지 확인한다. 여기서 틀리면 종료된다.</li>
-<li>그다음, 요청한 기능에 대한 허용 할 것인지에 화면을 Resource Server에서 보여준다.</li>
-<li>Resource Owner 가 승인하면 Resource Server에 승인 했다는 정보를 전달하고 Server는 Owner에 id 와 기능 scope 를 저장한다.</li>
-</ul>
-<h2 id="Resource-Server-승인"><a href="#Resource-Server-승인" class="headerlink" title="Resource Server 승인"></a>Resource Server 승인</h2><ul>
-<li>Server 는 authorization code 를 담아서 Owner 에게 전달한다. 이때 헤더에 Location을 추가해서 응답할때에는 Client로 리다이렉트 할 수 있도록 한다. <code>Location: [https://client/callback?code=3](https://client/callback?code=3)</code></li>
-<li>Client 는 콜백 주소를 통해서 authorization code 를 알 수 있게 된다.</li>
-<li>Client 는 Resouce Server에게 직접 token을 요청하게 된다. 이때, authorization code, client_id, client_scret, redirect_uri 를 전달한다.</li>
-<li>Server는 정보를 모아서 client 와 user를 식별해서 access Token 을 발급및 응답한다.</li>
-</ul>
-<h2 id="API-사용"><a href="#API-사용" class="headerlink" title="API 사용"></a>API 사용</h2><p>요청을 보낼때 Authorization: Bearer <access_token> 설정하여 보낸다.</p>
-<h2 id="refresh-token"><a href="#refresh-token" class="headerlink" title="refresh token"></a>refresh token</h2><p>리프레쉬 토큰을 이용해서 토큰이 만료 되었을때 다시 받아올 수 있다.</p>
-<ul>
-<li>Resource Server 와 별개로 Authorization Server 를 두어서 Access Token과 Refresh Token 을 Client 에게 전달한다.</li>
-<li>클라이언트는 Access Token을 이용해서 Resource Server에 자원을 흭득한다.</li>
-<li>Access Token이 만료되게 되면 Resource Server로 부터 Invalid Token Error를 받게된다.</li>
-<li>Client는 이때 Authorization Server로 부터 받은 Refresh Token을 이용해서 Access Token 을 요청하고 다시 받아온다. 처음부터 리소스 허가 요청 하는 과정을 생략할 수 있다.</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2022/01/13/BackEnd/220112-Authentication/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JayoonKoo">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="티끌모아 태산">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/01/13/BackEnd/220112-Authentication/" class="post-title-link" itemprop="url">Authentication</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2022-01-13 10:42:40 / Modified: 10:46:37" itemprop="dateCreated datePublished" datetime="2022-01-13T10:42:40+09:00">2022-01-13</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/BackEnd/" itemprop="url" rel="index"><span itemprop="name">BackEnd</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="백엔드-Authentication"><a href="#백엔드-Authentication" class="headerlink" title="백엔드-Authentication"></a>백엔드-Authentication</h2><ul>
-<li>인증이란? : you are who you say you are, 다양한 방법으로 인증 가능하다 통상적으로 password, id 로<ul>
-<li>먼저 회원가입을 진행해서 서버에 id, passwrod 를 저장한다.</li>
-<li>클라이언트는 로그인 할때 회원가입한  id, password를 서버에 전송한다.</li>
-<li>어떻게 로그인 상태를 유지할 수 있을까?</li>
-</ul>
-</li>
-<li>세션과 쿠기 (서버에서 사용할 수 있는 전통적인 옵션- 어떻게 로그인 상태를 유지할지에 대한 방법)<ol>
-<li>세션 <ul>
-<li>서버에서 확인후 세션을 만든다 (userId, sessiontId, expiration) - Session DB에 저장 or 파일시스템이나 메모리도 될 수 있음</li>
-<li>쿠키에 HTTP Only로 sessiontId 정보를 전달함.</li>
-<li>다음 요청때마다 쿠키 정보를 전달해줌</li>
-<li>장점 : 브라우저에 전달만 하면 되서 간단하고, sessionId 만 전달하면되서 사용자의 정보를 전달하지 않아도 된다. HTTP Only를 사용하면 스크립트로 못읽기 때문에 보안상의 이점도 있다.</li>
-<li>단점 : Stateful 하기 때문에 다양한 서버들이 SettionDb를 읽어야 하고 많은 요청이 들어오게 된다. 내부적으로 네트워킹이 많아짐. 성능 하락</li>
-</ul>
-</li>
-<li>JWT (Json Web Token)<ul>
-<li>다음과 같은 정보를 JSON으로 만들고 토큰화해서 보낸다. header, payload, signature, 모든 정보는 인코딩해서 보내고 서버에서 secrete으로 사용하는 키도 인코딩해서 signature에 포함해서 보낸다.</li>
-<li>로그인 하면, 로그인 정보 + 만료 시간 등등 합쳐서 JWT를 만듦.</li>
-<li>클라이언트는 Header를 이용하여 모든 request마다 JWT를 포함해서 전달해 줌.</li>
-<li>서버는 JWT를 검증한 후에 데이터를 반환함.</li>
-<li>장점 : 서버에 State가 없다. 서버를 확장하거나 분산하기에 용이하다.</li>
-<li>단점 : JWT 자체가 단점이 될 수 있다. → 계속 JWT를 주고 받아야 한다. 만약 영원히 만료되지 않은 JWT를 헤커가 탈취한다면.. 사용할때 보안에 신경써야 한다.</li>
-</ul>
-</li>
-</ol>
-</li>
-<li>bcrypt 란?  : 사용자 정보를 그대로 저장하는 것이 아니라 암호화 해서 저장하기 위해 사용함. → 암호화만 가능한데 (암호화 한것을 비교하는 것), salt 가 없다면 경우의 수로 암호화 해 보면서 유추할 수 있어서 salt를 포함하여 경우의 수를 늘림. 10~12 정도로 설정. 길어지면 cpu 부하 심해짐..</li>
-<li>JWT, 32 시크릿 키로 권고 됨. 한번 발행된 토근은 변경되면 안된다. → 만약 한버이라도 변경 한다면 최종적으로 붙은 signature도 변경되어서 verify시 오류 발생하고 누군가 변경한 토큰인지 확인 가능하다.<ul>
-<li>만료될 수 있도록 만들어야 한다. → option으로 전달함. {expiresIn: 2} 이런식으로 → 2초 후에 만료</li>
-</ul>
-</li>
-</ul>
 
       
     </div>

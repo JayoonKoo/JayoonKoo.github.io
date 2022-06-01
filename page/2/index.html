@@ -85,7 +85,7 @@
         <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
         <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">21</span></a></li>
         <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">17</span></a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">156</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">158</span></a></li>
   </ul>
 </nav>
 
@@ -129,7 +129,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">156</span>
+          <span class="site-state-item-count">158</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -180,6 +180,238 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2022/03/28/typeScript/210818-interface/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JayoonKoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="티끌모아 태산">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/03/28/typeScript/210818-interface/" class="post-title-link" itemprop="url">interface</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2022-03-28 12:06:36 / Modified: 12:07:24" itemprop="dateCreated datePublished" datetime="2022-03-28T12:06:36+09:00">2022-03-28</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/typeScript/" itemprop="url" rel="index"><span itemprop="name">typeScript</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="interface"><a href="#interface" class="headerlink" title="interface"></a>interface</h1><h2 id="데이터-타입을-인터페이스로-만들기"><a href="#데이터-타입을-인터페이스로-만들기" class="headerlink" title="데이터 타입을 인터페이스로 만들기"></a>데이터 타입을 인터페이스로 만들기</h2><p>인터페이스로 타입을 정의할 수 있다.</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> Person1 &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="built_in">string</span>;</span><br><span class="line">  age: <span class="built_in">number</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">hello1</span>(<span class="params">person: Person1</span>): <span class="title">void</span> </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`안녕하세요! <span class="subst">$&#123;person.name&#125;</span> 입니다.`</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> p1: Person1 = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&quot;Mark&quot;</span>,</span><br><span class="line">  <span class="attr">age</span>: <span class="number">27</span>,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">hello1(p1);</span><br></pre></td></tr></table></figure>
+
+<h2 id="optional-Property"><a href="#optional-Property" class="headerlink" title="optional Property"></a>optional Property</h2><p>값으로 받을 수도 있고 아닐 수도 있는 속성을 정의할 수 있다.</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> Person2 &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="built_in">string</span>;</span><br><span class="line">  age?: <span class="built_in">number</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">hello2</span>(<span class="params">person: Person2</span>): <span class="title">void</span> </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`안녕하세요! <span class="subst">$&#123;person.name&#125;</span> 입니다.`</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">hello2(&#123; <span class="attr">name</span>: <span class="string">&quot;Koo&quot;</span>, <span class="attr">age</span>: <span class="number">39</span> &#125;);</span><br><span class="line">hello2(&#123; <span class="attr">name</span>: <span class="string">&quot;Koo&quot;</span> &#125;);</span><br></pre></td></tr></table></figure>
+
+<p><code>age?</code> 에서 ? 를 붙히면 받을수도 있고 안받을 수 도 있는 타입이 된다. <code>age: number | undefined</code>와 같아 진다.</p>
+<h3 id="인덱서블-타입"><a href="#인덱서블-타입" class="headerlink" title="인덱서블 타입"></a>인덱서블 타입</h3><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> Person3 &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="built_in">string</span>;</span><br><span class="line">  age?: <span class="built_in">number</span>;</span><br><span class="line">  [index: <span class="built_in">string</span>]: <span class="built_in">any</span>; <span class="comment">// 어떤 이름에 프로퍼티가 와도 괜찮음.</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">hello3</span>(<span class="params">person: Person3</span>): <span class="title">void</span> </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`안녕하세요! <span class="subst">$&#123;person.name&#125;</span> 입니다.`</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> p31: Person3 = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&quot;koo&quot;</span>,</span><br><span class="line">  <span class="attr">age</span>: <span class="number">37</span>,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> p32: Person3 = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&quot;Anna&quot;</span>,</span><br><span class="line">  <span class="attr">systers</span>: [<span class="string">&quot;Sung&quot;</span>, <span class="string">&quot;Chan&quot;</span>],</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> p33: Person3 = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&quot;Bokdaengi&quot;</span>,</span><br><span class="line">  <span class="attr">father</span>: p31,</span><br><span class="line">  <span class="attr">mother</span>: p32,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">hello3(p33);</span><br></pre></td></tr></table></figure>
+
+<p>인덱스에 타입을 지정해 주어서 어떤것도 받을 수 있도록 하려면 <code>[index: string]</code> 과 같이 사용한다.</p>
+<h2 id="function-interface"><a href="#function-interface" class="headerlink" title="function interface"></a>function interface</h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> Person4 &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="built_in">string</span>;</span><br><span class="line">  age: <span class="built_in">number</span>;</span><br><span class="line">  hello(): <span class="built_in">void</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> p41: Person4 = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&quot;Koo&quot;</span>,</span><br><span class="line">  <span class="attr">age</span>: <span class="number">27</span>,</span><br><span class="line">  <span class="attr">hello</span>: <span class="function"><span class="keyword">function</span> (<span class="params"></span>): <span class="title">void</span> </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">`안녕하세요. <span class="subst">$&#123;<span class="built_in">this</span>.name&#125;</span> 입니다.`</span>);</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> p42: Person4 = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&quot;Koo&quot;</span>,</span><br><span class="line">  <span class="attr">age</span>: <span class="number">27</span>,</span><br><span class="line">  hello(): <span class="built_in">void</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">`안녕하세요. <span class="subst">$&#123;<span class="built_in">this</span>.name&#125;</span> 입니다.`</span>);</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// const p43: Person4 = &#123;</span></span><br><span class="line"><span class="comment">// 	name: &quot;Koo&quot;,</span></span><br><span class="line"><span class="comment">// 	age: 27,</span></span><br><span class="line"><span class="comment">// 	hello: (): void =&gt; &#123;</span></span><br><span class="line"><span class="comment">// 		console.log(`안녕하세요. $&#123;this.name&#125; 입니다.`);</span></span><br><span class="line"><span class="comment">// 	&#125;</span></span><br><span class="line"><span class="comment">// &#125;</span></span><br><span class="line"></span><br><span class="line">p41.hello();</span><br><span class="line">p42.hello();</span><br></pre></td></tr></table></figure>
+
+<p>함수로 선언하는 방법에는 3가지 정도 있다.</p>
+<ul>
+<li><code>hello: function(): void &#123;&#125;</code></li>
+<li><code>hello(): void &#123;&#125;</code></li>
+<li><code>hello: (): void =&gt; &#123;&#125;</code> : 화살표 함수를 사용할 경우 <code>this</code>를 사용하지 못한다.</li>
+</ul>
+<h2 id="class-implements"><a href="#class-implements" class="headerlink" title="class implements"></a>class implements</h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> IPerson1 &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="built_in">string</span>;</span><br><span class="line">  age?: <span class="built_in">number</span>;</span><br><span class="line">  hello(): <span class="built_in">void</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> <span class="title">implements</span> <span class="title">IPerson1</span> </span>&#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="built_in">string</span>;</span><br><span class="line">  age?: <span class="built_in">number</span> | <span class="literal">undefined</span>;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">name: <span class="built_in">string</span></span>)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.name = name;</span><br><span class="line">  &#125;</span><br><span class="line">  hello(): <span class="built_in">void</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">`안녕하세요 <span class="subst">$&#123;<span class="built_in">this</span>.name&#125;</span> 입니다.`</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> person: IPerson1 = <span class="keyword">new</span> Person(<span class="string">&quot;Koo&quot;</span>);</span><br><span class="line">person.hello();</span><br></pre></td></tr></table></figure>
+
+<p>객체지향 언어에서 구현하듯이 클래스에서 interface를 구현할 수 있다. interface를 구현하는 class 는 interface 안에 요소를 구현해야 한다. 반드시 받아야 하는 변수에 경우 생성자를 통해 받지 않으면 에러를 발생시킨다.</p>
+<h2 id="interface-extends"><a href="#interface-extends" class="headerlink" title="interface extends"></a>interface extends</h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> IPerson2 &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="built_in">string</span>;</span><br><span class="line">  age?: <span class="built_in">number</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">interface</span> IKorean <span class="keyword">extends</span> IPerson2 &#123;</span><br><span class="line">  <span class="attr">city</span>: <span class="built_in">string</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> k: IKorean = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&quot;Koo&quot;</span>,</span><br><span class="line">  <span class="attr">city</span>: <span class="string">&quot;부천&quot;</span>,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>interface 에 다른 interface를 상속받을 수 있다.</p>
+<h2 id="function-interface-1"><a href="#function-interface-1" class="headerlink" title="function interface"></a>function interface</h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> HelloPerson &#123;</span><br><span class="line">  (name: <span class="built_in">string</span>, age?: <span class="built_in">number</span>): <span class="built_in">void</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> helloPerson: HelloPerson = <span class="function">(<span class="params">...args</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">typeof</span> args[<span class="number">1</span>] === <span class="string">&quot;number&quot;</span>) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">`안녕하세요. <span class="subst">$&#123;args[<span class="number">0</span>]&#125;</span> 입니다. 나이는 <span class="subst">$&#123;args[<span class="number">1</span>]&#125;</span> 입니다.`</span>);</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`안녕하세요. <span class="subst">$&#123;args[<span class="number">0</span>]&#125;</span> 입니다.`</span>);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">helloPerson(<span class="string">&quot;mark&quot;</span>, <span class="number">39</span>);</span><br></pre></td></tr></table></figure>
+
+<p>실제 타입 검사는 구현하는 함수에서가 아니라 인터페이스에서 한다. 다음과 같은 경우 에러를 발생시킨다.</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> HelloPerson &#123;</span><br><span class="line">  (name: <span class="built_in">string</span>, age?: <span class="built_in">number</span>): <span class="built_in">void</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> helloPerson: HelloPerson = <span class="function">(<span class="params">name: <span class="built_in">string</span>, age: <span class="built_in">number</span></span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`안녕하세요. <span class="subst">$&#123;name&#125;</span> 입니다.`</span>);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>잘 생각해보면 helloPerson은 interface <code>HelloPerson</code>에 의해서 <code>age</code>를 인수로 받을 수도 있고 안받을수도 있다. 그런데 함수를 구현하는 부분에서 무조건 <code>age</code>를 받도록 구현했기 때문에 논리적으로 맞지 않다.</p>
+<h2 id="Readonly-Interface-Properties"><a href="#Readonly-Interface-Properties" class="headerlink" title="Readonly Interface Properties"></a>Readonly Interface Properties</h2><p>읽기 전용 속성으로 만들면 값을 생성하고 나서 수정할 수 없다.</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> Person8 &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="built_in">string</span>;</span><br><span class="line">  age?: <span class="built_in">number</span>;</span><br><span class="line">  <span class="keyword">readonly</span> gender: <span class="built_in">string</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> p81: Person8 = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&quot;Mark&quot;</span>,</span><br><span class="line">  <span class="attr">gender</span>: <span class="string">&quot;male&quot;</span>,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// p81.gender = &quot;female&quot;;</span></span><br></pre></td></tr></table></figure>
+
+<p>주석 부분에 p81의 gender 를 바꾸려고 하면 에러가 발생한다.</p>
+<h2 id="type-alias-vs-interface"><a href="#type-alias-vs-interface" class="headerlink" title="type alias vs interface"></a>type alias vs interface</h2><p>몇가지 차이점이 있다.</p>
+<p>함수</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> EatType = <span class="function">(<span class="params">food: <span class="built_in">string</span></span>) =&gt;</span> <span class="built_in">void</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">interface</span> IEatType &#123;</span><br><span class="line">  (food: <span class="built_in">string</span>): <span class="built_in">void</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>array를 만들때</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> PersonList = <span class="built_in">string</span>[];</span><br><span class="line"></span><br><span class="line"><span class="keyword">interface</span> IPersonList &#123;</span><br><span class="line">  [index: <span class="built_in">number</span>]: <span class="built_in">string</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>intersetction</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> ErrorHandling &#123;</span><br><span class="line">  <span class="attr">success</span>: <span class="built_in">boolean</span>;</span><br><span class="line">  error?: &#123; <span class="attr">message</span>: <span class="built_in">string</span> &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">interface</span> ArtistsData &#123;</span><br><span class="line">  <span class="attr">srtists</span>: &#123; <span class="attr">name</span>: <span class="built_in">string</span> &#125;[];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> ArtistsResponseType = ArtistsData &amp; ErrorHandling;</span><br><span class="line"></span><br><span class="line"><span class="keyword">interface</span> IArtistsResponseType <span class="keyword">extends</span> ArtistsData, ErrorHandling &#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>unoon type</strong></p>
+<p>유니온 타입은 인터페이스에서 상속 받을 수 없다. 또한 클래스에서 구현하는것도 불가능하다.</p>
+<p><strong>Declaration Merging</strong></p>
+<p>interface에 경우 같은 이름에 인터페이스를 만들면 머지 되서 사용할때는 하나의 인터페이스 처럼 사용할 수 있음.</p>
+<p>type alias는 같은 이름으로 생성하면 에러가 발생한다.</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2022/03/28/typeScript/210820-class/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JayoonKoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="티끌모아 태산">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/03/28/typeScript/210820-class/" class="post-title-link" itemprop="url">class</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2022-03-28 12:06:36 / Modified: 12:07:28" itemprop="dateCreated datePublished" datetime="2022-03-28T12:06:36+09:00">2022-03-28</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/typeScript/" itemprop="url" rel="index"><span itemprop="name">typeScript</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="Classes"><a href="#Classes" class="headerlink" title="Classes"></a>Classes</h1><h2 id="What-a-Class"><a href="#What-a-Class" class="headerlink" title="What a Class"></a>What a Class</h2><p>object를 만드는 설계도이다. ex6 이전에는 function을 사용해서 object를 만들었다. 오브젝트는 new 키워드를 사용해서 만들 수 있고 타입스크립트를 사용하면 oop에 맞게 클래스를 작성할 수 있다. 타입스크립트에서는 class 자체도 어떤 타입이다.</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="built_in">string</span> = <span class="string">&quot;Mark&quot;</span>;</span><br><span class="line">  age: <span class="built_in">number</span>;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">age?: <span class="built_in">number</span></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (age === <span class="literal">undefined</span>) &#123;</span><br><span class="line">      <span class="built_in">this</span>.age = <span class="number">20</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="built_in">this</span>.age = age;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> p1 = <span class="keyword">new</span> Person(<span class="number">39</span>);</span><br><span class="line"><span class="keyword">const</span> p2 = <span class="keyword">new</span> Person();</span><br><span class="line"><span class="built_in">console</span>.log(p1);</span><br><span class="line"><span class="built_in">console</span>.log(p2);</span><br></pre></td></tr></table></figure>
+
+<p>생성자를 통해서 인수를 받을 수 있다. TS에서는 생서자 오버라이드도 지원하지만 생성자에서 받을수도 있고 안받을 수 도 있는 경우엔 ?를 사용해서 생성자를 작성한다.<br>이때 받는 인수에 타엡에 대한 처리를 따로 해주어야 한다.</p>
+<p>생성자는 <code>async</code>를 사용할 수 없다. async 를 사용하기 위해서는 생성자 이외에 함수를 만들어서 <code>async</code> 키워드를 사용해야 한다. 이럴때 클래스에서는 멤버 변수가 할당됬는지 아닌지 알 수 없기 때문에 <code>age!: number</code> 같이 <code>!</code>를 사용한다.</p>
+<h2 id="Access-Modifiers"><a href="#Access-Modifiers" class="headerlink" title="Access Modifiers"></a>Access Modifiers</h2><p>클래스 외부에서 접근하는 것을 막기 위한 접근 제어자를 타입스크립트에서는 지원한다.</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">  <span class="keyword">public</span> name: <span class="built_in">string</span> = <span class="string">&quot;Mark&quot;</span>;</span><br><span class="line">  <span class="keyword">private</span> _age!: <span class="built_in">number</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">public</span> <span class="function"><span class="title">constructor</span>(<span class="params">age?: <span class="built_in">number</span></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (age === <span class="literal">undefined</span>) &#123;</span><br><span class="line">      <span class="built_in">this</span>._age = <span class="number">20</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="built_in">this</span>._age = age;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> p1 = <span class="keyword">new</span> Person(<span class="number">39</span>);</span><br><span class="line"><span class="keyword">const</span> p2 = <span class="keyword">new</span> Person();</span><br><span class="line"><span class="built_in">console</span>.log(p1);</span><br><span class="line"><span class="built_in">console</span>.log(p2);</span><br></pre></td></tr></table></figure>
+
+<p>Js 에서 private 변수를 표현하기 위해서 <code>_</code> 를 붙혔었는데 TS 에서 관례적으로 private 변수 앞에는 <code>_</code>를 붙힌다. ( 없어도 상관 없음. )</p>
+<h2 id="initialization-in-constructor-param"><a href="#initialization-in-constructor-param" class="headerlink" title="initialization in constructor param"></a>initialization in constructor param</h2><p>생성자 안에 접근 제어자를 넣음으로서 생성함과 동시에 할당가지 할수 있다.</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">  <span class="keyword">public</span> <span class="function"><span class="title">constructor</span>(<span class="params"><span class="keyword">public</span> name: <span class="built_in">string</span>, <span class="keyword">private</span> age: <span class="built_in">number</span></span>)</span> &#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> p1 = <span class="keyword">new</span> Person(<span class="string">&quot;koo&quot;</span>, <span class="number">39</span>);</span><br><span class="line"><span class="built_in">console</span>.log(p1);</span><br></pre></td></tr></table></figure>
+
+<p>위코드는 아래 코드와 같다.</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">  <span class="keyword">public</span> name: <span class="built_in">string</span>;</span><br><span class="line">  <span class="keyword">private</span> age: <span class="built_in">number</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">public</span> <span class="function"><span class="title">constructor</span>(<span class="params">name: <span class="built_in">string</span>, age: <span class="built_in">number</span></span>)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.name = name;</span><br><span class="line">    <span class="built_in">this</span>.age = age;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> p1 = <span class="keyword">new</span> Person(<span class="string">&quot;koo&quot;</span>, <span class="number">39</span>);</span><br><span class="line"><span class="built_in">console</span>.log(p1);</span><br></pre></td></tr></table></figure>
+
+<h2 id="Getter-amp-Setters"><a href="#Getter-amp-Setters" class="headerlink" title="Getter &amp; Setters"></a>Getter &amp; Setters</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">class Person &#123;</span><br><span class="line">  public constructor(private _name: string, public age: number) &#123;&#125;</span><br><span class="line"></span><br><span class="line">  get name() &#123;</span><br><span class="line">    return this._name + &quot;Jayoun&quot;;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  set name(n: string) &#123;</span><br><span class="line">    this._name = n;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const p1 = new Person(&quot;koo&quot;, 39);</span><br><span class="line">console.log(p1.name); // get 을하는 함수를 getter</span><br><span class="line">p1.name = &quot;Woongjae&quot;; // set 을하는 함수를 setter</span><br><span class="line">console.log(p1.name); // get 을하는 함수를 getter</span><br></pre></td></tr></table></figure>
+
+<p>getter 만 만들고 setter는 만들지 않는 방식으로 읽기만 가능한 프로퍼티를 만들 수 있다.</p>
+<h2 id="readonly-properties"><a href="#readonly-properties" class="headerlink" title="readonly properties"></a>readonly properties</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">class Person &#123;</span><br><span class="line">  public readonly name: string = &quot;Mark&quot;;</span><br><span class="line">  private readonly country: string = &quot;Korea&quot;;</span><br><span class="line"></span><br><span class="line">  public constructor(private _name: string, public age: number) &#123;</span><br><span class="line">    this.country = &quot;korea&quot;;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  hello() &#123;</span><br><span class="line">    // this.country = &#x27;China&#x27;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const p1 = new Person(&quot;koo&quot;, 39);</span><br><span class="line">console.log(p1.name); // get 을하는 함수를 getter</span><br><span class="line">// p1.name = &quot;Woongjae&quot;; // readonly 이기 대문에 할당할 수 없다.</span><br><span class="line">console.log(p1.name); // get 을하는 함수를 getter</span><br></pre></td></tr></table></figure>
+
+<p>readonly 를 사용하여 get 만 할 수 있는 프로퍼티를 만들 수 있다. 이때 할당은 처음 프로퍼티를 생성하는 부분과 생성자에서만 할 수 있다.</p>
+<h2 id="Index-signatures-in-Class"><a href="#Index-signatures-in-Class" class="headerlink" title="Index signatures in Class"></a>Index signatures in Class</h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// class =&gt; object</span></span><br><span class="line"><span class="comment">// &#123;mark: &#x27;male&#x27;, jade: &#x27;male&#125; Class A</span></span><br><span class="line"><span class="comment">// &#123;chole: &#x27;female&#x27;, alex: &#x27;male&#x27;, anna: &#x27;female&#x27;&#125; Class B</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 동적이라면?</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Students</span> </span>&#123;</span><br><span class="line">  <span class="comment">// [index: string]: string; // 어떤 문자열이 와도 쓸 수 있다.</span></span><br><span class="line">  [index: <span class="built_in">string</span>]: <span class="string">&quot;male&quot;</span> | <span class="string">&quot;female&quot;</span>; <span class="comment">// 받을 수 있는 것 정의 할 수 있음.</span></span><br><span class="line"></span><br><span class="line">  mark: <span class="string">&quot;male&quot;</span> = <span class="string">&quot;male&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> a = <span class="keyword">new</span> Students();</span><br><span class="line"></span><br><span class="line">a.mark = <span class="string">&quot;male&quot;</span>;</span><br><span class="line">a.jade = <span class="string">&quot;male&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(a);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> b = <span class="keyword">new</span> Students();</span><br><span class="line"></span><br><span class="line">b.chole = <span class="string">&quot;female&quot;</span>;</span><br><span class="line">b.alex = <span class="string">&quot;male&quot;</span>;</span><br><span class="line">b.anna = <span class="string">&quot;female&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(b);</span><br></pre></td></tr></table></figure>
+
+<p>동적으로 프로퍼티가 생기는 형식일때 사용할 수 있다. 받을 수 있는 프로퍼티를 정의해 주는 것도 가능하다.</p>
+<h2 id="static-properties-amp-method"><a href="#static-properties-amp-method" class="headerlink" title="static properties &amp; method"></a>static properties &amp; method</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">class Person &#123;</span><br><span class="line">  public static CITY = &quot;Seoul&quot;;</span><br><span class="line">  private static privateCity = &quot;bu&quot;;</span><br><span class="line">  public static hello() &#123;</span><br><span class="line">    console.log(&quot;안녕하세요.&quot;, Person.privateCity);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  public normalHello() &#123;</span><br><span class="line">    console.log(&quot;안녕&quot;, Person.CITY);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  public change() &#123;</span><br><span class="line">    Person.CITY = &quot;LA&quot;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Person.hello();</span><br><span class="line">console.log(Person.CITY);</span><br><span class="line"></span><br><span class="line">const p1 = new Person();</span><br><span class="line">// p1.hello(); // 이렇게 사용할 수 없음.</span><br><span class="line">p1.normalHello();</span><br><span class="line"></span><br><span class="line">const p2 = new Person();</span><br><span class="line">p2.normalHello();</span><br><span class="line">p1.change();</span><br><span class="line">p2.normalHello();</span><br></pre></td></tr></table></figure>
+
+<p>static 키워드를 붙히면 인스턴스를 생성하지 않아도 클래스 이름으로 접근해서 사용할 수 있다.</p>
+<h2 id="Singltons-패턴"><a href="#Singltons-패턴" class="headerlink" title="Singltons 패턴"></a>Singltons 패턴</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">class ClassName &#123;</span><br><span class="line">  private static instance: ClassName | null = null;</span><br><span class="line"></span><br><span class="line">  // 매개체로 이용해서 객체를 꺼내옴.</span><br><span class="line">  public static getInstance(): ClassName &#123;</span><br><span class="line">    // ClassName 으로 부터 만든 Object가 있으면 그걸 리턴</span><br><span class="line">    // 없으면, 만들어서 리턴</span><br><span class="line">    if (ClassName.instance === null) &#123;</span><br><span class="line">      ClassName.instance = new ClassName();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    return ClassName.instance;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  // new 를 직접 호출 할 수 없게 함.</span><br><span class="line">  // 다른 오브젝트 생성 금지</span><br><span class="line">  private constructor() &#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 만들어진 단일 오브젝트를 공유하는 개념</span><br><span class="line">const a = ClassName.getInstance();</span><br><span class="line">const b = ClassName.getInstance();</span><br><span class="line"></span><br><span class="line">console.log(a === b);</span><br></pre></td></tr></table></figure>
+
+<p>생성자 함수를 private 접근 제어자를 사용해서 밖에서 호출하지 못하도록함. <code>getInstance()</code> 같은 함수를 사용해서 인스턴스가 있다면 반환하고 인스턴스가 없다면 새롭게 생성한후 할당, 프로퍼티로 있는 인스턴스를 넘겨준다.</p>
+<p>이렇게 함으로서 클래스로쿠터 단 하나의 오브젝트만 생성해서 사용하는 패턴을 만들 수 있다.</p>
+<h2 id="클래스의-상속"><a href="#클래스의-상속" class="headerlink" title="클래스의 상속"></a>클래스의 상속</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">class Parent &#123;</span><br><span class="line">  constructor(protected _name: string, private _age: number) &#123;&#125;</span><br><span class="line"></span><br><span class="line">  public print(): void &#123;</span><br><span class="line">    console.log(`이름은 $&#123;this._name&#125; 이고 나이는 $&#123;this._age&#125; 입니다.`);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  protected printName(): void &#123;</span><br><span class="line">    // 프로텍티트 접근 제어자를 통해서 부모 클래스의 private 프로퍼티도 접근 가능.</span><br><span class="line">    console.log(this._name, this._age);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class Child extends Parent &#123;</span><br><span class="line">  // 접근 제어자도 오버라이드 됨.</span><br><span class="line">  // public _name = &quot;Mark Jr.&quot;;</span><br><span class="line"></span><br><span class="line">  public gender: string = &quot;male&quot;;</span><br><span class="line"></span><br><span class="line">  constructor(age: number) &#123;</span><br><span class="line">    super(&quot;Mark Jr.&quot;, age);</span><br><span class="line">    this.printName();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// const p = new Parent(&quot;Mark&quot;, 39);</span><br><span class="line">// p.print();</span><br><span class="line"></span><br><span class="line">// const c = new Child(&quot;son&quot;, 39);</span><br><span class="line">const c = new Child(5);</span><br><span class="line">c.print();</span><br></pre></td></tr></table></figure>
+
+<p>부모 클래스에서 <code>protected</code> 로 선언한 함수 또는 프로퍼티는 클래스 외에서 접근은 불가능하지만, 상속받은 자식 클래스에서 접근은 가능하다. 자식 클래스에서 기본 생성자가 아니라 따로 만들었다면, <code>super()</code>를 사용하여 부모 클래스이 생성자를 호출해 주어야 한다. 그렇게 해야지 부모 클래스의 값이 할당 되고 <code>this</code>키워드를 사용하여 호출, 사용할 수 있게 된다.</p>
+<h2 id="abstract"><a href="#abstract" class="headerlink" title="abstract"></a>abstract</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">// new 불가 , 상속후 완전하게 만든다음에 사용 가능.</span><br><span class="line">abstract class AbstractPerson &#123;</span><br><span class="line">  protected _name: string = &quot;Mark&quot;;</span><br><span class="line"></span><br><span class="line">  // 구현 하지 않음 // 클래스의  abstract 붙여야 함.</span><br><span class="line">  abstract setName(name: string): void;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class Person extends AbstractPerson &#123;</span><br><span class="line">  setName(name: string): void &#123;</span><br><span class="line">    this._name = name;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const p = new Person();</span><br><span class="line">p.setName(&quot;Koo&quot;);</span><br></pre></td></tr></table></figure>
+
+<p>완전하지 않은 클래스로서 외형만 만든다고 생각하면된다. 완전하지 않기 때문에 <code>new</code>로 생성할 수 없다. 추상 클래스를 상속 받는 자식 클래스에서는 <code>abstract</code>로 작성한 완전하지 않은 메서드를 완전히 구현해야 <code>new</code>로 생성할 수 있다.</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1005,318 +1237,6 @@
 <p>이런 경우를 제외한 대부분의 경우에서 constructor-based injection을 선호해야 한다. </p>
 <h2 id="Provider-registration"><a href="#Provider-registration" class="headerlink" title="Provider registration"></a>Provider registration</h2><p>컨트롤러가 프로바이더를 소비할 수 있도록 모듈에 등록해 주어야 한다. </p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">import &#123; Module &#125; from &#x27;@nestjs/common&#x27;;</span><br><span class="line">import &#123; CatsController &#125; from &#x27;./cats/cats.controller&#x27;;</span><br><span class="line">import &#123; CatsService &#125; from &#x27;./cats/cats.service&#x27;;</span><br><span class="line"></span><br><span class="line">@Module(&#123;</span><br><span class="line">  controllers: [CatsController],</span><br><span class="line">  providers: [CatsService],</span><br><span class="line">&#125;)</span><br><span class="line">export class AppModule &#123;&#125;</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2022/02/28/cleanCode/229228-%ED%95%A8%EC%88%98/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JayoonKoo">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="티끌모아 태산">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/02/28/cleanCode/229228-%ED%95%A8%EC%88%98/" class="post-title-link" itemprop="url">함수</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2022-02-28 09:08:03 / Modified: 09:08:07" itemprop="dateCreated datePublished" datetime="2022-02-28T09:08:03+09:00">2022-02-28</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/cleanCode/" itemprop="url" rel="index"><span itemprop="name">cleanCode</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>함수를 잘 만드는법을 살펴본다. 함수에 어떤 속성을 부여해야 처음 읽는 사람이 프로그램 내부를 직관적으로 파악할 수 있을까? </p>
-<h2 id="작게-만들어라"><a href="#작게-만들어라" class="headerlink" title="작게 만들어라"></a>작게 만들어라</h2><p>작은 함수가 좋다. 각 함수는 명백히 하나의 이야기를 표현해야 한다. </p>
-<h3 id="블록과-들여쓰기"><a href="#블록과-들여쓰기" class="headerlink" title="블록과 들여쓰기"></a>블록과 들여쓰기</h3><p>블록 구조를 갖는 코드는 한줄 이어야 한다. 중첩 구조가 생길만큼 함수가 커져서는 안된다. 들여쓰기 수준을 1단이나 2단 정도로 유지한다. </p>
-<h2 id="한가지만-해라"><a href="#한가지만-해라" class="headerlink" title="한가지만 해라"></a>한가지만 해라</h2><p>함수는 한 가지를 해야 한다. 그 한 가지를 잘 해야 한다. 그 한 가지만을 해야 한다. 함수를 판단할때 지정된 함수 이름 아래에서 추상화 수준을 판단한다. </p>
-<p>함수를 만드는 이유는 큰 개념을 여러 단계로 나눠 수행하기 위해서이다. 추상화 수준이 둘 이상이라면 더 축소 가능할 수 있다. 따라서 한 가지만 하는지 판단하는 방법이 하나 더 있다. 단순히 다른 표현이 아니라 의미 있는 이름으로 다른 함수를 추출할 수 있다면 그 함수는 여러 작업을 하는 셈이다. </p>
-<h2 id="함수당-추상화-수준은-하나로"><a href="#함수당-추상화-수준은-하나로" class="headerlink" title="함수당 추상화 수준은 하나로"></a>함수당 추상화 수준은 하나로</h2><p>함수가 확실히 한 가지 작업만 하려면 함수 내 모든 문장의 추상화 수준이 동일해야 한다. 한 함수 내의 추상화 수준을 섞으면 코드를 읽는 사람이 근본 개념인지 세부사항인지 구분하기 어려워 진다. 이렇게 뒤섞기 시작하면 점점더 엉망이 된다. </p>
-<h3 id="위에서-아래로-코드-읽기-내려가기-규칙"><a href="#위에서-아래로-코드-읽기-내려가기-규칙" class="headerlink" title="위에서 아래로 코드 읽기 : 내려가기 규칙"></a>위에서 아래로 코드 읽기 : 내려가기 규칙</h3><p>프로그램을 위에서 아래로 읽으면서 함수 추상화 수준이 한다계씩 낮아지게 작성해야 한다. TO 문단을 읽듯이 프로그램이 읽혀야 한다는 것인데 각 TO 문단은 이어지는 아래 단계의 TO 문단(~ 하려면) 을 참고한다. </p>
-<p>ex ) </p>
-<ul>
-<li>TO 설정 페이지와 해제 페이지를 포함하려면, 설정 페이지를 포함하고, 테스트 페이지 내용을 포함하고, 해제 페이지를 포함한다.<ul>
-<li>TO 설정 페이지를 포함하려면 , 슈트이면 슈트 설정 페이지를 포함한 후 일반 설정 페이지를 포함한다.</li>
-<li>TO 슈트 설정 페이지를 포함하려면, 부모 계층에서 “SuiteSetUp” 페이지를 찾아 include 문과 페이지 경로를 추가한다.</li>
-<li>TO 부모 계층을 검색하려면 …</li>
-</ul>
-</li>
-</ul>
-<p>위에서 아래로 TO 문단을 읽어내려 가듯이 코드를 구현하면 추상화 수준을 일관되게 유지하기 쉬워진다. </p>
-<h2 id="Switch-문"><a href="#Switch-문" class="headerlink" title="Switch 문"></a>Switch 문</h2><p>Switch 문은 기본적으로 N가지를 처리하기 때문에 한가지 일만 하기 어렵다. 하지만 Switch 문을 사용하지 않을 수 도 없다. 하지만 각 switch 문을 저차원 클래스에 숨기고 절대 반복하지 않은 방법이 있다. </p>
-<p>직원 유형에 따라 다른 값을 계산해 반환하는 함수이다. 좋지 않은 예시 : ❌</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">function calculatePay(employee: Employee) &#123;</span><br><span class="line">  switch (employee.type) &#123;</span><br><span class="line">    case &#x27;COMMISSIONED&#x27;:</span><br><span class="line">      return calculateCommissionedPay(employee);</span><br><span class="line">    case &#x27;HOURLY&#x27;:</span><br><span class="line">      return calculateHourlyPay(employee);</span><br><span class="line">    case &#x27;SALARIED&#x27;:</span><br><span class="line">      return calculateSalariedPay(employee);</span><br><span class="line">    default:</span><br><span class="line">      throw new Error(employee.type);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>다음과 같은 문제가 있다.</p>
-<ol>
-<li>함수가 길다. 새 직원 유형을 추가하면 더 길어진다.</li>
-<li>한가지 작업만 수행하지 않는다.</li>
-<li>SRP(Single Responsibility Principle) 단일 책임 원칙을 위반한다. </li>
-<li>OCP(Open Closed Principle): 개방 폐쇄 원칙을 위반한다. ( 소프트웨어 개체는 확장에 대해 열려 있어야 하고, 수정에 대해서는 닫혀 있어야 한다.) → 새 직원을 추가할때마다 코드를 변경해야 하기 때문이다. </li>
-<li>가장 큰 문제는 위 함수와 구조가 동일한 함수가 무한정 존재한다는 사실이다. </li>
-</ol>
-<p>이문제를 해결하기 위해 switch 을 추상 팩토리(ABSTRACT FACTORY) 에 숨긴다. Switch 문을 통해 적절한 Employee 파생 클래스의 인스턴스를 생성한다. 여러가지 함수는 Employee 인터페이스를 거쳐 호출되게 한다. 그러면 다형성으로 인해 실제 파생 클래스의 함수가 실행된다.</p>
-<p>좋은 예 : ✅</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">abstract class Employee &#123;</span><br><span class="line">  abstract isPayday(): boolean;</span><br><span class="line">  abstract calculatePay(): Money;</span><br><span class="line">  abstract deleverPay(pay: Money): void;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">interface EmployeeFactory &#123;</span><br><span class="line">  makeEmployee(record: EmployeeRecord): Employee;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class EmployeeFactoryImpl implements EmployeeFactory &#123;</span><br><span class="line">  makeEmployee(record: EmployeeRecord): Employee &#123;</span><br><span class="line">    switch (record.type) &#123;</span><br><span class="line">      case &#x27;COMMISSIONED&#x27;:</span><br><span class="line">        return new CommissionedEmployee(record);</span><br><span class="line">      case &#x27;HOURLY&#x27;:</span><br><span class="line">        return new HourlEmployee(record);</span><br><span class="line">      case &#x27;SALARIED&#x27;:</span><br><span class="line">        return new SalariedEmployy(record);</span><br><span class="line">      default:</span><br><span class="line">        throw new Error(record.type);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>Siwtch 문을 다형적 객체를 생성하는 코드로 숨겨 버린다. </p>
-<h2 id="서술적인-이름을-사용하라"><a href="#서술적인-이름을-사용하라" class="headerlink" title="서술적인 이름을 사용하라!"></a>서술적인 이름을 사용하라!</h2><p>길고 서술적인 이름이 길고 서술적인 주석보다 좋다. 함수 이름만 보고 동작을 예측할수 있다면 좋은 코드라고 할수 있다. 단 이름을 붙일 때는 일관성이 있어야 한다. 모듈 내에서 함수 이름은 같은 문구, 명사 동사를 사용한다. includeSetupAndTeardownPages, IncludeSetupPages, includeSuiteSetuppage, includeSetupPage 등은 좋은 예이다. </p>
-<h2 id="함수-인수"><a href="#함수-인수" class="headerlink" title="함수 인수"></a>함수 인수</h2><p>함수의 인수는 적을수록 좋다. 보통 2개 정도까진 괜찮고, 4개 이상부터는 특별한 이유가 필요하다. 인수가 있는것보다 인수가 없는것이 코드를 읽는사람이 이해하기 쉽다. 인수가 많아지면 테스트도 어렵다. 2개이상의 인수를 받는 함수를 테스트 하는것은 테스트를 어렵게 만든다. 최선은 입력 인수가 없는 경우이며, 차선은 입력 인수가 1개뿐인 경우이다. </p>
-<h3 id="많이-쓰는-단항-형식"><a href="#많이-쓰는-단항-형식" class="headerlink" title="많이 쓰는 단항 형식"></a>많이 쓰는 단항 형식</h3><p>함수에 인수 1개를 넘기는 가장 흔한 경우는 두가지이다. </p>
-<ol>
-<li>인수에 질문을 던지는 경우이다. <code>fileExists(&quot;myfile&quot;): boolean</code> </li>
-<li>인수를 뭔가로 변환해 결과를 반환하는 경우 <code>parseInt(&quot;2&quot;): number</code></li>
-</ol>
-<p>이 두경우는 독자가 당여하게 받아들인다. </p>
-<h3 id="플래그-인수"><a href="#플래그-인수" class="headerlink" title="플래그 인수"></a>플래그 인수</h3><p>플래그 인수는 좋지 않다. 플래그 인수에 따라서 동작이 달라진 다는 의미가 함수에서 두가지를 한다는 의미이기 때문이다. 함수를 분리하는 것이 좋다. </p>
-<p>redux 관련해서 작성했던 좋지 않은 예 : ❌</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"> export function fetchThunk&lt;T, I extends &#123;[key: string]: InitialState&lt;T&gt;&#125;&gt;(</span><br><span class="line">  fetch: AsyncThunk&lt;T, string, &#123;&#125;&gt;,</span><br><span class="line">  key: keyof I,</span><br><span class="line">  keep: boolean, // flag 인수</span><br><span class="line">  handler?: (state: I, action: PayloadAction&lt;T&gt;) =&gt; void, // handler fulfilled 이후에 </span><br><span class="line">) &#123;</span><br><span class="line">  return &#123;</span><br><span class="line">    [fetch.pending.type]: (state: I) =&gt; &#123;</span><br><span class="line">      state[key].loading = true;</span><br><span class="line">      state[key].data = keep ? state[key].data : null; // flag 인수에 사용</span><br><span class="line">      state[key].error = null;</span><br><span class="line">    &#125;,</span><br><span class="line">    [fetch.fulfilled.type]: (state: I, action: PayloadAction&lt;T&gt;) =&gt; &#123;</span><br><span class="line">      state[key].loading = false;</span><br><span class="line">      state[key].data = action.payload;</span><br><span class="line">      handler &amp;&amp; handler(state, action);</span><br><span class="line">    &#125;,</span><br><span class="line">    [fetch.rejected.type]: (</span><br><span class="line">      state: I,</span><br><span class="line">      action: ReturnType&lt;typeof fetch.rejected&gt;,</span><br><span class="line">    ) =&gt; &#123;</span><br><span class="line">      state[key].loading = false;</span><br><span class="line">      state[key].error = action.error;</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>keep : 이라는 flag 인수를 두어서 데이터를 유지할지 선택하였다.함수를 분리하고 이름도 더 길게 서술하도록 한다. </p>
-<p>handler 를 받아서 fulfilled 이후에 실행할 함수를 콜백으로 받았는데 이또한  handler가 있는 함수와 핸들러가 없는 함수로 분리한다. </p>
-<p>좋은 예 : ✅</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br></pre></td><td class="code"><pre><span class="line">export function fetchDataKeepingPrev&lt;T, I extends &#123;[key: string]: InitialState&lt;T&gt;&#125;&gt;(</span><br><span class="line">  fetch: AsyncThunk&lt;T, string, &#123;&#125;&gt;,</span><br><span class="line">  key: keyof I,</span><br><span class="line">) &#123;</span><br><span class="line">  return &#123;</span><br><span class="line">    [fetch.pending.type]: (state: I) =&gt; &#123;</span><br><span class="line">      state[key].loading = true;</span><br><span class="line">      state[key].data = state[key].data // data kepp</span><br><span class="line">      state[key].error = null;</span><br><span class="line">    &#125;,</span><br><span class="line">    [fetch.fulfilled.type]: (state: I, action: PayloadAction&lt;T&gt;) =&gt; &#123;</span><br><span class="line">      state[key].loading = false;</span><br><span class="line">      state[key].data = action.payload;</span><br><span class="line">    &#125;,</span><br><span class="line">    [fetch.rejected.type]: (</span><br><span class="line">      state: I,</span><br><span class="line">      action: ReturnType&lt;typeof fetch.rejected&gt;,</span><br><span class="line">    ) =&gt; &#123;</span><br><span class="line">      state[key].loading = false;</span><br><span class="line">      state[key].error = action.error;</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">export function fetchData&lt;T, I extends &#123;[key: string]: InitialState&lt;T&gt;&#125;&gt;(</span><br><span class="line">  fetch: AsyncThunk&lt;T, string, &#123;&#125;&gt;,</span><br><span class="line">  key: keyof I,</span><br><span class="line">) &#123;</span><br><span class="line">  return &#123;</span><br><span class="line">    [fetch.pending.type]: (state: I) =&gt; &#123;</span><br><span class="line">      state[key].loading = true;</span><br><span class="line">      state[key].data = null // null </span><br><span class="line">      state[key].error = null;</span><br><span class="line">    &#125;,</span><br><span class="line">    [fetch.fulfilled.type]: (state: I, action: PayloadAction&lt;T&gt;) =&gt; &#123;</span><br><span class="line">      state[key].loading = false;</span><br><span class="line">      state[key].data = action.payload;</span><br><span class="line">    &#125;,</span><br><span class="line">    [fetch.rejected.type]: (</span><br><span class="line">      state: I,</span><br><span class="line">      action: ReturnType&lt;typeof fetch.rejected&gt;,</span><br><span class="line">    ) =&gt; &#123;</span><br><span class="line">      state[key].loading = false;</span><br><span class="line">      state[key].error = action.error;</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">export function fetchDataKeepingPrevWithHandler&lt;T, I extends &#123;[key: string]: InitialState&lt;T&gt;&#125;&gt;(</span><br><span class="line">  fetch: AsyncThunk&lt;T, string, &#123;&#125;&gt;,</span><br><span class="line">  key: keyof I,</span><br><span class="line">	handler?: (state: I, action: PayloadAction&lt;T&gt;) =&gt; void,</span><br><span class="line">) &#123;</span><br><span class="line">  return &#123;</span><br><span class="line">    [fetch.pending.type]: (state: I) =&gt; &#123;</span><br><span class="line">      state[key].loading = true;</span><br><span class="line">      state[key].data = state[key].data // data kepp</span><br><span class="line">      state[key].error = null;</span><br><span class="line">    &#125;,</span><br><span class="line">    [fetch.fulfilled.type]: (state: I, action: PayloadAction&lt;T&gt;) =&gt; &#123;</span><br><span class="line">      state[key].loading = false;</span><br><span class="line">      state[key].data = action.payload;</span><br><span class="line">    &#125;,</span><br><span class="line">    [fetch.rejected.type]: (</span><br><span class="line">      state: I,</span><br><span class="line">      action: ReturnType&lt;typeof fetch.rejected&gt;,</span><br><span class="line">    ) =&gt; &#123;</span><br><span class="line">      state[key].loading = false;</span><br><span class="line">      state[key].error = action.error;</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">export function fetchDataWithHandler&lt;T, I extends &#123;[key: string]: InitialState&lt;T&gt;&#125;&gt;(</span><br><span class="line">  fetch: AsyncThunk&lt;T, string, &#123;&#125;&gt;,</span><br><span class="line">  key: keyof I,</span><br><span class="line">	handler?: (state: I, action: PayloadAction&lt;T&gt;) =&gt; void,</span><br><span class="line">) &#123;</span><br><span class="line">  return &#123;</span><br><span class="line">    [fetch.pending.type]: (state: I) =&gt; &#123;</span><br><span class="line">      state[key].loading = true;</span><br><span class="line">      state[key].data = null // null</span><br><span class="line">      state[key].error = null;</span><br><span class="line">    &#125;,</span><br><span class="line">    [fetch.fulfilled.type]: (state: I, action: PayloadAction&lt;T&gt;) =&gt; &#123;</span><br><span class="line">      state[key].loading = false;</span><br><span class="line">      state[key].data = action.payload;</span><br><span class="line">    &#125;,</span><br><span class="line">    [fetch.rejected.type]: (</span><br><span class="line">      state: I,</span><br><span class="line">      action: ReturnType&lt;typeof fetch.rejected&gt;,</span><br><span class="line">    ) =&gt; &#123;</span><br><span class="line">      state[key].loading = false;</span><br><span class="line">      state[key].error = action.error;</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>그런데 이렇게 작성하니 인수를 줄이기 위해서 중복된 함수가 너무 많아진 느낌이다. 함수를 작성하는 쪽에 수고로움과 사용하는 쪽에서에 편리함 중에 선택해야 하는 문제 같다. </p>
-<p>추가적으로 인수를 더 줄이기 위해서 FetchThunkData 라는 클래스를 만들어 key, fetch, keep 정도는 생성자에서 받아올 수 있을거 같다. 이렇게 하면 인스턴스에 이름으로 데이터를 유지할지를 명시하면 사용하는쪽에서 헷갈리지도 않고 함수도 중복되게 적지 않아도 될거 같다. </p>
-<p>개인적으로 생각한 예 : ❇️ <code>FetchThunkData</code> class</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">type FetchThunkDataConstructor&lt;T, S&gt; = &#123;</span><br><span class="line">  fetch: AsyncThunk&lt;T, string, &#123;&#125;&gt;;</span><br><span class="line">  keep: boolean;</span><br><span class="line">  key: string;</span><br><span class="line">  handler?: (state: S, action: PayloadAction&lt;T&gt;) =&gt; void;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">export class FetchThunkData&lt;T, S extends &#123;[key: string]: InitialState&lt;T&gt;&#125;&gt; &#123;</span><br><span class="line">  private fetch: AsyncThunk&lt;T, string, &#123;&#125;&gt;;</span><br><span class="line">  private keep: boolean;</span><br><span class="line">  private key: string;</span><br><span class="line">  private handler?: (state: S, action: PayloadAction&lt;T&gt;) =&gt; void;</span><br><span class="line"></span><br><span class="line">  constructor(&#123;fetch, keep, key, handler&#125;: FetchThunkDataConstructor&lt;T, S&gt;) &#123;</span><br><span class="line">    this.fetch = fetch;</span><br><span class="line">    this.keep = keep;</span><br><span class="line">    this.key = key;</span><br><span class="line">    this.handler = handler;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  private pendingReducer = (state: S) =&gt; &#123;</span><br><span class="line">    state[this.key].data = this.keep ? state[this.key].data : null;</span><br><span class="line">    state[this.key].loading = true;</span><br><span class="line">    state[this.key].error = null;</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  private fuflledReducer = (state: S, action: PayloadAction&lt;T&gt;) =&gt; &#123;</span><br><span class="line">    state[this.key].loading = false;</span><br><span class="line">    state[this.key].data = action.payload;</span><br><span class="line">    this.handler &amp;&amp; this.handler(state, action);</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  private rejectedReducer = (</span><br><span class="line">    state: S,</span><br><span class="line">    action: ReturnType&lt;typeof this.fetch.rejected&gt;,</span><br><span class="line">  ) =&gt; &#123;</span><br><span class="line">    state[this.key].loading = false;</span><br><span class="line">    state[this.key].error = action.error;</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  getFetchThunkReducer() &#123;</span><br><span class="line">    return &#123;</span><br><span class="line">      [this.fetch.pending.type]: this.pendingReducer,</span><br><span class="line">      [this.fetch.fulfilled.type]: this.fuflledReducer,</span><br><span class="line">      [this.fetch.rejected.type]: this.rejectedReducer,</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>사용하는 부분 : </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">const fetchThunkKeepDataNoHandler = new FetchThunkData(&#123;</span><br><span class="line">  fetch: fetchChallenges,</span><br><span class="line">  keep: true,</span><br><span class="line">  key: &#x27;challenges&#x27;,</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">const challengesSlice = createSlice(&#123;</span><br><span class="line">  name: &#x27;challenges&#x27;,</span><br><span class="line">  initialState,</span><br><span class="line">  reducers: &#123;&#125;,</span><br><span class="line">  extraReducers: fetchThunkKeepDataNoHandler.getFetchThunkReducer(),</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<p><code>fetchThunkKeepDataNoHandler</code> 라른 인스턴스에 이름이 있기 때문에 data를 유지하하고 handler 가 없는 reducer를 반환함을 알 수 있다. </p>
-<p>또한, 생성자에서 필요한 인수를 받았기 때문에 <code>getFetchThunkReducer</code> 에서는 인수를 받지 않아도 된다. </p>
-<h3 id="이항-함수"><a href="#이항-함수" class="headerlink" title="이항 함수"></a>이항 함수</h3><p>이항 함수는 함수에 인자로 2개를 받는 함수이다. 2개의 인수가 한개의 값을 표현하기에 적합하거나, 자연적인 순서가 있는것이 아니라면 인자로 2개를 받는것은 1개를 받는것보다 이해하기 어렵다 (자연스러운 경우 ? <code>new Point(x, y)</code> 같은 경우, 인자 2개가 하나의 표인트를 표현하는것과 순서도 자연스럽다)</p>
-<p>인수가 2개인 경우가 반드시 나쁜 경우는 아니지만 줄일수 있도록 해야한다. 예를들어서 <code>writeField(outpurStream, name)</code> 인자에 순서를 기억하기 어렵기 때문에 <code>writeField(name)</code> 으로 줄이면 좋다. 이럴 경우에는 <code>OutputStream</code> 이라는 클래스를 만들고 멤버 변수로 <code>outputStrem</code> 을 갖고, <code>writeField(name)</code> 메서드를 구현하여 <code>outputStream.writeField(name)</code> 같이 호출할 수 있다. </p>
-<h3 id="삼항-함수"><a href="#삼항-함수" class="headerlink" title="삼항 함수"></a>삼항 함수</h3><p>인수가 3개인 함수는 인수가 2개인 함수보다 훨씬 더 이해하기 어렵다. 삼항 함수를 만들 때는 신중히 고려해야 한다.</p>
-<h3 id="인수-객체"><a href="#인수-객체" class="headerlink" title="인수 객체"></a>인수 객체</h3><p>인수가 2-3 개 필요하다면 일부로 독자적인 클래스 변수로 선언할 가능성을 짚어봐야 한다. </p>
-<p>좋지 않은 예 : ❌</p>
-<p><code>makeCircle(x: number, y: number, radius: number)</code></p>
-<p>좋은 예 : ✅</p>
-<p><code>makeCircle(center: Point, radius: number)</code></p>
-<p>인수로 객체를 넘기는 것이 눈속임 이라 생각할 수 있지만, 객체에는 이름을 담기 때문에 결국엔 어떤 개념을 전달하게 된다.그것이 코드를 읽는 사람들에게 이해하는데 더 큰 도움을 준다. </p>
-<p>자바스크립트에서 함수에 인수로 객체를 받으면 인수에 개념을 전달할수 있게됨으로 인수를 객체로 전달하도록 하는것이 좋다.</p>
-<h3 id="인수-목록"><a href="#인수-목록" class="headerlink" title="인수 목록"></a>인수 목록</h3><p>때로는 인수 개수가 가변적인 함수도 필요하다. 가변적인 인수를 갖는 함수는 사실상 2개의 인수를 받는 이항함수로 생각할 수 있다. <code>function sumFunction(arg1, ...argList)</code> </p>
-<h3 id="동사와-키워드"><a href="#동사와-키워드" class="headerlink" title="동사와 키워드"></a>동사와 키워드</h3><p>함수의 의도나 인수의 순서와 의도를 제대로 표현하려면 좋은 함수 이름이 필요하다. <code>write(name)</code> 함수는 곧바로 이해가 되는데 이름이 무엇이든 쓴다는 뜻으로 생각할 수 있기 때문이다. 더 나은 이름으로는 <code>wirteField(name)</code> 과 같이 사용할 수 있다. </p>
-<p>또는, 함수 이름에 키워드를 추가하는 방식을 사용할 수 있다. 이렇게 하면 인수에 순서를 기억할 필요 없이 함수에 이름으로 알 수 있게 된다. </p>
-<h2 id="부수-효과를-일으키지-마라"><a href="#부수-효과를-일으키지-마라" class="headerlink" title="부수 효과를 일으키지 마라."></a>부수 효과를 일으키지 마라.</h2><p>함수에서 부수효과가 일어나면 한가이 일을 하겠다고 한 함수가 사실은 그렇지 못한 것이 된다. </p>
-<p>안 좋은 예시 : ❌</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">class UserValidator &#123;</span><br><span class="line">  private cryptographer: Cryptographer;</span><br><span class="line"></span><br><span class="line">  constructor(cryptographer: Cryptographer) &#123;</span><br><span class="line">    this.cryptographer = cryptographer;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  checkPassword(userName: string, password: string): boolean &#123;</span><br><span class="line">    const user: User = UserGatewayImpl.findByName(userName);</span><br><span class="line">    if (user !== null) &#123;</span><br><span class="line">      const codePhrase = user.getPhraseEncodedByPassword();</span><br><span class="line">      const phrase = this.cryptographer.decrypt(codePhrase, password);</span><br><span class="line">      if (phrase === &#x27;Valid Password&#x27;) &#123;</span><br><span class="line">        Session.initialize();</span><br><span class="line">        return true;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return false;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><code>checkPassword</code> 가 패스워드를 확인해서 boolean 값을 반환한다고 생각하지만 실제로 안에서는 세션을 초기화 하는 일까지 하고 있는 것이다. 이럴경우 이름을 <code>checkPasswordAndSessionIntialize</code> 라고 바꾸는 것이 좋다. 그래도 합수가 한가지 일을 하게 한다는 원칙은 어긋나지만</p>
-<h3 id="부수효과-피하기"><a href="#부수효과-피하기" class="headerlink" title="부수효과 피하기"></a>부수효과 피하기</h3><p>사이드 이펙트를 일으키지 않기 위해서는 객체를 그대로 사용하는 것이 아니라 객체를 복사해서 새로운 객체를 만들고 변경하는 방법을 사용해야 한다. 또한 전역 변수를 변경시켜 전역 변수를 사용하는 다른 함수에 영향을 주면 안된다.</p>
-<h3 id="명령과-조회를-분리하라"><a href="#명령과-조회를-분리하라" class="headerlink" title="명령과 조회를 분리하라"></a>명령과 조회를 분리하라</h3><p>함수는 뭔가를 수행하거 답하거나 둘 중 하나만 해야한다. 둘다 하면 혼란을 초래한다.</p>
-<p>좋지 않은 예시 : ❌</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">function set(attribute: string, value: string): boolean &#123;</span><br><span class="line">  //...</span><br><span class="line">	return true</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">if (set(&#x27;name&#x27;, &#x27;koo&#x27;)) &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>작성한 함수는 객체에 속성에 지정한 value 로 설정하면 true 를 실패하면 false를 반환하는 함수이다. 그러나 if 문 안에 들어가면 해석이 다양해진다. 개발자는 동사로서 설정하라고 판단하고 함수를 작성했지만 사용하는 쪽에서는 설정되어 있다면으로 해석할 수 있다. 함수 선언부를 확인하고 나서야 객체에 설정하는 함수구나 생각하기 쉽상이다. 따라서 설정 되어 있다면을 함수로 따로 분리하는 것이 현명하다. </p>
-<p>좋은 예시 :  ✅</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">if (attrubuteExist(&#x27;name&#x27;)) &#123;</span><br><span class="line">  setAttribute(&#x27;name&#x27;, &#x27;koo&#x27;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>값을 설정하는 함수, 반환하는 함수를 분리하면 읽는 쪽에서 코드를 더 쉽게 이해할 수 있다.</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2022/02/01/cleanCode/220201-220201%20%EC%9D%98%EB%AF%B8%20%EC%9E%88%EB%8A%94%20%EC%9D%B4%EB%A6%84/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JayoonKoo">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="티끌모아 태산">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/02/01/cleanCode/220201-220201%20%EC%9D%98%EB%AF%B8%20%EC%9E%88%EB%8A%94%20%EC%9D%B4%EB%A6%84/" class="post-title-link" itemprop="url">220201 의미 있는 이름</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2022-02-01 16:07:55 / Modified: 16:08:03" itemprop="dateCreated datePublished" datetime="2022-02-01T16:07:55+09:00">2022-02-01</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/cleanCode/" itemprop="url" rel="index"><span itemprop="name">cleanCode</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="2-의미-있는-이름"><a href="#2-의미-있는-이름" class="headerlink" title="2. 의미 있는 이름"></a>2. 의미 있는 이름</h1><p>클린 코드를 읽고 공부한 내용을 타입스크립트로 정리해본 내용입니다. 개인적으로 공부한 내용이라 틀린점도 있을 수 있습니다. </p>
-<h2 id="의도를-분명히-밝혀라"><a href="#의도를-분명히-밝혀라" class="headerlink" title="의도를 분명히 밝혀라"></a>의도를 분명히 밝혀라</h2><p>변수나 함수 그리고 클래스의 이름은 다음과 같은 굵직한 질문에 모두 답해야 한다. 존재 이유는? 수행 기능은? 사용 방법은? 따로 주석이 필요하다면 의도를 분명히 드러내지 못햇다는 말이다. </p>
-<p><code>const d: number</code> ❌</p>
-<p><code>const daysSinceCreation: number</code> ✅</p>
-<p>코드의 함축되어 있는 정보를 독자로 하여금 이해할 수 있도록 명시적으로 이름을 지어야 한다. </p>
-<p>좋지 않은 예시 : ❌</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">function getThem() &#123;</span><br><span class="line">	const list1: number[] = []</span><br><span class="line">	for (let x of theList) &#123;</span><br><span class="line">		if (x[0] === 4) &#123;</span><br><span class="line">			list1.push(x)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	return list1</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>드러나지 않은 함축적인 정보는 다음과 같다.</p>
-<ol>
-<li>theList에 무엇이 들어있는가?</li>
-<li>theList 에서 0 번째 값이 어째서 중요한가?</li>
-<li>값 4는 무슨 의미인가?</li>
-<li>함수가 반환하는 리스트 list1을 어떻게 사용하는가? </li>
-</ol>
-<p>만약 해당 함수가 지뢰찾기에서 깃발이 꽂힌 상태에 cell를 반환하는 함수라고 생각한다면 함축적인 의미를 이름을 통해서 명시적으로 드러낼 수 있다. </p>
-<p>좋은 예시 : ✅</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">export interface Cell &#123;</span><br><span class="line">  isFlagged: () =&gt; boolean;</span><br><span class="line">  data: number[];</span><br><span class="line">&#125;</span><br><span class="line">const FLAGGED_STATE = 4;</span><br><span class="line">class CellImpl implements Cell &#123;</span><br><span class="line">  data: number[] = [0];</span><br><span class="line">  constructor(flaggedState: number) &#123;</span><br><span class="line">    this.data[0] = flaggedState;</span><br><span class="line">  &#125;</span><br><span class="line">  isFlagged = () =&gt; &#123;</span><br><span class="line">    return this.data[0] === FLAGGED_STATE;</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const gameBoard: Cell[] = [new CellImpl(FLAGGED_STATE)];</span><br><span class="line">function getFlaggedCells() &#123;</span><br><span class="line">  const flaggedCells: Cell[] = [];</span><br><span class="line">  for (let cell of gameBoard) &#123;</span><br><span class="line">    if (cell.isFlagged()) &#123;</span><br><span class="line">      flaggedCells.push(cell);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  return flaggedCells;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ol>
-<li>theLIst 가 gameBoard 로 무엇이 들어가 있느지 알수 있게 되었다.</li>
-<li>theList 에 0번째 값은 칸 상태, 값 4는 깃발이 꽂힌 상태라는 의미인데 <code>cell.isFlagged()</code> 로 명확하게 표현할 수 있게 되었다.</li>
-<li>함수가 반환하는 리스트 list1 은 깃발이 꽂힌 상태에 cell 이라는 flaggedCells 이름으로 명확해진다.</li>
-</ol>
-<h2 id="그릇된-정보를-피하라"><a href="#그릇된-정보를-피하라" class="headerlink" title="그릇된 정보를 피하라"></a>그릇된 정보를 피하라</h2><p>이름으로 잘못된 정보를 주어서는 안된다. </p>
-<ol>
-<li>널리쓰이는 의미가 있는 단어를 다른 의미로 사용하지 말것</li>
-<li>특수한 의미에 단어를 의미에 맞게 사용할것 (List 를 사용할 경우 List인 경우에만 사용할것 아니라면 accountGroup 이나 accounts 가 낫다)</li>
-<li>서로 흡사한 이름을 사용하지 말것 </li>
-<li>유사한 개념은 유사한 표기법을 사용할것 (일관성 유지)</li>
-</ol>
-<h2 id="의미-있게-구분하라"><a href="#의미-있게-구분하라" class="headerlink" title="의미 있게 구분하라"></a>의미 있게 구분하라</h2><p>이름이 달라야 한다면 의미도 달라져야 한다. (a1, a2) 와 같은 구분에 변수는 아무런 의미도 전달하지 못한다.</p>
-<p>불용어를 남용 하지 말아야 한다. ProudctInfo 나 ProductData 에서 Info 나 Data 는 명확한 구분이 되지 못하고 영어에서 a, an, the와 같이 사용될 뿐이다. 접두어를 사용하지 말란 의미가 아니라 접두어를 사용하여 구분하는 의미가 있어야 한다는 것이다. </p>
-<p>NameString 과 Name 은 차이가 없다. Customer 와 CustomerObject 도 마찬가지이다. </p>
-<p>읽는 사람이 차이를 알도록 이름을 지어야 한다. </p>
-<h2 id="발음하기-쉬운-이름을-사용하라"><a href="#발음하기-쉬운-이름을-사용하라" class="headerlink" title="발음하기 쉬운 이름을 사용하라"></a>발음하기 쉬운 이름을 사용하라</h2><p>발음하기 쉬운 단어를 사용해야 지적인 대화가 가능해집니다.</p>
-<p>좋지 않은 예시 : ❌</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">class DtaRcrd102 &#123;</span><br><span class="line">  private genymdhms: Date;</span><br><span class="line">  private modymdhms: Date;</span><br><span class="line">  private readonly pszqint = &#x27;102&#x27;;</span><br><span class="line">  // ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>발음하기 쉬운 단어를 사용한 좋은 예시 : ✅</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">class Customer &#123;</span><br><span class="line">  private generationTimestamp: Date;</span><br><span class="line">  private modificationTimestamp: Date;</span><br><span class="line">  private readonly recordId = &#x27;102&#x27;;</span><br><span class="line">  // ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="검색하기-쉬운-이름을-사용하라"><a href="#검색하기-쉬운-이름을-사용하라" class="headerlink" title="검색하기 쉬운 이름을 사용하라"></a>검색하기 쉬운 이름을 사용하라</h2><p>긴 이름이 짧은 이름보다 좋다. 검색하기 쉬운 이름이 상수보다 좋다. 이름 길이는 범위 크기에 비례해야 한다. </p>
-<p>좋지 않은 예시 : ❌</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">let s = 0;</span><br><span class="line">const t: number[] = [];</span><br><span class="line">for (let j = 0; j &lt; 34; j++) &#123;</span><br><span class="line">  s += (t[j] * 4) / 5;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>좋은 예시 : ✅</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">const NUMBER_OF_TASKS = 34;</span><br><span class="line">const realDaysPerIdealDay = 4;</span><br><span class="line">const WORK_DAYS_PER_WEEK = 5;</span><br><span class="line">let sum = 0;</span><br><span class="line">const taskEstimate: number[] = [];</span><br><span class="line">for (let j = 0; j &lt; NUMBER_OF_TASKS; j++) &#123;</span><br><span class="line">  const realTaskDays = taskEstimate[j] * realDaysPerIdealDay;</span><br><span class="line">  const realTaskWeeks = realTaskDays / WORK_DAYS_PER_WEEK;</span><br><span class="line">  sum += realTaskWeeks;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><code>WORK_DAYS_PER_WEEK</code> 을 단순히 5라고 하였을때 문제가 생겨 변경해야 한다면 5로 검색하기는 쉽지 않을 것이다. 그러나 <code>WORK_DAYS_PER_WEEK</code> 으로 명시했을 경우 쉽게 검색할 수 있다. </p>
-<h2 id="인코딩을-피하라"><a href="#인코딩을-피하라" class="headerlink" title="인코딩을 피하라"></a>인코딩을 피하라</h2><p>인코딩한 이름은 발음하기 어려우며 오타가 생기기도 쉽다. </p>
-<h3 id="헝가리식-표기법"><a href="#헝가리식-표기법" class="headerlink" title="헝가리식 표기법"></a>헝가리식 표기법</h3><p>과거에는 타입을 컴파일러가 검사하지 못했기 때문에 접두어에 짧은 문자를 더해서 타입을 표현하곤 했다. 요즘에 언어들은 컴파일러가 타입을 강제하고 기억하고 있기 때문에 이렇게 하는것이 오히려 방해가 되기도 한다. 또한 타입에 변환을 어렵게 한다. phoneNumber 를 string으로 타입을 바꾸어도 여전히 이름은 phoneNumber 이기 때문에 타입을 오해하기도 쉽다. </p>
-<h3 id="멤버-변수-접두어"><a href="#멤버-변수-접두어" class="headerlink" title="멤버 변수 접두어"></a>멤버 변수 접두어</h3><p>멤버 변수에 <code>m_</code> 와 같은 접두어를 붙힐 필요도 없다. </p>
-<h3 id="인터페이스-클래스와-구현-클래스"><a href="#인터페이스-클래스와-구현-클래스" class="headerlink" title="인터페이스 클래스와 구현 클래스"></a>인터페이스 클래스와 구현 클래스</h3><p>인터페이스와 구현 클래스를 구분하기 위해 인코딩이 필요하기도 하다. 과거에는 인터페이스에 <code>IShapeFactory</code> , 구현 클래스에 <code>ShapeFactory</code> 와 같은 방식으로 <code>I</code> 를 붙히기도 했는데 과도한 정보를 주는 느낌도 있어서 인터페이스를 <code>ShapeFactory</code> 와 같이 쓰고 구현체를 <code>ShapeFactoryImpl</code> 과 같이 사용하는것을 추천한다.</p>
-<h2 id="자신의-기억력을-자랑하지-마라"><a href="#자신의-기억력을-자랑하지-마라" class="headerlink" title="자신의 기억력을 자랑하지 마라."></a>자신의 기억력을 자랑하지 마라.</h2><p>변수 이름을 자신이 아는 이름으로 변환해야 한다면 그 변수 이름은 바람직하지 못하다. </p>
-<p>문자 하나만 사용하는것도 루프와 같이 짧은 범위 내에서 사용하는것을 제외하면 바람직하지 못하다. 나중에 무슨 의미였는지 기억하기 어렵다. </p>
-<p>기억하기 쉬운 명로함이 최고임을 기억해라 </p>
-<h2 id="클래스-이름"><a href="#클래스-이름" class="headerlink" title="클래스 이름"></a>클래스 이름</h2><p>클래스 이름이나 객체 이름은 명사나 명사구가 적절하다. Customer, AddressParser 은 좋은 예이다. Manager, Precessor, Data, Info 등과 같은 단어는 피하고 동사는 사용하지 않는다.</p>
-<h2 id="메서드-이름"><a href="#메서드-이름" class="headerlink" title="메서드 이름"></a>메서드 이름</h2><p>메서드 이름은 동사나 동사구가 적합하다. postPayment, deletePage, save 등은 적합하다. </p>
-<h2 id="기발한-이름은-피하라"><a href="#기발한-이름은-피하라" class="headerlink" title="기발한 이름은 피하라"></a>기발한 이름은 피하라</h2><p>재미난 이름보다는 명로한 이름을 선택하라</p>
-<h2 id="한-개념에-한-단어를-사용하라"><a href="#한-개념에-한-단어를-사용하라" class="headerlink" title="한 개념에 한 단어를 사용하라"></a>한 개념에 한 단어를 사용하라</h2><p>추상적인 개념 하나에 단어 하나를 선택해 이를 고수한다. 예를 들어 똑같은 메서드를 클래스마다 fetch, retrieve, get 으로 제각각 부르면 혼란스럽다. 메서드 이름은 독자적이고 일관적이어야 한다. </p>
-<p>이름이 다르면 독자는 당연히 클래스도 다르고 타입도 다르다고 생각한다. 예를들어 DeviceManager와 ProtocolController이 근본적으로 하는일이 똑같다면 하나로 통일시켜야 한다. </p>
-<h2 id="말장난을-하지-마라"><a href="#말장난을-하지-마라" class="headerlink" title="말장난을 하지 마라"></a>말장난을 하지 마라</h2><p>한 단어를 두가지 목적으로 사용하지 말아야 한다. </p>
-<p>맥락이 같다면 중복하여 사용해도 되지만 맥락이 다르다면 다른 단어를 사용해야 한다. 예를들어 클래스에 add 라는 메서드를 추가한다고 생각해 보자 어떤 매개변수 두개를 받아서 두개를 조합해 새로운 값을 반환하는 맥락이라면 여러 클래스에서 add 라는 이름에 메서드를 동일하게 사용해도 된다. 그런데 어떤 클래스에서는 어떤 값을 받아서 리스트에 더하는 메서드를 추가한다고 생각해보자. 이럴 경우 add 라는 단어를 사용하는것이 적합할까? 이럴 경우는 앞에서와 맥락이 다르므로 다른 메서드 이름을 사용해야 한다. 이 경우 insert 나 append 가 적합해 보인다. </p>
-<h2 id="해법-영역에서-가져온-이름을-사용하라"><a href="#해법-영역에서-가져온-이름을-사용하라" class="headerlink" title="해법 영역에서 가져온 이름을 사용하라"></a>해법 영역에서 가져온 이름을 사용하라</h2><p>코드를 읽는 사람도 프로그래머 임을 기억해라. 프로그래머에게 익숙학 기술 개념은 아주 많으며 해당 개념 용어를 사용하는 것은 이해 관점에서도 아주 바람직하다. VISITOR 패턴에 친숙한 프로그래머는 AccountVisitor 라는 이름을 금방 이해할 것이다. </p>
-<h2 id="문제-영역에서-가져온-이름을-사용하라"><a href="#문제-영역에서-가져온-이름을-사용하라" class="headerlink" title="문제 영역에서 가져온 이름을 사용하라"></a>문제 영역에서 가져온 이름을 사용하라</h2><p>적절한 프로그래머 용어가 없다면 문제 영역에서 이름을 가져온다. </p>
-<h2 id="의미-있는-맥락을-추가하라"><a href="#의미-있는-맥락을-추가하라" class="headerlink" title="의미 있는 맥락을 추가하라"></a>의미 있는 맥락을 추가하라</h2><p>클래스, 함수, 이름 공간에 넣어 맥락을 부여한다. 모든 방법이 실패하면 마지막 수단으로 접두어를 붙인다. 예를 들어서 firstName, lastName, street, state, zipcode .. 와 같은 변수를 사용한다면 주소라는 사실을 금방 알아챈다. 하지만 state 라는 변수 하나만 매개변수로 사용한다면 주소에 일부분이라고 생각할 수 있을까? 좀 더 큰 구조(주소) 에 속한다는 것을 명시하기 위해서 addr 이라는 접두어를 사용할 수 있다. addrFirstName, addrState…</p>
-<p>또는, 맥락에 맞는 클래스를 생성하는것이 더 도움이 된다. 예를 들어 밑에 나오는 코드에서 num, verb, pluraModifier 는 통계 추측에 사용되는 변수이다. 단순히 사용되기만 한다면 어디에 사용되는 변수인지 코드를 다 읽지 않고서는 예측하기 힘들다. 이때 GuessStaticMessage 라는 클래스를 만들어 해당 변수를 멤버변수로 포함시킨다면 맥락을 더해서 어디에 사용되는 변수인지 명확히 표현할 수 있다. </p>
-<p>좋지 않은 예시 : ❌</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">function printGuessStatistics(candidate: string, count: number) &#123;</span><br><span class="line">  let num: string;</span><br><span class="line">  let verb: string;</span><br><span class="line">  let pluralModifier: string;</span><br><span class="line"></span><br><span class="line">  if (count === 0) &#123;</span><br><span class="line">    num = &#x27;no&#x27;;</span><br><span class="line">    verb = &#x27;are&#x27;;</span><br><span class="line">    pluralModifier = &#x27;s&#x27;;</span><br><span class="line">  &#125; else if (count === 1) &#123;</span><br><span class="line">    num = &#x27;1&#x27;;</span><br><span class="line">    verb = &#x27;is&#x27;;</span><br><span class="line">    pluralModifier = &#x27;&#x27;;</span><br><span class="line">  &#125; else &#123;</span><br><span class="line">    num = String(count);</span><br><span class="line">    verb = &#x27;are&#x27;;</span><br><span class="line">    pluralModifier = &#x27;s&#x27;;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  const guessMessage = `There $&#123;verb&#125; $&#123;num&#125; $&#123;candidate&#125;$&#123;pluralModifier&#125;`;</span><br><span class="line">  console.log(guessMessage);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>좋은 예시 : ✅</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">class GuessStatisticsMessage &#123;</span><br><span class="line">  private num: string = &#x27;&#x27;;</span><br><span class="line">  private verb: string = &#x27;&#x27;;</span><br><span class="line">  private pluralModifier: string = &#x27;&#x27;;</span><br><span class="line"></span><br><span class="line">  make(candidate: string, count: number) &#123;</span><br><span class="line">    this.createPluralDependentMessageParts(count);</span><br><span class="line">    return `There $&#123;this.verb&#125; $&#123;this.num&#125; $&#123;candidate&#125;$&#123;this.pluralModifier&#125;`;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  private createPluralDependentMessageParts(count: number) &#123;</span><br><span class="line">    if (count === 0) &#123;</span><br><span class="line">      this.thereAreNoLetters();</span><br><span class="line">    &#125; else if (count === 1) &#123;</span><br><span class="line">      this.thereIsOneLetter();</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">      this.thereAreManyLetters(count);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  private thereAreManyLetters(count: number) &#123;</span><br><span class="line">    this.num = String(count);</span><br><span class="line">    this.verb = &#x27;are&#x27;;</span><br><span class="line">    this.pluralModifier = &#x27;s&#x27;;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  private thereIsOneLetter() &#123;</span><br><span class="line">    this.num = &#x27;1&#x27;;</span><br><span class="line">    this.verb = &#x27;is&#x27;;</span><br><span class="line">    this.pluralModifier = &#x27;&#x27;;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  private thereAreNoLetters() &#123;</span><br><span class="line">    this.num = &#x27;no&#x27;;</span><br><span class="line">    this.verb = &#x27;are&#x27;;</span><br><span class="line">    this.pluralModifier = &#x27;s&#x27;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>num, verb, pluralModifier 가 GuessStatisticMessage 클래스 안에 있으므로 맥락상 통계 메세지를 만드는데 사용되는 멤버 변수란 것을 알게 된다. </p>
-<h2 id="불필요한-맥락을-없애라"><a href="#불필요한-맥락을-없애라" class="headerlink" title="불필요한 맥락을 없애라"></a>불필요한 맥락을 없애라</h2><p>불필요한 맥락은 없애야 한다. 예를들어 고급 휘발유 충전소 라는 애플리케이션을 짠다고 했을때, 모든 클래스에 GSD 접두어를 붙히는 것은 바람직하지 못하다. </p>
-<p>일반적으로 의미가 분명하다면 짧은 이름이 긴 이름보다 좋다. accountAddress 와 customerAddress 는 Address 클래스 인스턴스로는 적합하나 클래스 이름으로는 부적합하다.</p>
 
       
     </div>
