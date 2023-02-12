@@ -758,109 +758,6 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2022/03/28/BackEnd/220328-Exception%20filters/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JayoonKoo">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="티끌모아 태산">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/03/28/BackEnd/220328-Exception%20filters/" class="post-title-link" itemprop="url">Exception filters</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2022-03-28 11:53:37 / Modified: 12:12:43" itemprop="dateCreated datePublished" datetime="2022-03-28T11:53:37+09:00">2022-03-28</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Backend/" itemprop="url" rel="index"><span itemprop="name">Backend</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="Exception-filters"><a href="#Exception-filters" class="headerlink" title="Exception filters"></a>Exception filters</h1><p>Nest 에는 애플리케이션 전체에서 처리되지 않은 모든 예외를 처리하는 레이어가 내장되어 있다. 처리 되지 않은 예외가 여기에서 잡힌다. </p>
-<p>기본적으로 이 작업은 HttpException 유형의 예외를 처리하는 내장 전역 예외 필터에 의해 수행된다.</p>
-<p>예외가 인식되지 않는 경우(HttpException 도 아니고, HttpException에서 상속한 클래스도 아님) 기본 제공 예외 필터는 다음과 같은 기본 JSON 응답을 새성한다. </p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">&quot;statusCode&quot;</span>: <span class="number">500</span>,</span><br><span class="line">  <span class="attr">&quot;message&quot;</span>: <span class="string">&quot;Internal server error&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>http-erros 라이브러를 사용한다. 기본적으로 statusCode와 message 가 채워져서 응답으로 보내진다. </p>
-<h2 id="Throwing-standard-exceptions"><a href="#Throwing-standard-exceptions" class="headerlink" title="Throwing standard exceptions"></a>Throwing standard exceptions</h2><p>Nest 는 HttpException class 를 내장해서 사용한다. 컨틀롤러에서 에러를 발생시키는 예시 코드를 만들어 보자.</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@Get()</span><br><span class="line">async findAll() &#123;</span><br><span class="line">  throw new HttpException(&#x27;Forbidden&#x27;, HttpStatus.FORBIDDEN);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>클라이언트가 해당 엔드포인트를 호출하면 다음 json을 반환한다. </p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">&quot;statusCode&quot;</span>: <span class="number">403</span>,</span><br><span class="line">  <span class="attr">&quot;message&quot;</span>: <span class="string">&quot;Forbidden&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>HttpException 은 response 와 status 를 받는데 response 는 string이나 객체가 올 수 있고, status 는 HTTP status code 를 사용한다. response에 객체를 넘겨주면, serialize 해서 반환해 준다. </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">@Get()</span><br><span class="line">async findAll() &#123;</span><br><span class="line">  throw new HttpException(&#123;</span><br><span class="line">    status: HttpStatus.FORBIDDEN,</span><br><span class="line">    error: &#x27;This is a custom message&#x27;,</span><br><span class="line">  &#125;, HttpStatus.FORBIDDEN);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>반환하는 JSON : </p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">&quot;status&quot;</span>: <span class="number">403</span>,</span><br><span class="line">  <span class="attr">&quot;error&quot;</span>: <span class="string">&quot;This is a custom message&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="Custom-exceptions"><a href="#Custom-exceptions" class="headerlink" title="Custom exceptions"></a>Custom exceptions</h2><p>대부분의 경우 custom exceptions를 사용할 일이 없지만 사용하고 싶다면 HttpException을 상속하는 예외 클래스를 커스텀 할 수 있다. </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">export class ForbiddenException extends HttpException &#123;</span><br><span class="line">  constructor() &#123;</span><br><span class="line">    super(&#x27;Forbidden&#x27;, HttpStatus.FORBIDDEN);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>HttpException 을 상속하였기 때문에 동일하게 동작하여 동일하게 사용할 수 있다. </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@Get()</span><br><span class="line">async findAll() &#123;</span><br><span class="line">  throw new ForbiddenException();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="Built-in-HTTP-exceptions"><a href="#Built-in-HTTP-exceptions" class="headerlink" title="Built-in HTTP exceptions"></a>Built-in HTTP exceptions</h2><p>Nest는 기본 ThhpException에서 상속되는 일련의 표준 예외를 제공한다. </p>
-<h2 id="Exception-filters-1"><a href="#Exception-filters-1" class="headerlink" title="Exception filters"></a>Exception filters</h2><p>Exception filters 는 에러에대한 컨트롤을 위해서 디자인되었다. 다음은 HttpException 인스턴스 예외를 포착하고 이데 대응하는 사용자 응답을 구현하는 예외 필터를 만들어 본다. </p>
-<p>이를 위해서는 Request와 Response가 필요하고 Request에서 url 을 가져와 logging을 만들고 Response.json() 메서드를 사용하여 응답되는 데이터를 직접 제어해 본다.</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">import &#123; ExceptionFilter, Catch, ArgumentsHost, HttpException &#125; from &#x27;@nestjs/common&#x27;;</span><br><span class="line">import &#123; Request, Response &#125; from &#x27;express&#x27;;</span><br><span class="line"></span><br><span class="line">@Catch(HttpException)</span><br><span class="line">export class HttpExceptionFilter implements ExceptionFilter &#123;</span><br><span class="line">  catch(exception: HttpException, host: ArgumentsHost) &#123;</span><br><span class="line">    const ctx = host.switchToHttp();</span><br><span class="line">    const response = ctx.getResponse&lt;Response&gt;();</span><br><span class="line">    const request = ctx.getRequest&lt;Request&gt;();</span><br><span class="line">    const status = exception.getStatus();</span><br><span class="line"></span><br><span class="line">    response</span><br><span class="line">      .status(status)</span><br><span class="line">      .json(&#123;</span><br><span class="line">        statusCode: status,</span><br><span class="line">        timestamp: new Date().toISOString(),</span><br><span class="line">        path: request.url,</span><br><span class="line">      &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>모든 예외 필터는 ExceptionFilter<T> 제너릭으로 구현해야 한다. catch에 exception type으로 제너링 타입을 사용한다. <code>catch(exception: T, host: ArgumetnHost)</code></p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2022/03/28/BackEnd/220328-Guards/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -948,6 +845,109 @@
 
 <h2 id="Putting-in-all-together"><a href="#Putting-in-all-together" class="headerlink" title="Putting in all together"></a>Putting in all together</h2><p>Guard 에 적용해보자. 먼저 권한 정보를 알아야하는데 우리는 metadata 를 통해서 권한정보를 첨부했다. 권한 정보에 접근 하기 위해서는 Reflector hleper class 를 사용한다. </p>
 <p>roles.guard.ts :</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2022/03/28/BackEnd/220328-Exception%20filters/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JayoonKoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="티끌모아 태산">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/03/28/BackEnd/220328-Exception%20filters/" class="post-title-link" itemprop="url">Exception filters</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2022-03-28 11:53:37 / Modified: 12:12:43" itemprop="dateCreated datePublished" datetime="2022-03-28T11:53:37+09:00">2022-03-28</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Backend/" itemprop="url" rel="index"><span itemprop="name">Backend</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="Exception-filters"><a href="#Exception-filters" class="headerlink" title="Exception filters"></a>Exception filters</h1><p>Nest 에는 애플리케이션 전체에서 처리되지 않은 모든 예외를 처리하는 레이어가 내장되어 있다. 처리 되지 않은 예외가 여기에서 잡힌다. </p>
+<p>기본적으로 이 작업은 HttpException 유형의 예외를 처리하는 내장 전역 예외 필터에 의해 수행된다.</p>
+<p>예외가 인식되지 않는 경우(HttpException 도 아니고, HttpException에서 상속한 클래스도 아님) 기본 제공 예외 필터는 다음과 같은 기본 JSON 응답을 새성한다. </p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">&quot;statusCode&quot;</span>: <span class="number">500</span>,</span><br><span class="line">  <span class="attr">&quot;message&quot;</span>: <span class="string">&quot;Internal server error&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>http-erros 라이브러를 사용한다. 기본적으로 statusCode와 message 가 채워져서 응답으로 보내진다. </p>
+<h2 id="Throwing-standard-exceptions"><a href="#Throwing-standard-exceptions" class="headerlink" title="Throwing standard exceptions"></a>Throwing standard exceptions</h2><p>Nest 는 HttpException class 를 내장해서 사용한다. 컨틀롤러에서 에러를 발생시키는 예시 코드를 만들어 보자.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@Get()</span><br><span class="line">async findAll() &#123;</span><br><span class="line">  throw new HttpException(&#x27;Forbidden&#x27;, HttpStatus.FORBIDDEN);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>클라이언트가 해당 엔드포인트를 호출하면 다음 json을 반환한다. </p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">&quot;statusCode&quot;</span>: <span class="number">403</span>,</span><br><span class="line">  <span class="attr">&quot;message&quot;</span>: <span class="string">&quot;Forbidden&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>HttpException 은 response 와 status 를 받는데 response 는 string이나 객체가 올 수 있고, status 는 HTTP status code 를 사용한다. response에 객체를 넘겨주면, serialize 해서 반환해 준다. </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">@Get()</span><br><span class="line">async findAll() &#123;</span><br><span class="line">  throw new HttpException(&#123;</span><br><span class="line">    status: HttpStatus.FORBIDDEN,</span><br><span class="line">    error: &#x27;This is a custom message&#x27;,</span><br><span class="line">  &#125;, HttpStatus.FORBIDDEN);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>반환하는 JSON : </p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">&quot;status&quot;</span>: <span class="number">403</span>,</span><br><span class="line">  <span class="attr">&quot;error&quot;</span>: <span class="string">&quot;This is a custom message&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Custom-exceptions"><a href="#Custom-exceptions" class="headerlink" title="Custom exceptions"></a>Custom exceptions</h2><p>대부분의 경우 custom exceptions를 사용할 일이 없지만 사용하고 싶다면 HttpException을 상속하는 예외 클래스를 커스텀 할 수 있다. </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">export class ForbiddenException extends HttpException &#123;</span><br><span class="line">  constructor() &#123;</span><br><span class="line">    super(&#x27;Forbidden&#x27;, HttpStatus.FORBIDDEN);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>HttpException 을 상속하였기 때문에 동일하게 동작하여 동일하게 사용할 수 있다. </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@Get()</span><br><span class="line">async findAll() &#123;</span><br><span class="line">  throw new ForbiddenException();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Built-in-HTTP-exceptions"><a href="#Built-in-HTTP-exceptions" class="headerlink" title="Built-in HTTP exceptions"></a>Built-in HTTP exceptions</h2><p>Nest는 기본 ThhpException에서 상속되는 일련의 표준 예외를 제공한다. </p>
+<h2 id="Exception-filters-1"><a href="#Exception-filters-1" class="headerlink" title="Exception filters"></a>Exception filters</h2><p>Exception filters 는 에러에대한 컨트롤을 위해서 디자인되었다. 다음은 HttpException 인스턴스 예외를 포착하고 이데 대응하는 사용자 응답을 구현하는 예외 필터를 만들어 본다. </p>
+<p>이를 위해서는 Request와 Response가 필요하고 Request에서 url 을 가져와 logging을 만들고 Response.json() 메서드를 사용하여 응답되는 데이터를 직접 제어해 본다.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">import &#123; ExceptionFilter, Catch, ArgumentsHost, HttpException &#125; from &#x27;@nestjs/common&#x27;;</span><br><span class="line">import &#123; Request, Response &#125; from &#x27;express&#x27;;</span><br><span class="line"></span><br><span class="line">@Catch(HttpException)</span><br><span class="line">export class HttpExceptionFilter implements ExceptionFilter &#123;</span><br><span class="line">  catch(exception: HttpException, host: ArgumentsHost) &#123;</span><br><span class="line">    const ctx = host.switchToHttp();</span><br><span class="line">    const response = ctx.getResponse&lt;Response&gt;();</span><br><span class="line">    const request = ctx.getRequest&lt;Request&gt;();</span><br><span class="line">    const status = exception.getStatus();</span><br><span class="line"></span><br><span class="line">    response</span><br><span class="line">      .status(status)</span><br><span class="line">      .json(&#123;</span><br><span class="line">        statusCode: status,</span><br><span class="line">        timestamp: new Date().toISOString(),</span><br><span class="line">        path: request.url,</span><br><span class="line">      &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>모든 예외 필터는 ExceptionFilter<T> 제너릭으로 구현해야 한다. catch에 exception type으로 제너링 타입을 사용한다. <code>catch(exception: T, host: ArgumetnHost)</code></p>
 
       
     </div>

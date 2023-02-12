@@ -317,6 +317,98 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/09/12/system-programing/210809-%EB%A6%AC%EB%88%85%EC%8A%A4(%EC%9C%A0%EB%8B%89%EC%8A%A4)%20%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JayoonKoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="티끌모아 태산">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/09/12/system-programing/210809-%EB%A6%AC%EB%88%85%EC%8A%A4(%EC%9C%A0%EB%8B%89%EC%8A%A4)%20%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/" class="post-title-link" itemprop="url">리눅스(유닉스) 운영체제</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-09-12 23:46:02" itemprop="dateCreated datePublished" datetime="2021-09-12T23:46:02+09:00">2021-09-12</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/CS/" itemprop="url" rel="index"><span itemprop="name">CS</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="리눅스"><a href="#리눅스" class="headerlink" title="리눅스"></a>리눅스</h1><p>서버에 많이 사용되는 운영체제 </p>
+<p>프로그래밍 할때에도 많이 사용 된다.<br>컴파일 시간이 줄어든다. </p>
+<p>클라우드 컴퓨팅 (AWS) 에도 많이 사용됨</p>
+<p>운영체제, 소프트웨어의 대부 UNIX 계열 운영체제이다.<br>완전 프로그래머 스타일이다. </p>
+<p>plain 하게 프로그래밍 가능하다.<br>ANSI C - C 언어 표준 (표준으로 코딩이 가능하다.)</p>
+<br/>
+
+<h2 id="리눅스의-역사와-배경"><a href="#리눅스의-역사와-배경" class="headerlink" title="리눅스의 역사와 배경"></a>리눅스의 역사와 배경</h2><h3 id="리눅스-시작"><a href="#리눅스-시작" class="headerlink" title="리눅스 시작"></a>리눅스 시작</h3><p>리누스 토발즈가 개발.<br>대학에 있는 UNIX 컴퓨터를 집에서 쓰고 싶었다.<br>다중 사용자, 다중 작업(시분할 시스템, 멀티 태스킹) 을 지원할 수 있도록 만들었다. </p>
+<h3 id="GNU-프로젝트"><a href="#GNU-프로젝트" class="headerlink" title="GNU 프로젝트"></a>GNU 프로젝트</h3><p>GNU = Gnu is Not Unix</p>
+<p>유닉스 운영체제를 여러 회사에서 개발했는데, 소스를 공유하지 않았다.<br>리차드 스톨만이 초기 컴퓨터 개발 공동체의 상호협력적인 문화로 돌아가자고 1985년 GNU 선언문을 발표했다.<br>기술을 공유 되어야 한다고 주장.</p>
+<p>GNU 프로젝트를 지원하기 위해 자유 소프트웨어 재단 설립 GNU 공개 라이선스(GPL) 규약을 제공.<br>이 소스를 사용할수 있지만 해당 기술을 사용했다면 기술은 공유 되어야 한다는 규약.</p>
+<h4 id="GPL-라이선스"><a href="#GPL-라이선스" class="headerlink" title="GPL 라이선스"></a>GPL 라이선스</h4><p>GPL 프로그램은 어떤 형태로든 사용할 수 있지만, 다시 배포하기 위해서 동일한 GPL 라이선스 사용해야 함.</p>
+<h3 id="GNU-Hurd"><a href="#GNU-Hurd" class="headerlink" title="GNU Hurd"></a>GNU Hurd</h3><p>운영체제 커널 개발 시도 - GNU Hurd</p>
+<p>운영체제의 필요한 쉘 응용 프로그램, API, 라이브러리 System Call 개발, 컴파일러 개발</p>
+<img src="images/210809-리눅스(유닉스)%20운영체제/1.png" width="300">
+
+<h3 id="GNU-프로젝트와-리눅스"><a href="#GNU-프로젝트와-리눅스" class="headerlink" title="GNU 프로젝트와 리눅스"></a>GNU 프로젝트와 리눅스</h3><p>GNU Hurd 개발 지연</p>
+<p>리누스 토발즈가 리눅스 커널 소스 오픈 소식 들음. GNU Hurd 를 개발 안해도 되겠네? </p>
+<p>GNU 프로젝트 산출물과 리눅스 커널이 통합 개발 되기 시작. </p>
+<p>GNU/ Linux 라고 부르기를 희망함. 리차드 스톨만이 (GNU 창시자.)</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/09/12/system-programing/210810-shell/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -426,98 +518,6 @@
 <li>f: 강제로 파일이나 디릭토리 삭제 </li>
 </ul>
 <p><code>rm -rf [dir]</code></p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/09/12/system-programing/210809-%EB%A6%AC%EB%88%85%EC%8A%A4(%EC%9C%A0%EB%8B%89%EC%8A%A4)%20%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JayoonKoo">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="티끌모아 태산">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/09/12/system-programing/210809-%EB%A6%AC%EB%88%85%EC%8A%A4(%EC%9C%A0%EB%8B%89%EC%8A%A4)%20%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/" class="post-title-link" itemprop="url">리눅스(유닉스) 운영체제</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-09-12 23:46:02" itemprop="dateCreated datePublished" datetime="2021-09-12T23:46:02+09:00">2021-09-12</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/CS/" itemprop="url" rel="index"><span itemprop="name">CS</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="리눅스"><a href="#리눅스" class="headerlink" title="리눅스"></a>리눅스</h1><p>서버에 많이 사용되는 운영체제 </p>
-<p>프로그래밍 할때에도 많이 사용 된다.<br>컴파일 시간이 줄어든다. </p>
-<p>클라우드 컴퓨팅 (AWS) 에도 많이 사용됨</p>
-<p>운영체제, 소프트웨어의 대부 UNIX 계열 운영체제이다.<br>완전 프로그래머 스타일이다. </p>
-<p>plain 하게 프로그래밍 가능하다.<br>ANSI C - C 언어 표준 (표준으로 코딩이 가능하다.)</p>
-<br/>
-
-<h2 id="리눅스의-역사와-배경"><a href="#리눅스의-역사와-배경" class="headerlink" title="리눅스의 역사와 배경"></a>리눅스의 역사와 배경</h2><h3 id="리눅스-시작"><a href="#리눅스-시작" class="headerlink" title="리눅스 시작"></a>리눅스 시작</h3><p>리누스 토발즈가 개발.<br>대학에 있는 UNIX 컴퓨터를 집에서 쓰고 싶었다.<br>다중 사용자, 다중 작업(시분할 시스템, 멀티 태스킹) 을 지원할 수 있도록 만들었다. </p>
-<h3 id="GNU-프로젝트"><a href="#GNU-프로젝트" class="headerlink" title="GNU 프로젝트"></a>GNU 프로젝트</h3><p>GNU = Gnu is Not Unix</p>
-<p>유닉스 운영체제를 여러 회사에서 개발했는데, 소스를 공유하지 않았다.<br>리차드 스톨만이 초기 컴퓨터 개발 공동체의 상호협력적인 문화로 돌아가자고 1985년 GNU 선언문을 발표했다.<br>기술을 공유 되어야 한다고 주장.</p>
-<p>GNU 프로젝트를 지원하기 위해 자유 소프트웨어 재단 설립 GNU 공개 라이선스(GPL) 규약을 제공.<br>이 소스를 사용할수 있지만 해당 기술을 사용했다면 기술은 공유 되어야 한다는 규약.</p>
-<h4 id="GPL-라이선스"><a href="#GPL-라이선스" class="headerlink" title="GPL 라이선스"></a>GPL 라이선스</h4><p>GPL 프로그램은 어떤 형태로든 사용할 수 있지만, 다시 배포하기 위해서 동일한 GPL 라이선스 사용해야 함.</p>
-<h3 id="GNU-Hurd"><a href="#GNU-Hurd" class="headerlink" title="GNU Hurd"></a>GNU Hurd</h3><p>운영체제 커널 개발 시도 - GNU Hurd</p>
-<p>운영체제의 필요한 쉘 응용 프로그램, API, 라이브러리 System Call 개발, 컴파일러 개발</p>
-<img src="images/210809-리눅스(유닉스)%20운영체제/1.png" width="300">
-
-<h3 id="GNU-프로젝트와-리눅스"><a href="#GNU-프로젝트와-리눅스" class="headerlink" title="GNU 프로젝트와 리눅스"></a>GNU 프로젝트와 리눅스</h3><p>GNU Hurd 개발 지연</p>
-<p>리누스 토발즈가 리눅스 커널 소스 오픈 소식 들음. GNU Hurd 를 개발 안해도 되겠네? </p>
-<p>GNU 프로젝트 산출물과 리눅스 커널이 통합 개발 되기 시작. </p>
-<p>GNU/ Linux 라고 부르기를 희망함. 리차드 스톨만이 (GNU 창시자.)</p>
 
       
     </div>
