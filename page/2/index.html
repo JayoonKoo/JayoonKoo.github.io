@@ -83,9 +83,9 @@
   <ul class="main-menu menu">
         <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li>
         <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
-        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">21</span></a></li>
-        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">17</span></a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">159</span></a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">22</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">18</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">160</span></a></li>
   </ul>
 </nav>
 
@@ -129,18 +129,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">159</span>
+          <span class="site-state-item-count">160</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-count">18</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">21</span>
+        <span class="site-state-item-count">22</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -180,6 +180,165 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2022/03/28/typeScript/210813-TypeScript%20Compiler/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JayoonKoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="티끌모아 태산">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/03/28/typeScript/210813-TypeScript%20Compiler/" class="post-title-link" itemprop="url">TypeScript Compiler</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2022-03-28 12:06:36 / Modified: 12:07:18" itemprop="dateCreated datePublished" datetime="2022-03-28T12:06:36+09:00">2022-03-28</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/typeScript/" itemprop="url" rel="index"><span itemprop="name">typeScript</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="TypeScript-Compiler"><a href="#TypeScript-Compiler" class="headerlink" title="TypeScript Compiler"></a>TypeScript Compiler</h1><h2 id="Compliation-Context"><a href="#Compliation-Context" class="headerlink" title="Compliation Context"></a>Compliation Context</h2><p>논리적인 그룹핑과 어떤 방법으로 컴파일 할것인지에 대한 맥락.<br>보통 <code>tsconfig.json</code> 파일로 관리한다.</p>
+<h2 id="tsconfig-schema"><a href="#tsconfig-schema" class="headerlink" title="tsconfig schema"></a>tsconfig schema</h2><p>최상위 프로퍼티 중 주요한 항목</p>
+<ul>
+<li>compileOnSave</li>
+<li>extends</li>
+<li>compileOptions</li>
+<li>files</li>
+<li>include</li>
+<li>exclude</li>
+<li>references</li>
+</ul>
+<h2 id="compileOnSave"><a href="#compileOnSave" class="headerlink" title="compileOnSave"></a>compileOnSave</h2><ul>
+<li>true/false(default fasle): true 로 설정하면 저장하면 컴파일 해줌.</li>
+<li>누가?<ul>
+<li>Visual Studio 2015 with TypeScript 1.8.4 이상</li>
+<li>tom-thypescript 플러그인</li>
+</ul>
+</li>
+</ul>
+<h2 id="extends"><a href="#extends" class="headerlink" title="extends"></a>extends</h2><p>상속 받을 때 사용함.</p>
+<ul>
+<li>파일 (상대) 경로명 : string</li>
+</ul>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">&quot;compilerOptins&quot;</span>: &#123;</span><br><span class="line">    <span class="attr">&quot;strict&quot;</span>: <span class="literal">true</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">&quot;extends&quot;</span>: <span class="string">&quot;./base.json&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>tsconfig/base</code> 저장소로 이동하면 다양한 base 설정을 받을 수 있다.</p>
+<p><code>npm install --save-dev @tsconfig/deno</code></p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">&quot;extends&quot;</span>: <span class="string">&quot;@tsconfig/deno/tsconfig.json&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="files-include-exclude"><a href="#files-include-exclude" class="headerlink" title="files, include, exclude"></a>files, include, exclude</h2><p>어떤 파일을 컴파일 할것인지 결정함.</p>
+<p>files 가 가장 강한 설정이다. 따라서 exlucde를 통해서 제외 했더라도 files 안에 있으면 컴파일 된다.</p>
+<p>셋다 설정이 없으면 전부 컴파일 하려고 한다.</p>
+<ul>
+<li>files<ul>
+<li>상대 혹은 절대 경로의 리스트 배열이다.</li>
+<li>exclude 보다 쎄다.</li>
+</ul>
+</li>
+<li>include, exclude<ul>
+<li>glob 패턴 (마치 .gitignore)</li>
+<li>include<ul>
+<li>exclude 보다 약하다.</li>
+</ul>
+</li>
+<li>exclude<ul>
+<li>설정 안하면 4가지 (node_modules, bower_components, jspm_packages, &lt;outDir&gt;) 를 dafault로 제외 함.</li>
+<li>&lt;outDir&gt; 은 항상 제외한다. (include에 있어도)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="compileOptions-typeRoots-types"><a href="#compileOptions-typeRoots-types" class="headerlink" title="compileOptions - typeRoots, types"></a>compileOptions - typeRoots, types</h2><p>만약 외부 라이브러리를 사용할 경우 타입 검사를 어떻게 수행할까?</p>
+<p>예를 들어 react를 설치하면 js로 만든 것이기 때문에 오류가 발생한다. 따라서 <code>npm i --save-dev @types/react</code>를 하게 되면 <code>node_modules/@types</code>안에서 파일을 찾아서 오류가 나지 않게 된다.<br>이것이 default 설정인데 typeRoots와 types 를 통해 설정을 변경할 수 있다.</p>
+<p>typeRoots로 @types로 사용할 폴더를 설정한다. 유명하지 않는 라이브러리 같은 경우 @types가 없을 수 있고 내가 작성한 패키지는 내가 따로 만들어야 하는 경우도 있다.</p>
+<p><code>@types</code></p>
+<ul>
+<li>내장 type definition 시스템이다.</li>
+<li>아무 설정을 하지 않으면 <code>node_modules/@types</code> 라는 모든 경로를 찾아서 사용한다.</li>
+<li>typeRoots를 사용하면? -&gt; 배열 안에 들어있는 경로들 아래서만 가져온다.</li>
+<li>types 를 사용하면 -&gt; 배열안에 모듈 혹은 <code>./node_module/@types/</code> 안에 모듈 이름에서 찾아온다. [] 빈 배열을 넣는다는 건 이 시스템을 이용하지 않겠다는 것이다.</li>
+<li>typeRoots와 types를 같이 사용하지는 않는다.</li>
+</ul>
+<h2 id="compileOptions-target과-lib"><a href="#compileOptions-target과-lib" class="headerlink" title="compileOptions - target과 lib"></a>compileOptions - target과 lib</h2><p>target - 자바스크립트 버전을 설정한다. 기본값은 es3이다. 컴파일 할때 해당 버전으로 변경한다.</p>
+<p>lib - lib로 사용할것들을 배열로 넘겨줌. target에 따라 default로 저장되는 lib가 있다.</p>
+<h2 id="compileOptions-outDir-outFil-rootDir"><a href="#compileOptions-outDir-outFil-rootDir" class="headerlink" title="compileOptions -outDir, outFil, rootDir"></a>compileOptions -outDir, outFil, rootDir</h2><ul>
+<li>rootDir : 컴파일 대상이 되는 파일이 있는 폴더</li>
+</ul>
+<p>따로 설정하지 않으면 ts 파일이 있는 가장 최상위 폴더를 rootDir로 설정한다.</p>
+<ul>
+<li>outDir : 컴파일 한 파일이 저장될 폴더</li>
+<li>outFile: 지정된 경우 모든 전역 파일이 지정된 단일 출력 파일로 연결된다.</li>
+</ul>
+<h2 id="compileOptions-strict"><a href="#compileOptions-strict" class="headerlink" title="compileOptions - strict"></a>compileOptions - strict</h2><p>무조건 strict를 true로 설정하는 것이 기본이다.</p>
+<p><code>--noImplicitAny</code> any로 추정되는데 any로 명시하지 않았다면 에러가 발생함.<br><code>suppressImplicitAnyIndexErrors</code> 인덱스 객체도 any로 추론될 경우 에러를 발생시키는 옵션인데 이것은 너무 까다로우니 따로 에러가 되지 않게 하는 설정도 있음.</p>
+<p><code>--noImplictThis</code> this 가 any 타입으로 추정될 경우 . this에 타입을 명시해야 한다고 에러를 발생 시킴, 함수 매개변수에 첫번째에 this를 넣고 타입일 지정해줌. js에서는 오류 이지만 ts에서는 가능함.<br>마치 call /applyu/ bind 와 같이 this를 대체하여 함수 콜을 사용하는 용도. class에서는 오류가 나지 않음 왜냐하면 class 자체로 타입 체크가 가능하기 때문에</p>
+<p><code>--strictNullChecks</code> 이것을 적용히지 않으면 모든 타입은 null 과 undefined가 될 수 있다. 꼭 설정해주어야 함. 한가지 예외는 undefined 에 void 할당이 가능하다.</p>
+<p><code>--strictFunctionTypes</code> 반환 타입은 공변적, 인자 타입은 반 공병적. 그런데 타입스크립트에서 인자 타입은 공변적이면서, 반공변적인게 문제. 함수의 파라미터 타입이 반공변적으로 동작핟조록 변경한다. 반공변 이란 공변에 반대라고 생각하면 된다.</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> Logger&lt;T&gt; = <span class="function">(<span class="params">param: T</span>) =&gt;</span> <span class="built_in">void</span>;</span><br><span class="line"><span class="keyword">let</span> log: Logger&lt;<span class="built_in">string</span> | <span class="built_in">number</span>&gt; = <span class="function">(<span class="params">param</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(param);</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">let</span> logNumber: Logger&lt;<span class="built_in">number</span>&gt; = <span class="function">(<span class="params">param</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(param);</span><br><span class="line">&#125;;</span><br><span class="line">log = logNumber; <span class="comment">// Error</span></span><br><span class="line">logNumber = log; <span class="comment">// OK</span></span><br></pre></td></tr></table></figure>
+
+<p>공변이라고 생각하면 logNumber 가 서브 타입이기대문에 log에 할당하는 것이 가능할 것이다. 하지만 <code>--strictFunctionTypes</code>를 적용하면 파라미터에 대해서 반공변적으로 작동하기 때문에 반대로 작동한다.<br>사실 <code>logNumber</code>는 숫자 밖에 처리하지 못하기 때문에 string 도 처리할 수 있는 <code>log</code>에 할당하는게 맞지 않다.</p>
+<p><code>--stcitPropertyInitialization</code> 정의되지 않은 클래스의 속성이 생성자에서 초기화되었는지 확인한다. 만약 비동기로 생성되는 클래스일 경우에 생성자에 async를 사용하는것이 불가능하기 때문에 에러가 발생한다.<br>이럴때에는 async 함수로 initialize 같은 함수를 만들어 할당해 주고 클래스 내부 변수로 이름 뒤에 <code>!</code>를 붙여주면 된다. <code>private _name!: string;</code></p>
+<p><code>--strictBindCallApply</code> bind, call, apply 에 대한 검사를 엄격히 수행한다.</p>
+<p><code>--alwaysStrict</code> strict 모드로 코드를 분석함.</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1176,107 +1335,6 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">const app = await NestFactory.create(AppModule);</span><br><span class="line">app.use(logger);</span><br><span class="line">await app.listen(3000);</span><br></pre></td></tr></table></figure>
 
 <p>글로벌 미들웨어에서 DI 컨테이너에 액세스하는것은 불가능하다. app.use() 를 사용할때 functional middleware 를 사용하거나, AppModule 내에서 .forRoutes(’*’) 와 함께 사용할 수 있다.</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2022/03/28/BackEnd/220328-Modules/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JayoonKoo">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="티끌모아 태산">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/03/28/BackEnd/220328-Modules/" class="post-title-link" itemprop="url">Modules</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2022-03-28 11:53:37 / Modified: 12:12:43" itemprop="dateCreated datePublished" datetime="2022-03-28T11:53:37+09:00">2022-03-28</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Backend/" itemprop="url" rel="index"><span itemprop="name">Backend</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="Moudles"><a href="#Moudles" class="headerlink" title="Moudles"></a>Moudles</h1><p>@Module() 데코레이터는 어플리케이션 구성에 필요한 metadate를 공급한다.</p>
-<p>애플리케이션은 최소 한개 이상의 모듈이 존재햐아 하고 구성 요소를 구성하는 효과적인 방법으로 모듈을 사용한다. 아주 작은 애플리케이션이 아닌 일반적인 애플리케이션은 여러가지 모듈을 가진다. </p>
-<p>모듈은 provider 를 캡슐화 한다. 즉 현제 모듈의 일부도 아니고 가져온 모듈에서 내보낸 것도 아닌 provider 를 주입하는것은 불가능하다.</p>
-<h2 id="Feature-modules"><a href="#Feature-modules" class="headerlink" title="Feature modules"></a>Feature modules</h2><p>생성한 controller와 service 는 어떤 기능에 연관되 있기 때문에 하나의 모듈로 만들어서 관리하는 것이 좋다. netst g module &lt;이름&gt; 으로 모듈을 생성할 수 있다. </p>
-<h2 id="Shared-modules"><a href="#Shared-modules" class="headerlink" title="Shared modules"></a>Shared modules</h2><p>nest 에서 모듈은 기본적으로 singletons 이다. 따라서 같은 인스턴스를 다양한 모듈에서 공유할 수 있다. 여러 다른 모듈 간의 특정 모듈에 속해 있는 서비스를 공유하고 싶다면 @Module 데코레이터에서 exports 하여 특정 서비스를 내보내야 한다. </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">import &#123; Module &#125; from &#x27;@nestjs/common&#x27;;</span><br><span class="line">import &#123; CatsController &#125; from &#x27;./cats.controller&#x27;;</span><br><span class="line">import &#123; CatsService &#125; from &#x27;./cats.service&#x27;;</span><br><span class="line"></span><br><span class="line">@Module(&#123;</span><br><span class="line">  controllers: [CatsController],</span><br><span class="line">  providers: [CatsService],</span><br><span class="line">  exports: [CatsService]</span><br><span class="line">&#125;)</span><br><span class="line">export class CatsModule &#123;&#125;</span><br></pre></td></tr></table></figure>
-
-<p>CatService 를 내보내서 다른 모듈에서 같은 인스턴스를 사용하도록 한다. </p>
-<h2 id="Module-re-exporting"><a href="#Module-re-exporting" class="headerlink" title="Module re-exporting"></a>Module re-exporting</h2><p>특정 모듈을 임포트하고 다시 내보낼수도 있다. CommonModule은 CoreModule로 가져오거나 CoreModule에서 내보내어 이 모듈을 가져오는 다른 모듈에서 사용할 수 있다. </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">@Module(&#123;</span><br><span class="line">  imports: [CommonModule],</span><br><span class="line">  exports: [CommonModule],</span><br><span class="line">&#125;)</span><br><span class="line">export class CoreModule &#123;&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="Dependency-injection"><a href="#Dependency-injection" class="headerlink" title="Dependency injection"></a>Dependency injection</h2><p>모듈은 Provider 도 주입할 수 있다. (구성 하기 위한 목적으로 )</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">import &#123; Module &#125; from &#x27;@nestjs/common&#x27;;</span><br><span class="line">import &#123; CatsController &#125; from &#x27;./cats.controller&#x27;;</span><br><span class="line">import &#123; CatsService &#125; from &#x27;./cats.service&#x27;;</span><br><span class="line"></span><br><span class="line">@Module(&#123;</span><br><span class="line">  controllers: [CatsController],</span><br><span class="line">  providers: [CatsService],</span><br><span class="line">&#125;)</span><br><span class="line">export class CatsModule &#123;</span><br><span class="line">  constructor(private catsService: CatsService) &#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>그러나 순환 참조가 될수 있기 때문에 모듈 자체를 Porivder로 주입하는 것은 불가능하다. </p>
-<h2 id="Global-modules"><a href="#Global-modules" class="headerlink" title="Global modules"></a>Global modules</h2><p>모든 곳에서 import 하는 같은 모듈을 계속 import 하는 것은 바보같은 짓이다. 그러나 nest 에서는 Provider를 캡슐화 하기 때문에 Provider 를 가져오지 않고는 다른 곳에서 사용할 수 없다. </p>
-<p>어느 곳에서나 접근 가능한 Provider 집합을 제공하려는 경우, @Global 데코레이터를 사용하여 사용해야 한다. </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">import &#123; Module, Global &#125; from &#x27;@nestjs/common&#x27;;</span><br><span class="line">import &#123; CatsController &#125; from &#x27;./cats.controller&#x27;;</span><br><span class="line">import &#123; CatsService &#125; from &#x27;./cats.service&#x27;;</span><br><span class="line"></span><br><span class="line">@Global()</span><br><span class="line">@Module(&#123;</span><br><span class="line">  controllers: [CatsController],</span><br><span class="line">  providers: [CatsService],</span><br><span class="line">  exports: [CatsService],</span><br><span class="line">&#125;)</span><br><span class="line">export class CatsModule &#123;&#125;</span><br></pre></td></tr></table></figure>
-
-<p>이렇게 하면 모듈을 global-scope 에 있도록 만들 수 있다. 전역 모듈은 일반적으로 루트 또는 코어 모듈에서 한번만 등록해야 한다. 이렇게 등록한 모듈 내에 있는 Provider 는 어떠한 다른 모듈에서 import 모듈에 등록할 필요 없이 inject 할 수 있다. </p>
-<h2 id="Dynamic-modules"><a href="#Dynamic-modules" class="headerlink" title="Dynamic modules"></a>Dynamic modules</h2><p>Nest 에서는 쉽게 등록 가능한 모듈을 동적으로 만들 수 있고, Provider를 구성할 수 있다. </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">import &#123; Module, DynamicModule &#125; from &#x27;@nestjs/common&#x27;;</span><br><span class="line">import &#123; createDatabaseProviders &#125; from &#x27;./database.providers&#x27;;</span><br><span class="line">import &#123; Connection &#125; from &#x27;./connection.provider&#x27;;</span><br><span class="line"></span><br><span class="line">@Module(&#123;</span><br><span class="line">  providers: [Connection],</span><br><span class="line">&#125;)</span><br><span class="line">export class DatabaseModule &#123;</span><br><span class="line">  static forRoot(entities = [], options?): DynamicModule &#123;</span><br><span class="line">    const providers = createDatabaseProviders(options, entities);</span><br><span class="line">    return &#123;</span><br><span class="line">      module: DatabaseModule,</span><br><span class="line">      providers: providers,</span><br><span class="line">      exports: providers,</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>forRoot 메서드는 동기식 또는 비동기식으로 모듈을 반환할 수 있다. </p>
-<p>DatabaseModule 는 다음과 같은 방법으로 import 될 수  있다. </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">import &#123; Module &#125; from &#x27;@nestjs/common&#x27;;</span><br><span class="line">import &#123; DatabaseModule &#125; from &#x27;./database/database.module&#x27;;</span><br><span class="line">import &#123; User &#125; from &#x27;./users/entities/user.entity&#x27;;</span><br><span class="line"></span><br><span class="line">@Module(&#123;</span><br><span class="line">  imports: [DatabaseModule.forRoot([User])],</span><br><span class="line">&#125;)</span><br><span class="line">export class AppModule &#123;&#125;</span><br></pre></td></tr></table></figure>
-
-<p>동적 모듈을 다시 내보내려면 내보내기 배열에서 forRoot() 메서드 호출을 생략 할 수도 있다.</p>
 
       
     </div>

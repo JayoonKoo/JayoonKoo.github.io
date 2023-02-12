@@ -83,9 +83,9 @@
   <ul class="main-menu menu">
         <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li>
         <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
-        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">21</span></a></li>
-        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">17</span></a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">159</span></a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">22</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">18</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">160</span></a></li>
   </ul>
 </nav>
 
@@ -129,18 +129,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">159</span>
+          <span class="site-state-item-count">160</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-count">18</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">21</span>
+        <span class="site-state-item-count">22</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -180,6 +180,107 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2022/03/28/BackEnd/220328-Modules/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JayoonKoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="티끌모아 태산">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/03/28/BackEnd/220328-Modules/" class="post-title-link" itemprop="url">Modules</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2022-03-28 11:53:37 / Modified: 12:12:43" itemprop="dateCreated datePublished" datetime="2022-03-28T11:53:37+09:00">2022-03-28</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Backend/" itemprop="url" rel="index"><span itemprop="name">Backend</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="Moudles"><a href="#Moudles" class="headerlink" title="Moudles"></a>Moudles</h1><p>@Module() 데코레이터는 어플리케이션 구성에 필요한 metadate를 공급한다.</p>
+<p>애플리케이션은 최소 한개 이상의 모듈이 존재햐아 하고 구성 요소를 구성하는 효과적인 방법으로 모듈을 사용한다. 아주 작은 애플리케이션이 아닌 일반적인 애플리케이션은 여러가지 모듈을 가진다. </p>
+<p>모듈은 provider 를 캡슐화 한다. 즉 현제 모듈의 일부도 아니고 가져온 모듈에서 내보낸 것도 아닌 provider 를 주입하는것은 불가능하다.</p>
+<h2 id="Feature-modules"><a href="#Feature-modules" class="headerlink" title="Feature modules"></a>Feature modules</h2><p>생성한 controller와 service 는 어떤 기능에 연관되 있기 때문에 하나의 모듈로 만들어서 관리하는 것이 좋다. netst g module &lt;이름&gt; 으로 모듈을 생성할 수 있다. </p>
+<h2 id="Shared-modules"><a href="#Shared-modules" class="headerlink" title="Shared modules"></a>Shared modules</h2><p>nest 에서 모듈은 기본적으로 singletons 이다. 따라서 같은 인스턴스를 다양한 모듈에서 공유할 수 있다. 여러 다른 모듈 간의 특정 모듈에 속해 있는 서비스를 공유하고 싶다면 @Module 데코레이터에서 exports 하여 특정 서비스를 내보내야 한다. </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">import &#123; Module &#125; from &#x27;@nestjs/common&#x27;;</span><br><span class="line">import &#123; CatsController &#125; from &#x27;./cats.controller&#x27;;</span><br><span class="line">import &#123; CatsService &#125; from &#x27;./cats.service&#x27;;</span><br><span class="line"></span><br><span class="line">@Module(&#123;</span><br><span class="line">  controllers: [CatsController],</span><br><span class="line">  providers: [CatsService],</span><br><span class="line">  exports: [CatsService]</span><br><span class="line">&#125;)</span><br><span class="line">export class CatsModule &#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>CatService 를 내보내서 다른 모듈에서 같은 인스턴스를 사용하도록 한다. </p>
+<h2 id="Module-re-exporting"><a href="#Module-re-exporting" class="headerlink" title="Module re-exporting"></a>Module re-exporting</h2><p>특정 모듈을 임포트하고 다시 내보낼수도 있다. CommonModule은 CoreModule로 가져오거나 CoreModule에서 내보내어 이 모듈을 가져오는 다른 모듈에서 사용할 수 있다. </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">@Module(&#123;</span><br><span class="line">  imports: [CommonModule],</span><br><span class="line">  exports: [CommonModule],</span><br><span class="line">&#125;)</span><br><span class="line">export class CoreModule &#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Dependency-injection"><a href="#Dependency-injection" class="headerlink" title="Dependency injection"></a>Dependency injection</h2><p>모듈은 Provider 도 주입할 수 있다. (구성 하기 위한 목적으로 )</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">import &#123; Module &#125; from &#x27;@nestjs/common&#x27;;</span><br><span class="line">import &#123; CatsController &#125; from &#x27;./cats.controller&#x27;;</span><br><span class="line">import &#123; CatsService &#125; from &#x27;./cats.service&#x27;;</span><br><span class="line"></span><br><span class="line">@Module(&#123;</span><br><span class="line">  controllers: [CatsController],</span><br><span class="line">  providers: [CatsService],</span><br><span class="line">&#125;)</span><br><span class="line">export class CatsModule &#123;</span><br><span class="line">  constructor(private catsService: CatsService) &#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>그러나 순환 참조가 될수 있기 때문에 모듈 자체를 Porivder로 주입하는 것은 불가능하다. </p>
+<h2 id="Global-modules"><a href="#Global-modules" class="headerlink" title="Global modules"></a>Global modules</h2><p>모든 곳에서 import 하는 같은 모듈을 계속 import 하는 것은 바보같은 짓이다. 그러나 nest 에서는 Provider를 캡슐화 하기 때문에 Provider 를 가져오지 않고는 다른 곳에서 사용할 수 없다. </p>
+<p>어느 곳에서나 접근 가능한 Provider 집합을 제공하려는 경우, @Global 데코레이터를 사용하여 사용해야 한다. </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">import &#123; Module, Global &#125; from &#x27;@nestjs/common&#x27;;</span><br><span class="line">import &#123; CatsController &#125; from &#x27;./cats.controller&#x27;;</span><br><span class="line">import &#123; CatsService &#125; from &#x27;./cats.service&#x27;;</span><br><span class="line"></span><br><span class="line">@Global()</span><br><span class="line">@Module(&#123;</span><br><span class="line">  controllers: [CatsController],</span><br><span class="line">  providers: [CatsService],</span><br><span class="line">  exports: [CatsService],</span><br><span class="line">&#125;)</span><br><span class="line">export class CatsModule &#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>이렇게 하면 모듈을 global-scope 에 있도록 만들 수 있다. 전역 모듈은 일반적으로 루트 또는 코어 모듈에서 한번만 등록해야 한다. 이렇게 등록한 모듈 내에 있는 Provider 는 어떠한 다른 모듈에서 import 모듈에 등록할 필요 없이 inject 할 수 있다. </p>
+<h2 id="Dynamic-modules"><a href="#Dynamic-modules" class="headerlink" title="Dynamic modules"></a>Dynamic modules</h2><p>Nest 에서는 쉽게 등록 가능한 모듈을 동적으로 만들 수 있고, Provider를 구성할 수 있다. </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">import &#123; Module, DynamicModule &#125; from &#x27;@nestjs/common&#x27;;</span><br><span class="line">import &#123; createDatabaseProviders &#125; from &#x27;./database.providers&#x27;;</span><br><span class="line">import &#123; Connection &#125; from &#x27;./connection.provider&#x27;;</span><br><span class="line"></span><br><span class="line">@Module(&#123;</span><br><span class="line">  providers: [Connection],</span><br><span class="line">&#125;)</span><br><span class="line">export class DatabaseModule &#123;</span><br><span class="line">  static forRoot(entities = [], options?): DynamicModule &#123;</span><br><span class="line">    const providers = createDatabaseProviders(options, entities);</span><br><span class="line">    return &#123;</span><br><span class="line">      module: DatabaseModule,</span><br><span class="line">      providers: providers,</span><br><span class="line">      exports: providers,</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>forRoot 메서드는 동기식 또는 비동기식으로 모듈을 반환할 수 있다. </p>
+<p>DatabaseModule 는 다음과 같은 방법으로 import 될 수  있다. </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">import &#123; Module &#125; from &#x27;@nestjs/common&#x27;;</span><br><span class="line">import &#123; DatabaseModule &#125; from &#x27;./database/database.module&#x27;;</span><br><span class="line">import &#123; User &#125; from &#x27;./users/entities/user.entity&#x27;;</span><br><span class="line"></span><br><span class="line">@Module(&#123;</span><br><span class="line">  imports: [DatabaseModule.forRoot([User])],</span><br><span class="line">&#125;)</span><br><span class="line">export class AppModule &#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>동적 모듈을 다시 내보내려면 내보내기 배열에서 forRoot() 메서드 호출을 생략 할 수도 있다.</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1194,97 +1295,6 @@
 <li>헤커가 직접 쿠키를 가져갈 수 없지만 희생자에게 특정 액션을 취하게 할 수 있게 된다. </li>
 </ol>
 <h2 id="방어법"><a href="#방어법" class="headerlink" title="방어법"></a>방어법</h2><p>서버로부터 CSRF 토큰을 요청하고, 클라이언트는 CSRF 토큰을 메모리에서 관리될 수 있도록 하여 모든 요청때마나 CSRF 토큰도 같이 보내주도록 한다.</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2022/01/14/IOS/220113-UITabelView/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JayoonKoo">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="티끌모아 태산">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/01/14/IOS/220113-UITabelView/" class="post-title-link" itemprop="url">UITabelView</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2022-01-14 12:19:20 / Modified: 12:19:24" itemprop="dateCreated datePublished" datetime="2022-01-14T12:19:20+09:00">2022-01-14</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/IOS/" itemprop="url" rel="index"><span itemprop="name">IOS</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="UITableView"><a href="#UITableView" class="headerlink" title="UITableView"></a>UITableView</h1><p>여러 아이템을 리스트 형태로 보여주는 UIView를 의미합니다.</p>
-<h2 id="Recycle-Cell"><a href="#Recycle-Cell" class="headerlink" title="Recycle Cell"></a>Recycle Cell</h2><p>테이블 뷰는 Cell을 재활용 해서 화면에 띄웁니다 .화면에서 볼수 있는 Cell은 한정적이기 때문에 모든 Cell을 사용하는 것이 아닌 재활용하는 정책을 사용하는 것입니다.</p>
-<p>예를 들면 : </p>
-<ul>
-<li>5개의 Cell 을 화면에 표시하고</li>
-<li>스크롤을 해서 맨 위에 1번 Cell이 안보이게 되었고 6번 Cell을 보여줘야 한다면</li>
-<li>1번 Cell을 재활용 해서 6번 Cell을 보여주게 됩니다.</li>
-</ul>
-<h2 id="프로토콜"><a href="#프로토콜" class="headerlink" title="프로토콜"></a>프로토콜</h2><p>화면에 리스트를 보여주기 위해서 몇가지 정보가 필요합니다.</p>
-<ul>
-<li>테이블뷰 셀 몇개?</li>
-<li>테이블 뷰 어떻게 보여주지?</li>
-<li>테이블 뷰 클릭하면 어떡해야하지?</li>
-<li>…</li>
-</ul>
-<p>모든 정보를 명시해야 하는 것은 아니지만 필수적으로 테이블 뷰 셀을 몇개 보여줄지랑 테이블 뷰를 어떻게 보여줄지는 정해야 합니다. 프로토콜을 구현하는 방식으로 기능을 구현할 수 있습니다.</p>
-<h3 id="UITableViewDataSource"><a href="#UITableViewDataSource" class="headerlink" title="UITableViewDataSource"></a>UITableViewDataSource</h3><p>데이터에 관련된 프로토콜로서 테이블뷰의 셀은 몇개인지, 테이블 뷰를 어떻게 보여줄지? 등의 작업을 여기서 정의합니다. </p>
-<h3 id="UITableViewDelegate"><a href="#UITableViewDelegate" class="headerlink" title="UITableViewDelegate"></a>UITableViewDelegate</h3><p>테이블 뷰 동작에 관련된 프로토콜로서 테이블 뷰를 클릭하면 어떡해 작동할지 등의 작업을 여기서 정의합니다.</p>
 
       
     </div>

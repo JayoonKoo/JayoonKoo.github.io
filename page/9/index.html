@@ -83,9 +83,9 @@
   <ul class="main-menu menu">
         <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li>
         <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
-        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">21</span></a></li>
-        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">17</span></a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">159</span></a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">22</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">18</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">160</span></a></li>
   </ul>
 </nav>
 
@@ -129,18 +129,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">159</span>
+          <span class="site-state-item-count">160</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-count">18</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">21</span>
+        <span class="site-state-item-count">22</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -180,6 +180,109 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/10/23/DB/SQLD/211012-%ED%85%8C%EC%9D%B4%EB%B8%94%20%EC%84%A4%EA%B3%84/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JayoonKoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="티끌모아 태산">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/10/23/DB/SQLD/211012-%ED%85%8C%EC%9D%B4%EB%B8%94%20%EC%84%A4%EA%B3%84/" class="post-title-link" itemprop="url">테이블 설계</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2021-10-23 22:07:35 / Modified: 22:09:58" itemprop="dateCreated datePublished" datetime="2021-10-23T22:07:35+09:00">2021-10-23</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/DB/" itemprop="url" rel="index"><span itemprop="name">DB</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="테이블-설계"><a href="#테이블-설계" class="headerlink" title="테이블 설계"></a>테이블 설계</h1><h2 id="테이블-설계의-기초"><a href="#테이블-설계의-기초" class="headerlink" title="테이블 설계의 기초"></a>테이블 설계의 기초</h2><p>테이블이란 ? 데이터를 관리 및 저장하는 장소, 효율적인 관리 및 적절한 조작이 매우 종요하고 실생활에서 광범위학게 사용되는 2차원 표와 유사하다.</p>
+<h2 id="테이블-설계-규칙"><a href="#테이블-설계-규칙" class="headerlink" title="테이블 설계 규칙"></a>테이블 설계 규칙</h2><h3 id="집합을-나누는-방법"><a href="#집합을-나누는-방법" class="headerlink" title="집합을 나누는 방법"></a>집합을 나누는 방법</h3><p>집합을 나누는 방법에 따라 한개 혹은 여러개의 테이블이 될 수 있다.</p>
+<p>예를 들어서 회원 테이블을 관리하고 있었는데, 새로운 기준이 적용 되어서 회원을 일반 회원과 프리미엄 회원 테이블로 나누는 경우가 이에 해당한다.</p>
+<h3 id="데이터-베이스-vs-자바"><a href="#데이터-베이스-vs-자바" class="headerlink" title="데이터 베이스 vs 자바"></a>데이터 베이스 vs 자바</h3><p>데이터 베이스는 자바와 비교 될때가 많다.</p>
+<p>데이터베이스에서 테이블은 자바에 클래스와 비교되고, 열은 클래스의 속성과 비교된다. 또한, 행은 자바에서 인스턴스와 비교되기도 한다.</p>
+<h3 id="기본키"><a href="#기본키" class="headerlink" title="기본키"></a>기본키</h3><p>기본키는 특정 집합에서 특정 행을 유일하게 식별할 수 있는 속성의 집합이다. 예를 들면, 학번, 카드발급번호, 주민등록번호 등이 있다.</p>
+<p>따라서 중복된 식별을 없에기 위해서 기본키는 중복 되면 안된다. 또한, 한번 정해지면 가급적 변경하지 않도록 한다.</p>
+<p>기본키는 Null 값이 허용 되지 않는데, 업무 상의 이유로 기본키가 없는 테이블이 운영되는 곳이 간혹 있다.</p>
+<h2 id="정규형"><a href="#정규형" class="headerlink" title="정규형"></a>정규형</h2><p>테이블을 제대로 된 형태로 만들자고 하는 것인데, 테이블을 쪼갤 수 있는 부분까지 쪼개는 것을 의미한다.</p>
+<h3 id="제-1-정규형-1NF-위반"><a href="#제-1-정규형-1NF-위반" class="headerlink" title="제 1 정규형(1NF) 위반"></a>제 1 정규형(1NF) 위반</h3><p>테이블의 셀에 여러 개의 값을 포함하지 않는다.</p>
+<p>예를 들어 회원 테이블에서 연락처를 컬럼을 전화번호, 이메일로 같이 관리하는 경우가 1 정규형 위반에 해당한다.</p>
+<p>1 정규형 해소를 위해서는 기존에 회원 테이블에서 연락처를 분리해서 회원 연락처 테이블을 만들고 연락처 구분 컬럼을 만들어 핸드폰인지 이메일인지 구분해서 저장해야 한다.</p>
+<h3 id="함수-종속성"><a href="#함수-종속성" class="headerlink" title="함수 종속성 ?"></a>함수 종속성 ?</h3><p>테이블은 함수오 같다. -&gt; 기본키의 값을 입력하면 특정 출력 값이 나오는 구조이기 때문이다.</p>
+<p>예를 들어 환율 테이블에 경우 어떤 통화인지 기본키를 입력하면 환율이 나오는 방식으로 생각할 수 있는다. 어떤 값에 의해 값이 리턴되는 형식에 함수와 같다고 할 수 있다.</p>
+<h3 id="제-2-정규형-2NF-위반"><a href="#제-2-정규형-2NF-위반" class="headerlink" title="제 2 정규형(2NF) 위반"></a>제 2 정규형(2NF) 위반</h3><p>부분 함수 종속성을 허용하지 않음..</p>
+<p>부분 함수 종속이란 기본키를 구성하는 열의 일부에만 함수 종속이 존재 하는 것을 의미하는데, 예를들어서 주문 테이블은 고객 아이디와 주문번호를 복합키로 사용해서 주문을 구별한다. 주문 일자에 경우 고객 아이디와 주문번호를 통해서 주문 일자가 나오는게 맞는데 고객명과 고객등급은 복합키가 아닌 고객 아이디만 사용해도 알 수 있다. 이 경우 제 2 정규형 위반이라고 한다.</p>
+<img src="/images/211012-테이블 설계/1.png" width="500">
+
+<p>해소 하기 위해서는 고객 주문 테이블에서 고객명과 고객등급 컬럼을 삭제하고 고객 테이블을 따로 만들어서 부분 함수 종속을 제거해야 한다.</p>
+<h3 id="제-3-정규형-3NF-위반"><a href="#제-3-정규형-3NF-위반" class="headerlink" title="제 3 정규형(3NF) 위반"></a>제 3 정규형(3NF) 위반</h3><p>기본 키를 제외한 일반 컬럼끼리 함수 종속이 발생한 경우에 위반했다고 한다.</p>
+<p>예를 들어서 고객 테이블에 경우 고객 아이디를 통해서 고객 명과 나이가 판단되는 것은 맞지만 일반 컬럼인 직업코드와 직업명은 서로간에 함수 종속이 발생했다. 이경우 제 3 정규형 위반이라고 하고 해소 하기 위해서 고객 테이블에서 직업 명 컬럼을 삭제하고 직업테이블을 새로 만들어서 직업 코드 별 직업명을 확인하도록 한다.</p>
+<img src="/images/211012-테이블 설계/2.png" width="500">
+
+<h3 id="4-5-정규형"><a href="#4-5-정규형" class="headerlink" title="4, 5 정규형"></a>4, 5 정규형</h3><p>일반적으로 거의 쓰이지 않아서 따로 찾아볼것.. 3 정규형 까지는 확실히 알도록 하자.</p>
+<h2 id="ER-다이어-그램"><a href="#ER-다이어-그램" class="headerlink" title="ER 다이어 그램"></a>ER 다이어 그램</h2><p>데이터 모델링 문야에서 개체-관계 모델이란 구조화된 데이터에 대한 일련이ㅡ 표현이다. 개체-관계 모델리을 하는 것을 ERM(Entity-Relationship Modelling)이라 하고 이에 대한 산출 물을 ERD(Entity-Relationship Diagram) 이라고 한다.</p>
+<h3 id="Barker-표기법"><a href="#Barker-표기법" class="headerlink" title="Barker 표기법"></a>Barker 표기법</h3><p>ERD를 표시하는 기법 중 하나이고 요즘은 이걸 많이 사용한다.</p>
+<img src="/images/211012-테이블 설계/3.png" width="900">
+
+<h3 id="릴레이션십"><a href="#릴레이션십" class="headerlink" title="릴레이션십"></a>릴레이션십</h3><p>엔티티와 엔티티 간의 관계를 의미한다. 엔티티 간의 관계성을 표시한다.</p>
+<img src="/images/211012-테이블 설계/4.png" width="900">
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1182,108 +1285,6 @@
 <figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">WarningBanner</span>(<span class="params">props</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (!props.warn) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">&quot;warning&quot;</span>&gt;</span>Warning!<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Page</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">props</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">super</span>(props);</span><br><span class="line">    <span class="built_in">this</span>.state = &#123; <span class="attr">showWarning</span>: <span class="literal">true</span> &#125;;</span><br><span class="line">    <span class="built_in">this</span>.handleToggleClick = <span class="built_in">this</span>.handleToggleClick.bind(<span class="built_in">this</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">handleToggleClick</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.setState(<span class="function">(<span class="params">state</span>) =&gt;</span> (&#123;</span><br><span class="line">      <span class="attr">showWarning</span>: !state.showWarning,</span><br><span class="line">    &#125;));</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">render</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      <span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">WarningBanner</span> <span class="attr">warn</span>=<span class="string">&#123;this.state.showWarning&#125;</span> /&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;this.handleToggleClick&#125;</span>&gt;</span></span></span><br><span class="line"><span class="xml">          &#123;this.state.showWarning ? &quot;Hide&quot; : &quot;Show&quot;&#125;</span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">ReactDOM.render(<span class="xml"><span class="tag">&lt;<span class="name">Page</span> /&gt;</span></span>, <span class="built_in">document</span>.getElementById(<span class="string">&quot;root&quot;</span>));</span><br></pre></td></tr></table></figure>
 
 <p>컴포넌트의 render 메서드로부터 null을 반환하는 것은 생명주기 메서드 호출에 영향을 주지 않는다. 그 예로 <code>componentDidUpdate</code>는 계속해서 호출되게 된다.</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/10/09/react/official-docs/211005-Handling%20Events/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JayoonKoo">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="티끌모아 태산">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/10/09/react/official-docs/211005-Handling%20Events/" class="post-title-link" itemprop="url">Handling Events</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2021-10-09 21:59:04 / Modified: 21:59:16" itemprop="dateCreated datePublished" datetime="2021-10-09T21:59:04+09:00">2021-10-09</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/react/" itemprop="url" rel="index"><span itemprop="name">react</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="Handling-Events"><a href="#Handling-Events" class="headerlink" title="Handling Events"></a>Handling Events</h1><p>React 에서 이벤트를 처리하는 방식은 DOM 에서 이벤트를 처리하는 방식과 거의 유사하다. 몇가지 차이점이 있는데 다음과 같다.</p>
-<ol>
-<li>소분자가 아닌 camelCase를 사용한다.</li>
-<li>이벤트 헨들러를 string으로 전달하는것이 아니라 함수로 전달한다.</li>
-</ol>
-<p>DOM:</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">onclick</span>=<span class="string">&quot;activateLasers()&quot;</span>&gt;</span>Activate Lasers<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>React:</p>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;button onClick=&#123;activateLasers&#125;&gt;Activate Lasers&lt;/button&gt;</span><br></pre></td></tr></table></figure>
-
-<p>DOM 에서는 기본 동작을 막기 위헤서 <code>return false</code>를 사용할 수 있는 반면에 React 에서는 기본 동작을 막기 위해 <code>preventDefault</code>를 사용해야 한다.</p>
-<p>DOM:</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">onsubmit</span>=<span class="string">&quot;console.log(&#x27;You clicked submit.&#x27;); return false&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span>&gt;</span>Submit<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>React:</p>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Form</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">handleSubmit</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">    e.preventDefault();</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;You clicked submit.&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="xml"><span class="tag">&lt;<span class="name">form</span> <span class="attr">onSubmit</span>=<span class="string">&#123;handleSubmit&#125;</span>&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span>&gt;</span>Submit<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>React 에서는 DOM 엘리먼트를 생성한 후에 이벤트 리스너를 추가 하기 위해서 <code>addEventListenter</code>를 호출할 필요가 없다. 렌더링 될때 리스너를 제공하는 방법을 사용한다.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Toggle</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">props</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">super</span>(props);</span><br><span class="line">    <span class="built_in">this</span>.state = &#123; <span class="attr">isToggleOn</span>: <span class="literal">true</span> &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 콜백에서 this 가 작동하려면 this를 바인딩 해주어야 한다. -&gt; 호출 시점에서 this는 undefined이기 때문이다.</span></span><br><span class="line">    <span class="built_in">this</span>.handleClick = <span class="built_in">this</span>.handleClick.bind(<span class="built_in">this</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">handleClick</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.setState(<span class="function">(<span class="params">pre</span>) =&gt;</span> (&#123;</span><br><span class="line">      <span class="attr">isToggleOn</span>: !pre.isToggleOn,</span><br><span class="line">    &#125;));</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">render</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      <span class="xml"><span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;this.handleClick&#125;</span>&gt;</span></span></span><br><span class="line"><span class="xml">        &#123;this.state.isToggleOn ? &quot;ON&quot; : &quot;OFF&quot;&#125;</span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>콜백 함수 내에서 this를 사용하고 싶다면 생성자에서 바인딩을 해주어야 한다. 이는 React 내에서의 특징이 이나리 일반적인 JavaScript에 특징이다. 만약 매번 바인딩 하기 싫다면 다음과 같은 방법을 사용해도 된다.</p>
-<p>publick class fiedls syntax :</p>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">LoggingButton</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">  <span class="comment">// This syntax ensures `this` is bound within handleClick.</span></span><br><span class="line">  <span class="comment">// Warning: this is *experimental* syntax.</span></span><br><span class="line">  handleClick = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;this is:&quot;</span>, <span class="built_in">this</span>);</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">render</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;this.handleClick&#125;</span>&gt;</span>Click me<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>화살표 함수 사용하기:</p>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">LoggingButton</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">handleClick</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;this is:&quot;</span>, <span class="built_in">this</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">render</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="comment">// This syntax ensures `this` is bound within handleClick</span></span><br><span class="line">    <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;()</span> =&gt;</span> this.handleClick()&#125;&gt;Click me<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>화살표 함수를 사용할때에 문제점은 컴포넌트가 렌더링 될때마다 콜백이 새로 생성된다는 것이다. 대부분의 경우는 문제가 되지 않으나, 콜백이 하위 컴포넌트에 props로서 전달된다면 그 컴포넌트들은 추가로 다시 렌더링을 수행할 수 도 있다.</p>
 
       
     </div>

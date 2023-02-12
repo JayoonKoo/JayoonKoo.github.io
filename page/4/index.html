@@ -83,9 +83,9 @@
   <ul class="main-menu menu">
         <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li>
         <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
-        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">21</span></a></li>
-        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">17</span></a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">159</span></a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">22</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">18</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">160</span></a></li>
   </ul>
 </nav>
 
@@ -129,18 +129,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">159</span>
+          <span class="site-state-item-count">160</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-count">18</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">21</span>
+        <span class="site-state-item-count">22</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -180,6 +180,97 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2022/01/14/IOS/220113-UITabelView/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JayoonKoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="티끌모아 태산">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/01/14/IOS/220113-UITabelView/" class="post-title-link" itemprop="url">UITabelView</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2022-01-14 12:19:20 / Modified: 12:19:24" itemprop="dateCreated datePublished" datetime="2022-01-14T12:19:20+09:00">2022-01-14</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/IOS/" itemprop="url" rel="index"><span itemprop="name">IOS</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="UITableView"><a href="#UITableView" class="headerlink" title="UITableView"></a>UITableView</h1><p>여러 아이템을 리스트 형태로 보여주는 UIView를 의미합니다.</p>
+<h2 id="Recycle-Cell"><a href="#Recycle-Cell" class="headerlink" title="Recycle Cell"></a>Recycle Cell</h2><p>테이블 뷰는 Cell을 재활용 해서 화면에 띄웁니다 .화면에서 볼수 있는 Cell은 한정적이기 때문에 모든 Cell을 사용하는 것이 아닌 재활용하는 정책을 사용하는 것입니다.</p>
+<p>예를 들면 : </p>
+<ul>
+<li>5개의 Cell 을 화면에 표시하고</li>
+<li>스크롤을 해서 맨 위에 1번 Cell이 안보이게 되었고 6번 Cell을 보여줘야 한다면</li>
+<li>1번 Cell을 재활용 해서 6번 Cell을 보여주게 됩니다.</li>
+</ul>
+<h2 id="프로토콜"><a href="#프로토콜" class="headerlink" title="프로토콜"></a>프로토콜</h2><p>화면에 리스트를 보여주기 위해서 몇가지 정보가 필요합니다.</p>
+<ul>
+<li>테이블뷰 셀 몇개?</li>
+<li>테이블 뷰 어떻게 보여주지?</li>
+<li>테이블 뷰 클릭하면 어떡해야하지?</li>
+<li>…</li>
+</ul>
+<p>모든 정보를 명시해야 하는 것은 아니지만 필수적으로 테이블 뷰 셀을 몇개 보여줄지랑 테이블 뷰를 어떻게 보여줄지는 정해야 합니다. 프로토콜을 구현하는 방식으로 기능을 구현할 수 있습니다.</p>
+<h3 id="UITableViewDataSource"><a href="#UITableViewDataSource" class="headerlink" title="UITableViewDataSource"></a>UITableViewDataSource</h3><p>데이터에 관련된 프로토콜로서 테이블뷰의 셀은 몇개인지, 테이블 뷰를 어떻게 보여줄지? 등의 작업을 여기서 정의합니다. </p>
+<h3 id="UITableViewDelegate"><a href="#UITableViewDelegate" class="headerlink" title="UITableViewDelegate"></a>UITableViewDelegate</h3><p>테이블 뷰 동작에 관련된 프로토콜로서 테이블 뷰를 클릭하면 어떡해 작동할지 등의 작업을 여기서 정의합니다.</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1140,118 +1231,6 @@
 <h3 id="기타"><a href="#기타" class="headerlink" title="기타"></a>기타</h3><ul>
 <li>action 함수에서 sender 변수를 이용해서 어떤 인스턴스에서 발생한 액션인지 알 수 있다.</li>
 </ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2022/01/06/IOS/220105-Calcurator/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JayoonKoo">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="티끌모아 태산">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/01/06/IOS/220105-Calcurator/" class="post-title-link" itemprop="url">UIStackView, IBDesignables, IBInspectable (계산기)</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2022-01-06 14:38:44" itemprop="dateCreated datePublished" datetime="2022-01-06T14:38:44+09:00">2022-01-06</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2022-01-12 13:06:55" itemprop="dateModified" datetime="2022-01-12T13:06:55+09:00">2022-01-12</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/IOS/" itemprop="url" rel="index"><span itemprop="name">IOS</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="계산기"><a href="#계산기" class="headerlink" title="계산기"></a>계산기</h2><p>배울 기술</p>
-<ul>
-<li>UIStackView</li>
-<li>IBDesignables</li>
-<li>IBInspectable</li>
-</ul>
-<h3 id="UIStackView"><a href="#UIStackView" class="headerlink" title="UIStackView"></a>UIStackView</h3><p>열 또는 행에 View 들의 묶음을 배치할 수 있는 간소화된 인터페이스</p>
-<ul>
-<li>axis : 방향 결정</li>
-<li>distribution : 어떻게 분배할지<ul>
-<li>Fill : 채우게 ,huging, compresion 값 에따라 달라짐</li>
-<li>Fill Equally : 요소 크기를 같게 채우기</li>
-<li>Fill Proportionally : 비율에 맞게</li>
-<li>Equal Spacing : 각각 간격이 같게</li>
-<li>Eual Centering : 각 서브 뷰들의 센터의 간격을 동일하게</li>
-</ul>
-</li>
-<li>alignment : 주축 반대축에 대하여<ul>
-<li>fill</li>
-<li>leading</li>
-<li>top</li>
-<li>first baseline</li>
-<li>center</li>
-<li>trailing</li>
-<li>bottom</li>
-<li>last baseline</li>
-</ul>
-</li>
-<li>spacing : subview 들의 간격 조정</li>
-</ul>
-<h3 id="IBInspectable-IBDesignables"><a href="#IBInspectable-IBDesignables" class="headerlink" title="IBInspectable, IBDesignables"></a>IBInspectable, IBDesignables</h3><p>UIView안에 요소를 를 상속하는 클래스를 만들어서 코드로 속성에 접근, 변경할 수 있다.</p>
-<p>@IBInspectable 어노테이션을 붙히면 스토리 보드에서도 속성에 값을 변경할 수 있도록 할 수 있다.</p>
-<p>@IBDesignable 어노테이션을 붙혀서 실시간으로 속성값 변화를 스토리보드에서 확인할 수 있다. 남용하게 되면 스토리 보드 열때마다 오래 걸릴수도 있다.</p>
 
       
     </div>

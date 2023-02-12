@@ -83,9 +83,9 @@
   <ul class="main-menu menu">
         <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li>
         <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
-        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">21</span></a></li>
-        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">17</span></a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">159</span></a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">22</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">18</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">160</span></a></li>
   </ul>
 </nav>
 
@@ -129,18 +129,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">159</span>
+          <span class="site-state-item-count">160</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-count">18</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">21</span>
+        <span class="site-state-item-count">22</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -180,6 +180,115 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/12/21/DevOps/Docker/211221-Docker%20tutorial(3)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JayoonKoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="티끌모아 태산">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/12/21/DevOps/Docker/211221-Docker%20tutorial(3)/" class="post-title-link" itemprop="url">Docker tutorial(3)</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2021-12-21 21:34:27 / Modified: 21:34:44" itemprop="dateCreated datePublished" datetime="2021-12-21T21:34:27+09:00">2021-12-21</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/DevOps/" itemprop="url" rel="index"><span itemprop="name">DevOps</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="Update-the-source-code"><a href="#Update-the-source-code" class="headerlink" title="Update the source code"></a>Update the source code</h1><p>코드를 업데이트하고 적용하는 방법을 알아본다.</p>
+<ol>
+<li>코드를 고친다. </li>
+<li>build 할때 사용했던 명령어를 똑같이 입력한다. </li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker build -t getting-started .</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>업데이트된 코드를 사용해서 새로운 컨테이너를 시작한다.</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker run -db 3000:3000 getting-started</span><br></pre></td></tr></table></figure>
+
+<p>하지만 에러가 발생한다.. (docker: Error response from daemon: driver failed….)</p>
+<p>왜냐하면 이미 3000 번 포트로 전에 컨테이너가 실행중이기 때문이다. 하나의 머신에 특정한 포트는 한게만 실행 실행시킬 수 있다. 오래된 컨테이너를 지워야 한다.</p>
+<h2 id="Replace-the-old-container"><a href="#Replace-the-old-container" class="headerlink" title="Replace the old container"></a>Replace the old container</h2><p>컨테이너를 지우기 위해서는 컨테이너 실행을 중지 시켜야 한다. 두가지 방법이 있는데 편한것을 선택하면 된다. </p>
+<h3 id="Remove-a-container-using-the-CLI"><a href="#Remove-a-container-using-the-CLI" class="headerlink" title="Remove a container using the CLI"></a>Remove a container using the CLI</h3><ol>
+<li>컨테이너의 ID를 얻는다. </li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker ps</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>docker ID 혹은 이름을 사용해서 컨테이너를 멈춘다.</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker stop &lt;the-container-id or name&gt;</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>컨테이너가 멈추면 <code>docker rm</code> 커멘드로 지울 수 있다. </li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker rm &lt;the-container-id or name&gt;</span><br></pre></td></tr></table></figure>
+
+<p>-f 플래그를 이요해서 실행중인 중에도 삭제할 수 있다. <code>docker rm -f &lt;the-continaer-id or name&gt;</code> </p>
+<h3 id="Docker-Dashboard"><a href="#Docker-Dashboard" class="headerlink" title="Docker Dashboard"></a>Docker Dashboard</h3><p>Docker Dashboard에서 실행중인 컨테이널르 확인하고 쓰레기통 아이콘을 누르면 삭제할 수 있다. </p>
+<h3 id="Start-the-updated-app-container"><a href="#Start-the-updated-app-container" class="headerlink" title="Start the updated app container"></a>Start the updated app container</h3><ol>
+<li>앱을 실행시킨다. </li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker run -dp 3000:3000 getting-started</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1115,89 +1224,6 @@
 <li>다양한 방법이 있는데 Apollo로 Server을 만들어서 구현해 볼 수 있다. (apollo-server)</li>
 <li>typeDef : grapQL 스키마, Object(데이터 스키마), Query (쿼리 형태, 조회 할때), Mutaion( 생성, 변경, 삭제 할때 , resolve 도 mutation으로 설정해야 함.), Input → gql + tagged template Literals</li>
 <li>resolvers : 구현체</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/12/13/TIL/211210/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JayoonKoo">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="티끌모아 태산">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/12/13/TIL/211210/" class="post-title-link" itemprop="url">211210 마이크로프론트앤드</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2021-12-13 15:58:53 / Modified: 15:59:14" itemprop="dateCreated datePublished" datetime="2021-12-13T15:58:53+09:00">2021-12-13</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/TIL/" itemprop="url" rel="index"><span itemprop="name">TIL</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="211210"><a href="#211210" class="headerlink" title="211210"></a>211210</h1><h2 id="마이크로프론트앤드"><a href="#마이크로프론트앤드" class="headerlink" title="마이크로프론트앤드"></a>마이크로프론트앤드</h2><ul>
-<li>RunTime Integration<ul>
-<li>개발 마친 앱을 url 나 다른 포트를 통해 전달하는 등의 방식</li>
-<li>장점: 완전 독립적이다.</li>
-<li>단점: webpack 설정 등.. 이해하기 어려운 부분이 있다.</li>
-<li>→ 이번 과정에서는 RunTime Integration에 대해서 공부한다.</li>
-</ul>
-</li>
-<li>구조를 어떻게 ? 작은 앱을 만든다고 생각한다. 예를들어서 prodicts와 cart 앱을 만들어서 각각 다른 포트로 연다고 생각하면 된다 이를 위해서 각각의 폴터에 package.json, html, 을 만들고 webpack 을 이용해서 파일을 bundle하고 서버를 연다.</li>
 </ul>
 
       

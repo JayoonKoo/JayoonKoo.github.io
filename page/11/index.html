@@ -83,9 +83,9 @@
   <ul class="main-menu menu">
         <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li>
         <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
-        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">21</span></a></li>
-        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">17</span></a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">159</span></a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">22</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">18</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">160</span></a></li>
   </ul>
 </nav>
 
@@ -129,18 +129,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">159</span>
+          <span class="site-state-item-count">160</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-count">18</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">21</span>
+        <span class="site-state-item-count">22</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -180,6 +180,127 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/09/20/react/official-docs/210918-Introduce-JSX/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JayoonKoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="티끌모아 태산">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/09/20/react/official-docs/210918-Introduce-JSX/" class="post-title-link" itemprop="url">Introduce-JSX</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-09-20 21:48:16" itemprop="dateCreated datePublished" datetime="2021-09-20T21:48:16+09:00">2021-09-20</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/react/" itemprop="url" rel="index"><span itemprop="name">react</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="Introducing-JSX"><a href="#Introducing-JSX" class="headerlink" title="Introducing JSX"></a>Introducing JSX</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> element = <span class="xml"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>Hello, world!<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span>;</span><br></pre></td></tr></table></figure>
+
+<p>위에 예시에 테그는 문자열도 아니고 html도 아니다. 이것은 JSX라고 불린다. React는 JSX로 UI를 표현하기를 추천한다. JSX는 템플릿을 상기시키지만 자바스크립트에 모든 기능이 포함되어 있다.</p>
+<p>JSX는 React에 엘리먼트를 생성한다. 우리는 이것이 DOM으로 렌더링 되는것을 다음 섹션에서 살펴볼 것이다. JSX에 기본적인 내용은 아래와 같다.</p>
+<h2 id="Why-JSX"><a href="#Why-JSX" class="headerlink" title="Why JSX?"></a>Why JSX?</h2><p>React는 렌더링 로직이 본질적으로 다른 UI로직과 결합된다는 것을 받아들인다. (어떻게 이벤트가 다뤄지지, 어떻게 시간이 흐름에 따라 상태가 변하지, 디스플레이를 위해 데이터가 어떻게 준비되지…)</p>
+<p>인위적으로 기술을 마크업 과 로직을 분리한 파일로 넣음으로서 분리하는 대신에 리액트는 관심사를 컴포넌트라고 불리는 로직과 마크업을 포함한 느슨한 단위 결합으로 나눈다.</p>
+<p>리액트가 JSX를 필수적으로 필요로 하는것은 아니지만, 자바스크립트 코드로 UI를 작업할때 시각적으로 많은 도움이 된다는것을 많은 사람들이 발견했다. 또한 이는 리액트가 유용한 에러와 경고 메세지를 표시할수 있도록 해줍니다.</p>
+<h2 id="Embedding-Expression-in-JSX"><a href="#Embedding-Expression-in-JSX" class="headerlink" title="Embedding Expression in JSX"></a>Embedding Expression in JSX</h2><p>변수를 램핑해서 사용할 수 있다.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">App</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> name = <span class="string">&quot;koo&quot;</span>;</span><br><span class="line">  <span class="keyword">const</span> element = <span class="xml"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>Hello &#123;name&#125;<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span>;</span><br><span class="line">  <span class="keyword">return</span> element;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>어떤 자바스크립트에 표현식도 이 안에 서용할 수 있다.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">userNameElemnt</span>(<span class="params">user</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="xml"><span class="tag">&lt;<span class="name">h1</span>&gt;</span></span></span><br><span class="line"><span class="xml">      내 이름은 &#123;user.name&#125; 이고 &#123;user.age&#125;살이야.</span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> user = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&quot;koo JaYoon&quot;</span>,</span><br><span class="line">  <span class="attr">age</span>: <span class="number">27</span>,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">App</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> element = <span class="xml"><span class="tag">&lt;<span class="name">header</span>&gt;</span>&#123;userNameElemnt(user)&#125;<span class="tag">&lt;/<span class="name">header</span>&gt;</span></span>;</span><br><span class="line">  <span class="keyword">return</span> element;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>함수를 넣는것도 가능하다. 필수는 아니지만 가독성을 위해 줄을 나눌 것과 자동 세미콜론 방지를 위해서 괄호로 래핑할 것을 추천한다.</p>
+<h2 id="JSX-is-an-Expression-Too"><a href="#JSX-is-an-Expression-Too" class="headerlink" title="JSX is an Expression Too"></a>JSX is an Expression Too</h2><p>편집이 끝나면, JSX 표현식이 자바스크립트 정규 함수로 호출되고 자바스크립트에 객채로 평가 된다.</p>
+<p>이것은 JSX를 if 나 for 에 사용해서 인수를 넣거나 할당하거나 리턴할 수 있단느 것을 의미한다.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getStranger</span>(<span class="params">user</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (user) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>&#123;userNameElemnt(user)&#125;<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>Hello Stranger<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">App</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> element = <span class="xml"><span class="tag">&lt;<span class="name">header</span>&gt;</span>&#123;getStranger()&#125;<span class="tag">&lt;/<span class="name">header</span>&gt;</span></span>;</span><br><span class="line">  <span class="keyword">return</span> element;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Specifying-Attributes-with-JSX"><a href="#Specifying-Attributes-with-JSX" class="headerlink" title="Specifying Attributes with JSX"></a>Specifying Attributes with JSX</h2><p>스트링 문자열을 quotes를 사용해 속성으로 정의할 수 있다. 또한 중괄호를 사용해서 자바스크립트 표현식을 속성으로 사용할 수 도 있다.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> element = <span class="xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">tabIndex</span>=<span class="string">&quot;0&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> cuElemnt = <span class="xml"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&#123;user.avatarUrl&#125;</span>&gt;</span><span class="tag">&lt;/<span class="name">img</span>&gt;</span></span>;</span><br></pre></td></tr></table></figure>
+
+<p>중괄호를 사용할때 qutos를 사용하지 않도록 주의해라.</p>
+<blockquote>
+<p>JSX는 HTML 보다는 JavaScript에 가깝기 때문에 camelCase를 프로퍼티로 사용한다.</p>
+</blockquote>
+<h2 id="Specifying-Children-with-JSX"><a href="#Specifying-Children-with-JSX" class="headerlink" title="Specifying Children with JSX"></a>Specifying Children with JSX</h2><p>빈태그일 경우 XML 과 비슷하게 <code>/&gt;</code>를 사용해서 닫아준다.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> element = <span class="xml"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&#123;user.avatarUrl&#125;</span> /&gt;</span></span>;</span><br></pre></td></tr></table></figure>
+
+<p>JSX 태그는 자식 태그를 포함할 수 있다.</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> element = (</span><br><span class="line">  <span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>Hello!<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;<span class="name">h2</span>&gt;</span>Good to see you here.<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span></span><br><span class="line"><span class="xml">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<h2 id="JSX-Prevents-Injection-Attacks"><a href="#JSX-Prevents-Injection-Attacks" class="headerlink" title="JSX Prevents Injection Attacks"></a>JSX Prevents Injection Attacks</h2><p>유저에 입력을 JSX에 삽입시키는 것은 안전하다.</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> title = response.potentiallMaliciousInput;</span><br><span class="line"><span class="comment">// This is safe:</span></span><br><span class="line"><span class="keyword">const</span> element = <span class="xml"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>&#123;title&#125;<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span>;</span><br></pre></td></tr></table></figure>
+
+<p>기본적으로 React DOM 은 렌더링 하기전에 JSX 내장된 어떤 값이든 이스케이프 한다. 그러므로 애플리 케이션에서 명시적으로 적히지 않은 내용은 주입되지 않는다. 모든 것은 렌더링 하기전에 문자열로 변환된다. 이것은 XSS 공격을 막는데 도움을 준다.</p>
+<h2 id="JSX-Represents-Objects"><a href="#JSX-Represents-Objects" class="headerlink" title="JSX Represents Objects"></a>JSX Represents Objects</h2><p>Babel은 JSX를 <code>React.createElement()</code>에 호출로 컴파일한다.</p>
+<p>아래 두개는 동일하다.</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> element = <span class="xml"><span class="tag">&lt;<span class="name">h1</span> <span class="attr">className</span>=<span class="string">&quot;greeting&quot;</span>&gt;</span>Hello, world!<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span>;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> element = React.createElement(</span><br><span class="line">  <span class="string">&quot;h1&quot;</span>,</span><br><span class="line">  &#123; <span class="attr">className</span>: <span class="string">&quot;greeting&quot;</span> &#125;,</span><br><span class="line">  <span class="string">&quot;Hello, world!&quot;</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<p>`React.createElement()’ 너가 버그 없는 코드를 작성하하도록 도움이되는 몇가지 체크를 수행한다. 하지만 이것은 본질적으로 다음에 객체를 생상한다.</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Note: this structure is simplifed</span></span><br><span class="line"><span class="keyword">const</span> element = &#123;</span><br><span class="line">  <span class="attr">thpe</span>: <span class="string">&quot;h1&quot;</span>,</span><br><span class="line">  <span class="attr">props</span>: &#123;</span><br><span class="line">    <span class="attr">className</span>: <span class="string">&quot;greeting&quot;</span>,</span><br><span class="line">    <span class="attr">children</span>: <span class="string">&quot;Hellok world!&quot;</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>이 객체는 React elements라고 불린다. 이것을 너가 스크린에서 보고싶은 것에 설명이라고 생각할 수 있다.<br>React는 이 객체를 DOM 을 생상하고 최신상태로 유지하는데 사용한다.</p>
+<p>다음 섹션에서 React elements가 DOM으로 렌더링 되는것을 살펴볼 것이다.</p>
+<blockquote>
+<p>당신의 에디터에 Babel 언어 설정을 선택하기를 추천한다. 그러면 ES6 와 JSX 코드가 하이라이트 될것이다.</p>
+</blockquote>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1222,97 +1343,6 @@
 <p>참조형 값에 <code>()</code>를 붙여 호출하면 객체, 객체의 메서드와 연관된 모든 정보를 얻는다. 이 정보를 기반으로 <code>this(=user)</code> 가 결정된다.</p>
 <p>참조 타입은 <code>.</code> 연산에서 알아낸 정보를 괄호 <code>()</code>로 전달해 주는 중개인 역할을 한다.</p>
 <p><code>()</code>없이 <code>user.hi</code>를 호출하면 점연산이 아닌 연산이 된다(할당 연산). 이때는 참조 값이 아니라 함수 만 받아서 전달하기 때문에 <code>this</code>정보가 사라진다. <code>obj.method()</code>같이 점을 사용하거나, <code>obj[method]()</code> 같이 대괄호를 사용해 함수를 호출했을 때만 <code>this</code> 값이 의도한대로 전달된다. <code>func.bind()</code> 등을 이용하면 해결 하는 방법도 있긴 한다.</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/09/20/modernJs/210902-bigint/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JayoonKoo">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="티끌모아 태산">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/09/20/modernJs/210902-bigint/" class="post-title-link" itemprop="url">bigint</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2021-09-20 21:41:14 / Modified: 21:45:41" itemprop="dateCreated datePublished" datetime="2021-09-20T21:41:14+09:00">2021-09-20</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="BigInt"><a href="#BigInt" class="headerlink" title="BigInt"></a>BigInt</h1><p><code>BigInt</code> 길이의 제약 없이 정수르 사용할 수 있게 한다.<br>리터럴로 정수 끝에 n 을 붙이거나 <code>BigInt()</code>를 사용하면 된다.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> bigint = <span class="number">1234567890123456789012345678901234567890n</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> sameBigint = <span class="built_in">BigInt</span>(<span class="string">&quot;1234567890123456789012345678901234567890&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> bigintFromNumber = <span class="built_in">BigInt</span>(<span class="number">10</span>); <span class="comment">// 10n과 동일합니다.</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="수학-연산자"><a href="#수학-연산자" class="headerlink" title="수학 연산자"></a>수학 연산자</h2><p>일반 숫자와 큰 차이 없이 사용할 수 있다.</p>
-<p><code>BigInt</code> 형 값을 대상으로 한 연산은 <code>BigInt</code> 형 값을 반환한다. <code>BigInt</code> 형 값과 일반 숫자를 섞어서 사용할 순 없다.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alert(<span class="number">1n</span> + <span class="number">2</span>); <span class="comment">// Error: Cannot mix BigInt and other types</span></span><br></pre></td></tr></table></figure>
-
-<p><code>BigInt()</code> 와 <code>Number()</code>를 명시해 줌으로서 같이 사용할 수 있다.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alert(<span class="number">1n</span> + <span class="built_in">BigInt</span>(<span class="number">2</span>));</span><br></pre></td></tr></table></figure>
-
-<p>bigint를 정수형으로 바꾸기 위해서 <code>+</code>를 사용할 수 없다. 명시적으로 <code>Number()</code>를 사용해 주어야 하고, bigint 값이 너무 큰 경우는 비트는 자동으로 자렬 나간다.</p>
-<h2 id="비교-연산자"><a href="#비교-연산자" class="headerlink" title="비교 연산자"></a>비교 연산자</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">alert(<span class="number">2n</span> &gt; <span class="number">1n</span>); <span class="comment">// true</span></span><br><span class="line">alert(<span class="number">2n</span> &gt; <span class="number">1</span>); <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
-
-<p>비교 연산은 서로간에 가능한다.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">alert(<span class="number">1</span> == <span class="number">1n</span>); <span class="comment">// true</span></span><br><span class="line">alert(<span class="number">1</span> === <span class="number">1n</span>); <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
-
-<p>같은 수라도 타입이 다르기 때문에 <code>===</code>를 사욯아면 false를 반환한다.</p>
-<h2 id="논리-연산"><a href="#논리-연산" class="headerlink" title="논리 연산"></a>논리 연산</h2><p>if 안에서 0n 은 falsy 이고 다른 값은 truthy로 평가된다.</p>
 
       
     </div>

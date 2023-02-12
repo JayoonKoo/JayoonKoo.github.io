@@ -83,9 +83,9 @@
   <ul class="main-menu menu">
         <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li>
         <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
-        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">21</span></a></li>
-        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">17</span></a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">159</span></a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">22</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">18</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">160</span></a></li>
   </ul>
 </nav>
 
@@ -129,18 +129,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">159</span>
+          <span class="site-state-item-count">160</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-count">18</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">21</span>
+        <span class="site-state-item-count">22</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -180,6 +180,120 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/10/23/react/official-docs/211012-Lifting%20State%20Up/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JayoonKoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="티끌모아 태산">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/10/23/react/official-docs/211012-Lifting%20State%20Up/" class="post-title-link" itemprop="url">Lifting State Up</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2021-10-23 22:16:06 / Modified: 22:16:40" itemprop="dateCreated datePublished" datetime="2021-10-23T22:16:06+09:00">2021-10-23</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/react/" itemprop="url" rel="index"><span itemprop="name">react</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="Lifting-State-Up"><a href="#Lifting-State-Up" class="headerlink" title="Lifting State Up"></a>Lifting State Up</h1><blockquote>
+<p>종종 변경 사항을 여러 컴포넌트에 공유 해야할 상황이 있는데 이때 state를 선조 컴포넌트로 끌어 올리는 것이 유용하게 동작한다.</p>
+</blockquote>
+<p>이번에는 물이 특정 온도에서 끓는지 여부를 추정하는 온도계를 만들어 본다.</p>
+<p>props 로 celsius를 받고 끓는 온도인지 판단하는 컴포넌트인 <code>BolingVerdict</code>를 만든다.</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">BoilingVerdict</span>(<span class="params">props</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (props.celsius &gt;= <span class="number">100</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">p</span>&gt;</span>The water would boil.<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">p</span>&gt;</span>The water would not boil.<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>다음으로 <code>Calculator</code> 를 만든다. 사용자의 인풋을 받아서 상태로 관리한다.</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Calculator</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">props</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">super</span>(props);</span><br><span class="line">    <span class="built_in">this</span>.handleChange = <span class="built_in">this</span>.handleChange.bind(<span class="built_in">this</span>);</span><br><span class="line">    <span class="built_in">this</span>.state = &#123; <span class="attr">temperature</span>: <span class="string">&quot;&quot;</span> &#125;;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">handleChange</span>(<span class="params">e</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.setState(&#123; <span class="attr">temperature</span>: e.target.value &#125;);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">render</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> temperature = <span class="built_in">this</span>.state.temperature;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      <span class="xml"><span class="tag">&lt;<span class="name">fieldset</span>&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">legend</span>&gt;</span>Enter temperature in Celsius:<span class="tag">&lt;/<span class="name">legend</span>&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">value</span>=<span class="string">&#123;temperature&#125;</span> <span class="attr">onChange</span>=<span class="string">&#123;this.handleChange&#125;</span> /&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">BoilingVerdict</span> <span class="attr">celsius</span>=<span class="string">&#123;parseFloat(temperature)&#125;</span> /&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;/<span class="name">fieldset</span>&gt;</span></span></span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Adding-a-Second-input"><a href="#Adding-a-Second-input" class="headerlink" title="Adding a Second input"></a>Adding a Second input</h2><p>화씨 입력도 입력 받아 동기화 하도록 한다.</p>
+<p><code>Calculator</code> 에서 <code>TemperatureInput</code>을 추출한다. props 로 scale를 받아서 화면에 화씨 인지 섭씨 인지 표시해 준다.</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> scaleNames = &#123;</span><br><span class="line">  <span class="attr">c</span>: <span class="string">&quot;Celsius&quot;</span>,</span><br><span class="line">  <span class="attr">f</span>: <span class="string">&quot;Fahrenheit&quot;</span>,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TemperatureInput</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">props</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">super</span>(props);</span><br><span class="line">    <span class="built_in">this</span>.handleChange = <span class="built_in">this</span>.handleChange.bind(<span class="built_in">this</span>);</span><br><span class="line">    <span class="built_in">this</span>.state = &#123; <span class="attr">temperature</span>: <span class="string">&quot;&quot;</span> &#125;;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">handleChange</span>(<span class="params">e</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.setState(&#123; <span class="attr">temperature</span>: e.target.value &#125;);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">render</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> temperature = <span class="built_in">this</span>.state.temperature;</span><br><span class="line">    <span class="keyword">const</span> scale = <span class="built_in">this</span>.props.scale;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      <span class="xml"><span class="tag">&lt;<span class="name">fieldset</span>&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">legend</span>&gt;</span>Enter temperature in &#123;scaleNames[scale]&#125;:<span class="tag">&lt;/<span class="name">legend</span>&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">value</span>=<span class="string">&#123;temperature&#125;</span> <span class="attr">onChange</span>=<span class="string">&#123;this.handleChange&#125;</span> /&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;/<span class="name">fieldset</span>&gt;</span></span></span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>이제 두개의 분리된 인풋으로 <code>Calculator</code>를 만들 수 있다.</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Calculator</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">render</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      <span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">TemperatureInput</span> <span class="attr">scale</span>=<span class="string">&quot;c&quot;</span> /&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">TemperatureInput</span> <span class="attr">scale</span>=<span class="string">&quot;f&quot;</span> /&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>하지만, 두개의 인풋 사이에서 동기화는 되지 않는다. 또한, 현재 입력한 온도가 <code>TemperatureInput</code>에서 관리하기 때문에 <code>Calculator</code> 에서 <code>BoilingVerdict</code>도 렌더할 수 없다.</p>
+<h2 id="Writing-Conversion-Functions"><a href="#Writing-Conversion-Functions" class="headerlink" title="Writing Conversion Functions"></a>Writing Conversion Functions</h2><p>섭씨 화씨 변환 함수 작성</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">toCelsius</span>(<span class="params">fahrenheit</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> ((fahrenheit - <span class="number">32</span>) * <span class="number">5</span>) / <span class="number">9</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">toFahrenheit</span>(<span class="params">celsius</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> (celsius * <span class="number">9</span>) / <span class="number">5</span> + <span class="number">32</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>입력한 온도가 숫자로 변환할 수 없으면 빈 문자열을 반환하고, 변환 가능하며 소수점 세 번째 자리에로 반올림하여 리턴한다.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">tryConvert</span>(<span class="params">temperature, convert</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> input = <span class="built_in">parseFloat</span>(temperature);</span><br><span class="line">  <span class="keyword">if</span> (<span class="built_in">Number</span>.isNaN(input)) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;&quot;</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">const</span> output = convert(input);</span><br><span class="line">  <span class="keyword">const</span> rounded = <span class="built_in">Math</span>.round(output * <span class="number">1000</span>) / <span class="number">1000</span>;</span><br><span class="line">  <span class="keyword">return</span> rounded.toString();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Lifting-State-Up-1"><a href="#Lifting-State-Up-1" class="headerlink" title="Lifting State Up"></a>Lifting State Up</h2><p>지금은 인풋 컴포넌트가 각자 상태를 관리하고 있다.</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TemperatureInput</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">props</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">super</span>(props);</span><br><span class="line">    <span class="built_in">this</span>.handleChange = <span class="built_in">this</span>.handleChange.bind(<span class="built_in">this</span>);</span><br><span class="line">    <span class="built_in">this</span>.state = &#123;<span class="attr">temperature</span>: <span class="string">&#x27;&#x27;</span>&#125;;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">handleChange</span>(<span class="params">e</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.setState(&#123;<span class="attr">temperature</span>: e.target.value&#125;);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">render</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> temperature = <span class="built_in">this</span>.state.temperature;</span><br><span class="line">    <span class="comment">// ...</span></span><br></pre></td></tr></table></figure>
+
+<p>리엑트는 공유 되는 State를 만들기 위해서 가장 가까운 조상 요소로 state를 옮기는 방법을 사용하는데 이를 Lifting State Up 이라고 한다.</p>
+<p>예제에서는 인풋에 조상 요소인 Calculator 가 state를 관리할 수 있도록 하고 props 로 인풋에 온도를 전달해주면 동기화 기능을 구현할 수 있다.</p>
+<p>인풋에서 state로 사용하던 temperature 를 props에 temperature 로 변경한다.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">render</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="comment">// Before: const temperature = this.state.temperature;</span></span><br><span class="line">    <span class="keyword">const</span> temperature = <span class="built_in">this</span>.props.temperature;</span><br><span class="line">    <span class="comment">// ...</span></span><br></pre></td></tr></table></figure>
+
+<p>props는 읽기 전용이다. 그전에 <code>TemperatureInput</code>에서 변경 됬을때 다시 렌더링 하기 위해서 <code>this.setState()</code>를 호출했던것은 이제 할 수 없다. 대신에 온도 변화에 해당하는 함수인 <code>onTemperatureChange</code>와 같은 함수를 조상 요소인 <code>Calculator</code>에서 만들어서 <code>props</code>로 전달해 주면 똑같은 기능을 할 수 있게 만들 수 있다.</p>
+<blockquote>
+<p>onTemperatureChnage 와 같은 함수 이름은 임의로 정한 것이다 onValueChange 와 같은 이름도 가능하고 마음대로 설정 가능하다.</p>
+</blockquote>
+<p><code>TemperatureInput</code>에 변경사항은 다음과 같다 :</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TemperatureInput</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">props</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">super</span>(props);</span><br><span class="line">    <span class="built_in">this</span>.handleChange = <span class="built_in">this</span>.handleChange.bind(<span class="built_in">this</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">handleChange</span>(<span class="params">e</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.props.onTemperatureChange(e.target.value);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">render</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> temperature = <span class="built_in">this</span>.props.temperature;</span><br><span class="line">    <span class="keyword">const</span> scale = <span class="built_in">this</span>.props.scale;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      <span class="xml"><span class="tag">&lt;<span class="name">fieldset</span>&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">legend</span>&gt;</span>Enter temperature in &#123;scaleNames[scale]&#125;:<span class="tag">&lt;/<span class="name">legend</span>&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">value</span>=<span class="string">&#123;temperature&#125;</span> <span class="attr">onChange</span>=<span class="string">&#123;this.handleChange&#125;</span> /&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;/<span class="name">fieldset</span>&gt;</span></span></span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>Calculator</code> 의 변경사항은 다음과 같다.:</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Calculator</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">props</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">super</span>(props);</span><br><span class="line">    <span class="built_in">this</span>.handleCelsiusChange = <span class="built_in">this</span>.handleCelsiusChange.bind(<span class="built_in">this</span>);</span><br><span class="line">    <span class="built_in">this</span>.handleFahrenheitChange = <span class="built_in">this</span>.handleFahrenheitChange.bind(<span class="built_in">this</span>);</span><br><span class="line">    <span class="built_in">this</span>.state = &#123; <span class="attr">temperature</span>: <span class="string">&quot;&quot;</span>, <span class="attr">scale</span>: <span class="string">&quot;c&quot;</span> &#125;;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">handleCelsiusChange</span>(<span class="params">temperature</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.setState(&#123; <span class="attr">scale</span>: <span class="string">&quot;c&quot;</span>, temperature &#125;);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">handleFahrenheitChange</span>(<span class="params">temperature</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.setState(&#123; <span class="attr">scale</span>: <span class="string">&quot;f&quot;</span>, temperature &#125;);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">render</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> scale = <span class="built_in">this</span>.state.scale;</span><br><span class="line">    <span class="keyword">const</span> temperature = <span class="built_in">this</span>.state.temperature;</span><br><span class="line">    <span class="keyword">const</span> celsius =</span><br><span class="line">      scale === <span class="string">&quot;f&quot;</span> ? tryConvert(temperature, toCelsius) : temperature;</span><br><span class="line">    <span class="keyword">const</span> fahrenheit =</span><br><span class="line">      scale === <span class="string">&quot;c&quot;</span> ? tryConvert(temperature, toFahrenheit) : temperature;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      <span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">TemperatureInput</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">          <span class="attr">scale</span>=<span class="string">&quot;c&quot;</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">          <span class="attr">temperature</span>=<span class="string">&#123;celsius&#125;</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">          <span class="attr">onTemperatureChange</span>=<span class="string">&#123;this.handleCelsiusChange&#125;</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">        /&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">TemperatureInput</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">          <span class="attr">scale</span>=<span class="string">&quot;f&quot;</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">          <span class="attr">temperature</span>=<span class="string">&#123;fahrenheit&#125;</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">          <span class="attr">onTemperatureChange</span>=<span class="string">&#123;this.handleFahrenheitChange&#125;</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">        /&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">BoilingVerdict</span> <span class="attr">celsius</span>=<span class="string">&#123;parseFloat(celsius)&#125;</span> /&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1236,109 +1350,6 @@
 <li>긴 트랜잭션</li>
 <li>트랜잭션 관련 설정 확인 : 트랜잭션 격리 수준 조정</li>
 </ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/10/23/DB/SQLD/211012-%ED%85%8C%EC%9D%B4%EB%B8%94%20%EC%84%A4%EA%B3%84/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JayoonKoo">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="티끌모아 태산">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/10/23/DB/SQLD/211012-%ED%85%8C%EC%9D%B4%EB%B8%94%20%EC%84%A4%EA%B3%84/" class="post-title-link" itemprop="url">테이블 설계</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2021-10-23 22:07:35 / Modified: 22:09:58" itemprop="dateCreated datePublished" datetime="2021-10-23T22:07:35+09:00">2021-10-23</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/DB/" itemprop="url" rel="index"><span itemprop="name">DB</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="테이블-설계"><a href="#테이블-설계" class="headerlink" title="테이블 설계"></a>테이블 설계</h1><h2 id="테이블-설계의-기초"><a href="#테이블-설계의-기초" class="headerlink" title="테이블 설계의 기초"></a>테이블 설계의 기초</h2><p>테이블이란 ? 데이터를 관리 및 저장하는 장소, 효율적인 관리 및 적절한 조작이 매우 종요하고 실생활에서 광범위학게 사용되는 2차원 표와 유사하다.</p>
-<h2 id="테이블-설계-규칙"><a href="#테이블-설계-규칙" class="headerlink" title="테이블 설계 규칙"></a>테이블 설계 규칙</h2><h3 id="집합을-나누는-방법"><a href="#집합을-나누는-방법" class="headerlink" title="집합을 나누는 방법"></a>집합을 나누는 방법</h3><p>집합을 나누는 방법에 따라 한개 혹은 여러개의 테이블이 될 수 있다.</p>
-<p>예를 들어서 회원 테이블을 관리하고 있었는데, 새로운 기준이 적용 되어서 회원을 일반 회원과 프리미엄 회원 테이블로 나누는 경우가 이에 해당한다.</p>
-<h3 id="데이터-베이스-vs-자바"><a href="#데이터-베이스-vs-자바" class="headerlink" title="데이터 베이스 vs 자바"></a>데이터 베이스 vs 자바</h3><p>데이터 베이스는 자바와 비교 될때가 많다.</p>
-<p>데이터베이스에서 테이블은 자바에 클래스와 비교되고, 열은 클래스의 속성과 비교된다. 또한, 행은 자바에서 인스턴스와 비교되기도 한다.</p>
-<h3 id="기본키"><a href="#기본키" class="headerlink" title="기본키"></a>기본키</h3><p>기본키는 특정 집합에서 특정 행을 유일하게 식별할 수 있는 속성의 집합이다. 예를 들면, 학번, 카드발급번호, 주민등록번호 등이 있다.</p>
-<p>따라서 중복된 식별을 없에기 위해서 기본키는 중복 되면 안된다. 또한, 한번 정해지면 가급적 변경하지 않도록 한다.</p>
-<p>기본키는 Null 값이 허용 되지 않는데, 업무 상의 이유로 기본키가 없는 테이블이 운영되는 곳이 간혹 있다.</p>
-<h2 id="정규형"><a href="#정규형" class="headerlink" title="정규형"></a>정규형</h2><p>테이블을 제대로 된 형태로 만들자고 하는 것인데, 테이블을 쪼갤 수 있는 부분까지 쪼개는 것을 의미한다.</p>
-<h3 id="제-1-정규형-1NF-위반"><a href="#제-1-정규형-1NF-위반" class="headerlink" title="제 1 정규형(1NF) 위반"></a>제 1 정규형(1NF) 위반</h3><p>테이블의 셀에 여러 개의 값을 포함하지 않는다.</p>
-<p>예를 들어 회원 테이블에서 연락처를 컬럼을 전화번호, 이메일로 같이 관리하는 경우가 1 정규형 위반에 해당한다.</p>
-<p>1 정규형 해소를 위해서는 기존에 회원 테이블에서 연락처를 분리해서 회원 연락처 테이블을 만들고 연락처 구분 컬럼을 만들어 핸드폰인지 이메일인지 구분해서 저장해야 한다.</p>
-<h3 id="함수-종속성"><a href="#함수-종속성" class="headerlink" title="함수 종속성 ?"></a>함수 종속성 ?</h3><p>테이블은 함수오 같다. -&gt; 기본키의 값을 입력하면 특정 출력 값이 나오는 구조이기 때문이다.</p>
-<p>예를 들어 환율 테이블에 경우 어떤 통화인지 기본키를 입력하면 환율이 나오는 방식으로 생각할 수 있는다. 어떤 값에 의해 값이 리턴되는 형식에 함수와 같다고 할 수 있다.</p>
-<h3 id="제-2-정규형-2NF-위반"><a href="#제-2-정규형-2NF-위반" class="headerlink" title="제 2 정규형(2NF) 위반"></a>제 2 정규형(2NF) 위반</h3><p>부분 함수 종속성을 허용하지 않음..</p>
-<p>부분 함수 종속이란 기본키를 구성하는 열의 일부에만 함수 종속이 존재 하는 것을 의미하는데, 예를들어서 주문 테이블은 고객 아이디와 주문번호를 복합키로 사용해서 주문을 구별한다. 주문 일자에 경우 고객 아이디와 주문번호를 통해서 주문 일자가 나오는게 맞는데 고객명과 고객등급은 복합키가 아닌 고객 아이디만 사용해도 알 수 있다. 이 경우 제 2 정규형 위반이라고 한다.</p>
-<img src="/images/211012-테이블 설계/1.png" width="500">
-
-<p>해소 하기 위해서는 고객 주문 테이블에서 고객명과 고객등급 컬럼을 삭제하고 고객 테이블을 따로 만들어서 부분 함수 종속을 제거해야 한다.</p>
-<h3 id="제-3-정규형-3NF-위반"><a href="#제-3-정규형-3NF-위반" class="headerlink" title="제 3 정규형(3NF) 위반"></a>제 3 정규형(3NF) 위반</h3><p>기본 키를 제외한 일반 컬럼끼리 함수 종속이 발생한 경우에 위반했다고 한다.</p>
-<p>예를 들어서 고객 테이블에 경우 고객 아이디를 통해서 고객 명과 나이가 판단되는 것은 맞지만 일반 컬럼인 직업코드와 직업명은 서로간에 함수 종속이 발생했다. 이경우 제 3 정규형 위반이라고 하고 해소 하기 위해서 고객 테이블에서 직업 명 컬럼을 삭제하고 직업테이블을 새로 만들어서 직업 코드 별 직업명을 확인하도록 한다.</p>
-<img src="/images/211012-테이블 설계/2.png" width="500">
-
-<h3 id="4-5-정규형"><a href="#4-5-정규형" class="headerlink" title="4, 5 정규형"></a>4, 5 정규형</h3><p>일반적으로 거의 쓰이지 않아서 따로 찾아볼것.. 3 정규형 까지는 확실히 알도록 하자.</p>
-<h2 id="ER-다이어-그램"><a href="#ER-다이어-그램" class="headerlink" title="ER 다이어 그램"></a>ER 다이어 그램</h2><p>데이터 모델링 문야에서 개체-관계 모델이란 구조화된 데이터에 대한 일련이ㅡ 표현이다. 개체-관계 모델리을 하는 것을 ERM(Entity-Relationship Modelling)이라 하고 이에 대한 산출 물을 ERD(Entity-Relationship Diagram) 이라고 한다.</p>
-<h3 id="Barker-표기법"><a href="#Barker-표기법" class="headerlink" title="Barker 표기법"></a>Barker 표기법</h3><p>ERD를 표시하는 기법 중 하나이고 요즘은 이걸 많이 사용한다.</p>
-<img src="/images/211012-테이블 설계/3.png" width="900">
-
-<h3 id="릴레이션십"><a href="#릴레이션십" class="headerlink" title="릴레이션십"></a>릴레이션십</h3><p>엔티티와 엔티티 간의 관계를 의미한다. 엔티티 간의 관계성을 표시한다.</p>
-<img src="/images/211012-테이블 설계/4.png" width="900">
 
       
     </div>

@@ -83,9 +83,9 @@
   <ul class="main-menu menu">
         <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li>
         <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
-        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">21</span></a></li>
-        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">17</span></a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">159</span></a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">22</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">18</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">160</span></a></li>
   </ul>
 </nav>
 
@@ -129,18 +129,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">159</span>
+          <span class="site-state-item-count">160</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-count">18</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">21</span>
+        <span class="site-state-item-count">22</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -180,6 +180,97 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/09/20/modernJs/210902-bigint/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JayoonKoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="티끌모아 태산">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/09/20/modernJs/210902-bigint/" class="post-title-link" itemprop="url">bigint</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2021-09-20 21:41:14 / Modified: 21:45:41" itemprop="dateCreated datePublished" datetime="2021-09-20T21:41:14+09:00">2021-09-20</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="BigInt"><a href="#BigInt" class="headerlink" title="BigInt"></a>BigInt</h1><p><code>BigInt</code> 길이의 제약 없이 정수르 사용할 수 있게 한다.<br>리터럴로 정수 끝에 n 을 붙이거나 <code>BigInt()</code>를 사용하면 된다.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> bigint = <span class="number">1234567890123456789012345678901234567890n</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> sameBigint = <span class="built_in">BigInt</span>(<span class="string">&quot;1234567890123456789012345678901234567890&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> bigintFromNumber = <span class="built_in">BigInt</span>(<span class="number">10</span>); <span class="comment">// 10n과 동일합니다.</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="수학-연산자"><a href="#수학-연산자" class="headerlink" title="수학 연산자"></a>수학 연산자</h2><p>일반 숫자와 큰 차이 없이 사용할 수 있다.</p>
+<p><code>BigInt</code> 형 값을 대상으로 한 연산은 <code>BigInt</code> 형 값을 반환한다. <code>BigInt</code> 형 값과 일반 숫자를 섞어서 사용할 순 없다.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alert(<span class="number">1n</span> + <span class="number">2</span>); <span class="comment">// Error: Cannot mix BigInt and other types</span></span><br></pre></td></tr></table></figure>
+
+<p><code>BigInt()</code> 와 <code>Number()</code>를 명시해 줌으로서 같이 사용할 수 있다.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alert(<span class="number">1n</span> + <span class="built_in">BigInt</span>(<span class="number">2</span>));</span><br></pre></td></tr></table></figure>
+
+<p>bigint를 정수형으로 바꾸기 위해서 <code>+</code>를 사용할 수 없다. 명시적으로 <code>Number()</code>를 사용해 주어야 하고, bigint 값이 너무 큰 경우는 비트는 자동으로 자렬 나간다.</p>
+<h2 id="비교-연산자"><a href="#비교-연산자" class="headerlink" title="비교 연산자"></a>비교 연산자</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">alert(<span class="number">2n</span> &gt; <span class="number">1n</span>); <span class="comment">// true</span></span><br><span class="line">alert(<span class="number">2n</span> &gt; <span class="number">1</span>); <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+
+<p>비교 연산은 서로간에 가능한다.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">alert(<span class="number">1</span> == <span class="number">1n</span>); <span class="comment">// true</span></span><br><span class="line">alert(<span class="number">1</span> === <span class="number">1n</span>); <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
+
+<p>같은 수라도 타입이 다르기 때문에 <code>===</code>를 사욯아면 false를 반환한다.</p>
+<h2 id="논리-연산"><a href="#논리-연산" class="headerlink" title="논리 연산"></a>논리 연산</h2><p>if 안에서 0n 은 falsy 이고 다른 값은 truthy로 평가된다.</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1312,136 +1403,6 @@
 <p>외부 명령어를 사용할 때는 <code>!</code>를 붙힌다.</p>
 <p><code>git config --global alias.visual &#39;!gitk&#39;</code></p>
 <p><code>git visual</code>를 입력하면 <code>gitk</code>가 실행된다.</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/09/20/git/210918-3.1-Branches%20in%20a%20Nutshell/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JayoonKoo">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="티끌모아 태산">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/09/20/git/210918-3.1-Branches%20in%20a%20Nutshell/" class="post-title-link" itemprop="url">3.1-Branches in a Nutshell</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-09-20 21:39:38" itemprop="dateCreated datePublished" datetime="2021-09-20T21:39:38+09:00">2021-09-20</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/git/" itemprop="url" rel="index"><span itemprop="name">git</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="3-1-Branches-in-a-Nutshell"><a href="#3-1-Branches-in-a-Nutshell" class="headerlink" title="3.1 Branches in a Nutshell"></a>3.1 Branches in a Nutshell</h1><h2 id="간단히-말해서"><a href="#간단히-말해서" class="headerlink" title="간단히 말해서 .."></a>간단히 말해서 ..</h2><p>깃은 데이터를 변경 사항에 세트나 다른점으로 저장하지 않고 snapshot으로 저장한다. 커밋을 수행하게 되면 깃은 commit object를 생성한다. 각 파일에 대한 blobs를 생성하고, 파일과 디렉터리 구조를 나타내는 tree 객체를 생성한다. 커밋 객체는 루트 트리와 각 메타 데이터에 대한 포인터를 포함한다.</p>
-<img src="/images/210918-3.1-Branches in a Nutshell/1.png" width="500">
-
-<p>다른 변경사항을 커밋하면 커밋 객체는 그 바로 전에 커밋 객체를 가르키는 포인터를 갖는다.</p>
-<img src="/images/210918-3.1-Branches in a Nutshell/2.png" width="500">
-
-<p>깃의 디폴드 브랜치 이름은 main이다. 처음 커밋을 하면 main 브랜치는 너가 만든 커밋을 가르킨다. 매번 커밋할때마다 main 브랜치는 자동으로 마지막으로 변경한 커밋을 가르키게 된다.</p>
-<img src="/images/210918-3.1-Branches in a Nutshell/3.png" width="500">
-
-<h2 id="새-브랜치-생성"><a href="#새-브랜치-생성" class="headerlink" title="새 브랜치 생성"></a>새 브랜치 생성</h2><p>새로운 브랜치를 생성하면 작업한 마지막 커밋을 가르키는 브랜치가 생성된다.</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch testing</span><br></pre></td></tr></table></figure>
-
-<img src="/images/210918-3.1-Branches in a Nutshell/4.png" width="500">
-
-<p>깃은 <code>HEAD</code>라는 포인터를 사용해서 현제 어떤 브랜치에 있는지 가르킨다. 이는 다른 버전관리 시스템과 다른 특징이다. 이것은 로컬 브랜치에서 현제 작업하고 있는 포인터이다. 브랜치를 생성해도 다른 브랜치로 스위칭 되는 것은 아니다.</p>
-<img src="/images/210918-3.1-Branches in a Nutshell/5.png" width="500">
-
-<p><code>git log</code>에 <code>--decorate</code> 옵션을 붙혀서 브랜치가 어떤 커밋을 가르키는지 확인할 수 있다.</p>
-<blockquote>
-<p>git log 는 항상 모든 분기를 표시하지 않는다. 깃은 우리가 관심 있을만한 커밋에 대한 log만 보여주기 때문에 현제 작업하고 있는 브랜치에 대한 log 를 보여준다. 따라서 명시적으로 다른 브랜치에 대한 로그를 보려면 <code>git log testing</code> 같이 입력해야 한다. 또는, <code>git log --all</code> 옵션을 사용한다.</p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ git log --oneline --decorate</span><br><span class="line">f30ab (HEAD -&gt; master, testing) Add feature #32 - ability to add new formats to the central interface</span><br><span class="line">34ac2 Fix bug #1328 - stack overflow under certain conditions</span><br><span class="line">98ca9 Initial commit</span><br></pre></td></tr></table></figure>
-
-<h2 id="Switching-Branches"><a href="#Switching-Branches" class="headerlink" title="Switching Branches"></a>Switching Branches</h2><p><code>git checkout</code> 명령어로 존재하는 브랜치로 바꿀 수 있다. 최신 버전에 깃에 경우 <code>git switch</code>를 통해서 바꾼다.</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git switch testing</span><br></pre></td></tr></table></figure>
-
-<p>이 명령어는 <code>HEAD</code>를 master 브랜치에서 testing 브랜치로 옮긴다.</p>
-<img src="/images/210918-3.1-Branches in a Nutshell/6.png" width="500">
-
-<p>이제 다른 커밋을 하면</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ vim test.rb</span><br><span class="line">$ git commit -a -m &#x27;made a change&#x27;</span><br></pre></td></tr></table></figure>
-
-<p>master 브랜치와 testing 브랜치가 가르키는 곳이 다르고 현제 작업하고 있는 포인터인 HEAD에 위치도 testing 브랜치에서 변경한 마지막 커밋으로 바뀐다.</p>
-<img src="/images/210918-3.1-Branches in a Nutshell/7.png" width="500">
-
-<p>이제 다시 <code>switch</code> 명령을 통해 브랜치를 master로 바꿔 보자.</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git switch master</span><br></pre></td></tr></table></figure>
-
-<img src="/images/210918-3.1-Branches in a Nutshell/8.png" width="500">
-
-<p>이 명령을 입력하면 HEAD를 master 브랜치로 옮기고 파일을 마스터 브랜치가 있는 시점으로 복구한다. 이것은 예전 버전으로 복구 하는 것의 분기를 나눈 것과 같다. 또한 testing 브랜치에서 작업한 내용을 저장하고 있기 때문에 언제든지 작업한 내용으로 이동할 수 있다.</p>
-<blockquote>
-<p>브랜치를 이동하면 워킹 디렉토리에 파일이 변경된다.</p>
-</blockquote>
-<p>커밋을 한번 더 해보자.</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ vim test.rb</span><br><span class="line">$ git commit -a -m &#x27;made other changes&#x27;</span><br></pre></td></tr></table></figure>
-
-<p>그러면 다른 작업으로 독립되어 분리된다. 이것은 testing 에서 작업하던것을 임시로 미루고 main에서 작업한 다음 다시 testing 브랜치로 돌아와 작업할 수 있음을 의미한다. 이렇게 작업하고 필요할때 merge 하는 등에 작업을 해서 하나로 합치면 된다.</p>
-<img src="/images/210918-3.1-Branches in a Nutshell/9.png" width="500">
-
-<p><code>git log --oneline --decorate --graph --all</code>를 사용하면 브랜치, 분기, 포인터 history등에 정보를 한눈에 볼 수 있다.</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ git log --oneline --decorate --graph --all</span><br><span class="line">* c2b9e (HEAD, master) Made other changes</span><br><span class="line">| * 87ab2 (testing) Made a change</span><br><span class="line">|/</span><br><span class="line">* f30ab Add feature #32 - ability to add new formats to the central interface</span><br><span class="line">* 34ac2 Fix bug #1328 - stack overflow under certain conditions</span><br><span class="line">* 98ca9 initial commit of my project</span><br></pre></td></tr></table></figure>
-
-<p>실제로 Git의 브랜치는 어떤 한 커밋을 가리키는 40글자의 SHA-1 체크섬 파일에 불과하기 때문에 만들기도 쉽고 지우기도 쉽다. 새로 브랜치를 하나 만드는 것은 41바이트 크기의 파일을(40자와 줄 바꿈 문자) 하나 만드는 것에 불과하다.</p>
-<p>부모 정보도 알고 있어서 merge base를 어떤걸로 해서 merge 할지 자돋으로 알기 때문에 머지도 가볍게 잘 된다.많이 생성하고 많이 병합하세요.</p>
-<blockquote>
-<p><code>git checkout -b &lt;newbranchname&gt;</code> 명령어를 사용해서 한번에 생성과 switch 가지 할 수 있다.</p>
-</blockquote>
 
       
     </div>

@@ -83,9 +83,9 @@
   <ul class="main-menu menu">
         <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li>
         <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
-        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">21</span></a></li>
-        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">17</span></a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">159</span></a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">22</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">18</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">160</span></a></li>
   </ul>
 </nav>
 
@@ -129,18 +129,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">159</span>
+          <span class="site-state-item-count">160</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-count">18</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">21</span>
+        <span class="site-state-item-count">22</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -180,6 +180,118 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2022/01/06/IOS/220105-Calcurator/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JayoonKoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="티끌모아 태산">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/01/06/IOS/220105-Calcurator/" class="post-title-link" itemprop="url">UIStackView, IBDesignables, IBInspectable (계산기)</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-01-06 14:38:44" itemprop="dateCreated datePublished" datetime="2022-01-06T14:38:44+09:00">2022-01-06</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2022-01-12 13:06:55" itemprop="dateModified" datetime="2022-01-12T13:06:55+09:00">2022-01-12</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/IOS/" itemprop="url" rel="index"><span itemprop="name">IOS</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="계산기"><a href="#계산기" class="headerlink" title="계산기"></a>계산기</h2><p>배울 기술</p>
+<ul>
+<li>UIStackView</li>
+<li>IBDesignables</li>
+<li>IBInspectable</li>
+</ul>
+<h3 id="UIStackView"><a href="#UIStackView" class="headerlink" title="UIStackView"></a>UIStackView</h3><p>열 또는 행에 View 들의 묶음을 배치할 수 있는 간소화된 인터페이스</p>
+<ul>
+<li>axis : 방향 결정</li>
+<li>distribution : 어떻게 분배할지<ul>
+<li>Fill : 채우게 ,huging, compresion 값 에따라 달라짐</li>
+<li>Fill Equally : 요소 크기를 같게 채우기</li>
+<li>Fill Proportionally : 비율에 맞게</li>
+<li>Equal Spacing : 각각 간격이 같게</li>
+<li>Eual Centering : 각 서브 뷰들의 센터의 간격을 동일하게</li>
+</ul>
+</li>
+<li>alignment : 주축 반대축에 대하여<ul>
+<li>fill</li>
+<li>leading</li>
+<li>top</li>
+<li>first baseline</li>
+<li>center</li>
+<li>trailing</li>
+<li>bottom</li>
+<li>last baseline</li>
+</ul>
+</li>
+<li>spacing : subview 들의 간격 조정</li>
+</ul>
+<h3 id="IBInspectable-IBDesignables"><a href="#IBInspectable-IBDesignables" class="headerlink" title="IBInspectable, IBDesignables"></a>IBInspectable, IBDesignables</h3><p>UIView안에 요소를 를 상속하는 클래스를 만들어서 코드로 속성에 접근, 변경할 수 있다.</p>
+<p>@IBInspectable 어노테이션을 붙히면 스토리 보드에서도 속성에 값을 변경할 수 있도록 할 수 있다.</p>
+<p>@IBDesignable 어노테이션을 붙혀서 실시간으로 속성값 변화를 스토리보드에서 확인할 수 있다. 남용하게 되면 스토리 보드 열때마다 오래 걸릴수도 있다.</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1068,115 +1180,6 @@
 </ul>
 </li>
 </ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/12/21/DevOps/Docker/211221-Docker%20tutorial(3)/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JayoonKoo">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="티끌모아 태산">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/12/21/DevOps/Docker/211221-Docker%20tutorial(3)/" class="post-title-link" itemprop="url">Docker tutorial(3)</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2021-12-21 21:34:27 / Modified: 21:34:44" itemprop="dateCreated datePublished" datetime="2021-12-21T21:34:27+09:00">2021-12-21</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/DevOps/" itemprop="url" rel="index"><span itemprop="name">DevOps</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="Update-the-source-code"><a href="#Update-the-source-code" class="headerlink" title="Update the source code"></a>Update the source code</h1><p>코드를 업데이트하고 적용하는 방법을 알아본다.</p>
-<ol>
-<li>코드를 고친다. </li>
-<li>build 할때 사용했던 명령어를 똑같이 입력한다. </li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker build -t getting-started .</span><br></pre></td></tr></table></figure>
-
-<ol>
-<li>업데이트된 코드를 사용해서 새로운 컨테이너를 시작한다.</li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker run -db 3000:3000 getting-started</span><br></pre></td></tr></table></figure>
-
-<p>하지만 에러가 발생한다.. (docker: Error response from daemon: driver failed….)</p>
-<p>왜냐하면 이미 3000 번 포트로 전에 컨테이너가 실행중이기 때문이다. 하나의 머신에 특정한 포트는 한게만 실행 실행시킬 수 있다. 오래된 컨테이너를 지워야 한다.</p>
-<h2 id="Replace-the-old-container"><a href="#Replace-the-old-container" class="headerlink" title="Replace the old container"></a>Replace the old container</h2><p>컨테이너를 지우기 위해서는 컨테이너 실행을 중지 시켜야 한다. 두가지 방법이 있는데 편한것을 선택하면 된다. </p>
-<h3 id="Remove-a-container-using-the-CLI"><a href="#Remove-a-container-using-the-CLI" class="headerlink" title="Remove a container using the CLI"></a>Remove a container using the CLI</h3><ol>
-<li>컨테이너의 ID를 얻는다. </li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker ps</span><br></pre></td></tr></table></figure>
-
-<ol>
-<li>docker ID 혹은 이름을 사용해서 컨테이너를 멈춘다.</li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker stop &lt;the-container-id or name&gt;</span><br></pre></td></tr></table></figure>
-
-<ol>
-<li>컨테이너가 멈추면 <code>docker rm</code> 커멘드로 지울 수 있다. </li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker rm &lt;the-container-id or name&gt;</span><br></pre></td></tr></table></figure>
-
-<p>-f 플래그를 이요해서 실행중인 중에도 삭제할 수 있다. <code>docker rm -f &lt;the-continaer-id or name&gt;</code> </p>
-<h3 id="Docker-Dashboard"><a href="#Docker-Dashboard" class="headerlink" title="Docker Dashboard"></a>Docker Dashboard</h3><p>Docker Dashboard에서 실행중인 컨테이널르 확인하고 쓰레기통 아이콘을 누르면 삭제할 수 있다. </p>
-<h3 id="Start-the-updated-app-container"><a href="#Start-the-updated-app-container" class="headerlink" title="Start the updated app container"></a>Start the updated app container</h3><ol>
-<li>앱을 실행시킨다. </li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker run -dp 3000:3000 getting-started</span><br></pre></td></tr></table></figure>
 
       
     </div>
