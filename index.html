@@ -214,7 +214,7 @@
       <span class="post-meta-item-text">Posted on</span>
       
 
-      <time title="Created: 2023-02-12 18:18:00 / Modified: 19:11:03" itemprop="dateCreated datePublished" datetime="2023-02-12T18:18:00+09:00">2023-02-12</time>
+      <time title="Created: 2023-02-12 18:18:00 / Modified: 19:16:23" itemprop="dateCreated datePublished" datetime="2023-02-12T18:18:00+09:00">2023-02-12</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -250,7 +250,7 @@
 
 <p>보통 페이지 컴포넌트를 불러오는 시점은 React-router 을 사용하는 시점이다. 다음과 같이 작성하면 페이지에 들어갈때, 리소스를 따로 다운 받는 것을 확인할 수 있다. </p>
 <p>브라우저 개발자 도구를 통해 확인한 모습 : </p>
-<img src="/images/imgs/230212-Code-splitting/1.png">
+<img src="/images/230212-Code-splitting/1.png">
 
 <p>처음 / 페스로 접근했을때 <code>src_components_ShortPage_js.chunk.js</code> 를 다운 받고, /long 패스로 접근했을때 <code>src_components_LongPage_js.chunk.js</code>를 다운 받았다.</p>
 <h2 id="Suspense"><a href="#Suspense" class="headerlink" title="Suspense"></a>Suspense</h2><p>코드에서 <code>Suspense</code> 를 사용하는것을 볼 수 있다. 이는 리소스를 다운 받을때 데체 컨텐츠로 fallback 에 넘겨준 컴포넌트를 사용하겠다는 것이다. 코드를 분활했기 때문에 리소스를 다운로드를 받을 수 밖에 없고, 이때는 필연적으로 빈 컨텐츠를 볼것이기 때문에 대체 컨텐츠를 명시한 것이다. </p>
@@ -553,97 +553,6 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2022/04/25/Http/220425-URI%EC%99%80%20%EC%9B%B9%20%EB%B8%8C%EB%9D%BC%EC%9A%B0%EC%A0%80%20%EC%9A%94%EC%B2%AD/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JayoonKoo">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="티끌모아 태산">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/04/25/Http/220425-URI%EC%99%80%20%EC%9B%B9%20%EB%B8%8C%EB%9D%BC%EC%9A%B0%EC%A0%80%20%EC%9A%94%EC%B2%AD/" class="post-title-link" itemprop="url">URI와 웹 브라우저 요청</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2022-04-25 23:57:38" itemprop="dateCreated datePublished" datetime="2022-04-25T23:57:38+09:00">2022-04-25</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/http/" itemprop="url" rel="index"><span itemprop="name">http</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="URI-와-웹-브라우저-요청-흐름"><a href="#URI-와-웹-브라우저-요청-흐름" class="headerlink" title="URI 와 웹 브라우저 요청 흐름"></a>URI 와 웹 브라우저 요청 흐름</h1><p>URI는 로케이터 이름 또는 둘다 추가로 분류될 수 있다</p>
-<p>url은 로케이션만 위치를 지정</p>
-<p>urn 은 이름만, 이름을 지정 이름만으로 실제 리소스를 찾을 수 있는 방법이 보편화 되지 않음</p>
-<h2 id="url"><a href="#url" class="headerlink" title="url"></a>url</h2><ul>
-<li>프로토콜 (스키마) http(80) https(443)</li>
-<li>유저 인포 유알엘에 사용자 정보를 포함해서 인증 - 거의 사용 x</li>
-<li>호스트명</li>
-<li>포트번호</li>
-<li>패스 - 계층적 구조</li>
-<li>쿼리 파라미터 - 키 밸류에 형태로</li>
-<li>프래그먼트 html내부 북마크 # 서버로 전송하는 정보 아님</li>
-</ul>
-<h2 id="웹브라우저-요청-흐름"><a href="#웹브라우저-요청-흐름" class="headerlink" title="웹브라우저 요청 흐름"></a>웹브라우저 요청 흐름</h2><ul>
-<li>dns 조회 - ip</li>
-<li>포트 - 프로토콜 별로 생략가능한것 있음</li>
-<li>http 요청 메시지 생성</li>
-<li>메시지 전송 1. 웹브라우저가 http메시지 생성 2. socket 라이브러리를 통해 전달 TCP / IP 연결 3. 데이터 전달 4. 패킷 생성, HTTP메시지 포함</li>
-</ul>
-<p>http 응답 메시지 서버에서 생성 받아서 렌더링 등등의 작업</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2022/04/25/Http/220425-http%EA%B8%B0%EB%B3%B8/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -712,6 +621,97 @@
 <h2 id="한계"><a href="#한계" class="headerlink" title="한계"></a>한계</h2><p>상태를 유지해야 하는 경우도 있다. (예를들면 로그인 같은 겨웅)<br>무상태 이기 때문에 한번한번 요청에 너무 많은 정보를 포함시켜 요청하기도 한다.</p>
 <h2 id="비연결성"><a href="#비연결성" class="headerlink" title="비연결성"></a>비연결성</h2><p>http 는 연결을 유지하는 모델이 아니여서 한번 요청과 응답 후에는 연결을 끊어버리는 특징이 있다.</p>
 <h2 id="한계-1"><a href="#한계-1" class="headerlink" title="한계"></a>한계</h2><p>매번 새로 연결을 맺는 과정을 해야 함. (3 way handshake). 자바스크립트 css 이미지등 많은 자원을 계속 다운로드 해야 함. 요즘은 http 지속연결 persistent connection 으로 어느정도 연결을 유지함.</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2022/04/25/Http/220425-URI%EC%99%80%20%EC%9B%B9%20%EB%B8%8C%EB%9D%BC%EC%9A%B0%EC%A0%80%20%EC%9A%94%EC%B2%AD/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JayoonKoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="티끌모아 태산">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/04/25/Http/220425-URI%EC%99%80%20%EC%9B%B9%20%EB%B8%8C%EB%9D%BC%EC%9A%B0%EC%A0%80%20%EC%9A%94%EC%B2%AD/" class="post-title-link" itemprop="url">URI와 웹 브라우저 요청</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-04-25 23:57:38" itemprop="dateCreated datePublished" datetime="2022-04-25T23:57:38+09:00">2022-04-25</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/http/" itemprop="url" rel="index"><span itemprop="name">http</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="URI-와-웹-브라우저-요청-흐름"><a href="#URI-와-웹-브라우저-요청-흐름" class="headerlink" title="URI 와 웹 브라우저 요청 흐름"></a>URI 와 웹 브라우저 요청 흐름</h1><p>URI는 로케이터 이름 또는 둘다 추가로 분류될 수 있다</p>
+<p>url은 로케이션만 위치를 지정</p>
+<p>urn 은 이름만, 이름을 지정 이름만으로 실제 리소스를 찾을 수 있는 방법이 보편화 되지 않음</p>
+<h2 id="url"><a href="#url" class="headerlink" title="url"></a>url</h2><ul>
+<li>프로토콜 (스키마) http(80) https(443)</li>
+<li>유저 인포 유알엘에 사용자 정보를 포함해서 인증 - 거의 사용 x</li>
+<li>호스트명</li>
+<li>포트번호</li>
+<li>패스 - 계층적 구조</li>
+<li>쿼리 파라미터 - 키 밸류에 형태로</li>
+<li>프래그먼트 html내부 북마크 # 서버로 전송하는 정보 아님</li>
+</ul>
+<h2 id="웹브라우저-요청-흐름"><a href="#웹브라우저-요청-흐름" class="headerlink" title="웹브라우저 요청 흐름"></a>웹브라우저 요청 흐름</h2><ul>
+<li>dns 조회 - ip</li>
+<li>포트 - 프로토콜 별로 생략가능한것 있음</li>
+<li>http 요청 메시지 생성</li>
+<li>메시지 전송 1. 웹브라우저가 http메시지 생성 2. socket 라이브러리를 통해 전달 TCP / IP 연결 3. 데이터 전달 4. 패킷 생성, HTTP메시지 포함</li>
+</ul>
+<p>http 응답 메시지 서버에서 생성 받아서 렌더링 등등의 작업</p>
 
       
     </div>
