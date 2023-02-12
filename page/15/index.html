@@ -85,7 +85,7 @@
         <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
         <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">21</span></a></li>
         <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">17</span></a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">158</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">159</span></a></li>
   </ul>
 </nav>
 
@@ -129,7 +129,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">158</span>
+          <span class="site-state-item-count">159</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -180,6 +180,123 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/08/15/modernJs/210730-callback/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JayoonKoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="티끌모아 태산">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/08/15/modernJs/210730-callback/" class="post-title-link" itemprop="url">callback</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-08-15 19:40:25" itemprop="dateCreated datePublished" datetime="2021-08-15T19:40:25+09:00">2021-08-15</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="콜백"><a href="#콜백" class="headerlink" title="콜백"></a>콜백</h1><p>비동기적 처리에 대해서 </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">loadScript</span>(<span class="params">src</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// &lt;script&gt; 태그를 만들고 페이지에 태그를 추가합니다.</span></span><br><span class="line">  <span class="comment">// 태그가 페이지에 추가되면 src에 있는 스크립트를 로딩하고 실행합니다.</span></span><br><span class="line">  <span class="keyword">let</span> script = <span class="built_in">document</span>.createElement(<span class="string">&#x27;script&#x27;</span>);</span><br><span class="line">  script.src = src;</span><br><span class="line">  <span class="built_in">document</span>.head.append(script);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 해당 경로에 위치한 스크립트를 불러오고 실행함</span></span><br><span class="line">loadScript(<span class="string">&#x27;/my/script.js&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>loadScript 는 비동기적으로 실행된다. </p>
+<p><code>loadScript()</code>아래에 있는 코드들은 loadScript 가 실행되는 것을 기달려 주지 않고 바로 실행 됨. </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">loadScript(<span class="string">&#x27;/my/script.js&#x27;</span>); <span class="comment">// script.js엔 &quot;function newFunction() &#123;…&#125;&quot;이 있습니다.</span></span><br><span class="line"></span><br><span class="line">newFunction(); <span class="comment">// 함수가 존재하지 않는다는 에러가 발생합니다!</span></span><br></pre></td></tr></table></figure>
+<p>newFunction은 loadScript 안에 있으니가 아직 생성 되지 않았을 것이다. </p>
+<p>현재로서는 loadScript가 완료 됬는지 알 수 있는 방법이 없다. </p>
+<p>loadScript가 완료되면 원하는 함수를 실행 시키기 위해서 콜백 함수를 추가 행야 한다. </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">loadScript</span>(<span class="params">src, callback</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> script = <span class="built_in">document</span>.createElement(<span class="string">&#x27;script&#x27;</span>);</span><br><span class="line">  script.src = src;</span><br><span class="line"></span><br><span class="line">  script.onload = <span class="function">() =&gt;</span> callback(script);</span><br><span class="line"></span><br><span class="line">  <span class="built_in">document</span>.head.append(script);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">loadScript(<span class="string">&#x27;/my/script.js&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 콜백 함수는 스크립트 로드가 끝나면 실행됩니다.</span></span><br><span class="line">  newFunction(); <span class="comment">// 이제 함수 호출이 제대로 동작합니다.</span></span><br><span class="line">  ...</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>실제 사용 예시</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">loadScript</span>(<span class="params">src, callback</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> script = <span class="built_in">document</span>.createElement(<span class="string">&#x27;script&#x27;</span>);</span><br><span class="line">  script.src = src;</span><br><span class="line">  script.onload = <span class="function">() =&gt;</span> callback(script);</span><br><span class="line">  <span class="built_in">document</span>.head.append(script);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">loadScript(<span class="string">&#x27;https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.2.0/lodash.js&#x27;</span>, <span class="function"><span class="params">script</span> =&gt;</span> &#123;</span><br><span class="line">  alert(<span class="string">`<span class="subst">$&#123;script.src&#125;</span>가 로드되었습니다.`</span>);</span><br><span class="line">  alert( _ ); <span class="comment">// 스크립트에 정의된 함수</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>무언가 비동기적으로 처리되는 함수는 처리가 끝난 이후 동작할 함수를 반드시 인수로 제공해야 한다. </p>
+<br/>
+
+<h2 id="콜백-속-콜백"><a href="#콜백-속-콜백" class="headerlink" title="콜백 속 콜백"></a>콜백 속 콜백</h2><p>첫번째 스크립트를 읽은후 순차적으로 스크립트를 읽고 싶다면 어떻게 처리해야 할까?</p>
+<p>콜백 함수 안에 두번째 loadScript를 호출하면 된다. </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">loadScript(<span class="string">&#x27;/my/script.js&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params">script</span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">  alert(<span class="string">`<span class="subst">$&#123;script.src&#125;</span>을 로딩했습니다. 이젠, 다음 스크립트를 로딩합시다.`</span>);</span><br><span class="line"></span><br><span class="line">  loadScript(<span class="string">&#x27;/my/script2.js&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params">script</span>) </span>&#123;</span><br><span class="line">    alert(<span class="string">`두 번째 스크립트를 성공적으로 로딩했습니다.`</span>);</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>만약 3개라면?</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">loadScript(<span class="string">&#x27;/my/script.js&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params">script</span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">  loadScript(<span class="string">&#x27;/my/script2.js&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params">script</span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">    loadScript(<span class="string">&#x27;/my/script3.js&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params">script</span>) </span>&#123;</span><br><span class="line">      <span class="comment">// 세 스크립트 로딩이 끝난 후 실행됨</span></span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>만약 갯수가 굉장히 많아진다면??</p>
+<p>이렇게 작성히는 것은 적을때는 가능하지만 많을때는 좋은 방법이 아니다..</p>
+<br/>
+
+<h2 id="에러-핸들링"><a href="#에러-핸들링" class="headerlink" title="에러 핸들링"></a>에러 핸들링</h2><p>스크립트 로딩이 실패했을때 에러 핸들링 추가</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">loadScript</span>(<span class="params">src, callback</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> script = <span class="built_in">document</span>.createElement(<span class="string">&#x27;script&#x27;</span>);</span><br><span class="line">  script.src = src;</span><br><span class="line"></span><br><span class="line">  script.onload = <span class="function">() =&gt;</span> callback(<span class="literal">null</span>, script);</span><br><span class="line">  script.onerror = <span class="function">() =&gt;</span> callback(<span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">`<span class="subst">$&#123;src&#125;</span>를 불러오는 도중에 에러가 발생했습니다.`</span>));</span><br><span class="line"></span><br><span class="line">  <span class="built_in">document</span>.head.append(script);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>사용</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">loadScript(<span class="string">&#x27;/my/script.js&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params">error, script</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (error) &#123;</span><br><span class="line">    <span class="comment">// 에러 처리</span></span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="comment">// 스크립트 로딩이 성공적으로 끝남</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>이런 패턴을 <code>오류 우선 콜백(error-first callback)</code> 이라고 한다. </p>
+<p>첫 번째 인수는 에러를 위해 남겨 둔다. 두번재 부터 여러개 추가 할 수 있음. 이렇게 하면 에러 케이스와 성공 케이스 모두 처리 가능하게 된다. </p>
+<br/>
+
+<h2 id="멸망의-피라미드"><a href="#멸망의-피라미드" class="headerlink" title="멸망의 피라미드"></a>멸망의 피라미드</h2><p>언뜻 좋아 보이지만 여러개가 반복되면 콜백 지옥이 발생한다. </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">loadScript(<span class="string">&#x27;1.js&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params">error, script</span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (error) &#123;</span><br><span class="line">    handleError(error);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">    loadScript(<span class="string">&#x27;2.js&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params">error, script</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">if</span> (error) &#123;</span><br><span class="line">        handleError(error);</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="comment">// ...</span></span><br><span class="line">        loadScript(<span class="string">&#x27;3.js&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params">error, script</span>) </span>&#123;</span><br><span class="line">          <span class="keyword">if</span> (error) &#123;</span><br><span class="line">            handleError(error);</span><br><span class="line">          &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="comment">// 모든 스크립트가 로딩된 후, 실행 흐름이 이어집니다. (*)</span></span><br><span class="line">          &#125;</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>각 동작을 독립적인 함수로 만들어 완화하도록 한다. </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">loadScript(<span class="string">&#x27;1.js&#x27;</span>, step1);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">step1</span>(<span class="params">error, script</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (error) &#123;</span><br><span class="line">    handleError(error);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">    loadScript(<span class="string">&#x27;2.js&#x27;</span>, step2);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">step2</span>(<span class="params">error, script</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (error) &#123;</span><br><span class="line">    handleError(error);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">    loadScript(<span class="string">&#x27;3.js&#x27;</span>, step3);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">step3</span>(<span class="params">error, script</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (error) &#123;</span><br><span class="line">    handleError(error);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="comment">// 모든 스크립트가 로딩되면 다른 동작을 수행합니다. (*)</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>사실 이렇게 작성해도 보기 불편한건 사실이고, 함수를 만들었는데 단지 콜백 지옥을 피하기 위해서만 만들었기 때문에 재사용이 불가능하다. </p>
+<p>가장 좋은 방법은 프로 미스를 사용하는 방법인데 다음 포스팅에서 설명하도록 한다. </p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -332,6 +449,98 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/08/15/modernJs/210805-promise-error/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JayoonKoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="티끌모아 태산">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/08/15/modernJs/210805-promise-error/" class="post-title-link" itemprop="url">promise-error</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-08-15 19:40:25" itemprop="dateCreated datePublished" datetime="2021-08-15T19:40:25+09:00">2021-08-15</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="프라미스와-에러-핸들링"><a href="#프라미스와-에러-핸들링" class="headerlink" title="프라미스와 에러 핸들링"></a>프라미스와 에러 핸들링</h1><p>존재하지 않는 url로 fetch 하는 예제를 살펴본다.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">fetch(<span class="string">&quot;https://no-such-server.blabla&quot;</span>)  <span class="comment">// 거부</span></span><br><span class="line">	.then(<span class="function"><span class="params">reponse</span> =&gt;</span> reponse.json)</span><br><span class="line">	.catch(<span class="built_in">console</span>.log) <span class="comment">// TypeError</span></span><br></pre></td></tr></table></figure>
+
+<br/>
+
+<h2 id="암시적-try-catch"><a href="#암시적-try-catch" class="headerlink" title="암시적 try..catch"></a>암시적 try..catch</h2><p>예외가 발생하면 암시적 보이지 않는 암시적 <code>try..catch</code> 에서 에러를 잡고 이를 reject처럼 다룬다.<br>따라서 <code>.catch</code> 를 통해서 던져진 에러를 핸들링 할 수 있다. </p>
+<p><code>executor</code> 안에서 잡혀진 에러는 거부된 상태에 파리미스로 반환된다.<br>따라서 제어 흐름이 가장 가까운 에러 헨들러로 넘어간다. </p>
+<br/>
+
+<h2 id="다시-던지기"><a href="#다시-던지기" class="headerlink" title="다시 던지기"></a>다시 던지기</h2><p>마지막에 <code>.catch</code> 를 통해서 여러개의 <code>.then</code> 에서 발생한 모든 에러를 처리할 수 있다.<br><code>try..catch</code>에서 처리할수 없는 에러를 다시 던진 것처럼 프라미스에서도 비슷하게 처리할 수 있다. </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//실행 순서 : catch -&gt; catch</span></span><br><span class="line"><span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">	<span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">&quot;에러 발생&quot;</span>);</span><br><span class="line">&#125;)</span><br><span class="line">	.catch(<span class="function"><span class="params">err</span> =&gt;</span> &#123;</span><br><span class="line">		<span class="keyword">if</span> (err <span class="keyword">instanceof</span> <span class="built_in">URIError</span>) &#123;</span><br><span class="line">			<span class="comment">// 에러처리</span></span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			<span class="built_in">console</span>.log(<span class="string">&#x27;처리할 수 없는 에러&#x27;</span>);</span><br><span class="line">			<span class="keyword">throw</span> err; <span class="comment">// 에러 다시 던지기</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;)</span><br><span class="line">	. then(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">		<span class="comment">// 여기는 실행되지 않는다.</span></span><br><span class="line">		<span class="comment">// 에러가 잘 처리되지 않고 다시 던져졌기 때문에 </span></span><br><span class="line">	&#125;)</span><br><span class="line">	.catch(<span class="function"><span class="params">err</span> =&gt;</span> &#123;</span><br><span class="line">		<span class="built_in">console</span>.log(<span class="string">`알수 없는 에러 발생: <span class="subst">$&#123;err&#125;</span>`</span>);</span><br><span class="line">	&#125;);</span><br></pre></td></tr></table></figure>
+
+<br/>
+
+<h2 id="처리되지-못한-거부"><a href="#처리되지-못한-거부" class="headerlink" title="처리되지 못한 거부"></a>처리되지 못한 거부</h2><p>에러가 발생했는데 만약 <code>.catch</code>를 통해서 잡지 않았다면 에러가 갇히게 된다.<br>실무에서는 끔찍한 상황이 벌어지게 된다. </p>
+<p>만약 에러를 처리하지 못했다면 전역 에러를 발생시킨다. 부라우저 환경에선 에러가 발생했는데 <code>.catch</code> 가 없으면 <code>unhandledrejection</code> 핸들러가 트리거 된다. 이 이벤트로 원하는 작업을 할 수 도 있다. </p>
+<br/>
+
+<h2 id="executor-안에서-비동기적으로-발생한-에러"><a href="#executor-안에서-비동기적으로-발생한-에러" class="headerlink" title="executor 안에서 비동기적으로 발생한 에러"></a>executor 안에서 비동기적으로 발생한 에러</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span>(<span class="params">resolve, reject</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">&quot;에러 발생!&quot;</span>);</span><br><span class="line">  &#125;, <span class="number">1000</span>);</span><br><span class="line">&#125;).catch(alert);</span><br></pre></td></tr></table></figure>
+<p>위 코드에서 암시적 <code>try..catch</code>로 인해 <code>catch</code>에서 에러가 처리될거 같지만, 실제로는 setTimout에 의해서 비동기적으로 처리되는 부분에서 에러가 발생했으므로 catch에서 에러가 처리되지 않는다. </p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/08/15/modernJs/210804-promise-chaning/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -416,98 +625,6 @@
 <p>결론 적으로 말하면 비동기 동작을 할때는 항상 프라미스를 반환하는 것이 좋다.<br>지금은 당장 쓰지 않더라도 나중에 확장하기 용이하기 때문이다. </p>
 <h3 id="then-f1-catch-f2-vs-then-f1-f2-다를까"><a href="#then-f1-catch-f2-vs-then-f1-f2-다를까" class="headerlink" title=".then(f1).catch(f2) vs .then(f1, f2) 다를까?"></a>.then(f1).catch(f2) vs .then(f1, f2) 다를까?</h3><p>다르다.<br><code>.then(f1).catch(f2)</code>의 경우 f1 에서 에러가 발생했다면 catch 에서 처리 할 수 있다. </p>
 <p>반면에, <code>.then(f1, f2)</code>의 경우에는 f1에서 에러가 발생하면 이어지는 체인이 없기 때문에 처리할 수 없다. </p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/08/15/modernJs/210805-promise-error/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JayoonKoo">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="티끌모아 태산">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/08/15/modernJs/210805-promise-error/" class="post-title-link" itemprop="url">promise-error</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-08-15 19:40:25" itemprop="dateCreated datePublished" datetime="2021-08-15T19:40:25+09:00">2021-08-15</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="프라미스와-에러-핸들링"><a href="#프라미스와-에러-핸들링" class="headerlink" title="프라미스와 에러 핸들링"></a>프라미스와 에러 핸들링</h1><p>존재하지 않는 url로 fetch 하는 예제를 살펴본다.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">fetch(<span class="string">&quot;https://no-such-server.blabla&quot;</span>)  <span class="comment">// 거부</span></span><br><span class="line">	.then(<span class="function"><span class="params">reponse</span> =&gt;</span> reponse.json)</span><br><span class="line">	.catch(<span class="built_in">console</span>.log) <span class="comment">// TypeError</span></span><br></pre></td></tr></table></figure>
-
-<br/>
-
-<h2 id="암시적-try-catch"><a href="#암시적-try-catch" class="headerlink" title="암시적 try..catch"></a>암시적 try..catch</h2><p>예외가 발생하면 암시적 보이지 않는 암시적 <code>try..catch</code> 에서 에러를 잡고 이를 reject처럼 다룬다.<br>따라서 <code>.catch</code> 를 통해서 던져진 에러를 핸들링 할 수 있다. </p>
-<p><code>executor</code> 안에서 잡혀진 에러는 거부된 상태에 파리미스로 반환된다.<br>따라서 제어 흐름이 가장 가까운 에러 헨들러로 넘어간다. </p>
-<br/>
-
-<h2 id="다시-던지기"><a href="#다시-던지기" class="headerlink" title="다시 던지기"></a>다시 던지기</h2><p>마지막에 <code>.catch</code> 를 통해서 여러개의 <code>.then</code> 에서 발생한 모든 에러를 처리할 수 있다.<br><code>try..catch</code>에서 처리할수 없는 에러를 다시 던진 것처럼 프라미스에서도 비슷하게 처리할 수 있다. </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//실행 순서 : catch -&gt; catch</span></span><br><span class="line"><span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">	<span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">&quot;에러 발생&quot;</span>);</span><br><span class="line">&#125;)</span><br><span class="line">	.catch(<span class="function"><span class="params">err</span> =&gt;</span> &#123;</span><br><span class="line">		<span class="keyword">if</span> (err <span class="keyword">instanceof</span> <span class="built_in">URIError</span>) &#123;</span><br><span class="line">			<span class="comment">// 에러처리</span></span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			<span class="built_in">console</span>.log(<span class="string">&#x27;처리할 수 없는 에러&#x27;</span>);</span><br><span class="line">			<span class="keyword">throw</span> err; <span class="comment">// 에러 다시 던지기</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;)</span><br><span class="line">	. then(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">		<span class="comment">// 여기는 실행되지 않는다.</span></span><br><span class="line">		<span class="comment">// 에러가 잘 처리되지 않고 다시 던져졌기 때문에 </span></span><br><span class="line">	&#125;)</span><br><span class="line">	.catch(<span class="function"><span class="params">err</span> =&gt;</span> &#123;</span><br><span class="line">		<span class="built_in">console</span>.log(<span class="string">`알수 없는 에러 발생: <span class="subst">$&#123;err&#125;</span>`</span>);</span><br><span class="line">	&#125;);</span><br></pre></td></tr></table></figure>
-
-<br/>
-
-<h2 id="처리되지-못한-거부"><a href="#처리되지-못한-거부" class="headerlink" title="처리되지 못한 거부"></a>처리되지 못한 거부</h2><p>에러가 발생했는데 만약 <code>.catch</code>를 통해서 잡지 않았다면 에러가 갇히게 된다.<br>실무에서는 끔찍한 상황이 벌어지게 된다. </p>
-<p>만약 에러를 처리하지 못했다면 전역 에러를 발생시킨다. 부라우저 환경에선 에러가 발생했는데 <code>.catch</code> 가 없으면 <code>unhandledrejection</code> 핸들러가 트리거 된다. 이 이벤트로 원하는 작업을 할 수 도 있다. </p>
-<br/>
-
-<h2 id="executor-안에서-비동기적으로-발생한-에러"><a href="#executor-안에서-비동기적으로-발생한-에러" class="headerlink" title="executor 안에서 비동기적으로 발생한 에러"></a>executor 안에서 비동기적으로 발생한 에러</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span>(<span class="params">resolve, reject</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">&quot;에러 발생!&quot;</span>);</span><br><span class="line">  &#125;, <span class="number">1000</span>);</span><br><span class="line">&#125;).catch(alert);</span><br></pre></td></tr></table></figure>
-<p>위 코드에서 암시적 <code>try..catch</code>로 인해 <code>catch</code>에서 에러가 처리될거 같지만, 실제로는 setTimout에 의해서 비동기적으로 처리되는 부분에서 에러가 발생했으므로 catch에서 에러가 처리되지 않는다. </p>
 
       
     </div>
@@ -795,129 +912,6 @@
 
 <p>프라미스 실패가 먼저, 잡았다가 나중에 출력되는 것을 볼 수 있다. </p>
 <p><code>unhandlerejection</code>은 마이크로테스크 큐에 모든 작업이 완료 되면 트리거 된다. 엔진은 프라미스를 검사하고 하나라도 거부 상태이면 핸들러를 트리거 한다.<br><code>.catch()</code>역시 트리거 된다. 다만 <code>.catch()</code>는 <code>unhandledrejection</code>이 발생한 이후에 트리거 된다. </p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/08/06/OS/210721-os-basic/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JayoonKoo">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="티끌모아 태산">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/08/06/OS/210721-os-basic/" class="post-title-link" itemprop="url">os-basic</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-08-06 22:28:10" itemprop="dateCreated datePublished" datetime="2021-08-06T22:28:10+09:00">2021-08-06</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-09-12 23:50:45" itemprop="dateModified" datetime="2021-09-12T23:50:45+09:00">2021-09-12</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/CS/" itemprop="url" rel="index"><span itemprop="name">CS</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="운영체제-큰-그림"><a href="#운영체제-큰-그림" class="headerlink" title="운영체제 큰 그림"></a>운영체제 큰 그림</h1><h2 id="운영체제-역할-시스테-자원-System-Resouce-관자자"><a href="#운영체제-역할-시스테-자원-System-Resouce-관자자" class="headerlink" title="운영체제 역할 : 시스테 자원 (System Resouce) 관자자"></a>운영체제 역할 : 시스테 자원 (System Resouce) 관자자</h2><ul>
-<li>Operating System</li>
-<li>System Resouce = Computer 하드웨어<ul>
-<li>CPU, Memory</li>
-<li>I/O Devices</li>
-<li>저장 매체</li>
-</ul>
-</li>
-</ul>
-<blockquote>
-<p>하드웨어는 자체로는 아무것도 할 수 없다.<br>CPU를 얼마만큼 사용할지, 어디 메모리 주소에 저장할지, 마우스 조작은 어떻게 할지, 어떤 폴더에 파일을 저장할지 등에 모든 결정은 운영체제가 한다.</p>
-</blockquote>
-<br/>
-
-<h2 id="대표적인-운영체제"><a href="#대표적인-운영체제" class="headerlink" title="대표적인 운영체제"></a>대표적인 운영체제</h2><ul>
-<li>Windoes OS</li>
-<li>Mac OS</li>
-<li>UNIX</li>
-<li>UNIX 계열 OS</li>
-<li>LINUX</li>
-</ul>
-<br/>
-
-<h2 id="운영체제의-역할-사용자와-컴퓨터-간의-커뮤티케이션-지원"><a href="#운영체제의-역할-사용자와-컴퓨터-간의-커뮤티케이션-지원" class="headerlink" title="운영체제의 역할 : 사용자와 컴퓨터 간의 커뮤티케이션 지원"></a>운영체제의 역할 : 사용자와 컴퓨터 간의 커뮤티케이션 지원</h2><p>운영체제 안의 쉘이라는 소프트웨어가 하드웨어와 사용자간의 커뮤니케이션을 지원한다.</p>
-<br/>
-
-<h2 id="운영체제-역할-컴퓨터-하드웨어와-프로그램을-제어"><a href="#운영체제-역할-컴퓨터-하드웨어와-프로그램을-제어" class="headerlink" title="운영체제 역할 : 컴퓨터 하드웨어와 프로그램을 제어"></a>운영체제 역할 : 컴퓨터 하드웨어와 프로그램을 제어</h2><p>하드웨어 뿐만 아니라 프로그램 까지도 제어하는 역활을 수행한다.</p>
-<br/>
-
-<h2 id="응용-프로그램이란"><a href="#응용-프로그램이란" class="headerlink" title="응용 프로그램이란?"></a>응용 프로그램이란?</h2><p>소프트웨어 = 운영체제, 응용프로그램(엑셀, 파워포인 같은..)</p>
-<p>응용 프로그램 = Application</p>
-<br/>
-
-<h2 id="운영체제와-응용-프로그램간의-관계"><a href="#운영체제와-응용-프로그램간의-관계" class="headerlink" title="운영체제와 응용 프로그램간의 관계"></a>운영체제와 응용 프로그램간의 관계</h2><p>운영체제는 응용 프로그램을 관리한다.</p>
-<ul>
-<li>실행 시킴</li>
-<li>응용 프램간의 권한을 관리한다.</li>
-<li>사용하는 사용자도 관리한다. (로그인…)</li>
-</ul>
-<br/>
-
-<h2 id="컴퓨터-구조"><a href="#컴퓨터-구조" class="headerlink" title="컴퓨터 구조"></a>컴퓨터 구조</h2><p>컴퓨터를 키면? 운영체제는 Memory에 올라감.</p>
-<p>현대의 컴퓨터는 폰노이만 구조를 따르고 있기 때문에</p>
-<p>메모리에 올려놓기 실행.</p>
 
       
     </div>
@@ -1342,7 +1336,7 @@
 
 <div class="copyright">
   &copy; 
-  <span itemprop="copyrightYear">2022</span>
+  <span itemprop="copyrightYear">2023</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

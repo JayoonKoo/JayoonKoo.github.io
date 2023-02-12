@@ -85,7 +85,7 @@
         <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
         <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">21</span></a></li>
         <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">17</span></a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">158</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">159</span></a></li>
   </ul>
 </nav>
 
@@ -129,7 +129,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">158</span>
+          <span class="site-state-item-count">159</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -189,7 +189,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/09/20/modernJs/210907-formData/">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/09/20/modernJs/210906-fetch/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -202,7 +202,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/09/20/modernJs/210907-formData/" class="post-title-link" itemprop="url">formData</a>
+          <a href="/2021/09/20/modernJs/210906-fetch/" class="post-title-link" itemprop="url">fetch</a>
         </h2>
 
         <div class="post-meta-container">
@@ -236,37 +236,56 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="FormData"><a href="#FormData" class="headerlink" title="FormData"></a>FormData</h1><p>HTML에 formData를 나타내는 생성자는 다음과 같다.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> formData = <span class="keyword">new</span> FormData([form]);</span><br></pre></td></tr></table></figure>
+          <h1 id="fetch"><a href="#fetch" class="headerlink" title="fetch"></a>fetch</h1><p>AJAX - 서버에서 추가 정보를 비동기적으로 가져올 수 있게 해주는 포괄적인 기술을 의미함. (새로 고침 없이)</p>
+<p>AJAX 이외에도 서버에 네트워크 요청을 보내고 정보를 받아올 수 있는 다양한 방법이 존재하는데 그 중 하나인 <code>fetch</code>에 대해서 알아본다.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> promise = fetch(url, [options]);</span><br></pre></td></tr></table></figure>
 
-<p>이렇게 생성해서 서버에서 보내는 작업을 하면 서버에서 볼 때 일반적인 양식 제출처럼 보인다.</p>
-<h2 id="Sending-a-simple-form"><a href="#Sending-a-simple-form" class="headerlink" title="Sending a simple form"></a>Sending a simple form</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">id</span>=<span class="string">&quot;formElem&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;name&quot;</span> <span class="attr">value</span>=<span class="string">&quot;John&quot;</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;surname&quot;</span> <span class="attr">value</span>=<span class="string">&quot;Smith&quot;</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></span><br><span class="line"><span class="javascript">  formElem.onsubmit = <span class="keyword">async</span> (e) =&gt; &#123;</span></span><br><span class="line"><span class="javascript">    e.preventDefault();</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">    <span class="keyword">let</span> response = <span class="keyword">await</span> fetch(<span class="string">&quot;/article/formdata/post/user&quot;</span>, &#123;</span></span><br><span class="line"><span class="javascript">      <span class="attr">method</span>: <span class="string">&quot;POST&quot;</span>,</span></span><br><span class="line"><span class="javascript">      <span class="attr">body</span>: <span class="keyword">new</span> FormData(formElem),</span></span><br><span class="line"><span class="javascript">    &#125;);</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">    <span class="keyword">let</span> result = <span class="keyword">await</span> response.json();</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">    alert(result.message);</span></span><br><span class="line"><span class="javascript">  &#125;;</span></span><br><span class="line"><span class="javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>서버 코드는 여기에 없다. 서버는 위에 코드에서 보낸 request를 받아서 응답한다.</p>
-<h2 id="FormData-Methods"><a href="#FormData-Methods" class="headerlink" title="FormData Methods"></a>FormData Methods</h2><ul>
-<li><code>formData.append(name, value)</code> - form data에 name과 value를 추가</li>
-<li><code>formData.append(name, blob, fileName)</code> - <code>&lt;input type=&quot;file&quot;&gt;</code> 인 것처럼 추가, 세번째 매개변수인 <code>fileName</code>인 진짜 파일 이름을 넣어줌.</li>
-<li><code>formData.delete(name)</code> - <code>name</code>이란 이름으로 추가된 필드를 제거함</li>
-<li><code>formData.get(name)</code> - <code>name</code>이란 이름으로 추가된 필드에 <code>value</code> 값을 얻음.</li>
-<li><code>formData.had(name)</code> - <code>name</code>이란 이름으로 추가된 필드가 있다면 ,<code>true</code> 반환 아닐 경우 <code>false</code> 반환</li>
-</ul>
-<p>formData는 기술적으로 같은 name에 필드를 추가할 수 있다. 따라서 append를 사용한다. 비슷한 역할을 하는 <code>.set</code> 메서드도 있다. 이 경우 기존에 있던것을 삭제 하고 추가한다.</p>
 <ul>
-<li><code>formData.set(name, value)</code></li>
-<li><code>formData.set(name, blob, fileName)</code></li>
+<li>url : 접근하고자 하는 url</li>
+<li>options : 선택 매개변수, method나 header 등을 지정할 수 있다.</li>
 </ul>
-<p>또한 <code>for..of</code> 를 사용해서 요소를 반복할 수 있다.</p>
-<h2 id="Sending-a-form-with-a-file"><a href="#Sending-a-form-with-a-file" class="headerlink" title="Sending a form with a file"></a>Sending a form with a file</h2><p>form은 <code>Content-Type: multipart/form-data</code>로 보내지고 이것은 파일도 보낼 수 있다.</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">id</span>=<span class="string">&quot;formElem&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;firstName&quot;</span> <span class="attr">value</span>=<span class="string">&quot;John&quot;</span> /&gt;</span></span><br><span class="line">  Picture: <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;file&quot;</span> <span class="attr">name</span>=<span class="string">&quot;picture&quot;</span> <span class="attr">accept</span>=<span class="string">&quot;image/*&quot;</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></span><br><span class="line"><span class="javascript">  formElem.onsubmit = <span class="keyword">async</span> (e) =&gt; &#123;</span></span><br><span class="line"><span class="javascript">    e.preventDefault();</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">    <span class="keyword">let</span> response = <span class="keyword">await</span> fetch(<span class="string">&quot;/article/formdata/post/user-avatar&quot;</span>, &#123;</span></span><br><span class="line"><span class="javascript">      <span class="attr">method</span>: <span class="string">&quot;POST&quot;</span>,</span></span><br><span class="line"><span class="javascript">      <span class="attr">body</span>: <span class="keyword">new</span> FormData(formElem),</span></span><br><span class="line"><span class="javascript">    &#125;);</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">    <span class="keyword">let</span> result = <span class="keyword">await</span> response.json();</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">    alert(result.message);</span></span><br><span class="line"><span class="javascript">  &#125;;</span></span><br><span class="line"><span class="javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><code>options</code>에 아무것도 넘기지 않으면 <code>GET</code>으로 동작한다.</p>
+<p>서버에서 응답 헤더를 받자마자 <code>fetch</code> 호출 시 반환받은 <code>promise</code>가 내장 클래스 <code>Response</code>의 인스턴스와 함께 이행 상태가 된다. 아직 본문이 도착하기 전이지만, 개발자는 응답 헤더를 보고 요청이 성공적으로 처리되었는지 아닌지를 확인할 수 있다.</p>
+<p>HTTP 응답 상태는 프로퍼티를 사용해 확인할 수 있다.</p>
+<ul>
+<li>status - HTTP 상태 코드 값 (ex. 200)</li>
+<li>ok - 불린 값, HTTP 상태 코드가 200 과 299 사이일 경우 <code>ture</code></li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> response = awiat fetch(url);</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (response.ok) &#123;</span><br><span class="line">	<span class="keyword">let</span> json = <span class="keyword">await</span> reponse.json();</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">	alert(<span class="string">&quot;HTTP-Error: &quot;</span> + response.status);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h2 id="Sending-a-form-with-Blob-data"><a href="#Sending-a-form-with-Blob-data" class="headerlink" title="Sending a form with Blob data"></a>Sending a form with Blob data</h2><p>동적으로 생성된 바이너리 데이타 이미지 같은 것을 <code>Blob</code>으로 보낼 수 있다. <code>fetch</code>에 <code>body</code> 파라미터로 넒길 수 있다.<br>그러나 실제로는 이미지를 별도로 보내는 것이 아니라 name 을 추가한 form 으로 보내는 것이 편리한 경우가 많다.</p>
-<p>서버도 form으로 받는게 더 어울린다.</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span> <span class="attr">style</span>=<span class="string">&quot;margin:0&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">canvas</span></span></span><br><span class="line"><span class="tag">    <span class="attr">id</span>=<span class="string">&quot;canvasElem&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">width</span>=<span class="string">&quot;100&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">height</span>=<span class="string">&quot;80&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">style</span>=<span class="string">&quot;border:1px solid&quot;</span></span></span><br><span class="line"><span class="tag">  &gt;</span><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;button&quot;</span> <span class="attr">value</span>=<span class="string">&quot;Submit&quot;</span> <span class="attr">onclick</span>=<span class="string">&quot;submit()&quot;</span> /&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></span><br><span class="line"><span class="javascript">    canvasElem.onmousemove = <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">      <span class="keyword">let</span> ctx = canvasElem.getContext(<span class="string">&quot;2d&quot;</span>);</span></span><br><span class="line"><span class="javascript">      ctx.lineTo(e.clientX, e.clientY);</span></span><br><span class="line"><span class="javascript">      ctx.stroke();</span></span><br><span class="line"><span class="javascript">    &#125;;</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">    <span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">submit</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">      <span class="keyword">let</span> imageBlob = <span class="keyword">await</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve</span>) =&gt;</span></span></span><br><span class="line"><span class="javascript">        canvasElem.toBlob(resolve, <span class="string">&quot;image/png&quot;</span>)</span></span><br><span class="line"><span class="javascript">      );</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">      <span class="keyword">let</span> formData = <span class="keyword">new</span> FormData();</span></span><br><span class="line"><span class="javascript">      formData.append(<span class="string">&quot;firstName&quot;</span>, <span class="string">&quot;John&quot;</span>);</span></span><br><span class="line"><span class="javascript">      formData.append(<span class="string">&quot;image&quot;</span>, imageBlob, <span class="string">&quot;image.png&quot;</span>);</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">      <span class="keyword">let</span> response = <span class="keyword">await</span> fetch(<span class="string">&quot;/article/formdata/post/image-form&quot;</span>, &#123;</span></span><br><span class="line"><span class="javascript">        <span class="attr">method</span>: <span class="string">&quot;POST&quot;</span>,</span></span><br><span class="line"><span class="javascript">        <span class="attr">body</span>: formData,</span></span><br><span class="line"><span class="javascript">      &#125;);</span></span><br><span class="line"><span class="javascript">      <span class="keyword">let</span> result = <span class="keyword">await</span> response.json();</span></span><br><span class="line"><span class="javascript">      alert(result.message);</span></span><br><span class="line"><span class="javascript">    &#125;</span></span><br><span class="line"><span class="javascript">  </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><code>response</code>에는 프라미스를 기반으로 하는 다양한 메서드가 있다. 이 메서드를 사용하면 다양한 형태의 응답 본문을 처리할 수 있다.</p>
+<ul>
+<li><code>response.text()</code> - 응답을 읽고 텍스트로 반환해 줌.</li>
+<li><code>response.json()</code> - 응답을 읽고 JSON으로 파싱해 줌</li>
+<li><code>response.formData()</code> - 응답을 <code>FormData</code> 객체 형태로 반환함.</li>
+<li><code>response.blob()</code> - 응답을 <code>Blob</code>(타입이 있는 바이너리 데이터) 형태로 반환 함.</li>
+<li><code>response.arrayBuffer()</code> - 응답을 <code>ArrayBuffer</code>(바이너리 데이터를 로우 레벨 형식으로 표현한 것)</li>
+<li>이 외에도 <code>respose.body</code>가 있는데 청크 단위로 읽을 수 있게 해준다.</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> url =</span><br><span class="line">  <span class="string">&quot;https://api.github.com/repos/javascript-tutorial/ko.javascript.info/commits&quot;</span>;</span><br><span class="line"><span class="keyword">let</span> response = <span class="keyword">await</span> fetch(url);</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> commits = <span class="keyword">await</span> response.json(); <span class="comment">// 응답 본문을 읽고 JSON 형태로 파싱함</span></span><br><span class="line"></span><br><span class="line">alert(commits[<span class="number">0</span>].author.login);</span><br></pre></td></tr></table></figure>
 
-<p>이미지 blob 데이터를 어떻게 추가했는지 보자.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">formData.append(<span class="string">&quot;image&quot;</span>, imageBlob, <span class="string">&quot;image.png&quot;</span>);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>본문을 읽을 때 사용되는 메서드는 딱 하나만 사용할 수 있다. <code>response.text()</code> 를 사용해 응답을 얻었다면 본문의 콘텐츠는 모두 처리된 상태이기 때문에 <code>response.json()</code>은 동작하지 않는다.</p>
+</blockquote>
+<h2 id="응답-헤더"><a href="#응답-헤더" class="headerlink" title="응답 헤더"></a>응답 헤더</h2><p>응답 헤더는 <code>response.headers</code>에 맵과 유사한 형태로 저장된다.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> response = <span class="keyword">await</span> fetch(</span><br><span class="line">  <span class="string">&quot;https://api.github.com/repos/javascript-tutorial/en.javascript.info/commits&quot;</span></span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 헤더 일부를 추출</span></span><br><span class="line">alert(response.headers.get(<span class="string">&quot;Content-Type&quot;</span>)); <span class="comment">// application/json; charset=utf-8</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 헤더 전체를 순회</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> [key, value] <span class="keyword">of</span> response.headers) &#123;</span><br><span class="line">  alert(<span class="string">`<span class="subst">$&#123;key&#125;</span> = <span class="subst">$&#123;value&#125;</span>`</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>이는 <code>&lt;input type=&quot;file&quot; name=&quot;image&quot;&gt;</code>와 같다.</p>
+<h2 id="요청-헤더"><a href="#요청-헤더" class="headerlink" title="요청 헤더"></a>요청 헤더</h2><p><code>headers</code> 옵션을 사용하면 <code>fetch</code>에 요청 헤더를 ㅅ걸정할 수 있다.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> response = fetch(protectedUrl, &#123;</span><br><span class="line">  <span class="attr">headers</span>: &#123;</span><br><span class="line">    <span class="attr">Authentication</span>: <span class="string">&quot;secret&quot;</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="POST-요청"><a href="#POST-요청" class="headerlink" title="POST 요청"></a>POST 요청</h2><p><code>GET</code> 요청 이외의 요청을 보내려면 추가 옵션을 설정해야 한다.</p>
+<ul>
+<li>method - ex.POST</li>
+<li>body - 요청 본문, 다음 중 하나여야 한다.<ul>
+<li>문자열(ex. JSON 문자열)</li>
+<li><code>FormData</code> 객체 - <code>form/multipart</code></li>
+<li><code>Blob</code>이나 <code>BufferSource</code> - 바이너리 데이터 전송을 위해 사용됨</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> user = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&quot;John&quot;</span>,</span><br><span class="line">  <span class="attr">surname</span>: <span class="string">&quot;Smish&quot;</span>,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> response = <span class="keyword">await</span> fetch(<span class="string">&quot;/article/fetch/post/user&quot;</span>, &#123;</span><br><span class="line">  <span class="attr">method</span>: <span class="string">&quot;POST&quot;</span>,</span><br><span class="line">  <span class="attr">headers</span>: &#123;</span><br><span class="line">    <span class="string">&quot;Content-Type&quot;</span>: <span class="string">&quot;application/json;charset-utf-8&quot;</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">body</span>: <span class="built_in">JSON</span>.stringify(user),</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> result = <span class="keyword">await</span> reponse.json();</span><br></pre></td></tr></table></figure>
+
+<p>본문이 문자열일 때는 <code>Content-Type - text/plain;charset-UTF-8</code> 이 기본으로 설정됨. 하지만 위에 예시에서는 JSON 이기 때문에 따로 설정을 해주었다.</p>
 
       
     </div>
@@ -470,6 +489,110 @@
 <p>다른 비동기 작업도 <code>fetch</code>와 함께 하나의 <code>AbortController</code>로 멈출 수 있다.</p>
 <p>우린 단지 <code>abort</code> 이벤트를 들으면 된다.</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> urls = [...];</span><br><span class="line"><span class="keyword">let</span> controller = <span class="keyword">new</span> AbortController();</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> ourJob = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span>  &#123;</span><br><span class="line">	<span class="comment">// our task</span></span><br><span class="line">	controller.signal.addEventListener(<span class="string">&#x27;abort&#x27;</span>, reject);</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> fetchJobs = urls.map(<span class="function"><span class="params">url</span> =&gt;</span> fetch(url, &#123;</span><br><span class="line">	<span class="attr">signal</span>: controller.signal</span><br><span class="line">&#125;));</span><br><span class="line"></span><br><span class="line"><span class="comment">// Wait for feches and our tast in parallel</span></span><br><span class="line"><span class="keyword">let</span> results = <span class="keyword">await</span> <span class="built_in">Promise</span>.all([...fetchJobs, ourJob]);</span><br><span class="line"></span><br><span class="line"><span class="comment">// if controller.abort() is called from elsewhere, it aborts all fetches and our Job</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/09/20/modernJs/210907-formData/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JayoonKoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="티끌모아 태산">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/09/20/modernJs/210907-formData/" class="post-title-link" itemprop="url">formData</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2021-09-20 21:41:14 / Modified: 21:45:41" itemprop="dateCreated datePublished" datetime="2021-09-20T21:41:14+09:00">2021-09-20</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="FormData"><a href="#FormData" class="headerlink" title="FormData"></a>FormData</h1><p>HTML에 formData를 나타내는 생성자는 다음과 같다.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> formData = <span class="keyword">new</span> FormData([form]);</span><br></pre></td></tr></table></figure>
+
+<p>이렇게 생성해서 서버에서 보내는 작업을 하면 서버에서 볼 때 일반적인 양식 제출처럼 보인다.</p>
+<h2 id="Sending-a-simple-form"><a href="#Sending-a-simple-form" class="headerlink" title="Sending a simple form"></a>Sending a simple form</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">id</span>=<span class="string">&quot;formElem&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;name&quot;</span> <span class="attr">value</span>=<span class="string">&quot;John&quot;</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;surname&quot;</span> <span class="attr">value</span>=<span class="string">&quot;Smith&quot;</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></span><br><span class="line"><span class="javascript">  formElem.onsubmit = <span class="keyword">async</span> (e) =&gt; &#123;</span></span><br><span class="line"><span class="javascript">    e.preventDefault();</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">    <span class="keyword">let</span> response = <span class="keyword">await</span> fetch(<span class="string">&quot;/article/formdata/post/user&quot;</span>, &#123;</span></span><br><span class="line"><span class="javascript">      <span class="attr">method</span>: <span class="string">&quot;POST&quot;</span>,</span></span><br><span class="line"><span class="javascript">      <span class="attr">body</span>: <span class="keyword">new</span> FormData(formElem),</span></span><br><span class="line"><span class="javascript">    &#125;);</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">    <span class="keyword">let</span> result = <span class="keyword">await</span> response.json();</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">    alert(result.message);</span></span><br><span class="line"><span class="javascript">  &#125;;</span></span><br><span class="line"><span class="javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>서버 코드는 여기에 없다. 서버는 위에 코드에서 보낸 request를 받아서 응답한다.</p>
+<h2 id="FormData-Methods"><a href="#FormData-Methods" class="headerlink" title="FormData Methods"></a>FormData Methods</h2><ul>
+<li><code>formData.append(name, value)</code> - form data에 name과 value를 추가</li>
+<li><code>formData.append(name, blob, fileName)</code> - <code>&lt;input type=&quot;file&quot;&gt;</code> 인 것처럼 추가, 세번째 매개변수인 <code>fileName</code>인 진짜 파일 이름을 넣어줌.</li>
+<li><code>formData.delete(name)</code> - <code>name</code>이란 이름으로 추가된 필드를 제거함</li>
+<li><code>formData.get(name)</code> - <code>name</code>이란 이름으로 추가된 필드에 <code>value</code> 값을 얻음.</li>
+<li><code>formData.had(name)</code> - <code>name</code>이란 이름으로 추가된 필드가 있다면 ,<code>true</code> 반환 아닐 경우 <code>false</code> 반환</li>
+</ul>
+<p>formData는 기술적으로 같은 name에 필드를 추가할 수 있다. 따라서 append를 사용한다. 비슷한 역할을 하는 <code>.set</code> 메서드도 있다. 이 경우 기존에 있던것을 삭제 하고 추가한다.</p>
+<ul>
+<li><code>formData.set(name, value)</code></li>
+<li><code>formData.set(name, blob, fileName)</code></li>
+</ul>
+<p>또한 <code>for..of</code> 를 사용해서 요소를 반복할 수 있다.</p>
+<h2 id="Sending-a-form-with-a-file"><a href="#Sending-a-form-with-a-file" class="headerlink" title="Sending a form with a file"></a>Sending a form with a file</h2><p>form은 <code>Content-Type: multipart/form-data</code>로 보내지고 이것은 파일도 보낼 수 있다.</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">id</span>=<span class="string">&quot;formElem&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;firstName&quot;</span> <span class="attr">value</span>=<span class="string">&quot;John&quot;</span> /&gt;</span></span><br><span class="line">  Picture: <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;file&quot;</span> <span class="attr">name</span>=<span class="string">&quot;picture&quot;</span> <span class="attr">accept</span>=<span class="string">&quot;image/*&quot;</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></span><br><span class="line"><span class="javascript">  formElem.onsubmit = <span class="keyword">async</span> (e) =&gt; &#123;</span></span><br><span class="line"><span class="javascript">    e.preventDefault();</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">    <span class="keyword">let</span> response = <span class="keyword">await</span> fetch(<span class="string">&quot;/article/formdata/post/user-avatar&quot;</span>, &#123;</span></span><br><span class="line"><span class="javascript">      <span class="attr">method</span>: <span class="string">&quot;POST&quot;</span>,</span></span><br><span class="line"><span class="javascript">      <span class="attr">body</span>: <span class="keyword">new</span> FormData(formElem),</span></span><br><span class="line"><span class="javascript">    &#125;);</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">    <span class="keyword">let</span> result = <span class="keyword">await</span> response.json();</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">    alert(result.message);</span></span><br><span class="line"><span class="javascript">  &#125;;</span></span><br><span class="line"><span class="javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Sending-a-form-with-Blob-data"><a href="#Sending-a-form-with-Blob-data" class="headerlink" title="Sending a form with Blob data"></a>Sending a form with Blob data</h2><p>동적으로 생성된 바이너리 데이타 이미지 같은 것을 <code>Blob</code>으로 보낼 수 있다. <code>fetch</code>에 <code>body</code> 파라미터로 넒길 수 있다.<br>그러나 실제로는 이미지를 별도로 보내는 것이 아니라 name 을 추가한 form 으로 보내는 것이 편리한 경우가 많다.</p>
+<p>서버도 form으로 받는게 더 어울린다.</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span> <span class="attr">style</span>=<span class="string">&quot;margin:0&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">canvas</span></span></span><br><span class="line"><span class="tag">    <span class="attr">id</span>=<span class="string">&quot;canvasElem&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">width</span>=<span class="string">&quot;100&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">height</span>=<span class="string">&quot;80&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">style</span>=<span class="string">&quot;border:1px solid&quot;</span></span></span><br><span class="line"><span class="tag">  &gt;</span><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;button&quot;</span> <span class="attr">value</span>=<span class="string">&quot;Submit&quot;</span> <span class="attr">onclick</span>=<span class="string">&quot;submit()&quot;</span> /&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></span><br><span class="line"><span class="javascript">    canvasElem.onmousemove = <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">      <span class="keyword">let</span> ctx = canvasElem.getContext(<span class="string">&quot;2d&quot;</span>);</span></span><br><span class="line"><span class="javascript">      ctx.lineTo(e.clientX, e.clientY);</span></span><br><span class="line"><span class="javascript">      ctx.stroke();</span></span><br><span class="line"><span class="javascript">    &#125;;</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">    <span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">submit</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">      <span class="keyword">let</span> imageBlob = <span class="keyword">await</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve</span>) =&gt;</span></span></span><br><span class="line"><span class="javascript">        canvasElem.toBlob(resolve, <span class="string">&quot;image/png&quot;</span>)</span></span><br><span class="line"><span class="javascript">      );</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">      <span class="keyword">let</span> formData = <span class="keyword">new</span> FormData();</span></span><br><span class="line"><span class="javascript">      formData.append(<span class="string">&quot;firstName&quot;</span>, <span class="string">&quot;John&quot;</span>);</span></span><br><span class="line"><span class="javascript">      formData.append(<span class="string">&quot;image&quot;</span>, imageBlob, <span class="string">&quot;image.png&quot;</span>);</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">      <span class="keyword">let</span> response = <span class="keyword">await</span> fetch(<span class="string">&quot;/article/formdata/post/image-form&quot;</span>, &#123;</span></span><br><span class="line"><span class="javascript">        <span class="attr">method</span>: <span class="string">&quot;POST&quot;</span>,</span></span><br><span class="line"><span class="javascript">        <span class="attr">body</span>: formData,</span></span><br><span class="line"><span class="javascript">      &#125;);</span></span><br><span class="line"><span class="javascript">      <span class="keyword">let</span> result = <span class="keyword">await</span> response.json();</span></span><br><span class="line"><span class="javascript">      alert(result.message);</span></span><br><span class="line"><span class="javascript">    &#125;</span></span><br><span class="line"><span class="javascript">  </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>이미지 blob 데이터를 어떻게 추가했는지 보자.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">formData.append(<span class="string">&quot;image&quot;</span>, imageBlob, <span class="string">&quot;image.png&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>이는 <code>&lt;input type=&quot;file&quot; name=&quot;image&quot;&gt;</code>와 같다.</p>
 
       
     </div>
@@ -1337,134 +1460,6 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/09/12/system-programing/210809-AWS%20%EB%A6%AC%EB%88%85%EC%8A%A4%20%EC%82%AC%EC%9A%A9/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JayoonKoo">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="티끌모아 태산">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/09/12/system-programing/210809-AWS%20%EB%A6%AC%EB%88%85%EC%8A%A4%20%EC%82%AC%EC%9A%A9/" class="post-title-link" itemprop="url">AWS 리눅스 사용</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-09-12 23:46:02" itemprop="dateCreated datePublished" datetime="2021-09-12T23:46:02+09:00">2021-09-12</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/CS/" itemprop="url" rel="index"><span itemprop="name">CS</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="리눅스-사용법-익히기"><a href="#리눅스-사용법-익히기" class="headerlink" title="리눅스 사용법 익히기"></a>리눅스 사용법 익히기</h1><h2 id="리눅스-설치-방법"><a href="#리눅스-설치-방법" class="headerlink" title="리눅스 설치 방법"></a>리눅스 설치 방법</h2><ol>
-<li>가상 머신 소프트 웨어 <ul>
-<li>PC 환경에 따라 문제들이 다름.</li>
-</ul>
-</li>
-<li>클라우드 컴퓨팅 서비스 활용 <ul>
-<li>최신 기술에 익숙해 짐. </li>
-<li>동일한 환경에서 사용이 가능 </li>
-</ul>
-</li>
-</ol>
-<h2 id="클라우드-컴퓨팅"><a href="#클라우드-컴퓨팅" class="headerlink" title="클라우드 컴퓨팅"></a>클라우드 컴퓨팅</h2><p>서버 환경을 미리 구축해 놓고, 간단한 설정으로 바로 사용할 수 있도록 만든 서비스.</p>
-<ul>
-<li>이전 : 미리 서버 컴퓨터를 구축해야 함. 예측해서 구축해야 되는 문제 </li>
-<li>현재 : 클라우드 컴퓨팅 환경 사용 </li>
-</ul>
-<h2 id="AWS-회원-가입"><a href="#AWS-회원-가입" class="headerlink" title="AWS 회원 가입"></a>AWS 회원 가입</h2><p>무료로 1년간 사용 가능 함. </p>
-<p>해외 결제 가능한 신용카드가 필요하다. </p>
-<h2 id="AWS-클라우드-컴퓨팅-설정"><a href="#AWS-클라우드-컴퓨팅-설정" class="headerlink" title="AWS 클라우드 컴퓨팅 설정"></a>AWS 클라우드 컴퓨팅 설정</h2><ol>
-<li>EC2 또는 인스턴스(서버) 생성</li>
-<li>Elastic IP (탄력적 IP) 생성 <ul>
-<li>고정 IP로 만들어야 함. </li>
-</ul>
-</li>
-<li>자기 PC(클라이언트) 에서 EC2(서버) 접속</li>
-</ol>
-<p>EC2 &gt; 인스턴스 &gt; 인스턴스 시작 &gt; 우분투 18.04 &gt; 옵션 선택 후 생성</p>
-<p>태그 추가? 실제 현업에서는 다수의 서버를 운용하니까 태그로 이름 구분</p>
-<h2 id="고정-IP-생성-및-연결"><a href="#고정-IP-생성-및-연결" class="headerlink" title="고정 IP 생성 및 연결"></a>고정 IP 생성 및 연결</h2><p>AWS 콘솔에서 탄력젹 IP 선택 후 새로운 IP 할당.<br>할당한 IP와 새로운 기존에 인스턴스를 연결 .</p>
-<p>터미널을 통한 우분투 접속.<br>기존에 받아 놓은 pem 이 있는 폴더로 이동 </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod 400 &lt;user-key.pem&gt;</span><br></pre></td></tr></table></figure>
-<p>받아놓은 키에 권한을 변경해 줌.</p>
-<p>ssh 를 이요한 접속. </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -i &lt;user-key.pem&gt; ubuntu@&lt;IP&gt;</span><br></pre></td></tr></table></figure>
-<p>ubuntn 란 사용자로 해당 IP로 접속…</p>
-<p>참고로 고정 IP는 할당만 하고 연결 안하면 비용이 청구 된다.<br>또 연결 했더라도 실행을 시키지 않으면 비용이 청구 되고 여러개의 고정 IP를 할당해도 비용이 청구된다. </p>
-<h2 id="리눅스와-파일"><a href="#리눅스와-파일" class="headerlink" title="리눅스와 파일"></a>리눅스와 파일</h2><p>모든 것은 파일이라는 철학을 따름</p>
-<ul>
-<li><p>모든 인터렉션은 파일을 읽고, 스는 것처럼 이루어짐. (마우스, 키보드와 같은 모든 디바이스 관련 동작도)</p>
-</li>
-<li><p>파일 네임 스페이스 </p>
-<ul>
-<li>전역 네임스페이스를 사용함 (/media/floofy/dave.jpg)</li>
-</ul>
-</li>
-<li><p>파일은 inode 고유값과 자료구조에 의해 주요 정보를 관리한다. </p>
-</li>
-</ul>
-<h2 id="리눅스와-프로세스"><a href="#리눅스와-프로세스" class="headerlink" title="리눅스와 프로세스"></a>리눅스와 프로세스</h2><ul>
-<li>리눅스는 ELF 실행 파일 포멧을 갖는다. </li>
-<li>다양한 시스템 리소스와 관련 되어 있다. </li>
-<li>가상메모리를 지원한다. </li>
-<li>프로세스는 PID 기반으로 구분된다. </li>
-<li>init 프로세스를 기반으로 fork() 시스템콜을 사용해서, 신규 프로세스가 생성 된다. </li>
-</ul>
-<h2 id="리눅스와-권한"><a href="#리눅스와-권한" class="headerlink" title="리눅스와 권한"></a>리눅스와 권한</h2><p>운영체제는 사용자 리소스 권한을 관리한다.<br>리눇는 사용자 / 그룹으로 권한을 관리한다.<br>root는 슈퍼 관리자이다.<br>파일마다 소유자, 소유자 그룹, 모든 사용자에 대한 읽고, 쓰고, 실행되는 권한을 관리한다.<br>접근 권한 정보는 inode의 자료구조에 저장된다. </p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
     <a class="extend prev" rel="prev" href="/page/11/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><span class="page-number current">12</span><a class="page-number" href="/page/13/">13</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/13/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
@@ -1478,7 +1473,7 @@
 
 <div class="copyright">
   &copy; 
-  <span itemprop="copyrightYear">2022</span>
+  <span itemprop="copyrightYear">2023</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

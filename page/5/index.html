@@ -85,7 +85,7 @@
         <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
         <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">21</span></a></li>
         <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">17</span></a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">158</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">159</span></a></li>
   </ul>
 </nav>
 
@@ -129,7 +129,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">158</span>
+          <span class="site-state-item-count">159</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -180,6 +180,122 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2022/01/05/IOS/210104-QuoteGenerator/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JayoonKoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="티끌모아 태산">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/01/05/IOS/210104-QuoteGenerator/" class="post-title-link" itemprop="url">Storyboard, AutoLayout, UILabel, UIButton (명언 생성)</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-01-05 10:45:56" itemprop="dateCreated datePublished" datetime="2022-01-05T10:45:56+09:00">2022-01-05</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2022-01-12 13:07:45" itemprop="dateModified" datetime="2022-01-12T13:07:45+09:00">2022-01-12</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/IOS/" itemprop="url" rel="index"><span itemprop="name">IOS</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="QuoteGenerator"><a href="#QuoteGenerator" class="headerlink" title="QuoteGenerator"></a>QuoteGenerator</h1><p>명언 생성 앱</p>
+<p>배울기술 </p>
+<ul>
+<li>Storyboard</li>
+<li>AutoLayout</li>
+<li>UILabel</li>
+<li>UIButton</li>
+</ul>
+<p>알아야 할 기본 개념</p>
+<ul>
+<li>UIKit</li>
+<li>UIViewController</li>
+<li>AutoLayout</li>
+<li>IBOutlet &amp; IBAction</li>
+</ul>
+<h3 id="UIKit"><a href="#UIKit" class="headerlink" title="UIKit"></a>UIKit</h3><p>Cocoa touch Framework → IOS Application framework (UIKit(사용자 인이벤트 처리등 UI관련), Foundation(자료구조, 네트워크 등등..), CoreDate… etc ) </p>
+<ul>
+<li>사용자 이벤트 처리</li>
+<li>뷰 관련</li>
+<li>MVC 디자인 패턴을 따라 개발하는데 현실 UIKit 에서는 View와 Controller 가 깊게 연결되어 있어서 분리하기 어렵다</li>
+</ul>
+<h3 id="ViewController"><a href="#ViewController" class="headerlink" title="ViewController"></a>ViewController</h3><p>UIView → 화면의 직사각형 영역</p>
+<ul>
+<li>앱의 근간을 이루는 객체로 모든 앱은 최소한 하나 이사의 뷰 컨트롤러를 가지고 있다.</li>
+<li>데이터 변화에 따라 view 업데이트, 상호작용, 리사이징, 다른 뷰 컨트롤러 들과 앱을 구성</li>
+</ul>
+<h3 id="AutoLayout"><a href="#AutoLayout" class="headerlink" title="AutoLayout"></a>AutoLayout</h3><p>제약 조건을 이용해서 뷰의 위치를 지정하는 것  → 다양한 해상도 뷰의 맞게 UI 개발을 하기 위함 </p>
+<h3 id="IBOulet-amp-IBAction"><a href="#IBOulet-amp-IBAction" class="headerlink" title="IBOulet &amp; IBAction"></a>IBOulet &amp; IBAction</h3><p>storyboard 에 생성한 UIObject에 접근하여 컨트롤하기 위해서 변수에 바인딩 한것을 Outliet 변수라고 한다.</p>
+<ul>
+<li>storage 에서 strong, week 은 메모리 회수 정책이다. strong 은 일단 참조가 되어 있다면 메모리를 헤제 하지 않지만, week 은 참조 되어 있더라도 해제 될 수 있다. strong은 메모리 누수 발생 여지가 있다.</li>
+</ul>
+<p>Action 함수는 동작을 정의하는 함수로 UI와 동작을 연결하여 UIVewController 에서 사용할 수 있도록 해준다. </p>
+<p>Argument , Action message 를 이벤트 핸들러인 sender를 설정한다.</p>
+<h3 id="Content-Hugging-Compression-Resistance"><a href="#Content-Hugging-Compression-Resistance" class="headerlink" title="Content Hugging, Compression Resistance"></a>Content Hugging, Compression Resistance</h3><ul>
+<li>Content Hugging : 크기가 늘어나는데 저항하는 성질로서 높을수록 늘어나지 읂는다.</li>
+<li>Compression Resistace : 크기가 줄어드는데 저항하는 성질로서 크기가 높을수록 줄어들지 않는다.</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -978,115 +1094,6 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/12/21/DevOps/Docker/211221-Docker%20tutorial(3)/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JayoonKoo">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="티끌모아 태산">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/12/21/DevOps/Docker/211221-Docker%20tutorial(3)/" class="post-title-link" itemprop="url">Docker tutorial(3)</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2021-12-21 21:34:27 / Modified: 21:34:44" itemprop="dateCreated datePublished" datetime="2021-12-21T21:34:27+09:00">2021-12-21</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/DevOps/" itemprop="url" rel="index"><span itemprop="name">DevOps</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="Update-the-source-code"><a href="#Update-the-source-code" class="headerlink" title="Update the source code"></a>Update the source code</h1><p>코드를 업데이트하고 적용하는 방법을 알아본다.</p>
-<ol>
-<li>코드를 고친다. </li>
-<li>build 할때 사용했던 명령어를 똑같이 입력한다. </li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker build -t getting-started .</span><br></pre></td></tr></table></figure>
-
-<ol>
-<li>업데이트된 코드를 사용해서 새로운 컨테이너를 시작한다.</li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker run -db 3000:3000 getting-started</span><br></pre></td></tr></table></figure>
-
-<p>하지만 에러가 발생한다.. (docker: Error response from daemon: driver failed….)</p>
-<p>왜냐하면 이미 3000 번 포트로 전에 컨테이너가 실행중이기 때문이다. 하나의 머신에 특정한 포트는 한게만 실행 실행시킬 수 있다. 오래된 컨테이너를 지워야 한다.</p>
-<h2 id="Replace-the-old-container"><a href="#Replace-the-old-container" class="headerlink" title="Replace the old container"></a>Replace the old container</h2><p>컨테이너를 지우기 위해서는 컨테이너 실행을 중지 시켜야 한다. 두가지 방법이 있는데 편한것을 선택하면 된다. </p>
-<h3 id="Remove-a-container-using-the-CLI"><a href="#Remove-a-container-using-the-CLI" class="headerlink" title="Remove a container using the CLI"></a>Remove a container using the CLI</h3><ol>
-<li>컨테이너의 ID를 얻는다. </li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker ps</span><br></pre></td></tr></table></figure>
-
-<ol>
-<li>docker ID 혹은 이름을 사용해서 컨테이너를 멈춘다.</li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker stop &lt;the-container-id or name&gt;</span><br></pre></td></tr></table></figure>
-
-<ol>
-<li>컨테이너가 멈추면 <code>docker rm</code> 커멘드로 지울 수 있다. </li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker rm &lt;the-container-id or name&gt;</span><br></pre></td></tr></table></figure>
-
-<p>-f 플래그를 이요해서 실행중인 중에도 삭제할 수 있다. <code>docker rm -f &lt;the-continaer-id or name&gt;</code> </p>
-<h3 id="Docker-Dashboard"><a href="#Docker-Dashboard" class="headerlink" title="Docker Dashboard"></a>Docker Dashboard</h3><p>Docker Dashboard에서 실행중인 컨테이널르 확인하고 쓰레기통 아이콘을 누르면 삭제할 수 있다. </p>
-<h3 id="Start-the-updated-app-container"><a href="#Start-the-updated-app-container" class="headerlink" title="Start the updated app container"></a>Start the updated app container</h3><ol>
-<li>앱을 실행시킨다. </li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker run -dp 3000:3000 getting-started</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/12/21/DevOps/Docker/211221-Using%20Node(3)/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1214,7 +1221,7 @@
 
 <div class="copyright">
   &copy; 
-  <span itemprop="copyrightYear">2022</span>
+  <span itemprop="copyrightYear">2023</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

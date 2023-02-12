@@ -85,7 +85,7 @@
         <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
         <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">21</span></a></li>
         <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">17</span></a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">158</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">159</span></a></li>
   </ul>
 </nav>
 
@@ -129,7 +129,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">158</span>
+          <span class="site-state-item-count">159</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -180,6 +180,89 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2022/03/28/BackEnd/220328-Providers/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JayoonKoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="티끌모아 태산">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/03/28/BackEnd/220328-Providers/" class="post-title-link" itemprop="url">Providers</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2022-03-28 11:53:37 / Modified: 12:12:43" itemprop="dateCreated datePublished" datetime="2022-03-28T11:53:37+09:00">2022-03-28</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Backend/" itemprop="url" rel="index"><span itemprop="name">Backend</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="Providers"><a href="#Providers" class="headerlink" title="Providers"></a>Providers</h1><p>Nest 에는 provider 간의 관계를 해결하는 inversion of control (IOC)가 내장되어 있다.</p>
+<h2 id="Optional-providers"><a href="#Optional-providers" class="headerlink" title="Optional providers"></a>Optional providers</h2><p>때때로 설정 객체와 같은 것을 optional provider 로 받을 필요가 있다. 설정이 등록되지 않으면 기본 값을 갖도록 하면 되기때문에 무조건 받을 필요가 없기 때문이다. 이럴때에는 provider에 @Optional 데코레이터를 붙혀서 사용한다. </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">import &#123; Injectable, Optional, Inject &#125; from &#x27;@nestjs/common&#x27;;</span><br><span class="line"></span><br><span class="line">@Injectable()</span><br><span class="line">export class HttpService&lt;T&gt; &#123;</span><br><span class="line">  constructor(@Optional() @Inject(&#x27;HTTP_OPTIONS&#x27;) private httpClient: T) &#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Property-based-injection"><a href="#Property-based-injection" class="headerlink" title="Property-based injection"></a>Property-based injection</h2><p>지금까지 한것은 생성자에서 주입되기 때문에 constructor-based injection 이라고 부른다. 때때로 property-based injection 이 유용하다. 최상위 클래스가 여러 proivder 에 의존하는 경우 생성자 기반에 injection을 사용할경우 하위 클래스에서 super 를 사용하여 의존성을 주입해야 하는 귀찮은 경우가 생길 수 있다. 이럴땐 @Inject() 데코레이터를 사용해서 property-based injection을 사용하면 편리하다. </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">import &#123; Injectable, Inject &#125; from &#x27;@nestjs/common&#x27;;</span><br><span class="line"></span><br><span class="line">@Injectable()</span><br><span class="line">export class HttpService&lt;T&gt; &#123;</span><br><span class="line">  @Inject(&#x27;HTTP_OPTIONS&#x27;)</span><br><span class="line">  private readonly httpClient: T;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>이런 경우를 제외한 대부분의 경우에서 constructor-based injection을 선호해야 한다. </p>
+<h2 id="Provider-registration"><a href="#Provider-registration" class="headerlink" title="Provider registration"></a>Provider registration</h2><p>컨트롤러가 프로바이더를 소비할 수 있도록 모듈에 등록해 주어야 한다. </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">import &#123; Module &#125; from &#x27;@nestjs/common&#x27;;</span><br><span class="line">import &#123; CatsController &#125; from &#x27;./cats/cats.controller&#x27;;</span><br><span class="line">import &#123; CatsService &#125; from &#x27;./cats/cats.service&#x27;;</span><br><span class="line"></span><br><span class="line">@Module(&#123;</span><br><span class="line">  controllers: [CatsController],</span><br><span class="line">  providers: [CatsService],</span><br><span class="line">&#125;)</span><br><span class="line">export class AppModule &#123;&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1220,106 +1303,6 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2022/01/14/IOS/220113-GCD%20%EA%B8%B0%EC%B4%88/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JayoonKoo">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="티끌모아 태산">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/01/14/IOS/220113-GCD%20%EA%B8%B0%EC%B4%88/" class="post-title-link" itemprop="url">GCD 기초</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2022-01-14 12:17:35 / Modified: 12:17:39" itemprop="dateCreated datePublished" datetime="2022-01-14T12:17:35+09:00">2022-01-14</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/IOS/" itemprop="url" rel="index"><span itemprop="name">IOS</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="GCD"><a href="#GCD" class="headerlink" title="GCD"></a>GCD</h1><p>Grand Central Patch 의 약자이다.</p>
-<p>어떤 처리해야할 일을 GCD의 넘기면 GCD는 FIFO 정책을 수용하는 queue에 담고 시스템에 의해 안전하게 실행 될 수 있도록 한다.</p>
-<p>GCD 에서 사용하는 큐를 DispatchQueue 라고 한다.</p>
-<h2 id="타입"><a href="#타입" class="headerlink" title="타입"></a>타입</h2><ol>
-<li>Main Queue<ol>
-<li>메인 쓰레드에서 작동하는 큐, UI 작업이나 사용자 언터렉션을 여기서 처리한다.</li>
-</ol>
-</li>
-<li>Global Queue <ol>
-<li>시스템에 의해 관리되는 큐</li>
-<li>QoS(Quality of Service) 에 의해서 처리할 작업의 순서가 정해짐<ol>
-<li>userInteractive : 바로 수행되어야 할 작업, 급한 것</li>
-<li>userInitiated : 사용자의 결과를 기다리는 것, 거의 바로 수행되어야 할 것</li>
-<li>default </li>
-<li>unility : 무거운 작업. 네트워킹이나 파일 불러오기</li>
-<li>background : 사용자에게 당장 인식 될 필요가 없는 작업</li>
-</ol>
-</li>
-</ol>
-</li>
-<li>Custom Queue<ol>
-<li>개발자가 직접 생성한 큐</li>
-</ol>
-</li>
-</ol>
-<h2 id="Sync-amp-Async"><a href="#Sync-amp-Async" class="headerlink" title="Sync &amp; Async"></a>Sync &amp; Async</h2><p>Async : 비동기 실행으로서 앞에 결과가 끝나기도 전에 뒤에 결과가 실행됨. QoS 에 의해 우선순위가 정해짐</p>
-<p>Sync : 동기 실행은 앞에 작업이 끝나야 뒤에 적힌 코드가 실행됨.</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
     <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
@@ -1333,7 +1316,7 @@
 
 <div class="copyright">
   &copy; 
-  <span itemprop="copyrightYear">2022</span>
+  <span itemprop="copyrightYear">2023</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

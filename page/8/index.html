@@ -85,7 +85,7 @@
         <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
         <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">21</span></a></li>
         <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">17</span></a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">158</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">159</span></a></li>
   </ul>
 </nav>
 
@@ -129,7 +129,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">158</span>
+          <span class="site-state-item-count">159</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -304,6 +304,93 @@
 <h2 id="5단계-역방향-데이터-흐름-추가하기"><a href="#5단계-역방향-데이터-흐름-추가하기" class="headerlink" title="5단계: 역방향 데이터 흐름 추가하기"></a>5단계: 역방향 데이터 흐름 추가하기</h2><p>우리가 만든 <code>FilterableProductTable</code> 에서 아직 <code>SeacrBar</code>에 setState를 콜백으로 주지 않았기 때문에 폼을 입력해도 데이터가 변하지 않게 된다. 하위 컴포넌트인 <code>SearchBar</code>에서 상위 컴포넌트인 <code>FilterableProductTable</code>에 state를 변경하기 위해서는 콜백으로 setState를 주고 하위 컴포넌트에서 호출하면된다.</p>
 <p>이렇게 역방향 데이터 흐름을 추가할 수 있다.</p>
 <h2 id="이게-전부임"><a href="#이게-전부임" class="headerlink" title="이게 전부임.."></a>이게 전부임..</h2>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/10/23/react/official-docs/211014-%ED%95%A9%EC%84%B1%20vs%20%EC%83%81%EC%86%8D/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JayoonKoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="티끌모아 태산">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/10/23/react/official-docs/211014-%ED%95%A9%EC%84%B1%20vs%20%EC%83%81%EC%86%8D/" class="post-title-link" itemprop="url">합성 vs 상속</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2021-10-23 22:16:06 / Modified: 22:16:41" itemprop="dateCreated datePublished" datetime="2021-10-23T22:16:06+09:00">2021-10-23</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/react/" itemprop="url" rel="index"><span itemprop="name">react</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="합성-Composition-vs-상속-Inheritance"><a href="#합성-Composition-vs-상속-Inheritance" class="headerlink" title="합성 (Composition) vs 상속 (Inheritance)"></a>합성 (Composition) vs 상속 (Inheritance)</h1><blockquote>
+<p>React는 강력한 합성 모델을 가지고 있으며, 상속 대신 합성을 사용하여 컴포넌트 간에 코드를 재사용한다.</p>
+</blockquote>
+<h2 id="컴포넌트에서-다른-컴포넌트-담기"><a href="#컴포넌트에서-다른-컴포넌트-담기" class="headerlink" title="컴포넌트에서 다른 컴포넌트 담기"></a>컴포넌트에서 다른 컴포넌트 담기</h2><p>props children으로 컴포넌트를 전달해서 컴포넌트를 랜더링 할 수 있다.</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">FancyBorder</span>(<span class="params">props</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">&#123;</span>&quot;<span class="attr">FancyBorder</span> <span class="attr">FancyBorder-</span>&quot; + <span class="attr">props.color</span>&#125;&gt;</span></span></span><br><span class="line"><span class="xml">      &#123;props.children&#125;</span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">WelcomeDialog</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="xml"><span class="tag">&lt;<span class="name">FancyBorder</span> <span class="attr">color</span>=<span class="string">&quot;blue&quot;</span>&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;<span class="name">h1</span> <span class="attr">className</span>=<span class="string">&quot;Dialog-title&quot;</span>&gt;</span>Welcome<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;<span class="name">p</span> <span class="attr">className</span>=<span class="string">&quot;Dialog-message&quot;</span>&gt;</span>Thank you for visiting our spacecraft!<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;/<span class="name">FancyBorder</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="특수화"><a href="#특수화" class="headerlink" title="특수화"></a>특수화</h2><p>일반적인 컴포넌트에서 특수한 경우에 컴포넌트를 뽑아 낼 수 있다. 예를 들어서 Dialog 컴포넌트는 일반적인 컴포넌트라고 할 수 있고 WelcomeDialog는 특수한 컴포넌트라고 할 수 있다.</p>
+<p>이런 컴포넌트를 그릴 때에도 합성을 사용할 수 있는데, 구체적인 컴포넌트에서 일반적인 컴포넌트를 담아서 그리는 것이다.</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Dialog</span>(<span class="params">props</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="xml"><span class="tag">&lt;<span class="name">FancyBorder</span> <span class="attr">color</span>=<span class="string">&quot;blue&quot;</span>&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;<span class="name">h1</span> <span class="attr">className</span>=<span class="string">&quot;Dialog-title&quot;</span>&gt;</span>&#123;props.title&#125;<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;<span class="name">p</span> <span class="attr">className</span>=<span class="string">&quot;Dialog-message&quot;</span>&gt;</span>&#123;props.message&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;/<span class="name">FancyBorder</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">WelcomeDialog</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="xml"><span class="tag">&lt;<span class="name">Dialog</span> <span class="attr">title</span>=<span class="string">&quot;Welcome&quot;</span> <span class="attr">message</span>=<span class="string">&quot;Thank you for visiting our spacecraft!&quot;</span> /&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">ReactDOM.render(<span class="xml"><span class="tag">&lt;<span class="name">WelcomeDialog</span> /&gt;</span></span>, <span class="built_in">document</span>.getElementById(<span class="string">&quot;root&quot;</span>));</span><br></pre></td></tr></table></figure>
+
+<p>마찬가지로 클래스 컴포넌트에서도 합성을 사용할 수 있다.</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Dialog</span>(<span class="params">props</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="xml"><span class="tag">&lt;<span class="name">FancyBorder</span> <span class="attr">color</span>=<span class="string">&quot;blue&quot;</span>&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;<span class="name">h1</span> <span class="attr">className</span>=<span class="string">&quot;Dialog-title&quot;</span>&gt;</span>&#123;props.title&#125;<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;<span class="name">p</span> <span class="attr">className</span>=<span class="string">&quot;Dialog-message&quot;</span>&gt;</span>&#123;props.message&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></span><br><span class="line"><span class="xml">      &#123;props.children&#125;</span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;/<span class="name">FancyBorder</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SignUpDialog</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">props</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">super</span>(props);</span><br><span class="line">    <span class="built_in">this</span>.handleChange = <span class="built_in">this</span>.handleChange.bind(<span class="built_in">this</span>);</span><br><span class="line">    <span class="built_in">this</span>.handleSignUp = <span class="built_in">this</span>.handleSignUp.bind(<span class="built_in">this</span>);</span><br><span class="line">    <span class="built_in">this</span>.state = &#123; <span class="attr">login</span>: <span class="string">&quot;&quot;</span> &#125;;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">render</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      <span class="xml"><span class="tag">&lt;<span class="name">Dialog</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">        <span class="attr">title</span>=<span class="string">&quot;Mars Exploration Program&quot;</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">        <span class="attr">message</span>=<span class="string">&quot;How should we refer to you?&quot;</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">      &gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">value</span>=<span class="string">&#123;this.state.login&#125;</span> <span class="attr">onChange</span>=<span class="string">&#123;this.handleChange&#125;</span> /&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;this.handleSignUp&#125;</span>&gt;</span>Sign Me Up!<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;/<span class="name">Dialog</span>&gt;</span></span></span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">handleChange</span>(<span class="params">e</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.setState(&#123; <span class="attr">login</span>: e.target.value &#125;);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">handleSignUp</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    alert(<span class="string">`Welcome aboard, <span class="subst">$&#123;<span class="built_in">this</span>.state.login&#125;</span>!`</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="상속은"><a href="#상속은" class="headerlink" title="상속은?"></a>상속은?</h2><p>대부분 사용하지 않는다. React에서는 Props로 어떤 값도 전달 가능하기 때문에 모양과 동작을 유연하게 커스터마이징 할 수 있다.<br>또한, JavaScript이기 때문에 모듈로 분리할 수 도 있고 필요할때 import 하기도 가능하다.</p>
+
       
     </div>
 
@@ -1270,107 +1357,6 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/10/23/DB/SQLD/211014-%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B2%A0%EC%9D%B4%EC%8A%A4%20%EC%84%B1%EB%8A%A5/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JayoonKoo">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="티끌모아 태산">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/10/23/DB/SQLD/211014-%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B2%A0%EC%9D%B4%EC%8A%A4%20%EC%84%B1%EB%8A%A5/" class="post-title-link" itemprop="url">데이터베이스 성능</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2021-10-23 22:07:35 / Modified: 22:09:58" itemprop="dateCreated datePublished" datetime="2021-10-23T22:07:35+09:00">2021-10-23</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/DB/" itemprop="url" rel="index"><span itemprop="name">DB</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="데이터-베이스-성능"><a href="#데이터-베이스-성능" class="headerlink" title="데이터 베이스 성능"></a>데이터 베이스 성능</h1><h2 id="성능이란"><a href="#성능이란" class="headerlink" title="성능이란 ?"></a>성능이란 ?</h2><p>클라이언트 요청에 대한 응답시간(Response Time) 과 시간당 처리할 수 있는 처리량(Throughtput) 이다.</p>
-<h3 id="용어-알아보기"><a href="#용어-알아보기" class="headerlink" title="용어 알아보기"></a>용어 알아보기</h3><p>Corrent User = Active User + Inactive User : 현제 사용자를 의미하는데 서버에 부하를 일으키는 Active User와 서버에 부하를 일으키지 않는 Inactive User로 나뉜다.</p>
-<p>TPS : 서버가 일정 시간 내의 처리한 트랜잭션의 양</p>
-<p>Response Time : 요청 후 응답을 받을 때 까지 소요된 시간</p>
-<p>Resource : 한정된 값을 가진 시스템의 구성요소</p>
-<h3 id="성능의-특성"><a href="#성능의-특성" class="headerlink" title="성능의 특성"></a>성능의 특성</h3><p>경합 부하 구간에서 Response Time이 급격하게 늘어나게 된다.</p>
-<h2 id="데이터베이스-병목의-원인"><a href="#데이터베이스-병목의-원인" class="headerlink" title="데이터베이스 병목의 원인"></a>데이터베이스 병목의 원인</h2><p>여러 요인이 있지만 DBMS 내부 I/O 병목으로 인한 대기시간 증가가 가장 큰 이유이다. 대부분은 I/O(Sleep) 에서 발생힌다.</p>
-<p>병목현상을 해결하기 위해서는</p>
-<ul>
-<li>절대적인 블록 I/O 를 줄여야 함.</li>
-<li>블록 I/O를 줄이기 위한 모델 설계, DBMS 환경 구축, SQL 튜닝등의 기술이 필요함.</li>
-</ul>
-<h3 id="포로세스-생성-주기에-영향을-받는다"><a href="#포로세스-생성-주기에-영향을-받는다" class="headerlink" title="포로세스 생성 주기에 영향을 받는다."></a>포로세스 생성 주기에 영향을 받는다.</h3><p>여러 프로세스가 하나의 CPU를 공유 할 수 있지만, 특정 순간에는 하나의 프로세스만 CPU를 사용한다. 디스크에서 데이터를 읽어야할 땐 CPU를 OS에 반환하고 잠시 수면 상태에서 I/O 가 완료되기를 기다린다. 즉, SQL 문에서 발생하는 절대적인 I/O 횟루를 줄이는 것이 성냉 개선의 핵심이다.</p>
-<h2 id="성능을-결정하는-요인"><a href="#성능을-결정하는-요인" class="headerlink" title="성능을 결정하는 요인"></a>성능을 결정하는 요인</h2><p>성능을 결정하는 가장 큰 요인에는 옵티마이저의 성능이 있다. 사용자가 SQL 문을 입력하면 옵티마이저는 파싱한 SQL를 최적화하여 프로시저로 변환시키는 작업을 한다.</p>
-<p>옵티마이저는 통계정보를 이용해 각 실행 계획의 예상 비용을 산정한 후 최저 비용을 나나태는 실행 계획을 선택한다.</p>
-<h3 id="옵티마이저가-참조하는-통계정보"><a href="#옵티마이저가-참조하는-통계정보" class="headerlink" title="옵티마이저가 참조하는 통계정보"></a>옵티마이저가 참조하는 통계정보</h3><p>SQL 파식 -&gt; 실행계획 작성 ( 통계 정보 활용) -&gt; 실행계획 선택 ( 옵티마이저의 역활) -&gt; SQL 실행</p>
-<p>통계정보 :</p>
-<ul>
-<li>테이블의 행수</li>
-<li>데이터형</li>
-<li>크기</li>
-<li>제약정보</li>
-<li>인덱스에 대한 통계</li>
-<li>열 값에 대한 통계 등등..</li>
-</ul>
-<h2 id="실행-계획은-어떻게-세워지는"><a href="#실행-계획은-어떻게-세워지는" class="headerlink" title="실행 계획은 어떻게 세워지는"></a>실행 계획은 어떻게 세워지는</h2><h3 id="인덱스"><a href="#인덱스" class="headerlink" title="인덱스"></a>인덱스</h3><p>지정한 컬럼을 기준으로 메모리 영역에 일종의 목차를 생성하는것, 조회 할때는 좋은 성능을 보이만, insert, update, delete 등의 작업을 해야 할때에는 인덱스 테이블까지 변경해하는 상황이 발생하면서 오히려 성능이 안좋을 수 있다.</p>
-<p>``SQL<br>CREATE INDEX IDX_TB_EXECUTION_TEST_01 ON TB_EXECUTION_TEST(CUSTOMER_ID);</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">인덱스는 B-Tree를 사용하여 테이블을 조회한다. 반면에, 인데스가 없는 조회 조건은 모든 요소를 비교하면서 조회하게 된다. 이를 Table Full Scan 이라고 한다.</span><br><span class="line"></span><br><span class="line">반면에 인덱스를 사용하면 B-Tree를 이용하여 Range Scan 을 하게 된다.</span><br><span class="line"></span><br><span class="line">먼저 branch 노드에서 커르고 리픝 노드에서 수평적으로 검사하여 디스크에 접근 하는 것이다.</span><br><span class="line"></span><br><span class="line">인덱스를 사용할 컬럼은 카디너리티가 높은 컬럼을 사용해야 한다. 카디널리티는 Distint 명령을 수행했을때 숫자 라고 생각하면 쉽게 생각 할 수 있는데, 성별보다 주민등록 번호가 카디너리티가 높다는 것은 여기에 기인하여 생각할 수 있다.</span><br><span class="line">여러 컬럼으로 인덱스를 사용할때에는 카디너리티가 높은 순에서 낮은 순서로 사용해야 한다.</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
     <a class="extend prev" rel="prev" href="/page/7/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/9/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
@@ -1384,7 +1370,7 @@
 
 <div class="copyright">
   &copy; 
-  <span itemprop="copyrightYear">2022</span>
+  <span itemprop="copyrightYear">2023</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

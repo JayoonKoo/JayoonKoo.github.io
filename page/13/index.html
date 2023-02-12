@@ -85,7 +85,7 @@
         <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
         <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">21</span></a></li>
         <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">17</span></a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">158</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">159</span></a></li>
   </ul>
 </nav>
 
@@ -129,7 +129,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">158</span>
+          <span class="site-state-item-count">159</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -189,7 +189,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/09/12/system-programing/210809-%EB%A6%AC%EB%88%85%EC%8A%A4(%EC%9C%A0%EB%8B%89%EC%8A%A4)%20%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/09/12/system-programing/210809-AWS%20%EB%A6%AC%EB%88%85%EC%8A%A4%20%EC%82%AC%EC%9A%A9/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -202,7 +202,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/09/12/system-programing/210809-%EB%A6%AC%EB%88%85%EC%8A%A4(%EC%9C%A0%EB%8B%89%EC%8A%A4)%20%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/" class="post-title-link" itemprop="url">리눅스(유닉스) 운영체제</a>
+          <a href="/2021/09/12/system-programing/210809-AWS%20%EB%A6%AC%EB%88%85%EC%8A%A4%20%EC%82%AC%EC%9A%A9/" class="post-title-link" itemprop="url">AWS 리눅스 사용</a>
         </h2>
 
         <div class="post-meta-container">
@@ -235,26 +235,62 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="리눅스"><a href="#리눅스" class="headerlink" title="리눅스"></a>리눅스</h1><p>서버에 많이 사용되는 운영체제 </p>
-<p>프로그래밍 할때에도 많이 사용 된다.<br>컴파일 시간이 줄어든다. </p>
-<p>클라우드 컴퓨팅 (AWS) 에도 많이 사용됨</p>
-<p>운영체제, 소프트웨어의 대부 UNIX 계열 운영체제이다.<br>완전 프로그래머 스타일이다. </p>
-<p>plain 하게 프로그래밍 가능하다.<br>ANSI C - C 언어 표준 (표준으로 코딩이 가능하다.)</p>
-<br/>
-
-<h2 id="리눅스의-역사와-배경"><a href="#리눅스의-역사와-배경" class="headerlink" title="리눅스의 역사와 배경"></a>리눅스의 역사와 배경</h2><h3 id="리눅스-시작"><a href="#리눅스-시작" class="headerlink" title="리눅스 시작"></a>리눅스 시작</h3><p>리누스 토발즈가 개발.<br>대학에 있는 UNIX 컴퓨터를 집에서 쓰고 싶었다.<br>다중 사용자, 다중 작업(시분할 시스템, 멀티 태스킹) 을 지원할 수 있도록 만들었다. </p>
-<h3 id="GNU-프로젝트"><a href="#GNU-프로젝트" class="headerlink" title="GNU 프로젝트"></a>GNU 프로젝트</h3><p>GNU = Gnu is Not Unix</p>
-<p>유닉스 운영체제를 여러 회사에서 개발했는데, 소스를 공유하지 않았다.<br>리차드 스톨만이 초기 컴퓨터 개발 공동체의 상호협력적인 문화로 돌아가자고 1985년 GNU 선언문을 발표했다.<br>기술을 공유 되어야 한다고 주장.</p>
-<p>GNU 프로젝트를 지원하기 위해 자유 소프트웨어 재단 설립 GNU 공개 라이선스(GPL) 규약을 제공.<br>이 소스를 사용할수 있지만 해당 기술을 사용했다면 기술은 공유 되어야 한다는 규약.</p>
-<h4 id="GPL-라이선스"><a href="#GPL-라이선스" class="headerlink" title="GPL 라이선스"></a>GPL 라이선스</h4><p>GPL 프로그램은 어떤 형태로든 사용할 수 있지만, 다시 배포하기 위해서 동일한 GPL 라이선스 사용해야 함.</p>
-<h3 id="GNU-Hurd"><a href="#GNU-Hurd" class="headerlink" title="GNU Hurd"></a>GNU Hurd</h3><p>운영체제 커널 개발 시도 - GNU Hurd</p>
-<p>운영체제의 필요한 쉘 응용 프로그램, API, 라이브러리 System Call 개발, 컴파일러 개발</p>
-<img src="images/210809-리눅스(유닉스)%20운영체제/1.png" width="300">
-
-<h3 id="GNU-프로젝트와-리눅스"><a href="#GNU-프로젝트와-리눅스" class="headerlink" title="GNU 프로젝트와 리눅스"></a>GNU 프로젝트와 리눅스</h3><p>GNU Hurd 개발 지연</p>
-<p>리누스 토발즈가 리눅스 커널 소스 오픈 소식 들음. GNU Hurd 를 개발 안해도 되겠네? </p>
-<p>GNU 프로젝트 산출물과 리눅스 커널이 통합 개발 되기 시작. </p>
-<p>GNU/ Linux 라고 부르기를 희망함. 리차드 스톨만이 (GNU 창시자.)</p>
+          <h1 id="리눅스-사용법-익히기"><a href="#리눅스-사용법-익히기" class="headerlink" title="리눅스 사용법 익히기"></a>리눅스 사용법 익히기</h1><h2 id="리눅스-설치-방법"><a href="#리눅스-설치-방법" class="headerlink" title="리눅스 설치 방법"></a>리눅스 설치 방법</h2><ol>
+<li>가상 머신 소프트 웨어 <ul>
+<li>PC 환경에 따라 문제들이 다름.</li>
+</ul>
+</li>
+<li>클라우드 컴퓨팅 서비스 활용 <ul>
+<li>최신 기술에 익숙해 짐. </li>
+<li>동일한 환경에서 사용이 가능 </li>
+</ul>
+</li>
+</ol>
+<h2 id="클라우드-컴퓨팅"><a href="#클라우드-컴퓨팅" class="headerlink" title="클라우드 컴퓨팅"></a>클라우드 컴퓨팅</h2><p>서버 환경을 미리 구축해 놓고, 간단한 설정으로 바로 사용할 수 있도록 만든 서비스.</p>
+<ul>
+<li>이전 : 미리 서버 컴퓨터를 구축해야 함. 예측해서 구축해야 되는 문제 </li>
+<li>현재 : 클라우드 컴퓨팅 환경 사용 </li>
+</ul>
+<h2 id="AWS-회원-가입"><a href="#AWS-회원-가입" class="headerlink" title="AWS 회원 가입"></a>AWS 회원 가입</h2><p>무료로 1년간 사용 가능 함. </p>
+<p>해외 결제 가능한 신용카드가 필요하다. </p>
+<h2 id="AWS-클라우드-컴퓨팅-설정"><a href="#AWS-클라우드-컴퓨팅-설정" class="headerlink" title="AWS 클라우드 컴퓨팅 설정"></a>AWS 클라우드 컴퓨팅 설정</h2><ol>
+<li>EC2 또는 인스턴스(서버) 생성</li>
+<li>Elastic IP (탄력적 IP) 생성 <ul>
+<li>고정 IP로 만들어야 함. </li>
+</ul>
+</li>
+<li>자기 PC(클라이언트) 에서 EC2(서버) 접속</li>
+</ol>
+<p>EC2 &gt; 인스턴스 &gt; 인스턴스 시작 &gt; 우분투 18.04 &gt; 옵션 선택 후 생성</p>
+<p>태그 추가? 실제 현업에서는 다수의 서버를 운용하니까 태그로 이름 구분</p>
+<h2 id="고정-IP-생성-및-연결"><a href="#고정-IP-생성-및-연결" class="headerlink" title="고정 IP 생성 및 연결"></a>고정 IP 생성 및 연결</h2><p>AWS 콘솔에서 탄력젹 IP 선택 후 새로운 IP 할당.<br>할당한 IP와 새로운 기존에 인스턴스를 연결 .</p>
+<p>터미널을 통한 우분투 접속.<br>기존에 받아 놓은 pem 이 있는 폴더로 이동 </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod 400 &lt;user-key.pem&gt;</span><br></pre></td></tr></table></figure>
+<p>받아놓은 키에 권한을 변경해 줌.</p>
+<p>ssh 를 이요한 접속. </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -i &lt;user-key.pem&gt; ubuntu@&lt;IP&gt;</span><br></pre></td></tr></table></figure>
+<p>ubuntn 란 사용자로 해당 IP로 접속…</p>
+<p>참고로 고정 IP는 할당만 하고 연결 안하면 비용이 청구 된다.<br>또 연결 했더라도 실행을 시키지 않으면 비용이 청구 되고 여러개의 고정 IP를 할당해도 비용이 청구된다. </p>
+<h2 id="리눅스와-파일"><a href="#리눅스와-파일" class="headerlink" title="리눅스와 파일"></a>리눅스와 파일</h2><p>모든 것은 파일이라는 철학을 따름</p>
+<ul>
+<li><p>모든 인터렉션은 파일을 읽고, 스는 것처럼 이루어짐. (마우스, 키보드와 같은 모든 디바이스 관련 동작도)</p>
+</li>
+<li><p>파일 네임 스페이스 </p>
+<ul>
+<li>전역 네임스페이스를 사용함 (/media/floofy/dave.jpg)</li>
+</ul>
+</li>
+<li><p>파일은 inode 고유값과 자료구조에 의해 주요 정보를 관리한다. </p>
+</li>
+</ul>
+<h2 id="리눅스와-프로세스"><a href="#리눅스와-프로세스" class="headerlink" title="리눅스와 프로세스"></a>리눅스와 프로세스</h2><ul>
+<li>리눅스는 ELF 실행 파일 포멧을 갖는다. </li>
+<li>다양한 시스템 리소스와 관련 되어 있다. </li>
+<li>가상메모리를 지원한다. </li>
+<li>프로세스는 PID 기반으로 구분된다. </li>
+<li>init 프로세스를 기반으로 fork() 시스템콜을 사용해서, 신규 프로세스가 생성 된다. </li>
+</ul>
+<h2 id="리눅스와-권한"><a href="#리눅스와-권한" class="headerlink" title="리눅스와 권한"></a>리눅스와 권한</h2><p>운영체제는 사용자 리소스 권한을 관리한다.<br>리눇는 사용자 / 그룹으로 권한을 관리한다.<br>root는 슈퍼 관리자이다.<br>파일마다 소유자, 소유자 그룹, 모든 사용자에 대한 읽고, 쓰고, 실행되는 권한을 관리한다.<br>접근 권한 정보는 inode의 자료구조에 저장된다. </p>
 
       
     </div>
@@ -390,6 +426,98 @@
 <li>f: 강제로 파일이나 디릭토리 삭제 </li>
 </ul>
 <p><code>rm -rf [dir]</code></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/09/12/system-programing/210809-%EB%A6%AC%EB%88%85%EC%8A%A4(%EC%9C%A0%EB%8B%89%EC%8A%A4)%20%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JayoonKoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="티끌모아 태산">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/09/12/system-programing/210809-%EB%A6%AC%EB%88%85%EC%8A%A4(%EC%9C%A0%EB%8B%89%EC%8A%A4)%20%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/" class="post-title-link" itemprop="url">리눅스(유닉스) 운영체제</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-09-12 23:46:02" itemprop="dateCreated datePublished" datetime="2021-09-12T23:46:02+09:00">2021-09-12</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/CS/" itemprop="url" rel="index"><span itemprop="name">CS</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="리눅스"><a href="#리눅스" class="headerlink" title="리눅스"></a>리눅스</h1><p>서버에 많이 사용되는 운영체제 </p>
+<p>프로그래밍 할때에도 많이 사용 된다.<br>컴파일 시간이 줄어든다. </p>
+<p>클라우드 컴퓨팅 (AWS) 에도 많이 사용됨</p>
+<p>운영체제, 소프트웨어의 대부 UNIX 계열 운영체제이다.<br>완전 프로그래머 스타일이다. </p>
+<p>plain 하게 프로그래밍 가능하다.<br>ANSI C - C 언어 표준 (표준으로 코딩이 가능하다.)</p>
+<br/>
+
+<h2 id="리눅스의-역사와-배경"><a href="#리눅스의-역사와-배경" class="headerlink" title="리눅스의 역사와 배경"></a>리눅스의 역사와 배경</h2><h3 id="리눅스-시작"><a href="#리눅스-시작" class="headerlink" title="리눅스 시작"></a>리눅스 시작</h3><p>리누스 토발즈가 개발.<br>대학에 있는 UNIX 컴퓨터를 집에서 쓰고 싶었다.<br>다중 사용자, 다중 작업(시분할 시스템, 멀티 태스킹) 을 지원할 수 있도록 만들었다. </p>
+<h3 id="GNU-프로젝트"><a href="#GNU-프로젝트" class="headerlink" title="GNU 프로젝트"></a>GNU 프로젝트</h3><p>GNU = Gnu is Not Unix</p>
+<p>유닉스 운영체제를 여러 회사에서 개발했는데, 소스를 공유하지 않았다.<br>리차드 스톨만이 초기 컴퓨터 개발 공동체의 상호협력적인 문화로 돌아가자고 1985년 GNU 선언문을 발표했다.<br>기술을 공유 되어야 한다고 주장.</p>
+<p>GNU 프로젝트를 지원하기 위해 자유 소프트웨어 재단 설립 GNU 공개 라이선스(GPL) 규약을 제공.<br>이 소스를 사용할수 있지만 해당 기술을 사용했다면 기술은 공유 되어야 한다는 규약.</p>
+<h4 id="GPL-라이선스"><a href="#GPL-라이선스" class="headerlink" title="GPL 라이선스"></a>GPL 라이선스</h4><p>GPL 프로그램은 어떤 형태로든 사용할 수 있지만, 다시 배포하기 위해서 동일한 GPL 라이선스 사용해야 함.</p>
+<h3 id="GNU-Hurd"><a href="#GNU-Hurd" class="headerlink" title="GNU Hurd"></a>GNU Hurd</h3><p>운영체제 커널 개발 시도 - GNU Hurd</p>
+<p>운영체제의 필요한 쉘 응용 프로그램, API, 라이브러리 System Call 개발, 컴파일러 개발</p>
+<img src="images/210809-리눅스(유닉스)%20운영체제/1.png" width="300">
+
+<h3 id="GNU-프로젝트와-리눅스"><a href="#GNU-프로젝트와-리눅스" class="headerlink" title="GNU 프로젝트와 리눅스"></a>GNU 프로젝트와 리눅스</h3><p>GNU Hurd 개발 지연</p>
+<p>리누스 토발즈가 리눅스 커널 소스 오픈 소식 들음. GNU Hurd 를 개발 안해도 되겠네? </p>
+<p>GNU 프로젝트 산출물과 리눅스 커널이 통합 개발 되기 시작. </p>
+<p>GNU/ Linux 라고 부르기를 희망함. 리차드 스톨만이 (GNU 창시자.)</p>
 
       
     </div>
@@ -1170,93 +1298,6 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/09/12/system-programing/210820-%EC%8B%9C%EA%B7%B8%EB%84%90%20%EB%8F%99%EC%9E%91%20%EB%A9%94%EC%BB%A4%EB%8B%88%EC%A6%98/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JayoonKoo">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="티끌모아 태산">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/09/12/system-programing/210820-%EC%8B%9C%EA%B7%B8%EB%84%90%20%EB%8F%99%EC%9E%91%20%EB%A9%94%EC%BB%A4%EB%8B%88%EC%A6%98/" class="post-title-link" itemprop="url">시그널 동작 메커니즘</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-09-12 23:46:02" itemprop="dateCreated datePublished" datetime="2021-09-12T23:46:02+09:00">2021-09-12</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/CS/" itemprop="url" rel="index"><span itemprop="name">CS</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="시그널-동작-메커니즘"><a href="#시그널-동작-메커니즘" class="headerlink" title="시그널 동작 메커니즘"></a>시그널 동작 메커니즘</h1><p>본래는 다른 용도 이지만 IPC 로도 사용 가능한 기법</p>
-<ul>
-<li>시그널(signal) - 프로세스에 이벤트 전달.</li>
-<li>소켓(socket) - 네트워크</li>
-</ul>
-<h2 id="시그널"><a href="#시그널" class="headerlink" title="시그널"></a>시그널</h2><p>유닉스에서 오래전부터 사용되온 기술이다. 커널 또는 프로세스에서 다른 프로세스에서 어떤 이벤트가 발생되었는지를 알려주는 기법이다.</p>
-<h2 id="시그널-동작"><a href="#시그널-동작" class="headerlink" title="시그널 동작"></a>시그널 동작</h2><p>프로그램에서 특정 시그널의 기본 동작 대신 다른 동작을 하도록 구현 가능하다.</p>
-<p>각 프로세스에서 시그널 처리에 대해 다음과 같은 동작 설정이 가능하다.</p>
-<ul>
-<li>시그널 무시</li>
-<li>시그널 블록</li>
-<li>프로그램 안에 등록된 시그널 핸들러로 재정의한 특정 동작 수행</li>
-<li>등록된 시그널 핸들러가 없다면, 커널에서 기본 동작 수행</li>
-</ul>
-<h2 id="시그널과-프로세스"><a href="#시그널과-프로세스" class="headerlink" title="시그널과 프로세스"></a>시그널과 프로세스</h2><p>프로세스는 PCB 에서 해당 프로세스가 블록 또는 처리해야하는 시그널 관련 정보를 관리한다. 커널 모드에서 사용자 모드 전환시 시그널 정보를 확인해서 해당 처리를 한다.</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
     <a class="extend prev" rel="prev" href="/page/12/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><span class="page-number current">13</span><a class="page-number" href="/page/14/">14</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/14/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
@@ -1270,7 +1311,7 @@
 
 <div class="copyright">
   &copy; 
-  <span itemprop="copyrightYear">2022</span>
+  <span itemprop="copyrightYear">2023</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

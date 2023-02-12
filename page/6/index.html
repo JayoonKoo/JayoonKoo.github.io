@@ -85,7 +85,7 @@
         <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
         <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">21</span></a></li>
         <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">17</span></a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">158</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">159</span></a></li>
   </ul>
 </nav>
 
@@ -129,7 +129,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">158</span>
+          <span class="site-state-item-count">159</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -180,6 +180,115 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/12/21/DevOps/Docker/211221-Docker%20tutorial(3)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JayoonKoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="티끌모아 태산">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/12/21/DevOps/Docker/211221-Docker%20tutorial(3)/" class="post-title-link" itemprop="url">Docker tutorial(3)</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2021-12-21 21:34:27 / Modified: 21:34:44" itemprop="dateCreated datePublished" datetime="2021-12-21T21:34:27+09:00">2021-12-21</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/DevOps/" itemprop="url" rel="index"><span itemprop="name">DevOps</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="Update-the-source-code"><a href="#Update-the-source-code" class="headerlink" title="Update the source code"></a>Update the source code</h1><p>코드를 업데이트하고 적용하는 방법을 알아본다.</p>
+<ol>
+<li>코드를 고친다. </li>
+<li>build 할때 사용했던 명령어를 똑같이 입력한다. </li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker build -t getting-started .</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>업데이트된 코드를 사용해서 새로운 컨테이너를 시작한다.</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker run -db 3000:3000 getting-started</span><br></pre></td></tr></table></figure>
+
+<p>하지만 에러가 발생한다.. (docker: Error response from daemon: driver failed….)</p>
+<p>왜냐하면 이미 3000 번 포트로 전에 컨테이너가 실행중이기 때문이다. 하나의 머신에 특정한 포트는 한게만 실행 실행시킬 수 있다. 오래된 컨테이너를 지워야 한다.</p>
+<h2 id="Replace-the-old-container"><a href="#Replace-the-old-container" class="headerlink" title="Replace the old container"></a>Replace the old container</h2><p>컨테이너를 지우기 위해서는 컨테이너 실행을 중지 시켜야 한다. 두가지 방법이 있는데 편한것을 선택하면 된다. </p>
+<h3 id="Remove-a-container-using-the-CLI"><a href="#Remove-a-container-using-the-CLI" class="headerlink" title="Remove a container using the CLI"></a>Remove a container using the CLI</h3><ol>
+<li>컨테이너의 ID를 얻는다. </li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker ps</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>docker ID 혹은 이름을 사용해서 컨테이너를 멈춘다.</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker stop &lt;the-container-id or name&gt;</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>컨테이너가 멈추면 <code>docker rm</code> 커멘드로 지울 수 있다. </li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker rm &lt;the-container-id or name&gt;</span><br></pre></td></tr></table></figure>
+
+<p>-f 플래그를 이요해서 실행중인 중에도 삭제할 수 있다. <code>docker rm -f &lt;the-continaer-id or name&gt;</code> </p>
+<h3 id="Docker-Dashboard"><a href="#Docker-Dashboard" class="headerlink" title="Docker Dashboard"></a>Docker Dashboard</h3><p>Docker Dashboard에서 실행중인 컨테이널르 확인하고 쓰레기통 아이콘을 누르면 삭제할 수 있다. </p>
+<h3 id="Start-the-updated-app-container"><a href="#Start-the-updated-app-container" class="headerlink" title="Start the updated app container"></a>Start the updated app container</h3><ol>
+<li>앱을 실행시킨다. </li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker run -dp 3000:3000 getting-started</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1095,110 +1204,6 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://jayoonkoo.github.io/2021/12/10/TIL/211209/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JayoonKoo">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="티끌모아 태산">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/12/10/TIL/211209/" class="post-title-link" itemprop="url">211209 백엔드, 마이크로프론트엔드</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2021-12-10 16:48:03 / Modified: 16:49:51" itemprop="dateCreated datePublished" datetime="2021-12-10T16:48:03+09:00">2021-12-10</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/TIL/" itemprop="url" rel="index"><span itemprop="name">TIL</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="211209"><a href="#211209" class="headerlink" title="211209"></a>211209</h1><h2 id="백엔드"><a href="#백엔드" class="headerlink" title="백엔드"></a>백엔드</h2><ul>
-<li>201 데이터가 잘 만들어졌습니다 상태 코드</li>
-<li>204 정상적으로 삭제 했고 이제 리소스가 없음. sendStatus(204) → 상태 메세지만 반환함.</li>
-<li>postman 에서 RUN 버튼 누르면 컬랙션 안에 모든 API를 테스트할 수 있다.</li>
-<li>mvc 패턴 model, view, controller 를 분리하는 패턴 model (DB), controller(logic), View(ui) → 서버에서 View 는 router 와 밀접한 관련이 있다.</li>
-<li>typescript 에서 req.query 에 타입을 정의하고 싶을때 req: Request&lt;{}, {}, {}, Type&gt; 으로 정의할 수 있다.</li>
-<li>마찬가지로 body 나 params 의 타입을 설정하고 싶다면 Request 에 generic 으로 순서에 맞게 넣어주면 된다.</li>
-</ul>
-<h2 id="마이크로-프론트엔드"><a href="#마이크로-프론트엔드" class="headerlink" title="마이크로 프론트엔드"></a>마이크로 프론트엔드</h2><ul>
-<li>각각의 페이지를 각각의 SPA로 만든다. 서로 커뮤니케이션을 하는 것이 아니라 API를 통해 커뮤니케이션 하게 만든다.</li>
-<li>장점? 완전히 독립적인 앱 두게를 갖게 된다. 만약 각각의 팀이 개발하고 있다면? 각각의 팀이 독립적인 결정을 해도 영향을 주지 않는다!</li>
-<li>예를들어 팀 1에서는 react로 구현하고 팀2 에서는 vue 나 angular 같은걸로 개발할 수 있게 된다.</li>
-<li>한 페이지 내에서도 가능하다. 근데 각각의 앱을 어디에 표시할지 어떻게 알까? 컨테이너라는 앱도 만들어서 어떻게 표시할지 구현할 수 있다. 즉 2개의 마이크로프론트 앱이 있다면 한개의 컨테이너 앱을 더 두어서 어떻게 배치할지 정하는 것이다.</li>
-<li>컨테이너를 어떻게 구현할수 있을지는 크게 3가지 관점이 있다.<ol>
-<li>build time integration → 브라우저에 컨테이너가 로딩 되기 전에 각각의 앱에 접근할 수 있다.</li>
-<li>run time integration → 브라우저에 컨테이너가 로딩 된 이후에 각각의 앱에 접근할 수 있다.</li>
-<li>server integration → backend 에서 해야할 내용이므로 여기서는 다루지 않는다.</li>
-</ol>
-</li>
-<li>build tim integration에 가장 간단한 방법?<ul>
-<li>작업 완료하면 npm 패키지로 배포한다. 다음 컨테이너에서 받아서 사용한다.</li>
-<li>장점 : 쉽다. 이해하기 쉬움.</li>
-<li>단점 : container 가 redepoly 되면 패키지도 다시 update 됨. 컨테이너와 강하게 결합되게 된다. 마이크로론트엔드에 컨셉에 맞지 않음.</li>
-</ul>
-</li>
-</ul>
-<h2 id="알고리즘"><a href="#알고리즘" class="headerlink" title="알고리즘"></a>알고리즘</h2><ul>
-<li>실제로 재귀 함수로 DFS 구현하는 경우가 있다.</li>
-<li>BFS 는 보통 큐라서 만약 둘다 가능하다면 BFS로 푸는게 나은 경우가 많다.</li>
-<li>100만 → o(N) 만큼 필요함</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
     <a class="extend prev" rel="prev" href="/page/5/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/7/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
@@ -1212,7 +1217,7 @@
 
 <div class="copyright">
   &copy; 
-  <span itemprop="copyrightYear">2022</span>
+  <span itemprop="copyrightYear">2023</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
